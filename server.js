@@ -287,7 +287,7 @@ app.get('/api/conf', async (req, res) => {
   const hours = Math.min(48, Math.max(1, Number.parseInt(req.query.hours || '24', 10) || 24));
   const limit = Math.min(40, Math.max(1, Number.parseInt(req.query.limit || '20', 10) || 20));
   const query = String(req.query.q || '').trim();
-  const requestedDate = String(req.query.date || '').match(/^\\d{4}-\\d{2}-\\d{2}$/) ? String(req.query.date) : '';
+  const requestedDate = String(req.query.date || '').match(/^\d{4}-\d{2}-\d{2}$/) ? String(req.query.date) : '';
   const romeDate = value => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value));
   const normSearch = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
   const searchTerms = normSearch(query).split(/\s+/).filter(Boolean);
@@ -324,7 +324,7 @@ app.get('/api/conf', async (req, res) => {
         const kind = String(item.type || item.entityType || item.kind || '').toLowerCase();
         const isCompetition = kind.includes('competition') || kind.includes('league') || String(id).startsWith('comp_') || item.competitionId != null || item.competition != null;
         const param = isCompetition ? { competition: id } : { team: id };
-        const dateCalls = await Promise.all([today, tomorrow].map(async date => {
+        const dateCalls = await Promise.all(datesToFetch.map(async date => {
           try { return rows(await openFoot('/matches', { date, ...param })); }
           catch (_) { return []; }
         }));
