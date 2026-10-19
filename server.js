@@ -412,7 +412,21 @@ app.get('/api/conf', async (req, res) => {
           try { return rows(await openFoot('/matches', { date, ...param })); }
           catch (_) { return []; }
         }));
-        return dateCalls.flat();
+        // Some provider sources return no rows for date+competition even when the
+        // competition has scheduled fixtures. Also query the current season by its
+        // stable competition ID, then let the normal upcoming/date filters decide.
+        let seasonMatches = [];
+        if (isCompetition && item.currentSeason) {
+          try {
+            seasonMatches = rows(await openFoot('/matches', {
+              competition: id,
+              season: item.currentSeason
+            }));
+          } catch (_) {
+            // Keep date-scoped results if season-wide lookup is unavailable.
+          }
+        }
+        return [...dateCalls.flat(), ...seasonMatches];
       }));
       allDayMatches = [...allDayMatches, ...entityMatches.flat()];
     }
