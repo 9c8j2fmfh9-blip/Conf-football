@@ -21,8 +21,16 @@ async function openFoot(path, params = {}) {
 
   const headers = { Accept: 'application/json' };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
-  const response = await fetch(url, { headers });
-  const body = await response.json().catch(() => ({}));
+  let response = await fetch(url, { headers });
+  let body = await response.json().catch(() => ({}));
+
+  // If Render has an invalid personal key, fall back to OpenFootAPI's
+  // published demo key so the prototype can still test the public preview.
+  if (response.status === 401 && apiKey) {
+    const demoHeaders = { Accept: 'application/json', Authorization: 'Bearer of_demo_openfootapi_docs' };
+    response = await fetch(url, { headers: demoHeaders });
+    body = await response.json().catch(() => ({}));
+  }
   if (!response.ok) {
     const detail = body?.error?.message || body?.error?.code || `HTTP ${response.status}`;
     const err = new Error(`OpenFootAPI: ${detail}`);
