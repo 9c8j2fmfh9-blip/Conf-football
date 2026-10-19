@@ -24,6 +24,13 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <div id="conf-results" class="matches"></div>
 </section>
 
+<section class="panel">
+ <h2>Storico scommesse consigliate</h2>
+ <p class="muted">Salva la migliore selezione CONF ≥70% con almeno 6 gare storiche per ogni partita analizzata. Dopo il risultato, segna manualmente Vinta o Persa. I dati restano salvati in questo browser.</p>
+ <div id="history-summary" class="message">Nessuna selezione registrata.</div>
+ <div id="history-results" class="matches"></div>
+</section>
+
 <div class="stats">
  <div class="stat"><small>Partite trovate</small><strong id="total">—</strong></div>
  <div class="stat"><small>In programma</small><strong id="upcoming">—</strong></div>
@@ -47,6 +54,73 @@ const $ = (s) => document.querySelector(s);
 let games = [];
 let confItems = [];
 let confOnlyQualified = false;
+const HISTORY_KEY = 'confFootballBetHistoryV1';
+function readHistory(){
+  try {
+    const value = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+    return Array.isArray(value) ? value : [];
+  } catch { return []; }
+}
+function writeHistory(items){
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(items)); }
+  catch { $('#history-summary').textContent = 'Impossibile salvare lo storico in questo browser.'; }
+}
+function saveRecommendations(fixtures){
+  const history = readHistory();
+  const known = new Set(history.map(x => x.id));
+  let added = 0;
+  for(const f of fixtures){
+    const recommendation = Object.entries(f.markets || {})
+      .filter(([key,m]) => ['one','draw','two','over25','btts'].includes(key) && m.score !== null && m.score >= 70 && m.sample >= 6)
+      .map(([,m]) => m).sort((a,b) => b.score-a.score)[0];
+    if(!recommendation) continue;
+    const id = String(f.fixtureId || '')+'|'+String(recommendation.label || '');
+    if(!f.fixtureId || known.has(id)) continue;
+    history.unshift({
+      id, fixtureId:f.fixtureId, date:f.date || null, league:f.league || '',
+      home:f.home || '', away:f.away || '', market:recommendation.label,
+      score:Number(recommendation.score), hits:Number(recommendation.hits),
+      sample:Number(recommendation.sample), outcome:'pending',
+      recordedAt:new Date().toISOString()
+    });
+    known.add(id); added++;
+  }
+  writeHistory(history.slice(0,500));
+  renderHistory();
+  return added;
+}
+function renderHistory(){
+  const history = readHistory();
+  const wins = history.filter(x => x.outcome === 'win').length;
+  const losses = history.filter(x => x.outcome === 'loss').length;
+  const pending = history.filter(x => x.outcome === 'pending').length;
+  const settled = wins + losses;
+  const rate = settled ? Math.round(wins / settled * 100) : null;
+  $('#history-summary').textContent = 'Registrate: '+history.length+' · Da aggiornare: '+pending+' · Vinte: '+wins+' · Perse: '+losses+' · Percentuale di successo: '+(rate === null ? '—' : rate+'%')+'.';
+  const root = $('#history-results');
+  if(!history.length){
+    root.innerHTML = '<div class="empty">Lo storico è vuoto. Premi “Calcola CONF” per registrare le prime selezioni qualificate.</div>';
+    return;
+  }
+  root.innerHTML = history.map(x => {
+    const kickoff = x.date ? new Date(x.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : 'Data non disponibile';
+    const status = x.outcome === 'win' ? 'VINTA' : x.outcome === 'loss' ? 'PERSA' : 'DA AGGIORNARE';
+    const outcomeHtml = x.outcome === 'pending'
+      ? '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="win">Vinta</button><button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="loss" style="background:#6b2530;border-color:#a84c5b;color:#fff">Persa</button></div>'
+      : '<button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="pending" style="margin-top:10px">Annulla esito</button>';
+    return '<article class="match"><div class="league">'+safe(x.league)+' · '+safe(kickoff)+'</div><div class="teams">'+safe(x.home)+' <span class="vs">CONTRO</span> '+safe(x.away)+'</div><div class="recommend"><div class="recommend-title">Scommessa consigliata · '+status+'</div><div class="recommend-market">'+safe(x.market)+' · '+safe(x.score)+'%</div><div class="recommend-note">'+safe(x.hits)+' su '+safe(x.sample)+' gare storiche</div></div>'+outcomeHtml+'</article>';
+  }).join('');
+}
+$('#history-results').addEventListener('click', event => {
+  const button = event.target.closest('button.history-set');
+  if(!button) return;
+  const history = readHistory();
+  const item = history.find(x => x.id === button.dataset.id);
+  if(!item) return;
+  item.outcome = button.dataset.outcome;
+  writeHistory(history);
+  renderHistory();
+});
 const liveStates = new Set(['1H','HT','2H','ET','BT','P','LIVE']);
 const finishedStates = new Set(['FT','AET','PEN','AWD','WO']);
 function romeToday(){
@@ -132,9 +206,10 @@ async function loadConf(){
     const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
+    const savedCount = saveRecommendations(data.fixtures || []);
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
-    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
+    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove selezioni registrate nello storico: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
@@ -188,6 +263,7 @@ async function loadGames(){
   }
 }
 $('#date').value = romeToday();
+renderHistory();
 $('#reload').addEventListener('click',loadGames);
 $('#analyze').addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
