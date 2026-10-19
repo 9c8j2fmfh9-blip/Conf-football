@@ -275,6 +275,7 @@ function renderConf(items){
     return;
   }
   const ordered = [...selected].sort((a,b) => {
+    if (Number.isFinite(b.rankScore) || Number.isFinite(a.rankScore)) return (b.rankScore || 0) - (a.rankScore || 0);
     const best = f => Math.max(-1,...visibleMarkets(f).filter(m => m.score !== null).map(m => m.score));
     return best(b)-best(a);
   });
@@ -312,7 +313,7 @@ async function loadConf(){
     if(savedCount > 0 && localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
-    $('#conf-message').textContent = 'Analisi completata sulle prossime 24 ore: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove valutazioni analizzate: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
+    $('#conf-message').textContent = 'Analisi completata sulle prossime 24 ore: '+(data.analyzedCount || (data.fixtures || []).length)+' partite valutate; mostrate le migliori '+(data.fixtures || []).length+' in base ai dati storici. '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove valutazioni analizzate: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
