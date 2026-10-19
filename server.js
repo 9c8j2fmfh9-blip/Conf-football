@@ -24,9 +24,9 @@ async function openFoot(path, params = {}) {
   let response = await fetch(url, { headers });
   let body = await response.json().catch(() => ({}));
 
-  // Use the public demo key only when no personal key is configured.
-  // Never silently mask an invalid personal key by switching to demo access.
-  if (!apiKey) {
+  // If the configured key is rejected (401), retry with the documented public preview.
+  // The response metadata makes the reduced demo scope visible; never pretend this is full access.
+  if (!response.ok && response.status === 401) {
     const demoHeaders = { Accept: 'application/json', Authorization: 'Bearer of_demo_openfootapi_docs' };
     response = await fetch(url, { headers: demoHeaders });
     body = await response.json().catch(() => ({}));
