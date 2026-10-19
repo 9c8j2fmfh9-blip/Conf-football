@@ -18,7 +18,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 <main>
 <section class="panel">
  <h2>Analisi CONF · dati storici reali</h2>
- <p class="muted">Analizza fino a 12 partite non ancora iniziate usando le ultime 5 gare disponibili di entrambe le squadre. Over 2.5 e GG usano i risultati finali. Mostriamo le frequenze storiche, non probabilità predittive calibrate.</p>
+ <p class="muted">Analizza fino a 12 partite non ancora iniziate usando fino a 10 gare concluse per squadra. Over 2.5 e GG privilegiano casa/trasferta quando ci sono almeno 3 gare pertinenti; le percentuali sono frequenze storiche, non probabilità predittive calibrate.</p>
  <button class="button" id="analyze">Calcola CONF</button>
  <div id="conf-message" class="message">Premi “Calcola CONF” per avviare l’analisi storica.</div>
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo mercati CONF ≥70% (campione minimo 6 gare)</label>
@@ -28,7 +28,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 <section class="panel">
  <h2>Storico scommesse consigliate</h2>
  <p class="muted">Salva la migliore selezione CONF ≥70% con almeno 6 gare storiche. Usa Sincronizza per condividere lo storico tra PC e smartphone.</p>
- <button class="button" id="sync-history" type="button">Sincronizza PC e smartphone</button>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button" id="sync-history" type="button">Sincronizza PC e smartphone</button><button class="button" id="check-results" type="button">Controlla risultati finali</button></div>
  <div id="sync-message" class="message">Sincronizzazione non ancora avviata.</div>
  <div id="history-summary" class="message">Nessuna selezione registrata.</div>
  <div id="history-dashboard"></div>
@@ -131,7 +131,32 @@ async function syncHistory(){
     status.textContent = 'Sincronizzazione non riuscita: '+error.message;
   }
 }
+async function checkFinalResults(silent=false){
+  const status = $('#sync-message');
+  let token = localStorage.getItem(HISTORY_TOKEN_KEY);
+  if(!token && !silent){
+    token = prompt('Inserisci il codice di sincronizzazione creato nelle variabili ambiente di Render. Non usare la password Supabase.');
+    if(!token) return;
+    token = token.trim();
+    localStorage.setItem(HISTORY_TOKEN_KEY, token);
+  }
+  if(!token) return;
+  if(!silent) status.textContent = 'Controllo dei risultati finali verificabili…';
+  try{
+    const response = await fetch('/api/history/settle',{method:'POST',headers:{'x-history-token':token}});
+    const data = await response.json();
+    if(!response.ok) throw new Error(data.error || 'Errore nel controllo dei risultati');
+    if(data.settled > 0 || !silent){
+      status.textContent = data.settled+' esiti aggiornati automaticamente · '+(data.pending || 0)+' ancora da verificare.';
+      await syncHistory();
+    }
+  }catch(error){
+    if(!silent) status.textContent = 'Controllo risultati non riuscito: '+error.message;
+    if(String(error.message).toLowerCase().includes('codice')) localStorage.removeItem(HISTORY_TOKEN_KEY);
+  }
+}
 $('#sync-history').addEventListener('click', syncHistory);
+$('#check-results').addEventListener('click', () => checkFinalResults(false));
 
 function renderHistory(){
   const history = readHistory();
@@ -335,6 +360,7 @@ async function loadGames(){
 }
 $('#date').value = romeToday();
 renderHistory();
+if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
 $('#reload').addEventListener('click',loadGames);
 $('#analyze').addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
