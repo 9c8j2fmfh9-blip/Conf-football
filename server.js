@@ -91,6 +91,7 @@ app.get('/api/conf', async (req, res) => {
 
     const teamIds = [...new Set(upcoming.flatMap(f => [f.teams?.home?.id, f.teams?.away?.id]).filter(Boolean))];
     const forms = new Map();
+    const formErrors = new Set();
     let cursor = 0;
     const worker = async () => {
       while (cursor < teamIds.length) {
@@ -100,7 +101,8 @@ app.get('/api/conf', async (req, res) => {
           forms.set(id, (data.response || []).filter(x =>
             x.fixture?.status?.short === 'FT' || x.fixture?.status?.short === 'AET' || x.fixture?.status?.short === 'PEN'
           ));
-        } catch {
+        } catch (e) {
+          formErrors.add(e.message || 'Errore nel recupero delle ultime partite');
           forms.set(id, []);
         }
       }
@@ -287,7 +289,7 @@ app.get('/api/conf', async (req, res) => {
       };
     });
     res.json({
-      date, method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili: usa le gare in casa per la squadra di casa e in trasferta per quella ospite quando sono disponibili almeno 3; altrimenti ripiega sulla forma generale. Include W/P/V, media gol fatti/subiti e corner FT sulle ultime 2 gare selezionate per squadra quando il provider fornisce i dati. Le chiamate agli eventi per i corner del primo tempo sono limitate a 12 gare storiche per esecuzione per contenere il consumo API. Non è una probabilità predittiva calibrata.',
+      date, warnings: [...formErrors], method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili: usa le gare in casa per la squadra di casa e in trasferta per quella ospite quando sono disponibili almeno 3; altrimenti ripiega sulla forma generale. Include W/P/V, media gol fatti/subiti e corner FT sulle ultime 2 gare selezionate per squadra quando il provider fornisce i dati. Le chiamate agli eventi per i corner del primo tempo sono limitate a 12 gare storiche per esecuzione per contenere il consumo API. Non è una probabilità predittiva calibrata.',
       threshold: 70, limit, fixtures: results,
       note: 'Un punteggio è mostrato solo quando esistono risultati reali utilizzabili. Il campione può essere inferiore a 10 se mancano dati.'
     });
