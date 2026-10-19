@@ -283,8 +283,8 @@ app.get('/api/conf', async (req, res) => {
   const hours = Math.min(48, Math.max(1, Number.parseInt(req.query.hours || '24', 10) || 24));
   const limit = Math.min(40, Math.max(1, Number.parseInt(req.query.limit || '20', 10) || 20));
   const query = String(req.query.q || '').trim();
-  const normSearch = value => String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
-  const searchTerms = normSearch(query).split(/\\s+/).filter(Boolean);
+  const normSearch = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
+  const searchTerms = normSearch(query).split(/\s+/).filter(Boolean);
   const now = Date.now();
   const cutoff = now + hours * 60 * 60 * 1000;
   const dateParts = new Intl.DateTimeFormat('en-CA', {
