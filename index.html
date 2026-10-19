@@ -70,24 +70,29 @@ function writeHistory(items){
   catch { $('#history-summary').textContent = 'Impossibile salvare lo storico in questo browser.'; }
 }
 function saveRecommendations(fixtures){
+  // Registra automaticamente ogni mercato valutabile, non soltanto quello sopra soglia.
+  // In questo modo CONF potrà confrontare in seguito tutte le sue analisi con i risultati reali.
   const history = readHistory();
   const known = new Set(history.map(x => x.id));
   let added = 0;
+  const marketKeys = ['one','draw','two','over25','btts'];
   for(const f of fixtures){
-    const recommendation = Object.entries(f.markets || {})
-      .filter(([key,m]) => ['one','draw','two','over25','btts'].includes(key) && m.score !== null && m.score >= 70 && m.sample >= 6)
-      .map(([,m]) => m).sort((a,b) => b.score-a.score)[0];
-    if(!recommendation) continue;
-    const id = String(f.fixtureId || '')+'|'+String(recommendation.label || '');
-    if(!f.fixtureId || known.has(id)) continue;
-    history.unshift({
-      id, fixtureId:f.fixtureId, date:f.date || null, league:f.league || '',
-      home:f.home || '', away:f.away || '', market:recommendation.label,
-      score:Number(recommendation.score), hits:Number(recommendation.hits),
-      sample:Number(recommendation.sample), outcome:'pending',
-      recordedAt:new Date().toISOString()
-    });
-    known.add(id); added++;
+    if(!f.fixtureId) continue;
+    for(const key of marketKeys){
+      const market = f.markets?.[key];
+      if(!market || market.score === null || !Number.isFinite(Number(market.score))) continue;
+      const id = String(f.fixtureId)+'|'+String(market.label || key);
+      if(known.has(id)) continue;
+      history.unshift({
+        id, fixtureId:f.fixtureId, date:f.date || null, league:f.league || '',
+        home:f.home || '', away:f.away || '', market:market.label || key,
+        score:Number(market.score), hits:Number(market.hits || 0),
+        sample:Number(market.sample || 0), outcome:'pending',
+        recordedAt:new Date().toISOString()
+      });
+      known.add(id);
+      added++;
+    }
   }
   writeHistory(history.slice(0,500));
   renderHistory();
@@ -308,7 +313,7 @@ async function loadConf(){
     if(savedCount > 0 && localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
-    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove selezioni registrate nello storico: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
+    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove valutazioni di mercato registrate automaticamente: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
