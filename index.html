@@ -17,31 +17,24 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 <header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Partite reali · dati aggiornati dal provider</p></div></div></header>
 <main>
 <section class="panel">
- <h2>Partite</h2>
+ <h2>Partite e analisi CONF</h2>
+ <p class="muted">Un’unica lista: ogni partita viene cercata e analizzata con le statistiche e le percentuali CONF disponibili.</p>
  <div class="filters">
+  <div class="field"><label for="hours">Prossime ore</label><select id="hours"><option value="3">3 ore</option><option value="12">12 ore</option><option value="24" selected>24 ore</option></select></div>
   <div class="field"><label for="date">Data (ora italiana)</label><input id="date" type="date"></div>
-  <div class="field"><label for="search">Cerca partite nel provider</label><input id="search" type="search" placeholder="Es. Inter, Champions League"></div>
+  <div class="field"><label for="search">Cerca squadra o campionato nelle API</label><input id="search" type="search" placeholder="Es. Inter, Champions League"></div>
   <button class="button" id="search-button" type="button">Cerca</button>
-  <button class="button" id="reload">Aggiorna</button>
+  <button class="button" id="reload" type="button">Aggiorna</button>
  </div>
- <div id="message" class="message" role="status">Cerca avvia una richiesta al provider per il campionato o la squadra inseriti; la data selezionata viene mantenuta.</div>
-</section>
-<div id="results" class="matches"></div>
-
-<section class="panel">
- <h2>Analisi CONF · dati storici reali</h2>
- <p class="muted">Analizza fino a 12 partite non ancora iniziate usando fino a 10 gare concluse per squadra. Over 2.5 e GG privilegiano casa/trasferta quando ci sono almeno 3 gare pertinenti; le percentuali sono frequenze storiche, non probabilità predittive calibrate.</p>
- <button class="button" id="analyze">Calcola CONF</button>
- <div id="conf-message" class="message">Premi “Calcola CONF” per avviare l’analisi storica.</div>
+ <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo mercati CONF ≥70% (campione minimo 6 gare)</label>
  <div id="conf-results" class="matches"></div>
+ <div class="stats">
+  <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
+  <div class="stat"><small>Mercati qualificati</small><strong id="upcoming">—</strong></div>
+  <div class="stat"><small>Con dati storici</small><strong id="live">—</strong></div>
+ </div>
 </section>
-
-<div class="stats">
- <div class="stat"><small>Partite trovate</small><strong id="total">—</strong></div>
- <div class="stat"><small>In programma</small><strong id="upcoming">—</strong></div>
- <div class="stat"><small>Live</small><strong id="live">—</strong></div>
-</div>
 <section class="panel">
  <h2>⭐ Le mie partite preferite <span id="favorites-count" class="muted"></span></h2>
  <p class="muted">Salva qui le partite che vuoi tenere d’occhio. I preferiti restano salvati in questo browser.</p>
@@ -282,9 +275,9 @@ function render(){
     const text = normalizeSearch([f.league?.name,f.league?.country,f.teams?.home?.name,f.teams?.away?.name].join(' '));
     return terms.every(term => text.includes(term));
   });
-  $('#total').textContent = games.length;
-  $('#upcoming').textContent = games.filter(f => !liveStates.has(f.fixture?.status?.short) && !finishedStates.has(f.fixture?.status?.short)).length;
-  $('#live').textContent = games.filter(f => liveStates.has(f.fixture?.status?.short)).length;
+  if($('#total')) $('#total').textContent = games.length;
+  if($('#upcoming')) $('#upcoming').textContent = games.filter(f => !liveStates.has(f.fixture?.status?.short) && !finishedStates.has(f.fixture?.status?.short)).length;
+  if($('#live')) $('#live').textContent = games.filter(f => liveStates.has(f.fixture?.status?.short)).length;
   const root = $('#results');
   if(!filtered.length){
     root.innerHTML = '<div class="empty">Nessuna corrispondenza per “'+safe($('#search').value.trim())+'” tra le '+games.length+' partite caricate per questa data. Cancella il testo o cambia data.</div>';
@@ -339,12 +332,16 @@ function renderConf(items){
   }).join('');
 }
 async function loadConf(){
-  const button = $('#analyze');
-  button.disabled = true;
-  $('#conf-message').textContent = 'Calcolo in corso: cerco le partite delle prossime 24 ore e recupero le ultime gare reali delle squadre…';
+  const button = $('#reload') || $('#search-button');
+  if(button) button.disabled = true;
+  const hours = Number($('#hours')?.value || 24);
+  const query = $('#search')?.value.trim() || '';
+  $('#conf-message').textContent = query ? 'Cerco “'+query+'” nelle API e calcolo le percentuali CONF…' : 'Carico le partite delle prossime '+hours+' ore e calcolo le percentuali CONF…';
   $('#conf-results').innerHTML = '';
   try{
-    const response = await fetch('/api/conf?hours=24&limit=20',{cache:'no-store'});
+    const params = new URLSearchParams({hours:String(hours),limit:'40'});
+    if(query) params.set('q',query);
+    const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store'});
     const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
@@ -352,11 +349,15 @@ async function loadConf(){
     if(savedCount > 0 && localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
-    $('#conf-message').textContent = 'Analisi completata sulle prossime 24 ore: '+(data.analyzedCount || (data.fixtures || []).length)+' partite valutate; mostrate le migliori '+(data.fixtures || []).length+' in base ai dati storici. '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove valutazioni analizzate: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
+    if($('#total')) $('#total').textContent = data.analyzedCount || (data.fixtures || []).length;
+    if($('#upcoming')) $('#upcoming').textContent = qualified;
+    if($('#live')) $('#live').textContent = valid;
+    $('#conf-message').textContent = (query ? 'Ricerca CONF per “'+query+'” completata. ' : 'Analisi CONF completata. ')+(data.analyzedCount || (data.fixtures || []).length)+' partite analizzate nelle prossime '+hours+' ore; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70%. '+data.method+' '+((data.warnings || []).length ? 'AVVISI DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
-    button.disabled = false;
+    if(button) button.disabled = false;
+    const searchButton = $('#search-button'); if(searchButton) searchButton.disabled = false;
   }
 }
 async function loadGames(){
@@ -398,7 +399,7 @@ async function loadGames(){
     render();
   }catch(error){
     games = [];
-    $('#total').textContent = '—'; $('#upcoming').textContent = '—'; $('#live').textContent = '—';
+    if($('#total')) $('#total').textContent = '—'; if($('#upcoming')) $('#upcoming').textContent = '—'; if($('#live')) $('#live').textContent = '—';
     $('#message').textContent = 'Errore nel caricamento: '+error.message+'. Premi Aggiorna per riprovare.';
     $('#results').innerHTML = '';
   }finally{
@@ -437,16 +438,17 @@ async function searchGames(){
 $('#date').value = romeToday();
 renderHistory();
 if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
-$('#reload').addEventListener('click',loadGames);
-$('#search-button').addEventListener('click',searchGames);
+$('#reload').addEventListener('click',loadConf);
+$('#search-button').addEventListener('click',loadConf);
 $('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchGames();}});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
 $('#analyze').addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
-$('#date').addEventListener('change',loadGames);
+$('#date').addEventListener('change',loadConf);
+$('#hours').addEventListener('change',loadConf);
 
 renderFavorites();
-loadGames();
+loadConf();
 </script>
 </body>
 </html>
