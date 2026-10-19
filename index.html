@@ -15,6 +15,15 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 <body>
 <header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Partite reali · dati aggiornati dal provider</p></div></div></header>
 <main>
+<section class="panel">
+ <h2>Analisi CONF · dati storici reali</h2>
+ <p class="muted">Analizza fino a 12 partite non ancora iniziate usando le ultime 5 gare disponibili di entrambe le squadre. Over 2.5 e GG usano i risultati finali; Over 1.5 HT viene calcolato solo se l’API restituisce i punteggi dell’intervallo. Mostriamo le frequenze storiche, non probabilità predittive calibrate. I corner richiedono una fonte/API che li fornisca.</p>
+ <button class="button" id="analyze">Calcola CONF</button>
+ <div id="conf-message" class="message">Premi “Calcola CONF” per avviare l’analisi storica.</div>
+ <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo mercati CONF ≥70% (campione minimo 6 gare)</label>
+ <div id="conf-results" class="matches"></div>
+</section>
+
 <div class="stats">
  <div class="stat"><small>Partite trovate</small><strong id="total">—</strong></div>
  <div class="stat"><small>In programma</small><strong id="upcoming">—</strong></div>
@@ -30,14 +39,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <div id="message" class="message" role="status">Caricamento delle partite reali…</div>
 </section>
 <div id="results" class="matches"></div>
-<section class="panel">
- <h2>Analisi CONF · dati storici reali</h2>
- <p class="muted">Analizza fino a 12 partite non ancora iniziate usando le ultime 5 gare disponibili di entrambe le squadre. Over 2.5 e GG usano i risultati finali; Over 1.5 HT viene calcolato solo se l’API restituisce i punteggi dell’intervallo. Mostriamo le frequenze storiche, non probabilità predittive calibrate. I corner richiedono una fonte/API che li fornisca.</p>
- <button class="button" id="analyze">Calcola CONF</button>
- <div id="conf-message" class="message">Premi “Calcola CONF” per avviare l’analisi storica.</div>
- <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo mercati CONF ≥70% (campione minimo 6 gare)</label>
- <div id="conf-results" class="matches"></div>
-</section>
+
 <p class="foot">CONF Football · fuso orario Europe/Rome · dati delle partite forniti da API-Football.</p>
 </main>
 <script>
@@ -104,10 +106,7 @@ function renderConf(items){
   root.innerHTML = ordered.map(f => {
     const markets = Object.values(f.markets || {}).filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6));
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
-    const hf = f.form?.home?.selected || f.form?.home?.recentOverall;
-    const af = f.form?.away?.selected || f.form?.away?.recentOverall;
-    const formHtml = (team, stats, venue) => '<div style="border-top:1px solid var(--line);padding-top:8px"><div style="font-weight:600">'+safe(team)+'</div><div class="time">'+safe(venue || 'Forma generale')+' · ultime '+safe(stats?.sample || 0)+' gare · V/P/S '+safe(stats?.wins ?? '—')+'/'+safe(stats?.draws ?? '—')+'/'+safe(stats?.losses ?? '—')+' · gol fatti/subiti '+safe(stats?.averageFor ?? '—')+'/'+safe(stats?.averageAgainst ?? '—')+' di media</div></div>';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div><div style="display:grid;gap:7px;margin-top:10px"><div class="time" style="font-weight:600">FORMA RECENTE</div>'+formHtml(f.home,hf,f.form?.home?.selectedVenue)+' '+formHtml(f.away,af,f.form?.away?.selectedVenue)+'</div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
+    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? (m.label === 'Over 1.5 HT' ? 'Punteggi primo tempo non presenti nei dati storici ricevuti' : (String(m.label || '').toLowerCase().includes('corner') ? 'Dato corner non disponibile nella fonte attuale' : 'Dati insufficienti')) : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'SOGLIA ≥70 RAGGIUNTA' : 'sotto soglia 70'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
