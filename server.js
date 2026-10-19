@@ -89,7 +89,14 @@ app.get('/api/conf', async (req, res) => {
       .filter(f => f.fixture?.status?.short === 'NS')
       .slice(0, limit);
 
-    const teamIds = [...new Set(upcoming.flatMap(f => [f.teams?.home?.id, f.teams?.away?.id]).filter(Boolean))];
+    const teamSeasons = new Map();
+    for (const fixture of upcoming) {
+      const season = fixture.league?.season;
+      for (const id of [fixture.teams?.home?.id, fixture.teams?.away?.id]) {
+        if (id && season) teamSeasons.set(id, season);
+      }
+    }
+    const teamIds = [...teamSeasons.keys()];
     const forms = new Map();
     const formErrors = new Set();
     let cursor = 0;
@@ -104,7 +111,7 @@ app.get('/api/conf', async (req, res) => {
           startDate.setUTCDate(startDate.getUTCDate() - 120);
           const to = date;
           const from = startDate.toISOString().slice(0, 10);
-          const data = await apiFootball('/fixtures', { team: id, from, to, timezone: 'Europe/Rome' });
+          const data = await apiFootball('/fixtures', { team: id, season: teamSeasons.get(id), from, to, timezone: 'Europe/Rome' });
           const completed = (data.response || []).filter(x =>
             ['FT', 'AET', 'PEN'].includes(x.fixture?.status?.short)
           ).sort((a, b) => new Date(b.fixture.date) - new Date(a.fixture.date)).slice(0, 5);
