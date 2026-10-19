@@ -89,37 +89,37 @@ app.get('/api/conf', async (req, res) => {
       .filter(f => f.fixture?.status?.short === 'NS')
       .slice(0, limit);
 
-    const teamSeasons = new Map();
-    for (const fixture of upcoming) {
-      const season = fixture.league?.season;
-      for (const id of [fixture.teams?.home?.id, fixture.teams?.away?.id]) {
-        if (id && season) teamSeasons.set(id, season);
-      }
-    }
-    const teamIds = [...teamSeasons.keys()];
+    const teamIds = [...new Set(upcoming.flatMap(f => [f.teams?.home?.id, f.teams?.away?.id]).filter(Boolean))];
     const forms = new Map();
     const formErrors = new Set();
     let cursor = 0;
     const worker = async () => {
       while (cursor < teamIds.length) {
         const id = teamIds[cursor++];
-        try {
-          // The API-Football Free plan does not support the "last" parameter.
-          // Fetch a recent date window, then select the five most recent completed fixtures locally.
-          const endDate = new Date(date + 'T12:00:00Z');
-          const startDate = new Date(endDate);
-          startDate.setUTCDate(startDate.getUTCDate() - 120);
-          const to = date;
-          const from = startDate.toISOString().slice(0, 10);
-          const data = await apiFootball('/fixtures', { team: id, season: teamSeasons.get(id), from, to, timezone: 'Europe/Rome' });
-          const completed = (data.response || []).filter(x =>
-            ['FT', 'AET', 'PEN'].includes(x.fixture?.status?.short)
-          ).sort((a, b) => new Date(b.fixture.date) - new Date(a.fixture.date)).slice(0, 5);
-          forms.set(id, completed);
-        } catch (e) {
-          formErrors.add(e.message || 'Errore nel recupero delle ultime partite');
-          forms.set(id, []);
+        let found = false;
+        // Il piano Free consente le stagioni 2022-2024, non quella corrente 2026.
+        // Proviamo le stagioni accessibili più recenti, senza spacciare dati vecchi per forma attuale.
+        for (const season of [2024, 2023, 2022]) {
+          try {
+            const from = `${season}-01-01`;
+            const to = `${season + 1}-12-31`;
+            const data = await apiFootball('/fixtures', { team: id, season, from, to, timezone: 'Europe/Rome' });
+            const completed = (data.response || []).filter(x =>
+              ['FT', 'AET', 'PEN'].includes(x.fixture?.status?.short)
+            ).sort((a, b) => new Date(b.fixture.date) - new Date(a.fixture.date)).slice(0, 5);
+            if (completed.length) {
+              forms.set(id, completed);
+              found = true;
+              break;
+            }
+          } catch (e) {
+            const message = e.message || '';
+            if (!message.includes('Free plans do not have access to this season')) {
+              formErrors.add(message || 'Errore nel recupero delle partite storiche');
+            }
+          }
         }
+        if (!found) forms.set(id, []);
       }
     };
     await Promise.all(Array.from({ length: Math.min(4, teamIds.length) }, worker));
@@ -304,7 +304,7 @@ app.get('/api/conf', async (req, res) => {
       };
     });
     res.json({
-      date, warnings: [...formErrors], method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili: usa le gare in casa per la squadra di casa e in trasferta per quella ospite quando sono disponibili almeno 3; altrimenti ripiega sulla forma generale. Include W/P/V, media gol fatti/subiti e corner FT sulle ultime 2 gare selezionate per squadra quando il provider fornisce i dati. Le chiamate agli eventi per i corner del primo tempo sono limitate a 12 gare storiche per esecuzione per contenere il consumo API. Non è una probabilità predittiva calibrata.',
+      date, warnings: [...formErrors], method: 'Frequenza descrittiva sulle ultime 5 gare concluse reperibili nelle stagioni 2022-2024, perché il piano Free non consente l'accesso alla stagione corrente. I dati sono storici e non rappresentano la forma attuale; usa casa/trasferta quando ci sono almeno 3 gare, altrimenti la forma generale. Include W/P/V, media gol e corner quando disponibili. Le chiamate agli eventi per i corner del primo tempo sono limitate a 12 gare per esecuzione. Non è una probabilità predittiva calibrata.',
       threshold: 70, limit, fixtures: results,
       note: 'Un punteggio è mostrato solo quando esistono risultati reali utilizzabili. Il campione può essere inferiore a 10 se mancano dati.'
     });
