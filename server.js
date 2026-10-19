@@ -456,7 +456,16 @@ app.get('/api/conf', async (req, res) => {
             // Keep date-scoped results if season-wide lookup is unavailable.
           }
         }
-        return [...dateCalls.flat(), ...seasonMatches];
+        // Season-wide API rows often omit the competition object/name. Attach the
+        // resolved catalog identity so the normal search filter can recognize them.
+        const competitionName = item.name || item.displayName || item.competition?.name || item.label || '';
+        const taggedSeasonMatches = seasonMatches.map(match => ({
+          ...match,
+          competitionId: match.competitionId ?? match.competition?.id ?? (isCompetition ? id : null),
+          competitionName: match.competitionName || match.competition?.name || (isCompetition ? competitionName : ''),
+          competition: match.competition || (isCompetition ? { id, name: competitionName } : {})
+        }));
+        return [...dateCalls.flat(), ...taggedSeasonMatches];
       }));
       allDayMatches = [...allDayMatches, ...entityMatches.flat()];
     }
