@@ -174,7 +174,18 @@ app.get('/api/fixtures', async (req, res) => {
   try {
     const params = { date, competition: league, season, status };
     const body = await openFoot('/matches', params);
-    const response = rows(body).map(toLegacy);
+    const now = Date.now();
+    const response = rows(body)
+      .filter(m => {
+        const state = statusCode(m.status);
+        // Mostra le partite live e quelle che devono ancora iniziare.
+        // Esclude terminate/rinviate/annullate e ogni kickoff già passato.
+        if (['FT', 'PST', 'CANC'].includes(state)) return false;
+        if (state === 'LIVE') return true;
+        const kickoff = new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime();
+        return Number.isFinite(kickoff) && kickoff > now;
+      })
+      .map(toLegacy);
     res.json({ results: response.length, response, provider: 'OpenFootAPI', meta: body.meta || null });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
