@@ -148,6 +148,32 @@ app.get('/api/conf', async (req, res) => {
     };
     await Promise.all(Array.from({ length: Math.min(4, cornerIds.length) }, cornerWorker));
 
+    // Count first-half corners from actual provider events (minute <= 45, including stoppage time).
+    let eventCursor = 0;
+    const eventWorker = async () => {
+      while (eventCursor < cornerIds.length) {
+        const fixtureId = cornerIds[eventCursor++];
+        try {
+          const data = await apiFootball('/fixtures/events', { fixture: fixtureId });
+          const events = (data.response || []).filter(e =>
+            String(e.type || '').toLowerCase() === 'corner' &&
+            Number(e.time?.elapsed) <= 45
+          );
+          const counts = {};
+          for (const event of events) {
+            const teamId = event.team?.id;
+            if (teamId) counts[teamId] = (counts[teamId] || 0) + 1;
+          }
+          const current = cornerMatches.get(fixtureId) || { totalCorners: null, teamCorners: {} };
+          cornerMatches.set(fixtureId, { ...current, firstHalfTeamCorners: counts,
+            firstHalfTotalCorners: Object.values(counts).reduce((sum, n) => sum + n, 0) });
+        } catch {
+          // No event coverage: leave first-half corner data unavailable.
+        }
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(4, cornerIds.length) }, eventWorker));
+
     const frequency = (matches, predicate) => {
       const valid = matches.filter(m => m.score?.fulltime?.home != null && m.score?.fulltime?.away != null);
       if (!valid.length) return { score: null, hits: 0, sample: 0 };
@@ -210,6 +236,25 @@ app.get('/api/conf', async (req, res) => {
       };
       const homeCornerMarket = { ...teamCornerFrequency(home, f.teams.home.id), label: 'Corner casa Over 3.5' };
       const awayCornerMarket = { ...teamCornerFrequency(away, f.teams.away.id), label: 'Corner trasferta Over 3.5' };
+      const firstHalfCornerSample = [...home.slice(0, 3), ...away.slice(0, 3)]
+        .map(m => cornerMatches.get(m.fixture?.id))
+        .filter(m => Number.isFinite(m?.firstHalfTotalCorners));
+      const firstHalfCornerHits = firstHalfCornerSample.filter(m => m.firstHalfTotalCorners >= 5).length;
+      const firstHalfCornersMarket = {
+        score: firstHalfCornerSample.length ? Math.round(100 * firstHalfCornerHits / firstHalfCornerSample.length) : null,
+        hits: firstHalfCornerHits, sample: firstHalfCornerSample.length,
+        label: 'Over 4.5 corner 1° tempo',
+        average: firstHalfCornerSample.length ? Number((firstHalfCornerSample.reduce((sum, m) => sum + m.firstHalfTotalCorners, 0) / firstHalfCornerSample.length).toFixed(2)) : null
+      };
+      const firstHalfTeamCornerFrequency = (matches, teamId) => {
+        const values = matches.slice(0, 3).map(m => cornerMatches.get(m.fixture?.id)?.firstHalfTeamCorners?.[teamId] ?? null)
+          .filter(n => Number.isFinite(n));
+        const hits = values.filter(n => n >= 2).length;
+        return { score: values.length ? Math.round(100 * hits / values.length) : null, hits, sample: values.length,
+          average: values.length ? Number((values.reduce((sum, n) => sum + n, 0) / values.length).toFixed(2)) : null };
+      };
+      const homeFirstHalfCorners = { ...firstHalfTeamCornerFrequency(home, f.teams.home.id), label: 'Corner casa Over 1.5 1° tempo' };
+      const awayFirstHalfCorners = { ...firstHalfTeamCornerFrequency(away, f.teams.away.id), label: 'Corner trasferta Over 1.5 1° tempo' };
       return {
         fixtureId: f.fixture.id,
         date: f.fixture.date,
@@ -228,7 +273,10 @@ app.get('/api/conf', async (req, res) => {
           over15ht: { ...ht, label: 'Over 1.5 HT' },
           corners: cornerMarket,
           homeCorners: homeCornerMarket,
-          awayCorners: awayCornerMarket
+          awayCorners: awayCornerMarket,
+          firstHalfCorners: firstHalfCornersMarket,
+          homeFirstHalfCorners,
+          awayFirstHalfCorners
         }
       };
     });
