@@ -165,7 +165,7 @@ function renderHistory(){
   const pending = history.filter(x => x.outcome === 'pending').length;
   const settled = wins + losses;
   const rate = settled ? Math.round(wins / settled * 100) : null;
-  $('#history-summary').textContent = 'Registrate: '+history.length+' · Da aggiornare: '+pending+' · Vinte: '+wins+' · Perse: '+losses+' · Percentuale di successo: '+(rate === null ? '—' : rate+'%')+'.';
+  $('#history-summary').textContent = 'Registrate: '+history.length+' · Da aggiornare: '+pending+' · Vinte: '+wins+' · Perse: '+losses+' · Percentuale di successo: '+(rate === null ? '—' : rate+'%')+(settled < 10 ? ' · campione ancora troppo piccolo per valutare l’affidabilità' : '')+'.';
   const dashboard = $('#history-dashboard');
   if(!history.length){
     dashboard.innerHTML = '';
@@ -191,7 +191,7 @@ function renderHistory(){
     const p=items.filter(x=>x.outcome==='pending').length;
     const n=w+l;
     const pct=n?Math.round(w/n*100):null;
-    return '<div class="market-stat"><div class="market-head"><span>'+group.name+'</span><span>'+(pct===null?'—':pct+'%')+'</span></div><div class="market-track"><div class="market-fill" style="width:'+(pct===null?0:pct)+'%"></div></div><div class="market-detail">'+items.length+' registrate · '+w+' vinte · '+l+' perse · '+p+' in attesa'+(n?' · '+n+' concluse':'')+'</div></div>';
+    return '<div class="market-stat"><div class="market-head"><span>'+group.name+'</span><span>'+(pct===null?'—':pct+'%')+(n>0&&n<10?' · campione piccolo':'')+'</span></div><div class="market-track"><div class="market-fill" style="width:'+(pct===null?0:pct)+'%"></div></div><div class="market-detail">'+items.length+' registrate · '+w+' vinte · '+l+' perse · '+p+' in attesa'+(n?' · '+n+' concluse':'')+'</div></div>';
   }).join('');
   dashboard.innerHTML = '<h3 style="margin:14px 0 6px;font-size:14px">Dashboard risultati</h3><div class="dashboard">'+cardHtml+'</div><h3 style="margin:14px 0 6px;font-size:14px">Percentuale di successo per mercato</h3><div class="market-stats">'+marketHtml+'</div><p class="muted" style="font-size:11px;margin:8px 0">Percentuali calcolate solo sulle selezioni segnate Vinta o Persa; le selezioni in attesa non entrano nel calcolo.</p>';
   const root = $('#history-results');
