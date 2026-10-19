@@ -129,13 +129,17 @@ app.get('/api/conf', async (req, res) => {
         const fixtureId = cornerIds[cornerCursor++];
         try {
           const data = await apiFootball('/fixtures/statistics', { fixture: fixtureId });
-          const rows = (data.response || []).map(team => {
+          const teamCorners = {};
+          for (const team of data.response || []) {
             const stat = (team.statistics || []).find(s => String(s.type).toLowerCase() === 'corner kicks');
             const value = stat?.value;
-            return value === null || value === undefined ? null : Number(value);
-          });
-          if (rows.length >= 2 && rows.every(n => Number.isFinite(n))) {
-            cornerMatches.set(fixtureId, { totalCorners: rows[0] + rows[1] });
+            if (team.team?.id && value !== null && value !== undefined && Number.isFinite(Number(value))) {
+              teamCorners[team.team.id] = Number(value);
+            }
+          }
+          const rows = Object.values(teamCorners);
+          if (rows.length >= 2) {
+            cornerMatches.set(fixtureId, { totalCorners: rows[0] + rows[1], teamCorners });
           }
         } catch {
           // Missing corner coverage is kept as missing data, never estimated.
@@ -192,6 +196,20 @@ app.get('/api/conf', async (req, res) => {
         label: 'Over 8.5 corner FT',
         average: cornerSample.length ? Number((cornerSample.reduce((sum, m) => sum + m.totalCorners, 0) / cornerSample.length).toFixed(2)) : null
       };
+      const teamCornerFrequency = (matches, teamId) => {
+        const values = matches.map(m => {
+          const stats = cornerMatches.get(m.fixture?.id);
+          return stats?.teamCorners?.[teamId] ?? null;
+        }).filter(n => Number.isFinite(n));
+        const hits = values.filter(n => n >= 4).length;
+        return {
+          score: values.length ? Math.round(100 * hits / values.length) : null,
+          hits, sample: values.length,
+          average: values.length ? Number((values.reduce((sum, n) => sum + n, 0) / values.length).toFixed(2)) : null
+        };
+      };
+      const homeCornerMarket = { ...teamCornerFrequency(home, f.teams.home.id), label: 'Corner casa Over 3.5' };
+      const awayCornerMarket = { ...teamCornerFrequency(away, f.teams.away.id), label: 'Corner trasferta Over 3.5' };
       return {
         fixtureId: f.fixture.id,
         date: f.fixture.date,
@@ -208,7 +226,9 @@ app.get('/api/conf', async (req, res) => {
           over25: { ...goals, label: 'Over 2.5 FT' },
           btts: { ...btts, label: 'GG' },
           over15ht: { ...ht, label: 'Over 1.5 HT' },
-          corners: cornerMarket
+          corners: cornerMarket,
+          homeCorners: homeCornerMarket,
+          awayCorners: awayCornerMarket
         }
       };
     });
