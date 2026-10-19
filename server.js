@@ -127,6 +127,23 @@ app.get('/api/status', (_req, res) => {
 
 app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'CONF Football', version: '0.3.0', provider: 'OpenFootAPI' }));
 
+app.get('/api/key-check', async (_req, res) => {
+  if (!apiKey) return res.status(400).json({ ok: false, configured: false, message: 'OPENFOOT_API_KEY non configurata su Render.' });
+  try {
+    const url = new URL(base + '/matches');
+    url.searchParams.set('date', new Date().toISOString().slice(0, 10));
+    const response = await fetch(url, { headers: { Accept: 'application/json', Authorization: `Bearer ${apiKey}` } });
+    const body = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const detail = body?.error?.message || body?.error?.code || `HTTP ${response.status}`;
+      return res.status(200).json({ ok: false, configured: true, httpStatus: response.status, message: detail, hint: response.status === 401 ? 'La chiave è rifiutata dal provider.' : response.status === 403 ? 'La chiave è riconosciuta ma il piano potrebbe non consentire questa richiesta.' : 'Richiesta non riuscita; controllare il messaggio del provider.' });
+    }
+    return res.json({ ok: true, configured: true, httpStatus: response.status, message: 'La chiave personale è accettata.', meta: body.meta || null, returned: rows(body).length });
+  } catch (e) {
+    return res.status(200).json({ ok: false, configured: Boolean(apiKey), message: e.message });
+  }
+});
+
 app.get('/api/leagues', async (_req, res) => {
   try {
     const body = await openFoot('/competitions');
