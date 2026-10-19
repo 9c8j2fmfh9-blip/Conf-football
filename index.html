@@ -405,29 +405,8 @@ $('#date').value = romeToday();
 renderHistory();
 if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
 $('#reload').addEventListener('click',loadGames);
-function shiftIsoDate(iso, days){
-  const [y,m,d] = (iso || romeToday()).split('-').map(Number);
-  const date = new Date(Date.UTC(y, m - 1, d + days));
-  return date.toISOString().slice(0,10);
-}
-function applySearch(){
-  const raw = $('#search').value.trim().toLocaleLowerCase('it');
-  let query = raw;
-  const todayWords = /\\b(oggi|today)\\b/g;
-  const tomorrowWords = /\\b(domani|tomorrow)\\b/g;
-  if(tomorrowWords.test(query)){
-    $('#date').value = shiftIsoDate(romeToday(), 1);
-    query = query.replace(tomorrowWords, ' ');
-  } else if(todayWords.test(query)){
-    $('#date').value = romeToday();
-    query = query.replace(todayWords, ' ');
-  }
-  query = query.replace(/champion\\s+league/g, 'champions league').replace(/\\s+/g, ' ').trim();
-  $('#search').value = query;
-  loadGames();
-}
-$('#search-button').addEventListener('click',applySearch);
-$('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();applySearch();}});
+$('#search-button').addEventListener('click',render);
+$('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();render();}});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
 $('#analyze').addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
