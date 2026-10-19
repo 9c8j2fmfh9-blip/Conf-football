@@ -277,10 +277,13 @@ function renderConf(items){
     const allMarkets = visibleMarkets(f);
     const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6));
     const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6).sort((a,b) => b.score-a.score)[0];
+    const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
     const recommendationHtml = recommendation
       ? '<div class="recommend"><div class="recommend-title">🎯 Scommessa consigliata</div><div class="recommend-market">'+safe(recommendation.label)+' · '+safe(recommendation.score)+'%</div><div class="recommend-note">'+safe(recommendation.hits)+' su '+safe(recommendation.sample)+' gare storiche · soglia CONF ≥70% raggiunta</div></div>'
-      : '<div class="recommend"><div class="recommend-title">🎯 Scommessa consigliata</div><div class="recommend-market">Nessuna selezione qualificata</div><div class="recommend-note">Nessun mercato raggiunge il 70% con almeno 6 gare storiche.</div></div>';
+      : bestMarket
+        ? '<div class="recommend"><div class="recommend-title">📊 Miglior dato storico · NON qualificato</div><div class="recommend-market">'+safe(bestMarket.label)+' · '+safe(bestMarket.score)+'%</div><div class="recommend-note">'+safe(bestMarket.hits)+' su '+safe(bestMarket.sample)+' gare storiche. Non è una scommessa consigliata: non raggiunge tutti i requisiti CONF ≥70% e campione minimo 6.</div></div>'
+        : '<div class="recommend"><div class="recommend-title">📊 Dati storici insufficienti</div><div class="recommend-market">Nessun mercato valutabile</div><div class="recommend-note">Il provider non ha restituito risultati storici utilizzabili per questa partita.</div></div>';
     return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'SOGLIA ≥70 RAGGIUNTA' : 'sotto soglia 70'));
