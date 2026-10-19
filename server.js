@@ -253,7 +253,11 @@ app.get('/api/debug-search', async (req, res) => {
         test({ competition: id, ...(season ? { season } : {}) }),
         test({ competition: id })
       ]);
-      return { id, name: c.name, season, tests };
+      const nextCursor = tests[1]?.meta?.pagination?.next_cursor || null;
+      const secondPage = nextCursor
+        ? await test({ competition: id, ...(season ? { season } : {}), cursor: nextCursor })
+        : { note: 'Nessun next_cursor nella prima pagina', cursor: null };
+      return { id, name: c.name, season, tests, secondPage };
     }));
     res.json({ query, date, matchResult, competitionResult, searchResult, competitionFixtures });
   } catch (e) { res.status(500).json({ error: e.message }); }
