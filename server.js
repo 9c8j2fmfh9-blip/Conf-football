@@ -6,7 +6,7 @@ const port = Number(process.env.PORT || 3000);
 const apiKey = process.env.API_FOOTBALL_KEY;
 const base = 'https://v3.football.api-sports.io';
 const cache = new Map();
-const CACHE_TTL_MS = 10 * 60 * 1000;
+const CACHE_TTL_MS = 60 * 60 * 1000; // Cache API responses for 1 hour to conserve the daily quota.
 
 app.use(express.static('.'));
 
@@ -107,7 +107,7 @@ app.get('/api/conf', async (req, res) => {
     };
     await Promise.all(Array.from({ length: Math.min(4, teamIds.length) }, worker));
 
-    // Corner data are available per historical fixture. Limit to the 3 latest
+    // Corner data are available per historical fixture. Limit to the 2 latest
     // relevant matches per team to control provider requests; cached responses are reused.
     const cornerMatches = new Map();
     const cornerFixtureIds = new Set();
@@ -118,7 +118,7 @@ app.get('/api/conf', async (req, res) => {
       const awayVenue = awayAll.filter(m => m.teams?.away?.id === f.teams.away.id);
       const home = homeVenue.length >= 3 ? homeVenue : homeAll;
       const away = awayVenue.length >= 3 ? awayVenue : awayAll;
-      for (const m of [...home.slice(0, 3), ...away.slice(0, 3)]) {
+      for (const m of [...home.slice(0, 2), ...away.slice(0, 2)]) {
         if (m.fixture?.id) cornerFixtureIds.add(m.fixture.id);
       }
     }
@@ -148,11 +148,13 @@ app.get('/api/conf', async (req, res) => {
     };
     await Promise.all(Array.from({ length: Math.min(4, cornerIds.length) }, cornerWorker));
 
-    // Count first-half corners from actual provider events (minute <= 45, including stoppage time).
+    // First-half event requests are the most expensive part of the analysis.
+    // Limit them to at most 12 historical fixtures per run to protect the API quota.
+    const eventIds = cornerIds.slice(0, 12);
     let eventCursor = 0;
     const eventWorker = async () => {
-      while (eventCursor < cornerIds.length) {
-        const fixtureId = cornerIds[eventCursor++];
+      while (eventCursor < eventIds.length) {
+        const fixtureId = eventIds[eventCursor++];
         try {
           const data = await apiFootball('/fixtures/events', { fixture: fixtureId });
           const allEvents = data.response || [];
@@ -240,7 +242,7 @@ app.get('/api/conf', async (req, res) => {
       };
       const homeCornerMarket = { ...teamCornerFrequency(home, f.teams.home.id), label: 'Corner casa Over 3.5' };
       const awayCornerMarket = { ...teamCornerFrequency(away, f.teams.away.id), label: 'Corner trasferta Over 3.5' };
-      const firstHalfCornerSample = [...home.slice(0, 3), ...away.slice(0, 3)]
+      const firstHalfCornerSample = [...home.slice(0, 2), ...away.slice(0, 2)]
         .map(m => cornerMatches.get(m.fixture?.id))
         .filter(m => Number.isFinite(m?.firstHalfTotalCorners));
       const firstHalfCornerHits = firstHalfCornerSample.filter(m => m.firstHalfTotalCorners >= 5).length;
@@ -251,7 +253,7 @@ app.get('/api/conf', async (req, res) => {
         average: firstHalfCornerSample.length ? Number((firstHalfCornerSample.reduce((sum, m) => sum + m.firstHalfTotalCorners, 0) / firstHalfCornerSample.length).toFixed(2)) : null
       };
       const firstHalfTeamCornerFrequency = (matches, teamId) => {
-        const values = matches.slice(0, 3).map(m => cornerMatches.get(m.fixture?.id)?.firstHalfTeamCorners?.[teamId] ?? null)
+        const values = matches.slice(0, 2).map(m => cornerMatches.get(m.fixture?.id)?.firstHalfTeamCorners?.[teamId] ?? null)
           .filter(n => Number.isFinite(n));
         const hits = values.filter(n => n >= 2).length;
         return { score: values.length ? Math.round(100 * hits / values.length) : null, hits, sample: values.length,
@@ -285,7 +287,7 @@ app.get('/api/conf', async (req, res) => {
       };
     });
     res.json({
-      date, method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili: usa le gare in casa per la squadra di casa e in trasferta per quella ospite quando sono disponibili almeno 3; altrimenti ripiega sulla forma generale. Include W/P/V, media gol fatti/subiti e Over 8.5 corner FT calcolato sulle ultime 3 gare selezionate per squadra quando il provider fornisce i dati. Non è una probabilità predittiva calibrata.',
+      date, method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili: usa le gare in casa per la squadra di casa e in trasferta per quella ospite quando sono disponibili almeno 3; altrimenti ripiega sulla forma generale. Include W/P/V, media gol fatti/subiti e corner FT sulle ultime 2 gare selezionate per squadra quando il provider fornisce i dati. Le chiamate agli eventi per i corner del primo tempo sono limitate a 12 gare storiche per esecuzione per contenere il consumo API. Non è una probabilità predittiva calibrata.',
       threshold: 70, limit, fixtures: results,
       note: 'Un punteggio è mostrato solo quando esistono risultati reali utilizzabili. Il campione può essere inferiore a 10 se mancano dati.'
     });
