@@ -319,6 +319,30 @@ app.get('/api/conf', async (req, res) => {
         const termsMatch = searchTerms.every(term => normSearch(name).includes(term));
         return termsMatch && (item.id || item.teamId || item.competitionId || item.team?.id || item.competition?.id);
       }).slice(0, 8);
+
+      // Fallback to the official competition catalog when entity search omits a league/cup.
+      // This helps competitions such as UEFA Youth League resolve even if /search returns teams only.
+      if (query) {
+        try {
+          const catalogItems = rows(await openFoot('/competitions', {}));
+          const catalogMatches = catalogItems.filter(item => {
+            const name = item.name || item.displayName || item.competition?.name || item.label || '';
+            return searchTerms.every(term => normSearch(name).includes(term)) &&
+              (item.id || item.competitionId || item.competition?.id);
+          });
+          const knownIds = new Set(searchEntities.map(item => String(item.id ?? item.competitionId ?? item.competition?.id ?? item.teamId ?? item.team?.id)));
+          for (const item of catalogMatches) {
+            const id = item.id ?? item.competitionId ?? item.competition?.id;
+            if (id && !knownIds.has(String(id))) {
+              searchEntities.push({ ...item, type: 'competition' });
+              knownIds.add(String(id));
+            }
+          }
+          searchEntities = searchEntities.slice(0, 8);
+        } catch (_) {
+          // Keep normal search results if the competition catalog is unavailable.
+        }
+      }
       const entityMatches = await Promise.all(searchEntities.map(async item => {
         const id = item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id;
         const kind = String(item.type || item.entityType || item.kind || '').toLowerCase();
