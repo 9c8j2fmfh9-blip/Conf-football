@@ -304,7 +304,7 @@ app.get('/api/conf', async (req, res) => {
       };
     });
     res.json({
-      date, warnings: [...formErrors], method: 'Frequenza descrittiva sulle ultime 5 gare concluse reperibili nelle stagioni 2022-2024, perché il piano Free non consente l'accesso alla stagione corrente. I dati sono storici e non rappresentano la forma attuale; usa casa/trasferta quando ci sono almeno 3 gare, altrimenti la forma generale. Include W/P/V, media gol e corner quando disponibili. Le chiamate agli eventi per i corner del primo tempo sono limitate a 12 gare per esecuzione. Non è una probabilità predittiva calibrata.',
+      date, warnings: [...formErrors], method: 'Frequenza descrittiva sulle ultime 5 gare concluse reperibili nelle stagioni 2022-2024, perché il piano Free non consente l\'accesso alla stagione corrente. I dati sono storici e non rappresentano la forma attuale; usa casa/trasferta quando ci sono almeno 3 gare, altrimenti la forma generale. Include W/P/V, media gol e corner quando disponibili. Le chiamate agli eventi per i corner del primo tempo sono limitate a 12 gare per esecuzione. Non è una probabilità predittiva calibrata.',
       threshold: 70, limit, fixtures: results,
       note: 'Un punteggio è mostrato solo quando esistono risultati reali utilizzabili. Il campione può essere inferiore a 10 se mancano dati.'
     });
