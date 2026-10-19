@@ -163,11 +163,14 @@ async function loadGames(){
       if (finishedStates.has(state) || ['FT','AET','PEN','AWD','WO','PST','CANC','CANCELLED','POSTPONED'].includes(state)) return false;
       if (liveStates.has(state)) {
         const kickoff = new Date(f.fixture?.date || 0).getTime();
-        const elapsed = Number(f.fixture?.status?.elapsed);
+        const elapsedRaw = f.fixture?.status?.elapsed;
+        const elapsed = elapsedRaw == null || elapsedRaw === '' ? NaN : Number(elapsedRaw);
         if (!Number.isFinite(kickoff)) return false;
-        // Se il provider lascia LIVE dopo il 90', nascondi la partita oltre la finestra realistica.
-        if (Number.isFinite(elapsed) && elapsed >= 90 && now - kickoff > 100 * 60 * 1000) return false;
-        if (!Number.isFinite(elapsed) && now - kickoff > 150 * 60 * 1000) return false;
+        const age = now - kickoff;
+        // Il provider beta può lasciare LIVE anche a partita conclusa: taglia gli stati obsoleti.
+        if (Number.isFinite(elapsed) && elapsed >= 90 && age > 100 * 60 * 1000) return false;
+        if ((!Number.isFinite(elapsed) || elapsed < 0) && age > 150 * 60 * 1000) return false;
+        if (age > 180 * 60 * 1000) return false;
         return kickoff <= now + 5 * 60 * 1000;
       }
       const kickoff = new Date(f.fixture?.date || 0).getTime();
