@@ -365,10 +365,17 @@ app.get('/api/debug-fixtures', async (req, res) => {
 });
 
 app.get('/api/conf', async (req, res) => {
-  const hours = Math.min(48, Math.max(1, Number.parseInt(req.query.hours || '24', 10) || 24));
-  const limit = Math.min(40, Math.max(1, Number.parseInt(req.query.limit || '20', 10) || 20));
-  const query = String(req.query.q || '').trim();
-  const requestedDate = String(req.query.date || '').match(/^\d{4}-\d{2}-\d{2}$/) ? String(req.query.date) : '';
+  // Recover gracefully if a pasted URL accidentally encodes all query parameters inside q.
+  const rawQuery = String(req.query.q || '').trim();
+  const embedded = rawQuery.includes('&') ? new URLSearchParams(rawQuery.replace(/^.*?\?/, '')) : null;
+  const cleanQuery = embedded && (embedded.has('date') || embedded.has('hours') || embedded.has('limit'))
+    ? (embedded.get('q') || rawQuery.split('&')[0].replace(/^q=/, '').replace(/\+/g, ' '))
+    : rawQuery;
+  const hours = Math.min(48, Math.max(1, Number.parseInt(req.query.hours || embedded?.get('hours') || '24', 10) || 24));
+  const limit = Math.min(40, Math.max(1, Number.parseInt(req.query.limit || embedded?.get('limit') || '20', 10) || 20));
+  const query = cleanQuery;
+  const dateValue = String(req.query.date || embedded?.get('date') || '');
+  const requestedDate = /^\d{4}-\d{2}-\d{2}$/.test(dateValue) ? dateValue : '';
   const romeDate = value => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value));
   const normSearch = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
   const searchTerms = normSearch(query).split(/\s+/).filter(Boolean);
