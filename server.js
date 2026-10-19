@@ -48,11 +48,15 @@ function rows(body) {
   return [];
 }
 function statusCode(status) {
-  const s = String(status || '').toLowerCase();
-  if (['live', 'in_play', 'in-play'].includes(s)) return 'LIVE';
-  if (['finished', 'complete', 'completed', 'ft'].includes(s)) return 'FT';
-  if (['postponed'].includes(s)) return 'PST';
-  if (['cancelled', 'canceled'].includes(s)) return 'CANC';
+  // OpenFootAPI può restituire lo stato come testo oppure come oggetto.
+  const raw = status && typeof status === 'object'
+    ? (status.short ?? status.code ?? status.name ?? status.long ?? status.status ?? '')
+    : status;
+  const s = String(raw || '').trim().toLowerCase().replace(/[ -]+/g, '_');
+  if (['live', 'in_play', '1h', 'ht', '2h', 'et', 'bt', 'p', 'in_progress', 'inprogress'].includes(s)) return 'LIVE';
+  if (['finished', 'finish', 'complete', 'completed', 'ft', 'aet', 'pen', 'after_extra_time', 'after_penalties', 'awarded', 'awd', 'wo'].includes(s)) return 'FT';
+  if (['postponed', 'pst', 'suspended'].includes(s)) return 'PST';
+  if (['cancelled', 'canceled', 'cancelled_match', 'canc'].includes(s)) return 'CANC';
   return 'NS';
 }
 function goals(m) {
