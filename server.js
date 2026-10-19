@@ -200,10 +200,10 @@ app.get('/api/conf', async (req, res) => {
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)]).filter(Boolean))];
     const forms = new Map();
     const warnings = [];
-    let cursor = 0;
+    let teamCursor = 0;
     const worker = async () => {
-      while (cursor < teamIds.length) {
-        const id = teamIds[cursor++];
+      while (teamCursor < teamIds.length) {
+        const id = teamIds[teamCursor++];
         try {
           const body = await openFoot('/matches', { team: id, status: 'finished' });
           const recent = rows(body).filter(completed)
