@@ -77,6 +77,77 @@ app.get('/api/odds', async (req, res) => {
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
 
+
+app.get('/api/conf', async (req, res) => {
+  const date = String(req.query.date || new Date().toISOString().slice(0, 10));
+  const limit = Math.min(20, Math.max(1, Number.parseInt(req.query.limit || '12', 10) || 12));
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return res.status(400).json({ error: 'Data non valida: usa YYYY-MM-DD.' });
+
+  try {
+    const fixturesData = await apiFootball('/fixtures', { date, timezone: 'Europe/Rome' });
+    const upcoming = (fixturesData.response || [])
+      .filter(f => f.fixture?.status?.short === 'NS')
+      .slice(0, limit);
+
+    const teamIds = [...new Set(upcoming.flatMap(f => [f.teams?.home?.id, f.teams?.away?.id]).filter(Boolean))];
+    const forms = new Map();
+    let cursor = 0;
+    const worker = async () => {
+      while (cursor < teamIds.length) {
+        const id = teamIds[cursor++];
+        try {
+          const data = await apiFootball('/fixtures', { team: id, last: 5, timezone: 'Europe/Rome' });
+          forms.set(id, (data.response || []).filter(x =>
+            x.fixture?.status?.short === 'FT' || x.fixture?.status?.short === 'AET' || x.fixture?.status?.short === 'PEN'
+          ));
+        } catch {
+          forms.set(id, []);
+        }
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(4, teamIds.length) }, worker));
+
+    const frequency = (matches, predicate) => {
+      const valid = matches.filter(m => m.score?.fulltime?.home != null && m.score?.fulltime?.away != null);
+      if (!valid.length) return { score: null, hits: 0, sample: 0 };
+      const hits = valid.filter(predicate).length;
+      return { score: Math.round(100 * hits / valid.length), hits, sample: valid.length };
+    };
+    const totalGoals = m => m.score.fulltime.home + m.score.fulltime.away;
+    const halftimeAvailable = m => m.score?.halftime?.home != null && m.score?.halftime?.away != null;
+
+    const results = upcoming.map(f => {
+      const home = forms.get(f.teams.home.id) || [];
+      const away = forms.get(f.teams.away.id) || [];
+      const sample = [...home, ...away];
+      const goals = frequency(sample, m => totalGoals(m) >= 3);
+      const btts = frequency(sample, m => m.score.fulltime.home > 0 && m.score.fulltime.away > 0);
+      const htMatches = sample.filter(halftimeAvailable);
+      const ht = frequency(htMatches, m => m.score.halftime.home + m.score.halftime.away >= 2);
+      return {
+        fixtureId: f.fixture.id,
+        date: f.fixture.date,
+        status: f.fixture.status.short,
+        league: f.league.name,
+        country: f.league.country,
+        home: f.teams.home.name,
+        away: f.teams.away.name,
+        markets: {
+          over25: { ...goals, label: 'Over 2.5 FT' },
+          btts: { ...btts, label: 'GG' },
+          over15ht: { ...ht, label: 'Over 1.5 HT' },
+          corners: { score: null, hits: 0, sample: 0, label: 'Corner', note: 'Statistiche corner non ancora calcolate' }
+        }
+      };
+    });
+    res.json({
+      date, method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili per ciascuna squadra; non è una probabilità predittiva calibrata.',
+      threshold: 70, limit, fixtures: results,
+      note: 'Un punteggio è mostrato solo quando esistono risultati reali utilizzabili. Il campione può essere inferiore a 10 se mancano dati.'
+    });
+  } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
+});
+
 app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'CONF Football', version: '0.2.0' }));
 
 app.listen(port, () => console.log(`CONF Football attivo su http://localhost:${port}`));
