@@ -340,7 +340,7 @@ async function loadConf(){
   $('#conf-results').innerHTML = '';
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'40'});
-    if(query) params.set('q',query);
+    if(query) { params.set('q',query); if($('#date').value) params.set('date',$('#date').value); }
     const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store'});
     const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
