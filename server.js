@@ -155,10 +155,14 @@ app.get('/api/conf', async (req, res) => {
         const fixtureId = cornerIds[eventCursor++];
         try {
           const data = await apiFootball('/fixtures/events', { fixture: fixtureId });
-          const events = (data.response || []).filter(e =>
+          const allEvents = data.response || [];
+          const events = allEvents.filter(e =>
             String(e.type || '').toLowerCase() === 'corner' &&
             Number(e.time?.elapsed) <= 45
           );
+          // Some API-Football plans/endpoints do not expose corner events.
+          // An empty corner-event list is missing coverage, not zero corners.
+          if (!events.length) continue;
           const counts = {};
           for (const event of events) {
             const teamId = event.team?.id;
