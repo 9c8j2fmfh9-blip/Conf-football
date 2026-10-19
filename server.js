@@ -128,19 +128,27 @@ app.get('/api/status', (_req, res) => {
 app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'CONF Football', version: '0.3.0', provider: 'OpenFootAPI' }));
 
 app.get('/api/key-check', async (_req, res) => {
-  if (!apiKey) return res.status(400).json({ ok: false, configured: false, message: 'OPENFOOT_API_KEY non configurata su Render.' });
-  try {
-    const url = new URL(base + '/matches');
-    url.searchParams.set('date', new Date().toISOString().slice(0, 10));
-    const response = await fetch(url, { headers: { Accept: 'application/json', Authorization: `Bearer ${apiKey}` } });
+  const url = new URL(base + '/matches');
+  url.searchParams.set('date', new Date().toISOString().slice(0, 10));
+  const check = async headers => {
+    const response = await fetch(url, { headers });
     const body = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const detail = body?.error?.message || body?.error?.code || `HTTP ${response.status}`;
-      return res.status(200).json({ ok: false, configured: true, httpStatus: response.status, message: detail, hint: response.status === 401 ? 'La chiave è rifiutata dal provider.' : response.status === 403 ? 'La chiave è riconosciuta ma il piano potrebbe non consentire questa richiesta.' : 'Richiesta non riuscita; controllare il messaggio del provider.' });
-    }
-    return res.json({ ok: true, configured: true, httpStatus: response.status, message: 'La chiave personale è accettata.', meta: body.meta || null, returned: rows(body).length });
+    return { ok: response.ok, status: response.status, message: body?.error?.message || body?.error?.code || (response.ok ? 'OK' : `HTTP ${response.status}`), meta: body.meta || null, returned: rows(body).length };
+  };
+  try {
+    const personal = apiKey
+      ? await check({ Accept: 'application/json', Authorization: `Bearer ${apiKey}` })
+      : { ok: false, status: null, message: 'OPENFOOT_API_KEY non configurata.' };
+    const preview = await check({ Accept: 'application/json', Authorization: 'Bearer of_demo_openfootapi_docs' });
+    res.json({
+      configured: Boolean(apiKey),
+      personalKey: { ok: personal.ok, httpStatus: personal.status, message: personal.message },
+      publicPreview: { ok: preview.ok, httpStatus: preview.status, message: preview.message, returned: preview.returned, access: preview.meta?.access || null, scope: preview.meta?.scope || null },
+      appCanUsePreview: preview.ok,
+      note: personal.ok ? 'La chiave personale funziona.' : preview.ok ? 'La chiave personale è rifiutata, ma l’anteprima pubblica funziona; l’app può continuare con dati limitati.' : 'Anche l’anteprima pubblica non è disponibile.'
+    });
   } catch (e) {
-    return res.status(200).json({ ok: false, configured: Boolean(apiKey), message: e.message });
+    res.status(200).json({ configured: Boolean(apiKey), appCanUsePreview: false, message: e.message });
   }
 });
 
