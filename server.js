@@ -333,8 +333,12 @@ app.get('/api/conf', async (req, res) => {
     let searchEntities = [];
     if (query) {
       // Resolve the typed team/competition through OpenFootAPI, then fetch matches by stable IDs.
-      const searchBody = await openFoot('/search', { q: query });
-      const searchItems = rows(searchBody);
+      let searchItems = [];
+      try {
+        searchItems = rows(await openFoot('/search', { q: query }));
+      } catch (_) {
+        // Competition search must still work when the provider's /search endpoint fails.
+      }
       const searchedEntities = searchItems.filter(item => {
         const name = item.name || item.displayName || item.team?.name || item.competition?.name || item.label || '';
         const termsMatch = searchTerms.every(term => normSearch(name).includes(term));
