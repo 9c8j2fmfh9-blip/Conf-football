@@ -6,7 +6,7 @@ const port = Number(process.env.PORT || 3000);
 const apiKey = process.env.OPENFOOT_API_KEY;
 const base = 'https://openfootapi.com/v1';
 const cache = new Map();
-const CACHE_TTL_MS = 60 * 60 * 1000;
+const CACHE_TTL_MS = 60 * 1000; // Cache breve: evita stati LIVE obsoleti nelle partite in corso.
 
 app.use(express.static('.'));
 
