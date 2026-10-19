@@ -254,6 +254,34 @@ app.get('/api/conf', async (req, res) => {
       const valid = combined.filter(completed);
       const over25 = frequency(valid, x => { const s = goals(x); return s.home + s.away >= 3; }, 'Over 2.5 FT');
       const btts = frequency(valid, x => { const s = goals(x); return s.home > 0 && s.away > 0; }, 'GG');
+      // 1X2 is a transparent descriptive indicator based on recent form, not a calibrated forecast.
+      const resultRate = (matches, id, outcome) => {
+        const sample = matches.filter(completed);
+        let hits = 0;
+        for (const x of sample) {
+          const h = x.homeTeam || x.home || {};
+          const isHome = String(teamId(h)) === String(id);
+          const s = goals(x);
+          const gf = isHome ? s.home : s.away;
+          const ga = isHome ? s.away : s.home;
+          if ((outcome === 'W' && gf > ga) || (outcome === 'D' && gf === ga) || (outcome === 'L' && gf < ga)) hits++;
+        }
+        return { hits, sample: sample.length, rate: sample.length ? hits / sample.length : null };
+      };
+      const hW = resultRate(homeAll, homeId, 'W');
+      const hD = resultRate(homeAll, homeId, 'D');
+      const hL = resultRate(homeAll, homeId, 'L');
+      const aW = resultRate(awayAll, awayId, 'W');
+      const aD = resultRate(awayAll, awayId, 'D');
+      const aL = resultRate(awayAll, awayId, 'L');
+      const rateMarket = (label, a, b) => {
+        const sample = (a.sample || 0) + (b.sample || 0);
+        const score = a.rate === null || b.rate === null ? null : Math.round(100 * (a.rate + b.rate) / 2);
+        return { label, score, hits: score === null ? 0 : Math.round(score * sample / 100), sample };
+      };
+      const one = rateMarket('1 · vittoria casa (forma)', hW, aL);
+      const draw = rateMarket('X · pareggio (forma)', hD, aD);
+      const two = rateMarket('2 · vittoria trasferta (forma)', hL, aW);
       const htValid = combined.filter(x => {
         const ht = halfGoals(x);
         return ht.home !== null && ht.away !== null;
@@ -272,7 +300,7 @@ app.get('/api/conf', async (req, res) => {
           away: { recentOverall: teamPerspective(awayAll, awayId), selected: teamPerspective(awayAll, awayId), selectedVenue: 'ultime gare disponibili', selectedSample: awayAll.length }
         },
         markets: {
-          over25, btts, over15ht,
+          one, draw, two, over25, btts, over15ht,
           corners: noCorners,
           homeCorners: { ...noCorners, label: 'Corner casa non disponibili nel piano Starter' },
           awayCorners: { ...noCorners, label: 'Corner trasferta non disponibili nel piano Starter' },
