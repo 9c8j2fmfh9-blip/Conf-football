@@ -263,7 +263,7 @@ app.get('/api/conf', async (req, res) => {
         return true;
       })
       .sort((a, b) => new Date(a.kickoffAt || a.date || a.utcDate || 0) - new Date(b.kickoffAt || b.date || b.utcDate || 0))
-      .slice(0, limit);
+      .slice(0, Math.min(40, Math.max(limit, limit * 2)));
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)]).filter(Boolean))];
     const forms = new Map();
     const warnings = [];
@@ -366,15 +366,38 @@ app.get('/api/conf', async (req, res) => {
         }
       };
     });
+    // Classifica per qualità dell'evidenza: prima i mercati che superano CONF 70%
+    // con almeno 6 gare, poi i dati utilizzabili con campione sufficiente, infine gli altri.
+    const marketList = f => Object.values(f.markets || {}).filter(m => m.score !== null);
+    for (const f of fixtures) {
+      const ms = marketList(f);
+      const qualified = ms.filter(m => m.score >= 70 && m.sample >= 6);
+      const enoughSample = ms.filter(m => m.sample >= 6);
+      const bestQualified = qualified.reduce((best, m) => !best || m.score > best.score || (m.score === best.score && m.sample > best.sample) ? m : best, null);
+      const bestEvidence = enoughSample.reduce((best, m) => !best || m.score > best.score || (m.score === best.score && m.sample > best.sample) ? m : best, null);
+      const bestAny = ms.reduce((best, m) => !best || m.score > best.score || (m.score === best.score && m.sample > best.sample) ? m : best, null);
+      f.ranking = {
+        tier: bestQualified ? 3 : bestEvidence ? 2 : bestAny ? 1 : 0,
+        score: bestQualified?.score ?? bestEvidence?.score ?? bestAny?.score ?? -1,
+        sample: bestQualified?.sample ?? bestEvidence?.sample ?? bestAny?.sample ?? 0,
+        qualified: Boolean(bestQualified),
+        basis: bestQualified ? 'Mercato ≥70% con almeno 6 gare' : bestEvidence ? 'Miglior frequenza con almeno 6 gare, sotto soglia' : bestAny ? 'Campione insufficiente' : 'Nessun dato storico'
+      };
+      // Punteggio solo per ordinare le schede, non è una probabilità.
+      f.rankScore = f.ranking.tier * 10000 + f.ranking.score * 100 + Math.min(f.ranking.sample, 10);
+    }
+    fixtures.sort((a, b) => b.rankScore - a.rankScore);
+    const analyzedCount = fixtures.length;
+    fixtures = fixtures.slice(0, limit);
     const metaToday = todayBody?.meta || {};
     const metaTomorrow = tomorrowBody?.meta || {};
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
       windowHours: hours, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
-      method: 'Frequenze descrittive calcolate sulle ultime 10 partite concluse restituite da OpenFootAPI per ciascuna squadra. Campione e mercati sono mostrati solo quando i risultati sono presenti; non sono probabilità predittive calibrate.',
-      threshold: 70, limit, fixtures,
+      method: 'Le schede sono ordinate prima per presenza di un mercato ≥70% con almeno 6 gare storiche, poi per la migliore frequenza con campione sufficiente e dimensione del campione. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
+      threshold: 70, limit, analyzedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
-      note: 'Ricerca effettuata su oggi e domani e filtrata sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
+      note: 'Ricerca effettuata su oggi e domani e filtrata sulle prossime ' + hours + ' ore. La classifica usa fino a 40 candidate restituite dal provider. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
