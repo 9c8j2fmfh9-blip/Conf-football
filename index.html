@@ -159,8 +159,13 @@ async function loadGames(){
     const now = Date.now();
     games = fixtures.filter(f => {
       const state = String(f.fixture?.status?.short || '').toUpperCase();
-      if (liveStates.has(state)) return true;
-      if (finishedStates.has(state) || ['PST','CANC','CANCELLED','POSTPONED'].includes(state)) return false;
+      // Mantieni LIVE solo se non risulta già terminata; altrimenti richiedi kickoff futuro.
+      if (finishedStates.has(state) || ['FT','AET','PEN','AWD','WO','PST','CANC','CANCELLED','POSTPONED'].includes(state)) return false;
+      if (liveStates.has(state)) {
+        const kickoff = new Date(f.fixture?.date || 0).getTime();
+        // L'API beta può lasciare lo stato LIVE anche dopo il 90'; per match vecchi di oltre 3 ore non mostrarli.
+        return Number.isFinite(kickoff) && kickoff > now - 3 * 60 * 60 * 1000;
+      }
       const kickoff = new Date(f.fixture?.date || 0).getTime();
       return Number.isFinite(kickoff) && kickoff > now;
     });
