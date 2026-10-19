@@ -87,17 +87,23 @@ function render(){
 }
 function renderConf(items){
   const root = $('#conf-results');
-  const usable = items.map(f => ({...f, available:Object.values(f.markets || {}).filter(m => m.score !== null && m.sample >= 6)}))
-    .filter(f => f.available.length)
-    .sort((a,b) => Math.max(...b.available.map(m => m.score)) - Math.max(...a.available.map(m => m.score)));
-  if(!usable.length){
-    root.innerHTML = '<div class="empty">Non ci sono abbastanza risultati storici completi per calcolare gli indicatori. Prova con un’altra data o attendi il completamento dei dati.</div>';
+  if(!items.length){
+    root.innerHTML = '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
     return;
   }
-  root.innerHTML = usable.map(f => {
-    const markets = f.available.sort((a,b) => b.score-a.score);
+  const ordered = [...items].sort((a,b) => {
+    const best = f => Math.max(-1,...Object.values(f.markets || {}).filter(m => m.score !== null).map(m => m.score));
+    return best(b)-best(a);
+  });
+  root.innerHTML = ordered.map(f => {
+    const markets = Object.values(f.markets || {});
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => '<div style="display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:8px"><span>'+safe(m.label)+'<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare · '+(m.score>=70?'SOGLIA RAGGIUNTA':'sotto soglia 70')+'</div></span><strong>'+safe(m.score)+' / 100</strong></div>').join('')+'</div></article>';
+    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
+      const enough = m.score !== null && m.sample >= 6;
+      const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'SOGLIA ≥70 RAGGIUNTA' : 'sotto soglia 70'));
+      const score = m.score === null ? '—' : safe(m.score)+' / 100';
+      return '<div style="display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:8px"><span>'+safe(m.label)+'<div class="time">'+(m.sample ? safe(m.hits)+' su '+safe(m.sample)+' gare · ' : '')+label+'</div></span><strong>'+score+'</strong></div>';
+    }).join('')+'</div></article>';
   }).join('');
 }
 async function loadConf(){
@@ -112,7 +118,8 @@ async function loadConf(){
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
-    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+qualified+' con almeno un mercato ≥70. I risultati sotto soglia sono mostrati per trasparenza. '+data.method+' Corner: non ancora disponibili.';
+    const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
+    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. '+data.method+' Corner: non ancora disponibili.';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
