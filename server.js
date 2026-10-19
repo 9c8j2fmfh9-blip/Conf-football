@@ -273,10 +273,37 @@ app.get('/api/conf', async (req, res) => {
       const awayId = teamId(awayTeam);
       const homeAll = forms.get(String(homeId)) || [];
       const awayAll = forms.get(String(awayId)) || [];
-      const combined = [...homeAll, ...awayAll];
-      const valid = combined.filter(completed);
-      const over25 = frequency(valid, x => { const s = goals(x); return s.home + s.away >= 3; }, 'Over 2.5 FT');
-      const btts = frequency(valid, x => { const s = goals(x); return s.home > 0 && s.away > 0; }, 'GG');
+      // Per Over 2.5 e GG valutiamo separatamente la squadra di casa nelle gare in casa
+      // e quella ospite nelle gare in trasferta. Se il sotto-campione è troppo piccolo,
+      // usiamo le ultime gare complessive e rendiamo esplicito il campione usato.
+      const venueMatches = (matches, id, venue) => matches.filter(x => {
+        const home = x.homeTeam || x.home || {};
+        const isHome = String(teamId(home)) === String(id);
+        return venue === 'home' ? isHome : !isHome;
+      }).filter(completed);
+      const homeVenue = venueMatches(homeAll, homeId, 'home');
+      const awayVenue = venueMatches(awayAll, awayId, 'away');
+      const homeSample = homeVenue.length >= 3 ? homeVenue : homeAll.filter(completed);
+      const awaySample = awayVenue.length >= 3 ? awayVenue : awayAll.filter(completed);
+      const combined = [...homeSample, ...awaySample];
+      const pairedFrequency = (label, predicate) => {
+        const a = frequency(homeSample, predicate, label);
+        const b = frequency(awaySample, predicate, label);
+        if (!a.sample || !b.sample) {
+          const valid = combined.filter(completed);
+          return frequency(valid, predicate, label);
+        }
+        return {
+          label,
+          score: Math.round((a.score + b.score) / 2),
+          hits: a.hits + b.hits,
+          sample: a.sample + b.sample,
+          venueSamples: { home: a.sample, away: b.sample },
+          method: (homeVenue.length >= 3 ? 'casa' : 'forma generale') + ' / ' + (awayVenue.length >= 3 ? 'trasferta' : 'forma generale')
+        };
+      };
+      const over25 = pairedFrequency('Over 2.5 FT', x => { const sc = goals(x); return sc.home + sc.away >= 3; });
+      const btts = pairedFrequency('GG', x => { const sc = goals(x); return sc.home > 0 && sc.away > 0; });
       // 1X2 is a transparent descriptive indicator based on recent form, not a calibrated forecast.
       const resultRate = (matches, id, outcome) => {
         const sample = matches.filter(completed);
@@ -398,6 +425,63 @@ app.post('/api/history', express.json({ limit: '1mb' }), async (req, res) => {
     const data = await response.json().catch(() => ({}));
     if (!response.ok) return res.status(response.status).json({ error: data.message || 'Errore scrittura Supabase.' });
     res.json({ saved: rows.length });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post('/api/history/settle', async (req, res) => {
+  if (!historyAuthorized(req, res)) return;
+  try {
+    const historyUrl = new URL('/rest/v1/bet_history', process.env.SUPABASE_URL);
+    historyUrl.searchParams.set('select', '*');
+    historyUrl.searchParams.set('outcome', 'eq.pending');
+    historyUrl.searchParams.set('limit', '500');
+    const historyResponse = await fetch(historyUrl, { headers: supabaseHeaders() });
+    const pending = await historyResponse.json().catch(() => []);
+    if (!historyResponse.ok) return res.status(historyResponse.status).json({ error: pending.message || 'Errore lettura storico.' });
+    if (!Array.isArray(pending) || !pending.length) return res.json({ checked: 0, settled: 0, message: 'Nessuna selezione in attesa.' });
+
+    const byDate = new Map();
+    for (const item of pending) {
+      const date = String(item.match_date || '').slice(0, 10);
+      if (date && !byDate.has(date)) byDate.set(date, null);
+    }
+    for (const date of byDate.keys()) {
+      try {
+        const body = await openFoot('/matches', { date });
+        byDate.set(date, rows(body));
+      } catch {
+        byDate.set(date, []);
+      }
+    }
+
+    let checked = 0, settled = 0;
+    const unresolved = [];
+    for (const item of pending) {
+      const date = String(item.match_date || '').slice(0, 10);
+      const matches = byDate.get(date) || [];
+      const match = matches.find(m => String(m.id) === String(item.fixture_id));
+      if (!match || !completed(match)) { unresolved.push(item.id); continue; }
+      const sc = goals(match);
+      const market = String(item.market || '').toLowerCase();
+      let won = null;
+      if (market.includes('over') && market.includes('2.5')) won = sc.home + sc.away >= 3;
+      else if (market === 'gg' || market.includes('entrambe')) won = sc.home > 0 && sc.away > 0;
+      else if (market.startsWith('x') || market.includes('pareggio')) won = sc.home === sc.away;
+      else if (market.startsWith('2') || market.includes('vittoria trasferta')) won = sc.away > sc.home;
+      else if (market.startsWith('1') || market.includes('vittoria casa')) won = sc.home > sc.away;
+      if (won === null) { unresolved.push(item.id); continue; }
+      checked++;
+      const patchUrl = new URL('/rest/v1/bet_history', process.env.SUPABASE_URL);
+      patchUrl.searchParams.set('id', 'eq.' + item.id);
+      patchUrl.searchParams.set('outcome', 'eq.pending');
+      const patch = await fetch(patchUrl, {
+        method: 'PATCH',
+        headers: supabaseHeaders({ Prefer: 'return=minimal' }),
+        body: JSON.stringify({ outcome: won ? 'win' : 'loss', updated_at: new Date().toISOString() })
+      });
+      if (patch.ok) settled++;
+    }
+    res.json({ checked, settled, pending: unresolved.length, message: 'Aggiornate solo partite concluse con risultato verificato dal provider.' });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
