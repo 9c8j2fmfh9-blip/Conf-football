@@ -24,9 +24,9 @@ async function openFoot(path, params = {}) {
   let response = await fetch(url, { headers });
   let body = await response.json().catch(() => ({}));
 
-  // If Render has an invalid personal key, fall back to OpenFootAPI's
-  // published demo key so the prototype can still test the public preview.
-  if (response.status === 401 && apiKey) {
+  // Use the public demo key only when no personal key is configured.
+  // Never silently mask an invalid personal key by switching to demo access.
+  if (!apiKey) {
     const demoHeaders = { Accept: 'application/json', Authorization: 'Bearer of_demo_openfootapi_docs' };
     response = await fetch(url, { headers: demoHeaders });
     body = await response.json().catch(() => ({}));
