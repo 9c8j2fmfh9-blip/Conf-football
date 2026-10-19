@@ -153,8 +153,8 @@ app.get('/api/conf', async (req, res) => {
         home: f.teams.home.name,
         away: f.teams.away.name,
         form: {
-          home: { recentOverall: teamPerspective(homeAll, f.teams.home.id), selectedVenue: homeVenue.length >= 3 ? 'casa' : 'forma generale', selectedSample: home.length },
-          away: { recentOverall: teamPerspective(awayAll, f.teams.away.id), selectedVenue: awayVenue.length >= 3 ? 'trasferta' : 'forma generale', selectedSample: away.length }
+          home: { recentOverall: teamPerspective(homeAll, f.teams.home.id), selected: teamPerspective(home, f.teams.home.id), selectedVenue: homeVenue.length >= 3 ? 'ultime gare in casa' : 'forma generale', selectedSample: home.length },
+          away: { recentOverall: teamPerspective(awayAll, f.teams.away.id), selected: teamPerspective(away, f.teams.away.id), selectedVenue: awayVenue.length >= 3 ? 'ultime gare in trasferta' : 'forma generale', selectedSample: away.length }
         },
         markets: {
           over25: { ...goals, label: 'Over 2.5 FT' },
