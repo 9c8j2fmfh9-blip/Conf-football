@@ -42,9 +42,11 @@ async function openFoot(path, params = {}) {
 }
 
 function rows(body) {
+  if (Array.isArray(body?.response)) return body.response;
   if (Array.isArray(body?.data)) return body.data;
   if (Array.isArray(body?.data?.matches)) return body.data.matches;
   if (Array.isArray(body?.matches)) return body.matches;
+  if (Array.isArray(body?.fixtures)) return body.fixtures;
   return [];
 }
 function statusCode(status) {
@@ -61,8 +63,8 @@ function statusCode(status) {
 }
 function goals(m) {
   const s = m?.score || {};
-  const home = s.fullTime?.home ?? s.fulltime?.home ?? s.home ?? m.homeScore ?? m.scoreHome ?? null;
-  const away = s.fullTime?.away ?? s.fulltime?.away ?? s.away ?? m.awayScore ?? m.scoreAway ?? null;
+  const home = s.fullTime?.home ?? s.fulltime?.home ?? s.home ?? m.goals?.home ?? m.homeScore ?? m.scoreHome ?? null;
+  const away = s.fullTime?.away ?? s.fulltime?.away ?? s.away ?? m.goals?.away ?? m.awayScore ?? m.scoreAway ?? null;
   return { home: numberOrNull(home), away: numberOrNull(away) };
 }
 function halfGoals(m) {
@@ -90,18 +92,19 @@ function teamName(team) {
 }
 function toLegacy(m) {
   const score = goals(m);
-  const kickoff = m.kickoffAt ?? m.date ?? m.utcDate ?? null;
-  const home = m.homeTeam || m.home || {};
-  const away = m.awayTeam || m.away || {};
-  const status = statusCode(m.status);
+  const kickoff = m.kickoffAt ?? m.date ?? m.utcDate ?? m.fixture?.date ?? null;
+  const home = m.homeTeam || m.home || m.teams?.home || {};
+  const away = m.awayTeam || m.away || m.teams?.away || {};
+  const rawStatus = m.status ?? m.fixture?.status;
+  const status = statusCode(rawStatus);
   const ht = halfGoals(m);
   return {
     fixture: {
-      id: m.id,
+      id: m.id ?? m.fixture?.id,
       date: kickoff,
-      status: { short: status, long: m.status || status, elapsed: m.minute ?? null }
+      status: { short: status, long: (typeof rawStatus === 'object' ? rawStatus.long ?? rawStatus.name : rawStatus) || status, elapsed: m.minute ?? m.elapsed ?? (typeof rawStatus === 'object' ? rawStatus.elapsed : null) ?? null }
     },
-    league: { id: m.competitionId ?? m.competition?.id ?? null, name: m.competitionName ?? m.competition?.name ?? 'Campionato', country: m.country ?? m.competition?.country ?? '' },
+    league: { id: m.competitionId ?? m.competition?.id ?? m.league?.id ?? null, name: m.competitionName ?? m.competition?.name ?? m.league?.name ?? 'Campionato', country: m.country ?? m.competition?.country ?? m.league?.country ?? '' },
     teams: { home: { id: teamId(home), name: teamName(home) }, away: { id: teamId(away), name: teamName(away) } },
     goals: { home: score.home, away: score.away },
     score: { fulltime: { home: score.home, away: score.away }, halftime: { home: ht.home, away: ht.away } }
