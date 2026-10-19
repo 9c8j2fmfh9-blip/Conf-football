@@ -49,7 +49,9 @@ async function loadGames() {
             timeZone: 'Europe/Rome'
           })
         : '--:--',
-      markets: []
+     markets: [
+  { name: 'Dati partita', conf: 0, p: 0, odds: 1 }
+]
     }));
 
     loadGames();
