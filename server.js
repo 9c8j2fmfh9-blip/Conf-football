@@ -379,6 +379,34 @@ app.get('/api/conf', async (req, res) => {
       }));
       allDayMatches = [...allDayMatches, ...entityMatches.flat()];
     }
+
+    // Normalize both OpenFootAPI's current schema and its legacy fixture/teams schema
+    // before date, competition, team and status filtering.
+    allDayMatches = allDayMatches.map(m => {
+      const legacy = m.fixture || m.teams;
+      const homeTeam = m.homeTeam || m.home || m.teams?.home || {};
+      const awayTeam = m.awayTeam || m.away || m.teams?.away || {};
+      const competition = m.competition || m.league || {};
+      const fixtureDate = m.kickoffAt || m.date || m.utcDate || m.fixture?.date || null;
+      const rawStatus = m.status ?? m.fixture?.status ?? 'NS';
+      const oldGoals = m.goals || {};
+      return {
+        ...m,
+        id: m.id ?? m.fixture?.id,
+        kickoffAt: fixtureDate,
+        status: rawStatus,
+        homeTeam,
+        awayTeam,
+        competition,
+        competitionName: m.competitionName || competition.name || '',
+        competitionId: m.competitionId ?? competition.id ?? null,
+        score: m.score || {
+          home: oldGoals.home ?? m.homeScore ?? m.scoreHome ?? null,
+          away: oldGoals.away ?? m.awayScore ?? m.scoreAway ?? null
+        }
+      };
+    });
+
     const seen = new Set();
     const upcoming = allDayMatches
       .filter(m => {
