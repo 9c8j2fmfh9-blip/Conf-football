@@ -301,11 +301,10 @@ function renderConf(items){
 async function loadConf(){
   const button = $('#analyze');
   button.disabled = true;
-  $('#conf-message').textContent = 'Calcolo in corso: recupero delle ultime gare reali delle squadre…';
+  $('#conf-message').textContent = 'Calcolo in corso: cerco le partite delle prossime 24 ore e recupero le ultime gare reali delle squadre…';
   $('#conf-results').innerHTML = '';
   try{
-    const date = $('#date').value || romeToday();
-    const response = await fetch('/api/conf?date='+encodeURIComponent(date)+'&limit=12',{cache:'no-store'});
+    const response = await fetch('/api/conf?hours=24&limit=20',{cache:'no-store'});
     const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
@@ -313,7 +312,7 @@ async function loadConf(){
     if(savedCount > 0 && localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
-    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove valutazioni analizzate: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
+    $('#conf-message').textContent = 'Analisi completata sulle prossime 24 ore: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove valutazioni analizzate: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
