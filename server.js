@@ -55,7 +55,7 @@ app.get('/api/fixtures', async (req, res) => {
   if (!date && !league) return res.status(400).json({ error: 'Indica almeno date (YYYY-MM-DD) oppure league (ID campionato).' });
   try {
     const data = await apiFootball('/fixtures', { date, league, season, status, timezone: 'Europe/Rome' });
-    res.json({ results: data.results, paging: data.paging, errors: data.errors, parameters: data.parameters });
+    res.json(data);
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
 
