@@ -220,7 +220,7 @@ app.get('/api/debug-search', async (req, res) => {
       openFoot('/competitions').then(body => {
         const all = rows(body);
         const matches = all.filter(c => terms.every(t => norm(c.name || c.competitionName || c.competition?.name || c.label).includes(t)));
-        return { count: all.length, matches: matches.slice(0, 10).map(c => ({ id: c.id ?? c.competitionId ?? c.competition?.id, name: c.name ?? c.competitionName ?? c.competition?.name, keys: Object.keys(c).slice(0, 20) })) };
+        return { count: all.length, matches: matches.slice(0, 10).map(c => ({ id: c.id ?? c.competitionId ?? c.competition?.id, name: c.name ?? c.competitionName ?? c.competition?.name, currentSeason: c.currentSeason ?? null, availableSeasons: c.availableSeasons ?? null, keys: Object.keys(c).slice(0, 20) })) };
       }).catch(e => ({ error: e.message, status: e.status || null })),
       openFoot('/search', { q: query }).then(body => ({ count: rows(body).length, sample: rows(body).slice(0, 10).map(x => ({ id: x.id ?? x.teamId ?? x.competitionId ?? x.competition?.id ?? x.team?.id, name: x.name ?? x.displayName ?? x.team?.name ?? x.competition?.name ?? x.label, type: x.type ?? x.entityType ?? x.kind, keys: Object.keys(x).slice(0, 20) })) })).catch(e => ({ error: e.message, status: e.status || null }))
     ]);
@@ -232,7 +232,7 @@ app.get('/api/debug-search', async (req, res) => {
         try {
           const body = await openFoot('/matches', params);
           const list = rows(body);
-          return { params, count: list.length, sample: list.slice(0, 3).map(summarize), topKeys: body && typeof body === 'object' ? Object.keys(body).slice(0, 20) : [] };
+          return { params, count: list.length, sample: list.slice(0, 3).map(summarize), meta: body?.meta ?? null, topKeys: body && typeof body === 'object' ? Object.keys(body).slice(0, 20) : [] };
         } catch (e) { return { params, error: e.message, status: e.status || null }; }
       };
       const tests = await Promise.all([
