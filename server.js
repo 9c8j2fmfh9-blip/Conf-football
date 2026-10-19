@@ -287,6 +287,8 @@ app.get('/api/conf', async (req, res) => {
   const hours = Math.min(48, Math.max(1, Number.parseInt(req.query.hours || '24', 10) || 24));
   const limit = Math.min(40, Math.max(1, Number.parseInt(req.query.limit || '20', 10) || 20));
   const query = String(req.query.q || '').trim();
+  const requestedDate = String(req.query.date || '').match(/^\\d{4}-\\d{2}-\\d{2}$/) ? String(req.query.date) : '';
+  const romeDate = value => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value));
   const normSearch = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
   const searchTerms = normSearch(query).split(/\s+/).filter(Boolean);
   const now = Date.now();
@@ -302,11 +304,11 @@ app.get('/api/conf', async (req, res) => {
   try {
     // L'endpoint /matches filtra per data: interroghiamo oggi e domani,
     // poi selezioniamo solo i kickoff compresi nelle prossime N ore.
-    const [todayBody, tomorrowBody] = await Promise.all([
-      openFoot('/matches', { date: today }),
-      openFoot('/matches', { date: tomorrow })
-    ]);
-    let allDayMatches = [...rows(todayBody), ...rows(tomorrowBody)];
+    const datesToFetch = query && requestedDate ? [requestedDate] : [today, tomorrow];
+    const dateBodies = await Promise.all(datesToFetch.map(date => openFoot('/matches', { date })));
+    const todayBody = dateBodies[0] || {};
+    const tomorrowBody = dateBodies[1] || {};
+    let allDayMatches = dateBodies.flatMap(rows);
     let searchEntities = [];
     if (query) {
       // Resolve the typed team/competition through OpenFootAPI, then fetch matches by stable IDs.
@@ -335,7 +337,10 @@ app.get('/api/conf', async (req, res) => {
       .filter(m => {
         const state = statusCode(m.status);
         const kickoff = new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime();
-        if (!Number.isFinite(kickoff) || kickoff <= now || kickoff > cutoff) return false;
+        if (!Number.isFinite(kickoff) || kickoff <= now) return false;
+        if (query && requestedDate) {
+          if (romeDate(kickoff) !== requestedDate) return false;
+        } else if (kickoff > cutoff) return false;
         if (['LIVE', 'FT', 'PST', 'CANC'].includes(state)) return false;
         if (query) {
           const home = m.homeTeam || m.home || {};
@@ -483,7 +488,7 @@ app.get('/api/conf', async (req, res) => {
     const metaTomorrow = tomorrowBody?.meta || {};
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
-      windowHours: hours, query: query || null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
+      windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Le schede sono ordinate prima per presenza di un mercato ≥70% con almeno 6 gare storiche, poi per la migliore frequenza con campione sufficiente e dimensione del campione. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
       threshold: 70, limit, analyzedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
