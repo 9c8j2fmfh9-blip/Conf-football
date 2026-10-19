@@ -86,7 +86,7 @@ app.get('/api/conf', async (req, res) => {
   try {
     const fixturesData = await apiFootball('/fixtures', { date, timezone: 'Europe/Rome' });
     const upcoming = (fixturesData.response || [])
-      .filter(f => f.fixture?.status?.short === 'NS')
+      .filter(f => f.fixture?.status?.short === 'NS' && new Date(f.fixture?.date).getTime() > Date.now())
       .slice(0, limit);
 
     const teamIds = [...new Set(upcoming.flatMap(f => [f.teams?.home?.id, f.teams?.away?.id]).filter(Boolean))];
