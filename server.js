@@ -171,6 +171,53 @@ app.get('/api/leagues', async (_req, res) => {
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
 
+app.get('/api/search-fixtures', async (req, res) => {
+  const date = String(req.query.date || '');
+  const query = String(req.query.q || '').trim();
+  if (!date || !query) return res.status(400).json({ error: 'Indica data e testo da cercare.' });
+  const norm = value => String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
+  const terms = norm(query).split(/\\s+/).filter(Boolean);
+  try {
+    const competitions = rows(await openFoot('/competitions'));
+    const matchingCompetitions = competitions.filter(c => {
+      const name = norm(c.name || c.competitionName || c.competition?.name || '');
+      return terms.every(term => name.includes(term));
+    });
+    let source = [];
+    let searchMode = 'date';
+    if (matchingCompetitions.length) {
+      searchMode = 'competition';
+      const results = await Promise.all(matchingCompetitions.slice(0, 5).map(async c => {
+        const id = c.id ?? c.competitionId ?? c.competition?.id;
+        if (id == null) return [];
+        try { return rows(await openFoot('/matches', { date, competition: id })); }
+        catch (_) { return []; }
+      }));
+      source = results.flat();
+    } else {
+      source = rows(await openFoot('/matches', { date }));
+    }
+    const now = Date.now();
+    const seen = new Set();
+    const response = source.map(toLegacy).filter(f => {
+      const state = f.fixture?.status?.short || 'NS';
+      if (['FT','PST','CANC'].includes(state)) return false;
+      const kickoff = new Date(f.fixture?.date || 0).getTime();
+      if (!Number.isFinite(kickoff)) return false;
+      if (state === 'LIVE') {
+        if (kickoff > now + 5 * 60 * 1000 || now - kickoff > 180 * 60 * 1000) return false;
+      } else if (kickoff <= now) return false;
+      const text = norm([f.league?.name, f.league?.country, f.teams?.home?.name, f.teams?.away?.name].join(' '));
+      if (!terms.every(term => text.includes(term))) return false;
+      const key = String(f.fixture?.id || [f.fixture?.date, f.teams?.home?.name, f.teams?.away?.name].join('|'));
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+    res.json({ results: response.length, response, provider: 'OpenFootAPI', searchMode, query, competitionsFound: matchingCompetitions.length });
+  } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
+});
+
 app.get('/api/fixtures', async (req, res) => {
   const date = String(req.query.date || '');
   const { league, season, status } = req.query;
