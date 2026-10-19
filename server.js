@@ -282,13 +282,6 @@ app.get('/api/conf', async (req, res) => {
       const one = rateMarket('1 · vittoria casa (forma)', hW, aL);
       const draw = rateMarket('X · pareggio (forma)', hD, aD);
       const two = rateMarket('2 · vittoria trasferta (forma)', hL, aW);
-      const htValid = combined.filter(x => {
-        const ht = halfGoals(x);
-        return ht.home !== null && ht.away !== null;
-      });
-      const over15ht = frequency(htValid, x => { const ht = halfGoals(x); return ht.home + ht.away >= 2; }, 'Over 1.5 HT');
-      const htCorner = { score: null, hits: 0, sample: 0, label: 'Corner 1° tempo non disponibili nel piano Starter' };
-      const noCorners = { score: null, hits: 0, sample: 0, label: 'Corner FT non disponibili nel piano Starter' };
       const kickoff = m.kickoffAt || m.date || m.utcDate || null;
       const league = m.competitionName || m.competition?.name || m.competitionId || 'Campionato';
       const country = m.country || m.competition?.country || '';
@@ -300,13 +293,7 @@ app.get('/api/conf', async (req, res) => {
           away: { recentOverall: teamPerspective(awayAll, awayId), selected: teamPerspective(awayAll, awayId), selectedVenue: 'ultime gare disponibili', selectedSample: awayAll.length }
         },
         markets: {
-          one, draw, two, over25, btts, over15ht,
-          corners: noCorners,
-          homeCorners: { ...noCorners, label: 'Corner casa non disponibili nel piano Starter' },
-          awayCorners: { ...noCorners, label: 'Corner trasferta non disponibili nel piano Starter' },
-          firstHalfCorners: htCorner,
-          homeFirstHalfCorners: { ...htCorner, label: 'Corner casa 1° tempo non disponibili nel piano Starter' },
-          awayFirstHalfCorners: { ...htCorner, label: 'Corner trasferta 1° tempo non disponibili nel piano Starter' }
+          one, draw, two, over25, btts
         }
       };
     });
@@ -315,7 +302,7 @@ app.get('/api/conf', async (req, res) => {
       method: 'Frequenze descrittive calcolate sulle ultime 5 partite concluse restituite da OpenFootAPI per ciascuna squadra. Campione e mercati sono mostrati solo quando i risultati sono presenti; non sono probabilità predittive calibrate.',
       threshold: 70, limit, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: fixtureBody?.meta?.total_count ?? null, partial: Boolean(fixtureBody?.meta?.scope?.partial) || allDayMatches.length < Number(fixtureBody?.meta?.total_count ?? allDayMatches.length), paginationAvailable: false },
-      note: 'Il piano demo può restituire solo un’anteprima e non consente la paginazione. Corner e quote non vengono inventati: sono indicati come non disponibili nel piano Starter.'
+      note: 'Il piano demo può restituire solo un’anteprima e non consente la paginazione. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
