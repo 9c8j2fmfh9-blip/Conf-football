@@ -156,8 +156,15 @@ async function loadGames(){
     }
     const fixtures = Array.isArray(data.response) ? data.response : (Array.isArray(data.fixtures) ? data.fixtures : null);
     if(!fixtures) throw new Error('Il server non ha restituito l’elenco delle partite nel formato atteso.');
-    games = fixtures;
-    $('#message').textContent = 'Dati reali caricati per '+date+'. Partite ricevute: '+games.length+'.';
+    const now = Date.now();
+    games = fixtures.filter(f => {
+      const state = String(f.fixture?.status?.short || '').toUpperCase();
+      if (liveStates.has(state)) return true;
+      if (finishedStates.has(state) || ['PST','CANC','CANCELLED','POSTPONED'].includes(state)) return false;
+      const kickoff = new Date(f.fixture?.date || 0).getTime();
+      return Number.isFinite(kickoff) && kickoff > now;
+    });
+    $('#message').textContent = 'Partite future/live caricate per '+date+'. Mostrate: '+games.length+' (ricevute dal provider: '+fixtures.length+'); le terminate e quelle con orario passato sono escluse.';
     render();
   }catch(error){
     games = [];
