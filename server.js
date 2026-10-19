@@ -201,7 +201,8 @@ app.get('/api/leagues', async (_req, res) => {
 
 app.get('/api/debug-search', async (req, res) => {
   const query = String(req.query.q || '').trim();
-  const date = String(req.query.date || '').match(/^\\d{4}-\\d{2}-\\d{2}$/) ? String(req.query.date) : new Date().toISOString().slice(0, 10);
+  const dateInput = String(req.query.date || '');
+  const date = dateInput.length === 10 && dateInput[4] === '-' && dateInput[7] === '-' ? dateInput : new Date().toISOString().slice(0, 10);
   const norm = value => String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
   const terms = norm(query).split(/\\s+/).filter(Boolean);
   const summarize = m => ({
