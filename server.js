@@ -185,8 +185,16 @@ app.get('/api/fixtures', async (req, res) => {
         // Mostra le partite live e quelle che devono ancora iniziare.
         // Esclude terminate/rinviate/annullate e ogni kickoff già passato.
         if (['FT', 'PST', 'CANC'].includes(state)) return false;
-        if (state === 'LIVE') return true;
         const kickoff = new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime();
+        if (state === 'LIVE') {
+          const rawStatus = m.status && typeof m.status === 'object' ? m.status : {};
+          const elapsed = Number(rawStatus.elapsed ?? m.minute ?? m.elapsed);
+          if (!Number.isFinite(kickoff)) return false;
+          // OpenFootAPI può lasciare LIVE dopo il 90': scarta stati palesemente obsoleti.
+          if (Number.isFinite(elapsed) && elapsed >= 90 && now - kickoff > 100 * 60 * 1000) return false;
+          if (!Number.isFinite(elapsed) && now - kickoff > 150 * 60 * 1000) return false;
+          return kickoff <= now + 5 * 60 * 1000;
+        }
         return Number.isFinite(kickoff) && kickoff > now;
       })
       .map(toLegacy);
