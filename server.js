@@ -281,7 +281,10 @@ app.get('/api/debug-fixtures', async (req, res) => {
 
 app.get('/api/conf', async (req, res) => {
   const hours = Math.min(48, Math.max(1, Number.parseInt(req.query.hours || '24', 10) || 24));
-  const limit = Math.min(20, Math.max(1, Number.parseInt(req.query.limit || '20', 10) || 20));
+  const limit = Math.min(40, Math.max(1, Number.parseInt(req.query.limit || '20', 10) || 20));
+  const query = String(req.query.q || '').trim();
+  const normSearch = value => String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
+  const searchTerms = normSearch(query).split(/\\s+/).filter(Boolean);
   const now = Date.now();
   const cutoff = now + hours * 60 * 60 * 1000;
   const dateParts = new Intl.DateTimeFormat('en-CA', {
@@ -299,7 +302,30 @@ app.get('/api/conf', async (req, res) => {
       openFoot('/matches', { date: today }),
       openFoot('/matches', { date: tomorrow })
     ]);
-    const allDayMatches = [...rows(todayBody), ...rows(tomorrowBody)];
+    let allDayMatches = [...rows(todayBody), ...rows(tomorrowBody)];
+    let searchEntities = [];
+    if (query) {
+      // Resolve the typed team/competition through OpenFootAPI, then fetch matches by stable IDs.
+      const searchBody = await openFoot('/search', { q: query });
+      const searchItems = rows(searchBody);
+      searchEntities = searchItems.filter(item => {
+        const name = item.name || item.displayName || item.team?.name || item.competition?.name || item.label || '';
+        const termsMatch = searchTerms.every(term => normSearch(name).includes(term));
+        return termsMatch && (item.id || item.teamId || item.competitionId || item.team?.id || item.competition?.id);
+      }).slice(0, 8);
+      const entityMatches = await Promise.all(searchEntities.map(async item => {
+        const id = item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id;
+        const kind = String(item.type || item.entityType || item.kind || '').toLowerCase();
+        const isCompetition = kind.includes('competition') || kind.includes('league') || String(id).startsWith('comp_') || item.competitionId != null || item.competition != null;
+        const param = isCompetition ? { competition: id } : { team: id };
+        const dateCalls = await Promise.all([today, tomorrow].map(async date => {
+          try { return rows(await openFoot('/matches', { date, ...param })); }
+          catch (_) { return []; }
+        }));
+        return dateCalls.flat();
+      }));
+      allDayMatches = [...allDayMatches, ...entityMatches.flat()];
+    }
     const seen = new Set();
     const upcoming = allDayMatches
       .filter(m => {
@@ -307,6 +333,16 @@ app.get('/api/conf', async (req, res) => {
         const kickoff = new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime();
         if (!Number.isFinite(kickoff) || kickoff <= now || kickoff > cutoff) return false;
         if (['LIVE', 'FT', 'PST', 'CANC'].includes(state)) return false;
+        if (query) {
+          const home = m.homeTeam || m.home || {};
+          const away = m.awayTeam || m.away || {};
+          const comp = m.competition || {};
+          const searchable = normSearch([home.name, away.name, m.competitionName, comp.name, m.country, comp.country].join(' '));
+          const entityIds = searchEntities.map(item => String(item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id));
+          const matchIds = [teamId(home), teamId(away), m.competitionId, comp.id].filter(Boolean).map(String);
+          const directMatch = entityIds.some(id => matchIds.includes(id));
+          if (!directMatch && !searchTerms.every(term => searchable.includes(term))) return false;
+        }
         const id = String(m.id || '');
         if (id && seen.has(id)) return false;
         if (id) seen.add(id);
@@ -443,11 +479,11 @@ app.get('/api/conf', async (req, res) => {
     const metaTomorrow = tomorrowBody?.meta || {};
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
-      windowHours: hours, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
+      windowHours: hours, query: query || null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Le schede sono ordinate prima per presenza di un mercato ≥70% con almeno 6 gare storiche, poi per la migliore frequenza con campione sufficiente e dimensione del campione. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
       threshold: 70, limit, analyzedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
-      note: 'Ricerca effettuata su oggi e domani e filtrata sulle prossime ' + hours + ' ore. La classifica usa fino a 40 candidate restituite dal provider. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
+      note: (query ? 'Ricerca provider per “' + query + '” integrata nell’analisi CONF. ' : 'Lista generale ') + 'Oggi e domani, filtrati sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
