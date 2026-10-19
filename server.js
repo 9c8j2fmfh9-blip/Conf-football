@@ -42,15 +42,36 @@ async function openFoot(path, params = {}) {
 }
 
 function rows(body) {
-  if (Array.isArray(body?.response)) return body.response;
-  if (Array.isArray(body?.data)) return body.data;
-  if (Array.isArray(body?.data?.matches)) return body.data.matches;
-  if (Array.isArray(body?.data?.results)) return body.data.results;
-  if (Array.isArray(body?.data?.entities)) return body.data.entities;
-  if (Array.isArray(body?.data?.teams)) return body.data.teams;
-  if (Array.isArray(body?.data?.competitions)) return body.data.competitions;
-  if (Array.isArray(body?.matches)) return body.matches;
-  if (Array.isArray(body?.fixtures)) return body.fixtures;
+  const candidates = [
+    body?.response,
+    body?.data,
+    body?.data?.matches,
+    body?.data?.results,
+    body?.data?.entities,
+    body?.data?.items,
+    body?.data?.teams,
+    body?.data?.competitions,
+    body?.data?.results?.matches,
+    body?.data?.results?.entities,
+    body?.data?.results?.items,
+    body?.data?.results?.teams,
+    body?.data?.results?.competitions,
+    body?.results,
+    body?.results?.matches,
+    body?.results?.entities,
+    body?.results?.items,
+    body?.results?.teams,
+    body?.results?.competitions,
+    body?.matches,
+    body?.fixtures,
+    body?.competitions,
+    body?.teams,
+    body?.entities,
+    body?.items
+  ];
+  for (const candidate of candidates) {
+    if (Array.isArray(candidate)) return candidate;
+  }
   return [];
 }
 function statusCode(status) {
