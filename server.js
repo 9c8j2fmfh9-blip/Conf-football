@@ -330,4 +330,75 @@ app.get('/api/conf', async (req, res) => {
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
 
+
+function historyConfigOk(res) {
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY || !process.env.HISTORY_ACCESS_TOKEN) {
+    res.status(503).json({ error: 'Sincronizzazione non configurata: controlla le variabili ambiente su Render.' });
+    return false;
+  }
+  return true;
+}
+function historyAuthorized(req, res) {
+  if (!historyConfigOk(res)) return false;
+  if (req.get('x-history-token') !== process.env.HISTORY_ACCESS_TOKEN) {
+    res.status(401).json({ error: 'Codice di sincronizzazione non valido.' });
+    return false;
+  }
+  return true;
+}
+function supabaseHeaders(extra = {}) {
+  return {
+    apikey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+    'Content-Type': 'application/json',
+    ...extra
+  };
+}
+app.get('/api/history', async (req, res) => {
+  if (!historyAuthorized(req, res)) return;
+  try {
+    const url = new URL('/rest/v1/bet_history', process.env.SUPABASE_URL);
+    url.searchParams.set('select', '*');
+    url.searchParams.set('order', 'recorded_at.desc');
+    url.searchParams.set('limit', '500');
+    const response = await fetch(url, { headers: supabaseHeaders() });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) return res.status(response.status).json({ error: data.message || 'Errore lettura Supabase.' });
+    res.json({ history: data });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+app.post('/api/history', express.json({ limit: '1mb' }), async (req, res) => {
+  if (!historyAuthorized(req, res)) return;
+  const items = Array.isArray(req.body?.history) ? req.body.history.slice(0, 500) : null;
+  if (!items) return res.status(400).json({ error: 'Formato storico non valido.' });
+  const rows = items.map(x => ({
+    id: String(x.id || ''),
+    fixture_id: String(x.fixtureId || x.fixture_id || ''),
+    match_date: x.date || x.match_date || null,
+    league: String(x.league || ''),
+    home: String(x.home || ''),
+    away: String(x.away || ''),
+    market: String(x.market || ''),
+    score: Number(x.score || 0),
+    hits: Number(x.hits || 0),
+    sample: Number(x.sample || 0),
+    outcome: ['pending', 'win', 'loss'].includes(x.outcome) ? x.outcome : 'pending',
+    recorded_at: x.recordedAt || x.recorded_at || new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  })).filter(x => x.id && x.fixture_id && x.market);
+  try {
+    if (!rows.length) return res.json({ saved: 0 });
+    const url = new URL('/rest/v1/bet_history', process.env.SUPABASE_URL);
+    url.searchParams.set('on_conflict', 'id');
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: supabaseHeaders({ Prefer: 'resolution=merge-duplicates,return=minimal' }),
+      body: JSON.stringify(rows)
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) return res.status(response.status).json({ error: data.message || 'Errore scrittura Supabase.' });
+    res.json({ saved: rows.length });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.listen(port, () => console.log(`CONF Football attivo su http://localhost:${port}`));
