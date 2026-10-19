@@ -154,6 +154,26 @@ app.get('/api/odds', (_req, res) => {
   res.status(403).json({ error: 'Le quote/benchmark odds richiedono un piano OpenFootAPI che includa questo endpoint.' });
 });
 
+app.get('/api/debug-fixtures', async (req, res) => {
+  const date = String(req.query.date || new Date().toISOString().slice(0, 10));
+  try {
+    const body = await openFoot('/matches', { date });
+    const matches = rows(body);
+    res.json({
+      date,
+      returned: matches.length,
+      meta: body.meta || null,
+      samples: matches.slice(0, 10).map(m => ({
+        id: m.id,
+        status: m.status ?? null,
+        kickoffAt: m.kickoffAt ?? m.date ?? m.utcDate ?? null,
+        home: (m.homeTeam || m.home || {}).name ?? null,
+        away: (m.awayTeam || m.away || {}).name ?? null
+      }))
+    });
+  } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
+});
+
 app.get('/api/conf', async (req, res) => {
   const date = String(req.query.date || new Date().toISOString().slice(0, 10));
   const limit = Math.min(20, Math.max(1, Number.parseInt(req.query.limit || '12', 10) || 12));
