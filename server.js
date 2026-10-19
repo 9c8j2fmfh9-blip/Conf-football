@@ -175,8 +175,8 @@ app.get('/api/search-fixtures', async (req, res) => {
   const date = String(req.query.date || '');
   const query = String(req.query.q || '').trim();
   if (!date || !query) return res.status(400).json({ error: 'Indica data e testo da cercare.' });
-  const norm = value => String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
-  const terms = norm(query).split(/\\s+/).filter(Boolean);
+  const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
+  const terms = norm(query).split(/\s+/).filter(Boolean);
   try {
     const competitions = rows(await openFoot('/competitions'));
     const matchingCompetitions = competitions.filter(c => {
