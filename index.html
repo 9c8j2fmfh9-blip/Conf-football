@@ -163,8 +163,12 @@ async function loadGames(){
       if (finishedStates.has(state) || ['FT','AET','PEN','AWD','WO','PST','CANC','CANCELLED','POSTPONED'].includes(state)) return false;
       if (liveStates.has(state)) {
         const kickoff = new Date(f.fixture?.date || 0).getTime();
-        // L'API beta può lasciare lo stato LIVE anche dopo il 90'; per match vecchi di oltre 3 ore non mostrarli.
-        return Number.isFinite(kickoff) && kickoff > now - 3 * 60 * 60 * 1000;
+        const elapsed = Number(f.fixture?.status?.elapsed);
+        if (!Number.isFinite(kickoff)) return false;
+        // Se il provider lascia LIVE dopo il 90', nascondi la partita oltre la finestra realistica.
+        if (Number.isFinite(elapsed) && elapsed >= 90 && now - kickoff > 100 * 60 * 1000) return false;
+        if (!Number.isFinite(elapsed) && now - kickoff > 150 * 60 * 1000) return false;
+        return kickoff <= now + 5 * 60 * 1000;
       }
       const kickoff = new Date(f.fixture?.date || 0).getTime();
       return Number.isFinite(kickoff) && kickoff > now;
