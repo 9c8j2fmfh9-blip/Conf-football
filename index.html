@@ -87,14 +87,17 @@ function render(){
 }
 function renderConf(items){
   const root = $('#conf-results');
-  if(!items.length){
-    root.innerHTML = '<div class="empty">Nessun mercato supera la soglia del 70% con almeno 6 risultati storici disponibili.</div>';
+  const usable = items.map(f => ({...f, available:Object.values(f.markets || {}).filter(m => m.score !== null && m.sample >= 6)}))
+    .filter(f => f.available.length)
+    .sort((a,b) => Math.max(...b.available.map(m => m.score)) - Math.max(...a.available.map(m => m.score)));
+  if(!usable.length){
+    root.innerHTML = '<div class="empty">Non ci sono abbastanza risultati storici completi per calcolare gli indicatori. Prova con un’altra data o attendi il completamento dei dati.</div>';
     return;
   }
-  root.innerHTML = items.map(f => {
-    const markets = Object.values(f.markets || {}).filter(m => m.score !== null && m.score >= 70 && m.sample >= 6);
+  root.innerHTML = usable.map(f => {
+    const markets = f.available.sort((a,b) => b.score-a.score);
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => '<div style="display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:8px"><span>'+safe(m.label)+'<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare</div></span><strong>'+safe(m.score)+' / 100</strong></div>').join('')+'</div></article>';
+    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => '<div style="display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:8px"><span>'+safe(m.label)+'<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare · '+(m.score>=70?'SOGLIA RAGGIUNTA':'sotto soglia 70')+'</div></span><strong>'+safe(m.score)+' / 100</strong></div>').join('')+'</div></article>';
   }).join('');
 }
 async function loadConf(){
@@ -107,8 +110,9 @@ async function loadConf(){
     const response = await fetch('/api/conf?date='+encodeURIComponent(date)+'&limit=12',{cache:'no-store'});
     const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
-    renderConf((data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)));
-    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate. '+data.method+' Corner: non ancora disponibili.';
+    renderConf(data.fixtures || []);
+    const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
+    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+qualified+' con almeno un mercato ≥70. I risultati sotto soglia sono mostrati per trasparenza. '+data.method+' Corner: non ancora disponibili.';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
