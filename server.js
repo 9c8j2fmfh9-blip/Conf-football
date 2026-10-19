@@ -199,6 +199,43 @@ app.get('/api/leagues', async (_req, res) => {
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
 
+app.get('/api/debug-search', async (req, res) => {
+  const query = String(req.query.q || '').trim();
+  const date = String(req.query.date || '').match(/^\\d{4}-\\d{2}-\\d{2}$/) ? String(req.query.date) : new Date().toISOString().slice(0, 10);
+  const norm = value => String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
+  const terms = norm(query).split(/\\s+/).filter(Boolean);
+  const summarize = m => ({
+    id: m?.id ?? m?.fixture?.id ?? null,
+    keys: m && typeof m === 'object' ? Object.keys(m).slice(0, 30) : [],
+    kickoff: m?.kickoffAt ?? m?.date ?? m?.utcDate ?? m?.fixture?.date ?? null,
+    status: m?.status ?? m?.fixture?.status ?? null,
+    home: m?.homeTeam?.name ?? m?.home?.name ?? m?.teams?.home?.name ?? null,
+    away: m?.awayTeam?.name ?? m?.away?.name ?? m?.teams?.away?.name ?? null,
+    competition: m?.competition?.name ?? m?.competitionName ?? m?.league?.name ?? null,
+    competitionId: m?.competitionId ?? m?.competition?.id ?? m?.league?.id ?? null
+  });
+  try {
+    const [matchResult, competitionResult, searchResult] = await Promise.all([
+      openFoot('/matches', { date }).then(body => ({ count: rows(body).length, sample: rows(body).slice(0, 3).map(summarize) })).catch(e => ({ error: e.message, status: e.status || null })),
+      openFoot('/competitions').then(body => {
+        const all = rows(body);
+        const matches = all.filter(c => terms.every(t => norm(c.name || c.competitionName || c.competition?.name || c.label).includes(t)));
+        return { count: all.length, matches: matches.slice(0, 10).map(c => ({ id: c.id ?? c.competitionId ?? c.competition?.id, name: c.name ?? c.competitionName ?? c.competition?.name, keys: Object.keys(c).slice(0, 20) })) };
+      }).catch(e => ({ error: e.message, status: e.status || null })),
+      openFoot('/search', { q: query }).then(body => ({ count: rows(body).length, sample: rows(body).slice(0, 10).map(x => ({ id: x.id ?? x.teamId ?? x.competitionId ?? x.competition?.id ?? x.team?.id, name: x.name ?? x.displayName ?? x.team?.name ?? x.competition?.name ?? x.label, type: x.type ?? x.entityType ?? x.kind, keys: Object.keys(x).slice(0, 20) })) })).catch(e => ({ error: e.message, status: e.status || null }))
+    ]);
+    const competitionMatches = (competitionResult.matches || []).slice(0, 5);
+    const competitionFixtures = await Promise.all(competitionMatches.map(async c => {
+      const id = c.id;
+      try {
+        const body = await openFoot('/matches', { date, competition: id });
+        return { id, name: c.name, count: rows(body).length, sample: rows(body).slice(0, 3).map(summarize) };
+      } catch (e) { return { id, name: c.name, error: e.message, status: e.status || null }; }
+    }));
+    res.json({ query, date, matchResult, competitionResult, searchResult, competitionFixtures });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.get('/api/search-fixtures', async (req, res) => {
   const date = String(req.query.date || '');
   const query = String(req.query.q || '').trim();
