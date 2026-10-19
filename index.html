@@ -15,14 +15,53 @@
 </main>
 <script>
 const games=[
-{id:1,league:'Premier League · Demo',home:'Northbridge FC',away:'Westport United',time:'15:00',markets:[{name:'GG',conf:82,p:68,odds:1.62},{name:'Over 2.5',conf:78,p:64,odds:1.72},{name:'Over 1.5 HT',conf:61,p:43,odds:2.25},{name:'Corner 1T O4.5',conf:74,p:59,odds:1.85}]},
-{id:2,league:'Serie A · Demo',home:'AC Rivabella',away:'Sporting Marina',time:'16:30',markets:[{name:'GG',conf:76,p:63,odds:1.68},{name:'Over 2.5',conf:69,p:55,odds:1.91},{name:'Over 1.5 HT',conf:72,p:57,odds:1.95},{name:'Corner 1T O4.5',conf:66,p:51,odds:1.98}]},
-{id:3,league:'Championship · Demo',home:'Kingsford',away:'Redchester',time:'17:00',markets:[{name:'GG',conf:85,p:71,odds:1.55},{name:'Over 2.5',conf:81,p:67,odds:1.66},{name:'Over 1.5 HT',conf:73,p:59,odds:1.88},{name:'Corner 2T O4.5',conf:71,p:57,odds:1.90}]},
-{id:4,league:'Eredivisie · Demo',home:'SV Oranje',away:'Delft City',time:'18:00',markets:[{name:'GG',conf:79,p:66,odds:1.61},{name:'Over 2.5',conf:83,p:70,odds:1.58},{name:'Over 1.5 HT',conf:86,p:73,odds:1.52},{name:'Corner 1T O4.5',conf:68,p:52,odds:2.00}]},
-{id:5,league:'Liga Portugal · Demo',home:'Porto Azul',away:'Vale Sporting',time:'18:45',markets:[{name:'GG',conf:64,p:52,odds:1.92},{name:'Over 2.5',conf:74,p:60,odds:1.80},{name:'Over 1.5 HT',conf:67,p:53,odds:2.02},{name:'Corner 2T O4.5',conf:77,p:62,odds:1.78}]},
-{id:6,league:'Bundesliga · Demo',home:'Bergstadt',away:'FC Adler',time:'19:30',markets:[{name:'GG',conf:88,p:74,odds:1.48},{name:'Over 2.5',conf:84,p:71,odds:1.54},{name:'Over 1.5 HT',conf:80,p:66,odds:1.68},{name:'Corner 1T O4.5',conf:72,p:58,odds:1.88}]},
-{id:7,league:'Ligue 1 · Demo',home:'Olympique du Lac',away:'Saint-Clair',time:'20:00',markets:[{name:'GG',conf:71,p:58,odds:1.82},{name:'Over 2.5',conf:62,p:49,odds:2.10},{name:'Over 1.5 HT',conf:58,p:44,odds:2.35},{name:'Corner 2T O4.5',conf:75,p:61,odds:1.76}]},
-{id:8,league:'Serie B · Demo',home:'Caledonia',away:'Borgo FC',time:'20:45',markets:[{name:'GG',conf:73,p:60,odds:1.75},{name:'Over 2.5',conf:72,p:58,odds:1.84},{name:'Over 1.5 HT',conf:65,p:51,odds:2.08},{name:'Corner 1T O4.5',conf:81,p:66,odds:1.65}]}
-];let active='all';const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);function render(){const min=+$ ('#threshold').value;$('#thresholdValue').textContent=min;$('#thresholdLabel').textContent=min;const q=$('#search').value.trim().toLowerCase();let qualified=0;let rows=[];for(const g of games){const matchText=(g.home+' '+g.away+' '+g.league).toLowerCase();if(q&&!matchText.includes(q))continue;let ms=g.markets.filter(m=>m.conf>=min&&(active==='all'||(active==='Corner'?m.name.includes('Corner'):m.name===active)));qualified+=ms.length;if(ms.length)rows.push({g,ms,best:Math.max(...ms.map(m=>m.conf)),value:Math.max(...ms.map(m=>m.p-(100/m.odds)))});}const sort=$('#sort').value;rows.sort((a,b)=>sort==='time'?a.g.time.localeCompare(b.g.time):sort==='value'?b.value-a.value:b.best-a.best);$('#qualified').textContent=qualified;$('#total').textContent=games.length;const root=$('#results');root.innerHTML='';if(!rows.length){root.innerHTML='<div class="empty">Nessun mercato supera CONF '+min+'. Non abbassiamo il filtro per riempire la lista.</div>';return}for(const row of rows){const g=row.g;const card=document.createElement('article');card.className='match';card.innerHTML=`<div class="matchtop"><div><div class="league">${g.league}</div><div class="teams">${g.home}<br><span style="color:#9eacc2;font-weight:500;font-size:13px">vs</span> ${g.away}</div><div class="time">Orario demo: ${g.time}</div></div><div style="text-align:right"><div class="conf">${row.best}<span style="font-size:11px;color:#9eacc2">/100</span></div><div class="time">CONF migliore</div></div></div><div class="bar"><span style="width:${row.best}%"></span></div><div class="picks">${row.ms.map(m=>`<div class="pick"><b>${m.name}</b><em>CONF ${m.conf} · P stimata ${m.p}%</em><br>Quota demo ${m.odds.toFixed(2).replace('.',',')}</div>`).join('')}</div><div class="meta"><span>${row.ms.length} mercati sopra soglia</span><span class="status">DATI SIMULATI</span></div>`;root.appendChild(card)}}
+async function loadGames() {
+  const root = document.querySelector('#results');
+  root.innerHTML = '<div class="empty">Caricamento partite reali...</div>';
+
+  try {
+    const today = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Rome',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(new Date());
+
+    const res = await fetch('/api/fixtures?date=' + today);
+    if (!res.ok) throw new Error('API HTTP ' + res.status);
+
+    const data = await res.json();
+    const fixtures = data.response || data.fixtures;
+
+    if (!Array.isArray(fixtures)) {
+      throw new Error('Formato risposta API non riconosciuto');
+    }
+
+    games = fixtures.map((f, i) => ({
+      id: i + 1,
+      league: f.league?.name || 'Campionato',
+      home: f.teams?.home?.name || 'Casa',
+      away: f.teams?.away?.name || 'Trasferta',
+      time: f.fixture?.date
+        ? new Date(f.fixture.date).toLocaleTimeString('it-IT', {
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone: 'Europe/Rome'
+          })
+        : '--:--',
+      markets: []
+    }));
+
+    loadGames();
+    if (!games.length) {
+      root.innerHTML = '<div class="empty">Nessuna partita trovata per oggi.</div>';
+    }
+  } catch (err) {
+    root.innerHTML =
+      '<div class="empty">Errore caricamento partite: ' +
+      err.message + '</div>';
+  }
+}
+let active='all';const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);function render(){const min=+$ ('#threshold').value;$('#thresholdValue').textContent=min;$('#thresholdLabel').textContent=min;const q=$('#search').value.trim().toLowerCase();let qualified=0;let rows=[];for(const g of games){const matchText=(g.home+' '+g.away+' '+g.league).toLowerCase();if(q&&!matchText.includes(q))continue;let ms=g.markets.filter(m=>m.conf>=min&&(active==='all'||(active==='Corner'?m.name.includes('Corner'):m.name===active)));qualified+=ms.length;if(ms.length)rows.push({g,ms,best:Math.max(...ms.map(m=>m.conf)),value:Math.max(...ms.map(m=>m.p-(100/m.odds)))});}const sort=$('#sort').value;rows.sort((a,b)=>sort==='time'?a.g.time.localeCompare(b.g.time):sort==='value'?b.value-a.value:b.best-a.best);$('#qualified').textContent=qualified;$('#total').textContent=games.length;const root=$('#results');root.innerHTML='';if(!rows.length){root.innerHTML='<div class="empty">Nessun mercato supera CONF '+min+'. Non abbassiamo il filtro per riempire la lista.</div>';return}for(const row of rows){const g=row.g;const card=document.createElement('article');card.className='match';card.innerHTML=`<div class="matchtop"><div><div class="league">${g.league}</div><div class="teams">${g.home}<br><span style="color:#9eacc2;font-weight:500;font-size:13px">vs</span> ${g.away}</div><div class="time">Orario demo: ${g.time}</div></div><div style="text-align:right"><div class="conf">${row.best}<span style="font-size:11px;color:#9eacc2">/100</span></div><div class="time">CONF migliore</div></div></div><div class="bar"><span style="width:${row.best}%"></span></div><div class="picks">${row.ms.map(m=>`<div class="pick"><b>${m.name}</b><em>CONF ${m.conf} · P stimata ${m.p}%</em><br>Quota demo ${m.odds.toFixed(2).replace('.',',')}</div>`).join('')}</div><div class="meta"><span>${row.ms.length} mercati sopra soglia</span><span class="status">DATI SIMULATI</span></div>`;root.appendChild(card)}}
 $('#threshold').addEventListener('input',render);$('#search').addEventListener('input',render);$('#sort').addEventListener('change',render);$$('.chip').forEach(b=>b.addEventListener('click',()=>{$$('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');active=b.dataset.market;render()}));$('#reset').addEventListener('click',()=>{$('#search').value='';$('#threshold').value=70;$('#sort').value='conf';active='all';$$('.chip').forEach(x=>x.classList.toggle('active',x.dataset.market==='all'));render()});$('#export').addEventListener('click',()=>{const min=+$ ('#threshold').value;const q=$('#search').value.trim().toLowerCase();const lines=[['Campionato','Casa','Trasferta','Orario demo','Mercato','CONF','Probabilità demo %','Quota demo']];for(const g of games){if(q&&!(g.home+' '+g.away+' '+g.league).toLowerCase().includes(q))continue;for(const m of g.markets){if(m.conf>=min&&(active==='all'||(active==='Corner'?m.name.includes('Corner'):m.name===active)))lines.push([g.league,g.home,g.away,g.time,m.name,m.conf,m.p,m.odds])}}const csv='\ufeff'+lines.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='conf-football-demo.csv';a.click();URL.revokeObjectURL(a.href)});render();
 </script></body></html>
