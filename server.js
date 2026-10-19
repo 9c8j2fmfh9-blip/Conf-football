@@ -230,19 +230,38 @@ app.get('/api/debug-fixtures', async (req, res) => {
 });
 
 app.get('/api/conf', async (req, res) => {
-  const date = String(req.query.date || new Date().toISOString().slice(0, 10));
-  const limit = Math.min(20, Math.max(1, Number.parseInt(req.query.limit || '12', 10) || 12));
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return res.status(400).json({ error: 'Data non valida: usa YYYY-MM-DD.' });
+  const hours = Math.min(48, Math.max(1, Number.parseInt(req.query.hours || '24', 10) || 24));
+  const limit = Math.min(20, Math.max(1, Number.parseInt(req.query.limit || '20', 10) || 20));
+  const now = Date.now();
+  const cutoff = now + hours * 60 * 60 * 1000;
+  const dateParts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit'
+  }).formatToParts(new Date(now));
+  const part = key => dateParts.find(x => x.type === key).value;
+  const today = `${part('year')}-${part('month')}-${part('day')}`;
+  const tomorrowDate = new Date(Date.UTC(Number(part('year')), Number(part('month')) - 1, Number(part('day')) + 1));
+  const tomorrow = tomorrowDate.toISOString().slice(0, 10);
 
   try {
-    // Starter/demo plans may expose only a limited preview and prohibit cursor pagination.
-    // Use the first permitted page without a cursor; never treat the preview as exhaustive.
-    const fixtureBody = await openFoot('/matches', { date });
-    const allDayMatches = rows(fixtureBody);
-
-    const isScheduled = m => ['scheduled', 'unknown', 'upcoming', 'not_started', 'not-started', 'ns', 'fixture'].includes(String(m.status || '').toLowerCase());
+    // L'endpoint /matches filtra per data: interroghiamo oggi e domani,
+    // poi selezioniamo solo i kickoff compresi nelle prossime N ore.
+    const [todayBody, tomorrowBody] = await Promise.all([
+      openFoot('/matches', { date: today }),
+      openFoot('/matches', { date: tomorrow })
+    ]);
+    const allDayMatches = [...rows(todayBody), ...rows(tomorrowBody)];
+    const seen = new Set();
     const upcoming = allDayMatches
-      .filter(m => isScheduled(m) && new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime() > Date.now())
+      .filter(m => {
+        const state = statusCode(m.status);
+        const kickoff = new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime();
+        if (!Number.isFinite(kickoff) || kickoff <= now || kickoff > cutoff) return false;
+        if (['LIVE', 'FT', 'PST', 'CANC'].includes(state)) return false;
+        const id = String(m.id || '');
+        if (id && seen.has(id)) return false;
+        if (id) seen.add(id);
+        return true;
+      })
       .sort((a, b) => new Date(a.kickoffAt || a.date || a.utcDate || 0) - new Date(b.kickoffAt || b.date || b.utcDate || 0))
       .slice(0, limit);
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)]).filter(Boolean))];
@@ -347,12 +366,15 @@ app.get('/api/conf', async (req, res) => {
         }
       };
     });
+    const metaToday = todayBody?.meta || {};
+    const metaTomorrow = tomorrowBody?.meta || {};
+    const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
-      date, warnings,
+      windowHours: hours, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Frequenze descrittive calcolate sulle ultime 10 partite concluse restituite da OpenFootAPI per ciascuna squadra. Campione e mercati sono mostrati solo quando i risultati sono presenti; non sono probabilità predittive calibrate.',
       threshold: 70, limit, fixtures,
-      preview: { returned: allDayMatches.length, totalAvailable: fixtureBody?.meta?.total_count ?? null, partial: Boolean(fixtureBody?.meta?.scope?.partial) || allDayMatches.length < Number(fixtureBody?.meta?.total_count ?? allDayMatches.length), paginationAvailable: false },
-      note: 'Il piano demo può restituire solo un’anteprima e non consente la paginazione. Quote non disponibili nel piano Starter; non vengono inventate.'
+      preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
+      note: 'Ricerca effettuata su oggi e domani e filtrata sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
