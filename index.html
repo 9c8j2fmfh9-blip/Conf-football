@@ -27,7 +27,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 
 <section class="panel">
  <h2>Storico scommesse consigliate</h2>
- <p class="muted">Salva la migliore selezione CONF ≥70% con almeno 6 gare storiche. Usa Sincronizza per condividere lo storico tra PC e smartphone.</p>
+ <p class="muted">Mostra una sola scheda per partita con la scommessa CONF migliore. Tutti i mercati analizzati restano registrati per le statistiche. Usa Sincronizza per condividere lo storico tra PC e smartphone.</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button" id="sync-history" type="button">Sincronizza PC e smartphone</button><button class="button" id="check-results" type="button">Controlla risultati finali</button></div>
  <div id="sync-message" class="message">Sincronizzazione non ancora avviata.</div>
  <div id="history-summary" class="message">Nessuna selezione registrata.</div>
@@ -200,13 +200,28 @@ function renderHistory(){
   }).join('');
   dashboard.innerHTML = '<h3 style="margin:14px 0 6px;font-size:14px">Dashboard risultati</h3><div class="dashboard">'+cardHtml+'</div><h3 style="margin:14px 0 6px;font-size:14px">Percentuale di successo per mercato</h3><div class="market-stats">'+marketHtml+'</div><p class="muted" style="font-size:11px;margin:8px 0">Percentuali calcolate solo sulle selezioni segnate Vinta o Persa; le selezioni in attesa non entrano nel calcolo.</p>';
   const root = $('#history-results');
-  root.innerHTML = history.map(x => {
+  // Mostra una sola scheda per partita: priorità a una selezione qualificata CONF >=70% con campione >=6;
+  // se non esiste, mostra il mercato con la percentuale storica più alta. Tutti i mercati restano nello storico interno.
+  const byFixture = new Map();
+  for(const item of history){
+    const key = String(item.fixtureId || item.id);
+    if(!byFixture.has(key)) byFixture.set(key, []);
+    byFixture.get(key).push(item);
+  }
+  const visibleItems = [...byFixture.values()].map(items => {
+    const qualified = items.filter(x => Number(x.score) >= 70 && Number(x.sample) >= 6)
+      .sort((a,b) => Number(b.score)-Number(a.score));
+    const chosen = qualified[0] || [...items].sort((a,b) => Number(b.score)-Number(a.score))[0];
+    return chosen;
+  }).sort((a,b)=>String(a.date||'').localeCompare(String(b.date||'')));
+  root.innerHTML = visibleItems.map(x => {
     const kickoff = x.date ? new Date(x.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : 'Data non disponibile';
     const status = x.outcome === 'win' ? 'VINTA' : x.outcome === 'loss' ? 'PERSA' : 'DA AGGIORNARE';
+    const qualified = Number(x.score) >= 70 && Number(x.sample) >= 6;
     const outcomeHtml = x.outcome === 'pending'
       ? '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="win">Vinta</button><button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="loss" style="background:#6b2530;border-color:#a84c5b;color:#fff">Persa</button></div>'
       : '<button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="pending" style="margin-top:10px">Annulla esito</button>';
-    return '<article class="match"><div class="league">'+safe(x.league)+' · '+safe(kickoff)+'</div><div class="teams">'+safe(x.home)+' <span class="vs">CONTRO</span> '+safe(x.away)+'</div><div class="recommend"><div class="recommend-title">Scommessa consigliata · '+status+'</div><div class="recommend-market">'+safe(x.market)+' · '+safe(x.score)+'%</div><div class="recommend-note">'+safe(x.hits)+' su '+safe(x.sample)+' gare storiche</div></div>'+outcomeHtml+'</article>';
+    return '<article class="match"><div class="league">'+safe(x.league)+' · '+safe(kickoff)+'</div><div class="teams">'+safe(x.home)+' <span class="vs">CONTRO</span> '+safe(x.away)+'</div><div class="recommend"><div class="recommend-title">Scommessa consigliata · '+status+'</div><div class="recommend-market">'+safe(x.market)+' · '+safe(x.score)+'%</div><div class="recommend-note">'+safe(x.hits)+' su '+safe(x.sample)+' gare storiche'+(qualified?' · CONF qualificata':' · dato migliore disponibile, non qualificato')+'</div></div>'+outcomeHtml+'</article>';
   }).join('');
 }
 $('#history-results').addEventListener('click', event => {
