@@ -272,18 +272,22 @@ function statusLabel(f){
   if(finishedStates.has(s)) return 'Terminata';
   return 'In programma';
 }
+function normalizeSearch(value){
+  return String(value ?? '').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g,' ').trim();
+}
 function render(){
-  const q = $('#search').value.trim().toLocaleLowerCase('it');
+  const q = normalizeSearch($('#search').value);
+  const terms = q ? q.split(/\\s+/).filter(Boolean) : [];
   const filtered = games.filter(f => {
-    const text = [f.league?.name,f.teams?.home?.name,f.teams?.away?.name].join(' ').toLocaleLowerCase('it');
-    return text.includes(q);
+    const text = normalizeSearch([f.league?.name,f.league?.country,f.teams?.home?.name,f.teams?.away?.name].join(' '));
+    return terms.every(term => text.includes(term));
   });
   $('#total').textContent = games.length;
   $('#upcoming').textContent = games.filter(f => !liveStates.has(f.fixture?.status?.short) && !finishedStates.has(f.fixture?.status?.short)).length;
   $('#live').textContent = games.filter(f => liveStates.has(f.fixture?.status?.short)).length;
   const root = $('#results');
   if(!filtered.length){
-    root.innerHTML = '<div class="empty">Nessuna partita corrisponde alla ricerca per questa data.</div>';
+    root.innerHTML = '<div class="empty">Nessuna corrispondenza per “'+safe($('#search').value.trim())+'” tra le '+games.length+' partite caricate per questa data. Cancella il testo o cambia data.</div>';
     return;
   }
   root.innerHTML = filtered.map(f => {
