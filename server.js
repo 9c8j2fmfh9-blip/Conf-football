@@ -107,6 +107,43 @@ app.get('/api/conf', async (req, res) => {
     };
     await Promise.all(Array.from({ length: Math.min(4, teamIds.length) }, worker));
 
+    // Corner data are available per historical fixture. Limit to the 3 latest
+    // relevant matches per team to control provider requests; cached responses are reused.
+    const cornerMatches = new Map();
+    const cornerFixtureIds = new Set();
+    for (const f of upcoming) {
+      const homeAll = forms.get(f.teams.home.id) || [];
+      const awayAll = forms.get(f.teams.away.id) || [];
+      const homeVenue = homeAll.filter(m => m.teams?.home?.id === f.teams.home.id);
+      const awayVenue = awayAll.filter(m => m.teams?.away?.id === f.teams.away.id);
+      const home = homeVenue.length >= 3 ? homeVenue : homeAll;
+      const away = awayVenue.length >= 3 ? awayVenue : awayAll;
+      for (const m of [...home.slice(0, 3), ...away.slice(0, 3)]) {
+        if (m.fixture?.id) cornerFixtureIds.add(m.fixture.id);
+      }
+    }
+    const cornerIds = [...cornerFixtureIds];
+    let cornerCursor = 0;
+    const cornerWorker = async () => {
+      while (cornerCursor < cornerIds.length) {
+        const fixtureId = cornerIds[cornerCursor++];
+        try {
+          const data = await apiFootball('/fixtures/statistics', { fixture: fixtureId });
+          const rows = (data.response || []).map(team => {
+            const stat = (team.statistics || []).find(s => String(s.type).toLowerCase() === 'corner kicks');
+            const value = stat?.value;
+            return value === null || value === undefined ? null : Number(value);
+          });
+          if (rows.length >= 2 && rows.every(n => Number.isFinite(n))) {
+            cornerMatches.set(fixtureId, { totalCorners: rows[0] + rows[1] });
+          }
+        } catch {
+          // Missing corner coverage is kept as missing data, never estimated.
+        }
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(4, cornerIds.length) }, cornerWorker));
+
     const frequency = (matches, predicate) => {
       const valid = matches.filter(m => m.score?.fulltime?.home != null && m.score?.fulltime?.away != null);
       if (!valid.length) return { score: null, hits: 0, sample: 0 };
@@ -144,6 +181,17 @@ app.get('/api/conf', async (req, res) => {
       const btts = frequency(sample, m => m.score.fulltime.home > 0 && m.score.fulltime.away > 0);
       const htMatches = sample.filter(halftimeAvailable);
       const ht = frequency(htMatches, m => m.score.halftime.home + m.score.halftime.away >= 2);
+      const cornerSample = [...home.slice(0, 3), ...away.slice(0, 3)]
+        .map(m => cornerMatches.get(m.fixture?.id))
+        .filter(m => m && Number.isFinite(m.totalCorners));
+      const cornerHits = cornerSample.filter(m => m.totalCorners >= 9).length;
+      const cornerMarket = {
+        score: cornerSample.length ? Math.round(100 * cornerHits / cornerSample.length) : null,
+        hits: cornerHits,
+        sample: cornerSample.length,
+        label: 'Over 8.5 corner FT',
+        average: cornerSample.length ? Number((cornerSample.reduce((sum, m) => sum + m.totalCorners, 0) / cornerSample.length).toFixed(2)) : null
+      };
       return {
         fixtureId: f.fixture.id,
         date: f.fixture.date,
@@ -160,12 +208,12 @@ app.get('/api/conf', async (req, res) => {
           over25: { ...goals, label: 'Over 2.5 FT' },
           btts: { ...btts, label: 'GG' },
           over15ht: { ...ht, label: 'Over 1.5 HT' },
-          corners: { score: null, hits: 0, sample: 0, label: 'Corner', note: 'Statistiche corner non ancora calcolate' }
+          corners: cornerMarket
         }
       };
     });
     res.json({
-      date, method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili: usa le gare in casa per la squadra di casa e in trasferta per quella ospite quando sono disponibili almeno 3; altrimenti ripiega sulla forma generale. Include W/P/V e media gol fatti/subiti recenti. Non è una probabilità predittiva calibrata.',
+      date, method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili: usa le gare in casa per la squadra di casa e in trasferta per quella ospite quando sono disponibili almeno 3; altrimenti ripiega sulla forma generale. Include W/P/V, media gol fatti/subiti e Over 8.5 corner FT calcolato sulle ultime 3 gare selezionate per squadra quando il provider fornisce i dati. Non è una probabilità predittiva calibrata.',
       threshold: 70, limit, fixtures: results,
       note: 'Un punteggio è mostrato solo quando esistono risultati reali utilizzabili. Il campione può essere inferiore a 10 se mancano dati.'
     });
