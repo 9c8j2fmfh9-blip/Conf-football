@@ -25,16 +25,6 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <div id="conf-results" class="matches"></div>
 </section>
 
-<section class="panel">
- <h2>Storico scommesse consigliate</h2>
- <p class="muted">Mostra una sola scheda per partita con la scommessa CONF migliore. Tutti i mercati analizzati restano registrati per le statistiche. Usa Sincronizza per condividere lo storico tra PC e smartphone.</p>
- <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button" id="sync-history" type="button">Sincronizza PC e smartphone</button><button class="button" id="check-results" type="button">Controlla risultati finali</button></div>
- <div id="sync-message" class="message">Sincronizzazione non ancora avviata.</div>
- <div id="history-summary" class="message">Nessuna selezione registrata.</div>
- <div id="history-dashboard"></div>
- <div id="history-results" class="matches"></div>
-</section>
-
 <div class="stats">
  <div class="stat"><small>Partite trovate</small><strong id="total">—</strong></div>
  <div class="stat"><small>In programma</small><strong id="upcoming">—</strong></div>
@@ -58,184 +48,6 @@ const $ = (s) => document.querySelector(s);
 let games = [];
 let confItems = [];
 let confOnlyQualified = false;
-const HISTORY_KEY = 'confFootballBetHistoryV1';
-function readHistory(){
-  try {
-    const value = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
-    return Array.isArray(value) ? value : [];
-  } catch { return []; }
-}
-function writeHistory(items){
-  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(items)); }
-  catch { $('#history-summary').textContent = 'Impossibile salvare lo storico in questo browser.'; }
-}
-function saveRecommendations(fixtures){
-  // Registra automaticamente ogni mercato valutabile, non soltanto quello sopra soglia.
-  // In questo modo CONF potrà confrontare in seguito tutte le sue analisi con i risultati reali.
-  const history = readHistory();
-  const known = new Set(history.map(x => x.id));
-  let added = 0;
-  const marketKeys = ['one','draw','two','over25','btts'];
-  for(const f of fixtures){
-    if(!f.fixtureId) continue;
-    for(const key of marketKeys){
-      const market = f.markets?.[key];
-      if(!market || market.score === null || !Number.isFinite(Number(market.score))) continue;
-      const id = String(f.fixtureId)+'|'+String(market.label || key);
-      if(known.has(id)) continue;
-      history.unshift({
-        id, fixtureId:f.fixtureId, date:f.date || null, league:f.league || '',
-        home:f.home || '', away:f.away || '', market:market.label || key,
-        score:Number(market.score), hits:Number(market.hits || 0),
-        sample:Number(market.sample || 0), outcome:'pending',
-        recordedAt:new Date().toISOString()
-      });
-      known.add(id);
-      added++;
-    }
-  }
-  writeHistory(history.slice(0,500));
-  renderHistory();
-  return added;
-}
-
-const HISTORY_TOKEN_KEY = 'confFootballHistoryAccessToken';
-async function syncHistory(){
-  const status = $('#sync-message');
-  let token = localStorage.getItem(HISTORY_TOKEN_KEY);
-  if(!token){
-    token = prompt('Inserisci il codice di sincronizzazione creato nelle variabili ambiente di Render. Non usare la password Supabase.');
-    if(!token) return;
-    localStorage.setItem(HISTORY_TOKEN_KEY, token.trim());
-    token = token.trim();
-  }
-  status.textContent = 'Sincronizzazione in corso…';
-  try {
-    const headers = { 'x-history-token': token, 'Content-Type': 'application/json' };
-    const response = await fetch('/api/history', { headers, cache: 'no-store' });
-    const remoteData = await response.json();
-    if(!response.ok) throw new Error(remoteData.error || 'Errore lettura storico');
-    const local = readHistory();
-    const merged = new Map();
-    for(const item of [...(remoteData.history || []).map(x => ({
-      id:x.id, fixtureId:x.fixture_id, date:x.match_date, league:x.league, home:x.home, away:x.away,
-      market:x.market, score:x.score, hits:x.hits, sample:x.sample, outcome:x.outcome, recordedAt:x.recorded_at, updatedAt:x.updated_at
-    })), ...local]) {
-      const previous = merged.get(item.id);
-      if(!previous || (item.updatedAt || item.recordedAt || '') >= (previous.updatedAt || previous.recordedAt || '')) merged.set(item.id,item);
-    }
-    const combined = [...merged.values()].sort((a,b)=>String(b.recordedAt||'').localeCompare(String(a.recordedAt||''))).slice(0,500);
-    writeHistory(combined);
-    const saveResponse = await fetch('/api/history', { method:'POST', headers, body:JSON.stringify({history:combined}) });
-    const saved = await saveResponse.json();
-    if(!saveResponse.ok) throw new Error(saved.error || 'Errore salvataggio storico');
-    renderHistory();
-    status.textContent = 'Sincronizzazione completata: '+combined.length+' selezioni condivise tra i dispositivi.';
-  } catch(error) {
-    if(String(error.message).toLowerCase().includes('codice')) localStorage.removeItem(HISTORY_TOKEN_KEY);
-    status.textContent = 'Sincronizzazione non riuscita: '+error.message;
-  }
-}
-async function checkFinalResults(silent=false){
-  const status = $('#sync-message');
-  let token = localStorage.getItem(HISTORY_TOKEN_KEY);
-  if(!token && !silent){
-    token = prompt('Inserisci il codice di sincronizzazione creato nelle variabili ambiente di Render. Non usare la password Supabase.');
-    if(!token) return;
-    token = token.trim();
-    localStorage.setItem(HISTORY_TOKEN_KEY, token);
-  }
-  if(!token) return;
-  if(!silent) status.textContent = 'Controllo dei risultati finali verificabili…';
-  try{
-    const response = await fetch('/api/history/settle',{method:'POST',headers:{'x-history-token':token}});
-    const data = await response.json();
-    if(!response.ok) throw new Error(data.error || 'Errore nel controllo dei risultati');
-    if(data.settled > 0 || !silent){
-      status.textContent = data.settled+' esiti aggiornati automaticamente · '+(data.pending || 0)+' ancora da verificare.';
-      await syncHistory();
-    }
-  }catch(error){
-    if(!silent) status.textContent = 'Controllo risultati non riuscito: '+error.message;
-    if(String(error.message).toLowerCase().includes('codice')) localStorage.removeItem(HISTORY_TOKEN_KEY);
-  }
-}
-$('#sync-history').addEventListener('click', syncHistory);
-$('#check-results').addEventListener('click', () => checkFinalResults(false));
-
-function renderHistory(){
-  const history = readHistory();
-  const wins = history.filter(x => x.outcome === 'win').length;
-  const losses = history.filter(x => x.outcome === 'loss').length;
-  const pending = history.filter(x => x.outcome === 'pending').length;
-  const settled = wins + losses;
-  const rate = settled ? Math.round(wins / settled * 100) : null;
-  $('#history-summary').textContent = 'Registrate: '+history.length+' · Da aggiornare: '+pending+' · Vinte: '+wins+' · Perse: '+losses+' · Percentuale di successo: '+(rate === null ? '—' : rate+'%')+(settled < 10 ? ' · campione ancora troppo piccolo per valutare l’affidabilità' : '')+'.';
-  const dashboard = $('#history-dashboard');
-  if(!history.length){
-    dashboard.innerHTML = '';
-    $('#history-results').innerHTML = '<div class="empty">Lo storico è vuoto. Premi “Calcola CONF” per registrare le prime selezioni qualificate.</div>';
-    return;
-  }
-  const groups = [
-    {name:'1X2', test:x=>/vittoria casa|pareggio|vittoria trasferta|^1\s|^x\s|^2\s/i.test(x.market || '')},
-    {name:'Over 2.5 FT', test:x=>/over\s*2[.,]5/i.test(x.market || '')},
-    {name:'GG', test:x=>/\bgg\b|entrambe.*segn/i.test(x.market || '')}
-  ];
-  const cards = [
-    ['Selezioni totali',history.length],
-    ['Vinte',wins],
-    ['Perse',losses],
-    ['In attesa',pending]
-  ];
-  const cardHtml = cards.map(([label,value])=>'<div class="dash-card"><small>'+label+'</small><strong>'+value+'</strong></div>').join('');
-  const marketHtml = groups.map(group=>{
-    const items=history.filter(group.test);
-    const w=items.filter(x=>x.outcome==='win').length;
-    const l=items.filter(x=>x.outcome==='loss').length;
-    const p=items.filter(x=>x.outcome==='pending').length;
-    const n=w+l;
-    const pct=n?Math.round(w/n*100):null;
-    return '<div class="market-stat"><div class="market-head"><span>'+group.name+'</span><span>'+(pct===null?'—':pct+'%')+(n>0&&n<10?' · campione piccolo':'')+'</span></div><div class="market-track"><div class="market-fill" style="width:'+(pct===null?0:pct)+'%"></div></div><div class="market-detail">'+items.length+' registrate · '+w+' vinte · '+l+' perse · '+p+' in attesa'+(n?' · '+n+' concluse':'')+'</div></div>';
-  }).join('');
-  dashboard.innerHTML = '<h3 style="margin:14px 0 6px;font-size:14px">Dashboard risultati</h3><div class="dashboard">'+cardHtml+'</div><h3 style="margin:14px 0 6px;font-size:14px">Percentuale di successo per mercato</h3><div class="market-stats">'+marketHtml+'</div><p class="muted" style="font-size:11px;margin:8px 0">Percentuali calcolate solo sulle selezioni segnate Vinta o Persa; le selezioni in attesa non entrano nel calcolo.</p>';
-  const root = $('#history-results');
-  // Mostra una sola scheda per partita: priorità a una selezione qualificata CONF >=70% con campione >=6;
-  // se non esiste, mostra il mercato con la percentuale storica più alta. Tutti i mercati restano nello storico interno.
-  const byFixture = new Map();
-  for(const item of history){
-    const key = String(item.fixtureId || item.id);
-    if(!byFixture.has(key)) byFixture.set(key, []);
-    byFixture.get(key).push(item);
-  }
-  const visibleItems = [...byFixture.values()].map(items => {
-    const qualified = items.filter(x => Number(x.score) >= 70 && Number(x.sample) >= 6)
-      .sort((a,b) => Number(b.score)-Number(a.score));
-    const chosen = qualified[0] || [...items].sort((a,b) => Number(b.score)-Number(a.score))[0];
-    return chosen;
-  }).sort((a,b)=>String(a.date||'').localeCompare(String(b.date||'')));
-  root.innerHTML = visibleItems.map(x => {
-    const kickoff = x.date ? new Date(x.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : 'Data non disponibile';
-    const status = x.outcome === 'win' ? 'VINTA' : x.outcome === 'loss' ? 'PERSA' : 'DA AGGIORNARE';
-    const qualified = Number(x.score) >= 70 && Number(x.sample) >= 6;
-    const outcomeHtml = x.outcome === 'pending'
-      ? '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="win">Vinta</button><button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="loss" style="background:#6b2530;border-color:#a84c5b;color:#fff">Persa</button></div>'
-      : '<button class="button history-set" data-id="'+safe(x.id)+'" data-outcome="pending" style="margin-top:10px">Annulla esito</button>';
-    return '<article class="match"><div class="league">'+safe(x.league)+' · '+safe(kickoff)+'</div><div class="teams">'+safe(x.home)+' <span class="vs">CONTRO</span> '+safe(x.away)+'</div><div class="recommend"><div class="recommend-title">Scommessa consigliata · '+status+'</div><div class="recommend-market">'+safe(x.market)+' · '+safe(x.score)+'%</div><div class="recommend-note">'+safe(x.hits)+' su '+safe(x.sample)+' gare storiche'+(qualified?' · CONF qualificata':' · dato migliore disponibile, non qualificato')+'</div></div>'+outcomeHtml+'</article>';
-  }).join('');
-}
-$('#history-results').addEventListener('click', event => {
-  const button = event.target.closest('button.history-set');
-  if(!button) return;
-  const history = readHistory();
-  const item = history.find(x => x.id === button.dataset.id);
-  if(!item) return;
-  item.outcome = button.dataset.outcome;
-  item.updatedAt = new Date().toISOString();
-  writeHistory(history);
-  renderHistory();
-  if(localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
-});
 const liveStates = new Set(['1H','HT','2H','ET','BT','P','LIVE']);
 const finishedStates = new Set(['FT','AET','PEN','AWD','WO']);
 function romeToday(){
@@ -324,8 +136,6 @@ async function loadConf(){
     const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
-    const savedCount = saveRecommendations(data.fixtures || []);
-    if(savedCount > 0 && localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
     $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove valutazioni di mercato registrate automaticamente: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
@@ -382,8 +192,7 @@ async function loadGames(){
   }
 }
 $('#date').value = romeToday();
-renderHistory();
-if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
+
 $('#reload').addEventListener('click',loadGames);
 $('#analyze').addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
