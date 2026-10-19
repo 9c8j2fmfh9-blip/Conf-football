@@ -116,9 +116,29 @@ app.get('/api/conf', async (req, res) => {
     const totalGoals = m => m.score.fulltime.home + m.score.fulltime.away;
     const halftimeAvailable = m => m.score?.halftime?.home != null && m.score?.halftime?.away != null;
 
+    const teamPerspective = (matches, teamId) => {
+      const valid = matches.filter(m => m.score?.fulltime?.home != null && m.score?.fulltime?.away != null);
+      let wins = 0, draws = 0, losses = 0, goalsFor = 0, goalsAgainst = 0;
+      for (const m of valid) {
+        const isHome = m.teams?.home?.id === teamId;
+        const gf = isHome ? m.score.fulltime.home : m.score.fulltime.away;
+        const ga = isHome ? m.score.fulltime.away : m.score.fulltime.home;
+        goalsFor += gf; goalsAgainst += ga;
+        if (gf > ga) wins++; else if (gf === ga) draws++; else losses++;
+      }
+      return { sample: valid.length, wins, draws, losses, goalsFor, goalsAgainst,
+        averageFor: valid.length ? Number((goalsFor / valid.length).toFixed(2)) : null,
+        averageAgainst: valid.length ? Number((goalsAgainst / valid.length).toFixed(2)) : null };
+    };
+
     const results = upcoming.map(f => {
-      const home = forms.get(f.teams.home.id) || [];
-      const away = forms.get(f.teams.away.id) || [];
+      const homeAll = forms.get(f.teams.home.id) || [];
+      const awayAll = forms.get(f.teams.away.id) || [];
+      const homeVenue = homeAll.filter(m => m.teams?.home?.id === f.teams.home.id);
+      const awayVenue = awayAll.filter(m => m.teams?.away?.id === f.teams.away.id);
+      // Use venue-specific form when there are at least 3 matches; otherwise fall back to overall recent form.
+      const home = homeVenue.length >= 3 ? homeVenue : homeAll;
+      const away = awayVenue.length >= 3 ? awayVenue : awayAll;
       const sample = [...home, ...away];
       const goals = frequency(sample, m => totalGoals(m) >= 3);
       const btts = frequency(sample, m => m.score.fulltime.home > 0 && m.score.fulltime.away > 0);
@@ -132,6 +152,10 @@ app.get('/api/conf', async (req, res) => {
         country: f.league.country,
         home: f.teams.home.name,
         away: f.teams.away.name,
+        form: {
+          home: { recentOverall: teamPerspective(homeAll, f.teams.home.id), selectedVenue: homeVenue.length >= 3 ? 'casa' : 'forma generale', selectedSample: home.length },
+          away: { recentOverall: teamPerspective(awayAll, f.teams.away.id), selectedVenue: awayVenue.length >= 3 ? 'trasferta' : 'forma generale', selectedSample: away.length }
+        },
         markets: {
           over25: { ...goals, label: 'Over 2.5 FT' },
           btts: { ...btts, label: 'GG' },
@@ -141,7 +165,7 @@ app.get('/api/conf', async (req, res) => {
       };
     });
     res.json({
-      date, method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili per ciascuna squadra; non è una probabilità predittiva calibrata.',
+      date, method: 'Frequenza storica descrittiva sulle ultime 5 gare disponibili: usa le gare in casa per la squadra di casa e in trasferta per quella ospite quando sono disponibili almeno 3; altrimenti ripiega sulla forma generale. Include W/P/V e media gol fatti/subiti recenti. Non è una probabilità predittiva calibrata.',
       threshold: 70, limit, fixtures: results,
       note: 'Un punteggio è mostrato solo quando esistono risultati reali utilizzabili. Il campione può essere inferiore a 10 se mancano dati.'
     });
