@@ -1,74 +1,119 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101827"><title>CONF Football — prototipo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>CONF Football</title>
 <style>
-:root{--bg:#0b1220;--panel:#111c2f;--panel2:#17243a;--text:#f4f7fb;--muted:#9eacc2;--line:#2b3b53;--green:#45d483;--amber:#ffc857;--red:#ff7777;--blue:#77aaff}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#101a2b,var(--bg) 330px);color:var(--text);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{padding:24px 18px 16px;max-width:1100px;margin:auto}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:14px;background:#1b724b;display:grid;place-items:center;font-weight:900;font-size:20px}.eyebrow{color:var(--green);font-weight:800;letter-spacing:.12em;font-size:11px}.title{font-size:clamp(27px,5vw,38px);font-weight:850;letter-spacing:-.04em;margin:2px 0}.sub{color:var(--muted);margin:4px 0 0}.wrap{max-width:1100px;padding:0 18px 40px;margin:auto}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.stat,.panel,.match{background:rgba(17,28,47,.94);border:1px solid var(--line);border-radius:16px}.stat{padding:14px}.stat small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}.stat strong{display:block;font-size:26px;margin-top:3px}.panel{padding:16px;margin:14px 0}.panel h2{font-size:16px;margin:0 0 12px}.filters{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px}.field label{display:block;color:var(--muted);font-size:12px;margin:0 0 5px}.field input,.field select{width:100%;padding:11px;border-radius:10px;background:#0b1424;color:var(--text);border:1px solid var(--line);font:inherit}.marketbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip,button{border:1px solid var(--line);background:#15233a;color:var(--text);padding:9px 12px;border-radius:999px;font:inherit;cursor:pointer}.chip.active{background:#1a503a;border-color:#2b9b67;color:#d7ffe9}.btn{background:var(--green);border-color:var(--green);color:#082015;font-weight:800}.btn.secondary{background:#15233a;color:var(--text);border-color:var(--line)}.matches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.match{padding:15px}.matchtop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.league{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.07em}.teams{font-size:17px;font-weight:800;margin:5px 0}.time{color:var(--muted);font-size:12px}.conf{font-size:20px;font-weight:900;color:var(--green);white-space:nowrap}.bar{height:6px;background:#29384d;border-radius:99px;overflow:hidden;margin:10px 0}.bar span{display:block;height:100%;background:var(--green)}.picks{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.pick{border:1px solid #2b4c41;background:#102c26;border-radius:9px;padding:8px 9px;font-size:12px}.pick b{display:block;font-size:13px}.pick em{font-style:normal;color:#a5e9c5}.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:12px;margin-top:12px}.status{font-size:11px;border-radius:99px;padding:4px 7px;background:#2c2635;color:#ffd6a2;display:inline-block}.note{color:var(--muted);font-size:12px}.empty{border:1px dashed var(--line);padding:25px;text-align:center;color:var(--muted);border-radius:14px;grid-column:1/-1}.footer{color:var(--muted);font-size:12px;padding:15px 2px}.footer a{color:#a7c8ff}.hide{display:none!important}@media(max-width:700px){.filters{grid-template-columns:1fr 1fr}.filters .field:first-child{grid-column:1/-1}.matches{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:22px}.panel{padding:13px}}
-</style></head><body>
-<header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Analizza. Filtra. Verifica.</p></div></div></header>
-<main class="wrap">
-<div class="stats"><div class="stat"><small>Partite demo</small><strong id="total">8</strong></div><div class="stat"><small>Mercati CONF ≥ soglia</small><strong id="qualified">—</strong></div><div class="stat"><small>Soglia CONF</small><strong id="thresholdLabel">70</strong></div></div>
-<section class="panel"><h2>Filtri analisi</h2><div class="filters"><div class="field"><label for="search">Cerca squadra o campionato</label><input id="search" placeholder="Es. Premier League"></div><div class="field"><label for="threshold">CONF minimo: <span id="thresholdValue">70</span></label><input id="threshold" type="range" min="50" max="90" value="70" step="1"></div><div class="field"><label for="sort">Ordina per</label><select id="sort"><option value="conf">CONF più alto</option><option value="time">Orario partita</option><option value="value">Valore quota stimato</option></select></div></div><div class="marketbar" id="markets"><button class="chip active" data-market="all">Tutti i mercati</button><button class="chip" data-market="GG">GG</button><button class="chip" data-market="Over 2.5">Over 2.5</button><button class="chip" data-market="Over 1.5 HT">Over 1.5 HT</button><button class="chip" data-market="Corner">Corner</button></div><p class="note">I dati attualmente mostrati sono esempi fittizi per testare l'interfaccia: non sono partite reali né pronostici.</p></section>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#111c2f;--line:#293a53;--text:#f4f7fb;--muted:#9eacc2;--green:#45d483;--blue:#8ab4ff}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#142238,var(--bg) 350px);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}header{padding-top:25px;padding-bottom:20px}.brand{display:flex;gap:12px;align-items:center}.logo{width:46px;height:46px;border-radius:14px;background:#1b724b;display:grid;place-items:center;font-weight:900;font-size:20px}.eyebrow{color:var(--green);font-size:11px;font-weight:800;letter-spacing:.12em}.title{font-size:clamp(28px,5vw,38px);font-weight:850;letter-spacing:-.04em;margin:2px 0}.sub,.muted{color:var(--muted)}.sub{margin:0}main{padding-bottom:45px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0 16px}.stat,.panel,.match{background:rgba(17,28,47,.96);border:1px solid var(--line);border-radius:16px}.stat{padding:14px}.stat small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}.stat strong{font-size:25px;display:block;margin-top:3px}.panel{padding:16px;margin:14px 0}.panel h2{font-size:16px;margin:0 0 12px}.filters{display:grid;grid-template-columns:1fr 1.4fr auto;gap:10px;align-items:end}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.field input{width:100%;padding:11px;border-radius:10px;background:#0b1424;color:var(--text);border:1px solid var(--line);font:inherit}.button{border:1px solid var(--green);background:var(--green);color:#082015;font-weight:800;padding:11px 15px;border-radius:10px;cursor:pointer;font:inherit}.button:disabled{opacity:.6;cursor:wait}.message{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;color:var(--muted)}.matches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.match{padding:15px;min-width:0}.matchtop{display:flex;justify-content:space-between;gap:12px}.league{color:var(--blue);font-size:11px;text-transform:uppercase;letter-spacing:.06em}.teams{font-size:17px;font-weight:800;margin:8px 0;overflow-wrap:anywhere}.vs{color:var(--muted);font-size:12px;font-weight:500}.time{font-size:12px;color:var(--muted)}.score{font-size:22px;font-weight:900;white-space:nowrap}.status{display:inline-block;margin-top:8px;font-size:11px;border-radius:99px;padding:4px 8px;background:#20334a;color:#d5e6ff}.foot{color:var(--muted);font-size:12px;margin:18px 2px}.empty{grid-column:1/-1;text-align:center;border:1px dashed var(--line);border-radius:14px;padding:25px;color:var(--muted)}
+@media(max-width:680px){.filters{grid-template-columns:1fr 1fr}.filters .field:first-child{grid-column:1/-1}.filters button{width:100%}.matches{grid-template-columns:1fr}.stat{padding:10px}.stat strong{font-size:21px}.panel{padding:13px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Partite reali · dati aggiornati dal provider</p></div></div></header>
+<main>
+<div class="stats">
+ <div class="stat"><small>Partite trovate</small><strong id="total">—</strong></div>
+ <div class="stat"><small>In programma</small><strong id="upcoming">—</strong></div>
+ <div class="stat"><small>Live</small><strong id="live">—</strong></div>
+</div>
+<section class="panel">
+ <h2>Partite</h2>
+ <div class="filters">
+  <div class="field"><label for="date">Data (ora italiana)</label><input id="date" type="date"></div>
+  <div class="field"><label for="search">Cerca squadra o campionato</label><input id="search" type="search" placeholder="Es. Inter, Premier League"></div>
+  <button class="button" id="reload">Aggiorna</button>
+ </div>
+ <div id="message" class="message" role="status">Caricamento delle partite reali…</div>
+</section>
 <div id="results" class="matches"></div>
-<section class="panel"><h2>Come viene calcolato CONF</h2><p class="note">Nel prototipo, CONF è un indice dimostrativo basato su segnali simulati. Nella versione con dati reali useremo statistiche storiche, qualità/copertura dei dati e calibrazione sui risultati passati. CONF 70 non equivale automaticamente a una probabilità di successo del 70%.</p><div class="marketbar"><button class="btn" id="export">Esporta risultati CSV</button><button class="btn secondary" id="reset">Reset filtri</button></div></section>
-<div class="footer">CONF Football · prototipo gratuito · nessuna connessione a feed live. Per pubblicarlo online e collegare i dati serve configurare un provider e proteggere la chiave API lato server.</div>
+<section class="panel">
+ <h2>Analisi CONF</h2>
+ <p class="muted">Il collegamento alle partite reali è attivo. Gli indici CONF per GG, Over 2.5, Over 1.5 HT e corner non sono ancora calcolati: non mostriamo probabilità, quote o pronostici inventati. Il prossimo passaggio è collegare statistiche e quote verificabili e costruire il modello.</p>
+</section>
+<p class="foot">CONF Football · fuso orario Europe/Rome · dati delle partite forniti da API-Football.</p>
 </main>
 <script>
-const games=[
-async function loadGames() {
-  const root = document.querySelector('#results');
-  root.innerHTML = '<div class="empty">Caricamento partite reali...</div>';
-
-  try {
-    const today = new Intl.DateTimeFormat('en-CA', {
-      timeZone: 'Europe/Rome',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    }).format(new Date());
-
-    const res = await fetch('/api/fixtures?date=' + today);
-    if (!res.ok) throw new Error('API HTTP ' + res.status);
-
-    const data = await res.json();
-    const fixtures = data.response || data.fixtures;
-
-    if (!Array.isArray(fixtures)) {
-      throw new Error('Formato risposta API non riconosciuto');
+const $ = (s) => document.querySelector(s);
+let games = [];
+const liveStates = new Set(['1H','HT','2H','ET','BT','P','LIVE']);
+const finishedStates = new Set(['FT','AET','PEN','AWD','WO']);
+function romeToday(){
+  const parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const val = (k) => parts.find(p => p.type === k).value;
+  return val('year')+'-'+val('month')+'-'+val('day');
+}
+function safe(value){
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function statusLabel(f){
+  const s = f.fixture?.status?.short || '';
+  if(liveStates.has(s)) return 'LIVE';
+  if(finishedStates.has(s)) return 'Terminata';
+  return 'In programma';
+}
+function render(){
+  const q = $('#search').value.trim().toLocaleLowerCase('it');
+  const filtered = games.filter(f => {
+    const text = [f.league?.name,f.teams?.home?.name,f.teams?.away?.name].join(' ').toLocaleLowerCase('it');
+    return text.includes(q);
+  });
+  $('#total').textContent = games.length;
+  $('#upcoming').textContent = games.filter(f => !liveStates.has(f.fixture?.status?.short) && !finishedStates.has(f.fixture?.status?.short)).length;
+  $('#live').textContent = games.filter(f => liveStates.has(f.fixture?.status?.short)).length;
+  const root = $('#results');
+  if(!filtered.length){
+    root.innerHTML = '<div class="empty">Nessuna partita corrisponde alla ricerca per questa data.</div>';
+    return;
+  }
+  root.innerHTML = filtered.map(f => {
+    const date = f.fixture?.date ? new Date(f.fixture.date) : null;
+    const time = date ? date.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '--:--';
+    const state = f.fixture?.status?.short || '';
+    const elapsed = f.fixture?.status?.elapsed;
+    const scoreHome = f.goals?.home;
+    const scoreAway = f.goals?.away;
+    const hasScore = scoreHome !== null && scoreHome !== undefined && scoreAway !== null && scoreAway !== undefined;
+    const score = hasScore ? safe(scoreHome)+' - '+safe(scoreAway) : safe(time);
+    const extra = liveStates.has(state) && elapsed !== null && elapsed !== undefined ? ' · '+safe(elapsed)+'′' : '';
+    return '<article class="match"><div class="league">'+safe(f.league?.name || 'Campionato')+' · '+safe(f.league?.country || '')+'</div><div class="matchtop"><div style="min-width:0;flex:1"><div class="teams">'+safe(f.teams?.home?.name || 'Casa')+'<div class="vs">CONTRO</div>'+safe(f.teams?.away?.name || 'Trasferta')+'</div><div class="time">'+safe(date ? date.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'Europe/Rome'}) : '')+' · '+safe(time)+extra+'</div></div><div class="score">'+score+'</div></div><span class="status">'+statusLabel(f)+'</span></article>';
+  }).join('');
+}
+async function loadGames(){
+  const button = $('#reload');
+  button.disabled = true;
+  $('#message').textContent = 'Caricamento delle partite reali…';
+  $('#results').innerHTML = '';
+  try{
+    const date = $('#date').value || romeToday();
+    const response = await fetch('/api/fixtures?date='+encodeURIComponent(date),{cache:'no-store'});
+    if(!response.ok) throw new Error('Risposta server HTTP '+response.status);
+    const data = await response.json();
+    if(data.errors && (Array.isArray(data.errors) ? data.errors.length : Object.keys(data.errors).length)){
+      throw new Error('Il provider ha segnalato un errore: '+JSON.stringify(data.errors));
     }
-
-    games = fixtures.map((f, i) => ({
-      id: i + 1,
-      league: f.league?.name || 'Campionato',
-      home: f.teams?.home?.name || 'Casa',
-      away: f.teams?.away?.name || 'Trasferta',
-      time: f.fixture?.date
-        ? new Date(f.fixture.date).toLocaleTimeString('it-IT', {
-            hour: '2-digit',
-            minute: '2-digit',
-            timeZone: 'Europe/Rome'
-          })
-        : '--:--',
-     markets: [
-  { name: 'Dati partita', conf: 0, p: 0, odds: 1 }
-]
-    }));
-
-    loadGames();
-    if (!games.length) {
-      root.innerHTML = '<div class="empty">Nessuna partita trovata per oggi.</div>';
-    }
-  } catch (err) {
-    root.innerHTML =
-      '<div class="empty">Errore caricamento partite: ' +
-      err.message + '</div>';
+    const fixtures = Array.isArray(data.response) ? data.response : (Array.isArray(data.fixtures) ? data.fixtures : null);
+    if(!fixtures) throw new Error('Il server non ha restituito l’elenco delle partite nel formato atteso.');
+    games = fixtures;
+    $('#message').textContent = 'Dati reali caricati per '+date+'. Partite ricevute: '+games.length+'.';
+    render();
+  }catch(error){
+    games = [];
+    $('#total').textContent = '—'; $('#upcoming').textContent = '—'; $('#live').textContent = '—';
+    $('#message').textContent = 'Errore nel caricamento: '+error.message+'. Premi Aggiorna per riprovare.';
+    $('#results').innerHTML = '';
+  }finally{
+    button.disabled = false;
   }
 }
-let active='all';const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);function render(){const min=+$ ('#threshold').value;$('#thresholdValue').textContent=min;$('#thresholdLabel').textContent=min;const q=$('#search').value.trim().toLowerCase();let qualified=0;let rows=[];for(const g of games){const matchText=(g.home+' '+g.away+' '+g.league).toLowerCase();if(q&&!matchText.includes(q))continue;let ms=g.markets.filter(m=>m.conf>=min&&(active==='all'||(active==='Corner'?m.name.includes('Corner'):m.name===active)));qualified+=ms.length;rows.push({
-  g,
-  ms,
-  best: ms.length ? Math.max(...ms.map(m=>m.conf)) : 0,
-  value: ms.length ? Math.max(...ms.map(m=>m.p-(100/m.odds))) : 0
-});}const sort=$('#sort').value;rows.sort((a,b)=>sort==='time'?a.g.time.localeCompare(b.g.time):sort==='value'?b.value-a.value:b.best-a.best);$('#qualified').textContent=qualified;$('#total').textContent=games.length;const root=$('#results');root.innerHTML='';if(!rows.length){root.innerHTML='<div class="empty">Nessun mercato supera CONF '+min+'. Non abbassiamo il filtro per riempire la lista.</div>';return}for(const row of rows){const g=row.g;const card=document.createElement('article');card.className='match';card.innerHTML=`<div class="matchtop"><div><div class="league">${g.league}</div><div class="teams">${g.home}<br><span style="color:#9eacc2;font-weight:500;font-size:13px">vs</span> ${g.away}</div><div class="time">Orario demo: ${g.time}</div></div><div style="text-align:right"><div class="conf">${row.best}<span style="font-size:11px;color:#9eacc2">/100</span></div><div class="time">CONF migliore</div></div></div><div class="bar"><span style="width:${row.best}%"></span></div><div class="picks">${row.ms.map(m=>`<div class="pick"><b>${m.name}</b><em>CONF ${m.conf} · P stimata ${m.p}%</em><br>Quota demo ${m.odds.toFixed(2).replace('.',',')}</div>`).join('')}</div><div class="meta"><span>${row.ms.length} mercati sopra soglia</span><span class="status">DATI SIMULATI</span></div>`;root.appendChild(card)}}
-$('#threshold').addEventListener('input',render);$('#search').addEventListener('input',render);$('#sort').addEventListener('change',render);$$('.chip').forEach(b=>b.addEventListener('click',()=>{$$('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');active=b.dataset.market;render()}));$('#reset').addEventListener('click',()=>{$('#search').value='';$('#threshold').value=70;$('#sort').value='conf';active='all';$$('.chip').forEach(x=>x.classList.toggle('active',x.dataset.market==='all'));render()});$('#export').addEventListener('click',()=>{const min=+$ ('#threshold').value;const q=$('#search').value.trim().toLowerCase();const lines=[['Campionato','Casa','Trasferta','Orario demo','Mercato','CONF','Probabilità demo %','Quota demo']];for(const g of games){if(q&&!(g.home+' '+g.away+' '+g.league).toLowerCase().includes(q))continue;for(const m of g.markets){if(m.conf>=min&&(active==='all'||(active==='Corner'?m.name.includes('Corner'):m.name===active)))lines.push([g.league,g.home,g.away,g.time,m.name,m.conf,m.p,m.odds])}}const csv='\ufeff'+lines.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='conf-football-demo.csv';a.click();URL.revokeObjectURL(a.href)});render();
-</script></body></html>
+$('#date').value = romeToday();
+$('#reload').addEventListener('click',loadGames);
+$('#date').addEventListener('change',loadGames);
+$('#search').addEventListener('input',render);
+loadGames();
+</script>
+</body>
+</html>
