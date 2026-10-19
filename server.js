@@ -285,7 +285,7 @@ app.get('/api/conf', async (req, res) => {
     };
     await Promise.all(Array.from({ length: Math.min(4, teamIds.length) }, worker));
 
-    const fixtures = upcoming.map(m => {
+    let fixtures = upcoming.map(m => {
       const homeTeam = m.homeTeam || m.home || {};
       const awayTeam = m.awayTeam || m.away || {};
       const homeId = teamId(homeTeam);
