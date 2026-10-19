@@ -17,6 +17,29 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 <header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Partite reali · dati aggiornati dal provider</p></div></div></header>
 <main>
 <section class="panel">
+ <h2>Partite</h2>
+ <div class="filters">
+  <div class="field"><label for="date">Data (ora italiana)</label><input id="date" type="date"></div>
+  <div class="field"><label for="search">Cerca squadra o campionato</label><input id="search" type="search" placeholder="Es. Inter, Premier League"></div>
+  <button class="button" id="search-button" type="button">Cerca</button>
+  <button class="button" id="reload">Aggiorna</button>
+ </div>
+ <div id="message" class="message" role="status">Caricamento delle partite reali…</div>
+</section>
+<div id="results" class="matches"></div>
+
+<div class="stats">
+ <div class="stat"><small>Partite trovate</small><strong id="total">—</strong></div>
+ <div class="stat"><small>In programma</small><strong id="upcoming">—</strong></div>
+ <div class="stat"><small>Live</small><strong id="live">—</strong></div>
+</div>
+<section class="panel">
+ <h2>⭐ Le mie partite preferite <span id="favorites-count" class="muted"></span></h2>
+ <p class="muted">Salva qui le partite che vuoi tenere d’occhio. I preferiti restano salvati in questo browser.</p>
+ <div id="favorites-results" class="matches"><div class="empty">Non hai ancora aggiunto partite ai preferiti.</div></div>
+</section>
+
+<section class="panel">
  <h2>Analisi CONF · dati storici reali</h2>
  <p class="muted">Analizza fino a 12 partite non ancora iniziate usando fino a 10 gare concluse per squadra. Over 2.5 e GG privilegiano casa/trasferta quando ci sono almeno 3 gare pertinenti; le percentuali sono frequenze storiche, non probabilità predittive calibrate.</p>
  <button class="button" id="analyze">Calcola CONF</button>
@@ -33,29 +56,6 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <div id="history-summary" class="message">Nessuna selezione registrata.</div>
  <div id="history-dashboard"></div>
  <div id="history-results" class="matches"></div>
-</section>
-
-<div class="stats">
- <div class="stat"><small>Partite trovate</small><strong id="total">—</strong></div>
- <div class="stat"><small>In programma</small><strong id="upcoming">—</strong></div>
- <div class="stat"><small>Live</small><strong id="live">—</strong></div>
-</div>
-<section class="panel">
- <h2>Partite</h2>
- <div class="filters">
-  <div class="field"><label for="date">Data (ora italiana)</label><input id="date" type="date"></div>
-  <div class="field"><label for="search">Cerca squadra o campionato</label><input id="search" type="search" placeholder="Es. Inter, Premier League"></div>
-  <button class="button" id="search-button" type="button">Cerca</button>
-  <button class="button" id="reload">Aggiorna</button>
- </div>
- <div id="message" class="message" role="status">Caricamento delle partite reali…</div>
-</section>
-<div id="results" class="matches"></div>
-
-<section class="panel">
- <h2>⭐ Le mie partite preferite <span id="favorites-count" class="muted"></span></h2>
- <p class="muted">Salva qui le partite che vuoi tenere d’occhio. I preferiti restano salvati in questo browser.</p>
- <div id="favorites-results" class="matches"><div class="empty">Non hai ancora aggiunto partite ai preferiti.</div></div>
 </section>
 
 <p class="foot">CONF Football · fuso orario Europe/Rome · dati delle partite forniti da API-Football.</p>
