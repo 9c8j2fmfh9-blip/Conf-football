@@ -233,7 +233,7 @@ app.get('/api/conf', async (req, res) => {
           const body = await openFoot('/matches', { team: id, status: 'finished' });
           const recent = rows(body).filter(completed)
             .sort((a, b) => new Date(b.kickoffAt || b.date || b.utcDate || 0) - new Date(a.kickoffAt || a.date || a.utcDate || 0))
-            .slice(0, 5);
+            .slice(0, 10);
           forms.set(String(id), recent);
         } catch (e) {
           forms.set(String(id), []);
@@ -299,7 +299,7 @@ app.get('/api/conf', async (req, res) => {
     });
     res.json({
       date, warnings,
-      method: 'Frequenze descrittive calcolate sulle ultime 5 partite concluse restituite da OpenFootAPI per ciascuna squadra. Campione e mercati sono mostrati solo quando i risultati sono presenti; non sono probabilità predittive calibrate.',
+      method: 'Frequenze descrittive calcolate sulle ultime 10 partite concluse restituite da OpenFootAPI per ciascuna squadra. Campione e mercati sono mostrati solo quando i risultati sono presenti; non sono probabilità predittive calibrate.',
       threshold: 70, limit, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: fixtureBody?.meta?.total_count ?? null, partial: Boolean(fixtureBody?.meta?.scope?.partial) || allDayMatches.length < Number(fixtureBody?.meta?.total_count ?? allDayMatches.length), paginationAvailable: false },
       note: 'Il piano demo può restituire solo un’anteprima e non consente la paginazione. Quote non disponibili nel piano Starter; non vengono inventate.'
