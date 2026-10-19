@@ -160,9 +160,22 @@ app.get('/api/conf', async (req, res) => {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return res.status(400).json({ error: 'Data non valida: usa YYYY-MM-DD.' });
 
   try {
-    const fixtureBody = await openFoot('/matches', { date });
-    const upcoming = rows(fixtureBody)
-      .filter(m => ['scheduled', 'unknown'].includes(String(m.status || '').toLowerCase()) && new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime() > Date.now())
+    // Read successive pages: the demo provider may return only a 5-match preview.
+    let allDayMatches = [];
+    let cursor = null;
+    let pageCount = 0;
+    let fixtureBody = null;
+    do {
+      fixtureBody = await openFoot('/matches', { date, cursor });
+      allDayMatches.push(...rows(fixtureBody));
+      cursor = fixtureBody?.meta?.pagination?.next_cursor || fixtureBody?.meta?.next_cursor || null;
+      pageCount++;
+    } while (cursor && pageCount < 30 && allDayMatches.length < 500);
+
+    const isScheduled = m => ['scheduled', 'unknown', 'upcoming', 'not_started', 'not-started', 'ns', 'fixture'].includes(String(m.status || '').toLowerCase());
+    const upcoming = allDayMatches
+      .filter(m => isScheduled(m) && new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime() > Date.now())
+      .sort((a, b) => new Date(a.kickoffAt || a.date || a.utcDate || 0) - new Date(b.kickoffAt || b.date || b.utcDate || 0))
       .slice(0, limit);
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)]).filter(Boolean))];
     const forms = new Map();
