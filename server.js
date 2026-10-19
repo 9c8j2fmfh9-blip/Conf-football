@@ -63,8 +63,15 @@ function goals(m) {
 }
 function halfGoals(m) {
   const s = m?.score || {};
-  const h = s.halfTime || s.halftime || s.ht || m.halfTimeScore || {};
-  return { home: numberOrNull(h.home), away: numberOrNull(h.away) };
+  const h = s.halfTime || s.halftime || s.half_time || s.ht ||
+    m.halfTimeScore || m.halftimeScore || m.halfTime || m.halftime || {};
+  const home = h.home ?? h.homeGoals ?? h.homeScore ?? s.halfTimeHome ??
+    s.halftimeHome ?? s.htHome ?? m.halfTimeHome ?? m.halftimeHome ??
+    m.homeHalfTimeScore ?? null;
+  const away = h.away ?? h.awayGoals ?? h.awayScore ?? s.halfTimeAway ??
+    s.halftimeAway ?? s.htAway ?? m.halfTimeAway ?? m.halftimeAway ??
+    m.awayHalfTimeScore ?? null;
+  return { home: numberOrNull(home), away: numberOrNull(away) };
 }
 function numberOrNull(v) {
   if (v === null || v === undefined || v === '') return null;
