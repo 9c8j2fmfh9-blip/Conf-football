@@ -97,10 +97,18 @@ app.get('/api/conf', async (req, res) => {
       while (cursor < teamIds.length) {
         const id = teamIds[cursor++];
         try {
-          const data = await apiFootball('/fixtures', { team: id, last: 5, timezone: 'Europe/Rome' });
-          forms.set(id, (data.response || []).filter(x =>
-            x.fixture?.status?.short === 'FT' || x.fixture?.status?.short === 'AET' || x.fixture?.status?.short === 'PEN'
-          ));
+          // The API-Football Free plan does not support the "last" parameter.
+          // Fetch a recent date window, then select the five most recent completed fixtures locally.
+          const endDate = new Date(date + 'T12:00:00Z');
+          const startDate = new Date(endDate);
+          startDate.setUTCDate(startDate.getUTCDate() - 120);
+          const to = date;
+          const from = startDate.toISOString().slice(0, 10);
+          const data = await apiFootball('/fixtures', { team: id, from, to, timezone: 'Europe/Rome' });
+          const completed = (data.response || []).filter(x =>
+            ['FT', 'AET', 'PEN'].includes(x.fixture?.status?.short)
+          ).sort((a, b) => new Date(b.fixture.date) - new Date(a.fixture.date)).slice(0, 5);
+          forms.set(id, completed);
         } catch (e) {
           formErrors.add(e.message || 'Errore nel recupero delle ultime partite');
           forms.set(id, []);
