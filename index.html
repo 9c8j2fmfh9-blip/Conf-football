@@ -112,7 +112,7 @@ async function syncHistory(){
     const merged = new Map();
     for(const item of [...(remoteData.history || []).map(x => ({
       id:x.id, fixtureId:x.fixture_id, date:x.match_date, league:x.league, home:x.home, away:x.away,
-      market:x.market, score:x.score, hits:x.hits, sample:x.sample, outcome:x.outcome, recordedAt:x.recorded_at
+      market:x.market, score:x.score, hits:x.hits, sample:x.sample, outcome:x.outcome, recordedAt:x.recorded_at, updatedAt:x.updated_at
     })), ...local]) {
       const previous = merged.get(item.id);
       if(!previous || (item.updatedAt || item.recordedAt || '') >= (previous.updatedAt || previous.recordedAt || '')) merged.set(item.id,item);
@@ -160,8 +160,10 @@ $('#history-results').addEventListener('click', event => {
   const item = history.find(x => x.id === button.dataset.id);
   if(!item) return;
   item.outcome = button.dataset.outcome;
+  item.updatedAt = new Date().toISOString();
   writeHistory(history);
   renderHistory();
+  if(localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
 });
 const liveStates = new Set(['1H','HT','2H','ET','BT','P','LIVE']);
 const finishedStates = new Set(['FT','AET','PEN','AWD','WO']);
@@ -249,6 +251,7 @@ async function loadConf(){
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
     const savedCount = saveRecommendations(data.fixtures || []);
+    if(savedCount > 0 && localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
     $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70. Nuove selezioni registrate nello storico: '+savedCount+'. '+data.method+' '+((data.warnings || []).length ? 'ERRORE DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
