@@ -20,11 +20,11 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <h2>Partite</h2>
  <div class="filters">
   <div class="field"><label for="date">Data (ora italiana)</label><input id="date" type="date"></div>
-  <div class="field"><label for="search">Cerca nelle partite caricate</label><input id="search" type="search" placeholder="Es. Inter, Champions League"></div>
+  <div class="field"><label for="search">Cerca partite nel provider</label><input id="search" type="search" placeholder="Es. Inter, Champions League"></div>
   <button class="button" id="search-button" type="button">Cerca</button>
   <button class="button" id="reload">Aggiorna</button>
  </div>
- <div id="message" class="message" role="status">La ricerca filtra subito la lista qui sotto. Per cambiare giorno, scegli la data.</div>
+ <div id="message" class="message" role="status">Cerca avvia una richiesta al provider per il campionato o la squadra inseriti; la data selezionata viene mantenuta.</div>
 </section>
 <div id="results" class="matches"></div>
 
@@ -405,17 +405,46 @@ async function loadGames(){
     button.disabled = false;
   }
 }
+async function searchGames(){
+  const query = $('#search').value.trim();
+  if (!query) { await loadGames(); return; }
+  const button = $('#search-button');
+  button.disabled = true;
+  $('#message').textContent = 'Ricerca in corso nei dati del provider…';
+  $('#results').innerHTML = '';
+  try {
+    const date = $('#date').value || romeToday();
+    const response = await fetch('/api/search-fixtures?date='+encodeURIComponent(date)+'&q='+encodeURIComponent(query), {cache:'no-store'});
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Errore server HTTP '+response.status);
+    if (!Array.isArray(data.response)) throw new Error('Risposta della ricerca non valida.');
+    games = data.response;
+    render();
+    if (games.length) {
+      $('#message').textContent = 'Ricerca API completata per “'+query+'” il '+date+': '+games.length+' partite trovate'+(data.searchMode === 'competition' ? ' nel campionato corrispondente.' : ' tra le partite restituite dal provider per questa data.');
+    } else if (data.competitionsFound > 0) {
+      $('#message').textContent = 'Il campionato corrisponde a “'+query+'”, ma il provider non ha restituito partite future/live per questa competizione il '+date+'.';
+    } else {
+      $('#message').textContent = 'Nessuna partita trovata per “'+query+'” il '+date+'. Il provider non ha trovato un campionato corrispondente e la ricerca squadre può controllare solo le partite restituite per quella data.';
+    }
+    $('#results').scrollIntoView({behavior:'smooth',block:'start'});
+  } catch(error) {
+    $('#message').textContent = 'Ricerca non disponibile: '+error.message;
+  } finally {
+    button.disabled = false;
+  }
+}
 $('#date').value = romeToday();
 renderHistory();
 if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
 $('#reload').addEventListener('click',loadGames);
-$('#search-button').addEventListener('click',()=>{render(); $('#results').scrollIntoView({behavior:'smooth',block:'start'});});
-$('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();render(); $('#results').scrollIntoView({behavior:'smooth',block:'start'});}});
+$('#search-button').addEventListener('click',searchGames);
+$('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchGames();}});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
 $('#analyze').addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
 $('#date').addEventListener('change',loadGames);
-$('#search').addEventListener('input',render);
+
 renderFavorites();
 loadGames();
 </script>
