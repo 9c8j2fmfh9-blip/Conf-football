@@ -41,6 +41,18 @@ async function openFoot(path, params = {}) {
   return body;
 }
 
+async function openFootAll(path, params = {}, maxPages = 10) {
+  const collected = [];
+  let cursor = null;
+  for (let page = 0; page < maxPages; page++) {
+    const body = await openFoot(path, { ...params, ...(cursor ? { cursor } : {}) });
+    collected.push(...rows(body));
+    cursor = body?.meta?.pagination?.next_cursor || null;
+    if (!cursor) break;
+  }
+  return collected;
+}
+
 function rows(body) {
   const candidates = [
     body?.response,
@@ -429,11 +441,10 @@ app.get('/api/conf', async (req, res) => {
         let seasonMatches = [];
         if (isCompetition && item.currentSeason) {
           try {
-            seasonMatches = rows(await openFoot('/matches', {
+            seasonMatches = await openFootAll('/matches', {
               competition: id,
-              season: item.currentSeason,
-              status: 'scheduled'
-            }));
+              season: item.currentSeason
+            });
           } catch (_) {
             // Keep date-scoped results if season-wide lookup is unavailable.
           }
