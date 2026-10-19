@@ -430,7 +430,8 @@ app.get('/api/conf', async (req, res) => {
           try {
             seasonMatches = rows(await openFoot('/matches', {
               competition: id,
-              season: item.currentSeason
+              season: item.currentSeason,
+              status: 'scheduled'
             }));
           } catch (_) {
             // Keep date-scoped results if season-wide lookup is unavailable.
