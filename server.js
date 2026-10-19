@@ -227,10 +227,20 @@ app.get('/api/debug-search', async (req, res) => {
     const competitionMatches = (competitionResult.matches || []).slice(0, 5);
     const competitionFixtures = await Promise.all(competitionMatches.map(async c => {
       const id = c.id;
-      try {
-        const body = await openFoot('/matches', { date, competition: id });
-        return { id, name: c.name, count: rows(body).length, sample: rows(body).slice(0, 3).map(summarize) };
-      } catch (e) { return { id, name: c.name, error: e.message, status: e.status || null }; }
+      const season = c.currentSeason || null;
+      const test = async (params) => {
+        try {
+          const body = await openFoot('/matches', params);
+          const list = rows(body);
+          return { params, count: list.length, sample: list.slice(0, 3).map(summarize), topKeys: body && typeof body === 'object' ? Object.keys(body).slice(0, 20) : [] };
+        } catch (e) { return { params, error: e.message, status: e.status || null }; }
+      };
+      const tests = await Promise.all([
+        test({ date, competition: id }),
+        test({ competition: id, ...(season ? { season } : {}) }),
+        test({ competition: id })
+      ]);
+      return { id, name: c.name, season, tests };
     }));
     res.json({ query, date, matchResult, competitionResult, searchResult, competitionFixtures });
   } catch (e) { res.status(500).json({ error: e.message }); }
