@@ -180,17 +180,10 @@ app.get('/api/conf', async (req, res) => {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return res.status(400).json({ error: 'Data non valida: usa YYYY-MM-DD.' });
 
   try {
-    // Read successive pages: the demo provider may return only a 5-match preview.
-    let allDayMatches = [];
-    let cursor = null;
-    let pageCount = 0;
-    let fixtureBody = null;
-    do {
-      fixtureBody = await openFoot('/matches', { date, cursor });
-      allDayMatches.push(...rows(fixtureBody));
-      cursor = fixtureBody?.meta?.pagination?.next_cursor || fixtureBody?.meta?.next_cursor || null;
-      pageCount++;
-    } while (cursor && pageCount < 30 && allDayMatches.length < 500);
+    // Starter/demo plans may expose only a limited preview and prohibit cursor pagination.
+    // Use the first permitted page without a cursor; never treat the preview as exhaustive.
+    const fixtureBody = await openFoot('/matches', { date });
+    const allDayMatches = rows(fixtureBody);
 
     const isScheduled = m => ['scheduled', 'unknown', 'upcoming', 'not_started', 'not-started', 'ns', 'fixture'].includes(String(m.status || '').toLowerCase());
     const upcoming = allDayMatches
@@ -261,7 +254,8 @@ app.get('/api/conf', async (req, res) => {
       date, warnings,
       method: 'Frequenze descrittive calcolate sulle ultime 5 partite concluse restituite da OpenFootAPI per ciascuna squadra. Campione e mercati sono mostrati solo quando i risultati sono presenti; non sono probabilità predittive calibrate.',
       threshold: 70, limit, fixtures,
-      note: 'Le partite e i risultati provengono da OpenFootAPI. Corner e quote non vengono inventati: sono indicati come non disponibili nel piano Starter.'
+      preview: { returned: allDayMatches.length, totalAvailable: fixtureBody?.meta?.total_count ?? null, partial: Boolean(fixtureBody?.meta?.scope?.partial) || allDayMatches.length < Number(fixtureBody?.meta?.total_count ?? allDayMatches.length), paginationAvailable: false },
+      note: 'Il piano demo può restituire solo un’anteprima e non consente la paginazione. Corner e quote non vengono inventati: sono indicati come non disponibili nel piano Starter.'
     });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
