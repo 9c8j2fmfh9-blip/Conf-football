@@ -295,7 +295,7 @@ app.get('/api/conf', async (req, res) => {
         }
         return {
           label,
-          score: Math.round((a.score + b.score) / 2),
+          score: Math.round(100 * (a.hits + b.hits) / (a.sample + b.sample)),
           hits: a.hits + b.hits,
           sample: a.sample + b.sample,
           venueSamples: { home: a.sample, away: b.sample },
