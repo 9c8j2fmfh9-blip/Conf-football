@@ -31,8 +31,11 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 </section>
 <div id="results" class="matches"></div>
 <section class="panel">
- <h2>Analisi CONF</h2>
- <p class="muted">Il collegamento alle partite reali è attivo. Gli indici CONF per GG, Over 2.5, Over 1.5 HT e corner non sono ancora calcolati: non mostriamo probabilità, quote o pronostici inventati. Il prossimo passaggio è collegare statistiche e quote verificabili e costruire il modello.</p>
+ <h2>Analisi CONF · dati storici reali</h2>
+ <p class="muted">Analizza fino a 12 partite non ancora iniziate usando le ultime 5 gare disponibili di entrambe le squadre. Mostriamo solo mercati con frequenza storica almeno 70% e campione di almeno 6 risultati. È un indicatore descrittivo preliminare, non una probabilità predittiva calibrata. I corner sono ancora da integrare.</p>
+ <button class="button" id="analyze">Calcola CONF</button>
+ <div id="conf-message" class="message">Premi “Calcola CONF” per avviare l’analisi storica.</div>
+ <div id="conf-results" class="matches"></div>
 </section>
 <p class="foot">CONF Football · fuso orario Europe/Rome · dati delle partite forniti da API-Football.</p>
 </main>
@@ -82,6 +85,36 @@ function render(){
     return '<article class="match"><div class="league">'+safe(f.league?.name || 'Campionato')+' · '+safe(f.league?.country || '')+'</div><div class="matchtop"><div style="min-width:0;flex:1"><div class="teams">'+safe(f.teams?.home?.name || 'Casa')+'<div class="vs">CONTRO</div>'+safe(f.teams?.away?.name || 'Trasferta')+'</div><div class="time">'+safe(date ? date.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'Europe/Rome'}) : '')+' · '+safe(time)+extra+'</div></div><div class="score">'+score+'</div></div><span class="status">'+statusLabel(f)+'</span></article>';
   }).join('');
 }
+function renderConf(items){
+  const root = $('#conf-results');
+  if(!items.length){
+    root.innerHTML = '<div class="empty">Nessun mercato supera la soglia del 70% con almeno 6 risultati storici disponibili.</div>';
+    return;
+  }
+  root.innerHTML = items.map(f => {
+    const markets = Object.values(f.markets || {}).filter(m => m.score !== null && m.score >= 70 && m.sample >= 6);
+    const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
+    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => '<div style="display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:8px"><span>'+safe(m.label)+'<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare</div></span><strong>'+safe(m.score)+' / 100</strong></div>').join('')+'</div></article>';
+  }).join('');
+}
+async function loadConf(){
+  const button = $('#analyze');
+  button.disabled = true;
+  $('#conf-message').textContent = 'Calcolo in corso: recupero delle ultime gare reali delle squadre…';
+  $('#conf-results').innerHTML = '';
+  try{
+    const date = $('#date').value || romeToday();
+    const response = await fetch('/api/conf?date='+encodeURIComponent(date)+'&limit=12',{cache:'no-store'});
+    const data = await response.json();
+    if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
+    renderConf((data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)));
+    $('#conf-message').textContent = 'Analisi completata: '+(data.fixtures || []).length+' partite esaminate. '+data.method+' Corner: non ancora disponibili.';
+  }catch(error){
+    $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
+  }finally{
+    button.disabled = false;
+  }
+}
 async function loadGames(){
   const button = $('#reload');
   button.disabled = true;
@@ -111,6 +144,7 @@ async function loadGames(){
 }
 $('#date').value = romeToday();
 $('#reload').addEventListener('click',loadGames);
+$('#analyze').addEventListener('click',loadConf);
 $('#date').addEventListener('change',loadGames);
 $('#search').addEventListener('input',render);
 loadGames();
