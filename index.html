@@ -26,7 +26,9 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 
 <section class="panel">
  <h2>Storico scommesse consigliate</h2>
- <p class="muted">Salva la migliore selezione CONF ≥70% con almeno 6 gare storiche per ogni partita analizzata. Dopo il risultato, segna manualmente Vinta o Persa. I dati restano salvati in questo browser.</p>
+ <p class="muted">Salva la migliore selezione CONF ≥70% con almeno 6 gare storiche. Usa Sincronizza per condividere lo storico tra PC e smartphone.</p>
+ <button class="button" id="sync-history" type="button">Sincronizza PC e smartphone</button>
+ <div id="sync-message" class="message">Sincronizzazione non ancora avviata.</div>
  <div id="history-summary" class="message">Nessuna selezione registrata.</div>
  <div id="history-results" class="matches"></div>
 </section>
@@ -89,6 +91,46 @@ function saveRecommendations(fixtures){
   renderHistory();
   return added;
 }
+
+const HISTORY_TOKEN_KEY = 'confFootballHistoryAccessToken';
+async function syncHistory(){
+  const status = $('#sync-message');
+  let token = localStorage.getItem(HISTORY_TOKEN_KEY);
+  if(!token){
+    token = prompt('Inserisci il codice di sincronizzazione creato nelle variabili ambiente di Render. Non usare la password Supabase.');
+    if(!token) return;
+    localStorage.setItem(HISTORY_TOKEN_KEY, token.trim());
+    token = token.trim();
+  }
+  status.textContent = 'Sincronizzazione in corso…';
+  try {
+    const headers = { 'x-history-token': token, 'Content-Type': 'application/json' };
+    const response = await fetch('/api/history', { headers, cache: 'no-store' });
+    const remoteData = await response.json();
+    if(!response.ok) throw new Error(remoteData.error || 'Errore lettura storico');
+    const local = readHistory();
+    const merged = new Map();
+    for(const item of [...(remoteData.history || []).map(x => ({
+      id:x.id, fixtureId:x.fixture_id, date:x.match_date, league:x.league, home:x.home, away:x.away,
+      market:x.market, score:x.score, hits:x.hits, sample:x.sample, outcome:x.outcome, recordedAt:x.recorded_at
+    })), ...local]) {
+      const previous = merged.get(item.id);
+      if(!previous || (item.updatedAt || item.recordedAt || '') >= (previous.updatedAt || previous.recordedAt || '')) merged.set(item.id,item);
+    }
+    const combined = [...merged.values()].sort((a,b)=>String(b.recordedAt||'').localeCompare(String(a.recordedAt||''))).slice(0,500);
+    writeHistory(combined);
+    const saveResponse = await fetch('/api/history', { method:'POST', headers, body:JSON.stringify({history:combined}) });
+    const saved = await saveResponse.json();
+    if(!saveResponse.ok) throw new Error(saved.error || 'Errore salvataggio storico');
+    renderHistory();
+    status.textContent = 'Sincronizzazione completata: '+combined.length+' selezioni condivise tra i dispositivi.';
+  } catch(error) {
+    if(String(error.message).toLowerCase().includes('codice')) localStorage.removeItem(HISTORY_TOKEN_KEY);
+    status.textContent = 'Sincronizzazione non riuscita: '+error.message;
+  }
+}
+$('#sync-history').addEventListener('click', syncHistory);
+
 function renderHistory(){
   const history = readHistory();
   const wins = history.filter(x => x.outcome === 'win').length;
