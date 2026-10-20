@@ -346,7 +346,12 @@ async function loadConf(){
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
     const savedCount = saveRecommendations(data.fixtures || []);
-    if(savedCount > 0 && localStorage.getItem(HISTORY_TOKEN_KEY)) syncHistory();
+    if(localStorage.getItem(HISTORY_TOKEN_KEY)) {
+      // Sync newly recorded markets and check finished matches automatically.
+      // The server only settles matches with verifiable final scores.
+      if(savedCount > 0) await syncHistory();
+      await checkFinalResults(true);
+    }
     const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
     if($('#total')) $('#total').textContent = data.analyzedCount || (data.fixtures || []).length;
