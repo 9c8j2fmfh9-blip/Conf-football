@@ -585,7 +585,10 @@ app.get('/api/conf', async (req, res) => {
         return Number.isFinite(kickoff) && kickoff > now &&
           (requestedDate ? romeDate(kickoff) === requestedDate : kickoff <= cutoff) &&
           !['FT','LIVE','PST','CANC'].includes(statusCode(m.status ?? m.fixture?.status)) &&
-          matchesQuery(m);
+          (englishCompetition
+            ? normSearch(m.country || m.competition?.country) === 'england' &&
+              normSearch(m.competitionName || m.competition?.name).includes(englishCompetition)
+            : matchesQuery(m));
       });
       if (!primaryFound && apiFootballKey) {
         try {
