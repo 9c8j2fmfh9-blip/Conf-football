@@ -77,6 +77,61 @@ const eflSources = {
 const eflBundled = JSON.parse(readFileSync(new URL('./efl-history-2627.json', import.meta.url), 'utf8'));
 
 const faCupBundled = JSON.parse(readFileSync(new URL('./fa-cup-support-history-2627.json', import.meta.url), 'utf8'));
+const teamStatsBundled = JSON.parse(readFileSync(new URL('./team-stats-2627.json', import.meta.url), 'utf8'));
+function teamStatName(name) {
+  const aliases = {
+    'barrow afc':'barrow', 'harrogate town afc':'harrogate town',
+    'fc united of manchester':'fc united', 'chesham united':'chesham',
+    'bedford town':'bedford', 'mk dons':'mk dons'
+  };
+  const normalized = String(name || '').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+  return aliases[normalized] || normalized;
+}
+function cornerHistoryForTeam(name, leagueId, beforeTimestamp) {
+  const isCup = leagueId === 'eng_fa_cup';
+  // Avoid mixing homonymous teams across unrelated leagues.
+  const folders = isCup ? Object.keys(teamStatsBundled.rows) : [leagueId];
+  const matches = [];
+  const normalizedTeam = teamStatName(name);
+  for (const folder of folders) {
+    for (const [date, home, away, hcorn, acorn] of (teamStatsBundled.rows[folder] || [])) {
+      if (Date.parse(date + 'T12:00:00Z') >= beforeTimestamp) continue;
+      const isHome = teamStatName(home) === normalizedTeam;
+      const isAway = teamStatName(away) === normalizedTeam;
+      if (!isHome && !isAway) continue;
+      const val = isHome ? hcorn : acorn;
+      if (!/^\d+$/.test(String(val))) continue;
+      const other = isHome ? acorn : hcorn;
+      matches.push({
+        date, corners: Number(val), total: /^\d+$/.test(String(other)) ? Number(val) + Number(other) : null,
+        home: isHome
+      });
+    }
+  }
+  return matches.sort((a,b) => b.date.localeCompare(a.date)).slice(0,10);
+}
+function buildCornerMarkets(home, away, leagueId, beforeTimestamp) {
+  const h = cornerHistoryForTeam(home, leagueId, beforeTimestamp);
+  const a = cornerHistoryForTeam(away, leagueId, beforeTimestamp);
+  const result = { source:'Risultati 2026/27 verificati · corner a tempo pieno', homeSample:h.length, awaySample:a.length, markets:[] };
+  const add = (label, sample, predicate) => {
+    const hits = sample.filter(predicate).length;
+    result.markets.push({
+      label, score:sample.length ? Math.round(100*hits/sample.length) : null,
+      hits, sample:sample.length, qualified:sample.length>=6 && hits/sample.length>=0.7
+    });
+  };
+  for (const line of [2,3,4,5]) {
+    add(home + ' · ' + line + '+ corner FT',h,x=>x.corners>=line);
+    add(away + ' · ' + line + '+ corner FT',a,x=>x.corners>=line);
+  }
+  const totals = [...h,...a].filter(x=>x.total!==null);
+  for (const line of [7,8,9,10]) add('Totale ' + line + '+ corner FT',totals,x=>x.total>=line);
+  result.note = (!h.length || !a.length) ? 'Storico incompleto: non sono disponibili i corner per entrambe le squadre.' :
+    'Frequenze storiche descrittive, non probabilità calibrate. I dati per tempo non sono disponibili.';
+  return result;
+}
+
 // Explicit mappings only: avoid accidentally equating different football clubs.
 const faCupAliases = {
   'Barrow AFC': 'Barrow',
@@ -1059,7 +1114,8 @@ app.get('/api/conf', async (req, res) => {
         },
         markets: {
           one, draw, two, over25, btts
-        }
+        },
+        cornerMarkets: buildCornerMarkets(teamName(homeTeam),teamName(awayTeam),m.competitionId || m.competition?.id || '', Date.parse(kickoff) || now)
       };
     });
     // Classifica per qualità dell'evidenza: prima i mercati che superano CONF 70%
