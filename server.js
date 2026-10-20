@@ -75,6 +75,42 @@ const eflSources = {
 // Local fallback is bundled during deployment: these are real completed
 // 2026/27 league results, not simulated or predicted matches.
 const eflBundled = JSON.parse(readFileSync(new URL('./efl-history-2627.json', import.meta.url), 'utf8'));
+
+const faCupBundled = JSON.parse(readFileSync(new URL('./fa-cup-support-history-2627.json', import.meta.url), 'utf8'));
+// Explicit mappings only: avoid accidentally equating different football clubs.
+const faCupAliases = {
+  'Barrow AFC': 'Barrow',
+  'FC United of Manchester': 'FC United',
+  'Harrogate Town AFC': 'Harrogate Town',
+  'Chesham United': 'Chesham',
+  'Bedford Town': 'Bedford'
+};
+function faCupHistoricalForm(teamName, beforeTime) {
+  const lookup = faCupAliases[teamName] || teamName;
+  const games = [];
+  for (const [league, results] of Object.entries(faCupBundled.results)) {
+    const teamIdentifier = 'facup_' + teamName.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+    for (const [date, time, home, away, homeGoals, awayGoals] of results) {
+      if (home !== lookup && away !== lookup) continue;
+      if (!/^\\d+$/.test(String(homeGoals)) || !/^\\d+$/.test(String(awayGoals))) continue;
+      // Exclude any result on/after the future fixture's kickoff, to
+      // prevent leakage into predictions for a specified historical date.
+      const kickoff = eflStart(date, time) || (date + 'T12:00:00Z');
+      if (Date.parse(kickoff) >= beforeTime) continue;
+      const otherName = home === lookup ? away : home;
+      const opposite = 'faopp_' + league + '_' + otherName.toLowerCase().replace(/[^a-z0-9]+/g, '_');
+      games.push({
+        id: 'facup_history_' + league + '_' + date + '_' + home + '_' + away,
+        kickoffAt: kickoff, status: 'FT',
+        homeTeam: { id: home === lookup ? teamIdentifier : opposite, name: home },
+        awayTeam: { id: away === lookup ? teamIdentifier : opposite, name: away },
+        score: { home: Number(homeGoals), away: Number(awayGoals) }
+      });
+    }
+  }
+  return games.sort((a,b) => Date.parse(b.kickoffAt) - Date.parse(a.kickoffAt)).slice(0,10);
+}
+
 const eflCache = new Map();
 async function eflDownload(url, asCsv = false) {
   const cached = eflCache.get(url);
@@ -917,6 +953,16 @@ app.get('/api/conf', async (req, res) => {
     for (const [id, games] of eflHistory) {
       forms.set(id, games.filter(g => Date.parse(g.kickoffAt) < now)
         .sort((a,b) => Date.parse(b.kickoffAt) - Date.parse(a.kickoffAt)).slice(0, 10));
+    }
+
+    // National League / regional league results are mapped by explicit team
+    // names. Both FA Cup participants may come from separate competitions.
+    const faFixtures = upcoming.filter(m => String(m.id || '').startsWith('fa_official_'));
+    for (const m of faFixtures) {
+      const fixtureStart = Date.parse(m.kickoffAt);
+      for (const team of [m.homeTeam, m.awayTeam]) {
+        forms.set(String(teamId(team)), faCupHistoricalForm(teamName(team), Math.min(now, fixtureStart)));
+      }
     }
 
     let fixtures = upcoming.map(m => {
