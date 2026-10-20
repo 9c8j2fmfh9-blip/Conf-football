@@ -4,6 +4,7 @@
   "private": true,
   "description": "CONF Football starter: web prototype + secure API proxy",
   "type": "module",
-  "scripts": { "start": "node server.js" },
+  "scripts": { "start": "node server.js", "test": "node --test" },
   "dependencies": { "dotenv": "^16.4.7", "express": "^4.21.2" }
 }
+

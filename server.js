@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import { selectFixture } from './conf-selection.js';
 import { readFileSync } from 'node:fs';
 
 const app = express();
@@ -270,18 +271,18 @@ async function openFoot(path, params = {}) {
   }
   const cacheKey = url.toString();
   const cached = cache.get(cacheKey);
-  if (cached && Date.now() - cached.time < CACHE_TTL_MS) return cached.data;
+  if (cached && Date.now() - cached.time < (params.status === 'finished' ? 6 * 60 * 60 * 1000 : CACHE_TTL_MS)) return cached.data;
 
   const headers = { Accept: 'application/json' };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
-  let response = await fetch(url, { headers });
+  let response = await fetch(url, { headers, signal: AbortSignal.timeout(12000) });
   let body = await response.json().catch(() => ({}));
 
   // If the configured key is rejected (401), retry with the documented public preview.
   // The response metadata makes the reduced demo scope visible; never pretend this is full access.
   if (!response.ok && response.status === 401) {
     const demoHeaders = { Accept: 'application/json', Authorization: 'Bearer of_demo_openfootapi_docs' };
-    response = await fetch(url, { headers: demoHeaders });
+    response = await fetch(url, { headers: demoHeaders, signal: AbortSignal.timeout(12000) });
     body = await response.json().catch(() => ({}));
   }
   if (!response.ok) {
@@ -565,7 +566,7 @@ app.get('/api/key-check', async (_req, res) => {
   const url = new URL(base + '/matches');
   url.searchParams.set('date', new Date().toISOString().slice(0, 10));
   const check = async headers => {
-    const response = await fetch(url, { headers });
+    const response = await fetch(url, { headers, signal: AbortSignal.timeout(12000) });
     const body = await response.json().catch(() => ({}));
     return { ok: response.ok, status: response.status, message: body?.error?.message || body?.error?.code || (response.ok ? 'OK' : `HTTP ${response.status}`), meta: body.meta || null, returned: rows(body).length };
   };
@@ -1236,7 +1237,7 @@ app.get('/api/conf', async (req, res) => {
         return true;
       })
       .sort((a, b) => new Date(a.kickoffAt || a.date || a.utcDate || 0) - new Date(b.kickoffAt || b.date || b.utcDate || 0))
-      .slice(0, Math.min(40, Math.max(limit, limit * 2)));
+      ;
     // API-Football IDs are not valid OpenFootAPI team IDs. Display those
     // fixtures even without stats instead of making misleading provider calls.
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)])
@@ -1244,8 +1245,9 @@ app.get('/api/conf', async (req, res) => {
     const forms = new Map();
     const warnings = [];
     let teamCursor = 0;
+    const formDeadline = Date.now() + 45000;
     const worker = async () => {
-      while (teamCursor < teamIds.length) {
+      while (teamCursor < teamIds.length && Date.now() < formDeadline) {
         const id = teamIds[teamCursor++];
         try {
           const body = await openFoot('/matches', { team: id, status: 'finished' });
@@ -1260,6 +1262,7 @@ app.get('/api/conf', async (req, res) => {
       }
     };
     await Promise.all(Array.from({ length: Math.min(4, teamIds.length) }, worker));
+    if (teamCursor < teamIds.length) warnings.push('Tempo massimo per gli storici raggiunto: alcune squadre restano senza analisi.');
     // Merge EFL's real historical results into the existing CONF machinery.
     // Keep the latest 10 completed matches per team, with no future results.
     for (const [id, games] of eflHistory) {
@@ -1294,8 +1297,8 @@ app.get('/api/conf', async (req, res) => {
       }).filter(completed);
       const homeVenue = venueMatches(homeAll, homeId, 'home');
       const awayVenue = venueMatches(awayAll, awayId, 'away');
-      const homeSample = homeVenue.length >= 3 ? homeVenue : homeAll.filter(completed);
-      const awaySample = awayVenue.length >= 3 ? awayVenue : awayAll.filter(completed);
+      const homeSample = homeVenue.length >= 6 ? homeVenue : homeAll.filter(completed);
+      const awaySample = awayVenue.length >= 6 ? awayVenue : awayAll.filter(completed);
       const combined = [...homeSample, ...awaySample];
       const pairedFrequency = (label, predicate) => {
         const a = frequency(homeSample, predicate, label);
@@ -1314,9 +1317,10 @@ app.get('/api/conf', async (req, res) => {
           label,
           score: Math.round(100 * (a.hits + b.hits) / (a.sample + b.sample)),
           hits: a.hits + b.hits,
+          teamRates: [a.hits/a.sample, b.hits/b.sample],
           sample: a.sample + b.sample,
           venueSamples: { home: a.sample, away: b.sample },
-          method: (homeVenue.length >= 3 ? 'casa' : 'forma generale') + ' / ' + (awayVenue.length >= 3 ? 'trasferta' : 'forma generale')
+          method: (homeVenue.length >= 6 ? 'casa' : 'forma generale') + ' / ' + (awayVenue.length >= 6 ? 'trasferta' : 'forma generale')
         };
       };
       const over25 = pairedFrequency('Over 2.5 FT', x => { const sc = goals(x); return sc.home + sc.away >= 3; });
@@ -1337,8 +1341,8 @@ app.get('/api/conf', async (req, res) => {
       };
       // 1X2 uses home/away-specific results when there are at least 3
       // relevant games, consistently with Over 2.5 and GG.
-      const homeResults = homeVenue.length >= 3 ? homeVenue : homeAll;
-      const awayResults = awayVenue.length >= 3 ? awayVenue : awayAll;
+      const homeResults = homeVenue.length >= 6 ? homeVenue : homeAll;
+      const awayResults = awayVenue.length >= 6 ? awayVenue : awayAll;
       const hW = resultRate(homeResults, homeId, 'W');
       const hD = resultRate(homeResults, homeId, 'D');
       const hL = resultRate(homeResults, homeId, 'L');
@@ -1376,48 +1380,21 @@ app.get('/api/conf', async (req, res) => {
         cornerMarkets: buildCornerMarkets(teamName(homeTeam),teamName(awayTeam),m.competitionId || m.competition?.id || '', Date.parse(kickoff) || now)
       };
     });
-    // Classifica per qualità dell'evidenza: prima i mercati che superano CONF 60%
-    // con almeno 6 gare, poi i dati utilizzabili con campione sufficiente, infine gli altri.
-    const marketList = f => Object.values(f.markets || {}).filter(m => m.score !== null);
+    // Screen every future fixture returned by the calendar before enriching
+    // the strongest candidates. The card uses this same selection object.
     for (const f of fixtures) {
-      const ms = marketList(f);
-      // Wilson lower bound is a conservative ranking metric, NOT a predicted probability.
-      // It penalizes perfect-looking records built on only a handful of games.
-      const evidenceScore = m => {
-        const n = Number(m.sample) || 0;
-        if (!n) return -1;
-        const p = Array.isArray(m.teamRates) && m.teamRates.length === 2
-          ? Math.max(0, Math.min(1, (m.teamRates[0] + m.teamRates[1]) / 2))
-          : Math.max(0, Math.min(1, (Number(m.hits) || 0) / n));
-        const z = 1.28; // one-sided ~90% confidence
-        return (p + z*z/(2*n) - z*Math.sqrt((p*(1-p) + z*z/(4*n))/n)) / (1 + z*z/n);
-      };
-      const better = (best, m) => !best || evidenceScore(m) > evidenceScore(best) ||
-        (evidenceScore(m) === evidenceScore(best) && m.sample > best.sample) ? m : best;
-      const qualified = ms.filter(m => m.score >= 60 && m.sample >= 6 && !m.partial);
-      const enoughSample = ms.filter(m => m.sample >= 6 && !m.partial);
-      const bestQualified = qualified.reduce(better, null);
-      const bestEvidence = enoughSample.reduce(better, null);
-      const bestAny = ms.reduce(better, null);
-      f.ranking = {
-        tier: bestQualified ? 3 : bestEvidence ? 2 : bestAny ? 1 : 0,
-        score: bestQualified?.score ?? bestEvidence?.score ?? bestAny?.score ?? -1,
-        sample: bestQualified?.sample ?? bestEvidence?.sample ?? bestAny?.sample ?? 0,
-        evidence: Math.round(100 * Math.max(0, evidenceScore(bestQualified || bestEvidence || bestAny || {}))),
-        qualified: Boolean(bestQualified),
-        basis: bestQualified ? 'Mercato ≥60% con almeno 6 gare' : bestEvidence ? 'Miglior frequenza con almeno 6 gare, sotto soglia' : bestAny ? 'Campione insufficiente' : 'Nessun dato storico'
-      };
-      // Punteggio solo per ordinare le schede, non è una probabilità.
-      f.rankScore = f.ranking.tier * 10000 + f.ranking.evidence * 100 + Math.min(f.ranking.sample, 10);
+      f.selection = selectFixture(f);
+      f.rankScore = f.selection.primary?.evidence ?? -1;
     }
-    fixtures.sort((a, b) => b.rankScore - a.rankScore);
+    fixtures.sort((a,b) => b.rankScore-a.rankScore || Date.parse(a.date)-Date.parse(b.date));
+    const selectedCount = fixtures.filter(f=>f.selection.qualified).length;
     const analyzedCount = fixtures.length;
     fixtures = fixtures.slice(0, limit);
     let goalCursor=0;
     await Promise.all(Array.from({length:Math.min(4,fixtures.length)},async()=>{
       while(goalCursor<fixtures.length){
         const fixture=fixtures[goalCursor++];
-        fixture.providerExpectedGoals=await providerGoalContext(fixture.fixtureId);
+        if (fixture.selection.qualified || query) fixture.providerExpectedGoals=await providerGoalContext(fixture.fixtureId);
       }
     }));
     const metaToday = todayBody?.meta || {};
@@ -1425,8 +1402,8 @@ app.get('/api/conf', async (req, res) => {
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
       secondaryStatus, windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
-      method: 'Le schede sono ordinate per qualificazione CONF e solidità statistica (limite inferiore di Wilson), penalizzando i campioni piccoli. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
-      threshold: 60, limit, analyzedCount, fixtures,
+      method: 'Selezione: stima e frequenza storica almeno 60%, almeno 6 gare per ciascuna squadra e riscontro in entrambi gli storici. Ordinamento conservativo per campione e concordanza; modello sperimentale non calibrato. Quote non considerate.',
+      threshold: 60, limit, analyzedCount, selectedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
       note: (query ? 'Ricerca provider per “' + query + '” integrata nell’analisi CONF. ' : 'Lista generale ') + 'Oggi e domani, filtrati sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
@@ -1562,3 +1539,4 @@ app.post('/api/history/settle', async (req, res) => {
 });
 
 app.listen(port, () => console.log(`CONF Football attivo su http://localhost:${port}`));
+

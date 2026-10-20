@@ -11,14 +11,23 @@
 header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}header{padding-top:25px;padding-bottom:20px}.brand{display:flex;gap:12px;align-items:center}.logo{width:46px;height:46px;border-radius:14px;background:#1b724b;display:grid;place-items:center;font-weight:900;font-size:20px}.eyebrow{color:var(--green);font-size:11px;font-weight:800;letter-spacing:.12em}.title{font-size:clamp(28px,5vw,38px);font-weight:850;letter-spacing:-.04em;margin:2px 0}.sub,.muted{color:var(--muted)}.sub{margin:0}main{padding-bottom:45px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0 16px}.stat,.panel,.match{background:rgba(17,28,47,.96);border:1px solid var(--line);border-radius:16px}.stat{padding:14px}.stat small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}.stat strong{font-size:25px;display:block;margin-top:3px}.panel{padding:16px;margin:14px 0}.panel h2{font-size:16px;margin:0 0 12px}.filters{display:grid;grid-template-columns:1fr 1.4fr auto auto;gap:10px;align-items:end}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.field input{width:100%;padding:11px;border-radius:10px;background:#0b1424;color:var(--text);border:1px solid var(--line);font:inherit}.button{border:1px solid var(--green);background:var(--green);color:#082015;font-weight:800;padding:11px 15px;border-radius:10px;cursor:pointer;font:inherit}.button:disabled{opacity:.6;cursor:wait}.message{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;color:var(--muted)}.matches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.match{padding:15px;min-width:0}.matchtop{display:flex;justify-content:space-between;gap:12px}.league{color:var(--blue);font-size:11px;text-transform:uppercase;letter-spacing:.06em}.teams{font-size:17px;font-weight:800;margin:8px 0;overflow-wrap:anywhere}.vs{color:var(--muted);font-size:12px;font-weight:500}.time{font-size:12px;color:var(--muted)}.score{font-size:22px;font-weight:900;white-space:nowrap}.conf-ring{--pct:0;width:54px;height:54px;flex:0 0 54px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) calc(var(--pct)*1%),#293a53 0);position:relative}.conf-ring:before{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--panel)}.conf-ring span{position:relative;font-size:13px;font-weight:850;line-height:1}.conf-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:10px}.conf-row-label{min-width:0;flex:1}.recommend{border:1px solid #2f9f68;background:linear-gradient(135deg,rgba(69,212,131,.13),rgba(17,28,47,.96));border-radius:12px;padding:12px;margin-top:12px}.recommend-title{font-size:11px;color:var(--green);font-weight:850;letter-spacing:.06em;text-transform:uppercase}.recommend-market{font-size:16px;font-weight:850;margin-top:3px}.recommend-note{font-size:12px;color:var(--muted);margin-top:2px}.status{display:inline-block;margin-top:8px;font-size:11px;border-radius:99px;padding:4px 8px;background:#20334a;color:#d5e6ff}.foot{color:var(--muted);font-size:12px;margin:18px 2px}.empty{grid-column:1/-1;text-align:center;border:1px dashed var(--line);border-radius:14px;padding:25px;color:var(--muted)}
 .dashboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:12px 0}.dash-card{background:#0b1424;border:1px solid var(--line);border-radius:12px;padding:12px}.dash-card small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em}.dash-card strong{display:block;font-size:23px;margin-top:3px}.market-stats{display:grid;gap:9px;margin:12px 0 4px}.market-stat{border:1px solid var(--line);border-radius:10px;padding:10px 12px}.market-head{display:flex;justify-content:space-between;gap:10px;font-weight:750}.market-track{height:7px;border-radius:99px;background:#293a53;overflow:hidden;margin-top:8px}.market-fill{height:100%;background:var(--green);border-radius:99px}.market-detail{font-size:12px;color:var(--muted);margin-top:4px}@media(max-width:680px){.dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.filters{grid-template-columns:1fr 1fr}.filters .field:first-child{grid-column:1/-1}.filters button{width:100%}.matches{grid-template-columns:1fr}.stat{padding:10px}.stat strong{font-size:21px}.panel{padding:13px}}
+
+.filters{grid-template-columns:minmax(90px,.6fr) minmax(140px,1fr) minmax(170px,1.6fr) auto auto}
+.field select{width:100%;padding:11px;border-radius:10px;background:#0b1424;color:var(--text);border:1px solid var(--line);font:inherit}
+.match .teams{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:18px}
+.match .recommend-market{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pick-percent{color:var(--green);white-space:nowrap;font-size:24px}
+.match details>summary,details.panel>summary{cursor:pointer;font-weight:700;padding:8px 0}
+.match .recommend{margin-top:10px}.stats{margin:12px 0}.message{font-size:13px}
+@media(max-width:850px){.filters{grid-template-columns:1fr 1fr}.filters .field:nth-child(3){grid-column:1/-1}.filters button{width:100%}}
 </style>
 </head>
 <body>
 <header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Partite reali · dati aggiornati dal provider</p></div></div></header>
 <main>
 <section class="panel">
- <h2>Partite e analisi CONF</h2>
- <p class="muted">Un’unica lista: ogni partita viene cercata e analizzata con le statistiche e le percentuali CONF disponibili.</p>
+ <h2>Le partite selezionate</h2>
+ <p class="muted">Prima la selezione, poi l’analisi. Una sola indicazione per partita; tutti i dati nei dettagli.</p>
  <div class="filters">
   <div class="field"><label for="hours">Prossime ore</label><select id="hours"><option value="3">3 ore</option><option value="12">12 ore</option><option value="24" selected>24 ore</option></select></div>
   <div class="field"><label for="date">Data (ora italiana)</label><input id="date" type="date"></div>
@@ -27,37 +36,38 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
   <button class="button" id="reload" type="button">Aggiorna</button>
  </div>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
- <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo partite con giocata principale ≥60% (stima sperimentale)</label>
+ <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--green)"> Solo selezionate · stima e storico ≥60%</label>
  <div id="conf-results" class="matches"></div>
  <div class="stats">
   <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
-  <div class="stat"><small>Mercati qualificati</small><strong id="upcoming">—</strong></div>
+  <div class="stat"><small>Partite selezionate</small><strong id="upcoming">—</strong></div>
   <div class="stat"><small>Con dati storici</small><strong id="live">—</strong></div>
  </div>
 </section>
-<section class="panel">
- <h2>⭐ Le mie partite preferite <span id="favorites-count" class="muted"></span></h2>
+<details class="panel"><summary>⭐ Le mie partite preferite</summary>
+ <h2 hidden>⭐ Le mie partite preferite <span id="favorites-count" class="muted"></span></h2>
  <p class="muted">Salva qui le partite che vuoi tenere d’occhio. I preferiti restano salvati in questo browser.</p>
  <div id="favorites-results" class="matches"><div class="empty">Non hai ancora aggiunto partite ai preferiti.</div></div>
-</section>
+</details>
 
-<section class="panel">
- <h2>Storico scommesse consigliate</h2>
- <p class="muted">Mostra una sola scheda per partita con la scommessa CONF migliore. Tutti i mercati analizzati restano registrati per le statistiche. Usa Sincronizza per condividere lo storico tra PC e smartphone.</p>
+<details class="panel"><summary>Archivio e sincronizzazione</summary>
+ <h2>Storico analisi</h2>
+ <p class="muted">Archivio delle frequenze storiche. Usa Sincronizza per condividerlo tra PC e smartphone.</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button" id="sync-history" type="button">Sincronizza PC e smartphone</button></div>
  <div id="sync-message" class="message">Sincronizzazione non ancora avviata.</div>
  <div id="history-summary" class="message">Nessuna selezione registrata.</div>
  <div id="history-dashboard"></div>
  <div id="history-results" class="matches"></div>
-</section>
+</details>
 
-<p class="foot">CONF Football · fuso orario Europe/Rome · dati delle partite forniti da API-Football.</p>
+<p class="foot">CONF Football · fuso orario Europe/Rome · modello sperimentale · dati e disponibilità dipendono dai provider.</p>
 </main>
-<script>
+<script type="module">
+import { selectFixture } from "/conf-selection.js";
 const $ = (s) => document.querySelector(s);
 let games = [];
 let confItems = [];
-let confOnlyQualified = false;
+let confOnlyQualified = true;
 const HISTORY_KEY = 'confFootballBetHistoryV1';
 const FAVORITES_KEY = 'confFootballFavoritesV1';
 function readFavorites(){ try { const v = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } }
@@ -339,14 +349,12 @@ function byEvidence(a,b){ return marketEvidence(b)-marketEvidence(a) || (b.sampl
 function renderConf(items){
   confItems = items;
   const root = $('#conf-results');
-  // Historical frequencies must never be presented as calibrated winning probabilities.
-  const warning = '<div class="recommend" style="margin-bottom:12px"><div class="recommend-title">⚠️ Modalità statistiche storiche</div><div class="recommend-note">Le percentuali NON sono probabilità di vincita. Il modello predittivo CONF non è ancora validato: nessuna scommessa può essere consigliata sulla sola base di questi valori. Per 1/X/2 sono medie tra frequenze delle due squadre, non pronostici.</div></div>';
   const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
   const qualifies = m => m && m.score !== null && Number(m.score) >= 60 && Number(m.sample) >= 6 && !m.partial;
-  const eligible = f => f.experimentalEstimate?.available === true && Object.values(f.experimentalEstimate.estimates || {}).some(v => Number.isFinite(Number(v)) && Number(v) >= 60);
+  const eligible = f => (f.selection || selectFixture(f)).qualified;
   const selected = confOnlyQualified ? items.filter(eligible) : items;
   if(!selected.length){
-    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessuna delle partite caricate ha una giocata principale stimata ≥60%. Disattiva il filtro per vedere tutte le partite.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
+    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessuna partita soddisfa tutti i criteri di selezione: soglia 60%, campione e riscontro storico. Disattiva “Solo selezionate” per consultare le altre.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
     return;
   }
   const ordered = [...selected].sort((a,b) => {
@@ -356,10 +364,10 @@ function renderConf(items){
   });
   root.innerHTML = ordered.map(f => {
     const allMarkets = visibleMarkets(f);
-    const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 60 && m.sample >= 6 && !m.partial));
+    const markets = allMarkets;
     const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 60 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
     const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
-    const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
+    const date = f.date ? new Date(f.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
     // Corner recommendations are evaluated separately from 1X2 / goals.
     // Minimum 6 observed matches and 60% descriptive frequency, not a
     // forecast. Never combine probabilities or imply bookmaker availability.
@@ -369,13 +377,11 @@ function renderConf(items){
       ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Corner FT · frequenza storica alta</div><div class="recommend-market">'+safe(bestCorner.label)+' · '+safe(bestCorner.score)+'%</div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare storiche · frequenza descrittiva ≥60% · NON è una probabilità prevista</div></div>'
       : '';
     const estimate=f.experimentalEstimate || {};
-    const names={one:'1 · vittoria casa',draw:'X · pareggio',two:'2 · vittoria trasferta',over25:'Over 2.5 FT',btts:'GG'};
-    const possibilities=estimate.available ? Object.keys(names).map(key=>({label:names[key],pct:Number(estimate.estimates?.[key])}))
-      .filter(x=>Number.isFinite(x.pct)&&x.pct>=0&&x.pct<=100).sort((a,b)=>b.pct-a.pct) : [];
-    const best=possibilities[0];
+    const selection=f.selection || selectFixture(f);
+    const best=selection.primary;
     const recommendationHtml=best
-      ? '<div class="recommend"><div class="recommend-title">🎯 Migliore indicazione CONF · sperimentale</div><div class="recommend-market">'+safe(best.label)+' · '+safe(best.pct)+'%</div><div class="recommend-note">Valore più alto del modello, anche sotto 60%. Non è un consiglio verificato. Campione '+safe(estimate.samples?.home)+' / '+safe(estimate.samples?.away)+' partite.</div></div>'
-      : '<div class="recommend"><div class="recommend-title">🎯 Giocata CONF</div><div class="recommend-market">Dati insufficienti per una giocata</div><div class="recommend-note">Il modello richiede almeno 6 risultati per ciascuna squadra. Le frequenze storiche sotto restano consultabili.</div></div>';
+      ? '<div class="recommend"><div class="recommend-title">Indicazione selezionata · stima sperimentale</div><div class="recommend-market"><span>'+safe(best.label)+'</span><span class="pick-percent">'+safe(best.score)+'%</span></div><div class="recommend-note">Stima del modello · storico '+safe(best.historicalScore)+'% · campione '+safe(best.samples.home)+' / '+safe(best.samples.away)+'</div></div>'
+      : '<div class="recommend"><div class="recommend-title">Non selezionata</div><div class="recommend-market">Nessuna indicazione qualificata</div><div class="recommend-note">'+safe(selection.reason)+'</div></div>';
 
     const e=f.experimentalEstimate || {};
     const combos=Array.isArray(e.teamGoalCombos)?e.teamGoalCombos:[];
@@ -409,13 +415,13 @@ function renderConf(items){
         '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
         :'<p class="time">Dati corner verificati insufficienti.</p>')+
       '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Apri la sezione per verificare i dati storici separati per tempo.</div>'+ '</details>';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+predictedGoalsHtml+comboHtml+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div><details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Statistiche e analisi</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
+    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote non considerate.</p>'+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary>'+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 60 ? 'frequenza storica ≥60 · non predittiva' : 'sotto soglia 60'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
       const pct = m.score === null ? 0 : Math.max(0,Math.min(100,Number(m.score)||0));
       return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
-    }).join('')+'</div>'+comboDetails+cornerHtml+'</details></article>';
+    }).join('')+'</div></details>'+experimentalHtml+'</details></article>';
   }).join('');
 }
 async function loadConf(){
@@ -423,11 +429,11 @@ async function loadConf(){
   if(button) button.disabled = true;
   const hours = Number($('#hours')?.value || 24);
   const query = $('#search')?.value.trim() || '';
-  $('#conf-message').textContent = query ? 'Cerco “'+query+'” nelle API e calcolo frequenze storiche…' : 'Carico le partite delle prossime '+hours+' ore e calcolo frequenze storiche…';
+  $('#conf-message').textContent = query ? 'Cerco “'+query+'” nelle API e calcolo frequenze storiche…' : 'Esamino le partite delle prossime '+hours+' ore e seleziono quelle con riscontri sufficienti…';
   $('#conf-results').innerHTML = '';
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'40'});
-    if(query) { params.set('q',query); if($('#date').value) params.set('date',$('#date').value); }
+    if(query) { confOnlyQualified=false; $('#conf-filter').checked=false; params.set('q',query); if($('#date').value) params.set('date',$('#date').value); }
     const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store'});
     const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
@@ -439,12 +445,18 @@ async function loadConf(){
       if(savedCount > 0) await syncHistory();
       await checkFinalResults(true);
     }
-    const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 60 && m.sample >= 6 && !m.partial)).length;
-    const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
-    if($('#total')) $('#total').textContent = data.analyzedCount || (data.fixtures || []).length;
+    const qualified = data.selectedCount ?? (data.fixtures || []).filter(f=>(f.selection || selectFixture(f)).qualified).length;
+    const valid = (data.fixtures || []).filter(f => f.experimentalEstimate?.available).length;
+    if($('#total')) $('#total').textContent = data.analyzedCount ?? (data.fixtures || []).length;
     if($('#upcoming')) $('#upcoming').textContent = qualified;
     if($('#live')) $('#live').textContent = valid;
-    $('#conf-message').textContent = (query ? 'Ricerca CONF per “'+query+'” completata. ' : 'Analisi CONF completata. ')+(data.analyzedCount || (data.fixtures || []).length)+' partite analizzate nelle prossime '+hours+' ore; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥60%. '+data.method+' '+(data.secondaryStatus?.startsWith('fa_official_') ? 'FA Cup: '+data.secondaryStatus.split('_').pop()+' partite confermate dal calendario ufficiale; le statistiche non disponibili restano senza percentuale. ' : data.secondaryStatus?.startsWith('efl_calendar_') ? 'Calendario EFL: '+data.secondaryStatus.split('_')[2]+' partite programmate nel feed; analisi con dati storici disponibili. ' : data.secondaryStatus?.startsWith('efl_error:') ? 'Calendario EFL non disponibile: '+data.secondaryStatus+'. ' : data.secondaryStatus?.startsWith('provider_error') ? 'API-Football: '+data.secondaryStatus+'. ' : data.secondaryStatus === 'missing_api_key' ? 'API-Football non configurata. ' : data.secondaryStatus?.startsWith('fixtures_returned_') ? 'Ricerca integrativa API-Football: '+data.secondaryStatus.split('_')[2]+' partite trovate nel calendario alternativo. ' : '')+((data.warnings || []).length ? 'AVVISI DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
+    const message = $('#conf-message');
+    message.textContent = (query ? 'Ricerca “'+query+'”: ' : 'Prossime '+hours+' ore: ')+(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.';
+    const details=document.createElement('details');
+    const summary=document.createElement('summary'); summary.textContent='Metodo e copertura dati';
+    const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Alcuni storici non sono disponibili.' : '');
+    details.append(summary,note); message.append(details);
+
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
