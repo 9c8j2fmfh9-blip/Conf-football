@@ -28,6 +28,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  </div>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo mercati CONF ≥70% (campione minimo 6 gare)</label>
+ <details style="margin:12px 0" id="backtest-panel"><summary style="cursor:pointer;font-weight:700">🧪 Verifica del modello su partite concluse</summary><div id="backtest-results" class="message">Caricamento verifica retrospettiva…</div></details>
  <div id="conf-results" class="matches"></div>
  <div class="stats">
   <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
@@ -506,6 +507,21 @@ async function searchGames(){
     button.disabled = false;
   }
 }
+
+async function loadBacktest(){
+ const root=$('#backtest-results');
+ try{
+  const r=await fetch('/api/conf-backtest'); const data=await r.json();
+  if(!r.ok)throw Error(data.error||'Errore');
+  const label={'league one':'League One','league two':'League Two','championship':'Championship'};
+  const metrics={one:'1',draw:'X',two:'2',over25:'Over 2.5',btts:'GG'};
+  root.innerHTML='<p>Risultati storici, controllo retrospettivo senza usare partite di date successive. Valore Brier più basso = migliore. Non è ancora una validazione esterna.</p>'+
+   Object.entries(data.leagues||{}).map(([league,l])=>'<div style="margin-bottom:12px"><strong>'+safe(label[league]||league)+'</strong> · '+safe(l.backtestedFixtures)+' partite testate su '+safe(l.historicalFixtures)+' storiche'+
+    (l.backtestedFixtures?'<div class="time">'+Object.entries(metrics).map(([key,name])=>{const m=l.measurements?.[key];return name+': '+(m?.brier===null?'—':safe(m?.brier))+' vs base '+(m?.baselineBrier===null?'—':safe(m?.baselineBrier))+' '+(m?.betterThanBaseline?'✓':'');}).join(' · ')+'</div>':'<div class="time">Campione insufficiente per una verifica.</div>')+'</div>').join('')+
+    '<p class="time">'+safe(data.limitations||'')+'</p>';
+ }catch(e){root.textContent='Verifica non disponibile: '+e.message;}
+}
+
 $('#date').value = romeToday();
 renderHistory();
 if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
@@ -548,7 +564,7 @@ document.addEventListener('toggle',async e=>{
     if(container){
       const cards=[bestFirst,bestSecond].filter(Boolean);
       container.innerHTML=cards.map(m=>'<div class="recommend" style="margin-top:8px">'+
-        '<div class="recommend-title">🚩 Corner consigliato · '+(m.half==='first'?'1°':'2°')+' tempo</div>'+
+        '<div class="recommend-title">🚩 Corner · frequenza storica · '+(m.half==='first'?'1°':'2°')+' tempo</div>'+
         '<div class="recommend-market">'+safe(m.label)+' · '+safe(m.score)+'%</div>'+
         '<div class="recommend-note">'+safe(m.hits)+' su '+safe(m.sample)+' gare · soglia CONF ≥70% · frequenza storica</div></div>').join('');
     }
@@ -563,6 +579,7 @@ $('#date').addEventListener('change',loadConf);
 $('#hours').addEventListener('change',loadConf);
 
 renderFavorites();
+loadBacktest();
 loadConf();
 </script>
 </body>
