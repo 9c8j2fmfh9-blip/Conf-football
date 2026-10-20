@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import { readFileSync } from 'node:fs';
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
@@ -47,6 +48,9 @@ const eflSources = {
   'league one': { slug: 'efl-league-one-2026', folder: 'ENG_3_league-one', name: 'League One' },
   'league two': { slug: 'efl-league-two-2026', folder: 'ENG_4_league-two', name: 'League Two' }
 };
+// Local fallback is bundled during deployment: these are real completed
+// 2026/27 league results, not simulated or predicted matches.
+const eflBundled = JSON.parse(readFileSync(new URL('./efl-history-2627.json', import.meta.url), 'utf8'));
 const eflCache = new Map();
 async function eflDownload(url, asCsv = false) {
   const cached = eflCache.get(url);
@@ -110,7 +114,12 @@ async function eflLeagueData(key) {
     throw new Error('Calendario ' + key + ' non disponibile da entrambe le fonti');
   const feed = feedResult.status === 'fulfilled' && Array.isArray(feedResult.value) ? feedResult.value : [];
   const csvFixtures = fixturesResult.status === 'fulfilled' ? eflCsv(fixturesResult.value) : [];
-  const history = historyResult.status === 'fulfilled' ? eflCsv(historyResult.value) : [];
+  const remotelyAvailable = historyResult.status === 'fulfilled' ? eflCsv(historyResult.value) : [];
+  const bundled = (eflBundled.leagues[key] || []).map(([date, home, away, ft_home, ft_away]) =>
+    ({ date, home, away, ft_home, ft_away, time: '12:00' }));
+  // Prefer the most complete actual-results sample. Crucially, the locally
+  // bundled history still works if GitHub's raw CDN is inaccessible on Render.
+  const history = remotelyAvailable.length > bundled.length ? remotelyAvailable : bundled;
   const calendar = feed.length ? feed.map(m => ({
     home: m.HomeTeam, away: m.AwayTeam,
     date: m.DateUtc ? new Date(String(m.DateUtc).replace(' ', 'T')).toISOString() : null,
