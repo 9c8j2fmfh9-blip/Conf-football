@@ -21,7 +21,15 @@ async function apiFootball(path, params = {}) {
   if (cached && Date.now() - cached.time < 6 * 60 * 60 * 1000) return cached.value;
   const response = await fetch(url, { headers: { 'x-apisports-key': apiFootballKey } });
   const body = await response.json().catch(() => ({}));
-  if (!response.ok || (body.errors && Object.keys(body.errors).length)) throw new Error('API-Football non disponibile o quota esaurita');
+  if (!response.ok || (body.errors && Object.keys(body.errors).length)) {
+    const errorCodes = Object.keys(body.errors || {});
+    const reason = response.status === 401 || response.status === 403 ? 'chiave non autorizzata'
+      : response.status === 429 ? 'limite richieste raggiunto'
+      : errorCodes.some(k => /requests|quota|limit/i.test(k)) ? 'quota o limite API'
+      : errorCodes.some(k => /token|key|auth/i.test(k)) ? 'problema autenticazione'
+      : 'errore provider';
+    throw new Error(reason + ' (HTTP ' + response.status + ', categorie: ' + (errorCodes.join(',') || 'nessuna') + ')');
+  }
   secondaryCache.set(key, { value: body, time: Date.now() });
   return body;
 }
