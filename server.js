@@ -425,6 +425,34 @@ function teamPerspective(matches, id) {
     averageAgainst: valid.length ? Number((goalsAgainst / valid.length).toFixed(2)) : null };
 }
 
+
+// Experimental goal model: historical goal averages, venue-aware, no claim of calibration.
+// Require both teams >= 6 completed matches; use shrinkage toward 1.3 goals per team.
+function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
+  const home = teamPerspective(homeGames, homeId);
+  const away = teamPerspective(awayGames, awayId);
+  if (home.sample < 6 || away.sample < 6) return { available: false, reason: 'Servono almeno 6 risultati per squadra.' };
+  const shrink = (v,n) => (v*n + 1.3*6)/(n+6);
+  const homeAttack = shrink(home.averageFor,home.sample);
+  const awayDefense = shrink(away.averageAgainst,away.sample);
+  const awayAttack = shrink(away.averageFor,away.sample);
+  const homeDefense = shrink(home.averageAgainst,home.sample);
+  const h = Math.max(0.15,Math.min(4,Math.sqrt(homeAttack*awayDefense)));
+  const a = Math.max(0.15,Math.min(4,Math.sqrt(awayAttack*homeDefense)));
+  const poisson = (lambda,k) => {
+    let f=1; for(let i=2;i<=k;i++)f*=i;
+    return Math.exp(-lambda)*Math.pow(lambda,k)/f;
+  };
+  let one=0,draw=0,two=0,over25=0,gg=0;
+  for(let i=0;i<=15;i++)for(let j=0;j<=15;j++){
+    const p=poisson(h,i)*poisson(a,j);
+    if(i>j)one+=p;else if(i===j)draw+=p;else two+=p;
+    if(i+j>2)over25+=p;
+    if(i>0&&j>0)gg+=p;
+  }
+  return { available:true, validated:false, model:'Poisson sperimentale con medie gol corrette per piccolo campione', expectedGoals:{home:Number(h.toFixed(2)),away:Number(a.toFixed(2))}, estimates:{one:Math.round(one*100),draw:Math.round(draw*100),two:Math.round(two*100),over25:Math.round(over25*100),btts:Math.round(gg*100)}, samples:{home:home.sample,away:away.sample}, warning:'STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa.' };
+}
+
 app.get('/api/status', (_req, res) => {
   res.json({ configured: Boolean(apiKey), provider: 'OpenFootAPI', cacheMinutes: CACHE_TTL_MS / 60000 });
 });
@@ -1219,6 +1247,7 @@ app.get('/api/conf', async (req, res) => {
         markets: {
           one, draw, two, over25, btts
         },
+        experimentalEstimate: experimentalGoalEstimate(homeSample, awaySample, homeId, awayId),
         cornerMarkets: buildCornerMarkets(teamName(homeTeam),teamName(awayTeam),m.competitionId || m.competition?.id || '', Date.parse(kickoff) || now)
       };
     });
