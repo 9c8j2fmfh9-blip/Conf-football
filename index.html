@@ -374,6 +374,10 @@ function renderConf(items){
         ? '<div class="recommend"><div class="recommend-title">📊 Miglior dato storico · NON qualificato</div><div class="recommend-market">'+safe(bestMarket.label)+' · '+safe(bestMarket.score)+'%</div><div class="recommend-note">'+safe(bestMarket.hits)+' su '+safe(bestMarket.sample)+' gare storiche. '+(bestMarket.partial ? 'Dato parziale: manca lo storico di una squadra. Non qualificabile come consiglio CONF.' : 'Dato storico descrittivo, non probabilità predittiva; sotto la soglia storica del 70% o campione minore di 6.')+'</div></div>'
         : '<div class="recommend"><div class="recommend-title">📊 Dati storici insufficienti</div><div class="recommend-market">Nessun mercato valutabile</div><div class="recommend-note">Il provider non ha restituito risultati storici utilizzabili per questa partita.</div></div>';
 
+    const e=f.experimentalEstimate || {};
+    const experimentalHtml=e.available
+      ? '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🧪 Stima sperimentale · NON validata</summary><p class="time">Modello Poisson basato sulle medie gol: 1 '+safe(e.estimates?.one)+'% · X '+safe(e.estimates?.draw)+'% · 2 '+safe(e.estimates?.two)+'% · Over 2.5 '+safe(e.estimates?.over25)+'% · GG '+safe(e.estimates?.btts)+'%. Gol attesi del modello: '+safe(e.expectedGoals?.home)+' / '+safe(e.expectedGoals?.away)+'.</p><p class="time">'+safe(e.warning)+'</p></details>'
+      : '<div class="time" style="margin-top:10px">🧪 Stima sperimentale non disponibile: '+safe(e.reason || 'dati insufficienti')+'</div>';
     const corners = f.cornerMarkets || {markets:[],note:'Dati corner non disponibili'};
     const foundCorners=(corners.markets||[]).filter(m=>m.score!==null);
     const cornerHtml = '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🚩 Corner FT · '+foundCorners.length+' mercati</summary>'+
@@ -390,7 +394,7 @@ function renderConf(items){
       const score = m.score === null ? '—' : safe(m.score)+'%';
       const pct = m.score === null ? 0 : Math.max(0,Math.min(100,Number(m.score)||0));
       return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
-    }).join('')+'</div>'+cornerHtml+'</article>';
+    }).join('')+'</div>'+experimentalHtml+cornerHtml+'</article>';
   }).join('');
 }
 async function loadConf(){
