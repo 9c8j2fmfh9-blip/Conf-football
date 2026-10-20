@@ -721,20 +721,32 @@ app.get('/api/conf', async (req, res) => {
     const marketList = f => Object.values(f.markets || {}).filter(m => m.score !== null);
     for (const f of fixtures) {
       const ms = marketList(f);
+      // Wilson lower bound is a conservative ranking metric, NOT a predicted probability.
+      // It penalizes perfect-looking records built on only a handful of games.
+      const evidenceScore = m => {
+        const n = Number(m.sample) || 0;
+        if (!n) return -1;
+        const p = Math.max(0, Math.min(1, (Number(m.hits) || 0) / n));
+        const z = 1.28; // one-sided ~90% confidence
+        return (p + z*z/(2*n) - z*Math.sqrt((p*(1-p) + z*z/(4*n))/n)) / (1 + z*z/n);
+      };
+      const better = (best, m) => !best || evidenceScore(m) > evidenceScore(best) ||
+        (evidenceScore(m) === evidenceScore(best) && m.sample > best.sample) ? m : best;
       const qualified = ms.filter(m => m.score >= 70 && m.sample >= 6);
       const enoughSample = ms.filter(m => m.sample >= 6);
-      const bestQualified = qualified.reduce((best, m) => !best || m.score > best.score || (m.score === best.score && m.sample > best.sample) ? m : best, null);
-      const bestEvidence = enoughSample.reduce((best, m) => !best || m.score > best.score || (m.score === best.score && m.sample > best.sample) ? m : best, null);
-      const bestAny = ms.reduce((best, m) => !best || m.score > best.score || (m.score === best.score && m.sample > best.sample) ? m : best, null);
+      const bestQualified = qualified.reduce(better, null);
+      const bestEvidence = enoughSample.reduce(better, null);
+      const bestAny = ms.reduce(better, null);
       f.ranking = {
         tier: bestQualified ? 3 : bestEvidence ? 2 : bestAny ? 1 : 0,
         score: bestQualified?.score ?? bestEvidence?.score ?? bestAny?.score ?? -1,
         sample: bestQualified?.sample ?? bestEvidence?.sample ?? bestAny?.sample ?? 0,
+        evidence: Math.round(100 * Math.max(0, evidenceScore(bestQualified || bestEvidence || bestAny || {}))),
         qualified: Boolean(bestQualified),
         basis: bestQualified ? 'Mercato ≥70% con almeno 6 gare' : bestEvidence ? 'Miglior frequenza con almeno 6 gare, sotto soglia' : bestAny ? 'Campione insufficiente' : 'Nessun dato storico'
       };
       // Punteggio solo per ordinare le schede, non è una probabilità.
-      f.rankScore = f.ranking.tier * 10000 + f.ranking.score * 100 + Math.min(f.ranking.sample, 10);
+      f.rankScore = f.ranking.tier * 10000 + f.ranking.evidence * 100 + Math.min(f.ranking.sample, 10);
     }
     fixtures.sort((a, b) => b.rankScore - a.rankScore);
     const analyzedCount = fixtures.length;
@@ -744,7 +756,7 @@ app.get('/api/conf', async (req, res) => {
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
       secondaryStatus, windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
-      method: 'Le schede sono ordinate prima per presenza di un mercato ≥70% con almeno 6 gare storiche, poi per la migliore frequenza con campione sufficiente e dimensione del campione. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
+      method: 'Le schede sono ordinate per qualificazione CONF e solidità statistica (limite inferiore di Wilson), penalizzando i campioni piccoli. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
       threshold: 70, limit, analyzedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
       note: (query ? 'Ricerca provider per “' + query + '” integrata nell’analisi CONF. ' : 'Lista generale ') + 'Oggi e domani, filtrati sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
