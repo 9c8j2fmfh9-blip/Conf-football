@@ -730,7 +730,7 @@ app.get('/api/conf', async (req, res) => {
     const metaTomorrow = tomorrowBody?.meta || {};
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
-      windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
+      secondaryStatus, windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Le schede sono ordinate prima per presenza di un mercato ≥70% con almeno 6 gare storiche, poi per la migliore frequenza con campione sufficiente e dimensione del campione. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
       threshold: 70, limit, analyzedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
