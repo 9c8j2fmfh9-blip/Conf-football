@@ -465,6 +465,10 @@ app.get('/api/conf', async (req, res) => {
           try { return rows(await openFoot('/matches', { date, ...param })); }
           catch (_) { return []; }
         }));
+        // Team searches must not depend solely on the provider's capped daily list.
+        const teamMatches = !isCompetition && dateCalls.flat().length === 0
+          ? await openFootAll('/matches', param, 5).catch(() => [])
+          : [];
         // Some provider sources return no rows for date+competition even when the
         // competition has scheduled fixtures. Also query the current season by its
         // stable competition ID, then let the normal upcoming/date filters decide.
@@ -488,7 +492,7 @@ app.get('/api/conf', async (req, res) => {
           competitionName: match.competitionName || match.competition?.name || (isCompetition ? competitionName : ''),
           competition: match.competition || (isCompetition ? { id, name: competitionName } : {})
         }));
-        return [...dateCalls.flat(), ...taggedSeasonMatches];
+        return [...dateCalls.flat(), ...teamMatches, ...taggedSeasonMatches];
       }));
       allDayMatches = [...allDayMatches, ...entityMatches.flat()];
     }
