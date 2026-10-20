@@ -236,9 +236,12 @@ function renderHistory(){
     byFixture.get(key).push(item);
   }
   const visibleItems = [...byFixture.values()].map(items => {
+    // Match the recommendation shown on the fixture card: prioritize robust
+    // evidence rather than the highest raw percentage in a small sample.
+    const rankHistorical = (a,b) => byEvidence(a,b);
     const qualified = items.filter(x => Number(x.score) >= 70 && Number(x.sample) >= 6)
-      .sort((a,b) => Number(b.score)-Number(a.score));
-    const chosen = qualified[0] || [...items].sort((a,b) => Number(b.score)-Number(a.score))[0];
+      .sort(rankHistorical);
+    const chosen = qualified[0] || [...items].sort(rankHistorical)[0];
     return chosen;
   }).sort((a,b)=>String(a.date||'').localeCompare(String(b.date||'')));
   root.innerHTML = visibleItems.map(x => {
