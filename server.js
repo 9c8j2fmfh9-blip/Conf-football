@@ -694,9 +694,13 @@ app.get('/api/conf', async (req, res) => {
       const aD = resultRate(awayAll, awayId, 'D');
       const aL = resultRate(awayAll, awayId, 'L');
       const rateMarket = (label, a, b) => {
+        // Each side contributes equally: the home team's result and the away team's
+        // opposite result. Keep actual hits; never fabricate a hit count from a rounded score.
         const sample = (a.sample || 0) + (b.sample || 0);
-        const score = a.rate === null || b.rate === null ? null : Math.round(100 * (a.rate + b.rate) / 2);
-        return { label, score, hits: score === null ? 0 : Math.round(score * sample / 100), sample };
+        const valid = a.rate !== null && b.rate !== null;
+        const score = valid ? Math.round(100 * (a.rate + b.rate) / 2) : null;
+        return { label, score, hits: valid ? a.hits + b.hits : 0, sample,
+          method: 'Media delle frequenze delle due squadre', teamRates: valid ? [a.rate, b.rate] : [] };
       };
       const one = rateMarket('1 · vittoria casa (forma)', hW, aL);
       const draw = rateMarket('X · pareggio (forma)', hD, aD);
@@ -726,7 +730,9 @@ app.get('/api/conf', async (req, res) => {
       const evidenceScore = m => {
         const n = Number(m.sample) || 0;
         if (!n) return -1;
-        const p = Math.max(0, Math.min(1, (Number(m.hits) || 0) / n));
+        const p = Array.isArray(m.teamRates) && m.teamRates.length === 2
+          ? Math.max(0, Math.min(1, (m.teamRates[0] + m.teamRates[1]) / 2))
+          : Math.max(0, Math.min(1, (Number(m.hits) || 0) / n));
         const z = 1.28; // one-sided ~90% confidence
         return (p + z*z/(2*n) - z*Math.sqrt((p*(1-p) + z*z/(4*n))/n)) / (1 + z*z/n);
       };
