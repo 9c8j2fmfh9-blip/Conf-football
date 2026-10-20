@@ -990,7 +990,13 @@ app.get('/api/conf', async (req, res) => {
         const b = frequency(awaySample, predicate, label);
         if (!a.sample || !b.sample) {
           const valid = combined.filter(completed);
-          return frequency(valid, predicate, label);
+          const result = frequency(valid, predicate, label);
+          if (String(m.id || '').startsWith('fa_official_')) {
+            result.partial = true;
+            result.method = 'Dato parziale: storico disponibile per una sola squadra; non qualificabile CONF';
+            result.venueSamples = { home: a.sample, away: b.sample };
+          }
+          return result;
         }
         return {
           label,
@@ -1074,8 +1080,8 @@ app.get('/api/conf', async (req, res) => {
       };
       const better = (best, m) => !best || evidenceScore(m) > evidenceScore(best) ||
         (evidenceScore(m) === evidenceScore(best) && m.sample > best.sample) ? m : best;
-      const qualified = ms.filter(m => m.score >= 70 && m.sample >= 6);
-      const enoughSample = ms.filter(m => m.sample >= 6);
+      const qualified = ms.filter(m => m.score >= 70 && m.sample >= 6 && !m.partial);
+      const enoughSample = ms.filter(m => m.sample >= 6 && !m.partial);
       const bestQualified = qualified.reduce(better, null);
       const bestEvidence = enoughSample.reduce(better, null);
       const bestAny = ms.reduce(better, null);
