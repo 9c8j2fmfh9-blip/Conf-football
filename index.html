@@ -404,7 +404,7 @@ function renderDailyMultiples(data){
  if(!data?.tickets?.length){root.innerHTML='<div class="empty">Multiple non disponibili: riprova con Aggiorna.</div>';return;}
  $('#daily-multiples-method').textContent=data.method||'';
  const stamp=data.sourceUpdatedAt?new Date(data.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'';
- $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · '+data.eligibleCount+' proposte con quota verificata · minimo singola '+Number(data.minimumOdds||1.6).toFixed(2).replace('.',',')+' · Sisal'+(stamp?' · fogli dal '+stamp:'')+' · obiettivo ±10%';
+ $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · '+data.eligibleCount+' proposte con quota verificata · alternative alle quote sotto '+Number(data.preferredMinimumOdds||1.6).toFixed(2).replace('.',',')+' · Sisal'+(stamp?' · fogli dal '+stamp:'')+' · obiettivo ±10%';
  root.innerHTML=data.tickets.map(ticket=>{
   const title='<div class="multiple-head"><span>Obiettivo quota '+safe(ticket.target)+'</span><strong>'+(ticket.available?safe(ticket.totalOdds.toFixed(2).replace('.',',')):'—')+'</strong></div>';
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';
