@@ -35,6 +35,110 @@ async function apiFootball(path, params = {}) {
 }
 
 
+
+/**
+ * Independent, keyless EFL calendar (full-season feed) and actual completed
+ * 2026/27 results from a public, open matchday dataset.
+ * Do not confuse this feed with the statistics API; only real results
+ * enter CONF calculations.
+ */
+const eflSources = {
+  'championship': { slug: 'championship-2026', folder: 'ENG_2_championship', name: 'Championship' },
+  'league one': { slug: 'efl-league-one-2026', folder: 'ENG_3_league-one', name: 'League One' },
+  'league two': { slug: 'efl-league-two-2026', folder: 'ENG_4_league-two', name: 'League Two' }
+};
+const eflCache = new Map();
+async function eflDownload(url, asCsv = false) {
+  const cached = eflCache.get(url);
+  if (cached && Date.now() - cached.at < (asCsv ? 2 * 60 : 20) * 60 * 1000) return cached.value;
+  const response = await fetch(url, { headers: { 'User-Agent': 'CONF-Football/1.0' }, signal: AbortSignal.timeout(12000) });
+  if (!response.ok) throw new Error('HTTP ' + response.status);
+  const value = asCsv ? await response.text() : await response.json();
+  eflCache.set(url, { at: Date.now(), value });
+  return value;
+}
+function eflCsv(text) {
+  const records = [];
+  const lines = String(text || '').replace(/^\uFEFF/, '').trim().split(/\r?\n/);
+  const parse = line => {
+    let quote = false, cell = '', out = [];
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"' && quote && line[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') quote = !quote;
+      else if (c === ',' && !quote) { out.push(cell); cell = ''; }
+      else cell += c;
+    }
+    out.push(cell);
+    return out;
+  };
+  if (lines.length < 2) return records;
+  const keys = parse(lines.shift());
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    const values = parse(line);
+    const row = {};
+    keys.forEach((k, i) => { row[k] = values[i] || ''; });
+    records.push(row);
+  }
+  return records;
+}
+function eflTeamKey(name, folder) {
+  return 'efl_' + folder + '_' + String(name || '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+}
+function eflStart(date, time) {
+  // Dataset fixture CSV times are UK local; determine UK DST using noon UTC.
+  const [hour, minute] = String(time || '').split(':').map(Number);
+  if (!date || !Number.isFinite(hour) || !Number.isFinite(minute)) return null;
+  const noon = new Date(date + 'T12:00:00Z');
+  const londonHour = Number(new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London', hour: '2-digit', hourCycle: 'h23'
+  }).format(noon));
+  const offset = londonHour - 12;
+  return new Date(Date.parse(date + 'T00:00:00Z') + (hour - offset) * 3600000 + minute * 60000).toISOString();
+}
+async function eflLeagueData(key) {
+  const conf = eflSources[key];
+  const feedUrl = 'https://fixturedownload.com/feed/json/' + conf.slug;
+  const csvBase = 'https://raw.githubusercontent.com/oladeeayo/open-matchday/main/data/' + conf.folder + '/';
+  const [feedResult, fixturesResult, historyResult] = await Promise.allSettled([
+    eflDownload(feedUrl),
+    eflDownload(csvBase + 'fixtures_2627.csv', true),
+    eflDownload(csvBase + 'results_2627.csv', true)
+  ]);
+  if (feedResult.status !== 'fulfilled' && fixturesResult.status !== 'fulfilled')
+    throw new Error('Calendario ' + key + ' non disponibile da entrambe le fonti');
+  const feed = feedResult.status === 'fulfilled' && Array.isArray(feedResult.value) ? feedResult.value : [];
+  const csvFixtures = fixturesResult.status === 'fulfilled' ? eflCsv(fixturesResult.value) : [];
+  const history = historyResult.status === 'fulfilled' ? eflCsv(historyResult.value) : [];
+  const calendar = feed.length ? feed.map(m => ({
+    home: m.HomeTeam, away: m.AwayTeam,
+    date: m.DateUtc ? new Date(String(m.DateUtc).replace(' ', 'T')).toISOString() : null,
+    id: m.MatchNumber, finished: m.HomeTeamScore != null && m.AwayTeamScore != null
+  })) : csvFixtures.map((m,i) => ({
+    home: m.home, away: m.away, date: eflStart(m.date, m.time), id: m.gw + '_' + i, finished: false
+  }));
+  const matches = calendar.filter(m => m.home && m.away && m.date && !m.finished).map(m => ({
+    id: 'efl_' + conf.slug + '_' + m.id,
+    kickoffAt: m.date, status: 'NS',
+    homeTeam: { id: eflTeamKey(m.home, conf.folder), name: m.home },
+    awayTeam: { id: eflTeamKey(m.away, conf.folder), name: m.away },
+    competition: { id: conf.folder, name: conf.name, country: 'England' },
+    competitionId: conf.folder, competitionName: conf.name, country: 'England',
+    source: feed.length ? 'FixtureDownload' : 'Open Matchday'
+  }));
+  const historical = history.filter(m => /^\d+$/.test(m.ft_home) && /^\d+$/.test(m.ft_away))
+    .map((m,i) => ({
+      id: 'efl_history_' + conf.folder + '_' + i,
+      kickoffAt: eflStart(m.date, m.time) || (m.date + 'T12:00:00Z'),
+      status: 'FT',
+      homeTeam: { id: eflTeamKey(m.home, conf.folder), name: m.home },
+      awayTeam: { id: eflTeamKey(m.away, conf.folder), name: m.away },
+      score: { home: Number(m.ft_home), away: Number(m.ft_away) }
+    }));
+  return { matches, historical, source: feed.length ? 'FixtureDownload' : 'Open Matchday', historyCount: history.length };
+}
+
 async function openFoot(path, params = {}) {
   const url = new URL(base + path);
   for (const [key, value] of Object.entries(params)) {
@@ -570,7 +674,35 @@ app.get('/api/conf', async (req, res) => {
     // explicit searches with no matching fixtures in the primary provider, to
     // preserve the free daily quota. Never fabricate missing statistics.
     let secondaryStatus = null;
-    if (query) {
+    const eflHistory = new Map();
+    const eflWanted = englishCompetition && eflSources[englishCompetition]
+      ? [englishCompetition]
+      : !query ? Object.keys(eflSources) : [];
+    for (const key of eflWanted) {
+      try {
+        const data = await eflLeagueData(key);
+        // The EFL feed is the calendar authority for these competitions.
+        // Avoid parallel duplicated OpenFoot games with incompatible team IDs.
+        allDayMatches = allDayMatches.filter(m => {
+          const comp = m.competition || m.league || {};
+          const country = normSearch(m.country || comp.country);
+          const title = normSearch(m.competitionName || comp.name);
+          return !(country === 'england' && title.includes(key));
+        });
+        allDayMatches.push(...data.matches);
+        for (const game of data.historical) {
+          for (const id of [teamId(game.homeTeam), teamId(game.awayTeam)]) {
+            const list = eflHistory.get(String(id)) || [];
+            list.push(game);
+            eflHistory.set(String(id), list);
+          }
+        }
+        if (query) secondaryStatus = 'efl_calendar_' + data.matches.length + '_history_' + data.historyCount;
+      } catch (error) {
+        if (query) secondaryStatus = 'efl_error: ' + error.message;
+      }
+    }
+    if (query && !secondaryStatus?.startsWith('efl_calendar_')) {
       const matchesQuery = m => {
         const home = m.homeTeam || m.home || {};
         const away = m.awayTeam || m.away || {};
@@ -715,7 +847,7 @@ app.get('/api/conf', async (req, res) => {
     // API-Football IDs are not valid OpenFootAPI team IDs. Display those
     // fixtures even without stats instead of making misleading provider calls.
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)])
-      .filter(id => id && !String(id).startsWith('apisports_')))];
+      .filter(id => id && !String(id).startsWith('apisports_') && !String(id).startsWith('efl_')))];
     const forms = new Map();
     const warnings = [];
     let teamCursor = 0;
@@ -735,6 +867,12 @@ app.get('/api/conf', async (req, res) => {
       }
     };
     await Promise.all(Array.from({ length: Math.min(4, teamIds.length) }, worker));
+    // Merge EFL's real historical results into the existing CONF machinery.
+    // Keep the latest 10 completed matches per team, with no future results.
+    for (const [id, games] of eflHistory) {
+      forms.set(id, games.filter(g => Date.parse(g.kickoffAt) < now)
+        .sort((a,b) => Date.parse(b.kickoffAt) - Date.parse(a.kickoffAt)).slice(0, 10));
+    }
 
     let fixtures = upcoming.map(m => {
       const homeTeam = m.homeTeam || m.home || {};
