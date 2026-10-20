@@ -372,18 +372,14 @@ function renderConf(items){
         '<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare</div></span>'+
         '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
         :'<p class="time">Dati corner verificati insufficienti.</p>')+
-      '<p class="time">'+safe(corners.note||'')+'</p>'+ '<button type="button" data-half-id="'+safe(f.fixtureId)+'">Verifica corner 1° e 2° tempo</button>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'"></div></details>';
-    const playerHtml = '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🎯 Tiri in porta dei giocatori</summary>'+
-      '<p class="time">Dati individuali disponibili soltanto quando il provider li restituisce.</p>'+
-      '<button type="button" data-player-id="'+safe(f.fixtureId)+'">Controlla statistiche giocatori</button>'+
-      '<div class="time" data-player-result="'+safe(f.fixtureId)+'"></div></details>';
+      '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Apri la sezione per verificare i dati storici separati per tempo.</div>'+ '</details>';
     return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'SOGLIA ≥70 RAGGIUNTA' : 'sotto soglia 70'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
       const pct = m.score === null ? 0 : Math.max(0,Math.min(100,Number(m.score)||0));
       return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
-    }).join('')+'</div>'+cornerHtml+playerHtml+'</article>';
+    }).join('')+'</div>'+cornerHtml+'</article>';
   }).join('');
 }
 async function loadConf(){
@@ -503,35 +499,36 @@ $('#search-button').addEventListener('click',loadConf);
 $('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();loadConf();}});
 
 
-document.addEventListener('click',async e=>{
-  const button=e.target.closest('[data-player-id], [data-half-id]');
-  if(!button)return;
-  const half=button.hasAttribute('data-half-id');
-  const id=button.getAttribute(half?'data-half-id':'data-player-id');
+
+document.addEventListener('toggle',async e=>{
+  const section=e.target;
+  if(!section.matches?.('details')||!section.open)return;
+  const root=section.querySelector('[data-half-result]');
+  if(!root||root.dataset.checked==='yes')return;
+  root.dataset.checked='yes';
+  const id=root.getAttribute('data-half-result');
   const item=confItems.find(f=>String(f.fixtureId)===id);
-  const root=button.parentElement.querySelector(half?'[data-half-result]':'[data-player-result]');
-  if(!item||!root)return;
-  button.disabled=true;
-  root.textContent='Verifica dati disponibili…';
+  if(!item)return;
+  root.textContent='Verifico i corner del primo e del secondo tempo…';
   try {
     const params=new URLSearchParams({home:item.home,away:item.away,date:String(item.date).slice(0,10)});
-    const response=await fetch((half?'/api/corners-halves?':'/api/player-shots?')+params.toString());
+    const response=await fetch('/api/corners-halves?'+params.toString());
     const data=await response.json();
-    if(!response.ok)throw Error(data.error||'Errore servizio');
-    const list=half?(data.markets||[]):(data.players||[]);
-    if(!list.length)root.innerHTML='<p>Non sono disponibili dati verificabili per questo mercato.</p>';
-    else if(half)root.innerHTML='<div style="display:grid;gap:7px">'+list.map(m=>
-        '<div class="conf-row"><span>'+safe(m.label)+'<div class="time">'+safe(m.hits)+'/'+safe(m.sample)+' partite analizzate</div></span>'+
-        '<strong>'+safe(m.score)+'%</strong></div>').join('')+'</div>';
-    else root.innerHTML='<div style="display:grid;gap:7px">'+list.map(p=>
-        '<div class="conf-row"><span>'+safe(p.name)+' · '+safe(p.team)+
-        '<div class="time">≥1 tiro in porta: '+safe(p.hits)+'/'+safe(p.sample)+' presenze · media '+safe(p.average)+'</div>'+
-        '<div class="time">≥2 tiri in porta: '+safe(p.hits2)+'/'+safe(p.sample)+' presenze · '+safe(p.score2)+'%</div></span>'+
-        '<strong>'+safe(p.score)+'%</strong></div>').join('')+'</div>';
-    if(data.warning)root.innerHTML+='<p>'+safe(data.warning)+'</p>';
-  }catch(error){root.textContent='Dati non disponibili: '+error.message;}
-  finally{button.disabled=false;}
-});
+    if(!response.ok)throw Error(data.error||'Errore provider');
+    const markets=(data.markets||[]).filter(m=>m.score!==null);
+    const renderHalf=(part,title)=>{
+      const rows=markets.filter(m=>m.half===part);
+      return '<div style="margin-top:10px;font-weight:700">'+title+'</div>'+
+        (rows.length?'<div style="display:grid;gap:6px;margin-top:6px">'+rows.map(m=>
+          '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+
+          '<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare · campione storico</div></span>'+
+          '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>'
+        ).join('')+'</div>':'<p class="time">Dati per tempo non disponibili dal provider.</p>');
+    };
+    root.innerHTML=renderHalf('first','Corner 1° tempo')+renderHalf('second','Corner 2° tempo');
+    if(data.warning)root.innerHTML+='<p class="time">'+safe(data.warning)+'</p>';
+  }catch(error){root.textContent='Corner per tempo non disponibili: '+error.message;}
+},true);
 
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
 const analyzeButton = $('#analyze'); if(analyzeButton) analyzeButton.addEventListener('click',loadConf);
