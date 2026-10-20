@@ -844,7 +844,6 @@ app.get('/api/conf', async (req, res) => {
   const hours = Math.min(48, Math.max(1, Number.parseInt(req.query.hours || embedded?.get('hours') || '24', 10) || 24));
   const limit = Math.min(40, Math.max(1, Number.parseInt(req.query.limit || embedded?.get('limit') || '20', 10) || 20));
   const query = cleanQuery;
-  const onlyHigh = String(req.query.minEstimate || '') === '70';
   const dateValue = String(req.query.date || embedded?.get('date') || '');
   const requestedDate = /^\d{4}-\d{2}-\d{2}$/.test(dateValue) ? dateValue : '';
   const romeDate = value => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value));
@@ -1174,7 +1173,7 @@ app.get('/api/conf', async (req, res) => {
         return true;
       })
       .sort((a, b) => new Date(a.kickoffAt || a.date || a.utcDate || 0) - new Date(b.kickoffAt || b.date || b.utcDate || 0))
-      .slice(0, Math.min(40, Math.max(limit, limit * 2))); // Restore bounded API calls to prevent overload.
+      .slice(0, Math.min(40, Math.max(limit, limit * 2)));
     // API-Football IDs are not valid OpenFootAPI team IDs. Display those
     // fixtures even without stats instead of making misleading provider calls.
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)])
@@ -1348,28 +1347,16 @@ app.get('/api/conf', async (req, res) => {
       // Punteggio solo per ordinare le schede, non è una probabilità.
       f.rankScore = f.ranking.tier * 10000 + f.ranking.evidence * 100 + Math.min(f.ranking.sample, 10);
     }
+    fixtures.sort((a, b) => b.rankScore - a.rankScore);
     const analyzedCount = fixtures.length;
-    const modelAvailableCount = fixtures.filter(f => f.experimentalEstimate?.available).length;
-    const modelHighCount = fixtures.filter(f => f.experimentalEstimate?.available &&
-      Object.values(f.experimentalEstimate.estimates || {}).some(v => Number.isFinite(Number(v)) && Number(v) >= 70)).length;
-    if (onlyHigh) {
-      fixtures = fixtures.filter(f => f.experimentalEstimate?.available &&
-        Object.values(f.experimentalEstimate.estimates || {}).some(v => Number.isFinite(Number(v)) && Number(v) >= 70));
-      fixtures.sort((a,b) =>
-        Math.max(...Object.values(b.experimentalEstimate.estimates).map(Number)) -
-        Math.max(...Object.values(a.experimentalEstimate.estimates).map(Number)));
-    } else {
-      fixtures.sort((a,b) => b.rankScore - a.rankScore);
-    }
-    const filteredCount = fixtures.length;
-    fixtures = fixtures.slice(0,limit);
+    fixtures = fixtures.slice(0, limit);
     const metaToday = todayBody?.meta || {};
     const metaTomorrow = tomorrowBody?.meta || {};
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
       secondaryStatus, windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Le schede sono ordinate per qualificazione CONF e solidità statistica (limite inferiore di Wilson), penalizzando i campioni piccoli. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
-      threshold: 70, limit, analyzedCount, filteredCount, modelAvailableCount, modelHighCount, fixtures,
+      threshold: 70, limit, analyzedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
       note: (query ? 'Ricerca provider per “' + query + '” integrata nell’analisi CONF. ' : 'Lista generale ') + 'Oggi e domani, filtrati sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
