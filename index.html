@@ -68,6 +68,7 @@ const $ = (s) => document.querySelector(s);
 let games = [];
 let confItems = [];
 let confOnlyQualified = true;
+let confLoadSequence = 0;
 const HISTORY_KEY = 'confFootballBetHistoryV1';
 const FAVORITES_KEY = 'confFootballFavoritesV1';
 function readFavorites(){ try { const v = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } }
@@ -425,6 +426,7 @@ function renderConf(items){
   }).join('');
 }
 async function loadConf(){
+  const requestId = ++confLoadSequence;
   const button = $('#reload') || $('#search-button');
   if(button) button.disabled = true;
   const hours = Number($('#hours')?.value || 24);
@@ -439,6 +441,7 @@ async function loadConf(){
     if (query) params.set('q',query);
     const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store'});
     const data = await response.json();
+    if (requestId !== confLoadSequence) return;
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
     const savedCount = saveRecommendations(data.fixtures || []);
@@ -461,8 +464,10 @@ async function loadConf(){
     details.append(summary,note); message.append(details);
 
   }catch(error){
+    if (requestId !== confLoadSequence) return;
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
+    if (requestId !== confLoadSequence) return;
     if(button) button.disabled = false;
     const searchButton = $('#search-button'); if(searchButton) searchButton.disabled = false;
   }
