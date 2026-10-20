@@ -21,6 +21,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 .match .recommend{margin-top:10px}.stats{margin:12px 0}.message{font-size:13px}
 @media(max-width:850px){.filters{grid-template-columns:1fr 1fr}.filters .field:nth-child(3){grid-column:1/-1}.filters button{width:100%}}
 .field-label{font-size:12px;color:var(--muted);margin-bottom:5px}.hour-shortcuts{display:flex;gap:5px}.hour-button{flex:1;padding:11px 10px;border:1px solid var(--line);border-radius:10px;background:#0b1424;color:var(--text);font:inherit;cursor:pointer}.hour-button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#082015;font-weight:800}
+.proposal-odds{margin-top:9px;padding-top:8px;border-top:1px solid var(--line)}.odds-chips{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:3px}.odds-chip{font-size:13px;background:#20334a;border-radius:7px;padding:4px 8px}.odds-chip strong{color:var(--green)}
 </style>
 </head>
 <body>
@@ -349,6 +350,36 @@ function marketEvidence(m){
   return (safeP + z*z/(2*n) - z*Math.sqrt((safeP*(1-safeP) + z*z/(4*n))/n)) / (1 + z*z/n);
 }
 function byEvidence(a,b){ return marketEvidence(b)-marketEvidence(a) || (b.sample||0)-(a.sample||0); }
+function proposalOddsHtml(odds,market){
+ if(!odds)return '<span class="time">Caricamento quote…</span>';
+ const sisal=odds.sisal;
+ const valid=sisal?.available && sisal.market===market && Number.isFinite(sisal.value) && sisal.value>1;
+ const label=valid ? 'Sisal <strong>'+safe(sisal.value.toFixed(2).replace('.',','))+'</strong>' : 'Sisal · non disponibile';
+ const time=valid && sisal.sourceUpdatedAt ? new Date(sisal.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
+ return '<div class="odds-chips"><span class="odds-chip">'+label+'</span><span class="time" title="Collegamento automatico non disponibile">Bet365 · non disponibile</span></div>'+
+  (valid ? '<div class="time">Foglio Sisal · '+safe(time)+' · quote soggette a variazioni</div>' : '<div class="time">'+safe(sisal?.reason||'Quota non verificata per questa giocata')+'</div>');
+}
+async function loadProposalOdds(params,requestId){
+ const apply=data=>{
+  if(requestId!==confLoadSequence)return;
+  const byId=new Map((data.fixtures||[]).map(f=>[String(f.fixtureId),f]));
+  for(const fixture of confItems){
+   const market=fixture.selection?.primary?.key;
+   if(!market)continue;
+   const result=byId.get(String(fixture.fixtureId));
+   fixture.proposalOdds=result?.market===market?result.odds:{sisal:{available:false,reason:'Quota non verificata per questa giocata'}};
+  }
+  document.querySelectorAll('[data-proposal-odds]').forEach(root=>{
+   const fixture=confItems.find(f=>String(f.fixtureId)===root.getAttribute('data-proposal-odds'));
+   if(fixture)root.innerHTML=proposalOddsHtml(fixture.proposalOdds,fixture.selection?.primary?.key);
+  });
+ };
+ if(!confItems.some(f=>f.selection?.primary))return;
+ try{
+  const response=await fetch('/api/proposal-odds?'+params.toString(),{cache:'no-store'});
+  const data=await response.json();if(!response.ok)throw Error('Quote non disponibili');apply(data);
+ }catch{apply({fixtures:[]});}
+}
 function renderConf(items){
   confItems = items;
   const root = $('#conf-results');
@@ -383,7 +414,7 @@ function renderConf(items){
     const selection=f.selection || selectFixture(f);
     const best=selection.primary;
     const recommendationHtml=best
-      ? '<div class="recommend"><div class="recommend-title">Indicazione selezionata · stima sperimentale</div><div class="recommend-market"><span>'+safe(best.label)+'</span><span class="pick-percent">'+safe(best.score)+'%</span></div><div class="recommend-note">Stima del modello · storico '+safe(best.historicalScore)+'% · campione '+safe(best.samples.home)+' / '+safe(best.samples.away)+'</div></div>'
+      ? '<div class="recommend"><div class="recommend-title">Indicazione selezionata · stima sperimentale</div><div class="recommend-market"><span>'+safe(best.label)+'</span><span class="pick-percent">'+safe(best.score)+'%</span></div><div class="recommend-note">Stima del modello · storico '+safe(best.historicalScore)+'% · campione '+safe(best.samples.home)+' / '+safe(best.samples.away)+'</div><div class="proposal-odds" data-proposal-odds="'+safe(f.fixtureId)+'">'+proposalOddsHtml(f.proposalOdds,best.key)+'</div></div>'
       : '<div class="recommend"><div class="recommend-title">Non selezionata</div><div class="recommend-market">Nessuna indicazione qualificata</div><div class="recommend-note">'+safe(selection.reason)+'</div></div>';
 
     const e=f.experimentalEstimate || {};
@@ -469,6 +500,7 @@ async function loadConf(){
     const summary=document.createElement('summary'); summary.textContent='Metodo e copertura dati';
     const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Copertura incompleta: alcuni calendari o storici non sono disponibili.' : '');
     details.append(summary,note); message.append(details);
+    void loadProposalOdds(params,requestId);
 
   }catch(error){
     if (requestId !== confLoadSequence) return;

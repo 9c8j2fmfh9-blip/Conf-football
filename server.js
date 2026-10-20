@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { selectFixture } from './conf-selection.js';
 import { openDataConf } from './open-data.js';
+import {getSisalOdds,matchProposalOdds} from './sisal-odds.js';
 import { readFileSync } from 'node:fs';
 
 const app = express();
@@ -884,6 +885,18 @@ app.get('/api/corners-halves',async(req,res)=>{
   }catch(e){return res.json({markets:[],warning:'Corner per tempo non disponibili: '+e.message});}
 });
 
+
+// One shared official sheet refresh for all visible proposals. Odds failures
+// never prevent the independent calendar / analysis response from loading.
+app.get('/api/proposal-odds', async (req,res)=>{
+ try {
+  const data=openDataConf(req.query,experimentalGoalEstimate);
+  const proposals=data.fixtures.filter(f=>f.selection?.primary);
+  const sheet=proposals.length?await getSisalOdds():null;
+  res.json({source:'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,
+   fixtures:proposals.map(f=>({fixtureId:f.fixtureId,market:f.selection.primary.key,odds:matchProposalOdds(f,sheet)}))});
+ } catch {res.status(503).json({error:'Quote momentaneamente non disponibili',fixtures:[]});}
+});
 
 app.get('/api/conf', async (req, res) => {
   if (process.env.CONF_PROVIDER !== 'openfoot') {

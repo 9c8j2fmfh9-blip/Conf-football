@@ -11,3 +11,9 @@ Team histories use current-season results from strictly earlier dates. Club spel
 `CONF_PROVIDER=openfoot` retains the previous provider integration for an explicitly configured legacy deployment. It is not used by the default feed.
 
 Run `npm test` for date-window, UCL coverage, historical cutoff, small-sample, stale-data, update-failure, search and rendering checks.
+
+## Proposal prices
+
+Sisal prices come from its [official football odds sheet](https://www.sisal.it/scommesse-matchpoint/foglio-quote). The PDF is refreshed once for all proposals, cached for ten minutes and matched by explicit club aliases, Italian date and kickoff time. Column positions are derived from the printed headings. Only 1X2, Over 2.5 and GG prices that match the exact proposed market are displayed. Ambiguous matches, youth mismatches, missing columns and sheets older than six hours produce no price. The displayed timestamp is the sheet's publication time, not a claim of live availability.
+
+The separate odds request does not block the calendar. Bet365 currently has no reliable server-side source in this deployment and is explicitly marked unavailable. Browser-observed example prices are not reused as an automated feed. No wager is submitted by the application.

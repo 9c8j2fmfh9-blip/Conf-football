@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 import {selectFixture} from '../conf-selection.js';
 const elements=new Map();const el=s=>{if(!elements.has(s))elements.set(s,{innerHTML:'',textContent:'',value:s==='#hours'?'24':'',addEventListener(){},append(){}});return elements.get(s)};
 const hourButtons=['3','12','24'].map(value=>({attributes:{'data-hours':value},getAttribute(k){return this.attributes[k]},setAttribute(k,v){this.attributes[k]=v}}));
-const document={querySelector:el,querySelectorAll:()=>hourButtons,createElement:()=>({append(){}})};
+const oddsRoots=[];
+const document={querySelector:el,querySelectorAll:selector=>selector==='[data-hours]'?hourButtons:oddsRoots,createElement:()=>({append(){}})};
 let script=fs.readFileSync('index.html','utf8').split('<script type="module">')[1].split('</script>')[0].replace('import { selectFixture } from "/conf-selection.js";','');
 script=script.slice(0,script.indexOf("\n$('#date').value ="));
 const fixture=(id,score)=>({fixtureId:id,home:'Casa '+id,away:'Ospite',date:'2026-10-21T18:45:00Z',league:'Champions League',country:'Europa',experimentalEstimate:{available:true,samples:{home:10,away:10},estimates:{over25:score},expectedGoals:{home:2,away:1.5}},markets:{over25:{label:'Over 2.5 FT',score:70,hits:14,sample:20,venueSamples:{home:10,away:10},teamRates:[.7,.7]}},cornerMarkets:{markets:[]}});
@@ -52,3 +53,15 @@ pending[0]({ok:true,json:async()=>({fixtures:[],analyzedCount:1,selectedCount:0}
 await oldRequest;
 assert.ok(el('#conf-message').textContent.includes('99 partite esaminate'));
 console.log('PASS: a slower earlier request cannot overwrite the latest date selection.');
+
+fixtures[0].selection=selectFixture(fixtures[0]);
+const oddsRoot={innerHTML:'',getAttribute(){return 'selected'}};oddsRoots.push(oddsRoot);
+const incoming={fixtures:[{fixtureId:'selected',market:'over25',odds:{sisal:{available:true,value:1.33,market:'over25',sourceUpdatedAt:'2026-10-20T21:06:29Z'},bet365:{available:false}}}]};
+context.fetch=async()=>({ok:true,json:async()=>incoming});
+await vm.runInContext('loadProposalOdds(new URLSearchParams(),confLoadSequence)',context);
+assert.ok(oddsRoot.innerHTML.includes('1,33'));assert.ok(oddsRoot.innerHTML.includes('Bet365 · non disponibile'));
+assert.ok(oddsRoot.innerHTML.includes('Foglio Sisal'));
+incoming.fixtures[0].market='btts';
+await vm.runInContext('loadProposalOdds(new URLSearchParams(),confLoadSequence)',context);
+assert.ok(!oddsRoot.innerHTML.includes('1,33'));
+console.log('PASS: asynchronous proposal odds show the exact market and cannot reuse another market’s price.');
