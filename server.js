@@ -441,10 +441,15 @@ app.get('/api/conf', async (req, res) => {
     // L'endpoint /matches filtra per data: interroghiamo oggi e domani,
     // poi selezioniamo solo i kickoff compresi nelle prossime N ore.
     const datesToFetch = query && requestedDate ? [requestedDate] : [today, tomorrow];
+    // A plain date request may return only the first page (often already-finished games).
+    // Ask explicitly for scheduled matches as well; this is a supported Starter filter.
     const dateBodies = await Promise.all(datesToFetch.map(date => openFoot('/matches', { date })));
+    const scheduledBodies = await Promise.all(datesToFetch.map(date =>
+      openFoot('/matches', { date, status: 'scheduled' }).catch(() => ({}))
+    ));
     const todayBody = dateBodies[0] || {};
     const tomorrowBody = dateBodies[1] || {};
-    let allDayMatches = dateBodies.flatMap(rows);
+    let allDayMatches = [...dateBodies, ...scheduledBodies].flatMap(rows);
     let searchEntities = [];
     if (query) {
       // Resolve the typed team/competition through OpenFootAPI, then fetch matches by stable IDs.
