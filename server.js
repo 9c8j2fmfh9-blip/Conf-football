@@ -8,6 +8,7 @@ const port = Number(process.env.PORT || 3000);
 const apiKey = process.env.OPENFOOT_API_KEY;
 const base = 'https://openfootapi.com/v1';
 const cache = new Map();
+let openFootBlock = null;
 const CACHE_TTL_MS = 60 * 1000; // Cache breve: evita stati LIVE obsoleti nelle partite in corso.
 
 app.use(express.static('.'));
@@ -29,6 +30,7 @@ async function apiFootball(path, params = {}) {
       : response.status === 429 ? 'limite richieste raggiunto'
       : errorCodes.some(k => /requests|quota|limit/i.test(k)) ? 'quota o limite API'
       : errorCodes.some(k => /token|key|auth/i.test(k)) ? 'problema autenticazione'
+      : errorCodes.includes('access') ? 'accesso non consentito dal piano API-Football'
       : 'errore provider';
     throw new Error(reason + ' (HTTP ' + response.status + ', categorie: ' + (errorCodes.join(',') || 'nessuna') + ')');
   }
@@ -273,6 +275,9 @@ async function openFoot(path, params = {}) {
   const cached = cache.get(cacheKey);
   if (cached && Date.now() - cached.time < (params.status === 'finished' ? 6 * 60 * 60 * 1000 : CACHE_TTL_MS)) return cached.data;
 
+  if (openFootBlock && Date.now() < openFootBlock.until) {
+    const error = new Error(openFootBlock.message); error.code = 'MONTHLY_QUOTA'; error.status = 429; throw error;
+  }
   const headers = { Accept: 'application/json' };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
   let response = await fetch(url, { headers, signal: AbortSignal.timeout(12000) });
@@ -289,6 +294,10 @@ async function openFoot(path, params = {}) {
     const detail = body?.error?.message || body?.error?.code || `HTTP ${response.status}`;
     const err = new Error(`OpenFootAPI: ${detail}`);
     err.status = response.status;
+    if (/monthly quota|monthly.*limit|quota.*mensil/i.test(String(detail))) {
+      err.code = 'MONTHLY_QUOTA';
+      openFootBlock = { message: err.message, until: Date.now() + 15 * 60 * 1000 };
+    }
     throw err;
   }
   cache.set(cacheKey, { time: Date.now(), data: body });
@@ -915,12 +924,12 @@ app.get('/api/conf', async (req, res) => {
   try {
     // L'endpoint /matches filtra per data: interroghiamo oggi e domani,
     // poi selezioniamo solo i kickoff compresi nelle prossime N ore.
-    const datesToFetch = query && requestedDate ? [requestedDate] : [today, tomorrow];
+    const datesToFetch = requestedDate ? [requestedDate] : [today, tomorrow];
     // The provider can return a limited preview. Also request scheduled fixtures,
     // then deduplicate; this does not guarantee complete coverage.
     const [dateBodies, scheduledBodies] = await Promise.all([
-      Promise.all(datesToFetch.map(date => openFoot('/matches', { date }).catch(error => ({ response: [], providerError: error.message })))),
-      Promise.all(datesToFetch.map(date => openFoot('/matches', { date, status: 'scheduled' }).catch(error => ({ response: [], providerError: error.message }))))
+      Promise.all(datesToFetch.map(date => openFoot('/matches', { date }).catch(error => ({ response: [], providerError: error.message, providerCode: error.code || null })))),
+      Promise.all(datesToFetch.map(date => openFoot('/matches', { date, status: 'scheduled' }).catch(error => ({ response: [], providerError: error.message, providerCode: error.code || null }))))
     ]);
     const todayBody = dateBodies[0] || {};
     const tomorrowBody = dateBodies[1] || {};
@@ -1218,7 +1227,7 @@ app.get('/api/conf', async (req, res) => {
         const state = statusCode(m.status);
         const kickoff = new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime();
         if (!Number.isFinite(kickoff) || kickoff <= now) return false;
-        if (query && requestedDate) {
+        if (requestedDate) {
           if (romeDate(kickoff) !== requestedDate) return false;
         } else if (kickoff > cutoff) return false;
         if (['LIVE', 'FT', 'PST', 'CANC'].includes(state)) return false;
@@ -1406,7 +1415,10 @@ app.get('/api/conf', async (req, res) => {
     const metaTomorrow = tomorrowBody?.meta || {};
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
     res.json({
-      secondaryStatus, windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
+      providerIssue: [...dateBodies, ...scheduledBodies].some(x=>x.providerCode === 'MONTHLY_QUOTA')
+        ? {code:'MONTHLY_QUOTA',message:'OpenFootAPI: quota mensile di 5.000 richieste esaurita. Calendario completo e analisi non disponibili; le eventuali partite sotto provengono dalle fonti alternative.'}
+        : calendarWarnings.length ? {code:'PARTIAL_CALENDAR',message:'Calendario incompleto: uno o più provider non sono disponibili.'} : null,
+      secondaryStatus, windowHours: hours, query: query || null, date: requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Selezione: stima e frequenza storica almeno 60%, almeno 6 gare per ciascuna squadra e riscontro in entrambi gli storici. Ordinamento conservativo per campione e concordanza; modello sperimentale non calibrato. Quote non considerate.',
       threshold: 60, limit, analyzedCount, selectedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: calendarWarnings.length > 0 || Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },

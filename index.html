@@ -30,7 +30,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <p class="muted">Prima la selezione, poi l’analisi. Una sola indicazione per partita; tutti i dati nei dettagli.</p>
  <div class="filters">
   <div class="field"><label for="hours">Prossime ore</label><select id="hours"><option value="3">3 ore</option><option value="12">12 ore</option><option value="24" selected>24 ore</option></select></div>
-  <div class="field"><label for="date">Data (ora italiana)</label><input id="date" type="date"></div>
+  <div class="field"><label for="date">Data facoltativa (ora italiana)</label><input id="date" type="date"></div>
   <div class="field"><label for="search">Cerca squadra o campionato nelle API</label><input id="search" type="search" placeholder="Es. Inter, Champions League"></div>
   <button class="button" id="search-button" type="button">Cerca</button>
   <button class="button" id="reload" type="button">Aggiorna</button>
@@ -433,7 +433,10 @@ async function loadConf(){
   $('#conf-results').innerHTML = '';
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'40'});
-    if(query) { confOnlyQualified=false; $('#conf-filter').checked=false; params.set('q',query); if($('#date').value) params.set('date',$('#date').value); }
+    const selectedDate = $('#date').value;
+    if (selectedDate) params.set('date',selectedDate);
+    if (query || selectedDate) { confOnlyQualified=false; $('#conf-filter').checked=false; }
+    if (query) params.set('q',query);
     const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store'});
     const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
@@ -451,7 +454,7 @@ async function loadConf(){
     if($('#upcoming')) $('#upcoming').textContent = qualified;
     if($('#live')) $('#live').textContent = valid;
     const message = $('#conf-message');
-    message.textContent = (query ? 'Ricerca “'+query+'”: ' : 'Prossime '+hours+' ore: ')+(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.';
+    message.textContent = (data.providerIssue?.message ? data.providerIssue.message+' ' : '')+(query ? 'Ricerca “'+query+'”: ' : selectedDate ? 'Data '+selectedDate+': ' : 'Prossime '+hours+' ore: ')+(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.';
     const details=document.createElement('details');
     const summary=document.createElement('summary'); summary.textContent='Metodo e copertura dati';
     const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Copertura incompleta: alcuni calendari o storici non sono disponibili.' : '');
@@ -554,7 +557,7 @@ async function loadBacktest(){
  }catch(e){root.textContent='Verifica non disponibile: '+e.message;}
 }
 
-$('#date').value = romeToday();
+$('#date').value = ''; // Without a date, use the rolling 3/12/24-hour window.
 renderHistory();
 if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
 $('#reload').addEventListener('click',loadConf);
@@ -608,7 +611,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');
 const analyzeButton = $('#analyze'); if(analyzeButton) analyzeButton.addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
 $('#date').addEventListener('change',loadConf);
-$('#hours').addEventListener('change',loadConf);
+$('#hours').addEventListener('change',()=>{ $('#date').value=''; loadConf(); });
 
 renderFavorites();
 loadConf();

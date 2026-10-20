@@ -5,7 +5,7 @@ import {selectFixture} from '../conf-selection.js';
 const elements=new Map();const el=s=>{if(!elements.has(s))elements.set(s,{innerHTML:'',textContent:'',value:s==='#hours'?'24':'',addEventListener(){},append(){}});return elements.get(s)};
 const document={querySelector:el,createElement:()=>({append(){}})};
 let script=fs.readFileSync('index.html','utf8').split('<script type="module">')[1].split('</script>')[0].replace('import { selectFixture } from "/conf-selection.js";','');
-script=script.slice(0,script.indexOf("$('#date').value = romeToday();"));
+script=script.slice(0,script.indexOf("\n$('#date').value ="));
 const fixture=(id,score)=>({fixtureId:id,home:'Casa '+id,away:'Ospite',date:'2026-10-21T18:45:00Z',league:'Champions League',country:'Europa',experimentalEstimate:{available:true,samples:{home:10,away:10},estimates:{over25:score},expectedGoals:{home:2,away:1.5}},markets:{over25:{label:'Over 2.5 FT',score:70,hits:14,sample:20,venueSamples:{home:10,away:10},teamRates:[.7,.7]}},cornerMarkets:{markets:[]}});
 const fixtures=[fixture('selected',72),fixture('below',55)];
 let request='';const context=vm.createContext({document,selectFixture,console,Date,URLSearchParams,localStorage:{getItem(){return null},setItem(){}},fetch:async url=>{request=url;return{ok:true,json:async()=>({fixtures,analyzedCount:82,selectedCount:1,method:'Metodo di prova',preview:{partial:false}})}}});
@@ -25,3 +25,9 @@ assert.ok(request.includes('q=Champions+League'));assert.ok(request.includes('da
 assert.equal((el('#conf-results').innerHTML.match(/<article/g)||[]).length,2);
 assert.ok(el('#conf-message').textContent.includes('82 partite esaminate'));
 console.log('PASS: selected/all cards, one primary indication, collapsed details, balanced markup, Champions League query and date forwarded, search exposes unqualified matches. API mocked.');
+
+el('#search').value='';
+await vm.runInContext('loadConf()',context);
+assert.ok(request.includes('date=2026-10-21'));
+assert.ok(!request.includes('q='));
+console.log('PASS: date-only browsing sends the selected day without requiring a search term.');
