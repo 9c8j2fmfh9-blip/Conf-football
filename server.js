@@ -464,7 +464,7 @@ app.get('/api/conf-backtest', (_req, res) => {
     const stats = {};
     const markets = ['one','draw','two','over25','btts'];
     for (const [league, rows] of Object.entries(eflBundled.leagues || {})) {
-      const games = rows.filter(x => /^\\d+$/.test(String(x[3])) && /^\\d+$/.test(String(x[4])))
+      const games = rows.filter(x => /^\d+$/.test(String(x[3])) && /^\d+$/.test(String(x[4])))
         .map(([date,h,a,hg,ag],i)=>({
           id: 'backtest_'+league+'_'+i, date, kickoffAt:date+'T12:00:00Z', status:'FT',
           homeTeam:{id:h,name:h}, awayTeam:{id:a,name:a},
