@@ -27,7 +27,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
   <button class="button" id="reload" type="button">Aggiorna</button>
  </div>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
- <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo partite con giocata principale ≥70% (stima sperimentale)</label>
+ <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo partite con giocata principale ≥60% (stima sperimentale)</label>
  <div id="conf-results" class="matches"></div>
  <div class="stats">
   <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
@@ -230,7 +230,7 @@ function renderHistory(){
   // five mutually exclusive/overlapping markets as if they were independent bets.
   const auditByFixture = new Map();
   for(const item of history){
-    if(Number(item.score) < 70 || Number(item.sample) < 6) continue;
+    if(Number(item.score) < 60 || Number(item.sample) < 6) continue;
     // Never count a prediction recorded after kickoff in the accuracy audit.
     // Historical entries without trustworthy timestamps remain in the raw dashboard.
     const kickoff = Date.parse(item.date || '');
@@ -245,7 +245,7 @@ function renderHistory(){
   const auditedLosses = audited.filter(x=>x.outcome==='loss').length;
   const auditedDone = auditedWins + auditedLosses;
   const auditedRate = auditedDone ? Math.round(100*auditedWins/auditedDone) : null;
-  dashboard.innerHTML += '<h3 style="margin:16px 0 6px;font-size:14px">Verifica reale CONF ≥70%</h3>'
+  dashboard.innerHTML += '<h3 style="margin:16px 0 6px;font-size:14px">Verifica reale CONF ≥60%</h3>'
     +'<div class="market-stat"><div class="market-head"><span>Una selezione qualificata per partita</span><span>'
     +(auditedRate===null?'—':auditedRate+'%')+'</span></div><div class="market-track"><div class="market-fill" style="width:'
     +(auditedRate===null?0:auditedRate)+'%"></div></div><div class="market-detail">'
@@ -253,7 +253,7 @@ function renderHistory(){
     +(auditedDone<20?' · campione ancora limitato':'')
     +'</div></div><p class="muted" style="font-size:11px;margin:8px 0">Conteggio per partita: una selezione qualificata registrata prima del calcio d’inizio. Frequenza osservata, non probabilità predittiva. Lo storico precedente o incompleto può non essere incluso.</p>';
   const root = $('#history-results');
-  // Mostra una sola scheda per partita: priorità a una selezione qualificata CONF >=70% con campione >=6;
+  // Mostra una sola scheda per partita: priorità a una selezione qualificata CONF >=60% con campione >=6;
   // se non esiste, mostra il mercato con la percentuale storica più alta. Tutti i mercati restano nello storico interno.
   const byFixture = new Map();
   for(const item of history){
@@ -265,7 +265,7 @@ function renderHistory(){
     // Match the recommendation shown on the fixture card: prioritize robust
     // evidence rather than the highest raw percentage in a small sample.
     const rankHistorical = (a,b) => byEvidence(a,b);
-    const qualified = items.filter(x => Number(x.score) >= 70 && Number(x.sample) >= 6)
+    const qualified = items.filter(x => Number(x.score) >= 60 && Number(x.sample) >= 6)
       .sort(rankHistorical);
     const chosen = qualified[0] || [...items].sort(rankHistorical)[0];
     return chosen;
@@ -273,7 +273,7 @@ function renderHistory(){
   root.innerHTML = visibleItems.map(x => {
     const kickoff = x.date ? new Date(x.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : 'Data non disponibile';
     const status = x.outcome === 'win' ? 'VINTA' : x.outcome === 'loss' ? 'PERSA' : 'DA AGGIORNARE';
-    const qualified = Number(x.score) >= 70 && Number(x.sample) >= 6;
+    const qualified = Number(x.score) >= 60 && Number(x.sample) >= 6;
     const outcomeHtml = '<div class="status" style="margin-top:10px">'+(x.outcome === 'win' ? 'ESITO AUTOMATICO: VINTA' : x.outcome === 'loss' ? 'ESITO AUTOMATICO: PERSA' : 'IN ATTESA DEL RISULTATO UFFICIALE')+'</div>';
     return '<article class="match"><div class="league">'+safe(x.league)+' · '+safe(kickoff)+'</div><div class="teams">'+safe(x.home)+' <span class="vs">CONTRO</span> '+safe(x.away)+'</div><div class="recommend"><div class="recommend-title">Scommessa consigliata · '+status+'</div><div class="recommend-market">'+safe(x.market)+' · '+safe(x.score)+'%</div><div class="recommend-note">'+safe(x.hits)+' su '+safe(x.sample)+' gare storiche'+(qualified?' · CONF qualificata':' · dato migliore disponibile, non qualificato')+'</div></div>'+outcomeHtml+'</article>';
   }).join('');
@@ -342,11 +342,11 @@ function renderConf(items){
   // Historical frequencies must never be presented as calibrated winning probabilities.
   const warning = '<div class="recommend" style="margin-bottom:12px"><div class="recommend-title">⚠️ Modalità statistiche storiche</div><div class="recommend-note">Le percentuali NON sono probabilità di vincita. Il modello predittivo CONF non è ancora validato: nessuna scommessa può essere consigliata sulla sola base di questi valori. Per 1/X/2 sono medie tra frequenze delle due squadre, non pronostici.</div></div>';
   const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
-  const qualifies = m => m && m.score !== null && Number(m.score) >= 70 && Number(m.sample) >= 6 && !m.partial;
-  const eligible = f => f.experimentalEstimate?.available === true && Object.values(f.experimentalEstimate.estimates || {}).some(v => Number.isFinite(Number(v)) && Number(v) >= 70);
+  const qualifies = m => m && m.score !== null && Number(m.score) >= 60 && Number(m.sample) >= 6 && !m.partial;
+  const eligible = f => f.experimentalEstimate?.available === true && Object.values(f.experimentalEstimate.estimates || {}).some(v => Number.isFinite(Number(v)) && Number(v) >= 60);
   const selected = confOnlyQualified ? items.filter(eligible) : items;
   if(!selected.length){
-    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessuna delle partite caricate ha una giocata principale stimata ≥70%. Disattiva il filtro per vedere tutte le partite.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
+    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessuna delle partite caricate ha una giocata principale stimata ≥60%. Disattiva il filtro per vedere tutte le partite.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
     return;
   }
   const ordered = [...selected].sort((a,b) => {
@@ -356,17 +356,17 @@ function renderConf(items){
   });
   root.innerHTML = ordered.map(f => {
     const allMarkets = visibleMarkets(f);
-    const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial));
-    const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
+    const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 60 && m.sample >= 6 && !m.partial));
+    const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 60 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
     const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
     // Corner recommendations are evaluated separately from 1X2 / goals.
-    // Minimum 6 observed matches and 70% descriptive frequency, not a
+    // Minimum 6 observed matches and 60% descriptive frequency, not a
     // forecast. Never combine probabilities or imply bookmaker availability.
     const cornerQualified=(f.cornerMarkets?.markets||[]).filter(qualifies).sort(byEvidence);
     const bestCorner=cornerQualified[0] || null;
     const cornerRecommendationHtml=bestCorner
-      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Corner FT · frequenza storica alta</div><div class="recommend-market">'+safe(bestCorner.label)+' · '+safe(bestCorner.score)+'%</div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare storiche · frequenza descrittiva ≥70% · NON è una probabilità prevista</div></div>'
+      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Corner FT · frequenza storica alta</div><div class="recommend-market">'+safe(bestCorner.label)+' · '+safe(bestCorner.score)+'%</div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare storiche · frequenza descrittiva ≥60% · NON è una probabilità prevista</div></div>'
       : '';
     const estimate=f.experimentalEstimate || {};
     const names={one:'1 · vittoria casa',draw:'X · pareggio',two:'2 · vittoria trasferta',over25:'Over 2.5 FT',btts:'GG'};
@@ -374,13 +374,13 @@ function renderConf(items){
       .filter(x=>Number.isFinite(x.pct)&&x.pct>=0&&x.pct<=100).sort((a,b)=>b.pct-a.pct) : [];
     const best=possibilities[0];
     const recommendationHtml=best
-      ? '<div class="recommend"><div class="recommend-title">🎯 Migliore indicazione CONF · sperimentale</div><div class="recommend-market">'+safe(best.label)+' · '+safe(best.pct)+'%</div><div class="recommend-note">Valore più alto del modello, anche sotto 70%. Non è un consiglio verificato. Campione '+safe(estimate.samples?.home)+' / '+safe(estimate.samples?.away)+' partite.</div></div>'
+      ? '<div class="recommend"><div class="recommend-title">🎯 Migliore indicazione CONF · sperimentale</div><div class="recommend-market">'+safe(best.label)+' · '+safe(best.pct)+'%</div><div class="recommend-note">Valore più alto del modello, anche sotto 60%. Non è un consiglio verificato. Campione '+safe(estimate.samples?.home)+' / '+safe(estimate.samples?.away)+' partite.</div></div>'
       : '<div class="recommend"><div class="recommend-title">🎯 Giocata CONF</div><div class="recommend-market">Dati insufficienti per una giocata</div><div class="recommend-note">Il modello richiede almeno 6 risultati per ciascuna squadra. Le frequenze storiche sotto restano consultabili.</div></div>';
 
     const e=f.experimentalEstimate || {};
     const combos=Array.isArray(e.teamGoalCombos)?e.teamGoalCombos:[];
     // In the main match card: show the highest-scoring home/away team-over combo.
-    const qualifiedCombos=combos.filter(x=>Number.isFinite(x.score)&&x.score>=70);
+    const qualifiedCombos=combos.filter(x=>Number.isFinite(x.score)&&x.score>=60);
     // Prefer a stronger goal line only when its joint estimate clears the threshold.
     const bestCombo=qualifiedCombos.slice().sort((a,b)=>
       (b.homeMin+b.awayMin)-(a.homeMin+a.awayMin) || b.score-a.score)[0];
@@ -392,7 +392,7 @@ function renderConf(items){
       (e.available ? '<div class="recommend-market">Gol attesi CONF · Casa '+safe(e.expectedGoals?.home)+' · Trasferta '+safe(e.expectedGoals?.away)+'</div><div class="recommend-note">Stima dai risultati recenti; le combo sotto usano questo modello.</div>' : '')+'</div>';
     const comboHtml=bestCombo
       ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🔗 Combo gol squadre · stima sperimentale</div><div class="recommend-market">Casa Over '+safe(bestCombo.homeOver)+' + Trasferta Over '+safe(bestCombo.awayOver)+' · '+safe(bestCombo.score)+'%</div><div class="recommend-note">Stima congiunta del modello, non una probabilità verificata. Quote non disponibili.</div></div>'
-      : (e.available ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🔗 Combo gol squadre</div><div class="recommend-market">Nessuna combo raggiunge il 70%</div><div class="recommend-note">Tutte le linee e le stime sono in Statistiche e analisi.</div></div>' : '');
+      : (e.available ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🔗 Combo gol squadre</div><div class="recommend-market">Nessuna combo raggiunge il 60%</div><div class="recommend-note">Tutte le linee e le stime sono in Statistiche e analisi.</div></div>' : '');
     const comboDetails=combos.length
       ? '<details style="margin-top:10px"><summary style="cursor:pointer;font-weight:700">Altre combo Over casa + Over trasferta</summary><div class="time">'+combos.map(x=>'Casa Over '+safe(x.homeOver)+' + Trasferta Over '+safe(x.awayOver)+' · '+safe(x.score)+'%').join(' · ')+'</div></details>'
       : '';
@@ -411,7 +411,7 @@ function renderConf(items){
       '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Apri la sezione per verificare i dati storici separati per tempo.</div>'+ '</details>';
     return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+predictedGoalsHtml+comboHtml+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div><details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Statistiche e analisi</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
-      const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'frequenza storica ≥70 · non predittiva' : 'sotto soglia 70'));
+      const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 60 ? 'frequenza storica ≥60 · non predittiva' : 'sotto soglia 60'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
       const pct = m.score === null ? 0 : Math.max(0,Math.min(100,Number(m.score)||0));
       return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
@@ -439,12 +439,12 @@ async function loadConf(){
       if(savedCount > 0) await syncHistory();
       await checkFinalResults(true);
     }
-    const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial)).length;
+    const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 60 && m.sample >= 6 && !m.partial)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
     if($('#total')) $('#total').textContent = data.analyzedCount || (data.fixtures || []).length;
     if($('#upcoming')) $('#upcoming').textContent = qualified;
     if($('#live')) $('#live').textContent = valid;
-    $('#conf-message').textContent = (query ? 'Ricerca CONF per “'+query+'” completata. ' : 'Analisi CONF completata. ')+(data.analyzedCount || (data.fixtures || []).length)+' partite analizzate nelle prossime '+hours+' ore; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70%. '+data.method+' '+(data.secondaryStatus?.startsWith('fa_official_') ? 'FA Cup: '+data.secondaryStatus.split('_').pop()+' partite confermate dal calendario ufficiale; le statistiche non disponibili restano senza percentuale. ' : data.secondaryStatus?.startsWith('efl_calendar_') ? 'Calendario EFL: '+data.secondaryStatus.split('_')[2]+' partite programmate nel feed; analisi con dati storici disponibili. ' : data.secondaryStatus?.startsWith('efl_error:') ? 'Calendario EFL non disponibile: '+data.secondaryStatus+'. ' : data.secondaryStatus?.startsWith('provider_error') ? 'API-Football: '+data.secondaryStatus+'. ' : data.secondaryStatus === 'missing_api_key' ? 'API-Football non configurata. ' : data.secondaryStatus?.startsWith('fixtures_returned_') ? 'Ricerca integrativa API-Football: '+data.secondaryStatus.split('_')[2]+' partite trovate nel calendario alternativo. ' : '')+((data.warnings || []).length ? 'AVVISI DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
+    $('#conf-message').textContent = (query ? 'Ricerca CONF per “'+query+'” completata. ' : 'Analisi CONF completata. ')+(data.analyzedCount || (data.fixtures || []).length)+' partite analizzate nelle prossime '+hours+' ore; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥60%. '+data.method+' '+(data.secondaryStatus?.startsWith('fa_official_') ? 'FA Cup: '+data.secondaryStatus.split('_').pop()+' partite confermate dal calendario ufficiale; le statistiche non disponibili restano senza percentuale. ' : data.secondaryStatus?.startsWith('efl_calendar_') ? 'Calendario EFL: '+data.secondaryStatus.split('_')[2]+' partite programmate nel feed; analisi con dati storici disponibili. ' : data.secondaryStatus?.startsWith('efl_error:') ? 'Calendario EFL non disponibile: '+data.secondaryStatus+'. ' : data.secondaryStatus?.startsWith('provider_error') ? 'API-Football: '+data.secondaryStatus+'. ' : data.secondaryStatus === 'missing_api_key' ? 'API-Football non configurata. ' : data.secondaryStatus?.startsWith('fixtures_returned_') ? 'Ricerca integrativa API-Football: '+data.secondaryStatus.split('_')[2]+' partite trovate nel calendario alternativo. ' : '')+((data.warnings || []).length ? 'AVVISI DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
@@ -577,7 +577,7 @@ document.addEventListener('toggle',async e=>{
         ).join('')+'</div>':'<p class="time">Dati per tempo non disponibili dal provider.</p>');
     };
     root.innerHTML=renderHalf('first','Corner 1° tempo')+renderHalf('second','Corner 2° tempo');
-    const qualifiedHalf=markets.filter(m=>m.sample>=6 && m.score>=70 && !m.partial).sort(byEvidence);
+    const qualifiedHalf=markets.filter(m=>m.sample>=6 && m.score>=60 && !m.partial).sort(byEvidence);
     const bestFirst=qualifiedHalf.find(m=>m.half==='first');
     const bestSecond=qualifiedHalf.find(m=>m.half==='second');
     const container=section.closest('.match')?.querySelector('[data-half-recommend]');
@@ -586,7 +586,7 @@ document.addEventListener('toggle',async e=>{
       container.innerHTML=cards.map(m=>'<div class="recommend" style="margin-top:8px">'+
         '<div class="recommend-title">🚩 Corner · frequenza storica · '+(m.half==='first'?'1°':'2°')+' tempo</div>'+
         '<div class="recommend-market">'+safe(m.label)+' · '+safe(m.score)+'%</div>'+
-        '<div class="recommend-note">'+safe(m.hits)+' su '+safe(m.sample)+' gare · soglia CONF ≥70% · frequenza storica</div></div>').join('');
+        '<div class="recommend-note">'+safe(m.hits)+' su '+safe(m.sample)+' gare · soglia CONF ≥60% · frequenza storica</div></div>').join('');
     }
     if(data.warning)root.innerHTML+='<p class="time">'+safe(data.warning)+'</p>';
   }catch(error){root.textContent='Corner per tempo non disponibili: '+error.message;}
