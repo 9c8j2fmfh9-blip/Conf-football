@@ -266,47 +266,66 @@ app.get('/api/debug-search', async (req, res) => {
 app.get('/api/search-fixtures', async (req, res) => {
   const date = String(req.query.date || '');
   const query = String(req.query.q || '').trim();
-  if (!date || !query) return res.status(400).json({ error: 'Indica data e testo da cercare.' });
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !query) return res.status(400).json({ error: 'Indica data valida e testo da cercare.' });
   const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
   const terms = norm(query).split(/\s+/).filter(Boolean);
   try {
-    const competitions = rows(await openFoot('/competitions'));
-    const matchingCompetitions = competitions.filter(c => {
-      const name = norm(c.name || c.competitionName || c.competition?.name || '');
-      return terms.every(term => name.includes(term));
+    const [catalog, found] = await Promise.all([
+      openFoot('/competitions').then(rows).catch(() => []),
+      openFoot('/search', { q: query }).then(rows).catch(() => [])
+    ]);
+    const matchingCompetitions = catalog.filter(c => terms.every(t => norm(c.name || c.competitionName || c.competition?.name).includes(t)));
+    const entities = [...matchingCompetitions.map(c => ({ ...c, type: 'competition' })), ...found].filter(item => {
+      const name = item.name || item.displayName || item.team?.name || item.competition?.name || item.label || '';
+      return terms.every(t => norm(name).includes(t));
     });
-    let source = [];
-    let searchMode = 'date';
-    if (matchingCompetitions.length) {
-      searchMode = 'competition';
-      const results = await Promise.all(matchingCompetitions.slice(0, 5).map(async c => {
-        const id = c.id ?? c.competitionId ?? c.competition?.id;
-        if (id == null) return [];
-        try { return rows(await openFoot('/matches', { date, competition: id })); }
-        catch (_) { return []; }
-      }));
-      source = results.flat();
-    } else {
-      source = rows(await openFoot('/matches', { date }));
+    const unique = new Map();
+    for (const item of entities) {
+      const id = item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id;
+      if (id != null && !unique.has(String(id))) unique.set(String(id), item);
     }
+    const resolved = [...unique.values()].slice(0, 20);
+    const requests = resolved.map(async item => {
+      const id = item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id;
+      const kind = String(item.type || item.entityType || item.kind || '').toLowerCase();
+      const competition = kind.includes('competition') || kind.includes('league') || String(id).startsWith('comp_');
+      const filter = competition ? { competition: id } : { team: id };
+      const scoped = await openFoot('/matches', { date, ...filter }).then(rows).catch(() => []);
+      // A provider may ignore a date+team filter or omit those fixtures from its daily preview.
+      const broader = scoped.length ? [] : await openFootAll('/matches', filter, 5).catch(() => []);
+      return [...scoped, ...broader].map(m => ({
+        ...m,
+        competitionName: m.competitionName || m.competition?.name || (competition ? item.name : ''),
+        competitionId: m.competitionId ?? m.competition?.id ?? (competition ? id : null)
+      }));
+    });
+    const [daily, ...entityResults] = await Promise.all([
+      openFoot('/matches', { date }).then(rows).catch(() => []),
+      ...requests
+    ]);
+    const source = [...daily, ...entityResults.flat()];
     const now = Date.now();
     const seen = new Set();
     const response = source.map(toLegacy).filter(f => {
       const state = f.fixture?.status?.short || 'NS';
-      if (['FT','PST','CANC'].includes(state)) return false;
+      if (['FT', 'PST', 'CANC'].includes(state)) return false;
       const kickoff = new Date(f.fixture?.date || 0).getTime();
       if (!Number.isFinite(kickoff)) return false;
+      const italianDate = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(kickoff));
+      if (italianDate !== date) return false;
       if (state === 'LIVE') {
-        if (kickoff > now + 5 * 60 * 1000 || now - kickoff > 180 * 60 * 1000) return false;
+        if (kickoff > now + 5 * 60000 || now - kickoff > 180 * 60000) return false;
       } else if (kickoff <= now) return false;
       const text = norm([f.league?.name, f.league?.country, f.teams?.home?.name, f.teams?.away?.name].join(' '));
-      if (!terms.every(term => text.includes(term))) return false;
+      const ids = [f.teams?.home?.id, f.teams?.away?.id, f.league?.id].filter(Boolean).map(String);
+      const matchedById = [...unique.keys()].some(id => ids.includes(id));
+      if (!matchedById && !terms.every(t => text.includes(t))) return false;
       const key = String(f.fixture?.id || [f.fixture?.date, f.teams?.home?.name, f.teams?.away?.name].join('|'));
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
     });
-    res.json({ results: response.length, response, provider: 'OpenFootAPI', searchMode, query, competitionsFound: matchingCompetitions.length });
+    res.json({ results: response.length, response, provider: 'OpenFootAPI', searchMode: resolved.length ? 'entity' : 'date', query, entitiesFound: resolved.length, competitionsFound: matchingCompetitions.length });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
 
