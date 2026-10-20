@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import { selectFixture } from './conf-selection.js';
+import { openDataConf } from './open-data.js';
 import { readFileSync } from 'node:fs';
 
 const app = express();
@@ -566,10 +567,10 @@ app.get('/api/conf-backtest', (_req, res) => {
 });
 
 app.get('/api/status', (_req, res) => {
-  res.json({ configured: Boolean(apiKey), provider: 'OpenFootAPI', cacheMinutes: CACHE_TTL_MS / 60000 });
+  res.json(process.env.CONF_PROVIDER === 'openfoot' ? { configured: Boolean(apiKey), provider: 'OpenFootAPI', cacheMinutes: CACHE_TTL_MS / 60000 } : {configured:true,provider:'Open Matchday',refreshHours:6,competitions:75});
 });
 
-app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'CONF Football', version: '0.3.0', provider: 'OpenFootAPI' }));
+app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'CONF Football', version: '0.4.0', provider: process.env.CONF_PROVIDER === 'openfoot' ? 'OpenFootAPI' : 'Open Matchday' }));
 
 app.get('/api/key-check', async (_req, res) => {
   const url = new URL(base + '/matches');
@@ -885,6 +886,10 @@ app.get('/api/corners-halves',async(req,res)=>{
 
 
 app.get('/api/conf', async (req, res) => {
+  if (process.env.CONF_PROVIDER !== 'openfoot') {
+    try { return res.json(openDataConf(req.query, experimentalGoalEstimate)); }
+    catch (error) { return res.status(503).json({error:'Archivio calcio non disponibile: '+error.message}); }
+  }
   // Recover gracefully if a pasted URL accidentally encodes all query parameters inside q.
   const rawQuery = String(req.query.q || '').trim();
   const embedded = rawQuery.includes('&') ? new URLSearchParams(rawQuery.replace(/^.*?\?/, '')) : null;

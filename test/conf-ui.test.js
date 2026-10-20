@@ -10,7 +10,7 @@ const fixture=(id,score)=>({fixtureId:id,home:'Casa '+id,away:'Ospite',date:'202
 const fixtures=[fixture('selected',72),fixture('below',55)];
 let request='';const context=vm.createContext({document,selectFixture,console,Date,URLSearchParams,localStorage:{getItem(){return null},setItem(){}},fetch:async url=>{request=url;return{ok:true,json:async()=>({fixtures,analyzedCount:82,selectedCount:1,method:'Metodo di prova',preview:{partial:false}})}}});
 vm.runInContext(script,context);context.fixtures=fixtures;
-vm.runInContext('renderConf(fixtures)',context);
+vm.runInContext('confOnlyQualified=true;renderConf(fixtures)',context);
 assert.equal((el('#conf-results').innerHTML.match(/<article/g)||[]).length,1);
 assert.ok(el('#conf-results').innerHTML.includes('72%'));
 const html=el('#conf-results').innerHTML;const outside=html.slice(0,html.indexOf('<details'));

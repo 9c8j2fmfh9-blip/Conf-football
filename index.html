@@ -26,7 +26,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 <header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Partite reali · dati aggiornati dal provider</p></div></div></header>
 <main>
 <section class="panel">
- <h2>Le partite selezionate</h2>
+ <h2>Partite e selezioni CONF</h2>
  <p class="muted">Prima la selezione, poi l’analisi. Una sola indicazione per partita; tutti i dati nei dettagli.</p>
  <div class="filters">
   <div class="field"><label for="hours">Prossime ore</label><select id="hours"><option value="3">3 ore</option><option value="12">12 ore</option><option value="24" selected>24 ore</option></select></div>
@@ -36,7 +36,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
   <button class="button" id="reload" type="button">Aggiorna</button>
  </div>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
- <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" checked style="width:18px;height:18px;accent-color:var(--green)"> Solo selezionate · stima e storico ≥60%</label>
+ <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Solo selezionate · stima e storico ≥60%</label>
  <div id="conf-results" class="matches"></div>
  <div class="stats">
   <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
@@ -60,14 +60,14 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <div id="history-results" class="matches"></div>
 </details>
 
-<p class="foot">CONF Football · fuso orario Europe/Rome · modello sperimentale · dati e disponibilità dipendono dai provider.</p>
+<p class="foot">CONF Football · fuso orario Europe/Rome · modello sperimentale · dati: Open Matchday e fonti originali · aggiornamento periodico.</p>
 </main>
 <script type="module">
 import { selectFixture } from "/conf-selection.js";
 const $ = (s) => document.querySelector(s);
 let games = [];
 let confItems = [];
-let confOnlyQualified = true;
+let confOnlyQualified = false;
 let confLoadSequence = 0;
 const HISTORY_KEY = 'confFootballBetHistoryV1';
 const FAVORITES_KEY = 'confFootballFavoritesV1';
@@ -415,8 +415,8 @@ function renderConf(items){
         '<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare</div></span>'+
         '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
         :'<p class="time">Dati corner verificati insufficienti.</p>')+
-      '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Apri la sezione per verificare i dati storici separati per tempo.</div>'+ '</details>';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote non considerate.</p>'+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary>'+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
+      '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Il dettaglio per tempo dipende dalla disponibilità della fonte.</div>'+ '</details>';
+    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote non considerate. '+safe(f.dataUpdatedAt ? 'Archivio aggiornato: '+new Date(f.dataUpdatedAt).toLocaleString('it-IT',{timeZone:'Europe/Rome'}) : '')+'</p>'+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary>'+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 60 ? 'frequenza storica ≥60 · non predittiva' : 'sotto soglia 60'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
@@ -434,7 +434,7 @@ async function loadConf(){
   $('#conf-message').textContent = query ? 'Cerco “'+query+'” nelle API e calcolo frequenze storiche…' : 'Esamino le partite delle prossime '+hours+' ore e seleziono quelle con riscontri sufficienti…';
   $('#conf-results').innerHTML = '';
   try{
-    const params = new URLSearchParams({hours:String(hours),limit:'40'});
+    const params = new URLSearchParams({hours:String(hours),limit:'100'});
     const selectedDate = $('#date').value;
     if (selectedDate) params.set('date',selectedDate);
     if (query || selectedDate) { confOnlyQualified=false; $('#conf-filter').checked=false; }
@@ -444,13 +444,6 @@ async function loadConf(){
     if (requestId !== confLoadSequence) return;
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
     renderConf(data.fixtures || []);
-    const savedCount = saveRecommendations(data.fixtures || []);
-    if(localStorage.getItem(HISTORY_TOKEN_KEY)) {
-      // Sync newly recorded markets and check finished matches automatically.
-      // The server only settles matches with verifiable final scores.
-      if(savedCount > 0) await syncHistory();
-      await checkFinalResults(true);
-    }
     const qualified = data.selectedCount ?? (data.fixtures || []).filter(f=>(f.selection || selectFixture(f)).qualified).length;
     const valid = (data.fixtures || []).filter(f => f.experimentalEstimate?.available).length;
     if($('#total')) $('#total').textContent = data.analyzedCount ?? (data.fixtures || []).length;
@@ -564,7 +557,7 @@ async function loadBacktest(){
 
 $('#date').value = ''; // Without a date, use the rolling 3/12/24-hour window.
 renderHistory();
-if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
+
 $('#reload').addEventListener('click',loadConf);
 $('#search-button').addEventListener('click',loadConf);
 $('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();loadConf();}});
