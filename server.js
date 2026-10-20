@@ -515,13 +515,17 @@ app.get('/api/conf', async (req, res) => {
     }
 
 
+    let secondaryStatus = query && /(?:youth\\s*league|uefa\\s*youth)/i.test(query)
+      ? (apiFootballKey ? 'checking' : 'missing_api_key') : null;
     // Optional, targeted second provider. Never consume its limited quota for the main CONF feed.
-    if (query && /(?:youth\\s*league|uefa\\s*youth)/i.test(query) && apiFootballKey) {
+    if (query && /(?:youth\s*league|uefa\s*youth)/i.test(query) && apiFootballKey) {
       try {
         const leagues = (await apiFootball('leagues', { search: 'Youth League' }))?.response || [];
+        secondaryStatus = leagues.length ? 'league_catalog_found' : 'league_not_found';
         const league = leagues.find(x => /youth league/i.test(x.league?.name || ''));
         const season = league?.seasons?.filter(x => x.year <= Number((requestedDate || today).slice(0, 4))).sort((a, b) => b.year - a.year)[0]?.year;
         if (league && season) {
+          secondaryStatus = 'fetching_fixtures';
           const extra = await apiFootball('fixtures', { league: league.league.id, season, date: requestedDate || today, timezone: 'Europe/Rome' });
           const converted = (extra?.response || []).map(x => ({
             id: 'apisports_' + x.fixture.id,
@@ -536,9 +540,10 @@ app.get('/api/conf', async (req, res) => {
             score: { home: x.goals.home, away: x.goals.away }
           }));
           allDayMatches.push(...converted);
+          secondaryStatus = 'fixtures_returned_' + converted.length;
         }
-      } catch (_) {
-        // The primary provider and existing CONF functionality must remain available.
+      } catch (error) {
+        secondaryStatus = 'provider_error: ' + error.message;
       }
     }
 
