@@ -1,587 +1,69 @@
-<!doctype html>
-<html lang="it">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101827">
-<title>CONF Football</title>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CONF Football</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1220;--panel:#111c2f;--line:#293a53;--text:#f4f7fb;--muted:#9eacc2;--green:#45d483;--blue:#8ab4ff}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#142238,var(--bg) 350px);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}header{padding-top:25px;padding-bottom:20px}.brand{display:flex;gap:12px;align-items:center}.logo{width:46px;height:46px;border-radius:14px;background:#1b724b;display:grid;place-items:center;font-weight:900;font-size:20px}.eyebrow{color:var(--green);font-size:11px;font-weight:800;letter-spacing:.12em}.title{font-size:clamp(28px,5vw,38px);font-weight:850;letter-spacing:-.04em;margin:2px 0}.sub,.muted{color:var(--muted)}.sub{margin:0}main{padding-bottom:45px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0 16px}.stat,.panel,.match{background:rgba(17,28,47,.96);border:1px solid var(--line);border-radius:16px}.stat{padding:14px}.stat small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}.stat strong{font-size:25px;display:block;margin-top:3px}.panel{padding:16px;margin:14px 0}.panel h2{font-size:16px;margin:0 0 12px}.filters{display:grid;grid-template-columns:1fr 1.4fr auto auto;gap:10px;align-items:end}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.field input{width:100%;padding:11px;border-radius:10px;background:#0b1424;color:var(--text);border:1px solid var(--line);font:inherit}.button{border:1px solid var(--green);background:var(--green);color:#082015;font-weight:800;padding:11px 15px;border-radius:10px;cursor:pointer;font:inherit}.button:disabled{opacity:.6;cursor:wait}.message{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;color:var(--muted)}.matches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.match{padding:15px;min-width:0}.matchtop{display:flex;justify-content:space-between;gap:12px}.league{color:var(--blue);font-size:11px;text-transform:uppercase;letter-spacing:.06em}.teams{font-size:17px;font-weight:800;margin:8px 0;overflow-wrap:anywhere}.vs{color:var(--muted);font-size:12px;font-weight:500}.time{font-size:12px;color:var(--muted)}.score{font-size:22px;font-weight:900;white-space:nowrap}.conf-ring{--pct:0;width:54px;height:54px;flex:0 0 54px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) calc(var(--pct)*1%),#293a53 0);position:relative}.conf-ring:before{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--panel)}.conf-ring span{position:relative;font-size:13px;font-weight:850;line-height:1}.conf-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:10px}.conf-row-label{min-width:0;flex:1}.recommend{border:1px solid #2f9f68;background:linear-gradient(135deg,rgba(69,212,131,.13),rgba(17,28,47,.96));border-radius:12px;padding:12px;margin-top:12px}.recommend-title{font-size:11px;color:var(--green);font-weight:850;letter-spacing:.06em;text-transform:uppercase}.recommend-market{font-size:16px;font-weight:850;margin-top:3px}.recommend-note{font-size:12px;color:var(--muted);margin-top:2px}.status{display:inline-block;margin-top:8px;font-size:11px;border-radius:99px;padding:4px 8px;background:#20334a;color:#d5e6ff}.foot{color:var(--muted);font-size:12px;margin:18px 2px}.empty{grid-column:1/-1;text-align:center;border:1px dashed var(--line);border-radius:14px;padding:25px;color:var(--muted)}
-.dashboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:12px 0}.dash-card{background:#0b1424;border:1px solid var(--line);border-radius:12px;padding:12px}.dash-card small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em}.dash-card strong{display:block;font-size:23px;margin-top:3px}.market-stats{display:grid;gap:9px;margin:12px 0 4px}.market-stat{border:1px solid var(--line);border-radius:10px;padding:10px 12px}.market-head{display:flex;justify-content:space-between;gap:10px;font-weight:750}.market-track{height:7px;border-radius:99px;background:#293a53;overflow:hidden;margin-top:8px}.market-fill{height:100%;background:var(--green);border-radius:99px}.market-detail{font-size:12px;color:var(--muted);margin-top:4px}@media(max-width:680px){.dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:680px){.filters{grid-template-columns:1fr 1fr}.filters .field:first-child{grid-column:1/-1}.filters button{width:100%}.matches{grid-template-columns:1fr}.stat{padding:10px}.stat strong{font-size:21px}.panel{padding:13px}}
-</style>
-</head>
-<body>
-<header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Partite reali · dati aggiornati dal provider</p></div></div></header>
-<main>
-<section class="panel">
- <h2>Partite e analisi CONF</h2>
- <p class="muted">Un’unica lista: ogni partita viene cercata e analizzata con le statistiche e le percentuali CONF disponibili.</p>
- <div class="filters">
-  <div class="field"><label for="hours">Prossime ore</label><select id="hours"><option value="3">3 ore</option><option value="12">12 ore</option><option value="24" selected>24 ore</option></select></div>
-  <div class="field"><label for="date">Data (ora italiana)</label><input id="date" type="date"></div>
-  <div class="field"><label for="search">Cerca squadra o campionato nelle API</label><input id="search" type="search" placeholder="Es. Inter, Champions League"></div>
-  <button class="button" id="search-button" type="button">Cerca</button>
-  <button class="button" id="reload" type="button">Aggiorna</button>
- </div>
- <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
- <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo partite con giocata principale ≥70% (stima sperimentale)</label>
- <div id="conf-results" class="matches"></div>
- <div class="stats">
-  <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
-  <div class="stat"><small>Mercati qualificati</small><strong id="upcoming">—</strong></div>
-  <div class="stat"><small>Con dati storici</small><strong id="live">—</strong></div>
- </div>
-</section>
-<section class="panel">
- <h2>⭐ Le mie partite preferite <span id="favorites-count" class="muted"></span></h2>
- <p class="muted">Salva qui le partite che vuoi tenere d’occhio. I preferiti restano salvati in questo browser.</p>
- <div id="favorites-results" class="matches"><div class="empty">Non hai ancora aggiunto partite ai preferiti.</div></div>
-</section>
+:root{color-scheme:dark;--bg:#0c1314;--panel:#152022;--edge:#2b3b3d;--muted:#a8bbba;--green:#68e5a2;--text:#edf7f3}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,sans-serif}main{max-width:1120px;margin:auto;padding:28px 18px 60px}header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}h1{font-size:26px;margin:0;letter-spacing:-1px}h1 span{color:var(--green)}h3{font-size:14px;margin:14px 0 8px}h2{font-size:18px;margin:0 0 12px}.muted,small{color:var(--muted)}.badge{border:1px solid var(--edge);padding:6px 10px;border-radius:99px;font-size:12px;white-space:nowrap}.controls,.notice{background:var(--panel);border:1px solid var(--edge);border-radius:16px;padding:18px;margin-bottom:16px}.toolbar,.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.toolbar{margin-bottom:14px}input,button{font:inherit;min-height:44px;border-radius:9px;border:1px solid var(--edge);padding:9px 12px;background:#0e181a;color:var(--text)}input[type=search]{flex:1;min-width:180px}input[type=checkbox]{min-height:18px;width:18px;accent-color:var(--green)}button{cursor:pointer}button:hover,button[aria-pressed=true]{border-color:var(--green);color:var(--green)}button.primary{background:var(--green);color:#10241b;font-weight:700}button:disabled{opacity:.5;cursor:wait}label{display:flex;align-items:center;gap:7px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:var(--panel);border:1px solid var(--edge);border-radius:16px;padding:18px;min-width:0}.league{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}.teams{font-size:19px;font-weight:750;line-height:1.35;margin:12px 0 8px}.vs{color:var(--muted);font-size:11px;font-weight:400;margin:3px 0}.pick{border-left:3px solid var(--green);background:#1a3028;border-radius:0 9px 9px 0;padding:12px;margin:16px 0}.pick strong{display:block;font-size:17px}.pick small{display:block;margin-top:5px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid var(--edge)}.ring{--pct:0;flex:0 0 60px;width:60px;height:60px;border-radius:50%;background:conic-gradient(var(--green) calc(var(--pct)*1%),#2a3938 0);display:grid;place-items:center}.ring span{display:grid;place-items:center;background:var(--panel);width:48px;height:48px;border-radius:50%;font-size:15px;font-weight:700}.favorite{font-size:20px;padding:0 5px;min-height:24px;border:0;background:none;color:var(--muted)}.empty{padding:40px 16px;border:1px dashed var(--edge);border-radius:12px;text-align:center;grid-column:1/-1}.status{min-height:24px;margin:14px 0;color:var(--muted);font-size:13px}details{margin-top:12px}summary{cursor:pointer;color:var(--muted);padding:8px 0;min-height:40px}.match-details[open]>summary{margin-bottom:12px;border-bottom:1px solid var(--edge)}.grid{align-items:start}.teams{margin-top:0}.card>.pick{margin-bottom:8px}.corner button{width:100%;margin-top:12px}footer{margin-top:28px;font-size:12px;color:var(--muted)}a{color:var(--green)}table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:8px;text-align:left;border-bottom:1px solid var(--edge)}.scroll{overflow:auto}@media(max-width:920px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){main{padding:18px 12px 40px}.grid{grid-template-columns:1fr}.controls{padding:14px}.toolbar input[type=date]{flex:1;min-width:0}header{gap:6px}h1{font-size:23px}.badge{font-size:10px}.filters{font-size:13px}.teams{font-size:21px}}
+</style></head><body><main>
+<header><div><h1>CONF <span>Football</span></h1><div class="muted">Analisi, senza complicazioni.</div></div><span class="badge">Fonti gratuite · v0.7</span></header>
+<section class="controls"><h2>Trova le partite</h2><form id="search-form"><div class="toolbar"><input type="search" id="query" placeholder="Squadra o campionato" aria-label="Squadra o campionato"><input type="date" id="date" aria-label="Cerca per data"><button class="primary" id="search-button">Cerca</button></div></form>
+<div class="toolbar" role="group" aria-label="Prossime ore"><button type="button" data-hours="3" aria-pressed="false">3 ore</button><button type="button" data-hours="12" aria-pressed="false">12 ore</button><button type="button" data-hours="24" aria-pressed="true">24 ore</button><button id="reset" type="button">Tutte le prossime</button></div>
+<div class="filters"><label><input type="checkbox" id="threshold"> Solo stime GG / Over ≥70%</label><label><input type="checkbox" id="favorites"> Preferiti</label><button id="refresh" type="button">Aggiorna</button></div>
+<div id="status" class="status" role="status" aria-live="polite">Caricamento…</div></section>
+<section id="results" class="grid" aria-label="Analisi partite"></section>
+<div class="notice"><strong>Come leggere le percentuali</strong><div class="muted">La stima del modello è separata dalla frequenza nello storico. Nessuna percentuale garantisce una vincita. I corner mostrano solo eventi realmente registrati.</div><details><summary>Affidabilità e copertura</summary><p class="muted">Over 2.5 nei campionati coperti: regressione logistica calibrata su stagioni separate. GG e competizioni non coperte: modello Poisson sperimentale. Almeno 6 gare per squadra. Forma casa/trasferta, classifica e distanza dalle zone sono mostrati separatamente; non attribuiamo una motivazione psicologica alle squadre. Le stime sono sperimentali. Calendari e risultati: ESPN, accesso pubblico senza chiave. Copertura limitata alle competizioni disponibili, non a tutti i campionati. I corner per tempo compaiono solo se esiste una fonte verificabile; al momento non disponibili.</p><button id="backtest" type="button">Mostra test storico</button><div class="scroll" id="backtest-result"></div></details></div>
+<section id="selections" class="notice" aria-label="Selezioni statistiche"><h2>Selezioni statistiche</h2><div id="selection-list" class="muted">Analisi in corso…</div></section>
 
-<section class="panel">
- <h2>Storico scommesse consigliate</h2>
- <p class="muted">Mostra una sola scheda per partita con la scommessa CONF migliore. Tutti i mercati analizzati restano registrati per le statistiche. Usa Sincronizza per condividere lo storico tra PC e smartphone.</p>
- <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="button" id="sync-history" type="button">Sincronizza PC e smartphone</button></div>
- <div id="sync-message" class="message">Sincronizzazione non ancora avviata.</div>
- <div id="history-summary" class="message">Nessuna selezione registrata.</div>
- <div id="history-dashboard"></div>
- <div id="history-results" class="matches"></div>
-</section>
-
-<p class="foot">CONF Football · fuso orario Europe/Rome · dati delle partite forniti da API-Football.</p>
-</main>
-<script>
-const $ = (s) => document.querySelector(s);
-let games = [];
-let confItems = [];
-let confOnlyQualified = false;
-const HISTORY_KEY = 'confFootballBetHistoryV1';
-const FAVORITES_KEY = 'confFootballFavoritesV1';
-function readFavorites(){ try { const v = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } }
-function isFavorite(id){ return readFavorites().some(x => String(x.id) === String(id)); }
-function toggleFavorite(id){
-  const favorites = readFavorites();
-  const existing = favorites.findIndex(x => String(x.id) === String(id));
-  if(existing >= 0) favorites.splice(existing,1);
-  else {
-    const c = confItems.find(x => String(x.fixtureId) === String(id));
-    const g = games.find(x => String(x.fixture?.id) === String(id));
-    if(c) favorites.unshift({id:String(id), home:c.home, away:c.away, league:c.league, country:c.country || '', date:c.date || null});
-    else if(g) favorites.unshift({id:String(id), home:g.teams?.home?.name || 'Casa', away:g.teams?.away?.name || 'Trasferta', league:g.league?.name || 'Campionato', country:g.league?.country || '', date:g.fixture?.date || null});
-  }
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
-  render(); renderConf(confItems); renderFavorites();
-}
-function favoriteButton(id){ const saved=isFavorite(id); return '<button class="button" type="button" data-fav-id="'+safe(id)+'" style="padding:6px 9px;font-size:12px">'+(saved?'★ Nei preferiti':'☆ Aggiungi ai preferiti')+'</button>'; }
-function renderFavorites(){
-  const favorites=readFavorites();
-  $('#favorites-count').textContent='('+favorites.length+')';
-  const root=$('#favorites-results');
-  if(!favorites.length){root.innerHTML='<div class="empty">Non hai ancora aggiunto partite ai preferiti.</div>';return;}
-  root.innerHTML=favorites.map(f=>{
-    const date=f.date?new Date(f.date):null;
-    const time=date&&!Number.isNaN(date.getTime())?date.toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'Orario non disponibile';
-    return '<article class="match"><div class="league">'+safe(f.league||'Campionato')+' · '+safe(f.country||'')+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">'+safe(time)+'</div><div style="margin-top:10px">'+favoriteButton(f.id)+'</div></article>';
-  }).join('');
-}
-function readHistory(){
-  try {
-    const value = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
-    return Array.isArray(value) ? value : [];
-  } catch { return []; }
-}
-function writeHistory(items){
-  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(items)); }
-  catch { $('#history-summary').textContent = 'Impossibile salvare lo storico in questo browser.'; }
-}
-function saveRecommendations(fixtures){
-  // Registra automaticamente ogni mercato valutabile, non soltanto quello sopra soglia.
-  // In questo modo CONF potrà confrontare in seguito tutte le sue analisi con i risultati reali.
-  const history = readHistory();
-  const known = new Set(history.map(x => x.id));
-  let added = 0;
-  const marketKeys = ['one','draw','two','over25','btts'];
-  for(const f of fixtures){
-    if(!f.fixtureId) continue;
-    for(const key of marketKeys){
-      const market = f.markets?.[key];
-      if(!market || market.score === null || !Number.isFinite(Number(market.score))) continue;
-      const id = String(f.fixtureId)+'|'+String(market.label || key);
-      if(known.has(id)) continue;
-      history.unshift({
-        id, fixtureId:f.fixtureId, date:f.date || null, league:f.league || '',
-        home:f.home || '', away:f.away || '', market:market.label || key,
-        score:Number(market.score), hits:Number(market.hits || 0),
-        sample:Number(market.sample || 0), outcome:'pending',
-        recordedAt:new Date().toISOString()
-      });
-      known.add(id);
-      added++;
-    }
-  }
-  writeHistory(history.slice(0,500));
-  renderHistory();
-  return added;
-}
-
-const HISTORY_TOKEN_KEY = 'confFootballHistoryAccessToken';
-async function syncHistory(){
-  const status = $('#sync-message');
-  let token = localStorage.getItem(HISTORY_TOKEN_KEY);
-  if(!token){
-    token = prompt('Inserisci il codice di sincronizzazione creato nelle variabili ambiente di Render. Non usare la password Supabase.');
-    if(!token) return;
-    localStorage.setItem(HISTORY_TOKEN_KEY, token.trim());
-    token = token.trim();
-  }
-  status.textContent = 'Sincronizzazione in corso…';
-  try {
-    const headers = { 'x-history-token': token, 'Content-Type': 'application/json' };
-    const response = await fetch('/api/history', { headers, cache: 'no-store' });
-    const remoteData = await response.json();
-    if(!response.ok) throw new Error(remoteData.error || 'Errore lettura storico');
-    const local = readHistory();
-    const merged = new Map();
-    for(const item of [...(remoteData.history || []).map(x => ({
-      id:x.id, fixtureId:x.fixture_id, date:x.match_date, league:x.league, home:x.home, away:x.away,
-      market:x.market, score:x.score, hits:x.hits, sample:x.sample, outcome:x.outcome, recordedAt:x.recorded_at, updatedAt:x.updated_at
-    })), ...local]) {
-      const previous = merged.get(item.id);
-      if(!previous || (item.updatedAt || item.recordedAt || '') >= (previous.updatedAt || previous.recordedAt || '')) merged.set(item.id,item);
-    }
-    const combined = [...merged.values()].sort((a,b)=>String(b.recordedAt||'').localeCompare(String(a.recordedAt||''))).slice(0,500);
-    writeHistory(combined);
-    const saveResponse = await fetch('/api/history', { method:'POST', headers, body:JSON.stringify({history:combined}) });
-    const saved = await saveResponse.json();
-    if(!saveResponse.ok) throw new Error(saved.error || 'Errore salvataggio storico');
-    renderHistory();
-    status.textContent = 'Sincronizzazione completata: '+combined.length+' selezioni condivise tra i dispositivi.';
-  } catch(error) {
-    if(String(error.message).toLowerCase().includes('codice')) localStorage.removeItem(HISTORY_TOKEN_KEY);
-    status.textContent = 'Sincronizzazione non riuscita: '+error.message;
-  }
-}
-async function checkFinalResults(silent=false){
-  const status = $('#sync-message');
-  let token = localStorage.getItem(HISTORY_TOKEN_KEY);
-  if(!token && !silent){
-    token = prompt('Inserisci il codice di sincronizzazione creato nelle variabili ambiente di Render. Non usare la password Supabase.');
-    if(!token) return;
-    token = token.trim();
-    localStorage.setItem(HISTORY_TOKEN_KEY, token);
-  }
-  if(!token) return;
-  if(!silent) status.textContent = 'Controllo dei risultati finali verificabili…';
-  try{
-    const response = await fetch('/api/history/settle',{method:'POST',headers:{'x-history-token':token}});
-    const data = await response.json();
-    if(!response.ok) throw new Error(data.error || 'Errore nel controllo dei risultati');
-    if(data.settled > 0 || !silent){
-      status.textContent = data.settled+' esiti aggiornati automaticamente · '+(data.pending || 0)+' ancora da verificare.';
-      await syncHistory();
-    }
-  }catch(error){
-    if(!silent) status.textContent = 'Controllo risultati non riuscito: '+error.message;
-    if(String(error.message).toLowerCase().includes('codice')) localStorage.removeItem(HISTORY_TOKEN_KEY);
-  }
-}
-$('#sync-history').addEventListener('click', syncHistory);
-
-function renderHistory(){
-  const history = readHistory();
-  const wins = history.filter(x => x.outcome === 'win').length;
-  const losses = history.filter(x => x.outcome === 'loss').length;
-  const pending = history.filter(x => x.outcome === 'pending').length;
-  const settled = wins + losses;
-  const rate = settled ? Math.round(wins / settled * 100) : null;
-  $('#history-summary').textContent = 'Registrate: '+history.length+' · Da aggiornare: '+pending+' · Vinte: '+wins+' · Perse: '+losses+' · Percentuale di successo: '+(rate === null ? '—' : rate+'%')+(settled < 10 ? ' · campione ancora troppo piccolo per valutare l’affidabilità' : '')+'.';
-  const dashboard = $('#history-dashboard');
-  if(!history.length){
-    dashboard.innerHTML = '';
-    $('#history-results').innerHTML = '<div class="empty">Lo storico è vuoto. Premi “Calcola CONF” per registrare le prime selezioni qualificate.</div>';
-    return;
-  }
-  const groups = [
-    {name:'1X2', test:x=>/vittoria casa|pareggio|vittoria trasferta|^1\s|^x\s|^2\s/i.test(x.market || '')},
-    {name:'Over 2.5 FT', test:x=>/over\s*2[.,]5/i.test(x.market || '')},
-    {name:'GG', test:x=>/\bgg\b|entrambe.*segn/i.test(x.market || '')}
-  ];
-  const cards = [
-    ['Selezioni totali',history.length],
-    ['Vinte',wins],
-    ['Perse',losses],
-    ['In attesa',pending]
-  ];
-  const cardHtml = cards.map(([label,value])=>'<div class="dash-card"><small>'+label+'</small><strong>'+value+'</strong></div>').join('');
-  const marketHtml = groups.map(group=>{
-    const items=history.filter(group.test);
-    const w=items.filter(x=>x.outcome==='win').length;
-    const l=items.filter(x=>x.outcome==='loss').length;
-    const p=items.filter(x=>x.outcome==='pending').length;
-    const n=w+l;
-    const pct=n?Math.round(w/n*100):null;
-    return '<div class="market-stat"><div class="market-head"><span>'+group.name+'</span><span>'+(pct===null?'—':pct+'%')+(n>0&&n<10?' · campione piccolo':'')+'</span></div><div class="market-track"><div class="market-fill" style="width:'+(pct===null?0:pct)+'%"></div></div><div class="market-detail">'+items.length+' registrate · '+w+' vinte · '+l+' perse · '+p+' in attesa'+(n?' · '+n+' concluse':'')+'</div></div>';
-  }).join('');
-  dashboard.innerHTML = '<h3 style="margin:14px 0 6px;font-size:14px">Dashboard risultati</h3><div class="dashboard">'+cardHtml+'</div><h3 style="margin:14px 0 6px;font-size:14px">Percentuale di successo per mercato</h3><div class="market-stats">'+marketHtml+'</div><p class="muted" style="font-size:11px;margin:8px 0">Percentuali calcolate solo sulle selezioni segnate Vinta o Persa; le selezioni in attesa non entrano nel calcolo.</p>';
-  // Audit CONF: evaluate exactly one qualified pick per fixture, not all
-  // five mutually exclusive/overlapping markets as if they were independent bets.
-  const auditByFixture = new Map();
-  for(const item of history){
-    if(Number(item.score) < 70 || Number(item.sample) < 6) continue;
-    // Never count a prediction recorded after kickoff in the accuracy audit.
-    // Historical entries without trustworthy timestamps remain in the raw dashboard.
-    const kickoff = Date.parse(item.date || '');
-    const recorded = Date.parse(item.recordedAt || '');
-    if(!Number.isFinite(kickoff) || !Number.isFinite(recorded) || recorded >= kickoff) continue;
-    const key = String(item.fixtureId || item.id);
-    if(!auditByFixture.has(key)) auditByFixture.set(key, []);
-    auditByFixture.get(key).push(item);
-  }
-  const audited = [...auditByFixture.values()].map(items => [...items].sort(byEvidence)[0]);
-  const auditedWins = audited.filter(x=>x.outcome==='win').length;
-  const auditedLosses = audited.filter(x=>x.outcome==='loss').length;
-  const auditedDone = auditedWins + auditedLosses;
-  const auditedRate = auditedDone ? Math.round(100*auditedWins/auditedDone) : null;
-  dashboard.innerHTML += '<h3 style="margin:16px 0 6px;font-size:14px">Verifica reale CONF ≥70%</h3>'
-    +'<div class="market-stat"><div class="market-head"><span>Una selezione qualificata per partita</span><span>'
-    +(auditedRate===null?'—':auditedRate+'%')+'</span></div><div class="market-track"><div class="market-fill" style="width:'
-    +(auditedRate===null?0:auditedRate)+'%"></div></div><div class="market-detail">'
-    +auditedWins+' vinte · '+auditedLosses+' perse · '+(audited.length-auditedDone)+' in attesa · '+auditedDone+' concluse'
-    +(auditedDone<20?' · campione ancora limitato':'')
-    +'</div></div><p class="muted" style="font-size:11px;margin:8px 0">Conteggio per partita: una selezione qualificata registrata prima del calcio d’inizio. Frequenza osservata, non probabilità predittiva. Lo storico precedente o incompleto può non essere incluso.</p>';
-  const root = $('#history-results');
-  // Mostra una sola scheda per partita: priorità a una selezione qualificata CONF >=70% con campione >=6;
-  // se non esiste, mostra il mercato con la percentuale storica più alta. Tutti i mercati restano nello storico interno.
-  const byFixture = new Map();
-  for(const item of history){
-    const key = String(item.fixtureId || item.id);
-    if(!byFixture.has(key)) byFixture.set(key, []);
-    byFixture.get(key).push(item);
-  }
-  const visibleItems = [...byFixture.values()].map(items => {
-    // Match the recommendation shown on the fixture card: prioritize robust
-    // evidence rather than the highest raw percentage in a small sample.
-    const rankHistorical = (a,b) => byEvidence(a,b);
-    const qualified = items.filter(x => Number(x.score) >= 70 && Number(x.sample) >= 6)
-      .sort(rankHistorical);
-    const chosen = qualified[0] || [...items].sort(rankHistorical)[0];
-    return chosen;
-  }).sort((a,b)=>String(a.date||'').localeCompare(String(b.date||'')));
-  root.innerHTML = visibleItems.map(x => {
-    const kickoff = x.date ? new Date(x.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : 'Data non disponibile';
-    const status = x.outcome === 'win' ? 'VINTA' : x.outcome === 'loss' ? 'PERSA' : 'DA AGGIORNARE';
-    const qualified = Number(x.score) >= 70 && Number(x.sample) >= 6;
-    const outcomeHtml = '<div class="status" style="margin-top:10px">'+(x.outcome === 'win' ? 'ESITO AUTOMATICO: VINTA' : x.outcome === 'loss' ? 'ESITO AUTOMATICO: PERSA' : 'IN ATTESA DEL RISULTATO UFFICIALE')+'</div>';
-    return '<article class="match"><div class="league">'+safe(x.league)+' · '+safe(kickoff)+'</div><div class="teams">'+safe(x.home)+' <span class="vs">CONTRO</span> '+safe(x.away)+'</div><div class="recommend"><div class="recommend-title">Scommessa consigliata · '+status+'</div><div class="recommend-market">'+safe(x.market)+' · '+safe(x.score)+'%</div><div class="recommend-note">'+safe(x.hits)+' su '+safe(x.sample)+' gare storiche'+(qualified?' · CONF qualificata':' · dato migliore disponibile, non qualificato')+'</div></div>'+outcomeHtml+'</article>';
-  }).join('');
-}
-const liveStates = new Set(['1H','HT','2H','ET','BT','P','LIVE']);
-const finishedStates = new Set(['FT','AET','PEN','AWD','WO']);
-function romeToday(){
-  const parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
-  const val = (k) => parts.find(p => p.type === k).value;
-  return val('year')+'-'+val('month')+'-'+val('day');
-}
-function safe(value){
-  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-function statusLabel(f){
-  const s = f.fixture?.status?.short || '';
-  if(liveStates.has(s)) return 'LIVE';
-  if(finishedStates.has(s)) return 'Terminata';
-  return 'In programma';
-}
-function normalizeSearch(value){
-  return String(value ?? '').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g,' ').trim();
+<footer>Fonti: <a href="https://www.espn.com/soccer/scoreboard" target="_blank" rel="noopener">ESPN</a> · benchmark: <a href="https://github.com/openfootball/football.json" target="_blank" rel="noopener">OpenFootball · CC0</a>. Nessuna chiave a pagamento richiesta. Preferiti salvati su questo dispositivo.</footer>
+</main><script>
+const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let hours=24,items=[],generation=0,cornerCache=new Map(),favorites=new Set();
+try{favorites=new Set(JSON.parse(localStorage.getItem('conf-favorites-v05')||'[]'));}catch{}
+const fmt=v=>v===null?'—':Number(v).toFixed(3);
+const cornerLine=m=>Number(m.label?.match(/Over ([0-9.]+)/)?.[1]||0);
+const names={over25:'Over 2.5',btts:'GG'};
+function ring(p){const valid=Number.isFinite(p);return '<div class="ring" style="--pct:'+ (valid?p:0)+'"><span>'+(valid?p+'%':'—')+'</span></div>';}
+function pickDetails(f){const p=f.recommendation;if(!p)return '<div class="pick"><strong>Dati insufficienti</strong><small>Servono 6 risultati per ciascuna squadra. Campione: '+f.samples.home+' / '+f.samples.away+'.</small></div>';
+const ml=f.learnedSelection?.available&&p.market==='over25';
+return '<div class="pick"><small>'+(p.qualified?'Indicazione ≥70% · sperimentale':'Migliore indicazione · sotto il 70%')+'</small><strong>'+names[p.market]+' · '+p.score+'%</strong><small>Stima del modello · '+f.samples.home+' / '+f.samples.away+' gare.'+(ml?' Nuovo modello calibrato: test ≥70% '+f.learnedSelection.validation.thresholdHits+'/'+f.learnedSelection.validation.thresholdSample+'; campione ridotto.':' Modello Poisson sperimentale.')+'</small></div>';}
+function pick(f){const p=f.recommendation;return '<div class="pick"><small>Scommessa suggerita</small><strong>'+ (p?names[p.market]+' · '+p.score+'%':'Dati insufficienti')+'</strong></div>';}
+function updateSelections(){
+ const goals=items.filter(f=>f.learnedSelection?.available&&f.learnedSelection.probability>=.7);
+ const corners=items.flatMap(f=>{const c=cornerCache.get(f.id);if(!c?.markets)return [];const m=c.markets.filter(m=>m.evidence?.eligible).sort((a,b)=>b.evidence.lower-a.evidence.lower||b.sample-a.sample||cornerLine(b)-cornerLine(a))[0];return m?[{f,m}]:[];});
+ const el=$('selection-list');if(!el)return;
+ const line=(f,label,detail)=>'<div class="row"><div><strong>'+esc(f.home)+' – '+esc(f.away)+'</strong><br>'+esc(label)+'<br><small>'+esc(detail)+'</small></div><button data-open-pick="'+esc(f.id)+'">Vedi</button></div>';
+ el.innerHTML=(goals.length?'<strong>Gol · modello addestrato</strong>'+goals.map(f=>line(f,'Over 2.5 · stima '+f.learnedSelection.score+'%','Test separato alla soglia ≥70%: '+f.learnedSelection.validation.thresholdHits+'/'+f.learnedSelection.validation.thresholdSample+' esiti riusciti. Campione ridotto; quote non verificate.')).join(''):'<p><small>Nessuna selezione gol del nuovo modello raggiunge il 70% nelle partite caricate.</small></p>')+(corners.length?'<strong>Corner · evidenza nello storico</strong>'+corners.slice(0,8).map(({f,m})=>line(f,m.label,m.hits+'/'+m.sample+' gare · limite inferiore storico 90%: '+m.evidence.lower+'%. Non è la probabilità della prossima gara.')).join(''):'<p><small>Corner: verifica automatica in corso; statistiche disponibili nei dettagli delle partite.</small></p>');
 }
 function render(){
-  const q = normalizeSearch($('#search').value);
-  const terms = q ? q.split(/\\s+/).filter(Boolean) : [];
-  const filtered = games.filter(f => {
-    const text = normalizeSearch([f.league?.name,f.league?.country,f.teams?.home?.name,f.teams?.away?.name].join(' '));
-    return terms.every(term => text.includes(term));
-  });
-  if($('#total')) $('#total').textContent = games.length;
-  if($('#upcoming')) $('#upcoming').textContent = games.filter(f => !liveStates.has(f.fixture?.status?.short) && !finishedStates.has(f.fixture?.status?.short)).length;
-  if($('#live')) $('#live').textContent = games.filter(f => liveStates.has(f.fixture?.status?.short)).length;
-  const root = $('#results');
-  if(!filtered.length){
-    root.innerHTML = '<div class="empty">Nessuna corrispondenza per “'+safe($('#search').value.trim())+'” tra le '+games.length+' partite caricate per questa data. Cancella il testo o cambia data.</div>';
-    return;
-  }
-  root.innerHTML = filtered.map(f => {
-    const date = f.fixture?.date ? new Date(f.fixture.date) : null;
-    const time = date ? date.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '--:--';
-    const state = f.fixture?.status?.short || '';
-    const elapsed = f.fixture?.status?.elapsed;
-    const scoreHome = f.goals?.home;
-    const scoreAway = f.goals?.away;
-    const hasScore = scoreHome !== null && scoreHome !== undefined && scoreAway !== null && scoreAway !== undefined;
-    const score = hasScore ? safe(scoreHome)+' - '+safe(scoreAway) : safe(time);
-    const extra = liveStates.has(state) && elapsed !== null && elapsed !== undefined ? ' · '+safe(elapsed)+'′' : '';
-    return '<article class="match"><div class="league">'+safe(f.league?.name || 'Campionato')+' · '+safe(f.league?.country || '')+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixture?.id)+'</div><div class="matchtop"><div style="min-width:0;flex:1"><div class="teams">'+safe(f.teams?.home?.name || 'Casa')+'<div class="vs">CONTRO</div>'+safe(f.teams?.away?.name || 'Trasferta')+'</div><div class="time">'+safe(date ? date.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'Europe/Rome'}) : '')+' · '+safe(time)+extra+'</div></div><div class="score">'+score+'</div></div><span class="status">'+statusLabel(f)+'</span></article>';
-  }).join('');
+ updateSelections();
+ const visible=items.filter(f=>(!$('threshold').checked||f.recommendation?.qualified)&&(!$('favorites').checked||favorites.has(f.id)));
+ $('results').innerHTML=visible.length?visible.map(f=>'<article class="card" data-id="'+esc(f.id)+'"><div class="teams">'+esc(f.home)+'<div class="vs">CONTRO</div>'+esc(f.away)+'</div>'+pick(f)+'<details class="match-details"><summary>Dettagli</summary><div class="league"><span>'+esc(f.league)+' · '+esc(f.country)+'</span><button class="favorite" data-favorite="'+esc(f.id)+'" aria-label="'+(favorites.has(f.id)?'Rimuovi dai preferiti':'Aggiungi ai preferiti')+'" aria-pressed="'+favorites.has(f.id)+'">'+(favorites.has(f.id)?'★':'☆')+'</button></div><small>'+esc(new Date(f.date).toLocaleString('it-IT',{timeZone:'Europe/Rome',weekday:'short',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}))+'</small><section class="statistics" aria-label="Statistiche partita">'+contextHtml(f)+Object.entries(f.markets).map(([key,m])=>'<div class="row"><div><strong>'+names[key]+'</strong><br><small>Storico: '+m.hits+' su '+m.sample+' gare'+(m.partial?' · parziale':'')+'</small><br><small>Modello: '+(f.estimate?f.estimate[key]+'%':'non disponibile')+'</small></div>'+ring(m.score)+'</div>').join('')+(f.dataWarning?'<p><small>'+esc(f.dataWarning)+'</small></p>':'')+'<div class="corner" data-corner="'+esc(f.id)+'">'+cornerHtml(f.id)+'</div></section>'+pickDetails(f)+'<p><small><a href="'+esc(f.sourceUrl)+'" target="_blank" rel="noopener">Verifica la partita alla fonte ↗</a></small></p></details></article>').join(''):'<div class="empty">'+(items.length?'Nessuna partita soddisfa i filtri. Disattiva il 70% o i preferiti per vedere le altre.':'Nessuna partita futura trovata nelle competizioni coperte. Prova 24 ore, un’altra data o cancella la ricerca.')+'</div>';
 }
-function marketEvidence(m){
-  const n = Number(m.sample) || 0;
-  if(!n || m.score === null) return -1;
-  const p = Array.isArray(m.teamRates) && m.teamRates.length === 2
-    ? (Number(m.teamRates[0]) + Number(m.teamRates[1])) / 2
-    : (Number(m.hits) || 0) / n;
-  const z = 1.28;
-  const safeP = Math.max(0, Math.min(1, p));
-  return (safeP + z*z/(2*n) - z*Math.sqrt((safeP*(1-safeP) + z*z/(4*n))/n)) / (1 + z*z/n);
+function contextHtml(f){
+ const c=f.context;if(!c)return '';
+ const zone=s=>({Promotion:'Promozione',Relegation:'Retrocessione','Promotion Playoff':'Playoff promozione','Qualifies for round of 16':'Qualificazione agli ottavi','Qualifies for knockout phase play-offs':'Playoff qualificazione'}[s]||s);
+ const team=(name,t)=>{const r=t.recent,v=t.venue,b=t.table;
+  return '<div class="row"><div><strong>'+esc(name)+'</strong><br><small>Ultime '+r.sample+': '+esc(r.results.join(' · '))+' · '+r.points+'/'+(r.sample*3)+' punti</small><br><small>'+esc(t.venueLabel)+': '+v.points+'/'+(v.sample*3)+' punti in '+v.sample+' gare · gol '+v.goalsFor+' fatti / '+v.goalsAgainst+' subiti</small><br><small>'+(b.available?b.rank+'ª · '+b.points+' punti · '+b.played+' gare'+(b.zone?' · '+esc(zone(b.zone)):''):'Classifica non disponibile')+'</small>'+(b.available&&b.boundary?'<br><small>Confine '+esc(b.boundary.type)+': '+(b.boundary.gap>=0?'+':'')+b.boundary.gap+' punti rispetto a '+esc(b.boundary.target)+'</small>':'')+'<br><small>Ultima gara '+(t.daysSinceLast===null?'non disponibile':t.daysSinceLast+' giorni prima di questa partita')+'</small></div></div>';
+ };
+ return '<section class="form-context"><h3>Forma casa/trasferta e classifica</h3>'+team(f.home,c.home)+team(f.away,c.away)+'<p><small>V = vittoria · N = pareggio · P = sconfitta. Classifica attuale, non previsione di fine stagione. Differenze di partite giocate e spareggi possono cambiare il contesto.</small></p><p><small>'+esc(c.warning)+'</small></p></section>';
 }
-function byEvidence(a,b){ return marketEvidence(b)-marketEvidence(a) || (b.sample||0)-(a.sample||0); }
-function renderConf(items){
-  confItems = items;
-  const root = $('#conf-results');
-  // Historical frequencies must never be presented as calibrated winning probabilities.
-  const warning = '<div class="recommend" style="margin-bottom:12px"><div class="recommend-title">⚠️ Modalità statistiche storiche</div><div class="recommend-note">Le percentuali NON sono probabilità di vincita. Il modello predittivo CONF non è ancora validato: nessuna scommessa può essere consigliata sulla sola base di questi valori. Per 1/X/2 sono medie tra frequenze delle due squadre, non pronostici.</div></div>';
-  const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
-  const qualifies = m => m && m.score !== null && Number(m.score) >= 70 && Number(m.sample) >= 6 && !m.partial;
-  const eligible = f => f.experimentalEstimate?.available === true && Object.values(f.experimentalEstimate.estimates || {}).some(v => Number.isFinite(Number(v)) && Number(v) >= 70);
-  const selected = confOnlyQualified ? items.filter(eligible) : items;
-  if(!selected.length){
-    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessuna delle partite caricate ha una giocata principale stimata ≥70%. Disattiva il filtro per vedere tutte le partite.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
-    return;
-  }
-  const ordered = [...selected].sort((a,b) => {
-    if (Number.isFinite(b.rankScore) || Number.isFinite(a.rankScore)) return (b.rankScore || 0) - (a.rankScore || 0);
-    const best = f => Math.max(-1,...visibleMarkets(f).filter(m => m.score !== null).map(m => m.score));
-    return best(b)-best(a);
-  });
-  root.innerHTML = ordered.map(f => {
-    const allMarkets = visibleMarkets(f);
-    const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial));
-    const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
-    const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
-    const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
-    // Corner recommendations are evaluated separately from 1X2 / goals.
-    // Minimum 6 observed matches and 70% descriptive frequency, not a
-    // forecast. Never combine probabilities or imply bookmaker availability.
-    const cornerQualified=(f.cornerMarkets?.markets||[]).filter(qualifies).sort(byEvidence);
-    const bestCorner=cornerQualified[0] || null;
-    const cornerRecommendationHtml=bestCorner
-      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Corner FT · frequenza storica alta</div><div class="recommend-market">'+safe(bestCorner.label)+' · '+safe(bestCorner.score)+'%</div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare storiche · frequenza descrittiva ≥70% · NON è una probabilità prevista</div></div>'
-      : '';
-    const estimate=f.experimentalEstimate || {};
-    const names={one:'1 · vittoria casa',draw:'X · pareggio',two:'2 · vittoria trasferta',over25:'Over 2.5 FT',btts:'GG'};
-    const possibilities=estimate.available ? Object.keys(names).map(key=>({label:names[key],pct:Number(estimate.estimates?.[key])}))
-      .filter(x=>Number.isFinite(x.pct)&&x.pct>=0&&x.pct<=100).sort((a,b)=>b.pct-a.pct) : [];
-    const best=possibilities[0];
-    const recommendationHtml=best
-      ? '<div class="recommend"><div class="recommend-title">🎯 Migliore indicazione CONF · sperimentale</div><div class="recommend-market">'+safe(best.label)+' · '+safe(best.pct)+'%</div><div class="recommend-note">Valore più alto del modello, anche sotto 70%. Non è un consiglio verificato. Campione '+safe(estimate.samples?.home)+' / '+safe(estimate.samples?.away)+' partite.</div></div>'
-      : '<div class="recommend"><div class="recommend-title">🎯 Giocata CONF</div><div class="recommend-market">Dati insufficienti per una giocata</div><div class="recommend-note">Il modello richiede almeno 6 risultati per ciascuna squadra. Le frequenze storiche sotto restano consultabili.</div></div>';
-
-    const e=f.experimentalEstimate || {};
-    const experimentalHtml=e.available
-      ? '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🧪 Stima sperimentale · NON validata</summary><p class="time">Modello Poisson basato sulle medie gol: 1 '+safe(e.estimates?.one)+'% · X '+safe(e.estimates?.draw)+'% · 2 '+safe(e.estimates?.two)+'% · Over 2.5 '+safe(e.estimates?.over25)+'% · GG '+safe(e.estimates?.btts)+'%. Gol attesi del modello: '+safe(e.expectedGoals?.home)+' / '+safe(e.expectedGoals?.away)+'.</p><p class="time">'+safe(e.warning)+'</p></details>'
-      : '<div class="time" style="margin-top:10px">🧪 Stima sperimentale non disponibile: '+safe(e.reason || 'dati insufficienti')+'</div>';
-    const corners = f.cornerMarkets || {markets:[],note:'Dati corner non disponibili'};
-    const foundCorners=(corners.markets||[]).filter(m=>m.score!==null);
-    const cornerHtml = '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🚩 Corner FT · '+foundCorners.length+' mercati</summary>'+
-      '<p class="time">Frequenze storiche sul tempo pieno; il dettaglio per tempo si verifica separatamente.</p>' +
-      (foundCorners.length?'<div style="display:grid;gap:8px">'+foundCorners.map(m=>
-        '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+
-        '<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare</div></span>'+
-        '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
-        :'<p class="time">Dati corner verificati insufficienti.</p>')+
-      '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Apri la sezione per verificare i dati storici separati per tempo.</div>'+ '</details>';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
-      const enough = m.score !== null && m.sample >= 6;
-      const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'frequenza storica ≥70 · non predittiva' : 'sotto soglia 70'));
-      const score = m.score === null ? '—' : safe(m.score)+'%';
-      const pct = m.score === null ? 0 : Math.max(0,Math.min(100,Number(m.score)||0));
-      return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
-    }).join('')+'</div>'+cornerHtml+'</article>';
-  }).join('');
+function cornerHtml(id){const d=cornerCache.get(id);if(!d)return '<p class="muted">Statistiche corner in caricamento automatico…</p>';
+ if(d.loading)return '<p class="muted">Verifico i corner storici…</p>';
+ if(d.error)return '<small>'+esc(d.error)+'</small>';
+ const ms=d.markets.filter(m=>m.score!==null),best=ms.filter(m=>m.qualified).sort((a,b)=>b.score-a.score||b.sample-a.sample)[0];
+ return (best?'<div class="pick"><small>Corner · miglior frequenza storica</small><strong>'+esc(best.label)+' · '+best.score+'%</strong><small>'+best.hits+' su '+best.sample+' gare. Frequenza, non probabilità prevista.</small></div>':'<p><small>Nessun corner con storico ≥70% e almeno 6 gare.</small></p>')+'<section class="corner-statistics"><h3>Corner FT · '+d.homeSample+' / '+d.awaySample+' gare</h3>'+ms.map(m=>'<div class="row"><div>'+esc(m.label)+'<br><small>'+m.hits+' su '+m.sample+' gare</small></div>'+ring(m.score)+'</div>').join('')+'<p><small>'+esc(d.note)+'</small></p></section>';
 }
-async function loadConf(){
-  const button = $('#reload') || $('#search-button');
-  if(button) button.disabled = true;
-  const hours = Number($('#hours')?.value || 24);
-  const query = $('#search')?.value.trim() || '';
-  $('#conf-message').textContent = query ? 'Cerco “'+query+'” nelle API e calcolo frequenze storiche…' : 'Carico le partite delle prossime '+hours+' ore e calcolo frequenze storiche…';
-  $('#conf-results').innerHTML = '';
-  try{
-    const params = new URLSearchParams({hours:String(hours),limit:'40'});
-    if(query) { params.set('q',query); if($('#date').value) params.set('date',$('#date').value); }
-    const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store'});
-    const data = await response.json();
-    if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
-    renderConf(data.fixtures || []);
-    const savedCount = saveRecommendations(data.fixtures || []);
-    if(localStorage.getItem(HISTORY_TOKEN_KEY)) {
-      // Sync newly recorded markets and check finished matches automatically.
-      // The server only settles matches with verifiable final scores.
-      if(savedCount > 0) await syncHistory();
-      await checkFinalResults(true);
-    }
-    const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial)).length;
-    const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
-    if($('#total')) $('#total').textContent = data.analyzedCount || (data.fixtures || []).length;
-    if($('#upcoming')) $('#upcoming').textContent = qualified;
-    if($('#live')) $('#live').textContent = valid;
-    $('#conf-message').textContent = (query ? 'Ricerca CONF per “'+query+'” completata. ' : 'Analisi CONF completata. ')+(data.analyzedCount || (data.fixtures || []).length)+' partite analizzate nelle prossime '+hours+' ore; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70%. '+data.method+' '+(data.secondaryStatus?.startsWith('fa_official_') ? 'FA Cup: '+data.secondaryStatus.split('_').pop()+' partite confermate dal calendario ufficiale; le statistiche non disponibili restano senza percentuale. ' : data.secondaryStatus?.startsWith('efl_calendar_') ? 'Calendario EFL: '+data.secondaryStatus.split('_')[2]+' partite programmate nel feed; analisi con dati storici disponibili. ' : data.secondaryStatus?.startsWith('efl_error:') ? 'Calendario EFL non disponibile: '+data.secondaryStatus+'. ' : data.secondaryStatus?.startsWith('provider_error') ? 'API-Football: '+data.secondaryStatus+'. ' : data.secondaryStatus === 'missing_api_key' ? 'API-Football non configurata. ' : data.secondaryStatus?.startsWith('fixtures_returned_') ? 'Ricerca integrativa API-Football: '+data.secondaryStatus.split('_')[2]+' partite trovate nel calendario alternativo. ' : '')+((data.warnings || []).length ? 'AVVISI DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
-  }catch(error){
-    $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
-  }finally{
-    if(button) button.disabled = false;
-    const searchButton = $('#search-button'); if(searchButton) searchButton.disabled = false;
-  }
-}
-async function loadGames(){
-  const button = $('#reload');
-  button.disabled = true;
-  $('#message').textContent = 'Caricamento delle partite reali…';
-  $('#results').innerHTML = '';
-  try{
-    const date = $('#date').value || romeToday();
-    const response = await fetch('/api/fixtures?date='+encodeURIComponent(date),{cache:'no-store'});
-    if(!response.ok) throw new Error('Risposta server HTTP '+response.status);
-    const data = await response.json();
-    if(data.errors && (Array.isArray(data.errors) ? data.errors.length : Object.keys(data.errors).length)){
-      throw new Error('Il provider ha segnalato un errore: '+JSON.stringify(data.errors));
-    }
-    const fixtures = Array.isArray(data.response) ? data.response : (Array.isArray(data.fixtures) ? data.fixtures : null);
-    if(!fixtures) throw new Error('Il server non ha restituito l’elenco delle partite nel formato atteso.');
-    const now = Date.now();
-    games = fixtures.filter(f => {
-      const state = String(f.fixture?.status?.short || '').toUpperCase();
-      // Mantieni LIVE solo se non risulta già terminata; altrimenti richiedi kickoff futuro.
-      if (finishedStates.has(state) || ['FT','AET','PEN','AWD','WO','PST','CANC','CANCELLED','POSTPONED'].includes(state)) return false;
-      if (liveStates.has(state)) {
-        const kickoff = new Date(f.fixture?.date || 0).getTime();
-        const elapsedRaw = f.fixture?.status?.elapsed;
-        const elapsed = elapsedRaw == null || elapsedRaw === '' ? NaN : Number(elapsedRaw);
-        if (!Number.isFinite(kickoff)) return false;
-        const age = now - kickoff;
-        // Il provider beta può lasciare LIVE anche a partita conclusa: taglia gli stati obsoleti.
-        if (Number.isFinite(elapsed) && elapsed >= 90 && age > 100 * 60 * 1000) return false;
-        if ((!Number.isFinite(elapsed) || elapsed < 0) && age > 150 * 60 * 1000) return false;
-        if (age > 180 * 60 * 1000) return false;
-        return kickoff <= now + 5 * 60 * 1000;
-      }
-      const kickoff = new Date(f.fixture?.date || 0).getTime();
-      return Number.isFinite(kickoff) && kickoff > now;
-    });
-    $('#message').textContent = 'Partite future/live caricate per '+date+'. Mostrate: '+games.length+' (ricevute dal provider: '+fixtures.length+'); le terminate e quelle con orario passato sono escluse.';
-    render();
-  }catch(error){
-    games = [];
-    if($('#total')) $('#total').textContent = '—'; if($('#upcoming')) $('#upcoming').textContent = '—'; if($('#live')) $('#live').textContent = '—';
-    $('#message').textContent = 'Errore nel caricamento: '+error.message+'. Premi Aggiorna per riprovare.';
-    $('#results').innerHTML = '';
-  }finally{
-    button.disabled = false;
-  }
-}
-async function searchGames(){
-  const query = $('#search').value.trim();
-  if (!query) { await loadGames(); return; }
-  const button = $('#search-button');
-  button.disabled = true;
-  $('#message').textContent = 'Ricerca in corso nei dati del provider…';
-  $('#results').innerHTML = '';
-  try {
-    const date = $('#date').value || romeToday();
-    const response = await fetch('/api/search-fixtures?date='+encodeURIComponent(date)+'&q='+encodeURIComponent(query), {cache:'no-store'});
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error || 'Errore server HTTP '+response.status);
-    if (!Array.isArray(data.response)) throw new Error('Risposta della ricerca non valida.');
-    games = data.response;
-    render();
-    if (games.length) {
-      $('#message').textContent = 'Ricerca API completata per “'+query+'” il '+date+': '+games.length+' partite trovate'+(data.searchMode === 'competition' ? ' nel campionato corrispondente.' : ' tra le partite restituite dal provider per questa data.');
-    } else if (data.competitionsFound > 0) {
-      $('#message').textContent = 'Il campionato corrisponde a “'+query+'”, ma il provider non ha restituito partite future/live per questa competizione il '+date+'.';
-    } else {
-      $('#message').textContent = 'Nessuna partita trovata per “'+query+'” il '+date+'. Il provider non ha trovato un campionato corrispondente e la ricerca squadre può controllare solo le partite restituite per quella data.';
-    }
-    $('#results').scrollIntoView({behavior:'smooth',block:'start'});
-  } catch(error) {
-    $('#message').textContent = 'Ricerca non disponibile: '+error.message;
-  } finally {
-    button.disabled = false;
-  }
-}
-
-async function loadBacktest(){
- const root=$('#backtest-results');
- try{
-  const r=await fetch('/api/conf-backtest'); const data=await r.json();
-  if(!r.ok)throw Error(data.error||'Errore');
-  const label={'league one':'League One','league two':'League Two','championship':'Championship'};
-  const metrics={one:'1',draw:'X',two:'2',over25:'Over 2.5',btts:'GG'};
-  root.innerHTML='<p>Risultati storici, controllo retrospettivo senza usare partite di date successive. Valore Brier più basso = migliore. Non è ancora una validazione esterna.</p>'+
-   Object.entries(data.leagues||{}).map(([league,l])=>'<div style="margin-bottom:12px"><strong>'+safe(label[league]||league)+'</strong> · '+safe(l.backtestedFixtures)+' partite testate su '+safe(l.historicalFixtures)+' storiche'+
-    (l.backtestedFixtures?'<div class="time">'+Object.entries(metrics).map(([key,name])=>{const m=l.measurements?.[key];return name+': '+(m?.brier===null?'—':safe(m?.brier))+' vs base '+(m?.baselineBrier===null?'—':safe(m?.baselineBrier))+' '+(m?.betterThanBaseline?'✓':'');}).join(' · ')+'</div>':'<div class="time">Campione insufficiente per una verifica.</div>')+'</div>').join('')+
-    '<p class="time">'+safe(data.limitations||'')+'</p>';
- }catch(e){root.textContent='Verifica non disponibile: '+e.message;}
-}
-
-$('#date').value = romeToday();
-renderHistory();
-if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
-$('#reload').addEventListener('click',loadConf);
-$('#search-button').addEventListener('click',loadConf);
-$('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();loadConf();}});
-
-
-
-document.addEventListener('toggle',async e=>{
-  const section=e.target;
-  if(!section.matches?.('details')||!section.open)return;
-  const root=section.querySelector('[data-half-result]');
-  if(!root||root.dataset.checked==='yes')return;
-  root.dataset.checked='yes';
-  const id=root.getAttribute('data-half-result');
-  const item=confItems.find(f=>String(f.fixtureId)===id);
-  if(!item)return;
-  root.textContent='Verifico i corner del primo e del secondo tempo…';
-  try {
-    const params=new URLSearchParams({home:item.home,away:item.away,date:String(item.date).slice(0,10)});
-    const response=await fetch('/api/corners-halves?'+params.toString());
-    const data=await response.json();
-    if(!response.ok)throw Error(data.error||'Errore provider');
-    const markets=(data.markets||[]).filter(m=>m.score!==null);
-    const renderHalf=(part,title)=>{
-      const rows=markets.filter(m=>m.half===part);
-      return '<div style="margin-top:10px;font-weight:700">'+title+'</div>'+
-        (rows.length?'<div style="display:grid;gap:6px;margin-top:6px">'+rows.map(m=>
-          '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+
-          '<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare · campione storico</div></span>'+
-          '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>'
-        ).join('')+'</div>':'<p class="time">Dati per tempo non disponibili dal provider.</p>');
-    };
-    root.innerHTML=renderHalf('first','Corner 1° tempo')+renderHalf('second','Corner 2° tempo');
-    const qualifiedHalf=markets.filter(m=>m.sample>=6 && m.score>=70 && !m.partial).sort(byEvidence);
-    const bestFirst=qualifiedHalf.find(m=>m.half==='first');
-    const bestSecond=qualifiedHalf.find(m=>m.half==='second');
-    const container=section.closest('.match')?.querySelector('[data-half-recommend]');
-    if(container){
-      const cards=[bestFirst,bestSecond].filter(Boolean);
-      container.innerHTML=cards.map(m=>'<div class="recommend" style="margin-top:8px">'+
-        '<div class="recommend-title">🚩 Corner · frequenza storica · '+(m.half==='first'?'1°':'2°')+' tempo</div>'+
-        '<div class="recommend-market">'+safe(m.label)+' · '+safe(m.score)+'%</div>'+
-        '<div class="recommend-note">'+safe(m.hits)+' su '+safe(m.sample)+' gare · soglia CONF ≥70% · frequenza storica</div></div>').join('');
-    }
-    if(data.warning)root.innerHTML+='<p class="time">'+safe(data.warning)+'</p>';
-  }catch(error){root.textContent='Corner per tempo non disponibili: '+error.message;}
-},true);
-
-document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
-const analyzeButton = $('#analyze'); if(analyzeButton) analyzeButton.addEventListener('click',loadConf);
-$('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
-$('#date').addEventListener('change',loadConf);
-$('#hours').addEventListener('change',loadConf);
-
-renderFavorites();
-loadConf();
-</script>
-</body>
-</html>
+function updateCorner(id){updateSelections();document.querySelectorAll('[data-corner]').forEach(el=>{if(el.dataset.corner===id)el.innerHTML=cornerHtml(id);});}
+async function loadCorner(id){if(cornerCache.get(id)?.loading)return;cornerCache.set(id,{loading:true});updateCorner(id);try{const r=await fetch('/api/corners?fixture='+encodeURIComponent(id));const d=await r.json();if(!r.ok)throw Error(d.error||'Dati non disponibili');cornerCache.set(id,d);}catch(e){cornerCache.set(id,{error:e.message});}updateCorner(id);}
+async function load(force=false){const run=++generation;$('search-button').disabled=true;$('status').textContent='Carico calendari e risultati reali. Il primo avvio può richiedere alcuni secondi…';const p=new URLSearchParams({hours:String(hours),limit:'60'});if(force===true)p.set('refresh','1');if($('query').value.trim())p.set('q',$('query').value.trim());if($('date').value)p.set('date',$('date').value);
+ try{const r=await fetch('/api/conf?'+p);const d=await r.json();if(run!==generation)return;if(!r.ok)throw Error(d.error||'Fonte non disponibile');items=d.fixtures;render();$('search-button').disabled=false;$('status').textContent=d.analyzedCount+' partite analizzate · '+d.returned+' mostrate · '+d.coverage.available+'/'+d.coverage.total+' competizioni consultate · aggiornato '+new Date(d.updatedAt).toLocaleTimeString('it-IT',{timeZone:'Europe/Rome',hour:'2-digit',minute:'2-digit'})+(d.warnings.length?' · Fonti incomplete: '+d.warnings.join(' | '):'');
+ // Load every displayed card automatically, with two workers and cancellation on a new search.
+ const queue=[...items];let cursor=0;
+ const worker=async()=>{while(run===generation&&cursor<queue.length){const f=queue[cursor++];if(!cornerCache.has(f.id)||cornerCache.get(f.id)?.error)await loadCorner(f.id);}};
+ await Promise.all([worker(),worker()]);
+ }catch(e){if(run===generation){items=[];render();$('status').textContent=e.message;}}finally{if(run===generation)$('search-button').disabled=false;}}
+$('selections').addEventListener('click',e=>{const b=e.target.closest('[data-open-pick]');if(!b)return;$('threshold').checked=false;$('favorites').checked=false;render();[...document.querySelectorAll('[data-id]')].find(el=>el.dataset.id===b.dataset.openPick)?.scrollIntoView({behavior:'smooth'});});
+$('search-form').addEventListener('submit',e=>{e.preventDefault();load();});$('refresh').onclick=()=>load(true);$('reset').onclick=()=>{$('query').value='';$('date').value='';load();};
+document.querySelectorAll('[data-hours]').forEach(b=>b.onclick=()=>{hours=Number(b.dataset.hours);$('date').value='';document.querySelectorAll('[data-hours]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));load();});
+$('threshold').onchange=render;$('favorites').onchange=render;
+$('results').addEventListener('click',e=>{const fav=e.target.closest('[data-favorite]');if(fav){const id=fav.dataset.favorite;favorites.has(id)?favorites.delete(id):favorites.add(id);try{localStorage.setItem('conf-favorites-v05',JSON.stringify([...favorites]));}catch{}render();}const c=e.target.closest('[data-load-corners]');if(c)loadCorner(c.dataset.loadCorners);});
+$('backtest').onclick=async()=>{const el=$('backtest-result');el.textContent='Calcolo test cronologico…';try{const r=await fetch('/api/conf-backtest');if(!r.ok)throw Error('Test non disponibile');const d=await r.json();el.innerHTML='<p><small>Stagione test: '+esc(d.season)+'. '+esc(d.method)+'</small></p><table><thead><tr><th>Lega</th><th>Partite testate</th><th>Brier Over / base</th><th>Brier GG / base</th></tr></thead><tbody>'+Object.entries(d.leagues).map(([k,l])=>'<tr><td>'+esc(k)+'</td><td>'+l.backtestedFixtures+'</td><td>'+fmt(l.markets.over25.brier)+' / '+fmt(l.markets.over25.baselineBrier)+'</td><td>'+fmt(l.markets.btts.brier)+' / '+fmt(l.markets.btts.baselineBrier)+'</td></tr>').join('')+'</tbody></table><p><small>Brier: più basso è meglio. Baseline = frequenza delle sole gare precedenti. Benchmark sulla stagione precedente, solo per test, su OpenFootball: diverso dalla fonte ESPN delle schede. Nessuna validazione esterna; corner non validati.</small></p>'+(d.contextComparison?'<p><small>Test forma/recenza: '+esc(d.contextComparison.decision)+'</small></p>':'')+(d.selectionValidation?'<h3>Nuovo motore Over 2.5</h3><p><small>Addestramento: '+d.selectionValidation.protocol.training+' gare, scelta modello: '+d.selectionValidation.protocol.selection+', calibrazione: '+d.selectionValidation.protocol.calibration+', test separato: '+d.selectionValidation.protocol.test+'.</small></p><p><small>Brier nuovo: '+fmt(d.selectionValidation.markets.over25.brier)+' · precedente: '+fmt(d.selectionValidation.markets.over25.previousModelBrier)+' · baseline semplice: '+fmt(d.selectionValidation.markets.over25.baselineBrier)+'. Soglia ≥70%: '+d.selectionValidation.markets.over25.selected70.hits+'/'+d.selectionValidation.markets.over25.selected70.count+' riuscite, campione ridotto. Il GG addestrato non è stato adottato perché peggiore del precedente.</small></p>':'');}catch(e){el.textContent=e.message;}};
+load();
+</script></body></html>

@@ -1,9 +1,25 @@
 {
   "name": "conf-football",
-  "version": "0.2.0",
+  "version": "0.7.0",
   "private": true,
-  "description": "CONF Football starter: web prototype + secure API proxy",
+  "description": "CONF Football: free public data and measured experimental forecasts",
   "type": "module",
-  "scripts": { "start": "node server.js" },
-  "dependencies": { "dotenv": "^16.4.7", "express": "^4.21.2" }
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "backtest": "node scripts/backtest.js",
+    "check": "node --check server.js && node --check reliability.js && node --check free-data.js && node --check match-context.js && node --check contextual-model.js && node --check compare-models.js && node --check selection-engine.js && node --check selection-features.js",
+    "compare": "node scripts/compare-models.js",
+    "prepare-selection": "node scripts/prepare-selection-data.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.3"
+  },
+  "engines": {
+    "node": "24.x"
+  }
 }

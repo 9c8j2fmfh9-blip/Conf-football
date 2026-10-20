@@ -1,0 +1,33 @@
+{
+  "candidate": "Recenza 0.9 e forma casa/trasferta con regolarizzazione",
+  "split": "2026-02-01",
+  "development": {
+    "over25": {
+      "count": 1150,
+      "originalBrier": 0.24849850890838862,
+      "candidateBrier": 0.24895477578714145
+    },
+    "btts": {
+      "count": 1150,
+      "originalBrier": 0.24403388416336408,
+      "candidateBrier": 0.24532522782532085
+    }
+  },
+  "holdout": {
+    "over25": {
+      "count": 1105,
+      "originalBrier": 0.2445863626469783,
+      "candidateBrier": 0.2447889363452614
+    },
+    "btts": {
+      "count": 1105,
+      "originalBrier": 0.24134971774470074,
+      "candidateBrier": 0.2418279853226237
+    }
+  },
+  "adopted": false,
+  "improvementObserved": false,
+  "decision": "Il candidato non migliora entrambi i mercati nei due periodi: il modello corrente resta invariato.",
+  "validated": false,
+  "limitations": "Un confronto retrospettivo non dimostra redditività. La motivazione non è ricostruibile dai soli risultati e non è usata per alterare le stime."
+}

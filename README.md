@@ -1,37 +1,75 @@
-# CONF Football v0.2 — starter kit
+# CONF Football 0.7 — gratuito
 
-Questo pacchetto contiene il prototipo web, più un piccolo server che può interrogare API-Football mantenendo la chiave API lato server.
+Candidata separata dalla versione di produzione. Nessuna chiave, carta, abbonamento o provider a pagamento è richiesto. Non usa OpenFootAPI né la sua quota esaurita.
 
-## Cosa è pronto
-- Interfaccia responsive per testare filtri CONF e mercati (i dati nell'interfaccia sono ancora dimostrativi).
-- Server Express con proxy per calendario, campionati, statistiche di una partita e quote.
-- Cache in memoria di 10 minuti per limitare le richieste API.
-- Chiave API tenuta in `.env`, mai nel JavaScript del browser.
+## Funzioni
 
-## Avvio locale
-1. Installa Node.js LTS dal sito ufficiale.
-2. Apri un terminale nella cartella `conf_football_v02`.
-3. Esegui `npm install`.
-4. Copia `.env.example` in un file chiamato `.env`.
-5. Inserisci la tua chiave nel valore `API_FOOTBALL_KEY` dentro `.env`.
-6. Esegui `npm start` e apri `http://localhost:3000`.
-7. Per verificare il server, apri `http://localhost:3000/api/status`.
+- GG, Over 2.5 e corner FT su schede responsive con cerchi percentuali.
+- Elenco automatico delle prossime 3, 12 o 24 ore; ricerca per squadra/campionato e data italiana su tutti i calendari consultati, prima del limite di visualizzazione.
+- Solo partite future con stato esplicitamente programmato; escluse live, terminate, rinviate e orari incerti.
+- Indicazione del modello in cima alla scheda, distinta dalla frequenza storica. La dicitura «consigliata» richiede stima non arrotondata ≥70%; il modello resta sperimentale.
+- Corner FT ricavati dal campo esplicito `wonCorners` dei riepiloghi delle gare terminate. Prime tre schede analizzate automaticamente; altre su richiesta, per contenere il traffico gratuito. I corner per tempo non vengono inventati.
+- Preferiti locali sul dispositivo. Nessuna registrazione manuale vinta/persa.
 
-## Endpoint disponibili
-- `GET /api/health`
-- `GET /api/status`
-- `GET /api/leagues`
-- `GET /api/fixtures?date=2026-10-19`
-- `GET /api/fixtures?league=39&season=2026`
-- `GET /api/fixture-statistics?fixture=ID_PARTITA`
-- `GET /api/odds?fixture=ID_PARTITA`
+## Fonti e copertura
 
-Gli ID e le stagioni sono esempi: prima di usare una richiesta, verifica quelli disponibili nel provider e le date/competizioni corrette.
+Calendario e statistiche: endpoint JSON pubblici ESPN, senza autenticazione. 25 competizioni elencate in `free-data.js`, incluse Champions League, League One, League Two e FA Cup. Non è promessa la copertura di ogni campionato o mercato. Non esiste una garanzia di servizio o di continuità per questi endpoint; gli errori delle fonti sono visibili.
 
-## Regole sicurezza
-- Non inviare la chiave API in chat, screenshot, repository o file HTML.
-- Non pubblicare `.env`. Il file è escluso da `.gitignore`.
-- Per una versione online, usare un backend/serverless con segreti configurati nelle impostazioni del servizio. GitHub Pages da solo non può eseguire `server.js` e non è adatto a custodire chiavi API.
+Le richieste concorrenti sono limitate a quattro; cache calendario 5 minuti, storico squadre 1 ora, riepiloghi FT 24 ore. Le richieste identiche simultanee sono riunite. Nessuna richiesta usa o aggira le credenziali/quota OpenFootAPI.
 
-## Nota importante sul CONF
-Il numero CONF non è ancora calibrato e non rappresenta una probabilità reale. Prima di pubblicare pronostici automatici bisogna collegare i dati, costruire le stime per GG / Over 2.5 / Over 1.5 HT / corner e valutarle su partite storiche non usate per allenare il modello. I dati demo dell'interfaccia non vanno usati per scommettere.
+Lo storico delle previsioni è solo della stagione corrente dal 1° luglio e precedente all'istante di analisi, con le ultime 10 gare per squadra e almeno 6 per entrambe. Le gare a supplementari/rigori sono escluse, per non confonderle con i 90 minuti. Nelle competizioni europee il calendario squadra ESPN `all` include anche la forma domestica; il modello non corregge per la forza del campionato.
+
+Benchmark del modello: OpenFootball 2025/26, acquisito direttamente dalla fonte GitHub pubblica, licenza CC0-1.0. La stagione precedente è usata **solo nel test**, non nelle previsioni correnti. URL e data di acquisizione sono nel file `openfootball-benchmark.json`. Non vengono più utilizzati i vecchi dataset di provenienza non riconfermata.
+
+## Test e limiti predittivi
+
+`npm test`: 18 test automatici, inclusi calendario di 45 gare prima del limite, ricerca oltre le card visibili, esclusione delle live e dei risultati futuri, deduplica, corner mancanti/zero, cache e interazioni DOM della UI.
+
+`npm run backtest`: walk-forward cronologico su OpenFootball, baseline progressiva basata esclusivamente sulle date precedenti, Brier e calibrazione per lega/mercato; esportazione in `backtest-report.json`. Disponibile anche da interfaccia e `/api/conf-backtest`.
+
+Esito: 2255 partite valutabili nella stagione 2025/26. Il modello NON supera stabilmente la baseline su tutte le leghe. Le rare selezioni ≥70% non hanno un campione sufficiente per dimostrare affidabilità. Il benchmark è su una fonte diversa dalle schede ESPN: non costituisce una validazione del flusso live. I corner sono frequenze, non probabilità calibrate, e non hanno un backtest predittivo. Nessuna promessa di vincita o redditività; quote e convenienza economica non sono valutate.
+
+Verifica live locale 20/10/2026: 33 partite future analizzate su 25/25 competizioni consultate, dati GG/Over disponibili; Paris Saint-Germain–Barcelona con 8 gare corner per squadra, ricavate dalle statistiche reali del provider. Questi sono risultati puntuali, non un minimo di partite garantito.
+
+## Avvio
+
+Node 24. `npm ci --include=dev`, `npm test`, `npm run check`, `npm start`.
+Variabile opzionale: `PORT` (default 3000). Nessun segreto richiesto.
+
+Il server espone solo HTML e API, non codice server o dataset. I preferiti non si sincronizzano tra dispositivi in questa versione: sono salvati in `localStorage`.
+
+## Separazione dalla produzione
+
+Branch: `codex/conf-v04-validation`, PR #1. Il servizio originale collegato a `main` resta intatto. La candidata è destinata a un servizio Render separato con piano esplicitamente `free`, senza modifica delle variabili del servizio originale.
+
+
+## Forma e contesto di classifica — 0.6
+
+Ogni scheda include una sezione «Forma casa/trasferta e classifica» con:
+- risultati e punti nelle ultime 5 gare;
+- fino a 6 precedenti nel campo pertinente (casa/trasferta), gol fatti e subiti;
+- posizione, punti e gare giocate nella classifica corrente della competizione;
+- distanza in punti dalla squadra sul confine di una zona segnalata dalla fonte (salvezza/promozione/qualificazione), quando disponibile;
+- giorni trascorsi tra l'ultima gara completata e la partita analizzata.
+
+Le zone derivano dalle note della classifica ESPN, senza imporre a tutti i campionati lo stesso regolamento. I distacchi non certificano salvezza o qualificazione matematica: partite da recuperare, spareggi e penalizzazioni possono incidere. Classifiche assenti sono dichiarate tali. Non viene dedotta una motivazione psicologica dai punti e non vengono inventate indisponibilità, turnover o giornate residue quando non verificabili.
+
+È stata verificata una variante prefissata del modello con pesi di recenza 0,9 e una componente casa/trasferta regolarizzata. Confronto temporale: 1.150 gare prima del 01/02/2026 e 1.105 da quella data in poi. La variante non migliora il Brier di GG o Over nei due periodi: non è stata attivata. La forma e la classifica arricchiscono la consultazione; le percentuali non sono state aumentate artificialmente. Dettaglio riproducibile in `npm run compare` e `model-comparison.json`, visibile anche nel test storico dell'interfaccia. La dicitura «giocata consigliata» è stata sostituita da «indicazione».
+
+
+## Motore selezioni — 0.7
+
+La schermata iniziale ora costruisce automaticamente una lista di selezioni statistiche: Over 2.5 quando il modello addestrato raggiunge il 70%, corner quando il limite inferiore Wilson 90% della frequenza storica supera il 70% (campione almeno 6, nessun totale parziale). Le due misure sono dichiarate distinte. La lista si aggiorna progressivamente con i corner delle prime 6 schede; non è una multipla e non moltiplica probabilità correlate. Un pulsante apre l'analisi della partita.
+
+Per Over 2.5 viene usata regressione logistica regolarizzata con 28 caratteristiche delle ultime gare, forma e componenti casa/trasferta. Storie del campionato corretto identificate tramite `event.league.slug`: le coppe non entrano per errore nei dati del modello domestico. Campionati coperti dal test: en.1/en.2/en.3/en.4, it.1, de.1, es.1, fr.1, nl.1, pt.1. Per coppe e competizioni diverse rimane il modello precedente, esplicitamente sperimentale.
+
+Protocollo congelato prima del test: 2.450 casi 2023/24 per training, 1.733 della prima parte 2024/25 per scegliere tra due logistiche e un HistGradientBoostingClassifier prefissati, 1.651 della seconda parte 2024/25 per calibrare. Test esterno alla formazione/calibrazione su 2.624 gare 2025/26. Tutte le caratteristiche usano date strettamente precedenti all'incontro; le stagioni precedenti servono per apprendere il modello, le caratteristiche live solo alla stagione corrente.
+
+Over: Brier 0,24462 contro 0,24670 del vecchio modello e 0,24459 della semplice frequenza progressiva. Migliora il vecchio modello, è sostanzialmente alla pari con il riferimento semplice: non è dimostrato un vantaggio economico. Alla soglia ≥70%: 16 esiti riusciti su 17; il campione è troppo piccolo per una certificazione di affidabilità. Non presentare questo 16/17 come probabilità della prossima partita. Il GG addestrato è peggiore e NON è stato adottato. I risultati completi, inclusi quelli negativi, sono in `selection-validation.json` e nel pannello del sito.
+
+Riproduzione offline: installare `requirements-selection.txt`, eseguire `npm run prepare-selection`, poi `python scripts/train-selection.py`. In produzione sono serviti solo parametri JSON e inferenza Node: nessun servizio ML a pagamento. `test/selection.test.js` verifica che l'inferenza Node coincida con le probabilità sklearn esportate. I dati CC0 provengono dai file OpenFootball delle stagioni dichiarate, con URL/data di acquisizione nei file di training. Nessun esito futuro del test entra nel fitting.
+
+
+### Visualizzazione immediata delle statistiche
+
+Le schede statistiche sono mostrate subito dopo i filtri. Forma/classifica e corner FT non sono più sezioni richiudibili. Le statistiche precedono l’indicazione del modello. Tutte le schede caricano i corner automaticamente, con due richieste di scheda simultanee e cache lato server; non serve premere Analizza. Le selezioni riepilogative e le note sul metodo restano sotto l’elenco delle statistiche.
