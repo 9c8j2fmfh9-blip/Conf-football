@@ -36,3 +36,7 @@ test('parallel identical requests coalesce and cache',async()=>{
  await Promise.all([client.calendar(league,'20261020'),client.calendar(league,'20261020')]);
  await client.calendar(league,'20261020');assert.equal(n,1);
 });
+test('transient upstream failures retry once without inventing data',async()=>{
+ let n=0;const client=createDataClient(async()=>{n++;if(n===1)throw Error('socket reset');return {ok:true,json:async()=>({events:[]})};});
+ assert.deepEqual(await client.calendar(league,'20261020'),[]);assert.equal(n,2);
+});

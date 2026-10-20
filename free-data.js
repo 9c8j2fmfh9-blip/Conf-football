@@ -67,9 +67,18 @@ export function createDataClient(fetcher=globalThis.fetch) {
   const old=cache.get(url);if(old&&Date.now()-old.at<ttl)return old.value;
   if(pending.has(url))return pending.get(url);
   const work=limited(async()=>{
-   const r=await fetcher(url,{signal:AbortSignal.timeout(12000),headers:{Accept:'application/json'}});
-   if(!r.ok)throw new Error(`Fonte ESPN: HTTP ${r.status}`);
-   const value=await r.json();cache.set(url,{at:Date.now(),value});
+   let value;
+   for(let attempt=0;attempt<2;attempt++){
+    try{
+     const r=await fetcher(url,{signal:AbortSignal.timeout(12000),headers:{Accept:'application/json'}});
+     if(!r.ok){const e=new Error(`Fonte ESPN: HTTP ${r.status}`);e.retryable=r.status>=500;throw e;}
+     value=await r.json();break;
+    }catch(e){
+     if(attempt||e.retryable===false)throw e;
+     await new Promise(resolve=>setTimeout(resolve,300));
+    }
+   }
+   cache.set(url,{at:Date.now(),value});
    if(cache.size>2500)cache.delete(cache.keys().next().value);
    return value;
   }).finally(()=>pending.delete(url));pending.set(url,work);return work;

@@ -23,7 +23,7 @@ Benchmark del modello: OpenFootball 2025/26, acquisito direttamente dalla fonte 
 
 ## Test e limiti predittivi
 
-`npm test`: 18 test automatici, inclusi calendario di 45 gare prima del limite, ricerca oltre le card visibili, esclusione delle live e dei risultati futuri, deduplica, corner mancanti/zero, cache e interazioni DOM della UI.
+`npm test`: 19 test automatici, inclusi calendario di 45 gare prima del limite, ricerca oltre le card visibili, esclusione delle live e dei risultati futuri, deduplica, corner mancanti/zero, cache e interazioni DOM della UI.
 
 `npm run backtest`: walk-forward cronologico su OpenFootball, baseline progressiva basata esclusivamente sulle date precedenti, Brier e calibrazione per lega/mercato; esportazione in `backtest-report.json`. Disponibile anche da interfaccia e `/api/conf-backtest`.
 

@@ -15,9 +15,9 @@ export function createApp(client=createDataClient(),clock=()=>Date.now()){
  app.get('/api/conf-backtest',(_req,res)=>res.json({...report(benchmarkRows,clock()),source:archive.source,license:archive.license,retrievedAt:archive.retrievedAt,season:archive.season,usage:'Stagione precedente usata solo per test retrospettivo del modello. Le previsioni correnti usano solo la stagione in corso.'}));
  const toRows=games=>games.map(g=>[g.date.slice(0,10),g.homeId,g.awayId,g.homeGoals,g.awayGoals]);
  const unique=games=>[...new Map(games.map(g=>[g.id,g])).values()];
- async function catalog(date){
+ async function catalog(date,force=false){
   const now=clock();
-  if(lastCatalog&&lastCatalog.date===date&&now-lastCatalog.at<5*60000)return lastCatalog;
+  if(!force&&lastCatalog&&lastCatalog.date===date&&now-lastCatalog.at<(lastCatalog.available<LEAGUES.length?30000:5*60000))return lastCatalog;
   const end=new Date(date+'T12:00Z');end.setUTCDate(end.getUTCDate()+1);
   const dates=date.replaceAll('-','')+'-'+end.toISOString().slice(0,10).replaceAll('-','');
   const results=await Promise.allSettled(LEAGUES.map(l=>client.calendar(l,dates)));
@@ -41,7 +41,7 @@ export function createApp(client=createDataClient(),clock=()=>Date.now()){
    const query=String(req.query.q||'').trim().slice(0,100),date=String(req.query.date||'');
    if(date&&(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(Date.parse(date))))return res.status(400).json({error:'Data non valida.'});
    const explicit=date||'',baseDate=date||romeDate(now);
-   const cat=await catalog(baseDate);
+   const cat=await catalog(baseDate,req.query.refresh==='1');
    if(!cat.available)return res.status(502).json({error:'Nessuna fonte calendario disponibile. Riprova tra qualche minuto.',warnings:cat.warnings});
    const found=selectUpcoming(cat.games,{now,hours,date:explicit,query});
    const warnings=[...cat.warnings];
