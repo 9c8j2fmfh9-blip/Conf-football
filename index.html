@@ -12,7 +12,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 .dashboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:12px 0}.dash-card{background:#0b1424;border:1px solid var(--line);border-radius:12px;padding:12px}.dash-card small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em}.dash-card strong{display:block;font-size:23px;margin-top:3px}.market-stats{display:grid;gap:9px;margin:12px 0 4px}.market-stat{border:1px solid var(--line);border-radius:10px;padding:10px 12px}.market-head{display:flex;justify-content:space-between;gap:10px;font-weight:750}.market-track{height:7px;border-radius:99px;background:#293a53;overflow:hidden;margin-top:8px}.market-fill{height:100%;background:var(--green);border-radius:99px}.market-detail{font-size:12px;color:var(--muted);margin-top:4px}@media(max-width:680px){.dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.filters{grid-template-columns:1fr 1fr}.filters .field:first-child{grid-column:1/-1}.filters button{width:100%}.matches{grid-template-columns:1fr}.stat{padding:10px}.stat strong{font-size:21px}.panel{padding:13px}}
 
-.filters{grid-template-columns:minmax(90px,.6fr) minmax(140px,1fr) minmax(170px,1.6fr) auto auto}
+.filters{grid-template-columns:minmax(170px,1fr) minmax(140px,1fr) minmax(170px,1.6fr) auto auto}
 .field select{width:100%;padding:11px;border-radius:10px;background:#0b1424;color:var(--text);border:1px solid var(--line);font:inherit}
 .match .teams{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:18px}
 .match .recommend-market{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -20,6 +20,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 .match details>summary,details.panel>summary{cursor:pointer;font-weight:700;padding:8px 0}
 .match .recommend{margin-top:10px}.stats{margin:12px 0}.message{font-size:13px}
 @media(max-width:850px){.filters{grid-template-columns:1fr 1fr}.filters .field:nth-child(3){grid-column:1/-1}.filters button{width:100%}}
+.field-label{font-size:12px;color:var(--muted);margin-bottom:5px}.hour-shortcuts{display:flex;gap:5px}.hour-button{flex:1;padding:11px 10px;border:1px solid var(--line);border-radius:10px;background:#0b1424;color:var(--text);font:inherit;cursor:pointer}.hour-button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#082015;font-weight:800}
 </style>
 </head>
 <body>
@@ -29,12 +30,13 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <h2>Partite e selezioni CONF</h2>
  <p class="muted">Prima la selezione, poi l’analisi. Una sola indicazione per partita; tutti i dati nei dettagli.</p>
  <div class="filters">
-  <div class="field"><label for="hours">Prossime ore</label><select id="hours"><option value="3">3 ore</option><option value="12">12 ore</option><option value="24" selected>24 ore</option></select></div>
-  <div class="field"><label for="date">Data facoltativa (ora italiana)</label><input id="date" type="date"></div>
-  <div class="field"><label for="search">Cerca squadra o campionato nelle API</label><input id="search" type="search" placeholder="Es. Inter, Champions League"></div>
+  <div class="field"><div class="field-label">Da adesso</div><div class="hour-shortcuts" role="group" aria-label="Prossime ore"><button type="button" class="hour-button" data-hours="3" aria-pressed="false">3h</button><button type="button" class="hour-button" data-hours="12" aria-pressed="false">12h</button><button type="button" class="hour-button" data-hours="24" aria-pressed="true">24h</button></div><input id="hours" type="hidden" value="24"></div>
+  <div class="field"><label for="date">Oppure scegli un giorno</label><input id="date" type="date"></div>
+  <div class="field"><label for="search">Cerca squadra o campionato</label><input id="search" type="search" placeholder="Es. Inter, Champions League"></div>
   <button class="button" id="search-button" type="button">Cerca</button>
   <button class="button" id="reload" type="button">Aggiorna</button>
  </div>
+ <p id="time-help" class="time">Prossime 24 ore da adesso, anche oltre mezzanotte.</p>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Solo selezionate · stima e storico ≥60%</label>
  <div id="conf-results" class="matches"></div>
@@ -425,17 +427,29 @@ function renderConf(items){
     }).join('')+'</div></details>'+experimentalHtml+'</details></article>';
   }).join('');
 }
+function syncTimeFilters(){
+  const date=$('#date').value;
+  document.querySelectorAll('[data-hours]').forEach(button=>button.setAttribute('aria-pressed',String(!date && button.getAttribute('data-hours')===$('#hours').value)));
+  $('#time-help').textContent=date ? 'Solo il giorno '+date.split('-').reverse().join('/')+'. Premi 3h, 12h o 24h per tornare alle prossime ore.' : 'Prossime '+$('#hours').value+' ore da adesso, anche oltre mezzanotte.';
+}
+function selectWindow(hours){
+  $('#hours').value=String(hours);
+  $('#date').value='';
+  syncTimeFilters();
+  return loadConf();
+}
 async function loadConf(){
   const requestId = ++confLoadSequence;
   const button = $('#reload') || $('#search-button');
   if(button) button.disabled = true;
   const hours = Number($('#hours')?.value || 24);
   const query = $('#search')?.value.trim() || '';
-  $('#conf-message').textContent = query ? 'Cerco “'+query+'” nelle API e calcolo frequenze storiche…' : 'Esamino le partite delle prossime '+hours+' ore e seleziono quelle con riscontri sufficienti…';
+  const selectedDate = $('#date').value;
+  const scope = selectedDate ? 'giorno '+selectedDate.split('-').reverse().join('/') : 'prossime '+hours+' ore';
+  $('#conf-message').textContent = (query ? 'Cerco “'+query+'” · ' : 'Carico le partite · ')+scope+'…';
   $('#conf-results').innerHTML = '';
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'100'});
-    const selectedDate = $('#date').value;
     if (selectedDate) params.set('date',selectedDate);
     if (query || selectedDate) { confOnlyQualified=false; $('#conf-filter').checked=false; }
     if (query) params.set('q',query);
@@ -450,7 +464,7 @@ async function loadConf(){
     if($('#upcoming')) $('#upcoming').textContent = qualified;
     if($('#live')) $('#live').textContent = valid;
     const message = $('#conf-message');
-    message.textContent = (data.providerIssue?.message ? data.providerIssue.message+' ' : '')+(query ? 'Ricerca “'+query+'”: ' : selectedDate ? 'Data '+selectedDate+': ' : 'Prossime '+hours+' ore: ')+(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.';
+    message.textContent = (data.providerIssue?.message ? data.providerIssue.message+' ' : '')+(query ? 'Ricerca “'+query+'” · ' : '')+scope+': '+(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.';
     const details=document.createElement('details');
     const summary=document.createElement('summary'); summary.textContent='Metodo e copertura dati';
     const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Copertura incompleta: alcuni calendari o storici non sono disponibili.' : '');
@@ -608,8 +622,9 @@ document.addEventListener('toggle',async e=>{
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
 const analyzeButton = $('#analyze'); if(analyzeButton) analyzeButton.addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
-$('#date').addEventListener('change',loadConf);
-$('#hours').addEventListener('change',()=>{ $('#date').value=''; loadConf(); });
+$('#date').addEventListener('change',()=>{ syncTimeFilters(); loadConf(); });
+document.querySelectorAll('[data-hours]').forEach(button=>button.addEventListener('click',()=>selectWindow(button.getAttribute('data-hours'))));
+syncTimeFilters();
 
 renderFavorites();
 loadConf();
