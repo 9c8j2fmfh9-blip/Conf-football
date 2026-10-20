@@ -28,7 +28,6 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  </div>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo mercati CONF ≥70% (campione minimo 6 gare)</label>
- <details style="margin:12px 0" id="backtest-panel"><summary style="cursor:pointer;font-weight:700">🧪 Verifica del modello su partite concluse</summary><div id="backtest-results" class="message">Caricamento verifica retrospettiva…</div></details>
  <div id="conf-results" class="matches"></div>
  <div class="stats">
   <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
@@ -355,7 +354,7 @@ function renderConf(items){
     const best = f => Math.max(-1,...visibleMarkets(f).filter(m => m.score !== null).map(m => m.score));
     return best(b)-best(a);
   });
-  root.innerHTML = warning + ordered.map(f => {
+  root.innerHTML = ordered.map(f => {
     const allMarkets = visibleMarkets(f);
     const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial));
     const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
@@ -579,7 +578,6 @@ $('#date').addEventListener('change',loadConf);
 $('#hours').addEventListener('change',loadConf);
 
 renderFavorites();
-loadBacktest();
 loadConf();
 </script>
 </body>
