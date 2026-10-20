@@ -454,7 +454,7 @@ async function loadConf(){
     message.textContent = (query ? 'Ricerca “'+query+'”: ' : 'Prossime '+hours+' ore: ')+(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.';
     const details=document.createElement('details');
     const summary=document.createElement('summary'); summary.textContent='Metodo e copertura dati';
-    const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Alcuni storici non sono disponibili.' : '');
+    const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Copertura incompleta: alcuni calendari o storici non sono disponibili.' : '');
     details.append(summary,note); message.append(details);
 
   }catch(error){

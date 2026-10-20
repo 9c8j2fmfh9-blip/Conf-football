@@ -918,10 +918,10 @@ app.get('/api/conf', async (req, res) => {
     const datesToFetch = query && requestedDate ? [requestedDate] : [today, tomorrow];
     // The provider can return a limited preview. Also request scheduled fixtures,
     // then deduplicate; this does not guarantee complete coverage.
-    const dateBodies = await Promise.all(datesToFetch.map(date => openFoot('/matches', { date }).catch(error => ({ response: [], providerError: error.message }))));
-    const scheduledBodies = await Promise.all(datesToFetch.map(date =>
-      openFoot('/matches', { date, status: 'scheduled' }).catch(() => ({}))
-    ));
+    const [dateBodies, scheduledBodies] = await Promise.all([
+      Promise.all(datesToFetch.map(date => openFoot('/matches', { date }).catch(error => ({ response: [], providerError: error.message })))),
+      Promise.all(datesToFetch.map(date => openFoot('/matches', { date, status: 'scheduled' }).catch(error => ({ response: [], providerError: error.message }))))
+    ]);
     const todayBody = dateBodies[0] || {};
     const tomorrowBody = dateBodies[1] || {};
     let allDayMatches = [...dateBodies, ...scheduledBodies].flatMap(rows);
@@ -1060,9 +1060,13 @@ app.get('/api/conf', async (req, res) => {
     const eflWanted = englishCompetition && eflSources[englishCompetition]
       ? [englishCompetition]
       : !query ? Object.keys(eflSources) : [];
-    for (const key of eflWanted) {
+    const calendarWarnings = [...dateBodies, ...scheduledBodies].filter(x=>x.providerError).map(()=> 'Calendario principale temporaneamente non disponibile.');
+    const eflResults = await Promise.allSettled(eflWanted.map(key=>eflLeagueData(key)));
+    for (let index=0; index<eflWanted.length; index++) {
+      const key=eflWanted[index];
       try {
-        const data = await eflLeagueData(key);
+        if (eflResults[index].status !== 'fulfilled') throw eflResults[index].reason;
+        const data = eflResults[index].value;
         // The EFL feed is the calendar authority for these competitions.
         // Avoid parallel duplicated OpenFoot games with incompatible team IDs.
         allDayMatches = allDayMatches.filter(m => {
@@ -1081,6 +1085,7 @@ app.get('/api/conf', async (req, res) => {
         }
         if (query) secondaryStatus = 'efl_calendar_' + data.matches.length + '_history_' + data.historyCount;
       } catch (error) {
+        calendarWarnings.push('Calendario '+key+' temporaneamente non disponibile.');
         if (query) secondaryStatus = 'efl_error: ' + error.message;
       }
     }
@@ -1243,7 +1248,7 @@ app.get('/api/conf', async (req, res) => {
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)])
       .filter(id => id && !String(id).startsWith('apisports_') && !String(id).startsWith('efl_') && !String(id).startsWith('facup_')))];
     const forms = new Map();
-    const warnings = [];
+    const warnings = [...new Set(calendarWarnings)];
     let teamCursor = 0;
     const formDeadline = Date.now() + 45000;
     const worker = async () => {
@@ -1404,7 +1409,7 @@ app.get('/api/conf', async (req, res) => {
       secondaryStatus, windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Selezione: stima e frequenza storica almeno 60%, almeno 6 gare per ciascuna squadra e riscontro in entrambi gli storici. Ordinamento conservativo per campione e concordanza; modello sperimentale non calibrato. Quote non considerate.',
       threshold: 60, limit, analyzedCount, selectedCount, fixtures,
-      preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
+      preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: calendarWarnings.length > 0 || Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
       note: (query ? 'Ricerca provider per “' + query + '” integrata nell’analisi CONF. ' : 'Lista generale ') + 'Oggi e domani, filtrati sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
