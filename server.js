@@ -453,6 +453,68 @@ function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
   return { available:true, validated:false, model:'Poisson sperimentale con medie gol corrette per piccolo campione', expectedGoals:{home:Number(h.toFixed(2)),away:Number(a.toFixed(2))}, estimates:{one:Math.round(one*100),draw:Math.round(draw*100),two:Math.round(two*100),over25:Math.round(over25*100),btts:Math.round(gg*100)}, samples:{home:home.sample,away:away.sample}, warning:'STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa.' };
 }
 
+
+/**
+ * Time-ordered walk-forward backtest on bundled completed EFL matches.
+ * For each fixture use ONLY matches from strictly earlier dates (unknown
+ * same-day kickoff times cannot safely establish ordering).
+ */
+app.get('/api/conf-backtest', (_req, res) => {
+  try {
+    const stats = {};
+    const markets = ['one','draw','two','over25','btts'];
+    for (const [league, rows] of Object.entries(eflBundled.leagues || {})) {
+      const games = rows.filter(x => /^\\d+$/.test(String(x[3])) && /^\\d+$/.test(String(x[4])))
+        .map(([date,h,a,hg,ag],i)=>({
+          id: 'backtest_'+league+'_'+i, date, kickoffAt:date+'T12:00:00Z', status:'FT',
+          homeTeam:{id:h,name:h}, awayTeam:{id:a,name:a},
+          score:{home:Number(hg),away:Number(ag)}
+        })).sort((a,b)=>a.date.localeCompare(b.date));
+      const seen = new Map();
+      const evaluated=[];
+      for (const game of games) {
+        const homeId=game.homeTeam.id, awayId=game.awayTeam.id;
+        const hAll=(seen.get(homeId)||[]).slice(-10).reverse();
+        const aAll=(seen.get(awayId)||[]).slice(-10).reverse();
+        const hV=hAll.filter(g=>g.homeTeam.id===homeId);
+        const aV=aAll.filter(g=>g.awayTeam.id===awayId);
+        const est=experimentalGoalEstimate(hV.length>=3?hV:hAll,aV.length>=3?aV:aAll,homeId,awayId);
+        if(est.available) {
+          const score=goals(game);
+          const truth={one:Number(score.home>score.away),draw:Number(score.home===score.away),two:Number(score.home<score.away),over25:Number(score.home+score.away>=3),btts:Number(score.home>0&&score.away>0)};
+          evaluated.push({ date:game.date, probabilities:est.estimates, truth });
+        }
+        // Update after processing the COMPLETE date, to avoid same-date leakage.
+        // Deferred updates are staged until the next date begins.
+        if (!seen._pending) seen._pending=[];
+        seen._pending.push(game);
+        const next=games[games.indexOf(game)+1];
+        if(!next || next.date!==game.date) {
+          for(const g of seen._pending){
+            for(const id of [g.homeTeam.id,g.awayTeam.id]){
+              const arr=seen.get(id)||[];
+              arr.push(g);
+              seen.set(id,arr.slice(-10));
+            }
+          }
+          seen._pending=[];
+        }
+      }
+      const count=evaluated.length;
+      const measures={};
+      for(const key of markets){
+        const hits=evaluated.reduce((acc,row)=>acc+row.truth[key],0);
+        const base=count?hits/count:null;
+        const brier=count?evaluated.reduce((acc,row)=>acc+Math.pow(row.probabilities[key]/100-row.truth[key],2),0)/count:null;
+        const baseline=count?evaluated.reduce((acc,row)=>acc+Math.pow(base-row.truth[key],2),0)/count:null;
+        measures[key]={brier:brier===null?null:Number(brier.toFixed(4)),baselineBrier:baseline===null?null:Number(baseline.toFixed(4)),observedRate:count?Math.round(100*base):null,betterThanBaseline:brier===null?null:brier<baseline};
+      }
+      stats[league]={historicalFixtures:games.length,backtestedFixtures:count,measurements:measures};
+    }
+    res.json({status:'experimental',validated:false,method:'Walk-forward su risultati storici per data, ogni stima usa solo partite di date precedenti; ultimi 10 incontri/squadra, almeno 6 per squadra.',metric:'Brier score (inferiore è meglio); confronto con la frequenza media osservata nel campione come baseline descrittiva, non out-of-sample.',limitations:'Dataset limitato a 2026/27 e leghe inglesi disponibili. Solo un primo controllo retrospettivo, non una validazione esterna; nessuna previsione può essere dichiarata affidabile.',leagues:stats});
+  } catch(e){res.status(500).json({error:e.message});}
+});
+
 app.get('/api/status', (_req, res) => {
   res.json({ configured: Boolean(apiKey), provider: 'OpenFootAPI', cacheMinutes: CACHE_TTL_MS / 60000 });
 });
