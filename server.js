@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { selectFixture } from './conf-selection.js';
 import { openDataConf } from './open-data.js';
+import {calendarConf} from './conf-calendar.js';
 import {getSisalOdds,matchProposalOdds,sisalOddsStatus} from './sisal-odds.js';
 import {buildDailyMultiples} from './daily-multiples.js';
 import {pricedSelection} from './priced-selection.js';
@@ -894,8 +895,8 @@ app.get('/api/corners-halves',async(req,res)=>{
 // never prevent the independent calendar / analysis response from loading.
 app.get('/api/proposal-odds', async (req,res)=>{
  try {
-  const data=openDataConf(req.query,experimentalGoalEstimate);
-  const proposals=data.fixtures;
+  const data=await calendarConf(req.query,experimentalGoalEstimate);
+  const proposals=data.fixtures.filter(f=>f.experimentalEstimate?.available);
   const sheet=proposals.length?await getSisalOdds():null;
   res.set('Cache-Control','no-store').json({source:'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,oddsStatus:sisalOddsStatus(),
    fixtures:proposals.map(f=>{const result=pricedSelection(f,sheet);return {fixtureId:f.fixtureId,market:result.primary?.key||null,...result};})});
@@ -907,7 +908,7 @@ app.get('/api/proposal-odds', async (req,res)=>{
 app.get('/api/daily-multiples',async(req,res)=>{
  try{
   const date=/^\d{4}-\d{2}-\d{2}$/.test(String(req.query.date||''))?String(req.query.date):'';
-  const data=openDataConf({date,hours:24},experimentalGoalEstimate,{allFixtures:true});
+  const data=await calendarConf({date,hours:24},experimentalGoalEstimate);
   const sheet=data.selectedCount?await getSisalOdds():null;
   res.set('Cache-Control','no-store').json({...buildDailyMultiples(data.fixtures,sheet),oddsStatus:sisalOddsStatus(),date:date||null,windowHours:24,generatedAt:new Date().toISOString(),selectedCount:data.selectedCount,competitionsCovered:data.competitionsCovered});
  }catch{res.status(503).json({error:'Multiple momentaneamente non disponibili',tickets:[]});}
@@ -915,7 +916,7 @@ app.get('/api/daily-multiples',async(req,res)=>{
 
 app.get('/api/conf', async (req, res) => {
   if (process.env.CONF_PROVIDER !== 'openfoot') {
-    try { return res.json(openDataConf(req.query, experimentalGoalEstimate)); }
+    try { return res.set('Cache-Control','no-store').json(await calendarConf(req.query, experimentalGoalEstimate)); }
     catch (error) { return res.status(503).json({error:'Archivio calcio non disponibile: '+error.message}); }
   }
   // Recover gracefully if a pasted URL accidentally encodes all query parameters inside q.

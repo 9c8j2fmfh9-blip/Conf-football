@@ -18,6 +18,8 @@ const aliases={
  'harrogate town afc':'harrogate town'
 };
 const club=x=>aliases[norm(x)]||norm(x);
+Object.assign(aliases,{'atl san luis':'atletico de san luis',juarez:'fc juarez',tigres:'tigres uanl',levante:'levante ud','ath bilbao':'athletic club','betis':'real betis','rb lipsia':'rb leipzig','manchester utd':'manchester united',lilla:'lille',sporting:'sporting lisbon',kyoto:'kyoto sanga',kashima:'kashima antlers','g osaka':'gamba osaka','c osaka':'cerezo osaka',kawasaki:'kawasaki frontale',kobe:'vissel kobe',nagoya:'nagoya grampus',okayama:'fagiano okayama',mito:'mito hollyhock',shimizu:'shimizu s pulse',machida:'machida zelvia',tokyo:'fc tokyo',kashiwa:'kashiwa reysol',hiroshima:'sanfrecce hiroshima','yokohama m':'yokohama f marinos',verdy:'tokyo verdy 1969',urawa:'urawa red diamonds',chiba:'jef united ichihara chiba'});
+export const canonicalClub=club;
 export function parseCsv(text){
  const lines=String(text||'').replace(/^\uFEFF/,'').trim().split(/\r?\n/);
  const parse=line=>{const cells=[];let cell='',quoted=false;for(let i=0;i<line.length;i++){

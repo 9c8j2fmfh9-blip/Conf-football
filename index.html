@@ -26,7 +26,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Partite reali · dati aggiornati dal provider</p></div></div></header>
+<header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Calendario Diretta.it · analisi dove disponibili</p></div></div></header>
 <main>
 <section class="panel">
  <h2>Partite e selezioni CONF</h2>
@@ -49,7 +49,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Solo selezionate · stima e storico ≥60%</label>
  <div id="conf-results" class="matches"></div>
  <div class="stats">
-  <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
+  <div class="stat"><small>Partite in calendario</small><strong id="total">—</strong></div>
   <div class="stat"><small>Partite selezionate</small><strong id="upcoming">—</strong></div>
   <div class="stat"><small>Con dati storici</small><strong id="live">—</strong></div>
  </div>
@@ -70,7 +70,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <div id="history-results" class="matches"></div>
 </details>
 
-<p class="foot">CONF Football · fuso orario Europe/Rome · modello sperimentale · dati: Open Matchday e fonti originali · aggiornamento periodico.</p>
+<p class="foot">CONF Football · fuso orario Europe/Rome · modello sperimentale · calendario: Diretta.it · statistiche: Open Matchday e fonti originali · aggiornamento periodico.</p>
 </main>
 <script type="module">
 import { selectFixture } from "/conf-selection.js";
@@ -464,7 +464,7 @@ function renderConf(items){
     const best=selection.primary;
     const recommendationHtml=best
       ? '<div class="recommend"><div class="recommend-title">Indicazione selezionata · stima sperimentale</div><div class="recommend-market"><span>'+safe(best.label)+'</span><span class="pick-percent">'+safe(best.score)+'%</span></div><div class="recommend-note">Stima del modello · storico '+safe(best.historicalScore)+'% · campione '+safe(best.samples.home)+' / '+safe(best.samples.away)+'</div><div class="proposal-odds" data-proposal-odds="'+safe(f.fixtureId)+'">'+proposalOddsHtml(f.proposalOdds,best.key)+'</div></div>'
-      : '<div class="recommend"><div class="recommend-title">Non selezionata</div><div class="recommend-market">Nessuna indicazione qualificata</div><div class="recommend-note">'+safe(selection.reason)+'</div></div>';
+      : '<div class="recommend"><div class="recommend-title">'+(f.calendarSource&&!estimate.available?'In calendario':'Non selezionata')+'</div><div class="recommend-market">'+(f.calendarSource&&!estimate.available?'Storico non disponibile':'Nessuna indicazione qualificata')+'</div><div class="recommend-note">'+safe(selection.reason)+'</div></div>';
 
     const e=f.experimentalEstimate || {};
     const combos=Array.isArray(e.teamGoalCombos)?e.teamGoalCombos:[];
@@ -530,7 +530,7 @@ async function loadConf(){
   $('#conf-message').textContent = (query ? 'Cerco “'+query+'” · ' : 'Carico le partite · ')+scope+'…';
   $('#conf-results').innerHTML = '';
   try{
-    const params = new URLSearchParams({hours:String(hours),limit:'100'});
+    const params = new URLSearchParams({hours:String(hours),limit:'all'});
     if (selectedDate) params.set('date',selectedDate);
     if (query || selectedDate) { confOnlyQualified=false; $('#conf-filter').checked=false; }
     if (query) params.set('q',query);
@@ -541,11 +541,11 @@ async function loadConf(){
     renderConf(data.fixtures || []);
     const qualified = data.selectedCount ?? (data.fixtures || []).filter(f=>(f.selection || selectFixture(f)).qualified).length;
     const valid = (data.fixtures || []).filter(f => f.experimentalEstimate?.available).length;
-    if($('#total')) $('#total').textContent = data.analyzedCount ?? (data.fixtures || []).length;
+    if($('#total')) $('#total').textContent = data.calendarCount ?? data.analyzedCount ?? (data.fixtures || []).length;
     if($('#upcoming')) $('#upcoming').textContent = qualified;
     if($('#live')) $('#live').textContent = valid;
     const message = $('#conf-message');
-    message.textContent = (data.providerIssue?.message ? data.providerIssue.message+' ' : '')+(query ? 'Ricerca “'+query+'” · ' : '')+scope+': '+(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.';
+    message.textContent = (data.providerIssue?.message ? data.providerIssue.message+' ' : '')+(query ? 'Ricerca “'+query+'” · ' : '')+scope+': '+(data.calendarCount!==undefined?data.calendarCount+' partite in calendario · '+(data.analyzedCount??0)+' con analisi · '+qualified+' selezionate.':(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.');
     const details=document.createElement('details');
     const summary=document.createElement('summary'); summary.textContent='Metodo e copertura dati';
     const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Copertura incompleta: alcuni calendari o storici non sono disponibili.' : '');
