@@ -503,14 +503,25 @@ app.get('/api/conf', async (req, res) => {
           item.id || item.teamId || item.competitionId || item.competition?.id
         ));
       }
-      const merged = [...catalogMatches, ...searchedEntities];
+      // Known OpenFootAPI competition identifiers: catalog search can be incomplete
+      // or use a generic competition label such as "League One".
+      const knownEnglishIds = {
+        'league one': ['comp_league_one_eng', 'comp_efl_league_one_eng', 'comp_league_one_efl'],
+        'league two': ['comp_league_two_eng', 'comp_efl_league_two_eng', 'comp_league_two_efl'],
+        'championship': ['comp_championship_eng', 'comp_efl_championship_eng'],
+        'national league': ['comp_national_league_eng']
+      };
+      const knownCandidates = (knownEnglishIds[englishCompetition] || []).map(id => ({
+        id, name: englishCompetition, type: 'competition'
+      }));
+      const merged = [...catalogMatches, ...searchedEntities, ...knownCandidates];
       const knownIds = new Set();
       searchEntities = merged.filter(item => {
         const id = String(item.id ?? item.competitionId ?? item.competition?.id ?? item.teamId ?? item.team?.id ?? '');
         if (!id || knownIds.has(id)) return false;
         knownIds.add(id);
         return true;
-      }).slice(0, 16);
+      }).slice(0, 24);
       const entityMatches = await Promise.all(searchEntities.map(async item => {
         const id = item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id;
         const kind = String(item.type || item.entityType || item.kind || '').toLowerCase();
