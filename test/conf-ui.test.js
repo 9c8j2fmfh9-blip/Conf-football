@@ -10,7 +10,8 @@ let script=fs.readFileSync('index.html','utf8').split('<script type="module">')[
 script=script.slice(0,script.indexOf("\n$('#date').value ="));
 const fixture=(id,score)=>({fixtureId:id,home:'Casa '+id,away:'Ospite',date:'2026-10-21T18:45:00Z',league:'Champions League',country:'Europa',experimentalEstimate:{available:true,samples:{home:10,away:10},estimates:{over25:score},expectedGoals:{home:2,away:1.5}},markets:{over25:{label:'Over 2.5 FT',score:70,hits:14,sample:20,venueSamples:{home:10,away:10},teamRates:[.7,.7]}},cornerMarkets:{markets:[]}});
 const fixtures=[fixture('selected',72),fixture('below',55)];
-let request='';const context=vm.createContext({document,selectFixture,console,Date,URLSearchParams,AbortSignal,localStorage:{getItem(){return null},setItem(){}},fetch:async url=>{if(!url.includes('/api/daily-multiples'))request=url;return{ok:true,json:async()=>({fixtures,analyzedCount:82,selectedCount:1,method:'Metodo di prova',preview:{partial:false}})}}});
+const retries=[];
+let request='';const context=vm.createContext({document,selectFixture,console,Date,URLSearchParams,AbortSignal,setTimeout:(fn,ms)=>{retries.push({fn,ms});return retries.length},localStorage:{getItem(){return null},setItem(){}},fetch:async url=>{if(!url.includes('/api/daily-multiples'))request=url;return{ok:true,json:async()=>({fixtures,analyzedCount:82,selectedCount:1,method:'Metodo di prova',preview:{partial:false}})}}});
 vm.runInContext(script,context);context.fixtures=fixtures;
 vm.runInContext('confOnlyQualified=true;renderConf(fixtures)',context);
 assert.equal((el('#conf-results').innerHTML.match(/<article/g)||[]).length,1);
@@ -95,4 +96,8 @@ assert.ok(!dailyRequest.includes('q='));
 context.fetch=async()=>{throw Error('timeout')};
 await vm.runInContext("loadDailyMultiples('',confLoadSequence)",context);
 assert.ok(el('#daily-multiples-results').innerHTML.includes('riprova con Aggiorna'));
+assert.ok(retries.some(x=>x.ms===30000));
+const scheduled=retries.length;
+await vm.runInContext("loadDailyMultiples('',confLoadSequence,3)",context);
+assert.equal(retries.length,scheduled);
 console.log('PASS: daily cards include actual totals, individual estimates, insufficient-odds messages and recover from failures; search text never limits daily picks.');

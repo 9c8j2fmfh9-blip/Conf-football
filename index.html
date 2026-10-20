@@ -366,7 +366,11 @@ function proposalOddsHtml(odds,market){
  return '<div class="odds-chips"><span class="odds-chip">'+label+'</span><span class="time" title="Collegamento automatico non disponibile">Bet365 · non disponibile</span></div>'+
   (valid ? '<div class="time">Foglio Sisal · '+safe(time)+' · quote soggette a variazioni</div>'+(sisal.belowMinimum?'<div class="time">Sotto quota 1,60 · nessuna alternativa qualificata da 1,60</div>':'') : '<div class="time">'+safe(sisal?.reason||'Quota non verificata per questa giocata')+'</div>');
 }
-async function loadProposalOdds(params,requestId){
+function retryOdds(task,requestId,attempt){
+ if(attempt>=3)return;
+ setTimeout(()=>{if(!document.hidden&&requestId===confLoadSequence)void task();},30000);
+}
+async function loadProposalOdds(params,requestId,attempt=0){
  const apply=data=>{
   if(requestId!==confLoadSequence)return;
   const byId=new Map((data.fixtures||[]).map(f=>[String(f.fixtureId),f]));
@@ -388,7 +392,8 @@ async function loadProposalOdds(params,requestId){
  try{
   const response=await fetch('/api/proposal-odds?'+params.toString(),{cache:'no-store',signal:AbortSignal.timeout(45000)});
   const data=await response.json();if(!response.ok)throw Error('Quote non disponibili');apply(data);
- }catch{apply({fixtures:[]});}
+  if(!data.oddsStatus?.base?.available&&!data.oddsStatus?.combined?.available&&!data.fixtures?.some(f=>f.odds?.sisal?.available))retryOdds(()=>loadProposalOdds(params,requestId,attempt+1),requestId,attempt);
+ }catch{apply({fixtures:[]});retryOdds(()=>loadProposalOdds(params,requestId,attempt+1),requestId,attempt);}
 }
 function extraGoalMarketsHtml(f){
  return '<details><summary>Over 3.5 e GG + Over 2.5 · percentuali e quote</summary>'+['over35','bttsOver25'].map(key=>{
@@ -412,7 +417,7 @@ function renderDailyMultiples(data){
   return '<article class="multiple-card">'+title+'<div class="time">'+safe(ticket.legs.length)+' partite · quota totale indicativa</div><details><summary>Vedi le partite</summary>'+legs+'</details><p class="time">Quote soggette a variazioni. Una multipla ad alta quota può perdere anche con percentuali alte nelle singole.</p></article>';
  }).join('');
 }
-async function loadDailyMultiples(selectedDate,requestId){
+async function loadDailyMultiples(selectedDate,requestId,attempt=0){
  $('#daily-multiples-results').innerHTML='<div class="time">Caricamento multiple…</div>';
  $('#daily-multiples-note').textContent=(selectedDate?'Giorno '+selectedDate.split('-').reverse().join('/'):'Prossime 24 ore')+' · tutte le proposte CONF, indipendentemente dalla ricerca';
  try{
@@ -421,7 +426,8 @@ async function loadDailyMultiples(selectedDate,requestId){
   const data=await response.json();
   if(requestId!==confLoadSequence)return;
   renderDailyMultiples(response.ok?data:null);
- }catch{if(requestId===confLoadSequence)renderDailyMultiples(null);}
+  if(!response.ok||(data.selectedCount>0&&!data.eligibleCount))retryOdds(()=>loadDailyMultiples(selectedDate,requestId,attempt+1),requestId,attempt);
+ }catch{if(requestId===confLoadSequence){renderDailyMultiples(null);retryOdds(()=>loadDailyMultiples(selectedDate,requestId,attempt+1),requestId,attempt);}}
 }
 function renderConf(items){
   confItems = items;

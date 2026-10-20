@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { selectFixture } from './conf-selection.js';
 import { openDataConf } from './open-data.js';
-import {getSisalOdds,matchProposalOdds} from './sisal-odds.js';
+import {getSisalOdds,matchProposalOdds,sisalOddsStatus} from './sisal-odds.js';
 import {buildDailyMultiples} from './daily-multiples.js';
 import {pricedSelection} from './priced-selection.js';
 import { readFileSync } from 'node:fs';
@@ -897,7 +897,7 @@ app.get('/api/proposal-odds', async (req,res)=>{
   const data=openDataConf(req.query,experimentalGoalEstimate);
   const proposals=data.fixtures;
   const sheet=proposals.length?await getSisalOdds():null;
-  res.json({source:'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,
+  res.set('Cache-Control','no-store').json({source:'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,oddsStatus:sisalOddsStatus(),
    fixtures:proposals.map(f=>{const result=pricedSelection(f,sheet);return {fixtureId:f.fixtureId,market:result.primary?.key||null,...result};})});
  } catch {res.status(503).json({error:'Quote momentaneamente non disponibili',fixtures:[]});}
 });
@@ -909,7 +909,7 @@ app.get('/api/daily-multiples',async(req,res)=>{
   const date=/^\d{4}-\d{2}-\d{2}$/.test(String(req.query.date||''))?String(req.query.date):'';
   const data=openDataConf({date,hours:24},experimentalGoalEstimate,{allFixtures:true});
   const sheet=data.selectedCount?await getSisalOdds():null;
-  res.set('Cache-Control','no-store').json({...buildDailyMultiples(data.fixtures,sheet),date:date||null,windowHours:24,generatedAt:new Date().toISOString(),selectedCount:data.selectedCount,competitionsCovered:data.competitionsCovered});
+  res.set('Cache-Control','no-store').json({...buildDailyMultiples(data.fixtures,sheet),oddsStatus:sisalOddsStatus(),date:date||null,windowHours:24,generatedAt:new Date().toISOString(),selectedCount:data.selectedCount,competitionsCovered:data.competitionsCovered});
  }catch{res.status(503).json({error:'Multiple momentaneamente non disponibili',tickets:[]});}
 });
 
@@ -1592,5 +1592,9 @@ app.post('/api/history/settle', async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.listen(port, () => console.log(`CONF Football attivo su http://localhost:${port}`));
+app.listen(port, () => {
+ console.log(`CONF Football attivo su http://localhost:${port}`);
+ void getSisalOdds();
+ setInterval(()=>{void getSisalOdds();},10*60*1000).unref();
+});
 

@@ -4,7 +4,19 @@ export const SISAL_COMBINED_URL='https://landing.sisal.it/volantini/Scommesse_Sp
 const cachePath=new URL('./sisal-odds-cache.json',import.meta.url);
 const MAX_AGE=6*3600000,REFRESH_MS=10*60000;
 let cached=null,inflight=null,nextAttempt=0;
-try{cached=JSON.parse(readFileSync(cachePath,'utf8'));}catch{}
+// A verified, timestamped bootstrap survives deployments; runtime updates
+// supersede each individual sheet only when their publication is newer.
+function newerSheet(a,b){const x=Date.parse(a?.sourceUpdatedAt),y=Date.parse(b?.sourceUpdatedAt);return Number.isFinite(y)&&(!Number.isFinite(x)||y>x)?b:a||b||null;}
+for(const path of [new URL('./sisal-odds-snapshot.json',import.meta.url),cachePath])try{
+ const value=JSON.parse(readFileSync(path,'utf8'));
+ const base=newerSheet(cached,value),combined=newerSheet(cached?.combined,value.combined);
+ cached=base?{...base,combined}:combined?{entries:[],combined}:null;
+}catch{}
+const refreshState={base:{},combined:{}};
+function fresh(sheet,now){const stamp=Date.parse(sheet?.sourceUpdatedAt);return Number.isFinite(stamp)&&now-stamp<=MAX_AGE&&stamp<=now+5*60000&&Array.isArray(sheet.entries)&&sheet.entries.length>0;}
+export function sisalOddsStatus({now=Date.now()}={}){
+ return {refreshing:!!inflight,base:{...refreshState.base,available:fresh(cached,now),sourceUpdatedAt:cached?.sourceUpdatedAt||null},combined:{...refreshState.combined,available:fresh(cached?.combined,now),sourceUpdatedAt:cached?.combined?.sourceUpdatedAt||null},retryAfterMs:Math.max(0,nextAttempt-now)};
+}
 const norm=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 // Only explicit, verified bookmaker spellings. No approximate team matching.
 const aliases={betis:'real betis',lipsia:'rb leipzig',leipzig:'rb leipzig','bayern monaco':'bayern munich','bayern munchen':'bayern munich','fc bayern munchen':'bayern munich',
@@ -119,30 +131,37 @@ export async function parseSisalPdf(bytes,options={}){
   return parseSisalPages(pages,options);
  }finally{await task.destroy();}
 }
-export async function getSisalOdds({now=Date.now(),fetcher=fetch}={}){
- if(inflight)return inflight;
+export async function getSisalOdds({now=Date.now(),fetcher=fetch,waitForRefresh=false}={}){
+ const usable=fresh(cached,now)||fresh(cached?.combined,now);
+ if(inflight)return usable&&!waitForRefresh?cached:inflight;
  if(now<nextAttempt)return cached;
  nextAttempt=now+REFRESH_MS;
  inflight=(async()=>{
   const readSheet=async(url,kind,previous)=>{try{
-   const response=await fetcher(url,{signal:AbortSignal.timeout(8000),headers:{Accept:'application/pdf'}});
+   refreshState[kind==='base'?'base':'combined']={attemptedAt:new Date(now).toISOString()};
+   const response=await fetcher(url,{signal:AbortSignal.timeout(30000),headers:{Accept:'application/pdf'}});
    if(!response.ok)throw Error('Sisal HTTP '+response.status);
    if(Number(response.headers?.get('content-length')||0)>8*1024*1024)throw Error('PDF troppo grande');
    const bytes=new Uint8Array(await response.arrayBuffer());if(bytes.byteLength>8*1024*1024||new TextDecoder().decode(bytes.slice(0,5))!=='%PDF-')throw Error('Risposta non PDF');
-   return await parseSisalPdf(bytes,{now,kind});
-  }catch{nextAttempt=now+5*60000;return previous;}};
+   const result=await parseSisalPdf(bytes,{now,kind});
+   refreshState[kind==='base'?'base':'combined'].updatedAt=new Date().toISOString();
+   return newerSheet(previous,result);
+  }catch(error){
+   refreshState[kind==='base'?'base':'combined'].error=error.name==='TimeoutError'||error.name==='AbortError'?'Download Sisal oltre il tempo massimo':String(error.message||'Aggiornamento Sisal fallito').slice(0,160);
+   nextAttempt=now+30000;return previous;
+  }};
   const [base,combined]=await Promise.all([readSheet(SISAL_URL,'base',cached),readSheet(SISAL_COMBINED_URL,'combined',cached?.combined)]);
   cached=base?{...base,combined}:combined?{entries:[],combined}:null;
   if(cached&&process.env.NODE_ENV!=='test')try{const temp=new URL('./sisal-odds-cache.tmp',import.meta.url);writeFileSync(temp,JSON.stringify(cached));renameSync(temp,cachePath);}catch{}
   return cached;
- })().finally(()=>{inflight=null;});return inflight;
+ })().finally(()=>{inflight=null;});return usable&&!waitForRefresh?cached:inflight;
 }
 export function matchProposalOdds(fixture,sheet,{now=Date.now()}={}){
  const missing=reason=>({available:false,reason});
  const result={sisal:missing('Quota non disponibile'),bet365:missing('Collegamento automatico Bet365 non disponibile')};
  const key=fixture.selection?.primary?.key;if(!key)return result;
  if(key==='bttsOver25')sheet=sheet?.combined;
- if(!sheet)return result;
+ if(!sheet){result.sisal=missing('Foglio Sisal momentaneamente non disponibile');return result;}
  const stamp=Date.parse(sheet.sourceUpdatedAt);
  if(!Number.isFinite(stamp)||now-stamp>MAX_AGE||stamp>now+5*60000){result.sisal=missing('Foglio quote non aggiornato');return result;}
  const date=dayFormatter.format(new Date(fixture.date)),time=clockFormatter.format(new Date(fixture.date));

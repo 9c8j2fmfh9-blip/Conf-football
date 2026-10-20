@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import{readFileSync}from'node:fs';
-import{parseSisalPages,matchProposalOdds,getSisalOdds}from'../sisal-odds.js';
+import{parseSisalPages,matchProposalOdds,getSisalOdds,sisalOddsStatus}from'../sisal-odds.js';
 process.env.NODE_ENV='test';
 const now=Date.parse('2026-10-20T22:30:00Z');
 const pages=JSON.parse(readFileSync('test/fixtures/sisal-items.json','utf8'));
@@ -42,6 +42,25 @@ test('reads joint GG + Over 2.5 from its own sheet and never multiplies single p
 });
 test('shares a failed refresh between concurrent requests and applies a retry cooldown',async()=>{
  let requests=0;const fetcher=async()=>{requests++;return{ok:false,status:503}};
- await Promise.all([getSisalOdds({now,fetcher}),getSisalOdds({now,fetcher})]);
+ await Promise.all([getSisalOdds({now,fetcher,waitForRefresh:true}),getSisalOdds({now,fetcher,waitForRefresh:true})]);
  await getSisalOdds({now:now+1000,fetcher});assert.equal(requests,2);
+});
+test('cold starts keep verified bootstrap prices available while a slow refresh is pending or fails',async()=>{
+ const bootstrap=JSON.parse(readFileSync('sisal-odds-snapshot.json','utf8'));
+ const at=Date.parse(bootstrap.sourceUpdatedAt)+2*3600000;
+ const pending=[];
+ const fetcher=()=>new Promise(resolve=>pending.push(resolve));
+ const immediate=await getSisalOdds({now:at,fetcher});
+ assert.equal(pending.length,2);
+ assert.ok(immediate.entries.length>0);assert.ok(immediate.combined.entries.length>0);
+ assert.equal(sisalOddsStatus({now:at}).refreshing,true);
+ assert.equal(matchProposalOdds(fixture('bttsOver25'),immediate,{now:at}).sisal.available,true);
+ const finish=getSisalOdds({now:at,fetcher,waitForRefresh:true});
+ pending.forEach(resolve=>resolve({ok:false,status:503}));
+ const retained=await finish;
+ assert.equal(retained.sourceUpdatedAt,immediate.sourceUpdatedAt);
+ assert.equal(sisalOddsStatus({now:at}).refreshing,false);
+ assert.ok(sisalOddsStatus({now:at}).base.error.includes('503'));
+ assert.equal(sisalOddsStatus({now:at+7*3600000}).base.available,false);
+ assert.equal(matchProposalOdds(fixture(),retained,{now:at+7*3600000}).sisal.available,false);
 });
