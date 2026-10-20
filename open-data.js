@@ -134,7 +134,7 @@ function cornersFor(home,away,homeId,awayId){
  return{markets,homeSample:h.filter(x=>x.own!==null).length,awaySample:a.filter(x=>x.own!==null).length,
  note:'Corner osservati nei risultati disponibili. Dati talvolta in ritardo; nessuna stima per tempo quando mancano i dati.'};
 }
-export function openDataConf(params,estimate,{now=Date.now(),data=null}={}){
+export function openDataConf(params,estimate,{now=Date.now(),data=null,allFixtures=false}={}){
  const index=data?makeIndex(data):getIndex();
  if(!data&&process.env.NODE_ENV!=='test')void refreshOpenData();
  const source=data||dataset;
@@ -172,7 +172,7 @@ export function openDataConf(params,estimate,{now=Date.now(),data=null}={}){
  fixtures.sort((a,b)=>b.rankScore-a.rankScore||Date.parse(a.date)-Date.parse(b.date));
  const selectedCount=fixtures.filter(f=>f.selection.qualified).length;
  const staleCount=fixtures.filter(f=>f.dataStale).length;
- return{query:params.q||null,date:date||null,windowHours:hours,analyzedCount:fixtures.length,selectedCount,fixtures:fixtures.slice(0,limit),threshold:60,
+ return{query:params.q||null,date:date||null,windowHours:hours,analyzedCount:fixtures.length,selectedCount,fixtures:allFixtures?fixtures:fixtures.slice(0,limit),threshold:60,
   provider:'Open Matchday',dataUpdatedAt:source.generatedAt,competitionsCovered:index.leagues.length,
   providerIssue:staleCount?{code:'STALE_DATA',message:'Alcuni dati hanno più di 72 ore: le relative selezioni sono sospese.'}:null,
   warnings:staleCount?['Aggiornamento archivio in ritardo.']:[],preview:{returned:matches.length,totalAvailable:matches.length,partial:true},

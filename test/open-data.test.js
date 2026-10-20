@@ -30,6 +30,13 @@ test('timezone convention survives winter DST changes and quoted CSV names',()=>
  assert.equal(datasetKickoff('2026-10-21',''),null);
  assert.equal(parseCsv('date,home,away\n2026-10-21,"A, B",C')[0].home,'A, B');
 });
+test('daily selection can inspect all fixtures regardless of the card display limit',()=>{
+ const limited=openDataConf({date:'2026-10-21',limit:1},estimate,{now});
+ const all=openDataConf({date:'2026-10-21',limit:1},estimate,{now,allFixtures:true});
+ assert.equal(limited.fixtures.length,1);assert.equal(all.fixtures.length,all.analyzedCount);
+ assert.equal(all.fixtures.filter(f=>f.selection.qualified).length,all.selectedCount);
+ assert.ok(all.fixtures.length>limited.fixtures.length);
+});
 test('stale data and future results cannot qualify a prediction',()=>{
  const snapshot=JSON.parse(fs.readFileSync('open-data-snapshot.json','utf8'));
  snapshot.generatedAt='2026-10-01T00:00:00Z';snapshot.leagues=snapshot.leagues.map(l=>({...l,updatedAt:snapshot.generatedAt}));

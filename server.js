@@ -3,6 +3,7 @@ import express from 'express';
 import { selectFixture } from './conf-selection.js';
 import { openDataConf } from './open-data.js';
 import {getSisalOdds,matchProposalOdds} from './sisal-odds.js';
+import {buildDailyMultiples} from './daily-multiples.js';
 import { readFileSync } from 'node:fs';
 
 const app = express();
@@ -896,6 +897,17 @@ app.get('/api/proposal-odds', async (req,res)=>{
   res.json({source:'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,
    fixtures:proposals.map(f=>({fixtureId:f.fixtureId,market:f.selection.primary.key,odds:matchProposalOdds(f,sheet)}))});
  } catch {res.status(503).json({error:'Quote momentaneamente non disponibili',fixtures:[]});}
+});
+
+// All qualified proposals in the day/window, independent of text search and
+// the card limit. Recomputed on access so kicked-off events cannot survive.
+app.get('/api/daily-multiples',async(req,res)=>{
+ try{
+  const date=/^\d{4}-\d{2}-\d{2}$/.test(String(req.query.date||''))?String(req.query.date):'';
+  const data=openDataConf({date,hours:24},experimentalGoalEstimate,{allFixtures:true});
+  const sheet=data.selectedCount?await getSisalOdds():null;
+  res.set('Cache-Control','no-store').json({...buildDailyMultiples(data.fixtures,sheet),date:date||null,windowHours:24,generatedAt:new Date().toISOString(),selectedCount:data.selectedCount,competitionsCovered:data.competitionsCovered});
+ }catch{res.status(503).json({error:'Multiple momentaneamente non disponibili',tickets:[]});}
 });
 
 app.get('/api/conf', async (req, res) => {
