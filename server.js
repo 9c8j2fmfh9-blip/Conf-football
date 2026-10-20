@@ -646,51 +646,129 @@ app.get('/api/debug-fixtures', async (req, res) => {
  * shot percentages and no request on the automatic CONF feed.
  * A single click costs at most 9 API-Sports calls (subject to cache).
  */
-app.get('/api/player-shots', async (req,res) => {
-  const home = String(req.query.home || '').trim();
-  const away = String(req.query.away || '').trim();
-  const date = String(req.query.date || '').slice(0,10);
-  if (!home || !away || home.length>90 || away.length>90 || !/^\d{4}-\d{2}-\d{2}$/.test(date))
-    return res.status(400).json({ error:'Indica squadre e data valide.' });
-  if (!apiFootballKey) return res.json({ players:[], warning:'API-Football non configurata. Dati individuali non disponibili.' });
+
+const detailCache = new Map();
+function safeMatchName(name) {
+  return String(name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+}
+async function apiFootballMatch(home, away, date) {
+  const fixtures = (await apiFootball('fixtures',{date,timezone:'Europe/Rome'}))?.response || [];
+  return fixtures.find(x=>safeMatchName(x.teams?.home?.name)===safeMatchName(home) &&
+    safeMatchName(x.teams?.away?.name)===safeMatchName(away)) || null;
+}
+function inputMatch(req,res) {
+  const home=String(req.query.home||'').trim(), away=String(req.query.away||'').trim();
+  const date=String(req.query.date||'').slice(0,10);
+  if (!home || !away || home.length>90 || away.length>90 || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    res.status(400).json({error:'Squadre o data non valide.'});return null;
+  }
+  return {home,away,date};
+}
+async function recentTeamFixtures(teamId,matchStart,count=4) {
+  const matches=(await apiFootball('fixtures',{team:teamId,last:count+3}))?.response || [];
+  return matches.filter(x=>Date.parse(x.fixture?.date)<matchStart &&
+    ['FT','AET','PEN'].includes(x.fixture?.status?.short)).slice(0,count);
+}
+// Every detailed lookup is on user demand, cached for 6 hours to protect daily API quotas.
+app.get('/api/player-shots',async(req,res)=>{
+  const input=inputMatch(req,res);if(!input)return;
+  if(!apiFootballKey)return res.json({players:[],warning:'API-Football non configurata.'});
+  const cacheKey='players:'+JSON.stringify(input),cached=detailCache.get(cacheKey);
+  if(cached && Date.now()-cached.at<21600000)return res.json(cached.value);
   try {
-    const exact = n => n.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-    const matches = (await apiFootball('fixtures',{ date, timezone:'Europe/Rome' }))?.response || [];
-    const match = matches.find(x =>
-      exact(x.teams?.home?.name || '') === exact(home) && exact(x.teams?.away?.name || '') === exact(away));
-    if (!match) return res.json({players:[],warning:'La seconda API non identifica questa partita: nessuna statistica individuale verificabile.'});
-    const out=[];
-    for (const side of ['home','away']) {
-      const team=match.teams[side];
-      const history=(await apiFootball('fixtures',{team:team.id,last:3}))?.response || [];
-      const played=history.filter(x=>new Date(x.fixture?.date).getTime()<new Date(match.fixture.date).getTime() &&
-        ['FT','AET','PEN'].includes(x.fixture?.status?.short)).slice(0,3);
-      const byPlayer=new Map();
-      for (const previous of played) {
+    const match=await apiFootballMatch(input.home,input.away,input.date);
+    if(!match)return res.json({players:[],warning:'Partita non presente in API-Football; nessuna statistica verificabile.'});
+    const playerMap=new Map();
+    let matchesChecked=0;
+    for(const side of ['home','away']) {
+      const team=match.teams[side],history=await recentTeamFixtures(team.id,Date.parse(match.fixture.date),4);
+      for(const previous of history) {
+        matchesChecked++;
         const stats=(await apiFootball('fixtures/players',{fixture:previous.fixture.id}))?.response || [];
         const entry=stats.find(x=>Number(x.team?.id)===Number(team.id));
-        for (const p of (entry?.players || [])) {
-          const on=p.statistics?.[0]?.shots?.on;
-          const playedMinutes=p.statistics?.[0]?.games?.minutes;
-          if (on===null || on===undefined || playedMinutes===null || playedMinutes===undefined) continue;
-          const id=String(p.player?.id || p.player?.name);
-          if (!byPlayer.has(id)) byPlayer.set(id,{name:p.player?.name,team:team.name,sample:0,hits:0,totalOn:0});
-          const record=byPlayer.get(id);
-          record.sample++; record.hits+=Number(on)>=1?1:0; record.totalOn+=Number(on)||0;
+        for(const p of entry?.players || []) {
+          const shot=p.statistics?.[0]?.shots?.on;
+          const minutes=p.statistics?.[0]?.games?.minutes;
+          if(shot==null||minutes==null||!Number.isFinite(Number(shot)))continue;
+          const key=team.id+':'+(p.player?.id||p.player?.name);
+          if(!playerMap.has(key))playerMap.set(key,{name:p.player?.name,team:team.name,sample:0,hits:0,hits2:0,totalOn:0});
+          const record=playerMap.get(key);record.sample++;
+          record.hits+=Number(shot)>=1?1:0;
+          record.hits2+=Number(shot)>=2?1:0;
+          record.totalOn+=Number(shot);
         }
       }
-      out.push(...[...byPlayer.values()].filter(x=>x.sample>0).map(x=>({
-        ...x,score:Math.round(100*x.hits/x.sample),average:Number((x.totalOn/x.sample).toFixed(2))
-      })));
     }
-    out.sort((a,b)=>b.sample-a.sample || b.score-a.score);
-    res.json({players:out,source:'API-Football · ultime 3 gare disputate',warning:out.length ?
-      'Frequenze individuali storiche, non pronostici; controlla le formazioni ufficiali. Campione massimo 3 presenze.' :
-      'Il piano API non restituisce statistiche individuali utilizzabili per le gare recenti.'});
-  } catch(e) {
-    res.json({players:[],warning:'Statistiche individuali non disponibili: '+e.message});
-  }
+    const players=[...playerMap.values()].map(x=>({
+      ...x,score:Math.round(100*x.hits/x.sample),score2:Math.round(100*x.hits2/x.sample),
+      average:Number((x.totalOn/x.sample).toFixed(2)),qualified:x.sample>=3&&x.hits/x.sample>=0.7
+    })).sort((a,b)=>b.sample-a.sample||b.score-a.score);
+    const value={players,source:'API-Football · fino a 4 partite precedenti per squadra',matchesChecked,
+      warning:players.length?'Dati descrittivi sulle presenze; non confermano la formazione titolare e non sono probabilità calibrate.':
+      'Il piano API non ha restituito dati individuali verificabili.'};
+    detailCache.set(cacheKey,{at:Date.now(),value});return res.json(value);
+  }catch(e){return res.json({players:[],warning:'Dati individuali non disponibili: '+e.message});}
 });
+function statNumber(v) {
+  if (v===null||v===undefined||v==='')return null;
+  const n=Number(v);return Number.isFinite(n)?n:null;
+}
+function halfCornerValues(response,teamId) {
+  const entry=(Array.isArray(response)?response:[]).find(x=>Number(x.team?.id)===Number(teamId));
+  if(!entry)return null;
+  const stats=entry.statistics||[];
+  // API-Sports may deliver statistics separately with half identifiers,
+  // or a split object under a Corner Kicks item. Do not infer halves from FT.
+  let first=null,second=null;
+  for(const stat of stats) {
+    if(!/corner/i.test(String(stat.type||'')))continue;
+    const period=String(stat.half||stat.period||stat.time||'').toLowerCase();
+    if(['1','1h','first','firsthalf','first half','half1'].includes(period))first=statNumber(stat.value);
+    if(['2','2h','second','secondhalf','second half','half2'].includes(period))second=statNumber(stat.value);
+    if(stat.value && typeof stat.value==='object') {
+      const v=stat.value;
+      first ??= statNumber(v.firstHalf??v.first_half??v.first??v['1']);
+      second ??= statNumber(v.secondHalf??v.second_half??v.second??v['2']);
+    }
+  }
+  return first!==null&&second!==null?{first,second}:null;
+}
+app.get('/api/corners-halves',async(req,res)=>{
+  const input=inputMatch(req,res);if(!input)return;
+  if(!apiFootballKey)return res.json({markets:[],warning:'API-Football non configurata; corner per tempo non disponibili.'});
+  const cacheKey='corners-halves:'+JSON.stringify(input),cached=detailCache.get(cacheKey);
+  if(cached&&Date.now()-cached.at<21600000)return res.json(cached.value);
+  try{
+    const match=await apiFootballMatch(input.home,input.away,input.date);
+    if(!match)return res.json({markets:[],warning:'La partita non è identificata dal provider, impossibile associare le statistiche ai tempi.'});
+    const sets={home:[],away:[]};
+    let sampled=0;
+    for(const side of ['home','away']) {
+      const team=match.teams[side];
+      const games=await recentTeamFixtures(team.id,Date.parse(match.fixture.date),4);
+      for(const game of games) {
+        const details=(await apiFootball('fixtures/statistics',{fixture:game.fixture.id,half:'true'}))?.response || [];
+        const value=halfCornerValues(details,team.id);
+        if(value){sets[side].push(value);sampled++;}
+      }
+    }
+    const markets=[];
+    for(const side of ['home','away'])for(const half of ['first','second'])for(const line of [1,2,3,4]) {
+      const rows=sets[side],hits=rows.filter(x=>x[half]>=line).length;
+      markets.push({
+        label:(side==='home'?input.home:input.away)+' · '+(half==='first'?'1°':'2°')+' tempo · '+line+'+ corner',
+        score:rows.length?Math.round(100*hits/rows.length):null,
+        hits,sample:rows.length,qualified:rows.length>=3&&hits/rows.length>=0.7,
+        half,side,line
+      });
+    }
+    const value={markets:markets.filter(x=>x.score!==null),matchesChecked:sampled,
+      warning:sampled?'Campione limitato: frequenze storiche per tempo, non probabilità calibrate.':
+      'Nessun dettaglio 1°/2° tempo disponibile tramite il piano/API attuale. Non possiamo ricostruirlo dai corner FT.'};
+    detailCache.set(cacheKey,{at:Date.now(),value});return res.json(value);
+  }catch(e){return res.json({markets:[],warning:'Corner per tempo non disponibili: '+e.message});}
+});
+
 
 app.get('/api/conf', async (req, res) => {
   // Recover gracefully if a pasted URL accidentally encodes all query parameters inside q.
