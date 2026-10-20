@@ -2,17 +2,19 @@ import 'dotenv/config';
 import express from 'express';
 import {readFileSync} from 'node:fs';
 import {LEAGUES,norm,romeDate,seasonStart,safeHistory,selectUpcoming,buildCornerMarkets,createDataClient} from './free-data.js';
+import {buildContext,parseStandings} from './match-context.js';
 import {forecast,report} from './reliability.js';
 const archive=JSON.parse(readFileSync(new URL('./openfootball-benchmark.json',import.meta.url)));
 const benchmarkRows=archive.leagues;
+const contextComparison=JSON.parse(readFileSync(new URL('./model-comparison.json',import.meta.url)));
 export function createApp(client=createDataClient(),clock=()=>Date.now()){
  const app=express(),fixtures=new Map(),histories=new Map(); let lastCatalog=null;
  app.disable('x-powered-by');
  app.use((_req,res,next)=>{res.set('X-Content-Type-Options','nosniff');res.set('Referrer-Policy','no-referrer');next();});
  app.get('/',(_req,res)=>res.sendFile(new URL('./index.html',import.meta.url).pathname));
- app.get('/api/health',(_req,res)=>res.json({ok:true,app:'CONF Football',version:'0.5.0',mode:'free',paidProviders:false}));
+ app.get('/api/health',(_req,res)=>res.json({ok:true,app:'CONF Football',version:'0.6.0',mode:'free',paidProviders:false}));
  app.get('/api/leagues',(_req,res)=>res.json({leagues:LEAGUES}));
- app.get('/api/conf-backtest',(_req,res)=>res.json({...report(benchmarkRows,clock()),source:archive.source,license:archive.license,retrievedAt:archive.retrievedAt,season:archive.season,usage:'Stagione precedente usata solo per test retrospettivo del modello. Le previsioni correnti usano solo la stagione in corso.'}));
+ app.get('/api/conf-backtest',(_req,res)=>res.json({...report(benchmarkRows,clock()),source:archive.source,license:archive.license,retrievedAt:archive.retrievedAt,season:archive.season,contextComparison,usage:'Stagione precedente usata solo per test retrospettivo del modello. Le previsioni correnti usano solo la stagione in corso.'}));
  const toRows=games=>games.map(g=>[g.date.slice(0,10),g.homeId,g.awayId,g.homeGoals,g.awayGoals]);
  const unique=games=>[...new Map(games.map(g=>[g.id,g])).values()];
  async function catalog(date,force=false){
@@ -46,6 +48,8 @@ export function createApp(client=createDataClient(),clock=()=>Date.now()){
    const found=selectUpcoming(cat.games,{now,hours,date:explicit,query});
    const warnings=[...cat.warnings];
    // All discovered fixtures are analyzed before the display limit.
+   const tableResults=await Promise.allSettled([...new Set(found.map(f=>f.leagueId))].map(async id=>{const league=LEAGUES.find(l=>l.id===id);return [id,parseStandings(await client.standings(league,seasonStart(now)),seasonStart(now))];}));
+   const tables=new Map(tableResults.filter(r=>r.status==='fulfilled').map(r=>r.value));
    const analyzed=await Promise.all(found.map(async f=>{
     fixtures.set(f.id,f);
     const results=await Promise.allSettled([history(f,'home'),history(f,'away')]);
@@ -57,7 +61,8 @@ export function createApp(client=createDataClient(),clock=()=>Date.now()){
     const markets={over25:freq('Over 2.5',g=>g.homeGoals+g.awayGoals>=3),btts:freq('GG',g=>g.homeGoals>0&&g.awayGoals>0)};
     const estimates=prediction?Object.fromEntries(Object.entries(prediction).map(([k,v])=>[k,Math.round(v*100)])):null;
     const best=estimates?Object.entries(estimates).sort((a,b)=>b[1]-a[1])[0]:null;
-    return {...f,markets,estimate:estimates,samples:{home:home.length,away:away.length},recommendation:best?{market:best[0],score:best[1],qualified:prediction[best[0]]>=0.7,validated:false}:null,
+    const context=buildContext(f,safeHistory(hh,Math.min(now,f.stamp)),safeHistory(aa,Math.min(now,f.stamp)),tables.get(f.leagueId)||[]);
+    return {...f,context,markets,estimate:estimates,samples:{home:home.length,away:away.length},recommendation:best?{market:best[0],score:best[1],qualified:prediction[best[0]]>=0.7,validated:false}:null,
      dataWarning:results.some(r=>r.status==='rejected')?'Storico parzialmente non disponibile.':null,cornerMarkets:null};
    }));
    analyzed.sort((a,b)=>(b.recommendation?.score??-1)-(a.recommendation?.score??-1)||a.stamp-b.stamp);

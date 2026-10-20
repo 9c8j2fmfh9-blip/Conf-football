@@ -110,5 +110,8 @@ export function createDataClient(fetcher=globalThis.fetch) {
   }));
   return result.flatMap(r=>r.status==='fulfilled'&&r.value?[r.value]:[]);
  }
- return {calendar,teamHistory,corners};
+ async function standings(league,year){
+  return get('https://site.api.espn.com/apis/v2/sports/soccer/'+league.id+'/standings?season='+year,30*60000);
+ }
+ return {calendar,teamHistory,corners,standings};
 }

@@ -1,6 +1,6 @@
 {
   "name": "conf-football",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "description": "CONF Football: free public data and measured experimental forecasts",
   "type": "module",
@@ -8,7 +8,8 @@
     "start": "node server.js",
     "test": "node --test",
     "backtest": "node scripts/backtest.js",
-    "check": "node --check server.js && node --check reliability.js && node --check free-data.js"
+    "check": "node --check server.js && node --check reliability.js && node --check free-data.js && node --check match-context.js && node --check contextual-model.js && node --check compare-models.js",
+    "compare": "node scripts/compare-models.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",

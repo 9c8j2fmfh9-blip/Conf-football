@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {JSDOM} from 'jsdom';
 const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
-const fixture={id:'abc',date:'2026-10-20T19:00Z',home:'A <script>bad()</script>',away:'B',league:'Test',country:'Italy',sourceUrl:'https://www.espn.com/soccer/match/_/gameId/123',samples:{home:10,away:10},markets:{over25:{score:80,hits:16,sample:20},btts:{score:65,hits:13,sample:20}},estimate:{over25:65,btts:60},recommendation:{market:'over25',score:65,qualified:false}};
+const fixture={id:'abc',date:'2026-10-20T19:00Z',home:'A <script>bad()</script>',away:'B',league:'Test',country:'Italy',sourceUrl:'https://www.espn.com/soccer/match/_/gameId/123',samples:{home:10,away:10},markets:{over25:{score:80,hits:16,sample:20},btts:{score:65,hits:13,sample:20}},estimate:{over25:65,btts:60},context:{home:{recent:{sample:5,results:['V','N'],points:8},venue:{sample:4,points:7,goalsFor:6,goalsAgainst:3},venueLabel:'in casa',table:{available:true,rank:14,points:12,played:10,zone:'',boundary:null},daysSinceLast:3},away:{recent:{sample:5,results:['N','P'],points:3},venue:{sample:4,points:2,goalsFor:3,goalsAgainst:7},venueLabel:'in trasferta',table:{available:false},daysSinceLast:4},warning:'Nessuna maggiorazione per motivazione'},recommendation:{market:'over25',score:65,qualified:false}};
 const waitFor=async(fn)=>{for(let i=0;i<100;i++){if(fn())return;await new Promise(r=>setTimeout(r,5));}throw Error('UI did not settle');};
 test('UI renders cards, keeps historical frequencies separate, filters and persists favorites',async()=>{
  const requests=[];const dom=new JSDOM(html,{url:'http://localhost/',runScripts:'dangerously',beforeParse(w){
@@ -11,9 +11,9 @@ test('UI renders cards, keeps historical frequencies separate, filters and persi
  }});
  try{
   const d=dom.window.document;await waitFor(()=>d.querySelector('.card'));
-  assert.equal(d.querySelectorAll('.card').length,1);
+  assert.equal(d.querySelectorAll('.card').length,1);assert.ok(d.querySelector('.card').textContent.includes('14ª'));assert.ok(d.querySelector('.card').textContent.includes('Forma casa/trasferta'));
   assert.ok(d.querySelector('.pick').textContent.includes('65%'));
-  assert.ok(d.querySelector('.row').textContent.includes('16 su 20'));
+  assert.ok([...d.querySelectorAll('.row')].some(row=>row.textContent.includes('16 su 20')));
   assert.equal(d.querySelector('.teams script'),null);
   d.querySelector('[data-favorite]').click();assert.ok(dom.window.localStorage.getItem('conf-favorites-v05').includes('abc'));
   d.getElementById('threshold').checked=true;d.getElementById('threshold').dispatchEvent(new dom.window.Event('change'));

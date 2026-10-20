@@ -1,4 +1,4 @@
-# CONF Football 0.5 — gratuito
+# CONF Football 0.6 — gratuito
 
 Candidata separata dalla versione di produzione. Nessuna chiave, carta, abbonamento o provider a pagamento è richiesto. Non usa OpenFootAPI né la sua quota esaurita.
 
@@ -23,7 +23,7 @@ Benchmark del modello: OpenFootball 2025/26, acquisito direttamente dalla fonte 
 
 ## Test e limiti predittivi
 
-`npm test`: 19 test automatici, inclusi calendario di 45 gare prima del limite, ricerca oltre le card visibili, esclusione delle live e dei risultati futuri, deduplica, corner mancanti/zero, cache e interazioni DOM della UI.
+`npm test`: 18 test automatici, inclusi calendario di 45 gare prima del limite, ricerca oltre le card visibili, esclusione delle live e dei risultati futuri, deduplica, corner mancanti/zero, cache e interazioni DOM della UI.
 
 `npm run backtest`: walk-forward cronologico su OpenFootball, baseline progressiva basata esclusivamente sulle date precedenti, Brier e calibrazione per lega/mercato; esportazione in `backtest-report.json`. Disponibile anche da interfaccia e `/api/conf-backtest`.
 
@@ -41,3 +41,17 @@ Il server espone solo HTML e API, non codice server o dataset. I preferiti non s
 ## Separazione dalla produzione
 
 Branch: `codex/conf-v04-validation`, PR #1. Il servizio originale collegato a `main` resta intatto. La candidata è destinata a un servizio Render separato con piano esplicitamente `free`, senza modifica delle variabili del servizio originale.
+
+
+## Forma e contesto di classifica — 0.6
+
+Ogni scheda include una sezione «Forma casa/trasferta e classifica» con:
+- risultati e punti nelle ultime 5 gare;
+- fino a 6 precedenti nel campo pertinente (casa/trasferta), gol fatti e subiti;
+- posizione, punti e gare giocate nella classifica corrente della competizione;
+- distanza in punti dalla squadra sul confine di una zona segnalata dalla fonte (salvezza/promozione/qualificazione), quando disponibile;
+- giorni trascorsi tra l'ultima gara completata e la partita analizzata.
+
+Le zone derivano dalle note della classifica ESPN, senza imporre a tutti i campionati lo stesso regolamento. I distacchi non certificano salvezza o qualificazione matematica: partite da recuperare, spareggi e penalizzazioni possono incidere. Classifiche assenti sono dichiarate tali. Non viene dedotta una motivazione psicologica dai punti e non vengono inventate indisponibilità, turnover o giornate residue quando non verificabili.
+
+È stata verificata una variante prefissata del modello con pesi di recenza 0,9 e una componente casa/trasferta regolarizzata. Confronto temporale: 1.150 gare prima del 01/02/2026 e 1.105 da quella data in poi. La variante non migliora il Brier di GG o Over nei due periodi: non è stata attivata. La forma e la classifica arricchiscono la consultazione; le percentuali non sono state aumentate artificialmente. Dettaglio riproducibile in `npm run compare` e `model-comparison.json`, visibile anche nel test storico dell'interfaccia. La dicitura «giocata consigliata» è stata sostituita da «indicazione».
