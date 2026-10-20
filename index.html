@@ -23,7 +23,7 @@ function ring(p){const valid=Number.isFinite(p);return '<div class="ring" style=
 function pickDetails(f){const p=f.recommendation;if(!p)return '<div class="pick"><strong>Dati insufficienti</strong><small>Servono 6 risultati per ciascuna squadra. Campione: '+f.samples.home+' / '+f.samples.away+'.</small></div>';
 const ml=f.learnedSelection?.available&&p.market==='over25';
 return '<div class="pick"><small>'+(p.qualified?'Indicazione ≥70% · sperimentale':'Migliore indicazione · sotto il 70%')+'</small><strong>'+names[p.market]+' · '+p.score+'%</strong><small>Stima del modello · '+f.samples.home+' / '+f.samples.away+' gare.'+(ml?' Nuovo modello calibrato: test ≥70% '+f.learnedSelection.validation.thresholdHits+'/'+f.learnedSelection.validation.thresholdSample+'; campione ridotto.':' Modello Poisson sperimentale.')+'</small></div>';}
-function pick(f){const p=f.recommendation;return '<div class="pick"><small>Scommessa suggerita</small><strong>'+ (p?names[p.market]:'Dati insufficienti')+'</strong></div>';}
+function pick(f){const p=f.recommendation;return '<div class="pick"><small>Scommessa suggerita</small><strong>'+ (p?names[p.market]+' · '+p.score+'%':'Dati insufficienti')+'</strong></div>';}
 function updateSelections(){
  const goals=items.filter(f=>f.learnedSelection?.available&&f.learnedSelection.probability>=.7);
  const corners=items.flatMap(f=>{const c=cornerCache.get(f.id);if(!c?.markets)return [];const m=c.markets.filter(m=>m.evidence?.eligible).sort((a,b)=>b.evidence.lower-a.evidence.lower||b.sample-a.sample||cornerLine(b)-cornerLine(a))[0];return m?[{f,m}]:[];});

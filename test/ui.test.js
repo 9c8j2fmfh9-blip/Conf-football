@@ -18,7 +18,7 @@ test('UI renders cards, keeps historical frequencies separate, filters and persi
   assert.ok(details.contains(card.querySelector('.statistics')));
   const visibleText=[...card.children].filter(el=>el!==details).map(el=>el.textContent).join(' ');
   assert.ok(visibleText.includes('Scommessa suggerita'));assert.ok(visibleText.includes('Over 2.5'));
-  assert.ok(!/65%|Forma|14ª|punti/.test(visibleText));
+  assert.ok(visibleText.includes('Over 2.5 · 65%'));assert.ok(!/Forma|14ª|punti/.test(visibleText));
   details.open=true;assert.ok(details.textContent.includes('14ª'));assert.ok(details.textContent.includes('16 su 20'));
   details.open=false;assert.equal(d.querySelector('[data-load-corners]'),null);
   assert.ok([...d.querySelectorAll('.row')].some(row=>row.textContent.includes('16 su 20')));
