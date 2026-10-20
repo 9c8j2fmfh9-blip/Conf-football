@@ -43,6 +43,30 @@ async function apiFootball(path, params = {}) {
  * Do not confuse this feed with the statistics API; only real results
  * enter CONF calculations.
  */
+// FA Cup fourth qualifying round replays verified against the official FA
+// fixture list on 2026-10-20. This is a dated snapshot, not a live API.
+const verifiedFaCupFixtures = {
+  '2026-10-20': [
+    ['Worcester City','Chorley'], ['Stafford Rangers','Gateshead'],
+    ['Gloucester City','Barrow AFC'], ['Anstey Nomads','Macclesfield'],
+    ['FC United of Manchester','Altrincham'], ['Harrogate Town AFC','Bury'],
+    ['Alvechurch','Spalding United'], ['Forest Green Rovers','Chesham United'],
+    ['Yeovil Town','Leatherhead'], ['Cray Wanderers','Bedford Town'],
+    ['Tadley Calleva','Aldershot Town']
+  ]
+};
+function faCupSnapshots(date) {
+  return (verifiedFaCupFixtures[date] || []).map(([home,away], index) => ({
+    id: 'fa_official_' + date + '_' + index,
+    kickoffAt: date + 'T18:45:00Z', // 19:45 BST = 20:45 Europe/Rome
+    status: 'NS',
+    homeTeam: { id: 'facup_' + home.toLowerCase().replace(/[^a-z0-9]+/g,'_'), name: home },
+    awayTeam: { id: 'facup_' + away.toLowerCase().replace(/[^a-z0-9]+/g,'_'), name: away },
+    competition: { id: 'eng_fa_cup', name: 'FA Cup', country: 'England' },
+    competitionId: 'eng_fa_cup', competitionName: 'FA Cup', country: 'England',
+    source: 'Official FA fixture list (verified 2026-10-20)'
+  }));
+}
 const eflSources = {
   'championship': { slug: 'championship-2026', folder: 'ENG_2_championship', name: 'Championship' },
   'league one': { slug: 'efl-league-one-2026', folder: 'ENG_3_league-one', name: 'League One' },
@@ -711,7 +735,19 @@ app.get('/api/conf', async (req, res) => {
         if (query) secondaryStatus = 'efl_error: ' + error.message;
       }
     }
-    if (query && !secondaryStatus?.startsWith('efl_calendar_')) {
+    const faCupRequested = ['fa cup','the fa cup','emirates fa cup','fa cup england'].includes(normalizedQuery);
+    if (faCupRequested || !query) {
+      const days = requestedDate ? [requestedDate] : [today, tomorrow];
+      let inserted = 0;
+      for (const day of days) {
+        const official = faCupSnapshots(day);
+        // FA Cup replay names are independent from the EFL team catalog.
+        allDayMatches.push(...official);
+        inserted += official.length;
+      }
+      if (faCupRequested && inserted) secondaryStatus = 'fa_official_' + inserted;
+    }
+    if (query && !secondaryStatus?.startsWith('efl_calendar_') && !secondaryStatus?.startsWith('fa_official_')) {
       const matchesQuery = m => {
         const home = m.homeTeam || m.home || {};
         const away = m.awayTeam || m.away || {};
@@ -856,7 +892,7 @@ app.get('/api/conf', async (req, res) => {
     // API-Football IDs are not valid OpenFootAPI team IDs. Display those
     // fixtures even without stats instead of making misleading provider calls.
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)])
-      .filter(id => id && !String(id).startsWith('apisports_') && !String(id).startsWith('efl_')))];
+      .filter(id => id && !String(id).startsWith('apisports_') && !String(id).startsWith('efl_') && !String(id).startsWith('facup_')))];
     const forms = new Map();
     const warnings = [];
     let teamCursor = 0;
