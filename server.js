@@ -426,7 +426,17 @@ app.get('/api/conf', async (req, res) => {
   const requestedDate = /^\d{4}-\d{2}-\d{2}$/.test(dateValue) ? dateValue : '';
   const romeDate = value => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value));
   const normSearch = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('it').replace(/[^a-z0-9]+/g, ' ').trim();
-  const searchTerms = normSearch(query).split(/\s+/).filter(Boolean);
+  // Resolve ambiguous English competition names to an explicit EFL identity.
+  // Do not confuse League One with similarly named competitions worldwide.
+  const eflAliases = {
+    'league one': 'league one', 'league 1': 'league one', 'efl league one': 'league one',
+    'league two': 'league two', 'league 2': 'league two', 'efl league two': 'league two',
+    'championship': 'championship', 'efl championship': 'championship',
+    'national league': 'national league'
+  };
+  const normalizedQuery = normSearch(query);
+  const englishCompetition = eflAliases[normalizedQuery] || '';
+  const searchTerms = (englishCompetition || normalizedQuery).split(/\s+/).filter(Boolean);
   const now = Date.now();
   const cutoff = now + hours * 60 * 60 * 1000;
   const dateParts = new Intl.DateTimeFormat('en-CA', {
@@ -478,6 +488,21 @@ app.get('/api/conf', async (req, res) => {
       } catch (_) {
         // Keep search endpoint results if the competition catalog is unavailable.
       }
+      // Try alternative catalog names (EFL / English / Sky Bet) when the provider
+      // doesn't index the colloquial league name.
+      if (englishCompetition && !catalogMatches.length) {
+        const aliasSearches = englishCompetition === 'league one'
+          ? ['EFL League One', 'English League One', 'League 1']
+          : englishCompetition === 'league two'
+            ? ['EFL League Two', 'English League Two', 'League 2']
+            : ['EFL ' + englishCompetition];
+        const alternatives = await Promise.all(aliasSearches.map(q =>
+          openFoot('/search', { q }).then(rows).catch(() => [])
+        ));
+        searchedEntities.push(...alternatives.flat().filter(item =>
+          item.id || item.teamId || item.competitionId || item.competition?.id
+        ));
+      }
       const merged = [...catalogMatches, ...searchedEntities];
       const knownIds = new Set();
       searchEntities = merged.filter(item => {
@@ -485,7 +510,7 @@ app.get('/api/conf', async (req, res) => {
         if (!id || knownIds.has(id)) return false;
         knownIds.add(id);
         return true;
-      }).slice(0, 8);
+      }).slice(0, 16);
       const entityMatches = await Promise.all(searchEntities.map(async item => {
         const id = item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id;
         const kind = String(item.type || item.entityType || item.kind || '').toLowerCase();
@@ -503,14 +528,16 @@ app.get('/api/conf', async (req, res) => {
         // competition has scheduled fixtures. Also query the current season by its
         // stable competition ID, then let the normal upcoming/date filters decide.
         let seasonMatches = [];
-        if (isCompetition && item.currentSeason) {
+        if (isCompetition) {
           try {
+            // Many competition catalog entries do not include currentSeason.
+            // A competition-only lookup is still worth trying in that case.
             seasonMatches = await openFootAll('/matches', {
               competition: id,
-              season: item.currentSeason
-            });
+              ...(item.currentSeason ? { season: item.currentSeason } : {})
+            }, 5);
           } catch (_) {
-            // Keep date-scoped results if season-wide lookup is unavailable.
+            // Keep date-scoped results if competition-wide lookup is unavailable.
           }
         }
         // Season-wide API rows often omit the competition object/name. Attach the
