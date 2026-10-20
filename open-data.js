@@ -8,6 +8,7 @@ const rawBase='https://raw.githubusercontent.com/oladeeayo/open-matchday/master/
 const norm=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 // Explicit spelling aliases, never fuzzy matches between unrelated clubs.
 const aliases={
+ 'fc bayern munchen':'bayern munich','losc lille':'lille','rc lens':'lens','vfb stuttgart':'stuttgart','psv eindhoven':'psv',
  'inter':'internazionale','inter milan':'internazionale','man utd':'manchester united','man united':'manchester united',
  'man city':'manchester city','b dortmund':'borussia dortmund','dortmund':'borussia dortmund',
  'bayern munchen':'bayern munich','bayern':'bayern munich','leipzig':'rb leipzig',

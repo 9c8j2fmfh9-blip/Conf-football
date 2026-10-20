@@ -8,7 +8,7 @@ const estimate=vm.runInContext('experimentalGoalEstimate',context);
 const now=Date.parse('2026-10-20T21:00:00Z');
 test('tomorrow returns all nine UCL fixtures with current-season analysis and correct Italian kickoff',()=>{
  const data=openDataConf({q:'Champions League',date:'2026-10-21',limit:100},estimate,{now});
- assert.equal(data.fixtures.length,9);
+ assert.equal(data.fixtures.length,9);assert.ok(data.fixtures.every(f=>f.experimentalEstimate.available));
  assert.ok(data.fixtures.some(f=>f.home==='Inter'&&f.away==='Shakhtar'));
  const como=data.fixtures.find(f=>f.home==='Como');assert.equal(como.date,'2026-10-21T16:45:00Z');
  assert.equal(como.experimentalEstimate.available,true);assert.ok(como.experimentalEstimate.samples.home>=6);
