@@ -566,19 +566,35 @@ app.get('/api/conf', async (req, res) => {
     }
 
 
-    let secondaryStatus = query && /(?:youth\\s*league|uefa\\s*youth)/i.test(query)
-      ? (apiFootballKey ? 'checking' : 'missing_api_key') : null;
-    // Optional, targeted second provider. Never consume its limited quota for the main CONF feed.
-    if (query && /(?:youth\s*league|uefa\s*youth)/i.test(query) && apiFootballKey) {
-      try {
-        const leagues = (await apiFootball('leagues', { search: 'Youth League' }))?.response || [];
-        secondaryStatus = leagues.length ? 'league_catalog_found' : 'league_not_found';
-        const league = leagues.find(x => /youth league/i.test(x.league?.name || ''));
-        const season = league?.seasons?.filter(x => x.year <= Number((requestedDate || today).slice(0, 4))).sort((a, b) => b.year - a.year)[0]?.year;
-        if (league && season) {
-          secondaryStatus = 'fetching_fixtures';
-          const extra = await apiFootball('fixtures', { league: league.league.id, season, date: requestedDate || today, timezone: 'Europe/Rome' });
-          const converted = (extra?.response || []).map(x => ({
+    // API-Football supplements incomplete OpenFootAPI previews. Only use it for
+    // explicit searches with no matching fixtures in the primary provider, to
+    // preserve the free daily quota. Never fabricate missing statistics.
+    let secondaryStatus = null;
+    if (query) {
+      const matchesQuery = m => {
+        const home = m.homeTeam || m.home || {};
+        const away = m.awayTeam || m.away || {};
+        const comp = m.competition || {};
+        const text = normSearch([home.name, away.name, m.competitionName, comp.name, m.country, comp.country].join(' '));
+        const ids = [teamId(home), teamId(away), m.competitionId, comp.id].filter(Boolean).map(String);
+        const found = searchEntities.some(item => ids.includes(String(item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id)));
+        return found || searchTerms.every(term => text.includes(term));
+      };
+      const primaryFound = allDayMatches.some(m => {
+        const kickoff = new Date(m.kickoffAt || m.date || m.utcDate || m.fixture?.date || 0).getTime();
+        return Number.isFinite(kickoff) && kickoff > now &&
+          (requestedDate ? romeDate(kickoff) === requestedDate : kickoff <= cutoff) &&
+          !['FT','LIVE','PST','CANC'].includes(statusCode(m.status ?? m.fixture?.status)) &&
+          matchesQuery(m);
+      });
+      if (!primaryFound && apiFootballKey) {
+        try {
+          // One daily fixture request, not one request per team or league.
+          // With a specified date this remains useful for EFL searches.
+          const targetDate = requestedDate || today;
+          const apiData = await apiFootball('fixtures', { date: targetDate, timezone: 'Europe/Rome' });
+          const apiRows = Array.isArray(apiData?.response) ? apiData.response : [];
+          const converted = apiRows.map(x => ({
             id: 'apisports_' + x.fixture.id,
             kickoffAt: x.fixture.date,
             status: x.fixture.status?.short || 'NS',
@@ -590,11 +606,25 @@ app.get('/api/conf', async (req, res) => {
             country: x.league.country,
             score: { home: x.goals.home, away: x.goals.away }
           }));
-          allDayMatches.push(...converted);
-          secondaryStatus = 'fixtures_returned_' + converted.length;
+          // The API may label EFL League One "League One"; avoid other
+          // countries' competitions with the same name.
+          const filtered = converted.filter(m => {
+            if (englishCompetition) {
+              const name = normSearch(m.competitionName);
+              const country = normSearch(m.country);
+              return country === 'england' && name.includes(englishCompetition);
+            }
+            return matchesQuery(m);
+          });
+          allDayMatches.push(...filtered);
+          secondaryStatus = 'fixtures_returned_' + filtered.length;
+        } catch (error) {
+          secondaryStatus = 'provider_error: ' + error.message;
         }
-      } catch (error) {
-        secondaryStatus = 'provider_error: ' + error.message;
+      } else if (!primaryFound) {
+        secondaryStatus = 'missing_api_key';
+      } else {
+        secondaryStatus = 'primary_provider';
       }
     }
 
@@ -643,7 +673,11 @@ app.get('/api/conf', async (req, res) => {
           const entityIds = searchEntities.map(item => String(item.id ?? item.teamId ?? item.competitionId ?? item.team?.id ?? item.competition?.id));
           const matchIds = [teamId(home), teamId(away), m.competitionId, comp.id].filter(Boolean).map(String);
           const directMatch = entityIds.some(id => matchIds.includes(id));
-          if (!directMatch && !searchTerms.every(term => searchable.includes(term))) return false;
+          if (englishCompetition) {
+            const country = normSearch(m.country || comp.country);
+            if (country !== 'england') return false;
+            if (!normSearch(m.competitionName || comp.name).includes(englishCompetition)) return false;
+          } else if (!directMatch && !searchTerms.every(term => searchable.includes(term))) return false;
         }
         const id = String(m.id || '');
         if (id && seen.has(id)) return false;
