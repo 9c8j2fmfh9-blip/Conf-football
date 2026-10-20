@@ -409,6 +409,7 @@ async function loadConf(){
   $('#conf-results').innerHTML = '';
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'40'});
+    if(confOnlyQualified) params.set('minEstimate','70');
     if(query) { params.set('q',query); if($('#date').value) params.set('date',$('#date').value); }
     const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store'});
     const data = await response.json();
@@ -421,12 +422,12 @@ async function loadConf(){
       if(savedCount > 0) await syncHistory();
       await checkFinalResults(true);
     }
-    const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial)).length;
-    const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
+    const qualified = Number(data.modelHighCount || 0);
+    const valid = Number(data.modelAvailableCount || 0);
     if($('#total')) $('#total').textContent = data.analyzedCount || (data.fixtures || []).length;
     if($('#upcoming')) $('#upcoming').textContent = qualified;
     if($('#live')) $('#live').textContent = valid;
-    $('#conf-message').textContent = (query ? 'Ricerca CONF per “'+query+'” completata. ' : 'Analisi CONF completata. ')+(data.analyzedCount || (data.fixtures || []).length)+' partite analizzate nelle prossime '+hours+' ore; '+valid+' con dati storici utilizzabili; '+qualified+' con almeno un mercato ≥70%. '+data.method+' '+(data.secondaryStatus?.startsWith('fa_official_') ? 'FA Cup: '+data.secondaryStatus.split('_').pop()+' partite confermate dal calendario ufficiale; le statistiche non disponibili restano senza percentuale. ' : data.secondaryStatus?.startsWith('efl_calendar_') ? 'Calendario EFL: '+data.secondaryStatus.split('_')[2]+' partite programmate nel feed; analisi con dati storici disponibili. ' : data.secondaryStatus?.startsWith('efl_error:') ? 'Calendario EFL non disponibile: '+data.secondaryStatus+'. ' : data.secondaryStatus?.startsWith('provider_error') ? 'API-Football: '+data.secondaryStatus+'. ' : data.secondaryStatus === 'missing_api_key' ? 'API-Football non configurata. ' : data.secondaryStatus?.startsWith('fixtures_returned_') ? 'Ricerca integrativa API-Football: '+data.secondaryStatus.split('_')[2]+' partite trovate nel calendario alternativo. ' : '')+((data.warnings || []).length ? 'AVVISI DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
+    $('#conf-message').textContent = (query ? 'Ricerca CONF per “'+query+'” completata. ' : 'Analisi CONF completata. ')+(data.analyzedCount || (data.fixtures || []).length)+' partite analizzate nelle prossime '+hours+' ore; '+valid+' con stima sperimentale disponibile; '+qualified+' con stima almeno 70% sull'intero insieme analizzato. '+data.method+' '+(data.secondaryStatus?.startsWith('fa_official_') ? 'FA Cup: '+data.secondaryStatus.split('_').pop()+' partite confermate dal calendario ufficiale; le statistiche non disponibili restano senza percentuale. ' : data.secondaryStatus?.startsWith('efl_calendar_') ? 'Calendario EFL: '+data.secondaryStatus.split('_')[2]+' partite programmate nel feed; analisi con dati storici disponibili. ' : data.secondaryStatus?.startsWith('efl_error:') ? 'Calendario EFL non disponibile: '+data.secondaryStatus+'. ' : data.secondaryStatus?.startsWith('provider_error') ? 'API-Football: '+data.secondaryStatus+'. ' : data.secondaryStatus === 'missing_api_key' ? 'API-Football non configurata. ' : data.secondaryStatus?.startsWith('fixtures_returned_') ? 'Ricerca integrativa API-Football: '+data.secondaryStatus.split('_')[2]+' partite trovate nel calendario alternativo. ' : '')+((data.warnings || []).length ? 'AVVISI DATI STORICI: '+data.warnings.join(' | ') : '')+' ';
   }catch(error){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
@@ -576,7 +577,7 @@ document.addEventListener('toggle',async e=>{
 
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
 const analyzeButton = $('#analyze'); if(analyzeButton) analyzeButton.addEventListener('click',loadConf);
-$('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
+$('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; loadConf(); });
 $('#date').addEventListener('change',loadConf);
 $('#hours').addEventListener('change',loadConf);
 
