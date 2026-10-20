@@ -371,11 +371,11 @@ function renderConf(items){
     const estimate=f.experimentalEstimate || {};
     const names={one:'1 · vittoria casa',draw:'X · pareggio',two:'2 · vittoria trasferta',over25:'Over 2.5 FT',btts:'GG'};
     const possibilities=estimate.available ? Object.keys(names).map(key=>({label:names[key],pct:Number(estimate.estimates?.[key])}))
-      .filter(x=>Number.isFinite(x.pct)&&x.pct>=70).sort((a,b)=>b.pct-a.pct) : [];
+      .filter(x=>Number.isFinite(x.pct)&&x.pct>=0&&x.pct<=100).sort((a,b)=>b.pct-a.pct) : [];
     const best=possibilities[0];
     const recommendationHtml=best
-      ? '<div class="recommend"><div class="recommend-title">🎯 Giocata indicativa · CONF sperimentale</div><div class="recommend-market">'+safe(best.label)+' · '+safe(best.pct)+'%</div><div class="recommend-note">Stima non validata, non probabilità affidabile. Campione '+safe(estimate.samples?.home)+' / '+safe(estimate.samples?.away)+' partite.</div></div>'
-      : '<div class="recommend"><div class="recommend-title">🎯 Giocata CONF</div><div class="recommend-market">Nessuna selezione abbastanza solida</div><div class="recommend-note">Il modello non ha dati sufficienti oppure nessuna stima raggiunge la soglia sperimentale del 70%.</div></div>';
+      ? '<div class="recommend"><div class="recommend-title">🎯 Migliore indicazione CONF · sperimentale</div><div class="recommend-market">'+safe(best.label)+' · '+safe(best.pct)+'%</div><div class="recommend-note">Valore più alto del modello, anche sotto 70%. Non è un consiglio verificato. Campione '+safe(estimate.samples?.home)+' / '+safe(estimate.samples?.away)+' partite.</div></div>'
+      : '<div class="recommend"><div class="recommend-title">🎯 Giocata CONF</div><div class="recommend-market">Dati insufficienti per una giocata</div><div class="recommend-note">Il modello richiede almeno 6 risultati per ciascuna squadra. Le frequenze storiche sotto restano consultabili.</div></div>';
 
     const e=f.experimentalEstimate || {};
     const experimentalHtml=e.available
