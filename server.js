@@ -991,9 +991,23 @@ app.get('/api/conf', async (req, res) => {
         const kind = String(item.type || item.entityType || item.kind || '').toLowerCase();
         const isCompetition = kind.includes('competition') || kind.includes('league') || String(id).startsWith('comp_') || item.competitionId != null || item.competition != null;
         const param = isCompetition ? { competition: id } : { team: id };
+        const seasonForDate = date => {
+          const supplied = item.currentSeason;
+          if (typeof supplied === 'string' && supplied) return supplied;
+          if (supplied && typeof supplied === 'object') {
+            const label = supplied.label || supplied.name || supplied.season;
+            if (typeof label === 'string' && label) return label;
+          }
+          if (!championsRequested) return null;
+          const d = new Date(date + 'T12:00:00Z');
+          const year = d.getUTCFullYear() - (d.getUTCMonth() < 6 ? 1 : 0);
+          return year + '/' + String(year + 1).slice(-2);
+        };
         const dateCalls = await Promise.all(datesToFetch.map(async date => {
           try {
-            const matches=await openFootAll('/matches', { date, ...param }, 5);
+            // Champions sources require season even when filtering by date.
+            const season = isCompetition ? seasonForDate(date) : null;
+            const matches=await openFootAll('/matches', { date, ...param, ...(season ? { season } : {}) }, 5);
             return matches.map(match=>isCompetition ? {
               ...match,competitionId:match.competitionId ?? match.competition?.id ?? id,
               competitionName:match.competitionName || match.competition?.name || item.name || item.displayName || '',
@@ -1016,12 +1030,7 @@ app.get('/api/conf', async (req, res) => {
             // A competition-only lookup is still worth trying in that case.
             seasonMatches = await openFootAll('/matches', {
               competition: id,
-              ...((typeof item.currentSeason === 'string') ? { season: item.currentSeason } :
-                championsRequested ? { season: (() => {
-                  const d=new Date((requestedDate || today)+'T12:00:00Z');
-                  const y=d.getUTCFullYear()-(d.getUTCMonth()<6?1:0);
-                  return y+'/'+String(y+1).slice(-2);
-                })() } : {})
+              ...(seasonForDate(requestedDate || today) ? { season: seasonForDate(requestedDate || today) } : {})
             }, 5);
           } catch (_) {
             // Keep date-scoped results if competition-wide lookup is unavailable.
