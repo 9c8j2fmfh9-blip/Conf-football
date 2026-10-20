@@ -92,7 +92,7 @@ function faCupHistoricalForm(teamName, beforeTime) {
     const teamIdentifier = 'facup_' + teamName.toLowerCase().replace(/[^a-z0-9]+/g, '_');
     for (const [date, time, home, away, homeGoals, awayGoals] of results) {
       if (home !== lookup && away !== lookup) continue;
-      if (!/^\\d+$/.test(String(homeGoals)) || !/^\\d+$/.test(String(awayGoals))) continue;
+      if (!/^\d+$/.test(String(homeGoals)) || !/^\d+$/.test(String(awayGoals))) continue;
       // Exclude any result on/after the future fixture's kickoff, to
       // prevent leakage into predictions for a specified historical date.
       const kickoff = eflStart(date, time) || (date + 'T12:00:00Z');
