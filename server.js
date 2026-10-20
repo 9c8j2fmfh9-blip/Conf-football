@@ -1174,7 +1174,7 @@ app.get('/api/conf', async (req, res) => {
         return true;
       })
       .sort((a, b) => new Date(a.kickoffAt || a.date || a.utcDate || 0) - new Date(b.kickoffAt || b.date || b.utcDate || 0))
-      .slice(0, Math.min(40, Math.max(limit, limit * 2)));
+      ; // Do not truncate before calculating estimates and applying the >=70% filter.
     // API-Football IDs are not valid OpenFootAPI team IDs. Display those
     // fixtures even without stats instead of making misleading provider calls.
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)])
