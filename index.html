@@ -27,7 +27,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
   <button class="button" id="reload" type="button">Aggiorna</button>
  </div>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
- <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo mercati CONF ≥70% (campione minimo 6 gare)</label>
+ <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo giocate principali ≥70% (stima sperimentale)</label>
  <div id="conf-results" class="matches"></div>
  <div class="stats">
   <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
@@ -343,10 +343,10 @@ function renderConf(items){
   const warning = '<div class="recommend" style="margin-bottom:12px"><div class="recommend-title">⚠️ Modalità statistiche storiche</div><div class="recommend-note">Le percentuali NON sono probabilità di vincita. Il modello predittivo CONF non è ancora validato: nessuna scommessa può essere consigliata sulla sola base di questi valori. Per 1/X/2 sono medie tra frequenze delle due squadre, non pronostici.</div></div>';
   const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
   const qualifies = m => m && m.score !== null && Number(m.score) >= 70 && Number(m.sample) >= 6 && !m.partial;
-  const eligible = f => visibleMarkets(f).some(qualifies) || (f.cornerMarkets?.markets || []).some(qualifies);
+  const eligible = f => Boolean(f.experimentalEstimate?.available) && Object.values(f.experimentalEstimate.estimates || {}).some(value => Number.isFinite(Number(value)) && Number(value) >= 70);
   const selected = confOnlyQualified ? items.filter(eligible) : items;
   if(!selected.length){
-    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessun mercato raggiunge CONF ≥70% con almeno 6 risultati storici per le partite selezionate.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
+    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessuna giocata principale del modello sperimentale raggiunge il 70% nelle partite selezionate.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
     return;
   }
   const ordered = [...selected].sort((a,b) => {
@@ -356,7 +356,7 @@ function renderConf(items){
   });
   root.innerHTML = ordered.map(f => {
     const allMarkets = visibleMarkets(f);
-    const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial));
+    const markets = allMarkets;
     const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
     const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
