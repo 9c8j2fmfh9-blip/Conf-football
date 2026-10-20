@@ -226,6 +226,27 @@ function renderHistory(){
     return '<div class="market-stat"><div class="market-head"><span>'+group.name+'</span><span>'+(pct===null?'—':pct+'%')+(n>0&&n<10?' · campione piccolo':'')+'</span></div><div class="market-track"><div class="market-fill" style="width:'+(pct===null?0:pct)+'%"></div></div><div class="market-detail">'+items.length+' registrate · '+w+' vinte · '+l+' perse · '+p+' in attesa'+(n?' · '+n+' concluse':'')+'</div></div>';
   }).join('');
   dashboard.innerHTML = '<h3 style="margin:14px 0 6px;font-size:14px">Dashboard risultati</h3><div class="dashboard">'+cardHtml+'</div><h3 style="margin:14px 0 6px;font-size:14px">Percentuale di successo per mercato</h3><div class="market-stats">'+marketHtml+'</div><p class="muted" style="font-size:11px;margin:8px 0">Percentuali calcolate solo sulle selezioni segnate Vinta o Persa; le selezioni in attesa non entrano nel calcolo.</p>';
+  // Audit CONF: evaluate exactly one qualified pick per fixture, not all
+  // five mutually exclusive/overlapping markets as if they were independent bets.
+  const auditByFixture = new Map();
+  for(const item of history){
+    if(Number(item.score) < 70 || Number(item.sample) < 6) continue;
+    const key = String(item.fixtureId || item.id);
+    if(!auditByFixture.has(key)) auditByFixture.set(key, []);
+    auditByFixture.get(key).push(item);
+  }
+  const audited = [...auditByFixture.values()].map(items => [...items].sort(byEvidence)[0]);
+  const auditedWins = audited.filter(x=>x.outcome==='win').length;
+  const auditedLosses = audited.filter(x=>x.outcome==='loss').length;
+  const auditedDone = auditedWins + auditedLosses;
+  const auditedRate = auditedDone ? Math.round(100*auditedWins/auditedDone) : null;
+  dashboard.innerHTML += '<h3 style="margin:16px 0 6px;font-size:14px">Verifica reale CONF ≥70%</h3>'
+    +'<div class="market-stat"><div class="market-head"><span>Una selezione qualificata per partita</span><span>'
+    +(auditedRate===null?'—':auditedRate+'%')+'</span></div><div class="market-track"><div class="market-fill" style="width:'
+    +(auditedRate===null?0:auditedRate)+'%"></div></div><div class="market-detail">'
+    +auditedWins+' vinte · '+auditedLosses+' perse · '+(audited.length-auditedDone)+' in attesa · '+auditedDone+' concluse'
+    +(auditedDone<20?' · campione ancora limitato':'')
+    +'</div></div><p class="muted" style="font-size:11px;margin:8px 0">Conteggio per partita: si valuta solo il mercato qualificato con maggiore solidità statistica. Frequenza osservata, non probabilità predittiva.</p>';
   const root = $('#history-results');
   // Mostra una sola scheda per partita: priorità a una selezione qualificata CONF >=70% con campione >=6;
   // se non esiste, mostra il mercato con la percentuale storica più alta. Tutti i mercati restano nello storico interno.
