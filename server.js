@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import { report, forecast } from './reliability.js';
 import { readFileSync } from 'node:fs';
 
 const app = express();
@@ -9,7 +10,8 @@ const base = 'https://openfootapi.com/v1';
 const cache = new Map();
 const CACHE_TTL_MS = 60 * 1000; // Cache breve: evita stati LIVE obsoleti nelle partite in corso.
 
-app.use(express.static('.'));
+// Serve only the public UI; source, datasets and future config files stay private.
+app.get('/', (_req, res) => res.sendFile(new URL('./index.html', import.meta.url).pathname));
 
 const apiFootballKey = process.env.API_FOOTBALL_KEY || process.env.API_FOOTBALL_API_KEY || process.env.APISPORTS_KEY || '';
 const secondaryCache = new Map();
@@ -95,7 +97,7 @@ function cornerHistoryForTeam(name, leagueId, beforeTimestamp) {
   const normalizedTeam = teamStatName(name);
   for (const folder of folders) {
     for (const [date, home, away, hcorn, acorn] of (teamStatsBundled.rows[folder] || [])) {
-      if (Date.parse(date + 'T12:00:00Z') >= beforeTimestamp) continue;
+      if (Date.parse(date + 'T00:00:00Z') + 86400000 > beforeTimestamp) continue;
       const isHome = teamStatName(home) === normalizedTeam;
       const isAway = teamStatName(away) === normalizedTeam;
       if (!isHome && !isAway) continue;
@@ -103,7 +105,7 @@ function cornerHistoryForTeam(name, leagueId, beforeTimestamp) {
       if (!/^\d+$/.test(String(val))) continue;
       const other = isHome ? acorn : hcorn;
       matches.push({
-        date, corners: Number(val), total: /^\d+$/.test(String(other)) ? Number(val) + Number(other) : null,
+        id: [folder,date,home,away].join('|'), date, corners: Number(val), total: /^\d+$/.test(String(other)) ? Number(val) + Number(other) : null,
         home: isHome
       });
     }
@@ -125,7 +127,7 @@ function buildCornerMarkets(home, away, leagueId, beforeTimestamp) {
     add(home + ' · ' + line + '+ corner FT',h,x=>x.corners>=line);
     add(away + ' · ' + line + '+ corner FT',a,x=>x.corners>=line);
   }
-  const totals = [...h,...a].filter(x=>x.total!==null);
+  const totals = [...new Map([...h,...a].filter(x=>x.total!==null).map(x=>[x.id,x])).values()];
   for (const line of [7,8,9,10]) add('Totale ' + line + '+ corner FT',totals,x=>x.total>=line);
   result.note = (!h.length || !a.length) ? 'Storico incompleto: non sono disponibili i corner per entrambe le squadre.' :
     'Frequenze storiche descrittive, non probabilità calibrate. I dati per tempo non sono disponibili.';
@@ -274,14 +276,14 @@ async function openFoot(path, params = {}) {
 
   const headers = { Accept: 'application/json' };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
-  let response = await fetch(url, { headers });
+  let response = await fetch(url, { headers, signal: AbortSignal.timeout(15000) });
   let body = await response.json().catch(() => ({}));
 
   // If the configured key is rejected (401), retry with the documented public preview.
   // The response metadata makes the reduced demo scope visible; never pretend this is full access.
   if (!response.ok && response.status === 401) {
     const demoHeaders = { Accept: 'application/json', Authorization: 'Bearer of_demo_openfootapi_docs' };
-    response = await fetch(url, { headers: demoHeaders });
+    response = await fetch(url, { headers: demoHeaders, signal: AbortSignal.timeout(15000) });
     body = await response.json().catch(() => ({}));
   }
   if (!response.ok) {
@@ -292,6 +294,20 @@ async function openFoot(path, params = {}) {
   }
   cache.set(cacheKey, { time: Date.now(), data: body });
   return body;
+}
+
+async function pagedMatches(params) {
+  const first = await openFoot('/matches', params);
+  const collected = [...rows(first)];
+  let cursor = first?.meta?.pagination?.next_cursor;
+  const seen = new Set();
+  for (let page=1; cursor && page<10 && !seen.has(cursor); page++) {
+    seen.add(cursor);
+    const body = await openFoot('/matches', {...params,cursor});
+    collected.push(...rows(body));
+    cursor = body?.meta?.pagination?.next_cursor;
+  }
+  return {response:collected,meta:{...first.meta,pagination:{...first.meta?.pagination,next_cursor:cursor || null}}};
 }
 
 async function openFootAll(path, params = {}, maxPages = 10) {
@@ -429,28 +445,22 @@ function teamPerspective(matches, id) {
 // Experimental goal model: historical goal averages, venue-aware, no claim of calibration.
 // Require both teams >= 6 completed matches; use shrinkage toward 1.3 goals per team.
 function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
-  const home = teamPerspective(homeGames, homeId);
-  const away = teamPerspective(awayGames, awayId);
-  if (home.sample < 6 || away.sample < 6) return { available: false, reason: 'Servono almeno 6 risultati per squadra.' };
-  const shrink = (v,n) => (v*n + 1.3*6)/(n+6);
-  const homeAttack = shrink(home.averageFor,home.sample);
-  const awayDefense = shrink(away.averageAgainst,away.sample);
-  const awayAttack = shrink(away.averageFor,away.sample);
-  const homeDefense = shrink(home.averageAgainst,home.sample);
-  const h = Math.max(0.15,Math.min(4,Math.sqrt(homeAttack*awayDefense)));
-  const a = Math.max(0.15,Math.min(4,Math.sqrt(awayAttack*homeDefense)));
-  const poisson = (lambda,k) => {
-    let f=1; for(let i=2;i<=k;i++)f*=i;
-    return Math.exp(-lambda)*Math.pow(lambda,k)/f;
-  };
-  let one=0,draw=0,two=0,over25=0,gg=0;
-  for(let i=0;i<=15;i++)for(let j=0;j<=15;j++){
-    const p=poisson(h,i)*poisson(a,j);
-    if(i>j)one+=p;else if(i===j)draw+=p;else two+=p;
-    if(i+j>2)over25+=p;
-    if(i>0&&j>0)gg+=p;
-  }
-  return { available:true, validated:false, model:'Poisson sperimentale con medie gol corrette per piccolo campione', expectedGoals:{home:Number(h.toFixed(2)),away:Number(a.toFixed(2))}, estimates:{one:Math.round(one*100),draw:Math.round(draw*100),two:Math.round(two*100),over25:Math.round(over25*100),btts:Math.round(gg*100)}, samples:{home:home.sample,away:away.sample}, warning:'STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa.' };
+  // The very same model implementation is evaluated by /api/conf-backtest.
+  const seen = new Set();
+  const history = [...homeGames,...awayGames].filter(completed).map(g => {
+    const date = new Date(g.kickoffAt || g.date || g.utcDate).toISOString().slice(0,10);
+    const h = String(teamId(g.homeTeam || g.home));
+    const a = String(teamId(g.awayTeam || g.away));
+    const sc = goals(g);
+    return [date,h,a,sc.home,sc.away];
+  }).filter(r => { const key=r.slice(0,3).join('|'); if(seen.has(key))return false; seen.add(key); return true; })
+    .sort((a,b)=>a[0].localeCompare(b[0]));
+  const prediction = forecast(history,String(homeId),String(awayId));
+  if(!prediction) return {available:false,reason:'Servono almeno 6 risultati per ciascuna squadra.'};
+  return {available:true,validated:false,model:'Poisson con regolarizzazione; stesso modello del backtest',
+    estimates:Object.fromEntries(Object.entries(prediction).map(([k,v])=>[k,Math.round(v*100)])),
+    samples:{home:homeGames.length,away:awayGames.length},
+    warning:'Modello sperimentale: affidabilità non dimostrata dal campione disponibile.'};
 }
 
 
@@ -459,61 +469,7 @@ function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
  * For each fixture use ONLY matches from strictly earlier dates (unknown
  * same-day kickoff times cannot safely establish ordering).
  */
-app.get('/api/conf-backtest', (_req, res) => {
-  try {
-    const stats = {};
-    const markets = ['one','draw','two','over25','btts'];
-    for (const [league, rows] of Object.entries(eflBundled.leagues || {})) {
-      const games = rows.filter(x => /^\d+$/.test(String(x[3])) && /^\d+$/.test(String(x[4])))
-        .map(([date,h,a,hg,ag],i)=>({
-          id: 'backtest_'+league+'_'+i, date, kickoffAt:date+'T12:00:00Z', status:'FT',
-          homeTeam:{id:h,name:h}, awayTeam:{id:a,name:a},
-          score:{home:Number(hg),away:Number(ag)}
-        })).sort((a,b)=>a.date.localeCompare(b.date));
-      const seen = new Map();
-      const evaluated=[];
-      for (const game of games) {
-        const homeId=game.homeTeam.id, awayId=game.awayTeam.id;
-        const hAll=(seen.get(homeId)||[]).slice(-10).reverse();
-        const aAll=(seen.get(awayId)||[]).slice(-10).reverse();
-        const hV=hAll.filter(g=>g.homeTeam.id===homeId);
-        const aV=aAll.filter(g=>g.awayTeam.id===awayId);
-        const est=experimentalGoalEstimate(hV.length>=6?hV:hAll,aV.length>=6?aV:aAll,homeId,awayId);
-        if(est.available) {
-          const score=goals(game);
-          const truth={one:Number(score.home>score.away),draw:Number(score.home===score.away),two:Number(score.home<score.away),over25:Number(score.home+score.away>=3),btts:Number(score.home>0&&score.away>0)};
-          evaluated.push({ date:game.date, probabilities:est.estimates, truth });
-        }
-        // Update after processing the COMPLETE date, to avoid same-date leakage.
-        // Deferred updates are staged until the next date begins.
-        if (!seen._pending) seen._pending=[];
-        seen._pending.push(game);
-        const next=games[games.indexOf(game)+1];
-        if(!next || next.date!==game.date) {
-          for(const g of seen._pending){
-            for(const id of [g.homeTeam.id,g.awayTeam.id]){
-              const arr=seen.get(id)||[];
-              arr.push(g);
-              seen.set(id,arr.slice(-10));
-            }
-          }
-          seen._pending=[];
-        }
-      }
-      const count=evaluated.length;
-      const measures={};
-      for(const key of markets){
-        const hits=evaluated.reduce((acc,row)=>acc+row.truth[key],0);
-        const base=count?hits/count:null;
-        const brier=count?evaluated.reduce((acc,row)=>acc+Math.pow(row.probabilities[key]/100-row.truth[key],2),0)/count:null;
-        const baseline=count?evaluated.reduce((acc,row)=>acc+Math.pow(base-row.truth[key],2),0)/count:null;
-        measures[key]={brier:brier===null?null:Number(brier.toFixed(4)),baselineBrier:baseline===null?null:Number(baseline.toFixed(4)),observedRate:count?Math.round(100*base):null,betterThanBaseline:brier===null?null:brier<baseline};
-      }
-      stats[league]={historicalFixtures:games.length,backtestedFixtures:count,measurements:measures};
-    }
-    res.json({status:'experimental',validated:false,method:'Walk-forward su risultati storici per data, ogni stima usa solo partite di date precedenti; ultimi 10 incontri/squadra, almeno 6 per squadra.',metric:'Brier score (inferiore è meglio); confronto con la frequenza media osservata nel campione come baseline descrittiva, non out-of-sample.',limitations:'Dataset limitato a 2026/27 e leghe inglesi disponibili. Solo un primo controllo retrospettivo, non una validazione esterna; nessuna previsione può essere dichiarata affidabile.',leagues:stats});
-  } catch(e){res.status(500).json({error:e.message});}
-});
+app.get('/api/conf-backtest', (_req, res) => res.json(report(eflBundled.leagues || {})));
 
 app.get('/api/status', (_req, res) => {
   res.json({ configured: Boolean(apiKey), provider: 'OpenFootAPI', cacheMinutes: CACHE_TTL_MS / 60000 });
@@ -525,7 +481,7 @@ app.get('/api/key-check', async (_req, res) => {
   const url = new URL(base + '/matches');
   url.searchParams.set('date', new Date().toISOString().slice(0, 10));
   const check = async headers => {
-    const response = await fetch(url, { headers });
+    const response = await fetch(url, { headers, signal: AbortSignal.timeout(15000) });
     const body = await response.json().catch(() => ({}));
     return { ok: response.ok, status: response.status, message: body?.error?.message || body?.error?.code || (response.ok ? 'OK' : `HTTP ${response.status}`), meta: body.meta || null, returned: rows(body).length };
   };
@@ -875,9 +831,9 @@ app.get('/api/conf', async (req, res) => {
     const datesToFetch = query && requestedDate ? [requestedDate] : [today, tomorrow];
     // The provider can return a limited preview. Also request scheduled fixtures,
     // then deduplicate; this does not guarantee complete coverage.
-    const dateBodies = await Promise.all(datesToFetch.map(date => openFoot('/matches', { date }).catch(error => ({ response: [], providerError: error.message }))));
+    const dateBodies = await Promise.all(datesToFetch.map(date => pagedMatches({ date }).catch(error => ({ response: [], providerError: error.message }))));
     const scheduledBodies = await Promise.all(datesToFetch.map(date =>
-      openFoot('/matches', { date, status: 'scheduled' }).catch(() => ({}))
+      pagedMatches({ date, status: 'scheduled' }).catch(() => ({}))
     ));
     const todayBody = dateBodies[0] || {};
     const tomorrowBody = dateBodies[1] || {};
@@ -1173,7 +1129,7 @@ app.get('/api/conf', async (req, res) => {
         return true;
       })
       .sort((a, b) => new Date(a.kickoffAt || a.date || a.utcDate || 0) - new Date(b.kickoffAt || b.date || b.utcDate || 0))
-      .slice(0, Math.min(40, Math.max(limit, limit * 2)));
+      ; // Analyze every discovered fixture before ranking and display limiting.
     // API-Football IDs are not valid OpenFootAPI team IDs. Display those
     // fixtures even without stats instead of making misleading provider calls.
     const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)])
@@ -1219,8 +1175,13 @@ app.get('/api/conf', async (req, res) => {
       const awayTeam = m.awayTeam || m.away || {};
       const homeId = teamId(homeTeam);
       const awayId = teamId(awayTeam);
-      const homeAll = forms.get(String(homeId)) || [];
-      const awayAll = forms.get(String(awayId)) || [];
+      const historyBefore = Math.min(now, Date.parse(m.kickoffAt || m.date || m.utcDate) || now);
+      const safeHistory = games => games.filter(g => {
+        const start = Date.parse(g.kickoffAt || g.date || g.utcDate);
+        return completed(g) && Number.isFinite(start) && start < historyBefore;
+      });
+      const homeAll = safeHistory(forms.get(String(homeId)) || []);
+      const awayAll = safeHistory(forms.get(String(awayId)) || []);
       // Per Over 2.5 e GG valutiamo separatamente la squadra di casa nelle gare in casa
       // e quella ospite nelle gare in trasferta. Se il sotto-campione è troppo piccolo,
       // usiamo le ultime gare complessive e rendiamo esplicito il campione usato.
@@ -1240,7 +1201,7 @@ app.get('/api/conf', async (req, res) => {
         if (!a.sample || !b.sample) {
           const valid = combined.filter(completed);
           const result = frequency(valid, predicate, label);
-          if (String(m.id || '').startsWith('fa_official_')) {
+          {
             result.partial = true;
             result.method = 'Dato parziale: storico disponibile per una sola squadra; non qualificabile CONF';
             result.venueSamples = { home: a.sample, away: b.sample };
@@ -1309,13 +1270,13 @@ app.get('/api/conf', async (req, res) => {
         markets: {
           one, draw, two, over25, btts
         },
-        experimentalEstimate: experimentalGoalEstimate(homeVenue.length>=6?homeVenue:homeAll.filter(completed), awayVenue.length>=6?awayVenue:awayAll.filter(completed), homeId, awayId),
+        experimentalEstimate: experimentalGoalEstimate(homeAll, awayAll, homeId, awayId),
         cornerMarkets: buildCornerMarkets(teamName(homeTeam),teamName(awayTeam),m.competitionId || m.competition?.id || '', Date.parse(kickoff) || now)
       };
     });
     // Classifica per qualità dell'evidenza: prima i mercati che superano CONF 70%
     // con almeno 6 gare, poi i dati utilizzabili con campione sufficiente, infine gli altri.
-    const marketList = f => Object.values(f.markets || {}).filter(m => m.score !== null);
+    const marketList = f => [f.markets.over25, f.markets.btts, ...(f.cornerMarkets?.markets || [])].filter(m => m && m.score !== null);
     for (const f of fixtures) {
       const ms = marketList(f);
       // Wilson lower bound is a conservative ranking metric, NOT a predicted probability.
@@ -1357,7 +1318,7 @@ app.get('/api/conf', async (req, res) => {
       secondaryStatus, windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Le schede sono ordinate per qualificazione CONF e solidità statistica (limite inferiore di Wilson), penalizzando i campioni piccoli. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
       threshold: 70, limit, analyzedCount, fixtures,
-      preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
+      preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: Boolean(metaToday?.pagination?.next_cursor || metaTomorrow?.pagination?.next_cursor) },
       note: (query ? 'Ricerca provider per “' + query + '” integrata nell’analisi CONF. ' : 'Lista generale ') + 'Oggi e domani, filtrati sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
@@ -1491,4 +1452,6 @@ app.post('/api/history/settle', async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.listen(port, () => console.log(`CONF Football attivo su http://localhost:${port}`));
+export { app };
+if (process.env.NODE_ENV !== 'test') app.listen(port, () => console.log(`CONF Football attivo su http://localhost:${port}`));
+

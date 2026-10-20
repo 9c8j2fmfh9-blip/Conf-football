@@ -27,7 +27,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
   <button class="button" id="reload" type="button">Aggiorna</button>
  </div>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
- <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo partite con giocata principale ≥70% (stima sperimentale)</label>
+ <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Mostra solo GG, Over 2.5 o corner con frequenza ≥70%</label>
  <div id="conf-results" class="matches"></div>
  <div class="stats">
   <div class="stat"><small>Partite analizzate</small><strong id="total">—</strong></div>
@@ -103,7 +103,7 @@ function saveRecommendations(fixtures){
   const history = readHistory();
   const known = new Set(history.map(x => x.id));
   let added = 0;
-  const marketKeys = ['one','draw','two','over25','btts'];
+  const marketKeys = ['over25','btts'];
   for(const f of fixtures){
     if(!f.fixtureId) continue;
     for(const key of marketKeys){
@@ -341,12 +341,12 @@ function renderConf(items){
   const root = $('#conf-results');
   // Historical frequencies must never be presented as calibrated winning probabilities.
   const warning = '<div class="recommend" style="margin-bottom:12px"><div class="recommend-title">⚠️ Modalità statistiche storiche</div><div class="recommend-note">Le percentuali NON sono probabilità di vincita. Il modello predittivo CONF non è ancora validato: nessuna scommessa può essere consigliata sulla sola base di questi valori. Per 1/X/2 sono medie tra frequenze delle due squadre, non pronostici.</div></div>';
-  const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
+  const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['over25','btts'].includes(key)).map(([,m]) => m);
   const qualifies = m => m && m.score !== null && Number(m.score) >= 70 && Number(m.sample) >= 6 && !m.partial;
-  const eligible = f => f.experimentalEstimate?.available === true && Object.values(f.experimentalEstimate.estimates || {}).some(v => Number.isFinite(Number(v)) && Number(v) >= 70);
+  const eligible = f => [...visibleMarkets(f), ...(f.cornerMarkets?.markets || [])].some(qualifies);
   const selected = confOnlyQualified ? items.filter(eligible) : items;
   if(!selected.length){
-    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessuna delle partite caricate ha una giocata principale stimata ≥70%. Disattiva il filtro per vedere tutte le partite.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
+    root.innerHTML = confOnlyQualified ? '<div class="empty">Nessuna delle partite caricate ha GG, Over 2.5 o corner con frequenza ≥70% e campione sufficiente. Disattiva il filtro per vedere tutte le partite.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
     return;
   }
   const ordered = [...selected].sort((a,b) => {
@@ -354,7 +354,7 @@ function renderConf(items){
     const best = f => Math.max(-1,...visibleMarkets(f).filter(m => m.score !== null).map(m => m.score));
     return best(b)-best(a);
   });
-  root.innerHTML = ordered.map(f => {
+  root.innerHTML = warning + ordered.map(f => {
     const allMarkets = visibleMarkets(f);
     const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial));
     const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
@@ -369,7 +369,7 @@ function renderConf(items){
       ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Corner FT · frequenza storica alta</div><div class="recommend-market">'+safe(bestCorner.label)+' · '+safe(bestCorner.score)+'%</div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare storiche · frequenza descrittiva ≥70% · NON è una probabilità prevista</div></div>'
       : '';
     const estimate=f.experimentalEstimate || {};
-    const names={one:'1 · vittoria casa',draw:'X · pareggio',two:'2 · vittoria trasferta',over25:'Over 2.5 FT',btts:'GG'};
+    const names={over25:'Over 2.5 FT',btts:'GG'};
     const possibilities=estimate.available ? Object.keys(names).map(key=>({label:names[key],pct:Number(estimate.estimates?.[key])}))
       .filter(x=>Number.isFinite(x.pct)&&x.pct>=0&&x.pct<=100).sort((a,b)=>b.pct-a.pct) : [];
     const best=possibilities[0];

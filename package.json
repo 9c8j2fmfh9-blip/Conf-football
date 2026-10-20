@@ -1,9 +1,17 @@
 {
   "name": "conf-football",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "private": true,
   "description": "CONF Football starter: web prototype + secure API proxy",
   "type": "module",
-  "scripts": { "start": "node server.js" },
-  "dependencies": { "dotenv": "^16.4.7", "express": "^4.21.2" }
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "backtest": "node scripts/backtest.js",
+    "check": "node --check server.js && node --check reliability.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
 }

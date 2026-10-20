@@ -1,0 +1,315 @@
+{
+  "status": "experimental",
+  "validated": false,
+  "asOf": "2026-10-20T11:39:25.233Z",
+  "method": "Walk-forward per data: ultime 10 gare, minimo 6 per squadra. Baseline progressiva calcolata solo sulle date precedenti. Nessun risultato della data valutata entra nelle stime.",
+  "limitations": "Dati locali non verificati in tempo reale; campione limitato. Brier e calibrazione descrivono questo test, non garantiscono prestazioni future. Corner: frequenze storiche, modello non validato.",
+  "leagues": {
+    "league one": {
+      "historicalFixtures": 114,
+      "backtestedFixtures": 41,
+      "markets": {
+        "over25": {
+          "count": 41,
+          "brier": 0.2531832283897132,
+          "baselineBrier": 0.26597349790515956,
+          "betterThanBaseline": true,
+          "selected70": {
+            "count": 0,
+            "hits": 0,
+            "hitRate": null
+          },
+          "calibration": [
+            {
+              "from": 0,
+              "to": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.2,
+              "to": 0.4,
+              "count": 1,
+              "predicted": 0.3743014224756558,
+              "observed": 0
+            },
+            {
+              "from": 0.4,
+              "to": 0.6,
+              "count": 37,
+              "predicted": 0.5161781671148123,
+              "observed": 0.4594594594594595
+            },
+            {
+              "from": 0.6,
+              "to": 0.8,
+              "count": 3,
+              "predicted": 0.6092448283976687,
+              "observed": 0.3333333333333333
+            },
+            {
+              "from": 0.8,
+              "to": 1,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ]
+        },
+        "btts": {
+          "count": 41,
+          "brier": 0.2516409306882718,
+          "baselineBrier": 0.2618556083548573,
+          "betterThanBaseline": true,
+          "selected70": {
+            "count": 0,
+            "hits": 0,
+            "hitRate": null
+          },
+          "calibration": [
+            {
+              "from": 0,
+              "to": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.2,
+              "to": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.4,
+              "to": 0.6,
+              "count": 33,
+              "predicted": 0.5395948397116097,
+              "observed": 0.5151515151515151
+            },
+            {
+              "from": 0.6,
+              "to": 0.8,
+              "count": 8,
+              "predicted": 0.6125247797020557,
+              "observed": 0.5
+            },
+            {
+              "from": 0.8,
+              "to": 1,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ]
+        }
+      }
+    },
+    "league two": {
+      "historicalFixtures": 126,
+      "backtestedFixtures": 54,
+      "markets": {
+        "over25": {
+          "count": 54,
+          "brier": 0.2320138612661832,
+          "baselineBrier": 0.24312080772211414,
+          "betterThanBaseline": true,
+          "selected70": {
+            "count": 0,
+            "hits": 0,
+            "hitRate": null
+          },
+          "calibration": [
+            {
+              "from": 0,
+              "to": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.2,
+              "to": 0.4,
+              "count": 7,
+              "predicted": 0.37667424632210267,
+              "observed": 0.14285714285714285
+            },
+            {
+              "from": 0.4,
+              "to": 0.6,
+              "count": 46,
+              "predicted": 0.4795886039998159,
+              "observed": 0.391304347826087
+            },
+            {
+              "from": 0.6,
+              "to": 0.8,
+              "count": 1,
+              "predicted": 0.6048459847480879,
+              "observed": 0
+            },
+            {
+              "from": 0.8,
+              "to": 1,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ]
+        },
+        "btts": {
+          "count": 54,
+          "brier": 0.24911186671259913,
+          "baselineBrier": 0.25677797965788035,
+          "betterThanBaseline": true,
+          "selected70": {
+            "count": 0,
+            "hits": 0,
+            "hitRate": null
+          },
+          "calibration": [
+            {
+              "from": 0,
+              "to": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.2,
+              "to": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.4,
+              "to": 0.6,
+              "count": 51,
+              "predicted": 0.5099238165354272,
+              "observed": 0.5098039215686274
+            },
+            {
+              "from": 0.6,
+              "to": 0.8,
+              "count": 3,
+              "predicted": 0.6129419938913986,
+              "observed": 0.3333333333333333
+            },
+            {
+              "from": 0.8,
+              "to": 1,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ]
+        }
+      }
+    },
+    "championship": {
+      "historicalFixtures": 131,
+      "backtestedFixtures": 56,
+      "markets": {
+        "over25": {
+          "count": 56,
+          "brier": 0.2589937781406525,
+          "baselineBrier": 0.2411643933240499,
+          "betterThanBaseline": false,
+          "selected70": {
+            "count": 0,
+            "hits": 0,
+            "hitRate": null
+          },
+          "calibration": [
+            {
+              "from": 0,
+              "to": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.2,
+              "to": 0.4,
+              "count": 1,
+              "predicted": 0.3936907686739157,
+              "observed": 1
+            },
+            {
+              "from": 0.4,
+              "to": 0.6,
+              "count": 53,
+              "predicted": 0.509700388632439,
+              "observed": 0.6037735849056604
+            },
+            {
+              "from": 0.6,
+              "to": 0.8,
+              "count": 2,
+              "predicted": 0.6312154184709168,
+              "observed": 0.5
+            },
+            {
+              "from": 0.8,
+              "to": 1,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ]
+        },
+        "btts": {
+          "count": 56,
+          "brier": 0.2508096970557125,
+          "baselineBrier": 0.24990397777609008,
+          "betterThanBaseline": false,
+          "selected70": {
+            "count": 0,
+            "hits": 0,
+            "hitRate": null
+          },
+          "calibration": [
+            {
+              "from": 0,
+              "to": 0.2,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.2,
+              "to": 0.4,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            },
+            {
+              "from": 0.4,
+              "to": 0.6,
+              "count": 49,
+              "predicted": 0.5400225423969571,
+              "observed": 0.5918367346938775
+            },
+            {
+              "from": 0.6,
+              "to": 0.8,
+              "count": 7,
+              "predicted": 0.6170443734389055,
+              "observed": 0.5714285714285714
+            },
+            {
+              "from": 0.8,
+              "to": 1,
+              "count": 0,
+              "predicted": null,
+              "observed": null
+            }
+          ]
+        }
+      }
+    }
+  }
+}
