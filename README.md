@@ -24,7 +24,7 @@ Le chiavi devono restare nelle variabili ambiente del servizio, mai nel reposito
 
 371 risultati locali, 151 partite valutabili cronologicamente (302 valutazioni di mercato). Il modello supera la baseline progressiva per GG/Over in League One e League Two, ma non in Championship. Nessuna previsione del campione arriva al 70%. Il campione non dimostra un sistema affidabile di giocate ≥70%.
 
-La richiesta live al provider OpenFootAPI con token pubblico di anteprima restituisce dati; la richiesta senza autenticazione restituisce 401. Non è stata usata la chiave privata presente in Render, alla quale questa sessione non ha accesso.
+La richiesta live al provider OpenFootAPI con token pubblico di anteprima restituisce dati; la richiesta senza autenticazione restituisce 401. Dopo il collegamento Render, il controllo /api/key-check del servizio corrente conferma: chiave personale configurata, risposta HTTP 429, quota mensile di 5.000 richieste esaurita. L'anteprima pubblica è disponibile ma parziale e non sostituisce l'accesso personale. Non è stata letta né copiata alcuna chiave privata.
 
 La fonte dichiarata nei dataset locali `oladeeayo/open-matchday`, al percorso `data/ENG_3_league-one/results_2627.csv`, restituisce 404 al controllo: la provenienza dei dati locali non è stata riconfermata. I risultati del backtest sono quindi provvisori. Non usare queste frequenze come probabilità di vincita certificate.
 
