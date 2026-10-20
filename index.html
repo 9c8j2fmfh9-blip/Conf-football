@@ -296,6 +296,17 @@ function render(){
     return '<article class="match"><div class="league">'+safe(f.league?.name || 'Campionato')+' · '+safe(f.league?.country || '')+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixture?.id)+'</div><div class="matchtop"><div style="min-width:0;flex:1"><div class="teams">'+safe(f.teams?.home?.name || 'Casa')+'<div class="vs">CONTRO</div>'+safe(f.teams?.away?.name || 'Trasferta')+'</div><div class="time">'+safe(date ? date.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'Europe/Rome'}) : '')+' · '+safe(time)+extra+'</div></div><div class="score">'+score+'</div></div><span class="status">'+statusLabel(f)+'</span></article>';
   }).join('');
 }
+function marketEvidence(m){
+  const n = Number(m.sample) || 0;
+  if(!n || m.score === null) return -1;
+  const p = Array.isArray(m.teamRates) && m.teamRates.length === 2
+    ? (Number(m.teamRates[0]) + Number(m.teamRates[1])) / 2
+    : (Number(m.hits) || 0) / n;
+  const z = 1.28;
+  const safeP = Math.max(0, Math.min(1, p));
+  return (safeP + z*z/(2*n) - z*Math.sqrt((safeP*(1-safeP) + z*z/(4*n))/n)) / (1 + z*z/n);
+}
+function byEvidence(a,b){ return marketEvidence(b)-marketEvidence(a) || (b.sample||0)-(a.sample||0); }
 function renderConf(items){
   confItems = items;
   const root = $('#conf-results');
@@ -314,11 +325,11 @@ function renderConf(items){
   root.innerHTML = ordered.map(f => {
     const allMarkets = visibleMarkets(f);
     const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6));
-    const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6).sort((a,b) => b.score-a.score)[0];
+    const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6).sort(byEvidence)[0];
     const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
     const recommendationHtml = recommendation
-      ? '<div class="recommend"><div class="recommend-title">🎯 Scommessa consigliata</div><div class="recommend-market">'+safe(recommendation.label)+' · '+safe(recommendation.score)+'%</div><div class="recommend-note">'+safe(recommendation.hits)+' su '+safe(recommendation.sample)+' gare storiche · soglia CONF ≥70% raggiunta</div></div>'
+      ? '<div class="recommend"><div class="recommend-title">🎯 Scommessa consigliata</div><div class="recommend-market">'+safe(recommendation.label)+' · '+safe(recommendation.score)+'%</div><div class="recommend-note">'+safe(recommendation.sample)+' gare storiche · selezione basata sulla solidità del campione · soglia CONF ≥70% raggiunta</div></div>'
       : bestMarket
         ? '<div class="recommend"><div class="recommend-title">📊 Miglior dato storico · NON qualificato</div><div class="recommend-market">'+safe(bestMarket.label)+' · '+safe(bestMarket.score)+'%</div><div class="recommend-note">'+safe(bestMarket.hits)+' su '+safe(bestMarket.sample)+' gare storiche. Non è una scommessa consigliata: non raggiunge tutti i requisiti CONF ≥70% e campione minimo 6.</div></div>'
         : '<div class="recommend"><div class="recommend-title">📊 Dati storici insufficienti</div><div class="recommend-market">Nessun mercato valutabile</div><div class="recommend-note">Il provider non ha restituito risultati storici utilizzabili per questa partita.</div></div>';
