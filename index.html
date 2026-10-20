@@ -339,6 +339,8 @@ function byEvidence(a,b){ return marketEvidence(b)-marketEvidence(a) || (b.sampl
 function renderConf(items){
   confItems = items;
   const root = $('#conf-results');
+  // Historical frequencies must never be presented as calibrated winning probabilities.
+  const warning = '<div class="recommend" style="margin-bottom:12px"><div class="recommend-title">⚠️ Modalità statistiche storiche</div><div class="recommend-note">Le percentuali NON sono probabilità di vincita. Il modello predittivo CONF non è ancora validato: nessuna scommessa può essere consigliata sulla sola base di questi valori. Per 1/X/2 sono medie tra frequenze delle due squadre, non pronostici.</div></div>';
   const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
   const qualifies = m => m && m.score !== null && Number(m.score) >= 70 && Number(m.sample) >= 6 && !m.partial;
   const eligible = f => visibleMarkets(f).some(qualifies) || (f.cornerMarkets?.markets || []).some(qualifies);
@@ -352,7 +354,7 @@ function renderConf(items){
     const best = f => Math.max(-1,...visibleMarkets(f).filter(m => m.score !== null).map(m => m.score));
     return best(b)-best(a);
   });
-  root.innerHTML = ordered.map(f => {
+  root.innerHTML = warning + ordered.map(f => {
     const allMarkets = visibleMarkets(f);
     const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial));
     const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
@@ -364,12 +366,12 @@ function renderConf(items){
     const cornerQualified=(f.cornerMarkets?.markets||[]).filter(qualifies).sort(byEvidence);
     const bestCorner=cornerQualified[0] || null;
     const cornerRecommendationHtml=bestCorner
-      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Corner consigliato · FT</div><div class="recommend-market">'+safe(bestCorner.label)+' · '+safe(bestCorner.score)+'%</div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare storiche · soglia CONF ≥70% raggiunta · frequenza descrittiva</div></div>'
+      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Corner FT · frequenza storica alta</div><div class="recommend-market">'+safe(bestCorner.label)+' · '+safe(bestCorner.score)+'%</div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare storiche · frequenza descrittiva ≥70% · NON è una probabilità prevista</div></div>'
       : '';
     const recommendationHtml = recommendation
-      ? '<div class="recommend"><div class="recommend-title">🎯 Scommessa consigliata</div><div class="recommend-market">'+safe(recommendation.label)+' · '+safe(recommendation.score)+'%</div><div class="recommend-note">'+safe(recommendation.sample)+' gare storiche · selezione basata sulla solidità del campione · soglia CONF ≥70% raggiunta</div></div>'
+      ? '<div class="recommend"><div class="recommend-title">📊 Frequenza storica alta · NON è una previsione</div><div class="recommend-market">'+safe(recommendation.label)+' · '+safe(recommendation.score)+'%</div><div class="recommend-note">'+safe(recommendation.sample)+' gare storiche · NON è probabilità di vincita né consiglio di scommessa · soglia storica ≥70%</div></div>'
       : bestMarket
-        ? '<div class="recommend"><div class="recommend-title">📊 Miglior dato storico · NON qualificato</div><div class="recommend-market">'+safe(bestMarket.label)+' · '+safe(bestMarket.score)+'%</div><div class="recommend-note">'+safe(bestMarket.hits)+' su '+safe(bestMarket.sample)+' gare storiche. '+(bestMarket.partial ? 'Dato parziale: manca lo storico di una squadra. Non qualificabile come consiglio CONF.' : 'Non è una scommessa consigliata: non raggiunge tutti i requisiti CONF ≥70% e campione minimo 6.')+'</div></div>'
+        ? '<div class="recommend"><div class="recommend-title">📊 Miglior dato storico · NON qualificato</div><div class="recommend-market">'+safe(bestMarket.label)+' · '+safe(bestMarket.score)+'%</div><div class="recommend-note">'+safe(bestMarket.hits)+' su '+safe(bestMarket.sample)+' gare storiche. '+(bestMarket.partial ? 'Dato parziale: manca lo storico di una squadra. Non qualificabile come consiglio CONF.' : 'Dato storico descrittivo, non probabilità predittiva; sotto la soglia storica del 70% o campione minore di 6.')+'</div></div>'
         : '<div class="recommend"><div class="recommend-title">📊 Dati storici insufficienti</div><div class="recommend-market">Nessun mercato valutabile</div><div class="recommend-note">Il provider non ha restituito risultati storici utilizzabili per questa partita.</div></div>';
 
     const corners = f.cornerMarkets || {markets:[],note:'Dati corner non disponibili'};
@@ -384,7 +386,7 @@ function renderConf(items){
       '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Apri la sezione per verificare i dati storici separati per tempo.</div>'+ '</details>';
     return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
-      const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'SOGLIA ≥70 RAGGIUNTA' : 'sotto soglia 70'));
+      const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'frequenza storica ≥70 · non predittiva' : 'sotto soglia 70'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
       const pct = m.score === null ? 0 : Math.max(0,Math.min(100,Number(m.score)||0));
       return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
@@ -396,7 +398,7 @@ async function loadConf(){
   if(button) button.disabled = true;
   const hours = Number($('#hours')?.value || 24);
   const query = $('#search')?.value.trim() || '';
-  $('#conf-message').textContent = query ? 'Cerco “'+query+'” nelle API e calcolo le percentuali CONF…' : 'Carico le partite delle prossime '+hours+' ore e calcolo le percentuali CONF…';
+  $('#conf-message').textContent = query ? 'Cerco “'+query+'” nelle API e calcolo frequenze storiche…' : 'Carico le partite delle prossime '+hours+' ore e calcolo frequenze storiche…';
   $('#conf-results').innerHTML = '';
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'40'});
