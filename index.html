@@ -380,7 +380,10 @@ function renderConf(items){
     const e=f.experimentalEstimate || {};
     const combos=Array.isArray(e.teamGoalCombos)?e.teamGoalCombos:[];
     // In the main match card: show the highest-scoring home/away team-over combo.
-    const bestCombo=combos[0];
+    const qualifiedCombos=combos.filter(x=>Number.isFinite(x.score)&&x.score>=70);
+    // Prefer a stronger goal line only when its joint estimate clears the threshold.
+    const bestCombo=qualifiedCombos.slice().sort((a,b)=>
+      (b.homeMin+b.awayMin)-(a.homeMin+a.awayMin) || b.score-a.score)[0];
     const providerXg=f.providerExpectedGoals || {};
     const predictedGoalsHtml='<div class="recommend" style="margin-top:8px"><div class="recommend-title">⚽ xG e gol attesi</div>'+
       (providerXg.available
@@ -389,7 +392,7 @@ function renderConf(items){
       (e.available ? '<div class="recommend-market">Gol attesi CONF · Casa '+safe(e.expectedGoals?.home)+' · Trasferta '+safe(e.expectedGoals?.away)+'</div><div class="recommend-note">Stima dai risultati recenti; le combo sotto usano questo modello.</div>' : '')+'</div>';
     const comboHtml=bestCombo
       ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🔗 Combo gol squadre · stima sperimentale</div><div class="recommend-market">Casa Over '+safe(bestCombo.homeOver)+' + Trasferta Over '+safe(bestCombo.awayOver)+' · '+safe(bestCombo.score)+'%</div><div class="recommend-note">Stima congiunta del modello, non una probabilità verificata. Quote non disponibili.</div></div>'
-      : '';
+      : (e.available ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🔗 Combo gol squadre</div><div class="recommend-market">Nessuna combo raggiunge il 70%</div><div class="recommend-note">Tutte le linee e le stime sono in Statistiche e analisi.</div></div>' : '');
     const comboDetails=combos.length
       ? '<details style="margin-top:10px"><summary style="cursor:pointer;font-weight:700">Altre combo Over casa + Over trasferta</summary><div class="time">'+combos.map(x=>'Casa Over '+safe(x.homeOver)+' + Trasferta Over '+safe(x.awayOver)+' · '+safe(x.score)+'%').join(' · ')+'</div></details>'
       : '';
