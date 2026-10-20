@@ -2,19 +2,23 @@ import 'dotenv/config';
 import express from 'express';
 import {readFileSync} from 'node:fs';
 import {LEAGUES,norm,romeDate,seasonStart,safeHistory,selectUpcoming,buildCornerMarkets,createDataClient} from './free-data.js';
+import {learnedSelection,cornerEvidence} from './selection-engine.js';
 import {buildContext,parseStandings} from './match-context.js';
 import {forecast,report} from './reliability.js';
 const archive=JSON.parse(readFileSync(new URL('./openfootball-benchmark.json',import.meta.url)));
 const benchmarkRows=archive.leagues;
+const learnedModel=JSON.parse(readFileSync(new URL('./selection-model.json',import.meta.url)));
+const selectionValidation=JSON.parse(readFileSync(new URL('./selection-validation.json',import.meta.url)));
 const contextComparison=JSON.parse(readFileSync(new URL('./model-comparison.json',import.meta.url)));
 export function createApp(client=createDataClient(),clock=()=>Date.now()){
  const app=express(),fixtures=new Map(),histories=new Map(); let lastCatalog=null;
  app.disable('x-powered-by');
  app.use((_req,res,next)=>{res.set('X-Content-Type-Options','nosniff');res.set('Referrer-Policy','no-referrer');next();});
  app.get('/',(_req,res)=>res.sendFile(new URL('./index.html',import.meta.url).pathname));
- app.get('/api/health',(_req,res)=>res.json({ok:true,app:'CONF Football',version:'0.6.0',mode:'free',paidProviders:false}));
+ app.get('/api/health',(_req,res)=>res.json({ok:true,app:'CONF Football',version:'0.7.0',mode:'free',paidProviders:false}));
+ app.get('/api/selection-validation',(_req,res)=>res.json(selectionValidation));
  app.get('/api/leagues',(_req,res)=>res.json({leagues:LEAGUES}));
- app.get('/api/conf-backtest',(_req,res)=>res.json({...report(benchmarkRows,clock()),source:archive.source,license:archive.license,retrievedAt:archive.retrievedAt,season:archive.season,contextComparison,usage:'Stagione precedente usata solo per test retrospettivo del modello. Le previsioni correnti usano solo la stagione in corso.'}));
+ app.get('/api/conf-backtest',(_req,res)=>res.json({...report(benchmarkRows,clock()),source:archive.source,license:archive.license,retrievedAt:archive.retrievedAt,season:archive.season,contextComparison,selectionValidation,usage:'Stagione precedente usata solo per test retrospettivo del modello. Le previsioni correnti usano solo la stagione in corso.'}));
  const toRows=games=>games.map(g=>[g.date.slice(0,10),g.homeId,g.awayId,g.homeGoals,g.awayGoals]);
  const unique=games=>[...new Map(games.map(g=>[g.id,g])).values()];
  async function catalog(date,force=false){
@@ -59,10 +63,13 @@ export function createApp(client=createDataClient(),clock=()=>Date.now()){
     const combined=unique([...home,...away]);
     const freq=(label,fn)=>{const hits=combined.filter(fn).length;return {label,hits,sample:combined.length,score:combined.length?Math.round(100*hits/combined.length):null,partial:!home.length||!away.length};};
     const markets={over25:freq('Over 2.5',g=>g.homeGoals+g.awayGoals>=3),btts:freq('GG',g=>g.homeGoals>0&&g.awayGoals>0)};
+    const sameLeague=unique([...hh,...aa].filter(g=>g.competitionMatched!==false));
+    const learned=learnedSelection(learnedModel,selectionValidation,toRows(safeHistory(sameLeague,Math.min(now,f.stamp))).sort((a,b)=>a[0].localeCompare(b[0])),f.homeId,f.awayId,f.leagueId);
+    if(learned.available&&learned.validation.betterThanPrevious&&prediction)prediction.over25=learned.probability;
     const estimates=prediction?Object.fromEntries(Object.entries(prediction).map(([k,v])=>[k,Math.round(v*100)])):null;
     const best=estimates?Object.entries(estimates).sort((a,b)=>b[1]-a[1])[0]:null;
     const context=buildContext(f,safeHistory(hh,Math.min(now,f.stamp)),safeHistory(aa,Math.min(now,f.stamp)),tables.get(f.leagueId)||[]);
-    return {...f,context,markets,estimate:estimates,samples:{home:home.length,away:away.length},recommendation:best?{market:best[0],score:best[1],qualified:prediction[best[0]]>=0.7,validated:false}:null,
+    return {...f,context,learnedSelection:learned,markets,estimate:estimates,samples:{home:home.length,away:away.length},recommendation:best?{market:best[0],score:best[1],qualified:prediction[best[0]]>=0.7,validated:false}:null,
      dataWarning:results.some(r=>r.status==='rejected')?'Storico parzialmente non disponibile.':null,cornerMarkets:null};
    }));
    analyzed.sort((a,b)=>(b.recommendation?.score??-1)-(a.recommendation?.score??-1)||a.stamp-b.stamp);
@@ -76,7 +83,7 @@ export function createApp(client=createDataClient(),clock=()=>Date.now()){
    if(f.stamp<=clock())return res.status(409).json({error:'Partita già iniziata.'});
    const [home,away]=await Promise.all([history(f,'home'),history(f,'away')]);
    const [h,a]=await Promise.all([client.corners(safeHistory(home,Math.min(clock(),f.stamp)),f.homeId),client.corners(safeHistory(away,Math.min(clock(),f.stamp)),f.awayId)]);
-   res.json(buildCornerMarkets(f.home,f.away,h,a));
+   const result=buildCornerMarkets(f.home,f.away,h,a);for(const m of result.markets)m.evidence=cornerEvidence(m);res.json(result);
   }catch(e){res.status(502).json({error:'Corner non disponibili: '+e.message});}
  });
  return app;

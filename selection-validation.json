@@ -1,0 +1,131 @@
+{
+  "protocol": {
+    "training": 2450,
+    "selection": 1733,
+    "calibration": 1651,
+    "test": 2624,
+    "testSeason": "2025-26",
+    "timeOrder": "Features use only strictly earlier dates within each season. No test-season outcomes are used for fitting, model selection or calibration.",
+    "source": "OpenFootball CC0; live inference uses ESPN, which requires separate forward monitoring."
+  },
+  "markets": {
+    "over25": {
+      "model": "logistic-C0.1",
+      "developmentBrier": {
+        "logistic-C0.1": 0.24716799959010247,
+        "logistic-C1": 0.24727033567085333,
+        "hist-gradient-boosting": 0.24667137122460345
+      },
+      "testCount": 2624,
+      "brier": 0.24461819959560518,
+      "baselineBrier": 0.24459278077839886,
+      "previousModelBrier": 0.24670338375066028,
+      "logLoss": 0.6821530802040775,
+      "selected70": {
+        "count": 17,
+        "hits": 16,
+        "hitRate": 0.9411764705882353,
+        "wilson95Lower": 0.730174547964372
+      },
+      "calibration": [
+        {
+          "from": 0,
+          "to": 0.5,
+          "count": 1014,
+          "predicted": 0.4653919123160605,
+          "observed": 0.5059171597633136
+        },
+        {
+          "from": 0.5,
+          "to": 0.6,
+          "count": 1345,
+          "predicted": 0.5413911619689062,
+          "observed": 0.5769516728624535
+        },
+        {
+          "from": 0.6,
+          "to": 0.7,
+          "count": 248,
+          "predicted": 0.6310895798857966,
+          "observed": 0.6411290322580645
+        },
+        {
+          "from": 0.7,
+          "to": 0.8,
+          "count": 17,
+          "predicted": 0.724813061793486,
+          "observed": 0.9411764705882353
+        },
+        {
+          "from": 0.8,
+          "to": 1,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "betterThanBaseline": false,
+      "betterThanPrevious": true,
+      "selectionEvidenceSufficient": false
+    },
+    "btts": {
+      "model": "logistic-C0.1",
+      "developmentBrier": {
+        "logistic-C0.1": 0.2488145566576245,
+        "logistic-C1": 0.24904607532838063,
+        "hist-gradient-boosting": 0.25170824147956344
+      },
+      "testCount": 2624,
+      "brier": 0.2455375119390687,
+      "baselineBrier": 0.2419901761402918,
+      "previousModelBrier": 0.24318001887942906,
+      "logLoss": 0.6842052639271942,
+      "selected70": {
+        "count": 0,
+        "hits": 0,
+        "hitRate": null,
+        "wilson95Lower": null
+      },
+      "calibration": [
+        {
+          "from": 0,
+          "to": 0.5,
+          "count": 73,
+          "predicted": 0.4944680248312697,
+          "observed": 0.5616438356164384
+        },
+        {
+          "from": 0.5,
+          "to": 0.6,
+          "count": 2551,
+          "predicted": 0.5300360786666992,
+          "observed": 0.5809486475891807
+        },
+        {
+          "from": 0.6,
+          "to": 0.7,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "from": 0.7,
+          "to": 0.8,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "from": 0.8,
+          "to": 1,
+          "count": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "betterThanBaseline": false,
+      "betterThanPrevious": false,
+      "selectionEvidenceSufficient": false
+    }
+  }
+}

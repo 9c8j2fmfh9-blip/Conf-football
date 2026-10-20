@@ -22,3 +22,17 @@ test('UI renders cards, keeps historical frequencies separate, filters and persi
   await waitFor(()=>requests.some(x=>x.includes('q=Juventus')&&x.includes('date=2026-10-21')));
  }finally{dom.window.close();}
 });
+test('automatic selection list shows goal evidence and stronger historical corner line',async()=>{
+ const f={...fixture,home:'A',learnedSelection:{available:true,probability:.72,score:72,validation:{thresholdHits:16,thresholdSample:17}},recommendation:{market:'over25',score:72,qualified:true}};
+ const dom=new JSDOM(html,{url:'http://localhost/',runScripts:'dangerously',beforeParse(w){
+  w.HTMLElement.prototype.scrollIntoView=()=>{};
+  w.fetch=async url=>({ok:true,json:async()=>String(url).includes('corners')?{markets:[{label:'A · Over 1.5 corner FT',score:100,hits:8,sample:8,evidence:{eligible:true,lower:75}},{label:'A · Over 2.5 corner FT',score:100,hits:8,sample:8,evidence:{eligible:true,lower:75}}],homeSample:8,awaySample:8,note:'Storico'}:{fixtures:[f],analyzedCount:1,returned:1,coverage:{available:25,total:25},warnings:[],updatedAt:'2026-10-20T12:00Z'}});
+ }});
+ try{
+  const d=dom.window.document;await waitFor(()=>d.getElementById('selection-list').textContent.includes('Over 2.5 corner'));
+  assert.ok(d.getElementById('selection-list').textContent.includes('16/17'));
+  assert.ok(!d.getElementById('selection-list').textContent.includes('Over 1.5 corner'));
+  d.getElementById('favorites').checked=true;d.getElementById('favorites').dispatchEvent(new dom.window.Event('change'));
+  assert.equal(d.querySelectorAll('.card').length,0);d.querySelector('[data-open-pick]').click();assert.equal(d.querySelectorAll('.card').length,1);
+ }finally{dom.window.close();}
+});

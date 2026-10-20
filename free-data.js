@@ -100,7 +100,7 @@ export function createDataClient(fetcher=globalThis.fetch) {
   if(!/^\d+$/.test(String(id)))throw new Error('ID squadra non valido');
   const body=await get(root+'all/teams/'+id+'/schedule?season='+year,60*60000);
   if(!Array.isArray(body.events))throw new Error('Storico squadra non disponibile');
-  return body.events.map(e=>parseEvent(e,league)).filter(Boolean);
+  return body.events.map(e=>{const parsed=parseEvent(e,league);if(!parsed)return null;const hint=norm([e.league?.name,e.seasonType?.name,e.season?.displayName].join(' ')).replaceAll(' ','');return {...parsed,competitionMatched:e.league?.slug?e.league.slug===league.id:hint.includes(norm(league.name).replaceAll(' ',''))};}).filter(Boolean);
  }
  async function corners(events,id){
   const recent=safeHistory(events).filter(e=>e.homeId===id||e.awayId===id).slice(-8).reverse();

@@ -40,3 +40,8 @@ test('transient upstream failures retry once without inventing data',async()=>{
  let n=0;const client=createDataClient(async()=>{n++;if(n===1)throw Error('socket reset');return {ok:true,json:async()=>({events:[]})};});
  assert.deepEqual(await client.calendar(league,'20261020'),[]);assert.equal(n,2);
 });
+test('team history identifies domestic games separately from cups',async()=>{
+ const make=slug=>({id:slug,date:'2026-10-01T12:00Z',league:{slug,name:slug},competitions:[{date:'2026-10-01T12:00Z',status:{type:{state:'post',name:'STATUS_FULL_TIME',completed:true}},competitors:[{homeAway:'home',team:{id:'1'},score:'2'},{homeAway:'away',team:{id:'2'},score:'1'}]}]});
+ const client=createDataClient(async()=>({ok:true,json:async()=>({events:[make('eng.1'),make('eng.fa')]})}));
+ const games=await client.teamHistory(league,'1',2026);assert.deepEqual(games.map(g=>g.competitionMatched),[true,false]);
+});
