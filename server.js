@@ -10,6 +10,23 @@ const CACHE_TTL_MS = 60 * 1000; // Cache breve: evita stati LIVE obsoleti nelle 
 
 app.use(express.static('.'));
 
+const apiFootballKey = process.env.API_FOOTBALL_KEY || process.env.API_FOOTBALL_API_KEY || process.env.APISPORTS_KEY || '';
+const secondaryCache = new Map();
+async function apiFootball(path, params = {}) {
+  if (!apiFootballKey) return null;
+  const url = new URL('https://v3.football.api-sports.io/' + path);
+  for (const [k, v] of Object.entries(params)) if (v !== undefined && v !== '') url.searchParams.set(k, String(v));
+  const key = url.toString();
+  const cached = secondaryCache.get(key);
+  if (cached && Date.now() - cached.time < 6 * 60 * 60 * 1000) return cached.value;
+  const response = await fetch(url, { headers: { 'x-apisports-key': apiFootballKey } });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok || (body.errors && Object.keys(body.errors).length)) throw new Error('API-Football non disponibile o quota esaurita');
+  secondaryCache.set(key, { value: body, time: Date.now() });
+  return body;
+}
+
+
 async function openFoot(path, params = {}) {
   const url = new URL(base + path);
   for (const [key, value] of Object.entries(params)) {
@@ -495,6 +512,34 @@ app.get('/api/conf', async (req, res) => {
         return [...dateCalls.flat(), ...teamMatches, ...taggedSeasonMatches];
       }));
       allDayMatches = [...allDayMatches, ...entityMatches.flat()];
+    }
+
+
+    // Optional, targeted second provider. Never consume its limited quota for the main CONF feed.
+    if (query && /(?:youth\\s*league|uefa\\s*youth)/i.test(query) && apiFootballKey) {
+      try {
+        const leagues = (await apiFootball('leagues', { search: 'Youth League' }))?.response || [];
+        const league = leagues.find(x => /youth league/i.test(x.league?.name || ''));
+        const season = league?.seasons?.filter(x => x.year <= Number((requestedDate || today).slice(0, 4))).sort((a, b) => b.year - a.year)[0]?.year;
+        if (league && season) {
+          const extra = await apiFootball('fixtures', { league: league.league.id, season, date: requestedDate || today, timezone: 'Europe/Rome' });
+          const converted = (extra?.response || []).map(x => ({
+            id: 'apisports_' + x.fixture.id,
+            kickoffAt: x.fixture.date,
+            status: x.fixture.status?.short || 'NS',
+            homeTeam: { id: 'apisports_' + x.teams.home.id, name: x.teams.home.name },
+            awayTeam: { id: 'apisports_' + x.teams.away.id, name: x.teams.away.name },
+            competition: { id: 'apisports_' + x.league.id, name: x.league.name, country: x.league.country },
+            competitionId: 'apisports_' + x.league.id,
+            competitionName: x.league.name,
+            country: x.league.country,
+            score: { home: x.goals.home, away: x.goals.away }
+          }));
+          allDayMatches.push(...converted);
+        }
+      } catch (_) {
+        // The primary provider and existing CONF functionality must remain available.
+      }
     }
 
     // Normalize both OpenFootAPI's current schema and its legacy fixture/teams schema
