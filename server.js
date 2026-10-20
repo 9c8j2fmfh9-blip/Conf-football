@@ -441,8 +441,8 @@ app.get('/api/conf', async (req, res) => {
     // L'endpoint /matches filtra per data: interroghiamo oggi e domani,
     // poi selezioniamo solo i kickoff compresi nelle prossime N ore.
     const datesToFetch = query && requestedDate ? [requestedDate] : [today, tomorrow];
-    // A plain date request may return only the first page (often already-finished games).
-    // Ask explicitly for scheduled matches as well; this is a supported Starter filter.
+    // The provider can return a limited preview. Also request scheduled fixtures,
+    // then deduplicate; this does not guarantee complete coverage.
     const dateBodies = await Promise.all(datesToFetch.map(date => openFoot('/matches', { date })));
     const scheduledBodies = await Promise.all(datesToFetch.map(date =>
       openFoot('/matches', { date, status: 'scheduled' }).catch(() => ({}))
@@ -687,12 +687,16 @@ app.get('/api/conf', async (req, res) => {
         }
         return { hits, sample: sample.length, rate: sample.length ? hits / sample.length : null };
       };
-      const hW = resultRate(homeAll, homeId, 'W');
-      const hD = resultRate(homeAll, homeId, 'D');
-      const hL = resultRate(homeAll, homeId, 'L');
-      const aW = resultRate(awayAll, awayId, 'W');
-      const aD = resultRate(awayAll, awayId, 'D');
-      const aL = resultRate(awayAll, awayId, 'L');
+      // 1X2 uses home/away-specific results when there are at least 3
+      // relevant games, consistently with Over 2.5 and GG.
+      const homeResults = homeVenue.length >= 3 ? homeVenue : homeAll;
+      const awayResults = awayVenue.length >= 3 ? awayVenue : awayAll;
+      const hW = resultRate(homeResults, homeId, 'W');
+      const hD = resultRate(homeResults, homeId, 'D');
+      const hL = resultRate(homeResults, homeId, 'L');
+      const aW = resultRate(awayResults, awayId, 'W');
+      const aD = resultRate(awayResults, awayId, 'D');
+      const aL = resultRate(awayResults, awayId, 'L');
       const rateMarket = (label, a, b) => {
         // Each side contributes equally: the home team's result and the away team's
         // opposite result. Keep actual hits; never fabricate a hit count from a rounded score.
@@ -700,7 +704,9 @@ app.get('/api/conf', async (req, res) => {
         const valid = a.rate !== null && b.rate !== null;
         const score = valid ? Math.round(100 * (a.rate + b.rate) / 2) : null;
         return { label, score, hits: valid ? a.hits + b.hits : 0, sample,
-          method: 'Media delle frequenze delle due squadre', teamRates: valid ? [a.rate, b.rate] : [] };
+          method: 'Media delle frequenze delle due squadre (casa/trasferta se disponibili)',
+          teamRates: valid ? [a.rate, b.rate] : [],
+          venueSamples: { home: a.sample, away: b.sample } };
       };
       const one = rateMarket('1 · vittoria casa (forma)', hW, aL);
       const draw = rateMarket('X · pareggio (forma)', hD, aD);
