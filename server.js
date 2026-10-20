@@ -670,45 +670,6 @@ async function recentTeamFixtures(teamId,matchStart,count=4) {
     ['FT','AET','PEN'].includes(x.fixture?.status?.short)).slice(0,count);
 }
 // Every detailed lookup is on user demand, cached for 6 hours to protect daily API quotas.
-app.get('/api/player-shots',async(req,res)=>{
-  const input=inputMatch(req,res);if(!input)return;
-  if(!apiFootballKey)return res.json({players:[],warning:'API-Football non configurata.'});
-  const cacheKey='players:'+JSON.stringify(input),cached=detailCache.get(cacheKey);
-  if(cached && Date.now()-cached.at<21600000)return res.json(cached.value);
-  try {
-    const match=await apiFootballMatch(input.home,input.away,input.date);
-    if(!match)return res.json({players:[],warning:'Partita non presente in API-Football; nessuna statistica verificabile.'});
-    const playerMap=new Map();
-    let matchesChecked=0;
-    for(const side of ['home','away']) {
-      const team=match.teams[side],history=await recentTeamFixtures(team.id,Date.parse(match.fixture.date),4);
-      for(const previous of history) {
-        matchesChecked++;
-        const stats=(await apiFootball('fixtures/players',{fixture:previous.fixture.id}))?.response || [];
-        const entry=stats.find(x=>Number(x.team?.id)===Number(team.id));
-        for(const p of entry?.players || []) {
-          const shot=p.statistics?.[0]?.shots?.on;
-          const minutes=p.statistics?.[0]?.games?.minutes;
-          if(shot==null||minutes==null||!Number.isFinite(Number(shot)))continue;
-          const key=team.id+':'+(p.player?.id||p.player?.name);
-          if(!playerMap.has(key))playerMap.set(key,{name:p.player?.name,team:team.name,sample:0,hits:0,hits2:0,totalOn:0});
-          const record=playerMap.get(key);record.sample++;
-          record.hits+=Number(shot)>=1?1:0;
-          record.hits2+=Number(shot)>=2?1:0;
-          record.totalOn+=Number(shot);
-        }
-      }
-    }
-    const players=[...playerMap.values()].map(x=>({
-      ...x,score:Math.round(100*x.hits/x.sample),score2:Math.round(100*x.hits2/x.sample),
-      average:Number((x.totalOn/x.sample).toFixed(2)),qualified:x.sample>=3&&x.hits/x.sample>=0.7
-    })).sort((a,b)=>b.sample-a.sample||b.score-a.score);
-    const value={players,source:'API-Football · fino a 4 partite precedenti per squadra',matchesChecked,
-      warning:players.length?'Dati descrittivi sulle presenze; non confermano la formazione titolare e non sono probabilità calibrate.':
-      'Il piano API non ha restituito dati individuali verificabili.'};
-    detailCache.set(cacheKey,{at:Date.now(),value});return res.json(value);
-  }catch(e){return res.json({players:[],warning:'Dati individuali non disponibili: '+e.message});}
-});
 function statNumber(v) {
   if (v===null||v===undefined||v==='')return null;
   const n=Number(v);return Number.isFinite(n)?n:null;
@@ -717,18 +678,31 @@ function halfCornerValues(response,teamId) {
   const entry=(Array.isArray(response)?response:[]).find(x=>Number(x.team?.id)===Number(teamId));
   if(!entry)return null;
   const stats=entry.statistics||[];
-  // API-Sports may deliver statistics separately with half identifiers,
-  // or a split object under a Corner Kicks item. Do not infer halves from FT.
+  // The half=true API response can contain independent first/second period
+  // blocks, or a structured value. Ignore unlabeled FT corner totals.
   let first=null,second=null;
-  for(const stat of stats) {
-    if(!/corner/i.test(String(stat.type||'')))continue;
-    const period=String(stat.half||stat.period||stat.time||'').toLowerCase();
-    if(['1','1h','first','firsthalf','first half','half1'].includes(period))first=statNumber(stat.value);
-    if(['2','2h','second','secondhalf','second half','half2'].includes(period))second=statNumber(stat.value);
-    if(stat.value && typeof stat.value==='object') {
-      const v=stat.value;
-      first ??= statNumber(v.firstHalf??v.first_half??v.first??v['1']);
-      second ??= statNumber(v.secondHalf??v.second_half??v.second??v['2']);
+  function pick(block, fallbackPeriod='') {
+    if(!block||typeof block!=='object')return;
+    const name=String(block.type||block.name||'');
+    if(!/corner/i.test(name))return;
+    const value=block.value;
+    const period=String(block.half||block.period||block.time||block.segment||fallbackPeriod).toLowerCase();
+    const firstHalf=/^(1|1h|1st|first|firsthalf|first half|half1|ht)$/.test(period);
+    const secondHalf=/^(2|2h|2nd|second|secondhalf|second half|half2)$/.test(period);
+    if(firstHalf)first=statNumber(value);
+    if(secondHalf)second=statNumber(value);
+    if(value && typeof value==='object') {
+      first ??= statNumber(value.firstHalf??value.first_half??value.first??value['1']);
+      second ??= statNumber(value.secondHalf??value.second_half??value.second??value['2']);
+    }
+  }
+  if(Array.isArray(stats))for(const stat of stats) {
+    if(Array.isArray(stat.statistics))for(const inner of stat.statistics)pick(inner,stat.period||stat.half||'');
+    else pick(stat);
+  }
+  else if(stats && typeof stats==='object') {
+    for(const [period,entries] of Object.entries(stats)) {
+      if(Array.isArray(entries))for(const item of entries)pick(item,period);
     }
   }
   return first!==null&&second!==null?{first,second}:null;
