@@ -450,7 +450,18 @@ function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
     if(i+j>2)over25+=p;
     if(i>0&&j>0)gg+=p;
   }
-  return { available:true, validated:false, model:'Poisson sperimentale con medie gol corrette per piccolo campione', expectedGoals:{home:Number(h.toFixed(2)),away:Number(a.toFixed(2))}, estimates:{one:Math.round(one*100),draw:Math.round(draw*100),two:Math.round(two*100),over25:Math.round(over25*100),btts:Math.round(gg*100)}, samples:{home:home.sample,away:away.sample}, warning:'STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa.' };
+  // Team-goal combinations use the JOINT score distribution, not an unjustified
+  // multiplication of two rounded market percentages.
+  const combos=[];
+  for(const homeMin of [1,2,3]) for(const awayMin of [1,2,3]) {
+    let probability=0;
+    for(let i=homeMin;i<=15;i++) for(let j=awayMin;j<=15;j++)
+      probability+=poisson(h,i)*poisson(a,j);
+    combos.push({homeOver:(homeMin-0.5).toFixed(1),awayOver:(awayMin-0.5).toFixed(1),
+      score:Math.round(probability*100),homeMin,awayMin});
+  }
+  combos.sort((a,b)=>b.score-a.score || (b.homeMin+b.awayMin)-(a.homeMin+a.awayMin));
+  return { available:true, validated:false, model:'Poisson sperimentale con medie gol corrette per piccolo campione', expectedGoals:{home:Number(h.toFixed(2)),away:Number(a.toFixed(2))}, teamGoalCombos:combos, estimates:{one:Math.round(one*100),draw:Math.round(draw*100),two:Math.round(two*100),over25:Math.round(over25*100),btts:Math.round(gg*100)}, samples:{home:home.sample,away:away.sample}, warning:'STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa.' };
 }
 
 
