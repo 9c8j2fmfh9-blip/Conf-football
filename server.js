@@ -592,12 +592,44 @@ app.get('/api/conf', async (req, res) => {
       });
       if (!primaryFound && apiFootballKey) {
         try {
-          // One daily fixture request, not one request per team or league.
-          // With a specified date this remains useful for EFL searches.
-          const targetDate = requestedDate || today;
-          const apiData = await apiFootball('fixtures', { date: targetDate, timezone: 'Europe/Rome' });
-          const apiRows = Array.isArray(apiData?.response) ? apiData.response : [];
-          const converted = apiRows.map(x => ({
+          // Discover fixtures separately from historical analysis. Query the
+          // date catalog first; if an explicitly named English league is
+          // missing, resolve its real league ID rather than guessing IDs.
+          const days = requestedDate ? [requestedDate] : [today, tomorrow];
+          const found = [];
+          let inspected = 0;
+          for (const targetDate of days) {
+            const daily = await apiFootball('fixtures', { date: targetDate, timezone: 'Europe/Rome' });
+            const entries = Array.isArray(daily?.response) ? daily.response : [];
+            inspected += entries.length;
+            found.push(...entries);
+          }
+          const belongs = x => englishCompetition
+            ? normSearch(x.league?.country) === 'england' &&
+              normSearch(x.league?.name).includes(englishCompetition)
+            : matchesQuery({
+                homeTeam: x.teams?.home, awayTeam: x.teams?.away,
+                competitionName: x.league?.name, country: x.league?.country
+              });
+          let matched = found.filter(belongs);
+          if (!matched.length && englishCompetition) {
+            const leaguesResult = await apiFootball('leagues', { search: englishCompetition });
+            const leagues = Array.isArray(leaguesResult?.response) ? leaguesResult.response : [];
+            const league = leagues.find(x => normSearch(x.country?.name) === 'england' &&
+              normSearch(x.league?.name).includes(englishCompetition));
+            if (league) {
+              for (const targetDate of days) {
+                const year = Number(targetDate.slice(0, 4));
+                const month = Number(targetDate.slice(5, 7));
+                const season = month < 7 ? year - 1 : year;
+                const single = await apiFootball('fixtures', {
+                  league: league.league.id, season, date: targetDate, timezone: 'Europe/Rome'
+                });
+                matched.push(...(Array.isArray(single?.response) ? single.response : []).filter(belongs));
+              }
+            }
+          }
+          const converted = matched.filter(x => x?.fixture?.id && x?.teams?.home && x?.teams?.away).map(x => ({
             id: 'apisports_' + x.fixture.id,
             kickoffAt: x.fixture.date,
             status: x.fixture.status?.short || 'NS',
@@ -607,20 +639,11 @@ app.get('/api/conf', async (req, res) => {
             competitionId: 'apisports_' + x.league.id,
             competitionName: x.league.name,
             country: x.league.country,
-            score: { home: x.goals.home, away: x.goals.away }
+            score: { home: x.goals?.home, away: x.goals?.away }
           }));
-          // The API may label EFL League One "League One"; avoid other
-          // countries' competitions with the same name.
-          const filtered = converted.filter(m => {
-            if (englishCompetition) {
-              const name = normSearch(m.competitionName);
-              const country = normSearch(m.country);
-              return country === 'england' && name.includes(englishCompetition);
-            }
-            return matchesQuery(m);
-          });
-          allDayMatches.push(...filtered);
-          secondaryStatus = 'fixtures_returned_' + filtered.length;
+          allDayMatches.push(...converted);
+          secondaryStatus = 'fixtures_returned_' + converted.length + '_from_' + inspected;
+
         } catch (error) {
           secondaryStatus = 'provider_error: ' + error.message;
         }
@@ -689,7 +712,10 @@ app.get('/api/conf', async (req, res) => {
       })
       .sort((a, b) => new Date(a.kickoffAt || a.date || a.utcDate || 0) - new Date(b.kickoffAt || b.date || b.utcDate || 0))
       .slice(0, Math.min(40, Math.max(limit, limit * 2)));
-    const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)]).filter(Boolean))];
+    // API-Football IDs are not valid OpenFootAPI team IDs. Display those
+    // fixtures even without stats instead of making misleading provider calls.
+    const teamIds = [...new Set(upcoming.flatMap(m => [teamId(m.homeTeam || m.home), teamId(m.awayTeam || m.away)])
+      .filter(id => id && !String(id).startsWith('apisports_')))];
     const forms = new Map();
     const warnings = [];
     let teamCursor = 0;
