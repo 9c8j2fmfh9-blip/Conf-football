@@ -640,6 +640,58 @@ app.get('/api/debug-fixtures', async (req, res) => {
   } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
 });
 
+
+/**
+ * Optional on-demand player shot-on-target history. No estimated individual
+ * shot percentages and no request on the automatic CONF feed.
+ * A single click costs at most 9 API-Sports calls (subject to cache).
+ */
+app.get('/api/player-shots', async (req,res) => {
+  const home = String(req.query.home || '').trim();
+  const away = String(req.query.away || '').trim();
+  const date = String(req.query.date || '').slice(0,10);
+  if (!home || !away || home.length>90 || away.length>90 || !/^\d{4}-\d{2}-\d{2}$/.test(date))
+    return res.status(400).json({ error:'Indica squadre e data valide.' });
+  if (!apiFootballKey) return res.json({ players:[], warning:'API-Football non configurata. Dati individuali non disponibili.' });
+  try {
+    const exact = n => n.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+    const matches = (await apiFootball('fixtures',{ date, timezone:'Europe/Rome' }))?.response || [];
+    const match = matches.find(x =>
+      exact(x.teams?.home?.name || '') === exact(home) && exact(x.teams?.away?.name || '') === exact(away));
+    if (!match) return res.json({players:[],warning:'La seconda API non identifica questa partita: nessuna statistica individuale verificabile.'});
+    const out=[];
+    for (const side of ['home','away']) {
+      const team=match.teams[side];
+      const history=(await apiFootball('fixtures',{team:team.id,last:3}))?.response || [];
+      const played=history.filter(x=>new Date(x.fixture?.date).getTime()<new Date(match.fixture.date).getTime() &&
+        ['FT','AET','PEN'].includes(x.fixture?.status?.short)).slice(0,3);
+      const byPlayer=new Map();
+      for (const previous of played) {
+        const stats=(await apiFootball('fixtures/players',{fixture:previous.fixture.id}))?.response || [];
+        const entry=stats.find(x=>Number(x.team?.id)===Number(team.id));
+        for (const p of (entry?.players || [])) {
+          const on=p.statistics?.[0]?.shots?.on;
+          const playedMinutes=p.statistics?.[0]?.games?.minutes;
+          if (on===null || on===undefined || playedMinutes===null || playedMinutes===undefined) continue;
+          const id=String(p.player?.id || p.player?.name);
+          if (!byPlayer.has(id)) byPlayer.set(id,{name:p.player?.name,team:team.name,sample:0,hits:0,totalOn:0});
+          const record=byPlayer.get(id);
+          record.sample++; record.hits+=Number(on)>=1?1:0; record.totalOn+=Number(on)||0;
+        }
+      }
+      out.push(...[...byPlayer.values()].filter(x=>x.sample>0).map(x=>({
+        ...x,score:Math.round(100*x.hits/x.sample),average:Number((x.totalOn/x.sample).toFixed(2))
+      })));
+    }
+    out.sort((a,b)=>b.sample-a.sample || b.score-a.score);
+    res.json({players:out,source:'API-Football · ultime 3 gare disputate',warning:out.length ?
+      'Frequenze individuali storiche, non pronostici; controlla le formazioni ufficiali. Campione massimo 3 presenze.' :
+      'Il piano API non restituisce statistiche individuali utilizzabili per le gare recenti.'});
+  } catch(e) {
+    res.json({players:[],warning:'Statistiche individuali non disponibili: '+e.message});
+  }
+});
+
 app.get('/api/conf', async (req, res) => {
   // Recover gracefully if a pasted URL accidentally encodes all query parameters inside q.
   const rawQuery = String(req.query.q || '').trim();
