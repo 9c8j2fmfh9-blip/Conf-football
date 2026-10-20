@@ -1,53 +1,39 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 process.env.NODE_ENV='test';
-const {app}=await import('../server.js');
-const server=app.listen(0,'127.0.0.1');
-await new Promise(resolve=>server.once('listening',resolve));
+const {createApp}=await import('../server.js');
+const now=Date.parse('2026-10-20T12:00Z');
+const game=(i,extra={})=>({id:'f'+i,date:'2026-10-20T18:00:00Z',stamp:Date.parse('2026-10-20T18:00Z'),homeId:'h'+i,awayId:'a'+i,home:'Test '+i,away:'Away '+i,league:'Test Cup',leagueId:'eng.1',country:'England',status:'NS',...extra});
+const old=(id,i)=>game(id+i,{id:id+i,homeId:id,awayId:'opponent',homeGoals:2,awayGoals:1,date:`2026-10-${String(i+1).padStart(2,'0')}T12:00Z`,stamp:Date.parse(`2026-10-${String(i+1).padStart(2,'0')}T12:00Z`),status:'FT'});
+const fake={calendar:async(l)=>l.id==='eng.1'?[...Array.from({length:45},(_,i)=>game(i)),game('live',{status:'OTHER'}),game('past',{stamp:now-1}),game(0)]:[],teamHistory:async(l,id)=>Array.from({length:8},(_,i)=>old(id,i)),corners:async(events,id)=>events.map(e=>({id:e.id,own:5,total:9}))};
+const app=createApp(fake,()=>now),server=app.listen(0,'127.0.0.1');await new Promise(r=>server.once('listening',r));
 const base=()=>`http://127.0.0.1:${server.address().port}`;
-test.after(()=>server.close());
-test('public UI loads and private source/data stay private',async()=>{
+test.after(()=>{server.closeAllConnections();server.close();});
+test('public UI loads; code, private data and environment stay private',async()=>{
  assert.equal((await fetch(base())).status,200);
- for(const path of ['/server.js','/package.json','/team-stats-2627.json','/.env'])assert.equal((await fetch(base()+path)).status,404);
+ for(const path of ['/server.js','/package.json','/openfootball-snapshot.json','/.env'])assert.equal((await fetch(base()+path)).status,404);
 });
-test('backtest endpoint returns measured, unvalidated results',async()=>{
- const r=await fetch(base()+'/api/conf-backtest');
- assert.equal(r.status,200);
- const data=await r.json();
- assert.equal(data.validated,false);
- assert.equal(Object.keys(data.leagues).length,3);
- assert.ok(Object.values(data.leagues).every(l=>l.backtestedFixtures>0));
+test('45 future fixtures analyzed before display limit; duplicates and live excluded',async()=>{
+ const r=await fetch(base()+'/api/conf?q=Test&hours=24&limit=20');const d=await r.json();
+ assert.equal(r.status,200);assert.equal(d.analyzedCount,45);assert.equal(d.fixtures.length,20);
+ assert.ok(d.fixtures.every(f=>f.status==='NS'&&f.estimate));
 });
-test('missing half-corner API key does not fabricate percentages',async()=>{
- const r=await fetch(base()+'/api/corners-halves?home=A&away=B&date=2026-10-20');
- const data=await r.json();
- assert.deepEqual(data.markets,[]);
+test('query searches whole source set, not only displayed cards',async()=>{
+ const d=await (await fetch(base()+'/api/conf?q=Test%2044')).json();
+ assert.equal(d.fixtures.length,1);assert.equal(d.fixtures[0].home,'Test 44');
 });
-test('CONF analyzes beyond the first 40 fixtures, follows cursors and rejects live fixtures',async()=>{
- const native=globalThis.fetch;
- const future=new Date(Date.now()+3600000).toISOString();
- const matches=Array.from({length:45},(_,i)=>({id:'fixture_'+i,status:'scheduled',kickoffAt:future,homeTeam:{id:'h'+i,name:'Test '+i},awayTeam:{id:'a'+i,name:'Away '+i},competitionName:'Test Cup'}));
- matches.push({...matches[0],id:'live',status:'live'});
- let cursors=0;
- globalThis.fetch=async(url,options)=>{
-  if(!String(url).startsWith('https://openfootapi.com/'))return native(url,options);
-  const u=new URL(url);let body={data:[]};
-  if(u.pathname.endsWith('/matches')){
-   if(u.searchParams.has('team')){
-    const id=u.searchParams.get('team');
-    body={data:Array.from({length:7},(_,i)=>({id:id+'_'+i,status:'finished',kickoffAt:new Date(Date.now()-(i+1)*86400000).toISOString(),homeTeam:{id},awayTeam:{id:'other'},score:{home:2,away:1}}))};
-   }else if(u.searchParams.has('cursor')){cursors++;body={data:matches.slice(30)};}
-   else body={data:matches.slice(0,30),meta:{pagination:{next_cursor:'next'}}};
-  }
-  return new Response(JSON.stringify(body),{status:200,headers:{'Content-Type':'application/json'}});
- };
- try{
-  const r=await native(base()+'/api/conf?q=Test&hours=3&limit=20');
-  assert.equal(r.status,200);
-  const body=await r.json();
-  assert.equal(body.analyzedCount,45);
-  assert.equal(body.fixtures.length,20);
-  assert.ok(cursors>0);
-  assert.ok(body.fixtures.every(f=>f.status==='NS'&&f.experimentalEstimate.available));
- }finally{globalThis.fetch=native;}
+test('corner response uses explicit historical data and never estimates periods',async()=>{
+ const d=await (await fetch(base()+'/api/corners?fixture=f44')).json();
+ assert.equal(d.homeSample,8);assert.equal(d.awaySample,8);assert.equal(d.markets[0].score,100);
+ assert.ok(d.markets.every(m=>/FT/.test(m.label)));
+});
+test('backtest endpoint uses licensed, fetched previous-season benchmark',async()=>{
+ const r=await fetch(base()+'/api/conf-backtest');const d=await r.json();
+ assert.equal(r.status,200);assert.equal(d.validated,false);assert.equal(d.license,'CC0-1.0');
+ assert.equal(Object.keys(d.leagues).length,8);assert.ok(Object.values(d.leagues).some(l=>l.backtestedFixtures>0));
+});
+test('free health and invalid input checks',async()=>{
+ assert.equal((await (await fetch(base()+'/api/health')).json()).paidProviders,false);
+ assert.equal((await fetch(base()+'/api/conf?date=no')).status,400);
+ assert.equal((await fetch(base()+'/api/corners?fixture=not-found')).status,404);
 });
