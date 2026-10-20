@@ -362,13 +362,28 @@ function renderConf(items){
       : bestMarket
         ? '<div class="recommend"><div class="recommend-title">📊 Miglior dato storico · NON qualificato</div><div class="recommend-market">'+safe(bestMarket.label)+' · '+safe(bestMarket.score)+'%</div><div class="recommend-note">'+safe(bestMarket.hits)+' su '+safe(bestMarket.sample)+' gare storiche. '+(bestMarket.partial ? 'Dato parziale: manca lo storico di una squadra. Non qualificabile come consiglio CONF.' : 'Non è una scommessa consigliata: non raggiunge tutti i requisiti CONF ≥70% e campione minimo 6.')+'</div></div>'
         : '<div class="recommend"><div class="recommend-title">📊 Dati storici insufficienti</div><div class="recommend-market">Nessun mercato valutabile</div><div class="recommend-note">Il provider non ha restituito risultati storici utilizzabili per questa partita.</div></div>';
+
+    const corners = f.cornerMarkets || {markets:[],note:'Dati corner non disponibili'};
+    const foundCorners=(corners.markets||[]).filter(m=>m.score!==null);
+    const cornerHtml = '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🚩 Corner FT · '+foundCorners.length+' mercati</summary>'+
+      '<p class="time">Frequenze storiche sul tempo pieno. Non disponibili corner separati per primo e secondo tempo.</p>'+
+      (foundCorners.length?'<div style="display:grid;gap:8px">'+foundCorners.map(m=>
+        '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+
+        '<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare</div></span>'+
+        '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
+        :'<p class="time">Dati corner verificati insufficienti.</p>')+
+      '<p class="time">'+safe(corners.note||'')+'</p></details>';
+    const playerHtml = '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🎯 Tiri in porta dei giocatori</summary>'+
+      '<p class="time">Dati individuali disponibili soltanto quando il provider li restituisce.</p>'+
+      '<button type="button" data-player-id="'+safe(f.fixtureId)+'">Controlla statistiche giocatori</button>'+
+      '<div class="time" data-player-result="'+safe(f.fixtureId)+'"></div></details>';
     return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'SOGLIA ≥70 RAGGIUNTA' : 'sotto soglia 70'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
       const pct = m.score === null ? 0 : Math.max(0,Math.min(100,Number(m.score)||0));
       return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
-    }).join('')+'</div></article>';
+    }).join('')+'</div>'+cornerHtml+playerHtml+'</article>';
   }).join('');
 }
 async function loadConf(){
@@ -486,6 +501,33 @@ if(localStorage.getItem(HISTORY_TOKEN_KEY)) checkFinalResults(true);
 $('#reload').addEventListener('click',loadConf);
 $('#search-button').addEventListener('click',loadConf);
 $('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();loadConf();}});
+
+document.addEventListener('click',async e=>{
+  const button=e.target.closest('[data-player-id]');
+  if(!button)return;
+  const id=button.getAttribute('data-player-id');
+  const item=confItems.find(f=>String(f.fixtureId)===id);
+  const root=button.parentElement.querySelector('[data-player-result]');
+  if(!item||!root)return;
+  button.disabled=true;
+  root.textContent='Recupero storico individuale disponibile…';
+  try {
+    const params=new URLSearchParams({home:item.home,away:item.away,date:String(item.date).slice(0,10)});
+    const response=await fetch('/api/player-shots?'+params.toString());
+    const data=await response.json();
+    if(!response.ok)throw Error(data.error||'Errore servizio');
+    const players=data.players||[];
+    root.innerHTML=players.length
+      ? '<div style="display:grid;gap:7px">'+players.map(p=>
+          '<div class="conf-row"><span>'+safe(p.name)+' · '+safe(p.team)+
+          '<div class="time">'+safe(p.hits)+'/'+safe(p.sample)+' presenze con almeno 1 tiro in porta · media '+safe(p.average)+'</div></span>'+
+          '<strong>'+safe(p.score)+'%</strong></div>').join('')+'</div>'
+      : '<p>Statistiche individuali non disponibili per questa partita.</p>';
+    if(data.warning)root.innerHTML+='<p>'+safe(data.warning)+'</p>';
+  }catch(error){root.textContent='Dati giocatori non disponibili: '+error.message;}
+  finally{button.disabled=false;}
+});
+
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
 const analyzeButton = $('#analyze'); if(analyzeButton) analyzeButton.addEventListener('click',loadConf);
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
