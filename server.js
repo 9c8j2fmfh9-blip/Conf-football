@@ -478,7 +478,7 @@ app.get('/api/conf-backtest', (_req, res) => {
         const aAll=(seen.get(awayId)||[]).slice(-10).reverse();
         const hV=hAll.filter(g=>g.homeTeam.id===homeId);
         const aV=aAll.filter(g=>g.awayTeam.id===awayId);
-        const est=experimentalGoalEstimate(hV.length>=3?hV:hAll,aV.length>=3?aV:aAll,homeId,awayId);
+        const est=experimentalGoalEstimate(hV.length>=6?hV:hAll,aV.length>=6?aV:aAll,homeId,awayId);
         if(est.available) {
           const score=goals(game);
           const truth={one:Number(score.home>score.away),draw:Number(score.home===score.away),two:Number(score.home<score.away),over25:Number(score.home+score.away>=3),btts:Number(score.home>0&&score.away>0)};
@@ -1309,7 +1309,7 @@ app.get('/api/conf', async (req, res) => {
         markets: {
           one, draw, two, over25, btts
         },
-        experimentalEstimate: experimentalGoalEstimate(homeSample, awaySample, homeId, awayId),
+        experimentalEstimate: experimentalGoalEstimate(homeVenue.length>=6?homeVenue:homeAll.filter(completed), awayVenue.length>=6?awayVenue:awayAll.filter(completed), homeId, awayId),
         cornerMarkets: buildCornerMarkets(teamName(homeTeam),teamName(awayTeam),m.competitionId || m.competition?.id || '', Date.parse(kickoff) || now)
       };
     });
