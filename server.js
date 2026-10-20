@@ -557,7 +557,7 @@ app.get('/api/conf', async (req, res) => {
     const datesToFetch = query && requestedDate ? [requestedDate] : [today, tomorrow];
     // The provider can return a limited preview. Also request scheduled fixtures,
     // then deduplicate; this does not guarantee complete coverage.
-    const dateBodies = await Promise.all(datesToFetch.map(date => openFoot('/matches', { date })));
+    const dateBodies = await Promise.all(datesToFetch.map(date => openFoot('/matches', { date }).catch(error => ({ response: [], providerError: error.message }))));
     const scheduledBodies = await Promise.all(datesToFetch.map(date =>
       openFoot('/matches', { date, status: 'scheduled' }).catch(() => ({}))
     ));
