@@ -340,7 +340,7 @@ function renderConf(items){
   confItems = items;
   const root = $('#conf-results');
   const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
-  const eligible = f => visibleMarkets(f).some(m => m.score !== null && m.score >= 70 && m.sample >= 6);
+  const eligible = f => visibleMarkets(f).some(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial);
   const selected = confOnlyQualified ? items.filter(eligible) : items;
   if(!selected.length){
     root.innerHTML = confOnlyQualified ? '<div class="empty">Nessun mercato raggiunge CONF ≥70% con almeno 6 risultati storici per le partite selezionate.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
@@ -353,8 +353,8 @@ function renderConf(items){
   });
   root.innerHTML = ordered.map(f => {
     const allMarkets = visibleMarkets(f);
-    const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6));
-    const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6).sort(byEvidence)[0];
+    const markets = allMarkets.filter(m => !confOnlyQualified || (m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial));
+    const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
     const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
     const recommendationHtml = recommendation
@@ -392,7 +392,7 @@ async function loadConf(){
       if(savedCount > 0) await syncHistory();
       await checkFinalResults(true);
     }
-    const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6)).length;
+    const qualified = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial)).length;
     const valid = (data.fixtures || []).filter(f => Object.values(f.markets || {}).some(m => m.score !== null)).length;
     if($('#total')) $('#total').textContent = data.analyzedCount || (data.fixtures || []).length;
     if($('#upcoming')) $('#upcoming').textContent = qualified;
