@@ -118,7 +118,7 @@ function buildCornerMarkets(home, away, leagueId, beforeTimestamp) {
     const hits = sample.filter(predicate).length;
     result.markets.push({
       label, score:sample.length ? Math.round(100*hits/sample.length) : null,
-      hits, sample:sample.length, qualified:sample.length>=6 && hits/sample.length>=0.7
+      hits, sample:sample.length, qualified:sample.length>=6 && hits/sample.length>=0.6
     });
   };
   for (const line of [2,3,4,5]) {
@@ -862,7 +862,7 @@ app.get('/api/corners-halves',async(req,res)=>{
       markets.push({
         label:(side==='home'?input.home:input.away)+' · '+(half==='first'?'1°':'2°')+' tempo · '+line+'+ corner',
         score:rows.length?Math.round(100*hits/rows.length):null,
-        hits,sample:rows.length,qualified:rows.length>=3&&hits/rows.length>=0.7,
+        hits,sample:rows.length,qualified:rows.length>=3&&hits/rows.length>=0.6,
         half,side,line
       });
     }
@@ -1367,7 +1367,7 @@ app.get('/api/conf', async (req, res) => {
         cornerMarkets: buildCornerMarkets(teamName(homeTeam),teamName(awayTeam),m.competitionId || m.competition?.id || '', Date.parse(kickoff) || now)
       };
     });
-    // Classifica per qualità dell'evidenza: prima i mercati che superano CONF 70%
+    // Classifica per qualità dell'evidenza: prima i mercati che superano CONF 60%
     // con almeno 6 gare, poi i dati utilizzabili con campione sufficiente, infine gli altri.
     const marketList = f => Object.values(f.markets || {}).filter(m => m.score !== null);
     for (const f of fixtures) {
@@ -1385,7 +1385,7 @@ app.get('/api/conf', async (req, res) => {
       };
       const better = (best, m) => !best || evidenceScore(m) > evidenceScore(best) ||
         (evidenceScore(m) === evidenceScore(best) && m.sample > best.sample) ? m : best;
-      const qualified = ms.filter(m => m.score >= 70 && m.sample >= 6 && !m.partial);
+      const qualified = ms.filter(m => m.score >= 60 && m.sample >= 6 && !m.partial);
       const enoughSample = ms.filter(m => m.sample >= 6 && !m.partial);
       const bestQualified = qualified.reduce(better, null);
       const bestEvidence = enoughSample.reduce(better, null);
@@ -1396,7 +1396,7 @@ app.get('/api/conf', async (req, res) => {
         sample: bestQualified?.sample ?? bestEvidence?.sample ?? bestAny?.sample ?? 0,
         evidence: Math.round(100 * Math.max(0, evidenceScore(bestQualified || bestEvidence || bestAny || {}))),
         qualified: Boolean(bestQualified),
-        basis: bestQualified ? 'Mercato ≥70% con almeno 6 gare' : bestEvidence ? 'Miglior frequenza con almeno 6 gare, sotto soglia' : bestAny ? 'Campione insufficiente' : 'Nessun dato storico'
+        basis: bestQualified ? 'Mercato ≥60% con almeno 6 gare' : bestEvidence ? 'Miglior frequenza con almeno 6 gare, sotto soglia' : bestAny ? 'Campione insufficiente' : 'Nessun dato storico'
       };
       // Punteggio solo per ordinare le schede, non è una probabilità.
       f.rankScore = f.ranking.tier * 10000 + f.ranking.evidence * 100 + Math.min(f.ranking.sample, 10);
@@ -1417,7 +1417,7 @@ app.get('/api/conf', async (req, res) => {
     res.json({
       secondaryStatus, windowHours: hours, query: query || null, date: query && requestedDate ? requestedDate : null, from: new Date(now).toISOString(), until: new Date(cutoff).toISOString(), warnings,
       method: 'Le schede sono ordinate per qualificazione CONF e solidità statistica (limite inferiore di Wilson), penalizzando i campioni piccoli. Le percentuali sono frequenze descrittive, non probabilità predittive calibrate.',
-      threshold: 70, limit, analyzedCount, fixtures,
+      threshold: 60, limit, analyzedCount, fixtures,
       preview: { returned: allDayMatches.length, totalAvailable: providerTotal || null, partial: Boolean(metaToday?.scope?.partial || metaTomorrow?.scope?.partial) || (providerTotal > 0 && allDayMatches.length < providerTotal), paginationAvailable: false },
       note: (query ? 'Ricerca provider per “' + query + '” integrata nell’analisi CONF. ' : 'Lista generale ') + 'Oggi e domani, filtrati sulle prossime ' + hours + ' ore. Se il provider limita l’anteprima, il sito non può mostrare le gare che l’API non restituisce. Quote non disponibili nel piano Starter; non vengono inventate.'
     });
