@@ -340,7 +340,8 @@ function renderConf(items){
   confItems = items;
   const root = $('#conf-results');
   const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
-  const eligible = f => visibleMarkets(f).some(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial);
+  const qualifies = m => m && m.score !== null && Number(m.score) >= 70 && Number(m.sample) >= 6 && !m.partial;
+  const eligible = f => visibleMarkets(f).some(qualifies) || (f.cornerMarkets?.markets || []).some(qualifies);
   const selected = confOnlyQualified ? items.filter(eligible) : items;
   if(!selected.length){
     root.innerHTML = confOnlyQualified ? '<div class="empty">Nessun mercato raggiunge CONF ≥70% con almeno 6 risultati storici per le partite selezionate.</div>' : '<div class="empty">Nessuna partita non ancora iniziata trovata per questa data. Cambia data e riprova.</div>';
@@ -357,6 +358,14 @@ function renderConf(items){
     const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 70 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
     const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
     const date = f.date ? new Date(f.date).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
+    // Corner recommendations are evaluated separately from 1X2 / goals.
+    // Minimum 6 observed matches and 70% descriptive frequency, not a
+    // forecast. Never combine probabilities or imply bookmaker availability.
+    const cornerQualified=(f.cornerMarkets?.markets||[]).filter(qualifies).sort(byEvidence);
+    const bestCorner=cornerQualified[0] || null;
+    const cornerRecommendationHtml=bestCorner
+      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Corner consigliato · FT</div><div class="recommend-market">'+safe(bestCorner.label)+' · '+safe(bestCorner.score)+'%</div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare storiche · soglia CONF ≥70% raggiunta · frequenza descrittiva</div></div>'
+      : '';
     const recommendationHtml = recommendation
       ? '<div class="recommend"><div class="recommend-title">🎯 Scommessa consigliata</div><div class="recommend-market">'+safe(recommendation.label)+' · '+safe(recommendation.score)+'%</div><div class="recommend-note">'+safe(recommendation.sample)+' gare storiche · selezione basata sulla solidità del campione · soglia CONF ≥70% raggiunta</div></div>'
       : bestMarket
@@ -373,7 +382,7 @@ function renderConf(items){
         '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
         :'<p class="time">Dati corner verificati insufficienti.</p>')+
       '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Apri la sezione per verificare i dati storici separati per tempo.</div>'+ '</details>';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
+    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 70 ? 'SOGLIA ≥70 RAGGIUNTA' : 'sotto soglia 70'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
@@ -526,6 +535,17 @@ document.addEventListener('toggle',async e=>{
         ).join('')+'</div>':'<p class="time">Dati per tempo non disponibili dal provider.</p>');
     };
     root.innerHTML=renderHalf('first','Corner 1° tempo')+renderHalf('second','Corner 2° tempo');
+    const qualifiedHalf=markets.filter(m=>m.sample>=6 && m.score>=70 && !m.partial).sort(byEvidence);
+    const bestFirst=qualifiedHalf.find(m=>m.half==='first');
+    const bestSecond=qualifiedHalf.find(m=>m.half==='second');
+    const container=section.closest('.match')?.querySelector('[data-half-recommend]');
+    if(container){
+      const cards=[bestFirst,bestSecond].filter(Boolean);
+      container.innerHTML=cards.map(m=>'<div class="recommend" style="margin-top:8px">'+
+        '<div class="recommend-title">🚩 Corner consigliato · '+(m.half==='first'?'1°':'2°')+' tempo</div>'+
+        '<div class="recommend-market">'+safe(m.label)+' · '+safe(m.score)+'%</div>'+
+        '<div class="recommend-note">'+safe(m.hits)+' su '+safe(m.sample)+' gare · soglia CONF ≥70% · frequenza storica</div></div>').join('');
+    }
     if(data.warning)root.innerHTML+='<p class="time">'+safe(data.warning)+'</p>';
   }catch(error){root.textContent='Corner per tempo non disponibili: '+error.message;}
 },true);
