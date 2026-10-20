@@ -37,3 +37,8 @@ test('only returns tickets within the declared range and excludes events once st
  f[1].date=new Date(now).toISOString();
  assert.equal(buildDailyMultiples(f,sheet(f),{now}).tickets[0].available,false);
 });
+test('prefers less burden from low prices among feasible combinations of the same confidence tier',()=>{
+ const f=[make('madrid',67,1.2),make('sporting',66,1.8),make('villa',64,1.6),make('betis',62,1.62),make('brugge',62,1.4),make('kyoto',60,1.65)];
+ const t=buildDailyMultiples(f,sheet(f),{now}).tickets[0];
+ assert.equal(t.totalOdds,10.78);assert.ok(!t.legs.some(l=>l.fixtureId==='madrid'));
+});

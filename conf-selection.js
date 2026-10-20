@@ -2,7 +2,7 @@
 // This is a screening heuristic, not a calibrated prediction or value-bet model.
 export function selectFixture(fixture, threshold = 60) {
   const estimate = fixture.experimentalEstimate || {};
-  const labels = {one:'1 · vittoria casa', draw:'X · pareggio', two:'2 · vittoria trasferta', over25:'Over 2.5 FT', btts:'GG'};
+  const labels = {one:'1 · vittoria casa', draw:'X · pareggio', two:'2 · vittoria trasferta', over25:'Over 2.5 FT', btts:'GG',over35:'Over 3.5 FT',bttsOver25:'GG + Over 2.5 FT'};
   const candidates = [];
   if (estimate.available && Number(estimate.samples?.home) >= 6 && Number(estimate.samples?.away) >= 6) {
     for (const [key, label] of Object.entries(labels)) {

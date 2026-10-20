@@ -4,6 +4,7 @@ import { selectFixture } from './conf-selection.js';
 import { openDataConf } from './open-data.js';
 import {getSisalOdds,matchProposalOdds} from './sisal-odds.js';
 import {buildDailyMultiples} from './daily-multiples.js';
+import {pricedSelection} from './priced-selection.js';
 import { readFileSync } from 'node:fs';
 
 const app = express();
@@ -485,12 +486,14 @@ function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
     let f=1; for(let i=2;i<=k;i++)f*=i;
     return Math.exp(-lambda)*Math.pow(lambda,k)/f;
   };
-  let one=0,draw=0,two=0,over25=0,gg=0;
+  let one=0,draw=0,two=0,over25=0,gg=0,over35=0,bttsOver25=0;
   for(let i=0;i<=15;i++)for(let j=0;j<=15;j++){
     const p=poisson(h,i)*poisson(a,j);
     if(i>j)one+=p;else if(i===j)draw+=p;else two+=p;
     if(i+j>2)over25+=p;
+    if(i+j>3)over35+=p;
     if(i>0&&j>0)gg+=p;
+    if(i>0&&j>0&&i+j>2)bttsOver25+=p;
   }
   // Team-goal combinations use the JOINT score distribution, not an unjustified
   // multiplication of two rounded market percentages.
@@ -503,7 +506,7 @@ function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
       score:Math.round(probability*100),homeMin,awayMin});
   }
   combos.sort((a,b)=>b.score-a.score || (b.homeMin+b.awayMin)-(a.homeMin+a.awayMin));
-  return { available:true, validated:false, model:'Poisson sperimentale con medie gol corrette per piccolo campione', expectedGoals:{home:Number(h.toFixed(2)),away:Number(a.toFixed(2))}, teamGoalCombos:combos, estimates:{one:Math.round(one*100),draw:Math.round(draw*100),two:Math.round(two*100),over25:Math.round(over25*100),btts:Math.round(gg*100)}, samples:{home:home.sample,away:away.sample}, warning:'STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa.' };
+  return { available:true, validated:false, model:'Poisson sperimentale con medie gol corrette per piccolo campione', expectedGoals:{home:Number(h.toFixed(2)),away:Number(a.toFixed(2))}, teamGoalCombos:combos, estimates:{one:Math.round(one*100),draw:Math.round(draw*100),two:Math.round(two*100),over25:Math.round(over25*100),btts:Math.round(gg*100),over35:Math.round(over35*100),bttsOver25:Math.round(bttsOver25*100)}, samples:{home:home.sample,away:away.sample}, warning:'STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa.' };
 }
 
 
@@ -515,7 +518,7 @@ function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
 app.get('/api/conf-backtest', (_req, res) => {
   try {
     const stats = {};
-    const markets = ['one','draw','two','over25','btts'];
+    const markets = ['one','draw','two','over25','btts','over35','bttsOver25'];
     for (const [league, rows] of Object.entries(eflBundled.leagues || {})) {
       const games = rows.filter(x => /^\d+$/.test(String(x[3])) && /^\d+$/.test(String(x[4])))
         .map(([date,h,a,hg,ag],i)=>({
@@ -534,7 +537,7 @@ app.get('/api/conf-backtest', (_req, res) => {
         const est=experimentalGoalEstimate(hV.length>=6?hV:hAll,aV.length>=6?aV:aAll,homeId,awayId);
         if(est.available) {
           const score=goals(game);
-          const truth={one:Number(score.home>score.away),draw:Number(score.home===score.away),two:Number(score.home<score.away),over25:Number(score.home+score.away>=3),btts:Number(score.home>0&&score.away>0)};
+          const truth={one:Number(score.home>score.away),draw:Number(score.home===score.away),two:Number(score.home<score.away),over25:Number(score.home+score.away>=3),btts:Number(score.home>0&&score.away>0),over35:Number(score.home+score.away>=4),bttsOver25:Number(score.home>0&&score.away>0&&score.home+score.away>=3)};
           evaluated.push({ date:game.date, probabilities:est.estimates, truth });
         }
         // Update after processing the COMPLETE date, to avoid same-date leakage.
@@ -892,10 +895,10 @@ app.get('/api/corners-halves',async(req,res)=>{
 app.get('/api/proposal-odds', async (req,res)=>{
  try {
   const data=openDataConf(req.query,experimentalGoalEstimate);
-  const proposals=data.fixtures.filter(f=>f.selection?.primary);
+  const proposals=data.fixtures;
   const sheet=proposals.length?await getSisalOdds():null;
   res.json({source:'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,
-   fixtures:proposals.map(f=>({fixtureId:f.fixtureId,market:f.selection.primary.key,odds:matchProposalOdds(f,sheet)}))});
+   fixtures:proposals.map(f=>{const result=pricedSelection(f,sheet);return {fixtureId:f.fixtureId,market:result.primary?.key||null,...result};})});
  } catch {res.status(503).json({error:'Quote momentaneamente non disponibili',fixtures:[]});}
 });
 
@@ -1369,6 +1372,8 @@ app.get('/api/conf', async (req, res) => {
       };
       const over25 = pairedFrequency('Over 2.5 FT', x => { const sc = goals(x); return sc.home + sc.away >= 3; });
       const btts = pairedFrequency('GG', x => { const sc = goals(x); return sc.home > 0 && sc.away > 0; });
+      const over35 = pairedFrequency('Over 3.5 FT', x => { const sc = goals(x); return sc.home + sc.away >= 4; });
+      const bttsOver25 = pairedFrequency('GG + Over 2.5 FT', x => { const sc = goals(x); return sc.home > 0 && sc.away > 0 && sc.home + sc.away >= 3; });
       // 1X2 is a transparent descriptive indicator based on recent form, not a calibrated forecast.
       const resultRate = (matches, id, outcome) => {
         const sample = matches.filter(completed);
@@ -1418,7 +1423,7 @@ app.get('/api/conf', async (req, res) => {
           away: { recentOverall: teamPerspective(awayAll, awayId), selected: teamPerspective(awayAll, awayId), selectedVenue: 'ultime gare disponibili', selectedSample: awayAll.length }
         },
         markets: {
-          one, draw, two, over25, btts
+          one, draw, two, over25, btts, over35, bttsOver25
         },
         experimentalEstimate: experimentalGoalEstimate(homeVenue.length>=6?homeVenue:homeAll.filter(completed), awayVenue.length>=6?awayVenue:awayAll.filter(completed), homeId, awayId),
         cornerMarkets: buildCornerMarkets(teamName(homeTeam),teamName(awayTeam),m.competitionId || m.competition?.id || '', Date.parse(kickoff) || now)
@@ -1564,7 +1569,9 @@ app.post('/api/history/settle', async (req, res) => {
       const sc = goals(match);
       const market = String(item.market || '').toLowerCase();
       let won = null;
-      if (market.includes('over') && market.includes('2.5')) won = sc.home + sc.away >= 3;
+      if (market.includes('over') && market.includes('2.5') && (market.includes('gg') || market.includes('entrambe'))) won = sc.home > 0 && sc.away > 0 && sc.home + sc.away >= 3;
+      else if (market.includes('over') && market.includes('3.5')) won = sc.home + sc.away >= 4;
+      else if (market.includes('over') && market.includes('2.5')) won = sc.home + sc.away >= 3;
       else if (market === 'gg' || market.includes('entrambe')) won = sc.home > 0 && sc.away > 0;
       else if (market.startsWith('x') || market.includes('pareggio')) won = sc.home === sc.away;
       else if (market.startsWith('2') || market.includes('vittoria trasferta')) won = sc.away > sc.home;

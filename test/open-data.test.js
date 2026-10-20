@@ -37,6 +37,22 @@ test('daily selection can inspect all fixtures regardless of the card display li
  assert.equal(all.fixtures.filter(f=>f.selection.qualified).length,all.selectedCount);
  assert.ok(all.fixtures.length>limited.fixtures.length);
 });
+test('new markets measure the joint outcome, including the 1-1 and 3-0 boundaries',()=>{
+ const lines=['date,home,away,ft_home,ft_away'];
+ const scores=[[3,0],[1,1],[2,1],[3,1],[3,0],[1,1],[2,1],[3,1]];
+ scores.forEach(([h,a],i)=>{const day=String(i+1).padStart(2,'0');lines.push(`2026-10-${day},A,OtherA,${h},${a}`,`2026-10-${day},B,OtherB,${h},${a}`)});
+ const snapshot={generatedAt:'2026-10-20T12:00:00Z',leagues:[{id:'test',name:'Test',country:'Test',updatedAt:'2026-10-20T12:00:00Z',fixturesCsv:'date,time,home,away\n2026-10-21,20:00,A,B',resultsCsv:lines.join('\n')}]};
+ const fixture=openDataConf({date:'2026-10-21'},estimate,{now,data:snapshot}).fixtures[0];
+ assert.equal(fixture.markets.over35.score,25);assert.equal(fixture.markets.bttsOver25.score,50);
+ assert.equal(fixture.markets.over25.score,75);assert.equal(fixture.markets.btts.score,75);
+ const p=fixture.experimentalEstimate.estimates;
+ assert.ok(p.over35<=p.over25);assert.ok(p.bttsOver25<=p.btts&&p.bttsOver25<=p.over25);
+ // The combo is GG minus the 1-1 score, not GG multiplied by Over 2.5.
+ const shrink=x=>(x*8+1.3*6)/14;
+ const h=Math.sqrt(shrink(2.25)*shrink(.75)),a=h;
+ const expected=Math.round(100*((1-Math.exp(-h))*(1-Math.exp(-a))-Math.exp(-h-a)*h*a));
+ assert.equal(p.bttsOver25,expected);
+});
 test('stale data and future results cannot qualify a prediction',()=>{
  const snapshot=JSON.parse(fs.readFileSync('open-data-snapshot.json','utf8'));
  snapshot.generatedAt='2026-10-01T00:00:00Z';snapshot.leagues=snapshot.leagues.map(l=>({...l,updatedAt:snapshot.generatedAt}));

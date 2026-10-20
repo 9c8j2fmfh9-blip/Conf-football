@@ -116,7 +116,9 @@ function marketsFor(home,away,homeId,awayId){
  draw:['X · pareggio',m=>m.score.home===m.score.away,m=>m.score.home===m.score.away],
  two:['2 · vittoria trasferta',m=>{const[a,b]=own(m,homeId);return a<b;},m=>{const[a,b]=own(m,awayId);return a>b;}],
  over25:['Over 2.5 FT',m=>m.score.home+m.score.away>=3,m=>m.score.home+m.score.away>=3],
- btts:['GG',m=>m.score.home>0&&m.score.away>0,m=>m.score.home>0&&m.score.away>0]};
+ btts:['GG',m=>m.score.home>0&&m.score.away>0,m=>m.score.home>0&&m.score.away>0],
+ over35:['Over 3.5 FT',m=>m.score.home+m.score.away>=4,m=>m.score.home+m.score.away>=4],
+ bttsOver25:['GG + Over 2.5 FT',m=>m.score.home>0&&m.score.away>0&&m.score.home+m.score.away>=3,m=>m.score.home>0&&m.score.away>0&&m.score.home+m.score.away>=3]};
  return Object.fromEntries(Object.entries(definitions).map(([key,[label,h,a]])=>{
   const hh=home.filter(h).length,ah=away.filter(a).length,valid=home.length>0&&away.length>0;
   const rates=valid?[hh/home.length,ah/away.length]:[];

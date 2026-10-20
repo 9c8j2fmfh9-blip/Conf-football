@@ -66,6 +66,23 @@ await vm.runInContext('loadProposalOdds(new URLSearchParams(),confLoadSequence)'
 assert.ok(!oddsRoot.innerHTML.includes('1,33'));
 console.log('PASS: asynchronous proposal odds show the exact market and cannot reuse another market’s price.');
 
+// A correctly priced alternative must update both the displayed label and its
+// percentage. Never pair the old 72% with the new combo's higher price.
+fixtures[0].experimentalEstimate.estimates.bttsOver25=62;
+fixtures[0].markets.bttsOver25={label:'GG + Over 2.5 FT',score:65,sample:20,venueSamples:{home:10,away:10},teamRates:[.6,.7]};
+fixtures[0].selection=selectFixture(fixtures[0]);
+incoming.fixtures[0]={fixtureId:'selected',market:'bttsOver25',primary:fixtures[0].selection.candidates.find(p=>p.key==='bttsOver25'),odds:{sisal:{available:true,market:'bttsOver25',value:1.62}}};
+context.fetch=async()=>({ok:true,json:async()=>incoming});
+await vm.runInContext('loadProposalOdds(new URLSearchParams(),confLoadSequence)',context);
+assert.equal(fixtures[0].selection.primary.key,'bttsOver25');
+assert.ok(el('#conf-results').innerHTML.includes('GG + Over 2.5 FT'));
+assert.ok(el('#conf-results').innerHTML.includes('62%'));assert.ok(oddsRoot.innerHTML.includes('1,62'));
+incoming.fixtures[0]={...incoming.fixtures[0],market:'over35',primary:{key:'over35'},odds:{sisal:{available:true,market:'over35',value:2.5}}};
+await vm.runInContext('loadProposalOdds(new URLSearchParams(),confLoadSequence)',context);
+assert.equal(fixtures[0].selection.primary.key,'bttsOver25');
+assert.ok(!oddsRoot.innerHTML.includes('2,50'));
+console.log('PASS: repricing replaces the label and the percentage together, and cannot promote an unqualified market.');
+
 const daily={eligibleCount:2,tickets:[{target:10,available:true,totalOdds:10.25,legs:[{home:'Casa',away:'Ospite',date:'2026-10-21T19:00:00Z',label:'GG',score:75,odds:2.05}]},{target:100,available:false,reason:'Quote insufficienti'}]};
 context.daily=daily;vm.runInContext('renderDailyMultiples(daily)',context);
 assert.ok(el('#daily-multiples-results').innerHTML.includes('10,25'));

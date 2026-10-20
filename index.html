@@ -124,7 +124,7 @@ function saveRecommendations(fixtures){
   const history = readHistory();
   const known = new Set(history.map(x => x.id));
   let added = 0;
-  const marketKeys = ['one','draw','two','over25','btts'];
+  const marketKeys = ['one','draw','two','over25','btts','over35','bttsOver25'];
   for(const f of fixtures){
     if(!f.fixtureId) continue;
     for(const key of marketKeys){
@@ -364,35 +364,47 @@ function proposalOddsHtml(odds,market){
  const label=valid ? 'Sisal <strong>'+safe(sisal.value.toFixed(2).replace('.',','))+'</strong>' : 'Sisal · non disponibile';
  const time=valid && sisal.sourceUpdatedAt ? new Date(sisal.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
  return '<div class="odds-chips"><span class="odds-chip">'+label+'</span><span class="time" title="Collegamento automatico non disponibile">Bet365 · non disponibile</span></div>'+
-  (valid ? '<div class="time">Foglio Sisal · '+safe(time)+' · quote soggette a variazioni</div>' : '<div class="time">'+safe(sisal?.reason||'Quota non verificata per questa giocata')+'</div>');
+  (valid ? '<div class="time">Foglio Sisal · '+safe(time)+' · quote soggette a variazioni</div>'+(sisal.belowMinimum?'<div class="time">Sotto quota 1,60 · nessuna alternativa qualificata da 1,60</div>':'') : '<div class="time">'+safe(sisal?.reason||'Quota non verificata per questa giocata')+'</div>');
 }
 async function loadProposalOdds(params,requestId){
  const apply=data=>{
   if(requestId!==confLoadSequence)return;
   const byId=new Map((data.fixtures||[]).map(f=>[String(f.fixtureId),f]));
   for(const fixture of confItems){
-   const market=fixture.selection?.primary?.key;
-   if(!market)continue;
    const result=byId.get(String(fixture.fixtureId));
-   fixture.proposalOdds=result?.market===market?result.odds:{sisal:{available:false,reason:'Quota non verificata per questa giocata'}};
+   const candidate=(fixture.selection?.candidates||[]).find(p=>p.key===result?.primary?.key);
+   if(candidate&&result?.market===candidate.key&&result.odds?.sisal?.available&&result.odds.sisal.market===candidate.key){fixture.selection.primary=candidate;fixture.selection.reason=candidate.reason;fixture.rankScore=candidate.evidence;}
+   const market=fixture.selection?.primary?.key;
+   fixture.proposalOdds=result&&market&&result.market===market?result.odds:{sisal:{available:false,reason:'Quota non verificata per questa giocata'}};
+   fixture.alternativeOdds=result?.alternatives||['over35','bttsOver25'].map(key=>({key,odds:{sisal:{available:false,reason:'Quota non verificata per questa giocata'}}}));
   }
+  renderConf(confItems);
   document.querySelectorAll('[data-proposal-odds]').forEach(root=>{
    const fixture=confItems.find(f=>String(f.fixtureId)===root.getAttribute('data-proposal-odds'));
    if(fixture)root.innerHTML=proposalOddsHtml(fixture.proposalOdds,fixture.selection?.primary?.key);
   });
  };
- if(!confItems.some(f=>f.selection?.primary))return;
+ if(!confItems.length)return;
  try{
   const response=await fetch('/api/proposal-odds?'+params.toString(),{cache:'no-store',signal:AbortSignal.timeout(45000)});
   const data=await response.json();if(!response.ok)throw Error('Quote non disponibili');apply(data);
  }catch{apply({fixtures:[]});}
+}
+function extraGoalMarketsHtml(f){
+ return '<details><summary>Over 3.5 e GG + Over 2.5 · percentuali e quote</summary>'+['over35','bttsOver25'].map(key=>{
+  const label=key==='over35'?'Over 3.5 FT':'GG + Over 2.5 FT';
+  const predicted=f.experimentalEstimate?.estimates?.[key],history=f.markets?.[key]?.score;
+  const qualified=f.selection?.candidates?.some(p=>p.key===key);
+  const odds=f.alternativeOdds?.find(a=>a.key===key)?.odds;
+  return '<div class="multiple-leg"><b>'+label+'</b><div class="time">Stima '+(Number.isFinite(predicted)?safe(predicted)+'%':'non disponibile')+' · storico '+(Number.isFinite(history)?safe(history)+'%':'non disponibile')+' · '+(qualified?'qualificata':'non qualificata')+'</div>'+proposalOddsHtml(odds,key)+'</div>';
+ }).join('')+'</details>';
 }
 function renderDailyMultiples(data){
  const root=$('#daily-multiples-results');
  if(!data?.tickets?.length){root.innerHTML='<div class="empty">Multiple non disponibili: riprova con Aggiorna.</div>';return;}
  $('#daily-multiples-method').textContent=data.method||'';
  const stamp=data.sourceUpdatedAt?new Date(data.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'';
- $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · '+data.eligibleCount+' proposte con quota verificata · Sisal'+(stamp?' · foglio '+stamp:'')+' · obiettivo ±10%';
+ $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · '+data.eligibleCount+' proposte con quota verificata · minimo singola '+Number(data.minimumOdds||1.6).toFixed(2).replace('.',',')+' · Sisal'+(stamp?' · fogli dal '+stamp:'')+' · obiettivo ±10%';
  root.innerHTML=data.tickets.map(ticket=>{
   const title='<div class="multiple-head"><span>Obiettivo quota '+safe(ticket.target)+'</span><strong>'+(ticket.available?safe(ticket.totalOdds.toFixed(2).replace('.',',')):'—')+'</strong></div>';
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';
@@ -414,7 +426,7 @@ async function loadDailyMultiples(selectedDate,requestId){
 function renderConf(items){
   confItems = items;
   const root = $('#conf-results');
-  const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts'].includes(key)).map(([,m]) => m);
+  const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts','over35','bttsOver25'].includes(key)).map(([,m]) => m);
   const qualifies = m => m && m.score !== null && Number(m.score) >= 60 && Number(m.sample) >= 6 && !m.partial;
   const eligible = f => (f.selection || selectFixture(f)).qualified;
   const selected = confOnlyQualified ? items.filter(eligible) : items;
@@ -468,7 +480,7 @@ function renderConf(items){
       ? '<details style="margin-top:10px"><summary style="cursor:pointer;font-weight:700">Altre combo Over casa + Over trasferta</summary><div class="time">'+combos.map(x=>'Casa Over '+safe(x.homeOver)+' + Trasferta Over '+safe(x.awayOver)+' · '+safe(x.score)+'%').join(' · ')+'</div></details>'
       : '';
     const experimentalHtml=e.available
-      ? '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🧪 Stima sperimentale · NON validata</summary><p class="time">Modello Poisson basato sulle medie gol: 1 '+safe(e.estimates?.one)+'% · X '+safe(e.estimates?.draw)+'% · 2 '+safe(e.estimates?.two)+'% · Over 2.5 '+safe(e.estimates?.over25)+'% · GG '+safe(e.estimates?.btts)+'%. Gol attesi del modello: '+safe(e.expectedGoals?.home)+' / '+safe(e.expectedGoals?.away)+'.</p><p class="time">'+safe(e.warning)+'</p></details>'
+      ? '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">🧪 Stima sperimentale · NON validata</summary><p class="time">Modello Poisson basato sulle medie gol: 1 '+safe(e.estimates?.one)+'% · X '+safe(e.estimates?.draw)+'% · 2 '+safe(e.estimates?.two)+'% · Over 2.5 '+safe(e.estimates?.over25)+'% · GG '+safe(e.estimates?.btts)+'% · Over 3.5 '+safe(e.estimates?.over35)+'% · GG + Over 2.5 '+safe(e.estimates?.bttsOver25)+'%. Gol attesi del modello: '+safe(e.expectedGoals?.home)+' / '+safe(e.expectedGoals?.away)+'.</p><p class="time">'+safe(e.warning)+'</p></details>'
       : '<div class="time" style="margin-top:10px">🧪 Stima sperimentale non disponibile: '+safe(e.reason || 'dati insufficienti')+'</div>';
     const corners = f.cornerMarkets || {markets:[],note:'Dati corner non disponibili'};
     const foundCorners=(corners.markets||[]).filter(m=>m.score!==null);
@@ -480,7 +492,7 @@ function renderConf(items){
         '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
         :'<p class="time">Dati corner verificati insufficienti.</p>')+
       '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Il dettaglio per tempo dipende dalla disponibilità della fonte.</div>'+ '</details>';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote non considerate. '+safe(f.dataUpdatedAt ? 'Archivio aggiornato: '+new Date(f.dataUpdatedAt).toLocaleString('it-IT',{timeZone:'Europe/Rome'}) : '')+'</p>'+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary>'+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
+    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote verificate usate per cercare alternative alle quote basse. '+safe(f.dataUpdatedAt ? 'Archivio aggiornato: '+new Date(f.dataUpdatedAt).toLocaleString('it-IT',{timeZone:'Europe/Rome'}) : '')+'</p>'+extraGoalMarketsHtml(f)+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary>'+cornerRecommendationHtml+'<div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 60 ? 'frequenza storica ≥60 · non predittiva' : 'sotto soglia 60'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
@@ -625,7 +637,7 @@ async function loadBacktest(){
   const r=await fetch('/api/conf-backtest'); const data=await r.json();
   if(!r.ok)throw Error(data.error||'Errore');
   const label={'league one':'League One','league two':'League Two','championship':'Championship'};
-  const metrics={one:'1',draw:'X',two:'2',over25:'Over 2.5',btts:'GG'};
+  const metrics={one:'1',draw:'X',two:'2',over25:'Over 2.5',btts:'GG',over35:'Over 3.5',bttsOver25:'GG + Over 2.5'};
   root.innerHTML='<p>Risultati storici, controllo retrospettivo senza usare partite di date successive. Valore Brier più basso = migliore. Non è ancora una validazione esterna.</p>'+
    Object.entries(data.leagues||{}).map(([league,l])=>'<div style="margin-bottom:12px"><strong>'+safe(label[league]||league)+'</strong> · '+safe(l.backtestedFixtures)+' partite testate su '+safe(l.historicalFixtures)+' storiche'+
     (l.backtestedFixtures?'<div class="time">'+Object.entries(metrics).map(([key,name])=>{const m=l.measurements?.[key];return name+': '+(m?.brier===null?'—':safe(m?.brier))+' vs base '+(m?.baselineBrier===null?'—':safe(m?.baselineBrier))+' '+(m?.betterThanBaseline?'✓':'');}).join(' · ')+'</div>':'<div class="time">Campione insufficiente per una verifica.</div>')+'</div>').join('')+
