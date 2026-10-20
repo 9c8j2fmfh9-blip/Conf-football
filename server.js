@@ -896,7 +896,9 @@ app.get('/api/conf', async (req, res) => {
     'championship': 'championship', 'efl championship': 'championship',
     'national league': 'national league'
   };
-  const normalizedQuery = normSearch(query);
+  const rawNormalizedQuery = normSearch(query);
+  const championsRequested = ['champions league','champion league','uefa champions league','champions','ucl','champions ligue'].includes(rawNormalizedQuery);
+  const normalizedQuery = championsRequested ? 'champions league' : rawNormalizedQuery;
   const englishCompetition = eflAliases[normalizedQuery] || '';
   const searchTerms = (englishCompetition || normalizedQuery).split(/\s+/).filter(Boolean);
   const now = Date.now();
@@ -927,7 +929,7 @@ app.get('/api/conf', async (req, res) => {
       // Resolve the typed team/competition through OpenFootAPI, then fetch matches by stable IDs.
       let searchItems = [];
       try {
-        searchItems = rows(await openFoot('/search', { q: query }));
+        searchItems = rows(await openFoot('/search', { q: championsRequested ? 'UEFA Champions League' : query }));
       } catch (_) {
         // Competition search must still work when the provider's /search endpoint fails.
       }
@@ -941,7 +943,7 @@ app.get('/api/conf', async (req, res) => {
       // contain unrelated entities and push the exact league beyond the old 8-result limit.
       let catalogMatches = [];
       try {
-        const catalogItems = rows(await openFoot('/competitions', {}));
+        const catalogItems = await openFootAll('/competitions', {}, 10);
         catalogMatches = catalogItems.filter(item => {
           const name = item.name || item.displayName || item.competition?.name || item.label || '';
           return searchTerms.every(term => normSearch(name).includes(term)) &&
@@ -990,7 +992,14 @@ app.get('/api/conf', async (req, res) => {
         const isCompetition = kind.includes('competition') || kind.includes('league') || String(id).startsWith('comp_') || item.competitionId != null || item.competition != null;
         const param = isCompetition ? { competition: id } : { team: id };
         const dateCalls = await Promise.all(datesToFetch.map(async date => {
-          try { return rows(await openFoot('/matches', { date, ...param })); }
+          try {
+            const matches=await openFootAll('/matches', { date, ...param }, 5);
+            return matches.map(match=>isCompetition ? {
+              ...match,competitionId:match.competitionId ?? match.competition?.id ?? id,
+              competitionName:match.competitionName || match.competition?.name || item.name || item.displayName || '',
+              competition:match.competition || {id,name:item.name || item.displayName || ''}
+            } : match);
+          }
           catch (_) { return []; }
         }));
         // Team searches must not depend solely on the provider's capped daily list.
@@ -1007,7 +1016,12 @@ app.get('/api/conf', async (req, res) => {
             // A competition-only lookup is still worth trying in that case.
             seasonMatches = await openFootAll('/matches', {
               competition: id,
-              ...(item.currentSeason ? { season: item.currentSeason } : {})
+              ...((typeof item.currentSeason === 'string') ? { season: item.currentSeason } :
+                championsRequested ? { season: (() => {
+                  const d=new Date((requestedDate || today)+'T12:00:00Z');
+                  const y=d.getUTCFullYear()-(d.getUTCMonth()<6?1:0);
+                  return y+'/'+String(y+1).slice(-2);
+                })() } : {})
             }, 5);
           } catch (_) {
             // Keep date-scoped results if competition-wide lookup is unavailable.
