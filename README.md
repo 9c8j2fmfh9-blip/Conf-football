@@ -68,3 +68,8 @@ Protocollo congelato prima del test: 2.450 casi 2023/24 per training, 1.733 dell
 Over: Brier 0,24462 contro 0,24670 del vecchio modello e 0,24459 della semplice frequenza progressiva. Migliora il vecchio modello, è sostanzialmente alla pari con il riferimento semplice: non è dimostrato un vantaggio economico. Alla soglia ≥70%: 16 esiti riusciti su 17; il campione è troppo piccolo per una certificazione di affidabilità. Non presentare questo 16/17 come probabilità della prossima partita. Il GG addestrato è peggiore e NON è stato adottato. I risultati completi, inclusi quelli negativi, sono in `selection-validation.json` e nel pannello del sito.
 
 Riproduzione offline: installare `requirements-selection.txt`, eseguire `npm run prepare-selection`, poi `python scripts/train-selection.py`. In produzione sono serviti solo parametri JSON e inferenza Node: nessun servizio ML a pagamento. `test/selection.test.js` verifica che l'inferenza Node coincida con le probabilità sklearn esportate. I dati CC0 provengono dai file OpenFootball delle stagioni dichiarate, con URL/data di acquisizione nei file di training. Nessun esito futuro del test entra nel fitting.
+
+
+### Visualizzazione immediata delle statistiche
+
+Le schede statistiche sono mostrate subito dopo i filtri. Forma/classifica e corner FT non sono più sezioni richiudibili. Le statistiche precedono l’indicazione del modello. Tutte le schede caricano i corner automaticamente, con due richieste di scheda simultanee e cache lato server; non serve premere Analizza. Le selezioni riepilogative e le note sul metodo restano sotto l’elenco delle statistiche.

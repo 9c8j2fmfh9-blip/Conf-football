@@ -12,7 +12,7 @@ test('UI renders cards, keeps historical frequencies separate, filters and persi
  try{
   const d=dom.window.document;await waitFor(()=>d.querySelector('.card'));
   assert.equal(d.querySelectorAll('.card').length,1);assert.ok(d.querySelector('.card').textContent.includes('14ª'));assert.ok(d.querySelector('.card').textContent.includes('Forma casa/trasferta'));
-  assert.ok(d.querySelector('.pick').textContent.includes('65%'));
+  assert.ok(d.querySelector('.pick').textContent.includes('65%'));assert.equal(d.querySelector('.card details'),null);assert.ok(d.querySelector('.statistics').compareDocumentPosition(d.querySelector('.card > .pick')) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING);assert.equal(d.querySelector('[data-load-corners]'),null);
   assert.ok([...d.querySelectorAll('.row')].some(row=>row.textContent.includes('16 su 20')));
   assert.equal(d.querySelector('.teams script'),null);
   d.querySelector('[data-favorite]').click();assert.ok(dom.window.localStorage.getItem('conf-favorites-v05').includes('abc'));
