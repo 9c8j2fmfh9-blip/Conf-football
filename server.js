@@ -428,6 +428,35 @@ function teamPerspective(matches, id) {
 
 // Experimental goal model: historical goal averages, venue-aware, no claim of calibration.
 // Require both teams >= 6 completed matches; use shrinkage toward 1.3 goals per team.
+
+const goalContextCache = new Map();
+async function providerGoalContext(id) {
+  const unavailable = reason => ({ available:false, reason });
+  if (!apiKey || !/^(match_fmb_|match_olg_|match_of_epl_)/.test(String(id)))
+    return unavailable('xG provider non disponibili per questa partita.');
+  const cached = goalContextCache.get(String(id));
+  if (cached && Date.now()-cached.at < 6*60*60*1000) return cached.value;
+  let value;
+  try {
+    const response = await fetch(base+'/matches/'+encodeURIComponent(id)+'/context', {
+      headers:{Accept:'application/json',Authorization:'Bearer '+apiKey},
+      signal:AbortSignal.timeout(8000)
+    });
+    const body = await response.json();
+    const xg = body?.data?.analytics?.expectedGoals;
+    const h = numberOrNull(xg?.home);
+    const a = numberOrNull(xg?.away);
+    value = response.ok && h!==null && a!==null && h>=0 && a>=0
+      ? {available:true,home:h,away:a,source:'OpenFootAPI · analytics.expectedGoals',
+         note:'Previsione prepartita del provider; non xG dei tiri della partita futura.'}
+      : unavailable(response.status===401 || response.status===403
+        ? 'xG provider non accessibili con la chiave o il piano attuale.'
+        : 'xG prepartita non restituiti dal provider.');
+  } catch { value=unavailable('xG provider temporaneamente non disponibili.'); }
+  goalContextCache.set(String(id),{at:Date.now(),value});
+  return value;
+}
+
 function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
   const home = teamPerspective(homeGames, homeId);
   const away = teamPerspective(awayGames, awayId);
@@ -1361,6 +1390,13 @@ app.get('/api/conf', async (req, res) => {
     fixtures.sort((a, b) => b.rankScore - a.rankScore);
     const analyzedCount = fixtures.length;
     fixtures = fixtures.slice(0, limit);
+    let goalCursor=0;
+    await Promise.all(Array.from({length:Math.min(4,fixtures.length)},async()=>{
+      while(goalCursor<fixtures.length){
+        const fixture=fixtures[goalCursor++];
+        fixture.providerExpectedGoals=await providerGoalContext(fixture.fixtureId);
+      }
+    }));
     const metaToday = todayBody?.meta || {};
     const metaTomorrow = tomorrowBody?.meta || {};
     const providerTotal = Number(metaToday.total_count || 0) + Number(metaTomorrow.total_count || 0);
