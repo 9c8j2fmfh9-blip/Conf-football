@@ -113,5 +113,14 @@ vm.runInContext('confOnlyQualified=true;renderConf([cornerOnly])',context);
 const cornerMain=el('#conf-results').innerHTML.split('<details')[0];
 assert.ok(cornerMain.includes('Casa · 4+ corner FT'));assert.ok(cornerMain.includes('80%'));
 assert.ok(cornerMain.includes('frequenza storica'));assert.ok(!cornerMain.includes('Stima del modello'));
-assert.ok(!cornerMain.includes('undefined'));assert.equal((cornerMain.match(/class="recommend"/g)||[]).length,1);
+assert.ok(!cornerMain.includes('undefined'));assert.equal((cornerMain.match(/class="recommend"/g)||[]).length,2);
 console.log('PASS: a corner-only selection is visible in the main card with its historical percentage and correct sample.');
+
+context.both=fixture('both',72);context.both.cornerMarkets=context.cornerOnly.cornerMarkets;
+vm.runInContext('renderConf([both])',context);
+const bothMain=el('#conf-results').innerHTML.split('<details')[0];
+assert.ok(bothMain.includes('Over 2.5 FT'));assert.ok(bothMain.includes('72%'));
+assert.ok(bothMain.includes('Casa · 4+ corner FT'));assert.ok(bothMain.includes('80%'));
+assert.equal((bothMain.match(/class="recommend"/g)||[]).length,2);
+assert.ok(bothMain.indexOf('Over 2.5 FT')<bothMain.indexOf('Casa · 4+ corner FT'));
+console.log('PASS: the goal recommendation and the corner recommendation both appear above the collapsed details.');

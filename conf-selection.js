@@ -44,6 +44,9 @@ export function selectFixture(fixture, threshold = 60) {
       reason:'Frequenza storica corner ≥'+threshold+'%; almeno 6 gare con dati corner'+(side==='total'?' per ciascuna squadra.': ' della squadra indicata.')+' Non è una probabilità prevista.'});
   }
   candidates.sort((a,b)=>b.evidence-a.evidence || b.score-a.score || (a.kind==='corner'&&b.kind==='corner'&&a.side===b.side&&a.half===b.half ? b.line-a.line : 0) || a.key.localeCompare(b.key));
-  return {qualified:candidates.length>0, primary:candidates[0] || null, candidates, threshold,
-    reason:candidates.length ? candidates[0].reason : 'Nessun mercato soddisfa insieme soglia, campione e riscontro storico delle due squadre.'};
+  const goalPrimary=candidates.find(p=>p.kind!=='corner')||null;
+  const cornerPrimary=candidates.find(p=>p.kind==='corner')||null;
+  const primary=goalPrimary||cornerPrimary;
+  return {qualified:candidates.length>0, primary, goalPrimary, cornerPrimary, candidates, threshold,
+    reason:primary ? primary.reason : 'Nessun mercato soddisfa insieme soglia, campione e riscontro storico delle due squadre.'};
 }

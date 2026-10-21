@@ -43,8 +43,9 @@ test('total corners require six observations and historical support from each te
  m.venueSamples={home:15,away:5};assert.equal(selectFixture(f).qualified,false);
  m.venueSamples={home:10,away:10};m.teamRates=[1,.4];assert.equal(selectFixture(f).qualified,false);
 });
-test('ranks corners and goals together and keeps a single primary indication',()=>{
+test('keeps independent goal and corner recommendations even when the corner ranks higher',()=>{
  const f=fixture();f.cornerMarkets=cornerFixture().cornerMarkets;
- const r=selectFixture(f);assert.equal(r.primary.kind,'corner');assert.equal(r.candidates.length,2);
- assert.equal(r.candidates[1].key,'over25');
+ const r=selectFixture(f);assert.equal(r.primary.key,'over25');assert.equal(r.candidates.length,2);
+ assert.equal(r.goalPrimary.key,'over25');assert.equal(r.cornerPrimary.kind,'corner');
+ assert.equal(r.candidates[0].kind,'corner');
 });
