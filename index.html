@@ -26,7 +26,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Palinsesto Sisal online · analisi CONF</p></div></div></header>
+<header><div class="brand"><div class="logo">CF</div><div><div class="eyebrow">MATCH INTELLIGENCE</div><div class="title">CONF Football</div><p class="sub">Calendario Diretta.it · analisi dove disponibili</p></div></div></header>
 <main>
 <section class="panel">
  <h2>Partite e selezioni CONF</h2>
@@ -71,7 +71,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <div id="history-results" class="matches"></div>
 </details>
 
-<p class="foot">CONF Football · fuso orario Europe/Rome · modello sperimentale · calendario: Sisal online · statistiche: Open Matchday e fonti originali · aggiornamento periodico.</p>
+<p class="foot">CONF Football · fuso orario Europe/Rome · modello sperimentale · calendario: Diretta.it · statistiche: Open Matchday e fonti originali · aggiornamento periodico.</p>
 </main>
 <script type="module">
 import { selectFixture } from "/conf-selection.js";
@@ -410,7 +410,7 @@ function renderDailyMultiples(data){
  if(!data?.tickets?.length){root.innerHTML='<div class="empty">Multiple non disponibili: riprova con Aggiorna.</div>';return;}
  $('#daily-multiples-method').textContent=data.method||'';
  const stamp=data.sourceUpdatedAt?new Date(data.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'';
- $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · '+data.eligibleCount+' proposte con quota verificata · alternative alle quote sotto '+Number(data.preferredMinimumOdds||1.6).toFixed(2).replace('.',',')+' · Sisal'+(stamp?' · quote aggiornate al '+stamp:'')+' · obiettivo ±10%';
+ $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · '+data.eligibleCount+' proposte con quota verificata · alternative alle quote sotto '+Number(data.preferredMinimumOdds||1.6).toFixed(2).replace('.',',')+' · Sisal'+(stamp?' · fogli dal '+stamp:'')+' · obiettivo ±10%';
  root.innerHTML=data.tickets.map(ticket=>{
   const title='<div class="multiple-head"><span>'+(ticket.fallback?'Alternativa alla quota '+safe(ticket.target):'Obiettivo quota '+safe(ticket.target))+'</span><strong>'+(ticket.available?safe(ticket.totalOdds.toFixed(2).replace('.',',')):'—')+'</strong></div>';
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';

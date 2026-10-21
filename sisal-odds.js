@@ -1,4 +1,3 @@
-import {getOnlineOdds} from './sisal-online.js';
 import {readFileSync,writeFileSync,renameSync} from 'node:fs';
 export const SISAL_URL='https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf';
 export const SISAL_COMBINED_URL='https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20combinate.pdf';
@@ -133,7 +132,6 @@ export async function parseSisalPdf(bytes,options={}){
  }finally{await task.destroy();}
 }
 export async function getSisalOdds({now=Date.now(),fetcher=fetch,waitForRefresh=false}={}){
- if(fetcher===fetch&&process.env.NODE_ENV!=='test'){const online=await getOnlineOdds({now});if(online)return online;}
  const usable=fresh(cached,now)||fresh(cached?.combined,now);
  if(inflight)return usable&&!waitForRefresh?cached:inflight;
  if(now<nextAttempt)return cached;

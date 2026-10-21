@@ -901,7 +901,7 @@ app.get('/api/proposal-odds', async (req,res)=>{
   const data=await calendarConf(req.query,experimentalGoalEstimate);
   const proposals=data.fixtures.filter(f=>f.experimentalEstimate?.available);
   const sheet=proposals.length?await getSisalOdds():null;
-  res.set('Cache-Control','no-store').json({source:sheet?.online?'Sisal · quote online':'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,oddsStatus:sisalOddsStatus(),
+  res.set('Cache-Control','no-store').json({source:'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,oddsStatus:sisalOddsStatus(),
    fixtures:proposals.map(f=>{const result=pricedSelection(f,sheet);return {fixtureId:f.fixtureId,market:result.primary?.key||null,...result};})});
  } catch {res.status(503).json({error:'Quote momentaneamente non disponibili',fixtures:[]});}
 });
