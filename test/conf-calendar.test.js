@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
 import {parseDirettaFeed,createCalendarStore,italianDay} from '../diretta-calendar.js';
-import {unfilteredCalendarConf as calendarConf,mergeCalendar} from '../conf-calendar.js';
+import {calendarConf,mergeCalendar} from '../conf-calendar.js';
 import {openDataConf} from '../open-data.js';import {selectFixture} from '../conf-selection.js';
 import {buildDailyMultiples} from '../daily-multiples.js';
 process.env.NODE_ENV='test';
