@@ -47,6 +47,11 @@ export function selectFixture(fixture, threshold = 60) {
   const goalPrimary=candidates.find(p=>p.kind!=='corner')||null;
   const cornerPrimary=candidates.find(p=>p.kind==='corner')||null;
   const primary=goalPrimary||cornerPrimary;
-  return {qualified:candidates.length>0, primary, goalPrimary, cornerPrimary, candidates, threshold,
-    reason:primary ? primary.reason : 'Nessun mercato soddisfa insieme soglia, campione e riscontro storico delle due squadre.'};
+  // Screening is allowed for research, but never equate it to a validated
+  // betting recommendation. The active model explicitly reports validated:false.
+  const validated=estimate.validated===true && estimate.calibration?.status==='passed';
+  return {qualified:candidates.length>0, validated, bettingQualified:validated && candidates.length>0,
+    primary, goalPrimary, cornerPrimary, candidates, threshold,
+    reason:primary ? primary.reason : 'Nessun mercato soddisfa insieme soglia, campione e riscontro storico delle due squadre.',
+    warning:validated?null:'Analisi esplorativa: percentuali non calibrate. Non è una raccomandazione di puntata.'};
 }
