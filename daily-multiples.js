@@ -36,6 +36,26 @@ function bestAvailableTicket(fixtures,sheet,{now,club}){
 // intervening low-priced leg into a ticket. Percentages are experimental scores,
 // never presented as a calibrated joint probability.
 export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=MINIMUM_ODDS}={}){
+ // Safety gate: historical frequencies and experimental estimates are NOT
+ // calibrated probabilities. Do not issue automatic stake-ready multiples
+ // until an out-of-sample calibration artifact is available and validated.
+ // Keep existing analysis cards visible; refuse to fabricate reliability.
+ const reason = 'Multipla automatica sospesa: le percentuali CONF sono sperimentali e non validate con backtest fuori campione. I precedenti restano consultabili, ma non costituiscono una probabilità affidabile né una giocata pronta.';
+ return {
+  bookmaker:'Sisal',
+  sourceUpdatedAt:sheet?.sourceUpdatedAt||null,
+  eligibleCount:0,
+  preferredMinimumOdds:minimumOdds,
+  tolerancePercent:10,
+  tickets:[10,100].map(target=>({
+   target, available:false, targetReached:false, totalOdds:null,
+   legs:[], reason
+  })),
+  alternatives:[],
+  method:reason,
+  validationStatus:'not_calibrated'
+ };
+
  const seen=new Set();
  const candidates=[];
  for(const f of fixtures){
