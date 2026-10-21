@@ -1,0 +1,5 @@
+node_modules/
+.env
+*-cache.json
+*-cache.tmp
+open-data-snapshot.tmp

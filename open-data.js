@@ -108,11 +108,11 @@ const dayRome=timestamp=>romeFormatter.format(new Date(timestamp));
 const sampleFor=(index,t,now,beforeDay)=> (index.history.get(t.id)||[])
  .filter(m=>m.resultDate<beforeDay&&Date.parse(m.resultDate+'T23:59:59Z')<now)
  .sort((a,b)=>b.resultDate.localeCompare(a.resultDate)).slice(0,10);
-const teamStats=(games,id)=>{
+export const teamStats=(games,id)=>{
  const values=games.map(m=>{const home=m.homeTeam.id===id;return{for:home?m.score.home:m.score.away,against:home?m.score.away:m.score.home};});
  return {sample:values.length,averageFor:values.length?values.reduce((s,v)=>s+v.for,0)/values.length:null,averageAgainst:values.length?values.reduce((s,v)=>s+v.against,0)/values.length:null};
 };
-function marketsFor(home,away,homeId,awayId){
+export function marketsFor(home,away,homeId,awayId){
  const own=(m,id)=>m.homeTeam.id===id?[m.score.home,m.score.away]:[m.score.away,m.score.home];
  const definitions={one:['1 · vittoria casa',m=>{const[a,b]=own(m,homeId);return a>b;},m=>{const[a,b]=own(m,awayId);return a<b;}],
  draw:['X · pareggio',m=>m.score.home===m.score.away,m=>m.score.home===m.score.away],

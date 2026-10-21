@@ -1,3 +1,4 @@
+import {enrichHistory} from './diretta-history.js';
 import {openDataConf,canonicalClub} from './open-data.js';
 import {getDirettaDay,italianDay} from './diretta-calendar.js';
 const norm=x=>String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
@@ -27,7 +28,7 @@ export function mergeCalendar(base,events,{now=Date.now(),params={},coverage={}}
   preview:{returned:fixtures.length,totalAvailable:fixtures.length,partial:!!coverage.partial},providerIssue:coverage.issue?{code:'CALENDAR_PARTIAL',message:coverage.issue}:base.providerIssue,
   method:'Calendario giornaliero da Diretta.it, incluse categorie minori, giovanili e femminili. Solo partite non ancora iniziate. Le analisi usano i risultati della fonte statistica collegata: quando mancano, la partita resta visibile con dati insufficienti. '+(base.method||'')};
 }
-export async function calendarConf(params,estimate,{now=Date.now(),getDay=getDirettaDay,baseData=null}={}){
+export async function calendarConf(params,estimate,{now=Date.now(),getDay=getDirettaDay,baseData=null,hydrate=process.env.NODE_ENV!=='test'}={}){
  const base=baseData||openDataConf({...params,q:''},estimate,{now,allFixtures:true});
  const hours=Math.min(48,Math.max(1,parseInt(params.hours||24,10)||24));
  const date=/^\d{4}-\d{2}-\d{2}$/.test(String(params.date||''))?String(params.date):'';
@@ -36,5 +37,6 @@ export async function calendarConf(params,estimate,{now=Date.now(),getDay=getDir
  const results=await Promise.all(requested.map(day=>getDay(day,{now})));
  if(results.every(r=>!r.fetchedAt))return{...(baseData||openDataConf(params,estimate,{now,allFixtures:true})),calendarCount:base.fixtures.length,providerIssue:{code:'CALENDAR_UNAVAILABLE',message:'Calendario Diretta non disponibile: elenco limitato alla copertura statistica.'},calendarCoverage:{partial:true,issue:results.map(r=>r.issue).filter(Boolean).join('; ')}};
  const issue=results.filter(r=>!r.fetchedAt||r.issue||now-Date.parse(r.fetchedAt)>30*60000);
- return mergeCalendar(base,results.flatMap(r=>r.events||[]),{now,params,coverage:{days:targetDays,feedDays:requested,source:'https://www.diretta.it/',fetchedAt:results.map(r=>r.fetchedAt).filter(Boolean).sort()[0],partial:issue.length>0,issue:issue.length?'Aggiornamento di parte del calendario non riuscito; controlla l’orario della fonte.':null}});
+ const merged=mergeCalendar(base,results.flatMap(r=>r.events||[]),{now,params,coverage:{days:targetDays,feedDays:requested,source:'https://www.diretta.it/',fetchedAt:results.map(r=>r.fetchedAt).filter(Boolean).sort()[0],partial:issue.length>0,issue:issue.length?'Aggiornamento di parte del calendario non riuscito; controlla l’orario della fonte.':null}});
+ return hydrate?enrichHistory(merged,estimate,{now}):merged;
 }
