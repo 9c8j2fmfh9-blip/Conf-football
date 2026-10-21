@@ -8,7 +8,7 @@ test('replaces a low-priced primary with an independently qualified higher-price
  const r=pricedSelection(f,sheet,{now});assert.equal(r.primary.key,'bttsOver25');assert.equal(r.primary.score,62);assert.equal(r.odds.sisal.value,1.62);
  assert.equal(r.alternatives.find(a=>a.key==='over35').odds.sisal.value,1.85);
  assert.equal(f.selection.primary.key,'over25');
- const all=buildDailyMultiples([f],sheet,{now});assert.equal(all.eligibleCount,1);
+ const all=buildDailyMultiples([f],sheet,{now});assert.equal(all.eligibleCount,0);assert.equal(all.tickets[0].available,false);
 });
 test('never promotes an unqualified or unpriced alternative; an already adequate price keeps its higher score',()=>{
  const bad=structuredClone(f);bad.experimentalEstimate.estimates.over35=59;bad.experimentalEstimate.estimates.bttsOver25=59;bad.selection=selectFixture(bad);
