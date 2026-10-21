@@ -30,7 +30,7 @@ for(const [league,games] of Object.entries(dataset.leagues)){
   // This is a diagnostic candidate, NOT a fitted/calibrated production model.
   const ggConservative=blend(ggRaw,0.5,0.5);
   const overConservative=blend(overRaw,0.5,0.5);
-  observations.push({league,date,
+  observations.push({league,date,homeSample:h.length,awaySample:a.length,
    gg:ggRaw,ggConservative,
    ggHit:Number(hg)>0&&Number(ag)>0,
    over25:overRaw,over25Conservative:overConservative,
@@ -63,6 +63,11 @@ for(const market of ['gg','over25']){
  }
  const variants={};
  for(const model of ['p','baseline','conservative'])variants[model]=summarize(evaluated.map(x=>({...x,p:x[model]})));
+ const byLeague={};
+ for(const league of [...new Set(evaluated.map(x=>x.league))]){
+  const group=evaluated.filter(x=>x.league===league);
+  byLeague[league]={model:summarize(group),baseline:summarize(group.map(x=>({...x,p:x.baseline}))),n:group.length};
+ }
  const buckets={};
  for(const [low,high] of [[0,.4],[.4,.5],[.5,.6],[.6,.7],[.7,1.001]]){
   const group=evaluated.filter(o=>o.p>=low&&o.p<high);
@@ -76,7 +81,7 @@ for(const market of ['gg','over25']){
  }));
  const qualified=models.filter(x=>x.improvesBaseline);
  sequential[market]={
-  variants,buckets,highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
+  variants,buckets,byLeague,highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
   modelComparison:models,
   status:qualified.length?'BETTER_THAN_HISTORICAL_BASELINE_ONLY':'NO_IMPROVEMENT_OVER_HISTORICAL_BASELINE',
   wageringApproved:false,
