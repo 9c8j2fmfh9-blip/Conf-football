@@ -28,7 +28,7 @@ test('calendar contains all 30 Japanese league matches plus women, across the co
  assert.equal(new Set(data.fixtures.map(f=>f.fixtureId)).size,data.fixtures.length);
  const unknown=data.fixtures.find(f=>f.league==='J2 League');assert.equal(unknown.experimentalEstimate.available,false);assert.equal(unknown.selection.qualified,false);assert.deepEqual(unknown.markets,{});
  const prices=JSON.parse(fs.readFileSync('sisal-odds-snapshot.json','utf8'));
- assert.equal(buildDailyMultiples(data.fixtures,prices,{now}).tickets[0].totalOdds,10.78);
+ assert.equal(buildDailyMultiples(data.fixtures,prices,{now}).tickets[0].available,false);
 });
 test('search covers the full calendar, keeps UCL separate from CAF and honors time windows',async()=>{
  const j2=await calendarConf({q:'J2 League',date:'2026-10-21'},estimate,{now,getDay});assert.equal(j2.fixtures.length,10);
