@@ -14,7 +14,8 @@ test('two unpriced drafts use only total corners plus the best eligible goal/res
  const fixtures=Array.from({length:6},(_,i)=>fixture(String(i),80-i));
  const result=buildDailyMultiples(fixtures,null,{now});
  assert.ok(result.tickets.every(t=>!t.available));
- const [compact,extended]=result.alternatives;
+ const [compact,extended]=buildAlternativeMultiples(fixtures,{now});
+ assert.deepEqual(result.alternatives,[]);
  assert.equal(compact.legs.length,3);assert.equal(extended.legs.length,5);
  assert.deepEqual(compact.legs.map(l=>l.fixtureId),['0','1','2']);
  for(const ticket of result.alternatives){
