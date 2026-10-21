@@ -101,9 +101,19 @@ for(const market of ['gg','over25']){
  const improvesHoldout=selectedHoldout.n>=30 &&
   selectedHoldout.brier<holdoutMetrics.baseline.brier;
 
+ // Diagnostic decision, with all thresholds set in advance. This prevents
+ // describing a non-improving model as production-ready.
+ const evaluation={
+  holdoutSamples:holdout.length,
+  minimumHoldout:100,
+  betterThanBaseline:improvesHoldout,
+  enoughEvidence:holdout.length>=100,
+  verdict:holdout.length<100?'INSUFFICIENT_HOLDOUT':
+   improvesHoldout?'FURTHER_EXTERNAL_VALIDATION_REQUIRED':'NO_HOLDOUT_IMPROVEMENT'
+ };
  const qualified=models.filter(x=>x.improvesBaseline);
  sequential[market]={
-  variants,buckets,byLeague,holdout:{startDate:cutoff,models:holdoutMetrics,blendChosenOnTraining:{weight:selected.weight,trainingBrier:selected.brier,holdout:selectedHoldout,beatsHoldoutBaseline:improvesHoldout}},highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
+  variants,buckets,byLeague,evaluation,holdout:{startDate:cutoff,models:holdoutMetrics,blendChosenOnTraining:{weight:selected.weight,trainingBrier:selected.brier,holdout:selectedHoldout,beatsHoldoutBaseline:improvesHoldout}},highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
   modelComparison:models,
   status:qualified.length?'BETTER_THAN_HISTORICAL_BASELINE_ONLY':'NO_IMPROVEMENT_OVER_HISTORICAL_BASELINE',
   wageringApproved:false,
