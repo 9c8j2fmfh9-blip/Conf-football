@@ -3,6 +3,8 @@
 import {readFileSync} from 'node:fs';
 const dataset=JSON.parse(readFileSync(new URL('../efl-history-2627.json',import.meta.url),'utf8'));
 const observations=[];
+const MIN_TRAIN=30;
+const summarize=items=>items.length?{n:items.length,winRate:+(items.reduce((a,x)=>a+ +x.actual,0)/items.length).toFixed(3),meanForecast:+(items.reduce((a,x)=>a+x.p,0)/items.length).toFixed(3),brier:+(items.reduce((a,x)=>a+(x.p- +x.actual)**2,0)/items.length).toFixed(4)}:{n:0};
 const blend=(p,base,w)=>w*p+(1-w)*base;
 const avg=(matches,team,isFor)=>matches.reduce((sum,m)=>{
  const home=m[1]===team;
@@ -46,6 +48,30 @@ function measure(market, predictionKey=market){
  brier:+brier.toFixed(4),baselineBrier:+baseline.toFixed(4),
  over70:high.length,over70Wins:high.filter(x=>x[market+'Hit']).length};
 }
-const report={method:'Walk-forward; prior dates only; team venue samples if >=6, otherwise all-match fallback; last 10. No odds, corners or team-strength adjustment.',gg:measure('gg'),ggConservative:measure('gg','ggConservative'),over25:measure('over25'),over25Conservative:measure('over25','over25Conservative')};
+// Strictly prior-data benchmark: no future outcome informs its prediction.
+const sequential={};
+for(const market of ['gg','over25']){
+ const ordered=observations.map((o,i)=>({...o,index:i})).sort((a,b)=>a.date.localeCompare(b.date)||a.league.localeCompare(b.league));
+ const evaluated=[];
+ for(const row of ordered){
+  const history=ordered.filter(o=>o.date<row.date);
+  if(history.length<MIN_TRAIN)continue;
+  const leagueHistory=history.filter(o=>o.league===row.league);
+  const prior=leagueHistory.length>=15?leagueHistory:history;
+  const base=(prior.reduce((a,o)=>a+ +o[market+'Hit'],0)+5)/(prior.length+10);
+  evaluated.push({actual:row[market+'Hit'],p:row[market],baseline:base,conservative:row[market+'Conservative'],date:row.date,league:row.league});
+ }
+ const variants={};
+ for(const model of ['p','baseline','conservative'])variants[model]=summarize(evaluated.map(x=>({...x,p:x[model]})));
+ const buckets={};
+ for(const [low,high] of [[0,.4],[.4,.5],[.5,.6],[.6,.7],[.7,1.001]]){
+  const group=evaluated.filter(o=>o.p>=low&&o.p<high);
+  buckets[low.toFixed(1)+'-'+Math.min(high,1).toFixed(1)]=summarize(group);
+ }
+ sequential[market]={variants,buckets,highConfidenceCount:evaluated.filter(x=>x.p>=.7).length};
+}
+const report={sequential,method:'Walk-forward; prior dates only; team venue samples if >=6, otherwise all-match fallback; last 10. No odds, corners or team-strength adjustment.',gg:measure('gg'),ggConservative:measure('gg','ggConservative'),over25:measure('over25'),over25Conservative:measure('over25','over25Conservative')};
 console.log(JSON.stringify(report,null,2));
+// This audit reports quality; it must never automatically 'approve' bets.
+if(Object.values(sequential).some(x=>x.variants.p.n===0))process.exitCode=1;
 if(!observations.length)process.exitCode=1;
