@@ -87,9 +87,23 @@ for(const market of ['gg','over25']){
  const holdout=evaluated.filter(x=>x.date>=cutoff);
  const holdoutMetrics=Object.fromEntries(['p','baseline','conservative'].map(key=>
   [key,summarize(holdout.map(x=>({...x,p:x[key]})))]));
+ // Select blend ONLY using observations before the holdout cutoff.
+ // The holdout remains unseen during model choice.
+ const training=evaluated.filter(x=>x.date<cutoff);
+ const weights=[0,0.25,0.5,0.75,1];
+ const scoreBlend=(rows,weight)=>summarize(rows.map(x=>({
+  ...x,p:weight*x.p+(1-weight)*x.baseline
+ })));
+ const trained=weights.map(weight=>({weight,...scoreBlend(training,weight)}))
+  .sort((a,b)=>a.brier-b.brier||a.weight-b.weight);
+ const selected=trained[0];
+ const selectedHoldout=scoreBlend(holdout,selected.weight);
+ const improvesHoldout=selectedHoldout.n>=30 &&
+  selectedHoldout.brier<holdoutMetrics.baseline.brier;
+
  const qualified=models.filter(x=>x.improvesBaseline);
  sequential[market]={
-  variants,buckets,byLeague,holdout:{startDate:cutoff,models:holdoutMetrics},highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
+  variants,buckets,byLeague,holdout:{startDate:cutoff,models:holdoutMetrics,blendChosenOnTraining:{weight:selected.weight,trainingBrier:selected.brier,holdout:selectedHoldout,beatsHoldoutBaseline:improvesHoldout}},highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
   modelComparison:models,
   status:qualified.length?'BETTER_THAN_HISTORICAL_BASELINE_ONLY':'NO_IMPROVEMENT_OVER_HISTORICAL_BASELINE',
   wageringApproved:false,
