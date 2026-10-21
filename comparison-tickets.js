@@ -38,3 +38,12 @@ export function buildComparisonTickets(fixtures,quotes,{now=Date.now(),maxLegs=1
  return {tickets,bookmaker:tickets.find(t=>t.available)?.bookmaker||null,eligibleCount:Math.max(0,...[...books.values()].map(b=>b.legs.length)),source,sourceUpdatedAt:quotes.fixtures.map(q=>q.observedAt).filter(Boolean).sort()[0]||null,comparison:true,maxLegs,
   method:'Schedine con un unico bookmaker per ciascuna proposta, quote rilevate dalla fonte indicata e totale indicativo. Soglia CONF e campioni invariati; massimo '+maxLegs+' partite, nessuna squadra ripetuta. Quota 100 è un obiettivo indicativo, senza tetto a 100: la selezione si ferma quando lo raggiunge. Nessuna probabilità di vincita della multipla viene stimata.'};
 }
+
+export function chooseReferenceTickets(original,reference){
+ return original.map(value=>{
+  const old=value.available&&value.legs.length>16?{...value,available:false,totalOdds:null,legs:[],reason:'La proposta richiede più di 16 partite.'}:value;
+  const normalized=old.available&&old.target===100&&old.totalOdds<100?{...old,targetReached:false,fallback:true,reason:'Quota 100 non raggiunta: questa è una bozza inferiore all’obiettivo, senza aggiungere giocate non qualificate.'}:old;
+  const next=reference.find(t=>t.target===old.target);
+  return next?.available&&(!normalized.available||next.targetReached&&!normalized.targetReached)?next:normalized;
+ });
+}

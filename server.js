@@ -1,5 +1,5 @@
 import {espnProbe,getEspnQuotes} from './espn-odds.js';
-import {buildComparisonTickets} from './comparison-tickets.js';
+import {buildComparisonTickets,chooseReferenceTickets} from './comparison-tickets.js';
 import {comparisonProbe} from './comparison-odds.js';
 import 'dotenv/config';
 import express from 'express';
@@ -921,7 +921,7 @@ app.get('/api/daily-multiples',async(req,res)=>{
   const original=buildDailyMultiples(data.fixtures,sheet);
   const quotes=await getEspnQuotes(data.fixtures);
   const reference=buildComparisonTickets(data.fixtures,quotes);
-  const tickets=original.tickets.map(old=>{const next=reference.tickets.find(t=>t.target===old.target);return next?.available&&(!old.available||next.targetReached&&!old.targetReached)?next:old;});
+  const tickets=chooseReferenceTickets(original.tickets,reference.tickets);
   const usesReference=tickets.some(t=>t.indicative);
   res.set('Cache-Control','no-store').json({...original,tickets,referenceQuotes:{source:quotes.source,matchedEvents:quotes.matchedEvents,pricedEvents:quotes.listedEvents,eligibleCount:reference.eligibleCount,error:quotes.error},
    comparison:usesReference,source:usesReference?reference.source:'Sisal · foglio ufficiale',maxLegs:16,

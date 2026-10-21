@@ -1,6 +1,6 @@
 import {gunzipSync} from 'node:zlib';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
-import {parseMatch,parseListing} from '../comparison-odds.js';import {buildComparisonTickets} from '../comparison-tickets.js';
+import {parseMatch,parseListing} from '../comparison-odds.js';import {buildComparisonTickets,chooseReferenceTickets} from '../comparison-tickets.js';
 const now=Date.parse('2026-10-21T16:00:00Z'),real=JSON.parse(gunzipSync(fs.readFileSync('test/fixtures/comparison-lille.json.gz')).toString('utf8'));
 const enc=x=>Array.isArray(x)?[1,x.map(enc)]:x&&typeof x==='object'?[0,Object.fromEntries(Object.entries(x).map(([k,v])=>[k,enc(v)]))]:[0,x];
 const page=x=>'<script id="cx-island-data" type="application/json">'+JSON.stringify({h:{queries:[{queryKey:['subevent-header'],state:{data:x.header}}]}})+'</script><astro-island component-export="GridGroupIsland" props="'+JSON.stringify(enc({componentArgs:x.args})[1]).replaceAll('&','&amp;').replaceAll('"','&quot;')+'">';
@@ -15,3 +15,5 @@ const quotes={generatedAt:new Date(now).toISOString(),fixtures:fixtures.map(f=>(
 test('target 100 can be exceeded with up to 16 qualified legs using one real bookmaker',()=>{const t=buildComparisonTickets(fixtures,quotes,{now}).tickets[1];assert.ok(t.available&&t.targetReached&&t.totalOdds>100);assert.ok(t.legs.length<=16);assert.ok(t.legs.every(l=>l.bookmakerCode===t.bookmakerCode));assert.equal(t.totalOdds,Number(t.legs.reduce((a,l)=>a*l.odds,1).toFixed(2)));});
 test('missing, expired and mismatched prices cannot enter tickets; club duplicates are excluded',()=>{const old=structuredClone(quotes);old.fixtures.forEach(q=>q.observedAt=new Date(now-6*60000).toISOString());assert.equal(buildComparisonTickets(fixtures,old,{now}).tickets[1].available,false);const fs=fixtures.map(f=>({...f,home:'Same club'}));assert.equal(buildComparisonTickets(fs,quotes,{now}).tickets[1].available,false);});
 test('insufficient qualified legs produce an explicit below-target draft without adding games',()=>{const t=buildComparisonTickets(fixtures.slice(0,3),quotes,{now}).tickets[1];assert.equal(t.targetReached,false);assert.equal(t.legs.length,3);assert.ok(t.totalOdds<100);});
+
+test('a quota below 100 is never labelled as reaching 100; a qualifying reference ticket takes priority',()=>{const old={target:100,available:true,targetReached:true,totalOdds:95,legs:[{},{}]};const first=chooseReferenceTickets([old],[])[0];assert.equal(first.targetReached,false);assert.equal(first.fallback,true);const next={target:100,available:true,targetReached:true,totalOdds:150,legs:[{},{}]};assert.equal(chooseReferenceTickets([old],[next])[0].totalOdds,150);});
