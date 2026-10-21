@@ -415,6 +415,14 @@ function renderDailyMultiples(data){
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';
   const legs=ticket.legs.map(leg=>'<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div><div class="multiple-values"><span>'+safe(leg.label)+' · stima '+safe(leg.score)+'%</span><b>'+safe(leg.odds.toFixed(2).replace('.',','))+'</b></div></div>').join('');
   return '<article class="multiple-card">'+title+(ticket.fallback?'<p class="time">'+safe(ticket.reason)+'</p>':'')+'<div class="time">'+safe(ticket.legs.length)+' partite · quota totale indicativa</div><details><summary>Vedi le partite</summary>'+legs+'</details><p class="time">Quote soggette a variazioni. Una multipla ad alta quota può perdere anche con percentuali alte nelle singole.</p></article>';
+ }).join('')+renderAlternativeMultiples(data.alternatives||[]);
+}
+
+function renderAlternativeMultiples(tickets){
+ return tickets.map(ticket=>{
+  const title='<div class="multiple-head"><span>'+safe(ticket.title||('Quota '+ticket.target+' alternativa'))+'</span><strong>Da verificare</strong></div>';
+  const legs=(ticket.legs||[]).map(leg=>'<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div><div class="multiple-values"><span>'+safe(leg.goal.label)+'</span><b>Stima '+safe(leg.goal.score)+'%</b></div><div class="multiple-values"><span>+ '+safe(leg.corner.label)+'</span><b>Storico '+safe(leg.corner.score)+'%</b></div></div>').join('');
+  return '<article class="multiple-card" data-alternative-target="'+safe(ticket.target)+'">'+title+'<p class="time">'+safe(ticket.reason)+'</p>'+legs+'<p class="time">'+safe(ticket.note)+'</p></article>';
  }).join('');
 }
 async function loadDailyMultiples(selectedDate,requestId,attempt=0){

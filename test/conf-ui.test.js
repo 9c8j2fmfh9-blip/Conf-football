@@ -124,3 +124,13 @@ assert.ok(bothMain.includes('Casa · 4+ corner FT'));assert.ok(bothMain.includes
 assert.equal((bothMain.match(/class="recommend"/g)||[]).length,2);
 assert.ok(bothMain.indexOf('Over 2.5 FT')<bothMain.indexOf('Casa · 4+ corner FT'));
 console.log('PASS: the goal recommendation and the corner recommendation both appear above the collapsed details.');
+
+context.dualDaily={...daily,alternatives:[10,100].map(target=>({target,title:'Quota '+target+' alternativa',totalOdds:null,reason:'Proposta con corner totali',note:'Quota MyCombo da verificare su Sisal',legs:[{home:'Home combo',away:'Away combo',date:'2026-10-21T19:00:00Z',goal:{label:'GG + Over 2.5 FT',score:72},corner:{label:'Totale 9+ corner FT',score:80}}]}))};
+vm.runInContext('renderDailyMultiples(dualDaily)',context);
+const dualDailyHtml=el('#daily-multiples-results').innerHTML;
+assert.equal((dualDailyHtml.match(/class="multiple-card"/g)||[]).length,4);
+assert.ok(dualDailyHtml.includes('Quota 10 alternativa'));assert.ok(dualDailyHtml.includes('Quota 100 alternativa'));
+assert.ok(dualDailyHtml.includes('Stima 72%'));assert.ok(dualDailyHtml.includes('Storico 80%'));
+assert.ok(dualDailyHtml.includes('Totale 9+ corner FT'));assert.ok(dualDailyHtml.includes('10,25'));
+assert.ok(dualDailyHtml.includes('Quota MyCombo da verificare su Sisal'));assert.ok(!dualDailyHtml.includes('NaN'));
+console.log('PASS: two additional total-corner combo cards keep the original multiples, show separate percentages and never fabricate MyCombo prices.');

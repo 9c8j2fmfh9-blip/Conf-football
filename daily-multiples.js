@@ -1,3 +1,4 @@
+import {buildAlternativeMultiples} from './alternative-multiples.js';
 import {pricedSelection,MINIMUM_ODDS} from './priced-selection.js';
 import {matchProposalOdds} from './sisal-odds.js';
 
@@ -87,6 +88,6 @@ export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=M
   return chosen?{target,available:true,targetReached:true,fallback:false,totalOdds:Number(chosen.total.toFixed(2)),legs:chosen.legs,bookmaker:'Sisal'}:
    {target,available:false,totalOdds:null,legs:[],reason:!candidates.length&&fixtures.some(f=>f.selection?.qualified)?'Nessuna quota Sisal verificabile per le proposte attuali: multipla non calcolabile.':'Non ci sono combinazioni vicine a quota '+target+' con le proposte qualificate e le quote verificate disponibili.'};
  });
- return {bookmaker:'Sisal',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,eligibleCount:candidates.length,preferredMinimumOdds:minimumOdds,tolerancePercent:10,tickets,
+ return {bookmaker:'Sisal',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,eligibleCount:candidates.length,preferredMinimumOdds:minimumOdds,tolerancePercent:10,tickets,alternatives:buildAlternativeMultiples(fixtures,{now}),
   method:'Combinazioni tra le percentuali più alte, prima le fasce migliori e poi meno peso alle quote basse; una giocata per partita e nessuna squadra ripetuta. Sotto quota '+minimumOdds.toFixed(2)+' si cerca un mercato alternativo qualificato con quota ufficiale più alta, inclusi Over 3.5 e GG + Over 2.5. Se manca, la proposta originale resta consultabile e utilizzabile. Obiettivo quota ±10%. Se quota 100 non è raggiungibile, si mostra la migliore quota trovata entro 100 considerando tutti i mercati alternativi qualificati, senza abbassare i criteri. Quote dei fogli ufficiali, non live. Le percentuali delle singole sono stime sperimentali: non indicano la probabilità di vincere la multipla.'};
 }
