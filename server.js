@@ -430,7 +430,11 @@ function frequency(matches, predicate, label) {
   return { score: valid.length ? Math.round(100 * hits / valid.length) : null, hits, sample: valid.length, label };
 }
 function teamPerspective(matches, id) {
-  const valid = matches.filter(completed);
+  // A provider response may contain another team's fixtures. Never silently
+  // count an unrelated match as an away result of the requested club.
+  const valid = matches.filter(m => completed(m) &&
+    [teamId(m.homeTeam || m.home || {}),teamId(m.awayTeam || m.away || {})]
+      .some(found => found != null && String(found) === String(id)));
   let wins = 0, draws = 0, losses = 0, goalsFor = 0, goalsAgainst = 0;
   for (const m of valid) {
     const h = m.homeTeam || m.home || {};
