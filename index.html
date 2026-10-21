@@ -41,8 +41,8 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <p id="time-help" class="time">Prossime 24 ore da adesso, anche oltre mezzanotte.</p>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
  <section id="daily-multiples" aria-label="Multiple automatiche CONF">
-  <h2>Le due multiple CONF</h2>
-  <p id="daily-multiples-note" class="time">Prossime 24 ore · percentuali più alte · Sisal · obiettivo quota ±10%</p>
+  <h2>Multiple CONF · validazione sospesa</h2>
+  <p id="daily-multiples-note" class="time">Non disponibili per puntate: modello statistico non validato</p>
   <div id="daily-multiples-results" class="matches" role="status">Caricamento multiple…</div>
   <details><summary class="time">Come vengono composte</summary><p id="daily-multiples-method" class="time"></p></details>
  </section>
@@ -297,7 +297,7 @@ function renderHistory(){
     const status = x.outcome === 'win' ? 'VINTA' : x.outcome === 'loss' ? 'PERSA' : 'DA AGGIORNARE';
     const qualified = Number(x.score) >= 60 && Number(x.sample) >= 6;
     const outcomeHtml = '<div class="status" style="margin-top:10px">'+(x.outcome === 'win' ? 'ESITO AUTOMATICO: VINTA' : x.outcome === 'loss' ? 'ESITO AUTOMATICO: PERSA' : 'IN ATTESA DEL RISULTATO UFFICIALE')+'</div>';
-    return '<article class="match"><div class="league">'+safe(x.league)+' · '+safe(kickoff)+'</div><div class="teams">'+safe(x.home)+' <span class="vs">CONTRO</span> '+safe(x.away)+'</div><div class="recommend"><div class="recommend-title">Scommessa consigliata · '+status+'</div><div class="recommend-market">'+safe(x.market)+' · '+safe(x.score)+'%</div><div class="recommend-note">'+safe(x.hits)+' su '+safe(x.sample)+' gare storiche'+(qualified?' · CONF qualificata':' · dato migliore disponibile, non qualificato')+'</div></div>'+outcomeHtml+'</article>';
+    return '<article class="match"><div class="league">'+safe(x.league)+' · '+safe(kickoff)+'</div><div class="teams">'+safe(x.home)+' <span class="vs">CONTRO</span> '+safe(x.away)+'</div><div class="recommend"><div class="recommend-title">Analisi statistica sperimentale · '+status+'</div><div class="recommend-market">'+safe(x.market)+' · '+safe(x.score)+'%</div><div class="recommend-note">'+safe(x.hits)+' su '+safe(x.sample)+' gare storiche'+(qualified?' · CONF qualificata':' · dato migliore disponibile, non qualificato')+'</div></div>'+outcomeHtml+'</article>';
   }).join('');
 }
 const liveStates = new Set(['1H','HT','2H','ET','BT','P','LIVE']);
@@ -480,10 +480,10 @@ function renderConf(items){
     const best=selection.primary?.kind!=='corner'?selection.primary:(selection.candidates||[]).find(p=>p.kind!=='corner');
     const bestCorner=(selection.candidates||[]).find(p=>p.kind==='corner')||null;
     const cornerRecommendationHtml=bestCorner
-      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Scommessa consigliata · corner</div><div class="recommend-market"><span>'+safe(bestCorner.label)+'</span><span class="pick-percent">'+safe(bestCorner.score)+'%</span></div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare · frequenza storica, non probabilità prevista</div></div>'
+      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Indicazione statistica · corner</div><div class="recommend-market"><span>'+safe(bestCorner.label)+'</span><span class="pick-percent">'+safe(bestCorner.score)+'%</span></div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare · frequenza storica, non probabilità prevista</div></div>'
       : '';
     const recommendationHtml=best
-      ? '<div class="recommend"><div class="recommend-title">Scommessa consigliata · gol / risultato</div><div class="recommend-market"><span>'+safe(best.label)+'</span><span class="pick-percent">'+safe(best.score)+'%</span></div><div class="recommend-note">'+(best.kind==='corner'?safe(best.hits)+' su '+safe(best.sample)+' gare · frequenza storica, non probabilità prevista':'Stima del modello · storico '+safe(best.historicalScore)+'% · campione '+safe(best.samples.home)+' / '+safe(best.samples.away))+'</div><div class="proposal-odds" data-proposal-odds="'+safe(f.fixtureId)+'">'+proposalOddsHtml(f.proposalOdds,best.key)+'</div></div>'
+      ? '<div class="recommend"><div class="recommend-title">Indicazione statistica · gol / risultato</div><div class="recommend-market"><span>'+safe(best.label)+'</span><span class="pick-percent">'+safe(best.score)+'%</span></div><div class="recommend-note">'+(best.kind==='corner'?safe(best.hits)+' su '+safe(best.sample)+' gare · frequenza storica, non probabilità prevista':'Stima del modello · storico '+safe(best.historicalScore)+'% · campione '+safe(best.samples.home)+' / '+safe(best.samples.away))+'</div><div class="proposal-odds" data-proposal-odds="'+safe(f.fixtureId)+'">'+proposalOddsHtml(f.proposalOdds,best.key)+'</div></div>'
       : '<div class="recommend"><div class="recommend-title">'+(bestCorner?'Gol / risultato':f.calendarSource&&!estimate.available?'In calendario':'Non selezionata')+'</div><div class="recommend-market">'+(bestCorner?'Nessuna proposta gol / risultato qualificata':f.calendarSource&&!estimate.available?'Storico non disponibile':'Nessuna indicazione qualificata')+'</div><div class="recommend-note">'+safe(bestCorner?'Nessun mercato gol / risultato raggiunge i criteri richiesti.':selection.reason)+'</div></div>';
 
     const e=f.experimentalEstimate || {};
