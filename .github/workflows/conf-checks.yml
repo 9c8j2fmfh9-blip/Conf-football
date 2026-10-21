@@ -18,3 +18,5 @@ jobs:
         run: node scripts/backtest-goals.js
       - name: Compare experimental Poisson variants on holdout
         run: node scripts/model-candidates.js
+      - name: Evaluate independent logistic model
+        run: node scripts/logistic-candidate.js
