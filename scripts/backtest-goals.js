@@ -6,7 +6,7 @@ const dataset=JSON.parse(readFileSync(new URL('../efl-history-2627.json',import.
 // Use each league as its own competition: never pool team history across leagues.
 const supporting=JSON.parse(readFileSync(new URL('../fa-cup-support-history-2627.json',import.meta.url),'utf8'));
 for(const [league,rows] of Object.entries(supporting.results||{})){
- const normalized=rows.filter(x=>/^\\d+$/.test(String(x[4]))&&/^\\d+$/.test(String(x[5])))
+ const normalized=rows.filter(x=>/^\d+$/.test(String(x[4]))&&/^\d+$/.test(String(x[5])))
   .map(x=>[x[0],x[2],x[3],x[4],x[5]]);
  if(normalized.length)dataset.leagues[league]=normalized;
 }
@@ -133,3 +133,4 @@ console.log(JSON.stringify(report,null,2));
 // This audit reports quality; it must never automatically 'approve' bets.
 if(Object.values(sequential).some(x=>x.variants.p.n===0))process.exitCode=1;
 if(!observations.length)process.exitCode=1;
+if(Object.keys(dataset.leagues).length<7) { console.error('Missing expected support leagues: backtest incomplete'); process.exitCode=1; }
