@@ -21,7 +21,7 @@ test('does not invent a quota 100 or relax quality when too few prices exist',()
  const f=[make('a',72,1.33),make('b',67,1.2),make('c',66,1.8),make('d',64,1.6),make('e',62,1.4),make('f',60,1.65),make('bad',59,10)];
  const r=buildDailyMultiples(f,sheet(f),{now});
  assert.equal(r.eligibleCount,6);assert.equal(r.tickets[0].totalOdds,10.62);
- assert.equal(r.tickets[1].available,false);assert.deepEqual(r.tickets[1].legs,[]);
+ assert.equal(r.tickets[1].available,true);assert.equal(r.tickets[1].fallback,true);assert.equal(r.tickets[1].targetReached,false);assert.equal(r.tickets[1].totalOdds,10.62);assert.equal(r.tickets[1].searchComplete,true);
 });
 test('rejects missing, expired, past, live, unqualified and stale data; no duplicate legs or clubs',()=>{
  const a=make('a',90,2),b={...make('b',85,5),home:a.home};
@@ -41,4 +41,19 @@ test('prefers less burden from low prices among feasible combinations of the sam
  const f=[make('madrid',67,1.2),make('sporting',66,1.8),make('villa',64,1.6),make('betis',62,1.62),make('brugge',62,1.4),make('kyoto',60,1.65)];
  const t=buildDailyMultiples(f,sheet(f),{now}).tickets[0];
  assert.equal(t.totalOdds,10.78);assert.ok(!t.legs.some(l=>l.fixtureId==='madrid'));
+});
+test('quota 100 fallback maximizes verified alternatives and never adds an unqualified leg',()=>{
+ const a=make('a',80,2),b=make('b',75,3),bad=make('bad',59,20);
+ a.selection.candidates=[a.selection.primary,{key:'btts',label:'GG',score:65}];
+ const s=sheet([a,b,bad]);s.entries[0].odds.btts=4;
+ const t=buildDailyMultiples([a,b,bad],s,{now}).tickets[1];
+ assert.equal(t.fallback,true);assert.equal(t.totalOdds,12);assert.equal(t.legs.length,2);assert.equal(t.legs.find(l=>l.fixtureId==='a').market,'btts');
+});
+test('fallback respects club conflicts, the ceiling and minimum ticket size',()=>{
+ const a=make('a',80,2),b={...make('b',75,3),home:a.home},c=make('c',70,4);
+ const t=buildDailyMultiples([a,b,c],sheet([a,b,c]),{now}).tickets[1];
+ assert.equal(t.totalOdds,12);assert.equal(new Set(t.legs.flatMap(l=>[l.home,l.away])).size,4);
+ assert.equal(buildDailyMultiples([a],sheet([a]),{now}).tickets[1].available,false);
+ const high=[make('x',80,20),make('y',75,6),make('z',70,3)];
+ assert.equal(buildDailyMultiples(high,sheet(high),{now}).tickets[1].totalOdds,60);
 });

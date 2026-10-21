@@ -411,10 +411,10 @@ function renderDailyMultiples(data){
  const stamp=data.sourceUpdatedAt?new Date(data.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'';
  $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · '+data.eligibleCount+' proposte con quota verificata · alternative alle quote sotto '+Number(data.preferredMinimumOdds||1.6).toFixed(2).replace('.',',')+' · Sisal'+(stamp?' · fogli dal '+stamp:'')+' · obiettivo ±10%';
  root.innerHTML=data.tickets.map(ticket=>{
-  const title='<div class="multiple-head"><span>Obiettivo quota '+safe(ticket.target)+'</span><strong>'+(ticket.available?safe(ticket.totalOdds.toFixed(2).replace('.',',')):'—')+'</strong></div>';
+  const title='<div class="multiple-head"><span>'+(ticket.fallback?'Alternativa alla quota '+safe(ticket.target):'Obiettivo quota '+safe(ticket.target))+'</span><strong>'+(ticket.available?safe(ticket.totalOdds.toFixed(2).replace('.',',')):'—')+'</strong></div>';
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';
   const legs=ticket.legs.map(leg=>'<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div><div class="multiple-values"><span>'+safe(leg.label)+' · stima '+safe(leg.score)+'%</span><b>'+safe(leg.odds.toFixed(2).replace('.',','))+'</b></div></div>').join('');
-  return '<article class="multiple-card">'+title+'<div class="time">'+safe(ticket.legs.length)+' partite · quota totale indicativa</div><details><summary>Vedi le partite</summary>'+legs+'</details><p class="time">Quote soggette a variazioni. Una multipla ad alta quota può perdere anche con percentuali alte nelle singole.</p></article>';
+  return '<article class="multiple-card">'+title+(ticket.fallback?'<p class="time">'+safe(ticket.reason)+'</p>':'')+'<div class="time">'+safe(ticket.legs.length)+' partite · quota totale indicativa</div><details><summary>Vedi le partite</summary>'+legs+'</details><p class="time">Quote soggette a variazioni. Una multipla ad alta quota può perdere anche con percentuali alte nelle singole.</p></article>';
  }).join('');
 }
 async function loadDailyMultiples(selectedDate,requestId,attempt=0){
