@@ -459,8 +459,16 @@ function renderConf(items){
   };
   const percentage = f => {
     const selection = f.selection || selectFixture(f);
-    const score = selection.primary?.score;
-    return Number.isFinite(score) ? score : -1;
+    if(Number.isFinite(selection.primary?.score))return selection.primary.score;
+    // Order every analyzed fixture by a meaningful displayed score, even
+    // when the threshold is not reached; do not bury unqualified matches.
+    if(f.dataStale || !f.experimentalEstimate?.available)return -1;
+    const predicted=f.experimentalEstimate.estimates || {};
+    const values=['btts','over25','over35','one','draw','two']
+      .filter(key=>!f.markets?.[key]?.partial)
+      .map(key=>predicted[key])
+      .filter(Number.isFinite);
+    return values.length?Math.max(...values):-1;
   };
   const ordered = [...selected].sort((a,b) => {
     const byTime = compareKickoff(a,b);
