@@ -16,3 +16,5 @@ jobs:
       - run: npm test
       - name: Chronological goal-model audit
         run: node scripts/backtest-goals.js
+      - name: Compare experimental Poisson variants on holdout
+        run: node scripts/model-candidates.js
