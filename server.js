@@ -1,3 +1,4 @@
+import {espnProbe} from './espn-odds.js';
 import {comparisonProbe} from './comparison-odds.js';
 import 'dotenv/config';
 import express from 'express';
@@ -580,7 +581,7 @@ app.get('/api/status', (_req, res) => {
   res.json(process.env.CONF_PROVIDER === 'openfoot' ? { configured: Boolean(apiKey), provider: 'OpenFootAPI', cacheMinutes: CACHE_TTL_MS / 60000 } : {configured:true,provider:'Open Matchday',refreshHours:6,competitions:75});
 });
 
-app.get('/api/odds-source-status',async(_req,res)=>{try{res.set('Cache-Control','no-store').json(await comparisonProbe());}catch{res.status(503).json({available:false,error:'Fonte quote non disponibile'});}});
+app.get('/api/odds-source-status',async(_req,res)=>{try{res.set('Cache-Control','no-store').json(await (_req.query.source==='espn'?espnProbe():comparisonProbe()));}catch{res.status(503).json({available:false,error:'Fonte quote non disponibile'});}});
 
 app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'CONF Football', version: '0.4.0', provider: process.env.CONF_PROVIDER === 'openfoot' ? 'OpenFootAPI' : 'Open Matchday' }));
 
