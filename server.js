@@ -1,4 +1,5 @@
-import {espnProbe} from './espn-odds.js';
+import {espnProbe,getEspnQuotes} from './espn-odds.js';
+import {buildComparisonTickets} from './comparison-tickets.js';
 import {comparisonProbe} from './comparison-odds.js';
 import 'dotenv/config';
 import express from 'express';
@@ -917,7 +918,15 @@ app.get('/api/daily-multiples',async(req,res)=>{
   const date=/^\d{4}-\d{2}-\d{2}$/.test(String(req.query.date||''))?String(req.query.date):'';
   const data=await calendarConf({date,hours:24},experimentalGoalEstimate);
   const sheet=data.selectedCount?await getSisalOdds():null;
-  res.set('Cache-Control','no-store').json({...buildDailyMultiples(data.fixtures,sheet),oddsStatus:sisalOddsStatus(),date:date||null,windowHours:24,generatedAt:new Date().toISOString(),selectedCount:data.selectedCount,competitionsCovered:data.competitionsCovered});
+  const original=buildDailyMultiples(data.fixtures,sheet);
+  const quotes=await getEspnQuotes(data.fixtures);
+  const reference=buildComparisonTickets(data.fixtures,quotes);
+  const tickets=original.tickets.map(old=>{const next=reference.tickets.find(t=>t.target===old.target);return next?.available&&(!old.available||next.targetReached&&!old.targetReached)?next:old;});
+  const usesReference=tickets.some(t=>t.indicative);
+  res.set('Cache-Control','no-store').json({...original,tickets,referenceQuotes:{source:quotes.source,matchedEvents:quotes.matchedEvents,pricedEvents:quotes.listedEvents,eligibleCount:reference.eligibleCount,error:quotes.error},
+   comparison:usesReference,source:usesReference?reference.source:'Sisal · foglio ufficiale',maxLegs:16,
+   method:(usesReference?reference.method:original.method)+' Fonte alternativa ESPN: '+reference.eligibleCount+' proposte qualificate con quota sul mercato esatto.',
+   oddsStatus:sisalOddsStatus(),date:date||null,windowHours:24,generatedAt:new Date().toISOString(),selectedCount:data.selectedCount,competitionsCovered:data.competitionsCovered});
  }catch{res.status(503).json({error:'Multiple momentaneamente non disponibili',tickets:[]});}
 });
 
