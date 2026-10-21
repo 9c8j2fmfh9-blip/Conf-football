@@ -17,3 +17,9 @@ test('never promotes an unqualified or unpriced alternative; an already adequate
  const r=pricedSelection(f,noPrices,{now});assert.equal(r.primary.key,'over25');assert.equal(r.odds.sisal.belowMinimum,true);
  const adequate={...sheet,entries:[{...entry,odds:{over25:1.7,over35:2}}]};assert.equal(pricedSelection(f,adequate,{now}).primary.key,'over25');
 });
+
+test('a corner recommendation keeps its own label and percentage when goal odds arrive',()=>{
+ const c=structuredClone(f);c.cornerMarkets={markets:[{key:'corners_home_ft_4',label:'Casa · 4+ corner FT',side:'home',score:100,hits:10,sample:10}]};c.selection=selectFixture(c);
+ const r=pricedSelection(c,sheet,{now});assert.equal(r.primary.kind,'corner');assert.equal(r.primary.score,100);assert.equal(r.odds.sisal.available,false);
+ const daily=pricedSelection(c,sheet,{now,preserveCorner:false});assert.equal(daily.primary.key,'bttsOver25');assert.equal(daily.odds.sisal.available,true);
+});

@@ -122,19 +122,22 @@ function buildCornerMarkets(home, away, leagueId, beforeTimestamp) {
   const h = cornerHistoryForTeam(home, leagueId, beforeTimestamp);
   const a = cornerHistoryForTeam(away, leagueId, beforeTimestamp);
   const result = { source:'Risultati 2026/27 verificati · corner a tempo pieno', homeSample:h.length, awaySample:a.length, markets:[] };
-  const add = (label, sample, predicate) => {
+  const add = (label, sample, predicate, side, line) => {
     const hits = sample.filter(predicate).length;
     result.markets.push({
-      label, score:sample.length ? Math.round(100*hits/sample.length) : null,
+      key:'corners_'+side+'_ft_'+line, label, side, line, half:'full',
+      venueSamples:{home:h.filter(x=>x.total!==null).length,away:a.filter(x=>x.total!==null).length},
+      teamRates:side==='total'?[h.filter(x=>x.total!==null).filter(predicate).length/h.filter(x=>x.total!==null).length,a.filter(x=>x.total!==null).filter(predicate).length/a.filter(x=>x.total!==null).length]:[],
+      score:sample.length ? Math.round(100*hits/sample.length) : null,
       hits, sample:sample.length, qualified:sample.length>=6 && hits/sample.length>=0.6
     });
   };
   for (const line of [2,3,4,5]) {
-    add(home + ' · ' + line + '+ corner FT',h,x=>x.corners>=line);
-    add(away + ' · ' + line + '+ corner FT',a,x=>x.corners>=line);
+    add(home + ' · ' + line + '+ corner FT',h,x=>x.corners>=line,'home',line);
+    add(away + ' · ' + line + '+ corner FT',a,x=>x.corners>=line,'away',line);
   }
   const totals = [...h,...a].filter(x=>x.total!==null);
-  for (const line of [7,8,9,10]) add('Totale ' + line + '+ corner FT',totals,x=>x.total>=line);
+  for (const line of [7,8,9,10]) add('Totale ' + line + '+ corner FT',totals,x=>x.total>=line,'total',line);
   result.note = (!h.length || !a.length) ? 'Storico incompleto: non sono disponibili i corner per entrambe le squadre.' :
     'Frequenze storiche descrittive, non probabilità calibrate. I dati per tempo non sono disponibili.';
   return result;

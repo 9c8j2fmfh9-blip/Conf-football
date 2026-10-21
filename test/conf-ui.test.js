@@ -107,3 +107,11 @@ assert.ok(el('#conf-results').innerHTML.includes('Yamagata'));
 assert.ok(el('#conf-results').innerHTML.includes('Partita in calendario · dati storici insufficienti'));
 assert.equal((el('#conf-results').innerHTML.match(/<article/g)||[]).length,3);
 console.log('PASS: a calendar-only match remains visible even without model, markets, form or odds.');
+
+context.cornerOnly={fixtureId:'corner',home:'Casa',away:'Ospite',date:'2026-10-21T19:00:00Z',markets:{},cornerMarkets:{markets:[{key:'corners_home_ft_4',label:'Casa · 4+ corner FT',side:'home',score:80,hits:8,sample:10}]}};
+vm.runInContext('confOnlyQualified=true;renderConf([cornerOnly])',context);
+const cornerMain=el('#conf-results').innerHTML.split('<details')[0];
+assert.ok(cornerMain.includes('Casa · 4+ corner FT'));assert.ok(cornerMain.includes('80%'));
+assert.ok(cornerMain.includes('frequenza storica'));assert.ok(!cornerMain.includes('Stima del modello'));
+assert.ok(!cornerMain.includes('undefined'));assert.equal((cornerMain.match(/class="recommend"/g)||[]).length,1);
+console.log('PASS: a corner-only selection is visible in the main card with its historical percentage and correct sample.');

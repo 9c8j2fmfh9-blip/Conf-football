@@ -1,6 +1,7 @@
 // Shared by server and browser: one explicit selection rule for the main card.
 // This is a screening heuristic, not a calibrated prediction or value-bet model.
 export function selectFixture(fixture, threshold = 60) {
+  if (fixture.dataStale) return {qualified:false,primary:null,candidates:[],threshold,reason:"Dati non aggiornati: selezione sospesa."};
   const estimate = fixture.experimentalEstimate || {};
   const labels = {one:'1 · vittoria casa', draw:'X · pareggio', two:'2 · vittoria trasferta', over25:'Over 2.5 FT', btts:'GG',over35:'Over 3.5 FT',bttsOver25:'GG + Over 2.5 FT'};
   const candidates = [];
@@ -25,7 +26,24 @@ export function selectFixture(fixture, threshold = 60) {
         reason:'Stima e frequenza storica ≥'+threshold+'%; almeno 6 gare per squadra; riscontro in entrambi gli storici.'});
     }
   }
-  candidates.sort((a,b)=>b.evidence-a.evidence || b.score-a.score || a.key.localeCompare(b.key));
+  // Corner percentages are observed frequencies, independent of the goal model.
+  for (const market of fixture.cornerMarkets?.markets || []) {
+    const {key,label,score,sample,hits,side,venueSamples,teamRates} = market;
+    if (!key?.startsWith('corners_') || !label || market.partial || !Number.isFinite(score) || score < threshold || score > 100 || !Number.isInteger(sample) || sample < 6 || !Number.isInteger(hits) || hits < 0 || hits > sample) continue;
+    if (Math.round(100*hits/sample) !== score) continue;
+    let n = sample;
+    let samples = {[side]:sample};
+    if (side === 'total') {
+      const h = venueSamples?.home, a = venueSamples?.away;
+      if (!Number.isInteger(h) || !Number.isInteger(a) || h < 6 || a < 6 || h+a !== sample || !Array.isArray(teamRates) || teamRates.length !== 2 || teamRates.some(r=>!Number.isFinite(r)||r<0.5||r>1)) continue;
+      n = Math.min(h,a); samples = {home:h,away:a};
+    } else if (!['home','away'].includes(side)) continue;
+    const p = hits/sample, z = 1.28;
+    const evidence = (p+z*z/(2*n)-z*Math.sqrt((p*(1-p)+z*z/(4*n))/n))/(1+z*z/n);
+    candidates.push({key,label,score,historicalScore:score,sample,hits,samples,evidence,kind:'corner',scoreKind:'historical',side,half:market.half||'full',line:market.line,
+      reason:'Frequenza storica corner ≥'+threshold+'%; almeno 6 gare con dati corner'+(side==='total'?' per ciascuna squadra.': ' della squadra indicata.')+' Non è una probabilità prevista.'});
+  }
+  candidates.sort((a,b)=>b.evidence-a.evidence || b.score-a.score || (a.kind==='corner'&&b.kind==='corner'&&a.side===b.side&&a.half===b.half ? b.line-a.line : 0) || a.key.localeCompare(b.key));
   return {qualified:candidates.length>0, primary:candidates[0] || null, candidates, threshold,
     reason:candidates.length ? candidates[0].reason : 'Nessun mercato soddisfa insieme soglia, campione e riscontro storico delle due squadre.'};
 }

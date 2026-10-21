@@ -23,3 +23,28 @@ test('penalizes fragile samples before ranking candidates',()=>{
 test('does not select a market absent from the model',()=>{
  const f=fixture();f.experimentalEstimate.estimates={one:80};assert.equal(selectFixture(f).qualified,false);
 });
+
+const cornerFixture = () => ({cornerMarkets:{markets:[{key:'corners_home_ft_4',label:'Casa · 4+ corner FT',side:'home',line:4,score:80,hits:8,sample:10}]}});
+test('selects verified corners independently of an unavailable goal model',()=>{
+ const result=selectFixture(cornerFixture());
+ assert.equal(result.primary.key,'corners_home_ft_4');assert.equal(result.primary.score,80);
+ assert.equal(result.primary.scoreKind,'historical');assert.equal(result.primary.kind,'corner');
+ assert.equal(result.primary.samples.home,10);assert.ok(result.reason.includes('Non è una probabilità prevista'));
+});
+test('does not promote missing, inconsistent, partial or undersampled corners',()=>{
+ for(const change of [{sample:5,hits:4},{score:null},{score:59},{sample:10,hits:7},{partial:true},{side:'unknown'},{key:undefined}]) {
+  const f=cornerFixture();Object.assign(f.cornerMarkets.markets[0],change);assert.equal(selectFixture(f).qualified,false);
+ }
+ const f=cornerFixture();f.dataStale=true;assert.equal(selectFixture(f).qualified,false);
+});
+test('total corners require six observations and historical support from each team',()=>{
+ const f=cornerFixture(),m=f.cornerMarkets.markets[0];Object.assign(m,{key:'corners_total_ft_9',side:'total',score:80,hits:16,sample:20,venueSamples:{home:10,away:10},teamRates:[.8,.8]});
+ assert.equal(selectFixture(f).primary.key,'corners_total_ft_9');
+ m.venueSamples={home:15,away:5};assert.equal(selectFixture(f).qualified,false);
+ m.venueSamples={home:10,away:10};m.teamRates=[1,.4];assert.equal(selectFixture(f).qualified,false);
+});
+test('ranks corners and goals together and keeps a single primary indication',()=>{
+ const f=fixture();f.cornerMarkets=cornerFixture().cornerMarkets;
+ const r=selectFixture(f);assert.equal(r.primary.kind,'corner');assert.equal(r.candidates.length,2);
+ assert.equal(r.candidates[1].key,'over25');
+});

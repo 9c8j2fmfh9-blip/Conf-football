@@ -39,7 +39,7 @@ export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=M
  const candidates=[];
  for(const f of fixtures){
   if(!f.selection?.qualified || f.dataStale || f.status!=='NS' || Date.parse(f.date)<=now || !Number.isFinite(Date.parse(f.date)) || seen.has(String(f.fixtureId)))continue;
-  const chosen=pricedSelection(f,sheet,{now,minimumOdds});
+  const chosen=pricedSelection(f,sheet,{now,minimumOdds,preserveCorner:false});
   const p=chosen.primary;
   if(!p || !Number.isFinite(p.score) || p.score<60 || p.score>100)continue;
   const price=chosen.odds.sisal;

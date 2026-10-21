@@ -23,7 +23,8 @@ test('calendar contains all 30 Japanese league matches plus women, across the co
  assert.ok(data.fixtures.length>300);assert.equal(data.calendarCount,data.fixtures.length);
  for(const league of ['J1 League','J2 League','J3 League'])assert.equal(data.fixtures.filter(f=>f.league===league).length,10);
  const jp=data.fixtures.filter(f=>['Japan','Giappone'].includes(f.country));assert.equal(jp.length,33);
- assert.equal(data.selectedCount,6);assert.equal(data.fixtures.filter(f=>f.experimentalEstimate.available).length,25);
+ assert.equal(data.selectedCount,12);
+ assert.ok(data.fixtures.some(f=>f.selection.primary?.kind==='corner'));assert.equal(data.fixtures.filter(f=>f.experimentalEstimate.available).length,25);
  assert.equal(new Set(data.fixtures.map(f=>f.fixtureId)).size,data.fixtures.length);
  const unknown=data.fixtures.find(f=>f.league==='J2 League');assert.equal(unknown.experimentalEstimate.available,false);assert.equal(unknown.selection.qualified,false);assert.deepEqual(unknown.markets,{});
  const prices=JSON.parse(fs.readFileSync('sisal-odds-snapshot.json','utf8'));

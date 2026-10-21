@@ -128,13 +128,20 @@ export function marketsFor(home,away,homeId,awayId){
    venueSamples:{home:home.length,away:away.length},teamRates:rates,partial:!valid,method:'Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente'}];
  }));
 }
-function cornersFor(home,away,homeId,awayId){
+export function cornersFor(home,away,homeId,awayId){
  const convert=(games,id)=>games.map(m=>({own:m.homeTeam.id===id?m.corners.home:m.corners.away,
  total:m.corners.home!==null&&m.corners.away!==null?m.corners.home+m.corners.away:null}));
  const h=convert(home,homeId),a=convert(away,awayId),markets=[];
- const add=(label,values,line)=>{const v=values.filter(x=>x!==null);const hits=v.filter(x=>x>=line).length;markets.push({label,score:v.length?Math.round(100*hits/v.length):null,hits,sample:v.length,qualified:v.length>=6&&hits/v.length>=.6});};
- for(const line of [2,3,4,5]){add('Casa · '+line+'+ corner FT',h.map(x=>x.own),line);add('Trasferta · '+line+'+ corner FT',a.map(x=>x.own),line);}
- for(const line of [7,8,9,10])add('Totale '+line+'+ corner FT',[...h,...a].map(x=>x.total),line);
+ const add=(label,values,line,side,homeValues=[],awayValues=[])=>{
+  const valid=x=>typeof x==='number'&&Number.isFinite(x)&&x>=0;
+  const v=values.filter(valid),h=homeValues.filter(valid),a=awayValues.filter(valid);
+  const hits=v.filter(x=>x>=line).length;
+  markets.push({key:'corners_'+side+'_ft_'+line,label,side,half:'full',line,score:v.length?Math.round(100*hits/v.length):null,hits,sample:v.length,
+   venueSamples:{home:h.length,away:a.length},teamRates:side==='total'&&h.length&&a.length?[h.filter(x=>x>=line).length/h.length,a.filter(x=>x>=line).length/a.length]:[],
+   qualified:v.length>=6&&hits/v.length>=.6});
+ };
+ for(const line of [2,3,4,5]){add('Casa · '+line+'+ corner FT',h.map(x=>x.own),line,'home');add('Trasferta · '+line+'+ corner FT',a.map(x=>x.own),line,'away');}
+ for(const line of [7,8,9,10])add('Totale '+line+'+ corner FT',[...h,...a].map(x=>x.total),line,'total',h.map(x=>x.total),a.map(x=>x.total));
  return{markets,homeSample:h.filter(x=>x.own!==null).length,awaySample:a.filter(x=>x.own!==null).length,
  note:'Corner osservati nei risultati disponibili. Dati talvolta in ritardo; nessuna stima per tempo quando mancano i dati.'};
 }
