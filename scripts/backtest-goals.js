@@ -3,6 +3,7 @@
 import {readFileSync} from 'node:fs';
 const dataset=JSON.parse(readFileSync(new URL('../efl-history-2627.json',import.meta.url),'utf8'));
 const observations=[];
+// Forecasts should be evaluated on later dates, never chosen using those outcomes.
 const MIN_TRAIN=30;
 const summarize=items=>items.length?{n:items.length,winRate:+(items.reduce((a,x)=>a+ +x.actual,0)/items.length).toFixed(3),meanForecast:+(items.reduce((a,x)=>a+x.p,0)/items.length).toFixed(3),brier:+(items.reduce((a,x)=>a+(x.p- +x.actual)**2,0)/items.length).toFixed(4)}:{n:0};
 const blend=(p,base,w)=>w*p+(1-w)*base;
@@ -79,9 +80,16 @@ for(const market of ['gg','over25']){
   improvesBaseline:variants[model].brier<benchmark,
   difference:+(benchmark-variants[model].brier).toFixed(4)
  }));
+ // Chronological split: earlier observations are diagnostic, later ones are a holdout.
+ // A small holdout cannot certify profitability but reveals retrospective fitting.
+ const dates=[...new Set(evaluated.map(x=>x.date))].sort();
+ const cutoff=dates[Math.floor(dates.length*0.7)]||null;
+ const holdout=evaluated.filter(x=>x.date>=cutoff);
+ const holdoutMetrics=Object.fromEntries(['p','baseline','conservative'].map(key=>
+  [key,summarize(holdout.map(x=>({...x,p:x[key]})))]));
  const qualified=models.filter(x=>x.improvesBaseline);
  sequential[market]={
-  variants,buckets,byLeague,highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
+  variants,buckets,byLeague,holdout:{startDate:cutoff,models:holdoutMetrics},highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
   modelComparison:models,
   status:qualified.length?'BETTER_THAN_HISTORICAL_BASELINE_ONLY':'NO_IMPROVEMENT_OVER_HISTORICAL_BASELINE',
   wageringApproved:false,
