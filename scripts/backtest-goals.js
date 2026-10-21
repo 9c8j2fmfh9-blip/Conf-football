@@ -2,6 +2,14 @@
 // Run: node scripts/backtest-goals.js
 import {readFileSync} from 'node:fs';
 const dataset=JSON.parse(readFileSync(new URL('../efl-history-2627.json',import.meta.url),'utf8'));
+// Additional completed-league results bundled for FA Cup team context.
+// Use each league as its own competition: never pool team history across leagues.
+const supporting=JSON.parse(readFileSync(new URL('../fa-cup-support-history-2627.json',import.meta.url),'utf8'));
+for(const [league,rows] of Object.entries(supporting.results||{})){
+ const normalized=rows.filter(x=>/^\\d+$/.test(String(x[4]))&&/^\\d+$/.test(String(x[5])))
+  .map(x=>[x[0],x[2],x[3],x[4],x[5]]);
+ if(normalized.length)dataset.leagues[league]=normalized;
+}
 const observations=[];
 // Forecasts should be evaluated on later dates, never chosen using those outcomes.
 const MIN_TRAIN=30;
@@ -120,7 +128,7 @@ for(const market of ['gg','over25']){
   rationale:'This small historical sample cannot establish market edge or calibrated betting probabilities; no pre-match bookmaker quotes or independent holdout.'
  };
 }
-const report={productionBettingApproved:false,sequential,method:'Walk-forward; prior dates only; team venue samples if >=6, otherwise all-match fallback; last 10. No odds, corners or team-strength adjustment.',gg:measure('gg'),ggConservative:measure('gg','ggConservative'),over25:measure('over25'),over25Conservative:measure('over25','over25Conservative')};
+const report={productionBettingApproved:false,sourceLeagueCounts:Object.fromEntries(Object.entries(dataset.leagues).map(([k,v])=>[k,v.length])),sequential,method:'Walk-forward; prior dates only; team venue samples if >=6, otherwise all-match fallback; last 10. No odds, corners or team-strength adjustment.',gg:measure('gg'),ggConservative:measure('gg','ggConservative'),over25:measure('over25'),over25Conservative:measure('over25','over25Conservative')};
 console.log(JSON.stringify(report,null,2));
 // This audit reports quality; it must never automatically 'approve' bets.
 if(Object.values(sequential).some(x=>x.variants.p.n===0))process.exitCode=1;
