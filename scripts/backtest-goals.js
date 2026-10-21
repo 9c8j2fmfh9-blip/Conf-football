@@ -68,9 +68,22 @@ for(const market of ['gg','over25']){
   const group=evaluated.filter(o=>o.p>=low&&o.p<high);
   buckets[low.toFixed(1)+'-'+Math.min(high,1).toFixed(1)]=summarize(group);
  }
- sequential[market]={variants,buckets,highConfidenceCount:evaluated.filter(x=>x.p>=.7).length};
+ const benchmark=variants.baseline.brier;
+ const models=['p','conservative'].map(model=>({
+  name:model,brier:variants[model].brier,
+  improvesBaseline:variants[model].brier<benchmark,
+  difference:+(benchmark-variants[model].brier).toFixed(4)
+ }));
+ const qualified=models.filter(x=>x.improvesBaseline);
+ sequential[market]={
+  variants,buckets,highConfidenceCount:evaluated.filter(x=>x.p>=.7).length,
+  modelComparison:models,
+  status:qualified.length?'BETTER_THAN_HISTORICAL_BASELINE_ONLY':'NO_IMPROVEMENT_OVER_HISTORICAL_BASELINE',
+  wageringApproved:false,
+  rationale:'This small historical sample cannot establish market edge or calibrated betting probabilities; no pre-match bookmaker quotes or independent holdout.'
+ };
 }
-const report={sequential,method:'Walk-forward; prior dates only; team venue samples if >=6, otherwise all-match fallback; last 10. No odds, corners or team-strength adjustment.',gg:measure('gg'),ggConservative:measure('gg','ggConservative'),over25:measure('over25'),over25Conservative:measure('over25','over25Conservative')};
+const report={productionBettingApproved:false,sequential,method:'Walk-forward; prior dates only; team venue samples if >=6, otherwise all-match fallback; last 10. No odds, corners or team-strength adjustment.',gg:measure('gg'),ggConservative:measure('gg','ggConservative'),over25:measure('over25'),over25Conservative:measure('over25','over25Conservative')};
 console.log(JSON.stringify(report,null,2));
 // This audit reports quality; it must never automatically 'approve' bets.
 if(Object.values(sequential).some(x=>x.variants.p.n===0))process.exitCode=1;
