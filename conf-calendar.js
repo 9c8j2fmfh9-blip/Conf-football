@@ -1,3 +1,4 @@
+import {getSisalOdds,matchProposalOdds} from './sisal-odds.js';
 import {enrichHistory} from './diretta-history.js';
 import {openDataConf,canonicalClub} from './open-data.js';
 import {getDirettaDay,italianDay} from './diretta-calendar.js';
@@ -28,7 +29,7 @@ export function mergeCalendar(base,events,{now=Date.now(),params={},coverage={}}
   preview:{returned:fixtures.length,totalAvailable:fixtures.length,partial:!!coverage.partial},providerIssue:coverage.issue?{code:'CALENDAR_PARTIAL',message:coverage.issue}:base.providerIssue,
   method:'Calendario giornaliero da Diretta.it, incluse categorie minori, giovanili e femminili. Solo partite non ancora iniziate. Le analisi usano i risultati della fonte statistica collegata: quando mancano, la partita resta visibile con dati insufficienti. '+(base.method||'')};
 }
-export async function calendarConf(params,estimate,{now=Date.now(),getDay=getDirettaDay,baseData=null,hydrate=process.env.NODE_ENV!=='test'}={}){
+export async function unfilteredCalendarConf(params,estimate,{now=Date.now(),getDay=getDirettaDay,baseData=null,hydrate=process.env.NODE_ENV!=='test'}={}){
  const base=baseData||openDataConf({...params,q:''},estimate,{now,allFixtures:true});
  const hours=Math.min(48,Math.max(1,parseInt(params.hours||24,10)||24));
  const date=/^\d{4}-\d{2}-\d{2}$/.test(String(params.date||''))?String(params.date):'';
@@ -39,4 +40,27 @@ export async function calendarConf(params,estimate,{now=Date.now(),getDay=getDir
  const issue=results.filter(r=>!r.fetchedAt||r.issue||now-Date.parse(r.fetchedAt)>30*60000);
  const merged=mergeCalendar(base,results.flatMap(r=>r.events||[]),{now,params,coverage:{days:targetDays,feedDays:requested,source:'https://www.diretta.it/',fetchedAt:results.map(r=>r.fetchedAt).filter(Boolean).sort()[0],partial:issue.length>0,issue:issue.length?'Aggiornamento di parte del calendario non riuscito; controlla l’orario della fonte.':null}});
  return hydrate?enrichHistory(merged,estimate,{now}):merged;
+}
+
+// Confirm exact teams, kickoff and a fresh official Sisal row before displaying
+// an event. An unavailable sheet must never silently restore the full calendar.
+export function filterSisalCalendar(data,sheet,{now=Date.now()}={}){
+ const fixtures=data.fixtures.flatMap(f=>{
+  const evidence=matchProposalOdds({...f,selection:{primary:{key:'one'}}},sheet,{now}).sisal;
+  return evidence.available?[{...f,bookmaker:'Sisal',bookmakerVerifiedAt:evidence.sourceUpdatedAt}]:[];
+ });
+ const stamp=Date.parse(sheet?.sourceUpdatedAt);
+ const available=Number.isFinite(stamp)&&now-stamp<=6*3600000&&stamp<=now+300000&&!!sheet?.entries?.length;
+ const warning='Sono mostrate solo le partite abbinate al foglio quote ufficiale Sisal aggiornato. Il foglio può non includere tutto il palinsesto online; la presenza della partita non conferma ogni mercato o MyCombo.';
+ return {...data,fixtures,provider:'Sisal · analisi CONF',calendarCount:fixtures.length,
+  analyzedCount:fixtures.filter(f=>f.experimentalEstimate?.available).length,selectedCount:fixtures.filter(f=>f.selection?.qualified).length,
+  bookmaker:'Sisal',bookmakerCoverage:{available,sourceUpdatedAt:sheet?.sourceUpdatedAt||null,sourceUrl:sheet?.sourceUrl||null,matched:fixtures.length,calendarBeforeFilter:data.fixtures.length,partial:true,note:warning},
+  preview:{...data.preview,returned:fixtures.length,totalAvailable:fixtures.length,partial:true},
+  providerIssue:available?data.providerIssue:{code:'SISAL_UNAVAILABLE',message:'Foglio Sisal non disponibile o scaduto: nessuna partita mostrata senza verifica.'},
+  method:warning+' '+(data.method||'')};
+}
+export async function calendarConf(params,estimate,options={}){
+ const now=options.now??Date.now();
+ const [data,sheet]=await Promise.all([unfilteredCalendarConf(params,estimate,{...options,now}),(options.getSheet||getSisalOdds)({now})]);
+ return filterSisalCalendar(data,sheet,{now});
 }

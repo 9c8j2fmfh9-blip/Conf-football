@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { selectFixture } from './conf-selection.js';
 import { openDataConf } from './open-data.js';
-import {calendarConf} from './conf-calendar.js';
+import {calendarConf,filterSisalCalendar} from './conf-calendar.js';
 import {getSisalOdds,matchProposalOdds,sisalOddsStatus} from './sisal-odds.js';
 import {buildDailyMultiples} from './daily-multiples.js';
 import {pricedSelection} from './priced-selection.js';
@@ -1440,6 +1440,7 @@ app.get('/api/conf', async (req, res) => {
       f.rankScore = f.selection.primary?.evidence ?? -1;
     }
     fixtures.sort((a,b) => b.rankScore-a.rankScore || Date.parse(a.date)-Date.parse(b.date));
+    fixtures = filterSisalCalendar({fixtures}, await getSisalOdds()).fixtures;
     const selectedCount = fixtures.filter(f=>f.selection.qualified).length;
     const analyzedCount = fixtures.length;
     fixtures = fixtures.slice(0, limit);
