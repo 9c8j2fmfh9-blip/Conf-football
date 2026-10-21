@@ -33,7 +33,29 @@ try{
  const selection=await fetch(root+'/conf-selection.js',{signal:AbortSignal.timeout(4000)});
  assert.equal(selection.status,200);
  assert.match(await selection.text(),/export function selectFixture/);
- console.log('PASS: server boots and serves health, homepage, and prediction selector.');
+ const auditResponse=await fetch(root+'/api/conf-backtest',{signal:AbortSignal.timeout(10000)});
+ assert.equal(auditResponse.status,200);
+ const audit=await auditResponse.json();
+ assert.equal(audit.validated,false);
+ assert.equal(audit.status,'experimental');
+ const leagues=Object.values(audit.leagues);
+ assert.ok(leagues.length>=3,'Expected bundled EFL leagues');
+ let evaluated=0;
+ for(const league of leagues){
+  assert.ok(league.backtestedFixtures>0,'Backtest must evaluate real fixtures');
+  assert.ok(league.backtestedFixtures<=league.historicalFixtures);
+  evaluated+=league.backtestedFixtures;
+  for(const market of ['one','draw','two','over25','btts','over35','bttsOver25']){
+   const metric=league.measurements[market];
+   assert.ok(metric,'Missing market '+market);
+   for(const key of ['brier','baselineBrier']){
+    assert.equal(typeof metric[key],'number');
+    assert.ok(Number.isFinite(metric[key])&&metric[key]>=0&&metric[key]<=1);
+   }
+   assert.ok(metric.observedRate>=0&&metric.observedRate<=100);
+  }
+ }
+ console.log('PASS: server boots, serves homepage and selector, and evaluates '+evaluated+' historical fixtures across seven markets.');
 }finally{
  child.kill('SIGTERM');
 }
