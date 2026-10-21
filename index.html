@@ -479,12 +479,23 @@ function renderConf(items){
     const selection=f.selection || selectFixture(f);
     const best=selection.primary?.kind!=='corner'?selection.primary:(selection.candidates||[]).find(p=>p.kind!=='corner');
     const bestCorner=(selection.candidates||[]).find(p=>p.kind==='corner')||null;
+    // When no market passes the screening threshold, keep a useful (clearly
+    // unqualified) estimate on the card instead of a misleading blank panel.
+    const fallbackEstimate=!best && estimate.available && !f.dataStale
+      ? Object.entries({btts:'GG',over25:'Over 2.5 FT',over35:'Over 3.5 FT',one:'1 · vittoria casa',draw:'X · pareggio',two:'2 · vittoria trasferta'})
+          .filter(([key])=>Number.isFinite(estimate.estimates?.[key]) && !f.markets?.[key]?.partial)
+          .map(([key,label])=>({key,label,score:estimate.estimates[key]}))
+          .sort((a,b)=>b.score-a.score)[0]
+      : null;
+
     const cornerRecommendationHtml=bestCorner
       ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Indicazione statistica · corner</div><div class="recommend-market"><span>'+safe(bestCorner.label)+'</span><span class="pick-percent">'+safe(bestCorner.score)+'%</span></div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare · frequenza storica, non probabilità prevista</div></div>'
       : '';
     const recommendationHtml=best
       ? '<div class="recommend"><div class="recommend-title">Indicazione statistica · gol / risultato</div><div class="recommend-market"><span>'+safe(best.label)+'</span><span class="pick-percent">'+safe(best.score)+'%</span></div><div class="recommend-note">'+(best.kind==='corner'?safe(best.hits)+' su '+safe(best.sample)+' gare · frequenza storica, non probabilità prevista':'Stima del modello · storico '+safe(best.historicalScore)+'% · campione '+safe(best.samples.home)+' / '+safe(best.samples.away))+'</div><div class="proposal-odds" data-proposal-odds="'+safe(f.fixtureId)+'">'+proposalOddsHtml(f.proposalOdds,best.key)+'</div></div>'
-      : '<div class="recommend"><div class="recommend-title">'+(bestCorner?'Gol / risultato':f.calendarSource&&!estimate.available?'In calendario':'Non selezionata')+'</div><div class="recommend-market">'+(bestCorner?'Nessuna proposta gol / risultato qualificata':f.calendarSource&&!estimate.available?'Storico non disponibile':'Nessuna indicazione qualificata')+'</div><div class="recommend-note">'+safe(bestCorner?'Nessun mercato gol / risultato raggiunge i criteri richiesti.':selection.reason)+'</div></div>';
+      : fallbackEstimate
+        ? '<div class="recommend"><div class="recommend-title">Miglior dato disponibile · NON qualificato</div><div class="recommend-market"><span>'+safe(fallbackEstimate.label)+'</span><span class="pick-percent">'+safe(fallbackEstimate.score)+'%</span></div><div class="recommend-note">Stima sperimentale non validata · non supera i criteri CONF. Non è una scommessa consigliata.</div></div>'
+        : '<div class="recommend"><div class="recommend-title">'+(bestCorner?'Gol / risultato':f.calendarSource&&!estimate.available?'In calendario':'Non selezionata')+'</div><div class="recommend-market">'+(bestCorner?'Nessuna proposta gol / risultato qualificata':f.calendarSource&&!estimate.available?'Storico non disponibile':'Nessuna indicazione qualificata')+'</div><div class="recommend-note">'+safe(bestCorner?'Nessun mercato gol / risultato raggiunge i criteri richiesti.':selection.reason)+'</div></div>';
 
     const e=f.experimentalEstimate || {};
     const combos=Array.isArray(e.teamGoalCombos)?e.teamGoalCombos:[];
