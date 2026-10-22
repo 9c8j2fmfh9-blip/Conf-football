@@ -569,7 +569,7 @@ function renderConf(items){
       const players=playerReport.players?.[side]||[];
       return '<details style="margin-top:8px"><summary style="cursor:pointer;font-weight:700">'+safe(playerReport.teams?.[side]|| (side==='home'?f.home:f.away))+' · '+players.length+' giocatori · '+safe(playerReport.coverage?.[side]||0)+' partite con dati</summary>'+
        (players.length?players.map(player=>{
-        const rating=Number.isFinite(player.averageRating)?' · rating medio '+safe(player.averageRating):'';
+        const rating=(Number.isFinite(player.averageRating)?' · rating medio '+safe(player.averageRating):'')+(player.topRatedCount?' · miglior rating '+safe(player.topRatedCount)+' volte':'');
         const groupHtml=Object.entries(player.stats||{}).map(([group,stats])=>{
          const entries=Object.values(stats||{});
          if(!entries.length)return '';
@@ -579,7 +579,7 @@ function renderConf(items){
           return '<div class="time">'+safe(stat.label)+': media '+average+total+' · '+safe(stat.count)+' rilevazioni</div>';
          }).join('')+'</div></details>';
         }).join('');
-        return '<details style="margin-top:7px;padding:8px;border:1px solid var(--line);border-radius:10px"><summary><b>'+safe(player.name)+'</b> · '+safe(player.position||'ruolo n/d')+' · '+safe(player.appearances)+' presenze'+rating+'</summary>'+groupHtml+
+        return '<details style="margin-top:7px;padding:8px;border:1px solid var(--line);border-radius:10px"><summary><b>'+safe(player.name)+'</b> · '+safe(player.position||'ruolo n/d')+' · '+safe(player.appearances)+' presenze'+rating+'</summary>'+groupHtml+(player.highlights?.length?'<div class="time">Indicatori Diretta: '+player.highlights.map(safe).join(', ')+'</div>':'')+
          '<div class="time">Titolare '+safe(player.starts)+' volte · ultimo dato '+safe(player.lastSeen?new Date(player.lastSeen).toLocaleDateString('it-IT',{timeZone:'Europe/Rome'}):'n/d')+'</div></details>';
        }).join(''):(playerReport.pending?.[side]?'<p class="time">Recupero in corso per '+safe(playerReport.pending[side])+' partite; la pagina aggiorna i dati automaticamente.</p>':'<p class="time">La fonte non fornisce statistiche individuali per queste partite.</p>'))+'</details>';
     };
