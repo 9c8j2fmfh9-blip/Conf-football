@@ -58,3 +58,19 @@ test('stale estimates hidden by the app cannot enter prediction metrics, and the
  const fresh=evaluateCaptures([stale,c],[r],options);
  assert.equal(fresh.estimated,1);assert.equal(fresh.byRevision[0].markets.btts.n,1);assert.equal(fresh.rows[0].capturedAt,c.capturedAt);
 });
+test('evaluates recorded Diretta frequency markets against final stats and merges later stat snapshots',()=>{
+ const stat={key:'diretta_total_shots_19',label:'Totale Over 19.5 tiri',metric:'shots',side:'total',line:20,score:67,sample:12};
+ const early={...c,capturedAt:'2026-10-22T08:00:00Z',fixtures:[{...f,direttaStatMarkets:[]}]};
+ const later={...c,capturedAt:'2026-10-22T09:10:00Z',fixtures:[{...f,direttaStatMarkets:[stat]}]};
+ const result={...r,statistics:{complete:true,home:{shots:11},away:{shots:9}}};
+ const report=evaluateCaptures([early,later],[result],options);
+ const market=report.byRevision[0].markets.diretta_total_shots_19;
+ assert.equal(market.n,1);assert.equal(market.meanForecast,.67);assert.equal(market.observedRate,1);
+ assert.ok(Math.abs(market.brier-.1089)<1e-10);assert.equal(report.pending.length,0);
+});
+test('keeps confirmed score evaluation while marking missing final Diretta stats pending',()=>{
+ const forecast={...f,direttaStatMarkets:[{key:'diretta_total_shots_19',metric:'shots',side:'total',line:20,score:60,sample:12}]};
+ const report=evaluateCaptures([{...c,fixtures:[forecast]}],[r],options);
+ assert.equal(report.settled,1);assert.equal(report.rows[0].markets.diretta_total_shots_19,undefined);
+ assert.equal(report.pending[0].reason,'Risultato confermato; statistiche Diretta finali in attesa');
+});

@@ -48,6 +48,10 @@ test('new markets measure the joint outcome, including the 1-1 and 3-0 boundarie
  assert.equal(fixture.markets.over25.score,75);assert.equal(fixture.markets.btts.score,75);
  const p=fixture.experimentalEstimate.estimates;
  assert.ok(p.over35<=p.over25);assert.ok(p.bttsOver25<=p.btts&&p.bttsOver25<=p.over25);
+ assert.ok(p.over15>=p.over25&&p.over25>=p.over35);
+ assert.ok(Math.abs(p.doubleChance1X-p.one-p.draw)<=1);assert.ok(Math.abs(p.doubleChanceX2-p.draw-p.two)<=1);
+ assert.equal(p.under15,100-p.over15);assert.equal(p.noBtts,100-p.btts);assert.equal(p.homeNoScore,100-p.homeScore);
+ for(const key of ['doubleChance1X','doubleChanceX2','doubleChance12','over15','under15','under25','under35','noBtts','homeScore','homeNoScore','awayScore','awayNoScore'])assert.ok(Object.hasOwn(fixture.markets,key),key+' historical rate must be available');
  // The combo is GG minus the 1-1 score, not GG multiplied by Over 2.5.
  const shrink=x=>(x*8+1.3*6)/14;
  const h=Math.sqrt(shrink(2.25)*shrink(.75)),a=h;

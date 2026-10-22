@@ -6,12 +6,12 @@ const pages=JSON.parse(readFileSync('test/fixtures/sisal-items.json','utf8'));
 const sheet=parseSisalPages(pages,{now});
 const fixture=(market='over25')=>({fixtureId:'betis',home:'Real Betis',away:'Feyenoord',league:'UEFA Champions League',date:'2026-10-21T19:00:00Z',selection:{primary:{key:market}}});
 test('reads the actual printed columns, including decimal runs and official update time',()=>{
- const e=sheet.entries.find(e=>e.home==='Betis');assert.deepEqual(e.odds,{one:1.55,draw:4.75,two:5.25,over25:1.33,btts:1.4,over35:1.85});
+ const e=sheet.entries.find(e=>e.home==='Betis');assert.deepEqual(e.odds,{one:1.55,draw:4.75,two:5.25,doubleChance1X:1.16,doubleChanceX2:2.45,doubleChance12:1.19,under15:6,over15:1.08,under25:3.1,over25:1.33,under35:1.8,over35:1.85,btts:1.4,noBtts:2.75,homeScore:1.02,homeNoScore:9.25,awayScore:1.28,awayNoScore:3.25});
  const madrid=sheet.entries.find(e=>e.home==='Real Madrid');assert.equal(madrid.odds.over25,1.2);assert.equal(madrid.odds.btts,1.45);
  assert.equal(sheet.sourceUpdatedAt,'2026-10-20T21:06:29.000Z');
 });
 test('matches date, Italian kickoff, explicit club aliases and exact proposed market',()=>{
- for(const[key,value]of Object.entries({one:1.55,draw:4.75,two:5.25,over25:1.33,btts:1.4,over35:1.85}))assert.equal(matchProposalOdds(fixture(key),sheet,{now}).sisal.value,value);
+ for(const[key,value]of Object.entries({one:1.55,draw:4.75,two:5.25,doubleChance1X:1.16,doubleChanceX2:2.45,doubleChance12:1.19,under15:6,over15:1.08,under25:3.1,over25:1.33,under35:1.8,over35:1.85,btts:1.4,noBtts:2.75,homeScore:1.02,homeNoScore:9.25,awayScore:1.28,awayNoScore:3.25}))assert.equal(matchProposalOdds(fixture(key),sheet,{now}).sisal.value,value);
  assert.equal(matchProposalOdds({...fixture(),home:'Feyenoord',away:'Real Betis'},sheet,{now}).sisal.available,false);
  assert.equal(matchProposalOdds({...fixture(),date:'2026-10-21T13:00:00Z'},sheet,{now}).sisal.available,false);
  assert.equal(matchProposalOdds({...fixture(),date:'2026-10-22T19:00:00Z'},sheet,{now}).sisal.available,false);

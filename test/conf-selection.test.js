@@ -49,3 +49,12 @@ test('keeps independent goal and corner recommendations even when the corner ran
  assert.equal(r.goalPrimary.key,'over25');assert.equal(r.cornerPrimary.kind,'corner');
  assert.equal(r.candidates[0].kind,'corner');
 });
+test('screens Diretta shot markets as historical frequencies without labeling them predictions',()=>{
+ const market={key:'diretta_total_shots_21',label:'Totale Over 21.5 tiri',score:75,hits:9,sample:12,venueSamples:{home:6,away:6},teamRates:[.8,.7],metric:'shots',line:22};
+ const result=selectFixture({direttaStatMarkets:{markets:[market]}});
+ assert.equal(result.primary.key,market.key);assert.equal(result.primary.kind,'diretta_stat');
+ assert.equal(result.primary.scoreKind,'historical');assert.ok(result.primary.reason.includes('Non è una probabilità prevista'));
+ for(const change of [{sample:10},{venueSamples:{home:5,away:7}},{teamRates:[.9,.4]},{score:59}]){
+  const invalid={...market,...change};assert.equal(selectFixture({direttaStatMarkets:{markets:[invalid]}}).qualified,false);
+ }
+});

@@ -6,7 +6,8 @@ Applicazione mobile e desktop per consultare le partite future, le stime dei mer
 
 - Calendario Diretta con finestre 3h, 12h, 24h e ricerca per squadra, competizione o data.
 - Una scheda per partita, ordinamento per percentuale oppure data e ora, filtro di selezione al 60% e preferiti locali.
-- Analisi di GG, Over 2.5, risultato e mercati aggiuntivi quando esistono dati sufficienti; i mercati mancanti restano dichiarati non disponibili.
+- Analisi di 1X2, doppia chance, Under/Over 1.5/2.5/3.5, GG/NoGoal e gol casa/ospite quando i dati storici sono sufficienti. Il foglio Sisal viene letto anche per queste quote e ogni quota resta legata al suo esito esatto.
+- Recupero progressivo delle statistiche finali Diretta: tiri, tiri in porta, corner, falli e cartellini gialli. Le relative percentuali sono frequenze storiche descrittive, non probabilità calibrate; le quote Sisal su questi mercati non sono nel foglio attuale e non entrano nelle multiple finché non sono verificabili.
 - Quote Sisal dal foglio ufficiale e quote bookmaker di riferimento da ESPN. Ogni quota è abbinata al mercato, alle squadre e all'orario; le fonti hanno un limite di validità.
 - Bozze sperimentali con obiettivi quota 10 e 100, solo partite future della giornata corrente con calcio d’inizio entro le 21:30 comprese in Europe/Rome, massimo 16 partite e un solo bookmaker per bozza. Nessuna quota viene inventata per raggiungere l'obiettivo. Quando non ci sono combinazioni supportate, l'app lo dichiara.
 - Alternative gol + corner totali separate, senza inventare quote MyCombo o probabilità congiunte.
@@ -37,7 +38,7 @@ Endpoint principali:
 
 ## Limiti verificabili
 
-L'operatività dell'app e l'affidabilità statistica sono due verifiche diverse. Le stime Poisson e le frequenze storiche non sono probabilità di vincita certificate. `validated` e `productionBettingApproved` restano `false`; le bozze non moltiplicano percentuali per dichiarare una probabilità della multipla. Il confronto retrospettivo non dimostra un rendimento futuro. Mancano ancora un campione prospettico ampio e una verifica economica con quote effettivamente disponibili al momento della previsione.
+L'operatività dell'app e l'affidabilità statistica sono due verifiche diverse. Le stime Poisson e le frequenze storiche non sono probabilità di vincita certificate. `validated` e `productionBettingApproved` restano `false`; le bozze non moltiplicano percentuali per dichiarare una probabilità della multipla. Il confronto retrospettivo sui mercati gol/risultato non dimostra un rendimento futuro. Mancano ancora un campione prospettico ampio e una verifica economica con quote effettivamente disponibili al momento della previsione. Tiri e cartellini restano esplorativi finché gli storici non sono sufficienti e non hanno superato una verifica prospettica.
 
 Il calendario può essere più ampio degli storici. Alcune categorie, xG e mercati corner non hanno dati utilizzabili. I preferiti sono locali al browser; la sincronizzazione opzionale dello storico richiede la configurazione Supabase già supportata. Nessuna puntata viene eseguita dall'app.
 

@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 22764)
+Total output lines: 1633
+
 import {buildCalibrationAudit} from './calibration-audit.js';
 import {createForecastStatusStore} from './forecast-status.js';
 import {modelFingerprint} from './model-revision.js';
@@ -502,7 +505,7 @@ function experimentalGoalEstimate(homeGames, awayGames, homeId, awayId) {
 app.get('/api/conf-backtest', (_req, res) => {
   try {
     const stats = {};
-    const markets = ['one','draw','two','over25','btts','over35','bttsOver25'];
+    const markets = ['one','draw','two','doubleChance1X','doubleChanceX2','doubleChance12','over15','under15','over25','under25','btts','noBtts','over35','under35','homeScore','homeNoScore','awayScore','awayNoScore','homeOver15','awayOver15','bttsOver25'];
     for (const [league, rows] of Object.entries(eflBundled.leagues || {})) {
       const games = rows.filter(x => /^\d+$/.test(String(x[3])) && /^\d+$/.test(String(x[4])))
         .map(([date,h,a,hg,ag],i)=>({
@@ -521,7 +524,11 @@ app.get('/api/conf-backtest', (_req, res) => {
         const est=experimentalGoalEstimate(hV.length>=6?hV:hAll,aV.length>=6?aV:aAll,homeId,awayId);
         if(est.available) {
           const score=goals(game);
-          const truth={one:Number(score.home>score.away),draw:Number(score.home===score.away),two:Number(score.home<score.away),over25:Number(score.home+score.away>=3),btts:Number(score.home>0&&score.away>0),over35:Number(score.home+score.away>=4),bttsOver25:Number(score.home>0&&score.away>0&&score.home+score.away>=3)};
+          const h=score.home,a=score.away;
+          const truth={one:Number(h>a),draw:Number(h===a),two:Number(h<a),doubleChance1X:Number(h>=a),doubleChanceX2:Number(h<=a),doubleChance12:Number(h!==a),
+            over15:Number(h+a>=2),under15:Number(h+a<2),over25:Number(h+a>=3),under25:Number(h+a<3),btts:Number(h>0&&a>0),noBtts:Number(h===0||a===0),
+            over35:Number(h+a>=4),under35:Number(h+a<4),homeScore:Number(h>0),homeNoScore:Number(h===0),awayScore:Number(a>0),awayNoScore:Number(a===0),
+            homeOver15:Number(h>=2),awayOver15:Number(a>=2),bttsOver25:Number(h>0&&a>0&&h+a>=3)};
           evaluated.push({ date:game.date, probabilities:est.estimates, truth });
         }
         // Update after processing the COMPLETE date, to avoid same-date leakage.
@@ -590,7 +597,7 @@ let calculationRevision;
 function currentModelRevision(){
  calculationRevision??=modelFingerprint([
   'provider:'+(process.env.CONF_PROVIDER||'openmatchday'),
-  ...['experimental-goals.js','conf-selection.js','open-data.js','diretta-history.js'].map(path=>readFileSync(new URL('./'+path,import.meta.url),'utf8')),
+  ...['experimental-goals.js','conf-selection.js','open-data.js','diretta-history.js','diretta-match-stats.js'].map(path=>readFileSync(new URL('./'+path,import.meta.url),'utf8')),
   ...[teamPerspective,completed,goals,statusCode,teamId,numberOrNull].map(fn=>fn.toString())
  ]);
  return calculationRevision;
@@ -733,210 +740,7 @@ app.get('/api/search-fixtures', async (req, res) => {
       const italianDate = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(kickoff));
       if (italianDate !== date) return false;
       if (state === 'LIVE') {
-        if (kickoff > now + 5 * 60000 || now - kickoff > 180 * 60000) return false;
-      } else if (kickoff <= now) return false;
-      const text = norm([f.league?.name, f.league?.country, f.teams?.home?.name, f.teams?.away?.name].join(' '));
-      const ids = [f.teams?.home?.id, f.teams?.away?.id, f.league?.id].filter(Boolean).map(String);
-      const matchedById = [...unique.keys()].some(id => ids.includes(id));
-      if (!matchedById && !terms.every(t => text.includes(t))) return false;
-      const key = String(f.fixture?.id || [f.fixture?.date, f.teams?.home?.name, f.teams?.away?.name].join('|'));
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
-    res.json({ results: response.length, response, provider: 'OpenFootAPI', searchMode: resolved.length ? 'entity' : 'date', query, entitiesFound: resolved.length, competitionsFound: matchingCompetitions.length });
-  } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
-});
-
-app.get('/api/fixtures', async (req, res) => {
-  const date = String(req.query.date || '');
-  const { league, season, status } = req.query;
-  if (!date && !league) return res.status(400).json({ error: 'Indica almeno date (YYYY-MM-DD) oppure league.' });
-  try {
-    const params = { date, competition: league, season, status };
-    const body = await openFoot('/matches', params);
-    const now = Date.now();
-    const response = rows(body)
-      .filter(m => {
-        const state = statusCode(m.status);
-        // Mostra le partite live e quelle che devono ancora iniziare.
-        // Esclude terminate/rinviate/annullate e ogni kickoff già passato.
-        if (['FT', 'PST', 'CANC'].includes(state)) return false;
-        const kickoff = new Date(m.kickoffAt || m.date || m.utcDate || 0).getTime();
-        if (state === 'LIVE') {
-          const rawStatus = m.status && typeof m.status === 'object' ? m.status : {};
-          const elapsed = Number(rawStatus.elapsed ?? m.minute ?? m.elapsed);
-          if (!Number.isFinite(kickoff)) return false;
-          // OpenFootAPI può lasciare LIVE dopo il 90': scarta stati palesemente obsoleti.
-          if (Number.isFinite(elapsed) && elapsed >= 90 && now - kickoff > 100 * 60 * 1000) return false;
-          if (!Number.isFinite(elapsed) && now - kickoff > 150 * 60 * 1000) return false;
-          return kickoff <= now + 5 * 60 * 1000;
-        }
-        return Number.isFinite(kickoff) && kickoff > now;
-      })
-      .map(toLegacy);
-    res.json({ results: response.length, response, provider: 'OpenFootAPI', meta: body.meta || null });
-  } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
-});
-
-app.get('/api/fixture-statistics', (_req, res) => {
-  res.json({ response: [], provider: 'OpenFootAPI', note: 'Statistiche corner non disponibili nel piano Starter; non vengono stimate.' });
-});
-app.get('/api/odds', (_req, res) => {
-  res.status(403).json({ error: 'Le quote/benchmark odds richiedono un piano OpenFootAPI che includa questo endpoint.' });
-});
-
-app.get('/api/debug-fixtures', async (req, res) => {
-  const date = String(req.query.date || new Date().toISOString().slice(0, 10));
-  try {
-    const body = await openFoot('/matches', { date });
-    const matches = rows(body);
-    res.json({
-      date,
-      returned: matches.length,
-      meta: body.meta || null,
-      samples: matches.slice(0, 10).map(m => ({
-        id: m.id,
-        status: m.status ?? null,
-        kickoffAt: m.kickoffAt ?? m.date ?? m.utcDate ?? null,
-        home: (m.homeTeam || m.home || {}).name ?? null,
-        away: (m.awayTeam || m.away || {}).name ?? null
-      }))
-    });
-  } catch (e) { res.status(e.status || 500).json({ error: e.message }); }
-});
-
-
-/**
- * Optional on-demand player shot-on-target history. No estimated individual
- * shot percentages and no request on the automatic CONF feed.
- * A single click costs at most 9 API-Sports calls (subject to cache).
- */
-
-const detailCache = new Map();
-function safeMatchName(name) {
-  return String(name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
-}
-async function apiFootballMatch(home, away, date) {
-  const fixtures = (await apiFootball('fixtures',{date,timezone:'Europe/Rome'}))?.response || [];
-  return fixtures.find(x=>safeMatchName(x.teams?.home?.name)===safeMatchName(home) &&
-    safeMatchName(x.teams?.away?.name)===safeMatchName(away)) || null;
-}
-function inputMatch(req,res) {
-  const home=String(req.query.home||'').trim(), away=String(req.query.away||'').trim();
-  const date=String(req.query.date||'').slice(0,10);
-  if (!home || !away || home.length>90 || away.length>90 || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-    res.status(400).json({error:'Squadre o data non valide.'});return null;
-  }
-  return {home,away,date};
-}
-async function recentTeamFixtures(teamId,matchStart,count=4) {
-  const matches=(await apiFootball('fixtures',{team:teamId,last:count+3}))?.response || [];
-  return matches.filter(x=>Date.parse(x.fixture?.date)<matchStart &&
-    ['FT','AET','PEN'].includes(x.fixture?.status?.short)).slice(0,count);
-}
-// Every detailed lookup is on user demand, cached for 6 hours to protect daily API quotas.
-function statNumber(v) {
-  if (v===null||v===undefined||v==='')return null;
-  const n=Number(v);return Number.isFinite(n)?n:null;
-}
-function halfCornerValues(response,teamId) {
-  const entry=(Array.isArray(response)?response:[]).find(x=>Number(x.team?.id)===Number(teamId));
-  if(!entry)return null;
-  const stats=entry.statistics||[];
-  // The half=true API response can contain independent first/second period
-  // blocks, or a structured value. Ignore unlabeled FT corner totals.
-  let first=null,second=null;
-  function pick(block, fallbackPeriod='') {
-    if(!block||typeof block!=='object')return;
-    const name=String(block.type||block.name||'');
-    if(!/corner/i.test(name))return;
-    const value=block.value;
-    const period=String(block.half||block.period||block.time||block.segment||fallbackPeriod).toLowerCase();
-    const firstHalf=/^(1|1h|1st|first|firsthalf|first half|half1|ht)$/.test(period);
-    const secondHalf=/^(2|2h|2nd|second|secondhalf|second half|half2)$/.test(period);
-    if(firstHalf)first=statNumber(value);
-    if(secondHalf)second=statNumber(value);
-    if(value && typeof value==='object') {
-      first ??= statNumber(value.firstHalf??value.first_half??value.first??value['1']);
-      second ??= statNumber(value.secondHalf??value.second_half??value.second??value['2']);
-    }
-  }
-  if(Array.isArray(stats))for(const stat of stats) {
-    if(Array.isArray(stat.statistics))for(const inner of stat.statistics)pick(inner,stat.period||stat.half||'');
-    else pick(stat);
-  }
-  else if(stats && typeof stats==='object') {
-    for(const [period,entries] of Object.entries(stats)) {
-      if(Array.isArray(entries))for(const item of entries)pick(item,period);
-    }
-  }
-  return first!==null&&second!==null?{first,second}:null;
-}
-app.get('/api/corners-halves',async(req,res)=>{
-  const input=inputMatch(req,res);if(!input)return;
-  if(!apiFootballKey)return res.json({markets:[],warning:'API-Football non configurata; corner per tempo non disponibili.'});
-  const cacheKey='corners-halves:'+JSON.stringify(input),cached=detailCache.get(cacheKey);
-  if(cached&&Date.now()-cached.at<21600000)return res.json(cached.value);
-  try{
-    const match=await apiFootballMatch(input.home,input.away,input.date);
-    if(!match)return res.json({markets:[],warning:'La partita non è identificata dal provider, impossibile associare le statistiche ai tempi.'});
-    const sets={home:[],away:[]};
-    let sampled=0;
-    for(const side of ['home','away']) {
-      const team=match.teams[side];
-      const games=await recentTeamFixtures(team.id,Date.parse(match.fixture.date),4);
-      for(const game of games) {
-        const details=(await apiFootball('fixtures/statistics',{fixture:game.fixture.id,half:'true'}))?.response || [];
-        const value=halfCornerValues(details,team.id);
-        if(value){sets[side].push(value);sampled++;}
-      }
-    }
-    const markets=[];
-    for(const side of ['home','away'])for(const half of ['first','second'])for(const line of [1,2,3,4]) {
-      const rows=sets[side],hits=rows.filter(x=>x[half]>=line).length;
-      markets.push({
-        label:(side==='home'?input.home:input.away)+' · '+(half==='first'?'1°':'2°')+' tempo · '+line+'+ corner',
-        score:rows.length?Math.round(100*hits/rows.length):null,
-        hits,sample:rows.length,qualified:rows.length>=3&&hits/rows.length>=0.6,
-        half,side,line
-      });
-    }
-    const value={markets:markets.filter(x=>x.score!==null),matchesChecked:sampled,
-      warning:sampled?'Campione limitato: frequenze storiche per tempo, non probabilità calibrate.':
-      'Nessun dettaglio 1°/2° tempo disponibile tramite il piano/API attuale. Non possiamo ricostruirlo dai corner FT.'};
-    detailCache.set(cacheKey,{at:Date.now(),value});return res.json(value);
-  }catch(e){return res.json({markets:[],warning:'Corner per tempo non disponibili: '+e.message});}
-});
-
-
-// One shared official sheet refresh for all visible proposals. Odds failures
-// never prevent the independent calendar / analysis response from loading.
-app.get('/api/proposal-odds', async (req,res)=>{
- try {
-  const data=await calendarConf(req.query,experimentalGoalEstimate);
-  const proposals=data.fixtures.filter(f=>f.experimentalEstimate?.available);
-  const sheet=proposals.length?await getSisalOdds():null;
-  res.set('Cache-Control','no-store').json({source:'Sisal · foglio ufficiale',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,oddsStatus:sisalOddsStatus(),
-   fixtures:proposals.map(f=>{const result=pricedSelection(f,sheet);return {fixtureId:f.fixtureId,market:result.primary?.key||null,...result};})});
- } catch {res.status(503).json({error:'Quote momentaneamente non disponibili',fixtures:[]});}
-});
-
-// Tickets always use today's Italian calendar date, independently of search,
-// the selected browsing date and rolling 24-hour calendar windows.
-app.get('/api/daily-multiples',async(req,res)=>{
- try{
-  const date=italianDay(Date.now());
-  const data=await calendarConf({date,hours:24},experimentalGoalEstimate);
-  const [sheet,quotes]=await Promise.all([data.selectedCount?getSisalOdds():null,getEspnQuotes(data.fixtures)]);
-  const now=Date.now();
-  const fixtures=currentDayTicketFixtures(data.fixtures,now);
-  const original=buildDailyMultiples(fixtures,sheet,{experimentalDrafts:true,now});
-  const reference=buildComparisonTickets(fixtures,quotes,{now});
-  const tickets=chooseReferenceTickets(original.tickets,reference.tickets).map(t=>({...t,experimental:true,validated:false,jointProbability:null}));
-  const usesReference=tickets.some(t=>t.indicative);
-  res.set('Cache-Control','no-store').json({...original,tickets,referenceQuotes:{source:quotes.source,matchedEvents:quotes.matchedEvents,pricedEvents:quotes.listedEvents,eligibleCount:reference.eligibleCount,error:quotes.error},
-   eligibleCount:Math.max(original.eligibleCount,reference.eligibleCount),comparison:usesReference,source:usesReference?reference.source:'Sisal · foglio ufficiale',maxLegs:16,
+        if (kickoff > now + 5 * 60000 || no…2764 tokens truncated…ource:usesReference?reference.source:'Sisal · foglio ufficiale',maxLegs:16,
    method:(usesReference?reference.method:original.method)+' Fonte alternativa ESPN: '+reference.eligibleCount+' proposte qualificate con quota sul mercato esatto.',
    oddsStatus:sisalOddsStatus(),date:italianDay(now),scope:'current_day',cutoffTime:DAILY_TICKET_CUTOFF,timeZone:'Europe/Rome',generatedAt:new Date(now).toISOString(),selectedCount:fixtures.filter(f=>f.selection?.qualified).length,competitionsCovered:data.competitionsCovered});
  }catch{res.status(503).json({error:'Multiple momentaneamente non disponibili',tickets:[]});}

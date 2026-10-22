@@ -117,9 +117,23 @@ export function marketsFor(home,away,homeId,awayId){
  const definitions={one:['1 · vittoria casa',m=>{const[a,b]=own(m,homeId);return a>b;},m=>{const[a,b]=own(m,awayId);return a<b;}],
  draw:['X · pareggio',m=>m.score.home===m.score.away,m=>m.score.home===m.score.away],
  two:['2 · vittoria trasferta',m=>{const[a,b]=own(m,homeId);return a<b;},m=>{const[a,b]=own(m,awayId);return a>b;}],
+ doubleChance1X:['1X · doppia chance',m=>{const[a,b]=own(m,homeId);return a>=b;},m=>{const[a,b]=own(m,awayId);return a<=b;}],
+ doubleChanceX2:['X2 · doppia chance',m=>{const[a,b]=own(m,homeId);return a<=b;},m=>{const[a,b]=own(m,awayId);return a>=b;}],
+ doubleChance12:['12 · escluso pareggio',m=>m.score.home!==m.score.away,m=>m.score.home!==m.score.away],
+ over15:['Over 1.5 FT',m=>m.score.home+m.score.away>=2,m=>m.score.home+m.score.away>=2],
+ under15:['Under 1.5 FT',m=>m.score.home+m.score.away<2,m=>m.score.home+m.score.away<2],
  over25:['Over 2.5 FT',m=>m.score.home+m.score.away>=3,m=>m.score.home+m.score.away>=3],
+ under25:['Under 2.5 FT',m=>m.score.home+m.score.away<3,m=>m.score.home+m.score.away<3],
  btts:['GG',m=>m.score.home>0&&m.score.away>0,m=>m.score.home>0&&m.score.away>0],
+ noBtts:['NoGoal',m=>m.score.home===0||m.score.away===0,m=>m.score.home===0||m.score.away===0],
  over35:['Over 3.5 FT',m=>m.score.home+m.score.away>=4,m=>m.score.home+m.score.away>=4],
+ under35:['Under 3.5 FT',m=>m.score.home+m.score.away<4,m=>m.score.home+m.score.away<4],
+ homeScore:['Segna casa · Sì',m=>own(m,homeId)[0]>0,m=>own(m,awayId)[1]>0],
+ homeNoScore:['Segna casa · No',m=>own(m,homeId)[0]===0,m=>own(m,awayId)[1]===0],
+ awayScore:['Segna ospite · Sì',m=>own(m,homeId)[1]>0,m=>own(m,awayId)[0]>0],
+ awayNoScore:['Segna ospite · No',m=>own(m,homeId)[1]===0,m=>own(m,awayId)[0]===0],
+ homeOver15:['Casa Over 1.5 gol',m=>own(m,homeId)[0]>=2,m=>own(m,awayId)[1]>=2],
+ awayOver15:['Ospite Over 1.5 gol',m=>own(m,homeId)[1]>=2,m=>own(m,awayId)[0]>=2],
  bttsOver25:['GG + Over 2.5 FT',m=>m.score.home>0&&m.score.away>0&&m.score.home+m.score.away>=3,m=>m.score.home>0&&m.score.away>0&&m.score.home+m.score.away>=3]};
  return Object.fromEntries(Object.entries(definitions).map(([key,[label,h,a]])=>{
   const hh=home.filter(h).length,ah=away.filter(a).length,valid=home.length>0&&away.length>0;
@@ -215,7 +229,10 @@ export function openDataObservations(estimate, data=dataset) {
   observations.push({id:game.id,date:game.resultDate,league:game.sourceLeague,
    probabilities:experimentalEstimate.estimates,expectedGoals:experimentalEstimate.expectedGoals,actualGoals:{home:game.score.home,away:game.score.away},
    selected:selection.goalPrimary?.key||null,
-   truth:{one:+(hg>ag),draw:+(hg===ag),two:+(hg<ag),over25:+(hg+ag>=3),btts:+(hg>0&&ag>0),over35:+(hg+ag>=4),bttsOver25:+(hg>0&&ag>0&&hg+ag>=3)}});
+   truth:{one:+(hg>ag),draw:+(hg===ag),two:+(hg<ag),doubleChance1X:+(hg>=ag),doubleChanceX2:+(hg<=ag),doubleChance12:+(hg!==ag),
+    over15:+(hg+ag>=2),under15:+(hg+ag<2),over25:+(hg+ag>=3),under25:+(hg+ag<3),btts:+(hg>0&&ag>0),noBtts:+(hg===0||ag===0),
+    over35:+(hg+ag>=4),under35:+(hg+ag<4),homeScore:+(hg>0),homeNoScore:+(hg===0),awayScore:+(ag>0),awayNoScore:+(ag===0),
+    homeOver15:+(hg>=2),awayOver15:+(ag>=2),bttsOver25:+(hg>0&&ag>0&&hg+ag>=3)}});
  }
  return {observations,sourceFixtures:unique.size,competitions:index.leagues.length,generatedAt:data.generatedAt};
 }

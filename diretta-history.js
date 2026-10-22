@@ -2,6 +2,7 @@ import {gunzipSync} from 'node:zlib';
 import {readFileSync,writeFileSync,renameSync} from 'node:fs';
 import {marketsFor,teamStats,canonicalClub} from './open-data.js';
 import {selectFixture} from './conf-selection.js';
+import {buildDirettaStatMarkets,direttaStatsStore} from './diretta-match-stats.js';
 
 const fields=block=>Object.fromEntries(block.split('¬').filter(x=>x.includes('÷')).map(x=>{const i=x.indexOf('÷');return [x.slice(0,i),x.slice(i+1)];}));
 // Only the first (overall) tab; never concatenate venue tabs or head-to-head.
@@ -42,6 +43,9 @@ export function analyzeHistory(f,record,estimate,{now=Date.now()}={}){
  };
  const h=sample(teams[0],f.home),a=sample(teams[1],f.away);
  const result={...f,markets:marketsFor(h,a,id(f.home),id(f.away)),experimentalEstimate:estimate(h,a,id(f.home),id(f.away)),
+  direttaStatMarkets:buildDirettaStatMarkets(f.home,f.away,
+   h.map(g=>({id:g.id,date:g.kickoffAt,home:g.homeTeam.name,away:g.awayTeam.name})),
+   a.map(g=>({id:g.id,date:g.kickoffAt,home:g.homeTeam.name,away:g.awayTeam.name})),direttaStatsStore,{now,schedule:false}),
   form:{home:{recentOverall:teamStats(h,id(f.home))},away:{recentOverall:teamStats(a,id(f.away))}},
   dataUpdatedAt:record.fetchedAt,source:'Diretta.it · risultati precedenti dal '+start,historyPeriod:{from:start,before},dataStale:false};
  result.selection=selectFixture(result);result.rankScore=result.selection.primary?.evidence??-1;return result;
@@ -72,14 +76,35 @@ const store=createHistoryStore({initial,persist:value=>{
  if(process.env.NODE_ENV==='test')return;
  try{const tmp=new URL('./diretta-history-cache.tmp',import.meta.url);writeFileSync(tmp,JSON.stringify(value));renameSync(tmp,new URL('./diretta-history-cache.json',import.meta.url));}catch{}
 }});
-export async function enrichHistory(data,estimate,{now=Date.now(),historyStore=store,waitMs=18000}={}){
+export async function enrichHistory(data,estimate,{now=Date.now(),historyStore=store,statsStore=direttaStatsStore,waitMs=18000}={}){
  const started=Date.now();
  const missing=data.fixtures.filter(f=>f.direttaId&&(!f.experimentalEstimate?.available||f.dataStale));
- const jobs=missing.map(f=>historyStore.get(f.direttaId,{now}));
+ // The first 24 upcoming fixtures are the working set for additional Diretta
+ // statistics. Keep it bounded: each fixture's two team histories can refer to
+ // many of the same completed matches, and each unique match needs one feed.
+ const statFixtures=data.fixtures.filter(f=>f.direttaId&&Date.parse(f.date)>now).slice(0,24);
+ const requested=new Map([...missing,...statFixtures].map(f=>[String(f.direttaId),f]));
+ const jobs=[...requested.values()].map(f=>historyStore.get(f.direttaId,{now}));
  // Keep the calendar responsive; queued work continues, shared across requests.
  let timer;await Promise.race([Promise.allSettled(jobs),new Promise(r=>{timer=setTimeout(r,waitMs);})]);clearTimeout(timer);
  const effectiveNow=now+Date.now()-started;
- const fixtures=data.fixtures.filter(f=>Date.parse(f.date)>effectiveNow).map(f=>f.direttaId&&(!f.experimentalEstimate?.available||f.dataStale)?analyzeHistory(f,historyStore.peek(f.direttaId),estimate,{now}):f);
+ const fixtures=data.fixtures.filter(f=>Date.parse(f.date)>effectiveNow).map(f=>{
+  let result=f;
+  const record=f.direttaId?historyStore.peek(f.direttaId):null;
+  if(f.direttaId&&(!f.experimentalEstimate?.available||f.dataStale))result=analyzeHistory(f,record,estimate,{now});
+  if(!record||!statFixtures.some(x=>String(x.fixtureId)===String(f.fixtureId)))return result;
+  const kickoff=Math.min(now,Date.parse(f.date)),start=historyStart(now);
+  const teamGames=name=>{
+   const team=record.teams?.find(t=>canonicalClub(t.name)===canonicalClub(name));if(!team)return[];
+   const seen=new Set();return team.games.filter(g=>g.id&&Date.parse(g.date)<kickoff&&g.date.slice(0,10)>=start&&
+    [g.home,g.away].some(n=>canonicalClub(n)===canonicalClub(name))&&Number.isInteger(g.hg)&&Number.isInteger(g.ag)&&g.hg>=0&&g.ag>=0&&!seen.has(g.id)&&seen.add(g.id))
+    .sort((a,b)=>Date.parse(b.date)-Date.parse(a.date)).slice(0,10);
+  };
+  const homeGames=teamGames(f.home),awayGames=teamGames(f.away);
+  const direttaStatMarkets=buildDirettaStatMarkets(f.home,f.away,homeGames,awayGames,statsStore,{now,schedule:process.env.NODE_ENV!=='test'});
+  result={...result,direttaStatMarkets,selection:selectFixture({...result,direttaStatMarkets})};
+  return result;
+ });
  fixtures.sort((a,b)=>(b.rankScore??-1)-(a.rankScore??-1)||Date.parse(a.date)-Date.parse(b.date));
  return {...data,fixtures,calendarCount:fixtures.length,preview:{...data.preview,returned:fixtures.length,totalAvailable:fixtures.length},provider:'Diretta.it · analisi Open Matchday e storico Diretta',analyzedCount:fixtures.filter(f=>f.experimentalEstimate?.available).length,selectedCount:fixtures.filter(f=>f.selection?.qualified).length,
   historyCoverage:{source:'Diretta.it',checked:missing.filter(f=>historyStore.peek(f.direttaId)).length,pending:missing.filter(f=>!historyStore.peek(f.direttaId)).length},

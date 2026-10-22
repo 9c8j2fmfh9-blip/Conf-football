@@ -59,16 +59,28 @@ function columnsFor(items,height){
  const line35=top.find(i=>i.str==='3,5');
  const first=top.find(i=>i.str==='Squadra 1'),second=top.find(i=>i.str==='Squadra 2');
  const goal=top.find(i=>i.str==='Goal'),noGoal=top.find(i=>i.str==='NoGoal');
- if(!heading||!line25||!line35||!first||!second||!goal||!noGoal)throw Error('Formato foglio Sisal non riconosciuto');
+ const line15=top.find(i=>i.str==='1,5'),doubleChance=top.find(i=>i.str==='1X X2 12');
+ const home=top.find(i=>i.str==='Casa'),away=top.find(i=>i.str==='Ospite');
+ if(!heading||!line15||!line25||!line35||!first||!second||!goal||!noGoal||!doubleChance||!home||!away)throw Error('Formato foglio Sisal non riconosciuto');
  const label=(text,predicate)=>{const found=top.filter(i=>i.str===text&&predicate(i));if(found.length!==1)throw Error('Colonna Sisal ambigua: '+text);return center(found[0]);};
  const x1=heading.transform[4],x2=x1+heading.width;
  return {home:first.transform[4],away:second.transform[4],firstOdds:x1-4,
   one:label('1',i=>center(i)>=x1&&center(i)<=x2&&i.transform[5]<heading.transform[5]),
   draw:label('X',i=>center(i)>=x1&&center(i)<=x2&&i.transform[5]<heading.transform[5]),
   two:label('2',i=>center(i)>=x1&&center(i)<=x2&&i.transform[5]<heading.transform[5]),
+  doubleChance1X:doubleChance.transform[4]+5,doubleChanceX2:doubleChance.transform[4]+20,doubleChance12:doubleChance.transform[4]+35,
+  under15:label('U',i=>center(i)<center(line15)&&center(i)>center(line15)-12&&i.transform[5]<line15.transform[5]),
+  over15:label('O',i=>center(i)>center(line15)&&center(i)<center(line15)+12&&i.transform[5]<line15.transform[5]),
+  under25:label('U',i=>center(i)<center(line25)&&center(i)>center(line25)-12&&i.transform[5]<line25.transform[5]),
   over25:label('O',i=>center(i)>center(line25)&&center(i)<center(line25)+12&&i.transform[5]<line25.transform[5]),
+  under35:label('U',i=>center(i)<center(line35)&&center(i)>center(line35)-12&&i.transform[5]<line35.transform[5]),
   over35:label('O',i=>center(i)>center(line35)&&center(i)<center(line35)+12&&i.transform[5]<line35.transform[5]),
-  btts:label('G',i=>center(i)>=Math.min(goal.transform[4],noGoal.transform[4])&&center(i)<=noGoal.transform[4]+noGoal.width)};
+  btts:label('G',i=>center(i)>=Math.min(goal.transform[4],noGoal.transform[4])&&center(i)<=noGoal.transform[4]+noGoal.width),
+  noBtts:label('NG',i=>center(i)>=Math.min(goal.transform[4],noGoal.transform[4])&&center(i)<=noGoal.transform[4]+noGoal.width),
+  homeScore:label('SI',i=>i.transform[4]>home.transform[4]-8&&i.transform[4]<home.transform[4]+8),
+  homeNoScore:label('NO',i=>i.transform[4]>home.transform[4]&&i.transform[4]<away.transform[4]-8),
+  awayScore:label('SI',i=>i.transform[4]>away.transform[4]&&i.transform[4]<away.transform[4]+8),
+  awayNoScore:label('NO',i=>i.transform[4]>away.transform[4]+8)};
 }
 function combinedColumns(items,height){
  const top=items.filter(i=>i.transform[5]>height*.84);
@@ -109,7 +121,7 @@ export function parseSisalPages(pages,{now=Date.now(),kind='base'}={}){
    const away=row.items.filter(i=>i.transform[4]>=columns.away-1&&i.transform[4]<columns.firstOdds).map(i=>i.str).join(' ').trim();
    if(!home||!away)continue;
    const tokens=row.items.flatMap(decimalTokens);const odds={};
-   for(const key of kind==='combined'?['bttsOver25']:['one','draw','two','over25','btts','over35']){
+   for(const key of kind==='combined'?['bttsOver25']:['one','draw','two','doubleChance1X','doubleChanceX2','doubleChance12','under15','over15','under25','over25','under35','over35','btts','noBtts','homeScore','homeNoScore','awayScore','awayNoScore']){
     const candidates=tokens.filter(t=>Math.abs(t.x-columns[key])<3.4);
     if(candidates.length===1)odds[key]=candidates[0].value;
    }

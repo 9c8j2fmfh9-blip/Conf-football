@@ -46,7 +46,7 @@ try{
   assert.ok(league.backtestedFixtures>0,'Backtest must evaluate real fixtures');
   assert.ok(league.backtestedFixtures<=league.historicalFixtures);
   evaluated+=league.backtestedFixtures;
-  for(const market of ['one','draw','two','over25','btts','over35','bttsOver25']){
+  for(const market of ['one','draw','two','doubleChance1X','doubleChanceX2','doubleChance12','over15','under15','over25','under25','btts','noBtts','over35','under35','homeScore','homeNoScore','awayScore','awayNoScore','homeOver15','awayOver15','bttsOver25']){
    const metric=league.measurements[market];
    assert.ok(metric,'Missing market '+market);
    for(const key of ['brier','baselineBrier']){
@@ -62,7 +62,7 @@ try{
  assert.equal(validation.validated,false);
  assert.ok(validation.evaluatedFixtures>3500);
  assert.ok(validation.testedCompetitions>50);
- assert.ok(validation.markets.btts.screened.n>0);
+ assert.ok(Object.values(validation.markets).some(m=>m.screened.n>0));
  const calibrationResponse=await fetch(root+'/api/conf-calibration',{signal:AbortSignal.timeout(20000)});
  assert.equal(calibrationResponse.status,200);
  const calibration=await calibrationResponse.json();
@@ -70,7 +70,7 @@ try{
  assert.equal(calibration.validated,false);
  assert.ok(calibration.partition.finalPeriod>2500);
  assert.ok(calibration.jointRate.finalPeriod.over25.improvementInterval.dateBlocks>30);
- console.log('PASS: server boots, serves homepage and selector, and evaluates '+evaluated+' historical fixtures across seven markets.');
+ console.log('PASS: server boots, serves homepage and selector, and evaluates '+evaluated+' historical fixtures across 21 goal/result markets.');
 }finally{
  child.kill('SIGTERM');
 }

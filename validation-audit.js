@@ -1,6 +1,6 @@
 import {openDataObservations,teamStats} from './open-data.js';
 import {goalEstimateFromStats} from './experimental-goals.js';
-export const auditMarkets=['one','draw','two','over25','btts','over35','bttsOver25'];
+export const auditMarkets=['one','draw','two','doubleChance1X','doubleChanceX2','doubleChance12','over15','under15','over25','under25','btts','noBtts','over35','under35','homeScore','homeNoScore','awayScore','awayNoScore','homeOver15','awayOver15','bttsOver25'];
 const estimate=(h,a,hi,ai)=>{
  const rounded=(games,id)=>{const s=teamStats(games,id);return {...s,averageFor:s.averageFor===null?null:+s.averageFor.toFixed(2),averageAgainst:s.averageAgainst===null?null:+s.averageAgainst.toFixed(2)};};
  return goalEstimateFromStats(rounded(h,hi),rounded(a,ai));

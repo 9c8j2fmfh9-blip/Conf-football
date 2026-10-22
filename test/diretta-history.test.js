@@ -1,5 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 import {parseHistory,analyzeHistory,createHistoryStore,enrichHistory} from '../diretta-history.js';
+import {createDirettaStatsStore} from '../diretta-match-stats.js';
 const now=Date.parse('2026-10-21T07:00:00Z');
 const fixture={fixtureId:'diretta_CCvjjDJs',direttaId:'CCvjjDJs',date:'2026-10-21T11:00:00Z',home:'Como U19',away:'Manchester Utd U19',markets:{},selection:{qualified:false}};
 const raw=fs.readFileSync('test/fixtures/diretta-history-youth.txt','utf8');
@@ -39,4 +40,23 @@ test('deadline returns the calendar while the shared history queue continues',as
  assert.equal(result.fixtures.length,1);assert.equal(result.historyCoverage.pending,1);
  release({ok:true,text:async()=>raw});await store.get(fixture.direttaId,{now});
  const updated=await enrichHistory({fixtures:[fixture],method:''},estimate,{now,historyStore:store});assert.equal(updated.historyCoverage.checked,1);assert.equal(updated.fixtures[0].form.home.recentOverall.sample,2);
+});
+test('calendar enrichment exposes Diretta shot markets from completed pre-match histories',async()=>{
+ const teams=[{name:'Home',games:[]},{name:'Away',games:[]}],initial={};
+ for(let i=0;i<6;i++){
+  const id1='h'+String(i).padStart(7,'0'),id2='a'+String(i).padStart(7,'0');
+  const date=new Date(now-(i+1)*86400000).toISOString();
+  teams[0].games.push({id:id1,date,home:'Home',away:'Other '+i,hg:2,ag:1});
+  teams[1].games.push({id:id2,date,home:'Other '+i,away:'Away',hg:1,ag:2});
+  initial[id1]={complete:true,home:{shots:15,shotsOnTarget:5,corners:6,fouls:10},away:{shots:8,shotsOnTarget:2,corners:3,fouls:11}};
+  initial[id2]={complete:true,home:{shots:12,shotsOnTarget:4,corners:5,fouls:13},away:{shots:10,shotsOnTarget:3,corners:4,fouls:12}};
+ }
+ const record={fetchedAt:new Date(now).toISOString(),teams};
+ const historyStore={peek:()=>record,get:async()=>record};
+ const statsStore=createDirettaStatsStore({initial});
+ const result=await enrichHistory({fixtures:[{...fixture,home:'Home',away:'Away',experimentalEstimate:{available:true},selection:{},date:'2026-10-21T11:00:00Z'}]},estimate,{now,historyStore,statsStore});
+ const markets=result.fixtures[0].direttaStatMarkets;
+ assert.equal(markets.homeSample,6);assert.equal(markets.awaySample,6);assert.equal(markets.pending,0);
+ assert.equal(markets.markets.find(x=>x.key==='diretta_total_shots_19').score,100);
+ assert.ok(result.fixtures[0].selection.candidates.some(x=>x.kind==='diretta_stat'));
 });

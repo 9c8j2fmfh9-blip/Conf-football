@@ -9,6 +9,7 @@ export function pricedSelection(fixture,sheet,{now=Date.now(),minimumOdds=MINIMU
  const primary=accepted?.primary||(preserveCorner?fixture.selection?.primary:candidates[0])||null;
  const odds=accepted?.odds||matchProposalOdds({...fixture,selection:{...fixture.selection,primary}},sheet,{now});
  if(odds.sisal.available)odds.sisal.belowMinimum=odds.sisal.value<minimumOdds;
- const alternatives=['over35','bttsOver25'].map(key=>({key,label:fixture.markets?.[key]?.label||key,score:fixture.experimentalEstimate?.estimates?.[key]??null,historicalScore:fixture.markets?.[key]?.score??null,qualified:candidates.some(p=>p.key===key),odds:matchProposalOdds({...fixture,selection:{primary:{key}}},sheet,{now})}));
+ const marketKeys=Object.keys(fixture.experimentalEstimate?.estimates||{}).filter(key=>key!==primary?.key&&fixture.markets?.[key]);
+ const alternatives=marketKeys.map(key=>({key,label:fixture.markets[key].label||key,score:fixture.experimentalEstimate?.estimates?.[key]??null,historicalScore:fixture.markets[key]?.score??null,qualified:candidates.some(p=>p.key===key),odds:matchProposalOdds({...fixture,selection:{primary:{key}}},sheet,{now})}));
  return {primary,odds,alternatives,minimumOdds};
 }

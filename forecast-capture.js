@@ -9,7 +9,7 @@ export function prepareCapture(data,quotes,{capturedAt,modelRevision=null,deploy
   seen.add(id);return true;
  }).map(f=>({fixtureId:f.fixtureId,kickoffAt:f.date,home:f.home,away:f.away,league:f.league,country:f.country,
   direttaId:f.direttaId||null,calendarHome:f.calendarHome||f.home,calendarAway:f.calendarAway||f.away,source:f.source||data.provider,dataUpdatedAt:f.dataUpdatedAt||null,dataStale:!!f.dataStale,
-  experimentalEstimate:f.experimentalEstimate||null,markets:f.markets||{},selection:f.selection||null,
+  experimentalEstimate:f.experimentalEstimate||null,markets:f.markets||{},direttaStatMarkets:f.direttaStatMarkets||null,selection:f.selection||null,
   prices:byId.get(String(f.fixtureId))||null}));
  return {schemaVersion:1,capturedAt,modelRevision,deploymentRevision,runId,
   sourceStatus:{provider:data.provider||null,coverage:data.calendarCoverage||null,providerIssue:data.providerIssue||null,analyzedCount:data.analyzedCount??null,returned:fixtures.length},
