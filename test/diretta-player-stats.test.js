@@ -29,14 +29,36 @@ test('parses all player rows, groups and statistics without filling missing valu
  assert.throws(()=>parseDirettaPlayerStats({data:{event:{players:[]}}}),/assenti/);
 });
 
+test('joins Diretta player names and teams from epmsse with raw values from epmsd',()=>{
+ const meta={data:{findEventPMSById:{teams:[
+  {id:'homeid01',name:'Home',side:'HOME'},{id:'awayid01',name:'Away',side:'AWAY'}
+ ],players:[
+  {participant:{id:'player001',name:'Player One',shortDisplayName:'Player O.'},teamId:'homeid01',position:{name:'Forward'},inBaseLineup:true},
+  {participant:{id:'player002',name:'Player Two'},teamId:'awayid01',position:{name:'Defender'},inBaseLineup:false}
+ ],stats:{types:[{id:'SHOTS_TOTAL',label:'Total shots'},{id:'CARDS_YELLOW',label:'Yellow cards'}],typeGroups:[]}}}};
+ const values={data:{findEventPMSById:{stats:{entries:[
+  {playerId:'player001',typeId:'SHOTS_TOTAL',value:'3',rawValue:'3'},
+  {playerId:'player001',typeId:'CARDS_YELLOW',value:'1',rawValue:'1'},
+  {playerId:'player002',typeId:'SHOTS_TOTAL',value:'0',rawValue:'0'}
+ ]},ratings:[{participantId:'player001',value:'7.5',isBestRating:true}]}}};
+ const result=parseDirettaPlayerStats(meta,{matchId:'abcdefgh',values});
+ assert.equal(result.players.length,2);
+ assert.equal(result.players[0].name,'Player One');
+ assert.equal(result.players[0].side,'home');
+ assert.equal(result.players[0].stats.SHOTS_TOTAL.raw,3);
+ assert.equal(result.players[0].stats.CARDS_YELLOW.label,'Yellow cards');
+ assert.equal(result.players[0].rating,7.5);
+ assert.equal(result.players[1].side,'away');
+});
+
 test('fetches and caches an individual-stat match payload',async()=>{
  let calls=0;
  const store=createDirettaPlayerStatsStore({fetcher:async url=>{
-  calls++;assert.match(String(url),/eventId=abcdefgh/);
+  calls++;assert.match(String(url),/eventId=abcdefgh/);assert.match(String(url),/_hash=epms[sd]/);
   return{ok:true,text:async()=>JSON.stringify(payload)};
  },persist:()=>{}});
  const [a,b]=await Promise.all([store.get('abcdefgh'),store.get('abcdefgh')]);
- assert.equal(calls,1);assert.equal(a.matchId,'abcdefgh');assert.equal(b.players.length,2);
+ assert.equal(calls,2);assert.equal(a.matchId,'abcdefgh');assert.equal(b.players.length,2);
 });
 
 test('accepts full player-stat payloads above one megabyte within the bounded limit',async()=>{
