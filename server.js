@@ -932,7 +932,9 @@ app.get('/api/daily-multiples',async(req,res)=>{
  try{
   const date=italianDay(Date.now());
   const data=await calendarConf({date,hours:24},experimentalGoalEstimate);
-  const [sheet,quotes]=await Promise.all([data.selectedCount?getSisalOdds():null,getEspnQuotes(data.fixtures)]);
+  const [sheetResult,quotesResult]=await Promise.allSettled([data.selectedCount?getSisalOdds():null,getEspnQuotes(data.fixtures)]);
+  const sheet=sheetResult.status==='fulfilled'?sheetResult.value:null;
+  const quotes=quotesResult.status==='fulfilled'?quotesResult.value:{source:'ESPN',matchedEvents:0,listedEvents:0,error:'Quote ESPN non disponibili'};
   const now=Date.now();
   const fixtures=currentDayTicketFixtures(data.fixtures,now);
   const original=buildDailyMultiples(fixtures,sheet,{experimentalDrafts:true,now});
