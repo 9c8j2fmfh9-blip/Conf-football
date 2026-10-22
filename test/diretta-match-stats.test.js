@@ -27,6 +27,13 @@ test('deduplicates queued match requests and fails closed for unavailable statis
  assert.equal(await missing.get('ijklmnop'),null);
 });
 
+test('refreshes pre-fix cached matches so stale zero-card counts are never reused',async()=>{
+ let calls=0;const stale={complete:true,cardsAvailable:true,home:{shots:19,shotsOnTarget:6,corners:3,yellowCards:0},away:{shots:9,shotsOnTarget:2,corners:1,yellowCards:0}};
+ const store=createDirettaStatsStore({initial:{abcdefgh:stale},fetcher:async url=>{calls++;return{ok:true,text:async()=>String(url).includes('df_st_1')?feed:'AC÷1 Tempo¬~IA÷1¬IK÷Cartellino Giallo¬IK÷Cartellino Rosso¬AC÷2 Tempo¬'};},persist:()=>{}});
+ const value=await store.get('abcdefgh');
+ assert.equal(calls,2);assert.equal(value.cardParserVersion,2);assert.equal(value.home.yellowCards,1);assert.equal(value.home.redCards,1);
+});
+
 test('creates descriptive shot and corner markets only with two team samples',()=>{
  const initial={},homeGames=[],awayGames=[];const now=Date.parse('2026-10-22T10:00:00Z');
  for(let i=0;i<6;i++){
