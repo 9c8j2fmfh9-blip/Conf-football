@@ -3,6 +3,7 @@ import {readFileSync,writeFileSync,renameSync} from 'node:fs';
 import {marketsFor,teamStats,canonicalClub} from './open-data.js';
 import {selectFixture} from './conf-selection.js';
 import {buildDirettaStatMarkets,direttaStatsStore} from './diretta-match-stats.js';
+import {buildDirettaPlayerReport,direttaPlayerStatsStore} from './diretta-player-stats.js';
 
 const fields=block=>Object.fromEntries(block.split('¬').filter(x=>x.includes('÷')).map(x=>{const i=x.indexOf('÷');return [x.slice(0,i),x.slice(i+1)];}));
 // Only the first (overall) tab; never concatenate venue tabs or head-to-head.
@@ -46,6 +47,9 @@ export function analyzeHistory(f,record,estimate,{now=Date.now()}={}){
   direttaStatMarkets:buildDirettaStatMarkets(f.home,f.away,
    h.map(g=>({id:g.id,date:g.kickoffAt,home:g.homeTeam.name,away:g.awayTeam.name})),
    a.map(g=>({id:g.id,date:g.kickoffAt,home:g.homeTeam.name,away:g.awayTeam.name})),direttaStatsStore,{now,schedule:false}),
+  direttaPlayerStats:buildDirettaPlayerReport(f.home,f.away,
+   h.map(g=>({id:g.id,date:g.kickoffAt,home:g.homeTeam.name,away:g.awayTeam.name})),
+   a.map(g=>({id:g.id,date:g.kickoffAt,home:g.homeTeam.name,away:g.awayTeam.name})),direttaPlayerStatsStore,{now,schedule:false}),
   form:{home:{recentOverall:teamStats(h,id(f.home))},away:{recentOverall:teamStats(a,id(f.away))}},
   dataUpdatedAt:record.fetchedAt,source:'Diretta.it · risultati precedenti dal '+start,historyPeriod:{from:start,before},dataStale:false};
  result.selection=selectFixture(result);result.rankScore=result.selection.primary?.evidence??-1;return result;
@@ -101,8 +105,10 @@ export async function enrichHistory(data,estimate,{now=Date.now(),historyStore=s
     .sort((a,b)=>Date.parse(b.date)-Date.parse(a.date)).slice(0,10);
   };
   const homeGames=teamGames(f.home),awayGames=teamGames(f.away);
-  const direttaStatMarkets=buildDirettaStatMarkets(f.home,f.away,homeGames,awayGames,statsStore,{now,schedule:process.env.NODE_ENV!=='test'});
-  result={...result,direttaStatMarkets,selection:selectFixture({...result,direttaStatMarkets})};
+  const schedule=process.env.NODE_ENV!=='test';
+  const direttaStatMarkets=buildDirettaStatMarkets(f.home,f.away,homeGames,awayGames,statsStore,{now,schedule});
+  const direttaPlayerStats=buildDirettaPlayerReport(f.home,f.away,homeGames,awayGames,direttaPlayerStatsStore,{now,schedule});
+  result={...result,direttaStatMarkets,direttaPlayerStats,selection:selectFixture({...result,direttaStatMarkets})};
   return result;
  });
  fixtures.sort((a,b)=>(b.rankScore??-1)-(a.rankScore??-1)||Date.parse(a.date)-Date.parse(b.date));
