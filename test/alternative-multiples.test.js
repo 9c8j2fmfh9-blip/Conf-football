@@ -38,12 +38,16 @@ test('rejects live, past, stale, small, one-sided or missing corner samples and 
  const unqualified=fixture('low',59);
  const firstHalf=fixture('half');firstHalf.cornerMarkets.markets[1].half='first';
  const fixtures=[bad,weak,unqualified,firstHalf,{...fixture('live'),status:'LIVE'},{...fixture('past'),date:new Date(now).toISOString()},{...fixture('stale'),dataStale:true}];
- for(const t of buildAlternativeMultiples(fixtures,{now})){assert.equal(t.available,false);assert.equal(t.legs.length,0);}
+ for(const t of buildAlternativeMultiples(fixtures,{now})){
+  assert.ok(t.legs.every(l=>l.goal||l.corner||l.playerMarkets?.length));
+  assert.ok(t.legs.every(l=>!['live','past','stale'].includes(l.fixtureId)));
+  assert.ok(t.legs.filter(l=>['bad','weak','half'].includes(l.fixtureId)).every(l=>!l.corner));
+ }
 });
 test('deduplicates matches and clubs, preserves limited availability and flags identical profiles',()=>{
  const a=fixture('a'),dup={...a,fixtureId:'same'},b={...fixture('b'),home:a.home},c=fixture('c');
  const r=buildAlternativeMultiples([a,a,dup,b,c],{now});
  assert.deepEqual(r[0].legs.map(l=>l.fixtureId),['a','c']);assert.equal(r[1].isMultiple,true);
- assert.ok(r[1].reason.includes('Stesse combo'));
+ assert.ok(r[1].reason.includes('Stesse partite'));
  const single=buildAlternativeMultiples([a],{now})[0];assert.equal(single.isMultiple,false);assert.equal(single.legs.length,1);
 });
