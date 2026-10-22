@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-22T07:16:48.336Z",
-  "lastCapturedAt": "2026-10-22T07:16:48.235Z",
+  "evaluatedAt": "2026-10-22T07:18:35.094Z",
+  "lastCapturedAt": "2026-10-22T07:18:34.944Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 342,
-  "estimated": 226,
+  "recorded": 513,
+  "estimated": 339,
   "evaluatedForecasts": 0,
   "settled": 0,
   "pending": [
@@ -1716,6 +1716,861 @@
     },
     {
       "key": "[\"diretta_O8F6feGO\",\"b9b9b7a04f55fbebc2c1802002ebe8b4c125c192\"]",
+      "fixtureId": "diretta_O8F6feGO",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-10-22_jagiellonia_anderlecht\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-10-22_jagiellonia_anderlecht",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_kairat_almaty_panathinaikos\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_kairat_almaty_panathinaikos",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_jablonec_brighton\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_jablonec_brighton",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-10-22_juventus_rennes\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-10-22_juventus_rennes",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-10-22_bournemouth_milan\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-10-22_bournemouth_milan",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UVLNarG7\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_UVLNarG7",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dxE9No8E\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_dxE9No8E",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_42HHLPxR\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_42HHLPxR",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dINF14oe\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_dINF14oe",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pKFxZSC4\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_pKFxZSC4",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-10-22_ofi_crete_leverkusen\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-10-22_ofi_crete_leverkusen",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fDodDXGk\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_fDodDXGk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_IXDpX6sH\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_IXDpX6sH",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_f3zFOq1s\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_f3zFOq1s",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_v9y8UOy0\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_v9y8UOy0",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hlTlaURG\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_hlTlaURG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_WKJ5XJSE\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_WKJ5XJSE",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-10-22_besiktas_crystal_palace\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-10-22_besiktas_crystal_palace",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lpjMasO8\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_lpjMasO8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lUhir2PG\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_lUhir2PG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0Y2mG30l\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_0Y2mG30l",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fNlu7RuJ\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_fNlu7RuJ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_2aCmD67r\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_2aCmD67r",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_h6pKbpbt\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_h6pKbpbt",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_r1pdj6sI\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_r1pdj6sI",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nDJiAUHb\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_nDJiAUHb",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OWiqsR8j\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OWiqsR8j",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0lLMoF1B\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_0lLMoF1B",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_EZBxzXKk\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_EZBxzXKk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_ajax_atalanta\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_ajax_atalanta",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nBhMMNVg\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_nBhMMNVg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_trabzonspor_hearts\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_trabzonspor_hearts",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nwR4bswe\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_nwR4bswe",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pM2RU0fU\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_pM2RU0fU",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_CImjkqSF\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_CImjkqSF",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fReattfT\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_fReattfT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_WrxMls2l\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_WrxMls2l",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_j9W43h1D\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_j9W43h1D",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_MBDUJDof\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_MBDUJDof",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YRY3LQMb\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YRY3LQMb",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4Y9hTYG6\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_4Y9hTYG6",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_d86pVfnf\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_d86pVfnf",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Uc4vglaS\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Uc4vglaS",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OjI9KlF8\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OjI9KlF8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OWuIEbRk\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OWuIEbRk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UTrQCxd2\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_UTrQCxd2",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_WGLHISqL\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_WGLHISqL",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Y7f4sB9L\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Y7f4sB9L",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0dqJCdvR\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_0dqJCdvR",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6urBepI6\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_6urBepI6",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_ERRCZBnK\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_ERRCZBnK",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tbdg8N1C\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_tbdg8N1C",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YqdsjxSk\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YqdsjxSk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Ac3iTcbS\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Ac3iTcbS",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nwcVLFj2\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_nwcVLFj2",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pAIrUkAs\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_pAIrUkAs",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_ttfNNyMk\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_ttfNNyMk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_v7pJHrMN\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_v7pJHrMN",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4jozxkXr\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_4jozxkXr",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6kpYn3pB\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_6kpYn3pB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dtSaRCoJ\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_dtSaRCoJ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pbvCuLxo\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_pbvCuLxo",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Q1kri5c3\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Q1kri5c3",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SvqIjoon\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_SvqIjoon",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YDBdC1HD\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YDBdC1HD",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6JDOEOWF\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_6JDOEOWF",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_CIuddGGl\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_CIuddGGl",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dWWAWfNs\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_dWWAWfNs",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_K2FGGp23\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_K2FGGp23",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pWw4ffo1\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_pWw4ffo1",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_S8SUhsAd\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_S8SUhsAd",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UqVIUYif\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_UqVIUYif",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_80VkPDt1\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_80VkPDt1",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_b3LgV5Ha\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_b3LgV5Ha",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_CAacjVo4\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_CAacjVo4",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_GYzdDo0J\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_GYzdDo0J",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_IHi0UEjg\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_IHi0UEjg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lEizfnSB\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_lEizfnSB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_O8P512a4\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_O8P512a4",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tETcNiBD\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_tETcNiBD",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UkUvLcJP\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_UkUvLcJP",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_jXKij48D\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_jXKij48D",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_K8r5Mc7e\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_K8r5Mc7e",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_trkgkywJ\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_trkgkywJ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dEXHoKNN\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_dEXHoKNN",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Sp6f1DRr\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Sp6f1DRr",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_llU9mtgB\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_llU9mtgB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lzNgXnLk\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_lzNgXnLk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_p43sr4Z7\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_p43sr4Z7",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_ph9Lah63\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_ph9Lah63",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6cEf89jl\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_6cEf89jl",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_8KLqoe3K\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_8KLqoe3K",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_CbgGQWkI\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_CbgGQWkI",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dvcSRq95\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_dvcSRq95",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_G0TQSCM6\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_G0TQSCM6",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_GKJKlfqQ\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_GKJKlfqQ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_h0DbsCy0\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_h0DbsCy0",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lEgKT5vg\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_lEgKT5vg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_MRBhhXfn\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_MRBhhXfn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_n3AjqY6m\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_n3AjqY6m",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OQWYQjiJ\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OQWYQjiJ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pOc5l9GG\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_pOc5l9GG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SIR9cVQ7\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_SIR9cVQ7",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_rR7wE70K\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_rR7wE70K",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6LA5T5Wi\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_6LA5T5Wi",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_d8SPGSnn\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_d8SPGSnn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_EH0azp9e\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_EH0azp9e",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nTeRv5al\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_nTeRv5al",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nZCopW0m\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_nZCopW0m",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_O8RG6T6l\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_O8RG6T6l",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OKaB8iRE\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OKaB8iRE",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OUUlST4L\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OUUlST4L",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pSgZXcrh\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_pSgZXcrh",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_r5IEVWof\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_r5IEVWof",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tnaEdiXQ\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_tnaEdiXQ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_getafe_lugano\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_getafe_lugano",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_kauno_zalgiris_brann\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_kauno_zalgiris_brann",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-10-22_ferencvaros_torreense\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-10-22_ferencvaros_torreense",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OlHG8eZ8\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OlHG8eZ8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YXgZIMdU\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YXgZIMdU",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_ry57uTlm\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_ry57uTlm",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6ye3WiJG\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_6ye3WiJG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_8KchxmM6\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_8KchxmM6",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_CAeT57RE\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_CAeT57RE",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_GUWSnD3c\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_GUWSnD3c",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_IL7TuR55\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_IL7TuR55",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KIXFcUHF\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_KIXFcUHF",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_n1kxZtvI\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_n1kxZtvI",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OzpsP9Bj\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OzpsP9Bj",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xxDmCTW8\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_xxDmCTW8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YNdeYDl4\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YNdeYDl4",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0b6O9DaU\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_0b6O9DaU",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Es8dSUsK\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Es8dSUsK",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_GAtYTGpn\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_GAtYTGpn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OzptSfFb\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_OzptSfFb",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_veO5zWYP\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_veO5zWYP",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_zR9yV9dm\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_zR9yV9dm",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4CbZfmF5\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_4CbZfmF5",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_65YtHXW0\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_65YtHXW0",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6mVjEwjC\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_6mVjEwjC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_bVaeaHOs\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_bVaeaHOs",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Ch6BeZN6\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Ch6BeZN6",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SdWBYvsB\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_SdWBYvsB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SMqu0QwJ\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_SMqu0QwJ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_aarhus_egnatia\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_aarhus_egnatia",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_braga_gent\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_braga_gent",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-10-22_thun_hajduk_split\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-10-22_thun_hajduk_split",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-10-22_celje_salzburg\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-10-22_celje_salzburg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-10-22_omonia_benfica\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-10-22_omonia_benfica",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_IyKD8vHN\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_IyKD8vHN",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SI1n61C7\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_SI1n61C7",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Y11BQny9\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Y11BQny9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YZdTsn7E\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YZdTsn7E",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4vinLuWb\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_4vinLuWb",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YJWY2CSi\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YJWY2CSi",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0nK0MPL5\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_0nK0MPL5",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_GxR9XoiB\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_GxR9XoiB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_E9hSeQ9m\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_E9hSeQ9m",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fqY3z1Cb\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_fqY3z1Cb",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0lgSNQFr\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_0lgSNQFr",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_U1WftZV9\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_U1WftZV9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_htsqZbSF\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_htsqZbSF",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_25BfxHCa\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_25BfxHCa",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4K0rIKyA\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_4K0rIKyA",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_GW9kSKkC\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_GW9kSKkC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xQ2qqljg\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_xQ2qqljg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0O7Pqs9c\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_0O7Pqs9c",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xnU7RagT\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_xnU7RagT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YHFwMwHj\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YHFwMwHj",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_44YPHfw9\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_44YPHfw9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_O8F6feGO\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
       "fixtureId": "diretta_O8F6feGO",
       "reason": "Risultato finale non confermato"
     }
