@@ -9,10 +9,13 @@ for(const [league,rows] of Object.entries(efl.leagues)){
  const games=rows.slice().sort((a,b)=>a[0].localeCompare(b[0]));
  for(const [date,home,away,hg,ag] of games){
   const earlier=games.filter(g=>g[0]<date);
-  const hVenue=earlier.filter(g=>g[1]===home).slice(-10);
-  const aVenue=earlier.filter(g=>g[2]===away).slice(-10);
-  const h=hVenue.length>=6?hVenue:earlier.filter(g=>g[1]===home||g[2]===home).slice(-10);
-  const a=aVenue.length>=6?aVenue:earlier.filter(g=>g[1]===away||g[2]===away).slice(-10);
+  // Match the app: select the last ten overall games before filtering venue.
+  const hAll=earlier.filter(g=>g[1]===home||g[2]===home).slice(-10);
+  const aAll=earlier.filter(g=>g[1]===away||g[2]===away).slice(-10);
+  const hVenue=hAll.filter(g=>g[1]===home);
+  const aVenue=aAll.filter(g=>g[2]===away);
+  const h=hVenue.length>=6?hVenue:hAll;
+  const a=aVenue.length>=6?aVenue:aAll;
   if(h.length<6||a.length<6)continue;
   observations.push({league,date,hN:h.length,aN:a.length,
    hf:average(h,home,true),ha:average(h,home,false),af:average(a,away,true),aa:average(a,away,false),

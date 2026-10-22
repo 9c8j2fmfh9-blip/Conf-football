@@ -25,10 +25,13 @@ for(const [league,games] of Object.entries(dataset.leagues)){
  for(const match of sorted){
   const [date,home,away,hg,ag]=match;
   const previous=sorted.filter(x=>x[0]<date);
-  const homeVenue=previous.filter(x=>x[1]===home).slice(-10);
-  const awayVenue=previous.filter(x=>x[2]===away).slice(-10);
-  const h=homeVenue.length>=6?homeVenue:previous.filter(x=>x[1]===home||x[2]===home).slice(-10);
-  const a=awayVenue.length>=6?awayVenue:previous.filter(x=>x[1]===away||x[2]===away).slice(-10);
+  // Match the app: select the last ten overall games before filtering venue.
+  const hAll=previous.filter(x=>x[1]===home||x[2]===home).slice(-10);
+  const aAll=previous.filter(x=>x[1]===away||x[2]===away).slice(-10);
+  const homeVenue=hAll.filter(x=>x[1]===home);
+  const awayVenue=aAll.filter(x=>x[2]===away);
+  const h=homeVenue.length>=6?homeVenue:hAll;
+  const a=awayVenue.length>=6?awayVenue:aAll;
   if(h.length<6||a.length<6)continue;
   const homeLambda=Math.max(0.15,Math.min(4,Math.sqrt(shrink(avg(h,home,true),h.length)*shrink(avg(a,away,false),a.length))));
   const awayLambda=Math.max(0.15,Math.min(4,Math.sqrt(shrink(avg(a,away,true),a.length)*shrink(avg(h,home,false),h.length))));
