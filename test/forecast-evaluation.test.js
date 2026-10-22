@@ -74,3 +74,11 @@ test('keeps confirmed score evaluation while marking missing final Diretta stats
  assert.equal(report.settled,1);assert.equal(report.rows[0].markets.diretta_total_shots_19,undefined);
  assert.equal(report.pending[0].reason,'Risultato confermato; statistiche Diretta finali in attesa');
 });
+test('marks card markets pending when the final Diretta feed contains no card events',()=>{
+ const markets=[{key:'diretta_total_yellow_2',metric:'yellowCards',side:'total',line:3,score:67,sample:12}];
+ const forecast={...f,direttaStatMarkets:markets};
+ const result={...r,statistics:{complete:true,cardsAvailable:false,home:{shots:10},away:{shots:12}}};
+ const report=evaluateCaptures([{...c,fixtures:[forecast]}],[result],options);
+ assert.equal(report.rows[0].markets.diretta_total_yellow_2,undefined);
+ assert.equal(report.pending[0].reason,'Risultato confermato; dato finale Diretta assente per uno o più mercati');
+});

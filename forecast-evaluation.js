@@ -51,7 +51,8 @@ const GOAL_MARKETS=['one','draw','two','doubleChance1X','doubleChanceX2','double
    }
   }
   Object.assign(markets,statMetrics);
-  if(hasStatMarkets(f)&&!r.statistics?.complete)pending.push({key,fixtureId:f.fixtureId,reason:'Risultato confermato; statistiche Diretta finali in attesa'});
+  const missingStatMarkets=(f.direttaStatMarkets||[]).filter(m=>m.score!==null&&m.sample>=12&&!statMetrics[m.key]);
+  if(missingStatMarkets.length)pending.push({key,fixtureId:f.fixtureId,reason:r.statistics?.complete?'Risultato confermato; dato finale Diretta assente per uno o più mercati':'Risultato confermato; statistiche Diretta finali in attesa'});
   rows.push({key,fixtureId:f.fixtureId,modelRevision:f.modelRevision,capturedAt:f.capturedAt,kickoffAt:f.kickoffAt,score,markets});
  }
  const revisions=[...new Set(rows.map(r=>r.modelRevision))];

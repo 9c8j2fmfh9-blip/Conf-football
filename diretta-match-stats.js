@@ -27,17 +27,18 @@ export function parseDirettaMatchStats(text){
 export function parseDirettaMatchEvents(text){
  if(typeof text!=='string'||!text.includes('AC÷1 Tempo'))throw Error('Eventi Diretta non riconosciuti');
  const regulation=text.split('~').filter(Boolean).slice(0,text.split('~').findIndex(x=>/AC÷.*(?:Supplementari|Rigori)/i.test(x))<0?undefined:text.split('~').findIndex(x=>/AC÷.*(?:Supplementari|Rigori)/i.test(x)));
- const cards={home:{yellow:0,red:0},away:{yellow:0,red:0}};
+ const cards={home:{yellow:0,red:0},away:{yellow:0,red:0}};let cardEventSeen=false;
  for(const block of regulation){
   const row=fields(block),kinds=block.split('¬').filter(x=>x.startsWith('IK÷')).map(x=>normalizeTeam(x.slice(3)));
   const side=row.IA==='1'?'home':row.IA==='2'?'away':null;if(!side)continue;
   for(const kind of kinds){
    if(!kind.includes('cartellino')&&!kind.includes('card'))continue;
+   cardEventSeen=true;
    if(kind.includes('giallo')||kind.includes('yellow'))cards[side].yellow++;
    if(kind.includes('rosso')||kind.includes('red'))cards[side].red++;
   }
  }
- return{cards,cardsAvailable:true};
+ return{cards,cardsAvailable:cardEventSeen};
 }
 
 export function createDirettaStatsStore({initial={},fetcher=fetch,persist=()=>{},concurrency=2,maxQueue=240}={}){
@@ -54,7 +55,7 @@ export function createDirettaStatsStore({initial={},fetcher=fetch,persist=()=>{}
    if(text.length>150000||eventText.length>150000)throw Error('Statistiche oltre il limite');
    const value=parseDirettaMatchStats(text);
    try{Object.assign(value,parseDirettaMatchEvents(eventText));}catch{value.cardsAvailable=false;}
-   value.cardParserVersion=2;
+   value.cardParserVersion=3;
    if(value.cardsAvailable){for(const side of ['home','away']){value[side].yellowCards=value.cards[side].yellow;value[side].redCards=value.cards[side].red;}}
    value.fetchedAt=new Date(job.now).toISOString();value.matchId=job.id;cache.set(job.id,value);
    persist(Object.fromEntries(cache));return value;
@@ -63,7 +64,7 @@ export function createDirettaStatsStore({initial={},fetcher=fetch,persist=()=>{}
  }};
  return {peek:id=>cache.get(String(id))||null,get(id,{now=Date.now()}={}){
   const key=String(id||'');if(!/^\w{8}$/.test(key))return Promise.resolve(null);
-  const value=cache.get(key);if(value?.complete&&value.cardParserVersion===2)return Promise.resolve(value);
+  const value=cache.get(key);if(value?.complete&&value.cardParserVersion===3)return Promise.resolve(value);
   if(now<(retry.get(key)||0)||queue.length>=maxQueue&&!pending.has(key))return Promise.resolve(null);
   if(!pending.has(key)){pending.set(key,new Promise(resolve=>{queue.push({id:key,now,resolve});run();}));}
   return pending.get(key);
@@ -92,7 +93,7 @@ const DEFINITIONS=[
 ];
 export function buildDirettaStatMarkets(homeTeam,awayTeam,homeGames,awayGames,statsStore,{now=Date.now(),schedule=true}={}){
  const prepare=(games,name)=>games.filter(g=>g?.id&&Date.parse(g.date)<now&&Number.isInteger(g.hg)&&Number.isInteger(g.ag)).slice(0,10).map(g=>{
-  const stats=statsStore.peek(g.id);if(schedule&&(!stats||stats.cardParserVersion!==2))void statsStore.get(g.id,{now});
+  const stats=statsStore.peek(g.id);if(schedule&&(!stats||stats.cardParserVersion!==3))void statsStore.get(g.id,{now});
   const isHome=normalizeTeam(g.home)===normalizeTeam(name);
   return stats?.complete?{stats,isHome}:null;
  }).filter(Boolean);
@@ -100,7 +101,7 @@ export function buildDirettaStatMarkets(homeTeam,awayTeam,homeGames,awayGames,st
  for(const[key,label,metric,side,,line]of DEFINITIONS){
   const own=(x)=>x.stats[x.isHome?'home':'away'][metric],conceded=(x)=>x.stats[x.isHome?'away':'home'][metric];
   const total=x=>Number.isFinite(x.stats.home[metric])&&Number.isFinite(x.stats.away[metric])?x.stats.home[metric]+x.stats.away[metric]:null;
-  const available=x=>metric!=='yellowCards'||(x.stats.cardsAvailable&&x.stats.cardParserVersion===2);
+  const available=x=>metric!=='yellowCards'||(x.stats.cardsAvailable&&x.stats.cardParserVersion===3);
   const ownValue=x=>available(x)?own(x):null,opponentValue=x=>available(x)?conceded(x):null,totalValue=x=>available(x)?total(x):null;
   const homeValues=side==='home'?home.map(ownValue):side==='away'?home.map(opponentValue):home.map(totalValue);
   const awayValues=side==='home'?away.map(opponentValue):side==='away'?away.map(ownValue):away.map(totalValue);

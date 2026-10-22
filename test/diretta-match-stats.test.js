@@ -16,13 +16,14 @@ test('parses only full-time team statistics and excludes period-specific rows',(
 test('counts team yellow cards in regulation and ignores extra-time cards',()=>{
  const result=parseDirettaMatchEvents('AC÷1 Tempo¬~IA÷1¬IK÷Cartellino Giallo¬~IA÷2¬IK÷Cartellino Giallo¬~AC÷2 Tempo¬~IA÷2¬IK÷Cartellino Giallo¬IK÷Cartellino Rosso¬~AC÷Tempi Supplementari¬~IA÷1¬IK÷Cartellino Giallo¬');
  assert.deepEqual(result.cards,{home:{yellow:1,red:0},away:{yellow:2,red:1}});assert.equal(result.cardsAvailable,true);
+ assert.equal(parseDirettaMatchEvents('AC÷1 Tempo¬~IA÷1¬IK÷Gol¬~AC÷2 Tempo¬').cardsAvailable,false);
  assert.throws(()=>parseDirettaMatchEvents('blocked'),/non riconosciuti/);
 });
 
 test('deduplicates queued match requests and fails closed for unavailable statistics',async()=>{
  let calls=0;const store=createDirettaStatsStore({fetcher:async url=>{calls++;return{ok:true,text:async()=>String(url).includes('df_st_1')?feed:'AC÷1 Tempo¬~AC÷2 Tempo¬'};},persist:()=>{}});
  const [a,b]=await Promise.all([store.get('abcdefgh'),store.get('abcdefgh')]);
- assert.deepEqual(a.home,{shots:19,shotsOnTarget:6,corners:3,fouls:13,yellowCards:0,redCards:0});assert.equal(b.matchId,'abcdefgh');assert.equal(calls,2);assert.equal(a.cardsAvailable,true);
+ assert.deepEqual(a.home,{shots:19,shotsOnTarget:6,corners:3,fouls:13});assert.equal(b.matchId,'abcdefgh');assert.equal(calls,2);assert.equal(a.cardsAvailable,false);assert.equal(a.cardParserVersion,3);
  const missing=createDirettaStatsStore({fetcher:async()=>({ok:true,text:async()=>'not stats'}),persist:()=>{}});
  assert.equal(await missing.get('ijklmnop'),null);
 });
@@ -31,7 +32,7 @@ test('refreshes pre-fix cached matches so stale zero-card counts are never reuse
  let calls=0;const stale={complete:true,cardsAvailable:true,home:{shots:19,shotsOnTarget:6,corners:3,yellowCards:0},away:{shots:9,shotsOnTarget:2,corners:1,yellowCards:0}};
  const store=createDirettaStatsStore({initial:{abcdefgh:stale},fetcher:async url=>{calls++;return{ok:true,text:async()=>String(url).includes('df_st_1')?feed:'AC÷1 Tempo¬~IA÷1¬IK÷Cartellino Giallo¬IK÷Cartellino Rosso¬AC÷2 Tempo¬'};},persist:()=>{}});
  const value=await store.get('abcdefgh');
- assert.equal(calls,2);assert.equal(value.cardParserVersion,2);assert.equal(value.home.yellowCards,1);assert.equal(value.home.redCards,1);
+ assert.equal(calls,2);assert.equal(value.cardParserVersion,3);assert.equal(value.home.yellowCards,1);assert.equal(value.home.redCards,1);
 });
 
 test('creates descriptive shot and corner markets only with two team samples',()=>{
