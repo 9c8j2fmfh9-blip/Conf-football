@@ -2,9 +2,10 @@
 const rules=[
  {id:'shots_on_target',labels:/^(tiri in porta|shots on target|tiri nello specchio)$/i,line:0.5,minAverage:0.75,label:'1+ tiro in porta'},
  {id:'shots_total',labels:/^(tiri|tiri totali|total shots|shots)$/i,line:1.5,minAverage:1.75,label:'2+ tiri totali'},
- {id:'fouls_committed',labels:/^(falli commessi|fouls committed|fouls)$/i,line:0.5,minAverage:0.75,label:'1+ fallo commesso'}
+ {id:'fouls_committed',labels:/^(falli commessi|fouls committed|fouls)$/i,line:0.5,minAverage:0.75,label:'1+ fallo commesso'},
+ {id:'yellow_cards',labels:/^(cartellini gialli|cartellino giallo|ammonizioni|yellow cards?|bookings?)$/i,line:0.5,minAverage:0.35,label:'1+ cartellino giallo'}
 ];
-export function playerMarketResearch(report,{minGames=3,maxCandidates=3}={}){
+export function playerMarketResearch(report,{minGames=3,maxCandidates=4}={}){
  if(!report?.available)return [];
  const result=[];
  for(const side of ['home','away'])for(const player of report.players?.[side]||[]){
