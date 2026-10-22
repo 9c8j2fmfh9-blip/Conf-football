@@ -51,3 +51,10 @@ test('prospective comparison uses only historical baselines already present befo
  const partial={...capture,fixtures:[{...forecast,markets:{btts:{...forecast.markets.btts,partial:true}}}]};
  assert.equal(evaluateCaptures([partial],[r],options).byRevision[0].markets.btts.baselineN,0);
 });
+test('stale estimates hidden by the app cannot enter prediction metrics, and the first fresh capture can replace them',()=>{
+ const stale={...c,capturedAt:'2026-10-22T08:00:00Z',fixtures:[{...f,dataStale:true}]};
+ const absent=evaluateCaptures([stale],[r],options);
+ assert.equal(absent.estimated,0);assert.equal(absent.byRevision[0].markets.btts.n,0);
+ const fresh=evaluateCaptures([stale,c],[r],options);
+ assert.equal(fresh.estimated,1);assert.equal(fresh.byRevision[0].markets.btts.n,1);assert.equal(fresh.rows[0].capturedAt,c.capturedAt);
+});

@@ -1,6 +1,7 @@
 // Score the first recorded forecast per fixture and model revision, once only.
 // Results must carry an exact calendar identifier and a regulation-time score.
 export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toISOString()}={}) {
+ const hasEstimate=f=>f.experimentalEstimate?.available&&!f.dataStale;
  const now=Date.parse(evaluatedAt);
  if(!Number.isFinite(now))throw Error('Invalid evaluation timestamp');
  const earliest=new Map(), resultMap=new Map();
@@ -14,7 +15,7 @@ export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toIS
   for(const f of capture.fixtures||[]){
    if(!f.fixtureId||!Number.isFinite(Date.parse(f.kickoffAt))||Date.parse(f.kickoffAt)<=at+300000)continue;
    const key=JSON.stringify([f.fixtureId,capture.modelRevision]);
-   if(!earliest.has(key)||(!earliest.get(key).experimentalEstimate?.available&&f.experimentalEstimate?.available))earliest.set(key,{...f,capturedAt:capture.capturedAt,modelRevision:capture.modelRevision});
+   if(!earliest.has(key)||(!hasEstimate(earliest.get(key))&&hasEstimate(f)))earliest.set(key,{...f,capturedAt:capture.capturedAt,modelRevision:capture.modelRevision});
   }
  }
  const rows=[],pending=[];
@@ -26,7 +27,7 @@ export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toIS
   if(!valid){pending.push({key,fixtureId:f.fixtureId,reason:id?'Risultato finale non confermato':'Identificativo calendario assente'});continue;}
   const h=score.home,a=score.away;
   const truth={one:+(h>a),draw:+(h===a),two:+(h<a),over25:+(h+a>=3),btts:+(h>0&&a>0),over35:+(h+a>=4),bttsOver25:+(h>0&&a>0&&h+a>=3)};
-  const probabilities=f.experimentalEstimate?.available?f.experimentalEstimate.estimates:{};
+  const probabilities=hasEstimate(f)?f.experimentalEstimate.estimates:{};
   const markets=Object.fromEntries(Object.entries(truth).filter(([k])=>typeof probabilities?.[k]==='number'&&Number.isFinite(probabilities[k])&&probabilities[k]>=0&&probabilities[k]<=100).map(([k,y])=>{
    const historical=f.markets?.[k],value=historical?.score;
    const baseline=typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=100&&!historical.partial&&historical.venueSamples?.home>=6&&historical.venueSamples?.away>=6?value/100:null;
@@ -42,6 +43,6 @@ export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toIS
   const pairedMean=fn=>paired.length?paired.reduce((s,r)=>s+fn(r),0)/paired.length:null;
   return[k,{n:values.length,brier:mean(r=>r.brier),meanForecast:mean(r=>r.p),observedRate:mean(r=>r.y),baselineN:paired.length,pairedModelBrier:pairedMean(r=>r.brier),baselineBrier:pairedMean(r=>r.baselineBrier),brierImprovement:pairedMean(r=>r.baselineBrier-r.brier)}];
  }))}));
- return {schemaVersion:1,evaluatedAt,lastCapturedAt:captures.map(c=>c.capturedAt).filter(t=>Number.isFinite(Date.parse(t))&&Date.parse(t)<=now).sort().at(-1)||null,validated:false,productionBettingApproved:false,recorded:earliest.size,estimated:[...earliest.values()].filter(f=>f.experimentalEstimate?.available).length,evaluatedForecasts:rows.filter(r=>Object.keys(r.markets).length).length,settled:rows.length,pending,byRevision,rows,
+ return {schemaVersion:1,evaluatedAt,lastCapturedAt:captures.map(c=>c.capturedAt).filter(t=>Number.isFinite(Date.parse(t))&&Date.parse(t)<=now).sort().at(-1)||null,validated:false,productionBettingApproved:false,recorded:earliest.size,estimated:[...earliest.values()].filter(hasEstimate).length,evaluatedForecasts:rows.filter(r=>Object.keys(r.markets).length).length,settled:rows.length,pending,byRevision,rows,
   note:'Prima stima disponibile per partita e revisione; esiti nei tempi regolamentari. Nessuna stima di rendimento senza quote verificate.'};
 }
