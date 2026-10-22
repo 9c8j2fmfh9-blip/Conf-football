@@ -40,6 +40,14 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  </div>
  <p id="time-help" class="time">Prossime 24 ore da adesso, anche oltre mezzanotte.</p>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
+ <section id="mycombo-sisal" class="panel" aria-label="MyCombo Sisal">
+  <h2>🎯 MyCombo Sisal · giocate combinate</h2>
+  <p class="time">Gol, corner totali e statistiche dei giocatori (tiri, tiri in porta, falli), solo dove esistono dati. Quote combinate Sisal e probabilità congiunte non verificate.</p>
+  <div id="mycombo-sisal-results" class="matches" role="status">
+   <article class="multiple-card"><strong>MyCombo · Quota 10 alternativa</strong><p class="time">Caricamento delle combinazioni disponibili…</p></article>
+   <article class="multiple-card"><strong>MyCombo · Quota 100 alternativa</strong><p class="time">Caricamento delle combinazioni disponibili…</p></article>
+  </div>
+ </section>
  <section id="daily-multiples" aria-label="Multiple automatiche CONF">
   <h2>Bozze quota 10 e 100 · sperimentali</h2>
   <p id="daily-multiples-note" class="time">Quote disponibili e stime sperimentali; affidabilità ancora in verifica</p>
@@ -408,7 +416,14 @@ function extraGoalMarketsHtml(f){
   '<div class="multiple-leg"><b>'+safe(item.label)+'</b><div class="time">Stima modello '+(Number.isFinite(item.score)?safe(item.score)+'%':'non disponibile')+' · frequenza storica '+(Number.isFinite(item.historicalScore)?safe(item.historicalScore)+'%':'non disponibile')+' · '+(item.qualified?'criteri CONF superati':'non qualificata')+'</div>'+proposalOddsHtml(item.odds,item.key)+'</div>'
  ).join('')+'</details>';
 }
+function renderMyComboSection(alternatives){
+ const root=$('#mycombo-sisal-results');
+ if(!root)return;
+ const tickets=Array.isArray(alternatives)&&alternatives.length?alternatives:[10,100].map(target=>({target,title:'Quota '+target+' alternativa',legs:[],reason:'Nessuna proposta MyCombo disponibile per le partite di oggi con i dati attuali.',note:'Nessuna quota inventata.'}));
+ root.innerHTML=renderAlternativeMultiples(tickets);
+}
 function renderDailyMultiples(data){
+ renderMyComboSection(data?.alternatives);
  currentMultiples=data;
  const root=$('#daily-multiples-results');
  if(!data?.tickets?.length){root.innerHTML=[10,100].map(target=>'<article class="multiple-card"><div class="multiple-head"><span>Quota '+target+'</span><strong>—</strong></div><p class="time">Quote non disponibili in questo momento.</p></article>').join('')+[10,100].map(target=>'<article class="multiple-card" data-alternative-target="'+target+'"><div class="multiple-head"><span>Quota '+target+' alternativa MyCombo</span><strong>—</strong></div><p class="time">Analisi MyCombo temporaneamente non disponibile: riprova con Aggiorna.</p></article>').join('');return;}
