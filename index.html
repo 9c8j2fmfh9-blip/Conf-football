@@ -421,7 +421,14 @@ function renderMyComboSection(alternatives){
  const root=$('#mycombo-sisal-results');
  if(!root)return;
  const tickets=Array.isArray(alternatives)&&alternatives.length?alternatives:[10,100].map(target=>({target,title:'Quota '+target+' alternativa',legs:[],reason:'Nessuna proposta MyCombo disponibile per le partite di oggi con i dati attuali.',note:'Nessuna quota inventata.'}));
- root.innerHTML=renderAlternativeMultiples(tickets);
+ const combined=tickets.map(ticket=>{
+  const all=ticket.legs||[];
+  const count=leg=>Number(Boolean(leg.goal))+Number(Boolean(leg.corner))+Number((leg.playerMarkets||[]).length>0);
+  const legs=all.filter(leg=>count(leg)>=2);
+  const partial=all.filter(leg=>count(leg)===1);
+  return {...ticket,legs,partial,reason:legs.length?ticket.reason:'Nessuna combinazione con almeno due mercati sostenuti dai dati disponibili oggi.'};
+ });
+ root.innerHTML=renderAlternativeMultiples(combined);
 }
 function renderDailyMultiples(data){
  renderMyComboSection(data?.alternatives);
@@ -448,7 +455,9 @@ function renderAlternativeMultiples(tickets){
    const players=(leg.playerMarkets||[]).map(p=>'<div class="multiple-values"><span>Opzionale: '+safe(p.label)+'</span><b>Media '+safe(p.average)+' · '+safe(p.sample)+' gare</b></div>').join('');
    return '<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div>'+goals+corners+players+'</div>';
   }).join('');
-  return '<article class="multiple-card" data-alternative-target="'+safe(ticket.target)+'">'+title+'<p class="time">'+safe(ticket.reason)+'</p>'+legs+'<p class="time">'+safe(ticket.note)+'</p></article>';
+  const partialCount=(ticket.partial||[]).length;
+  const diagnostics=partialCount?'<details><summary class="time">'+safe(partialCount)+' partite con un solo mercato disponibile (non MyCombo)</summary>'+(ticket.partial||[]).map(p=>'<div class="multiple-leg"><b>'+safe(p.home)+' – '+safe(p.away)+'</b><div class="time">'+safe(p.goal?.label||p.corner?.label||p.playerMarkets?.[0]?.label||'Dati parziali')+'</div></div>').join('')+'</details>':'';
+  return '<article class="multiple-card" data-alternative-target="'+safe(ticket.target)+'">'+title+'<p class="time">'+safe(ticket.reason)+'</p>'+legs+diagnostics+'<p class="time">'+safe(ticket.note)+'</p></article>';
  }).join('');
 }
 async function loadDailyMultiples(selectedDate,requestId,attempt=0){
