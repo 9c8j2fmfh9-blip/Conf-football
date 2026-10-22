@@ -22,7 +22,7 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
   // Total FT corners are supplied as Diretta historical stat markets. Older
   // corner providers use kind=corner; support both while excluding team/half lines.
   const corner=selection.candidates.find(p=>p.kind==='corner'&&p.side==='total'&&(p.half||'full')==='full')
-   ||selection.candidates.find(p=>p.kind==='diretta_stat'&&p.metric==='corners'&&p.side==='total');
+   ||selection.candidates.find(p=>p.kind==='diretta_stat'&&p.metric==='corners'&&p.key.startsWith('diretta_total_corners_'));
   const playerMarkets=playerMarketResearch(f.direttaPlayerStats);
   if(!goal&&!corner&&!playerMarkets.length)continue;
   seen.add(identity);
@@ -54,7 +54,7 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
    totalOdds:null,oddsVerified:false,targetReached:false,maxMatches,eligibleCount:comboPool.length,legs,partial,
    reason:!legs.length?'Nessuna partita ha almeno due mercati sostenuti dai dati disponibili oggi.':
     legs.length===1?'Una partita supporta una MyCombo; per arrivare a una multipla servono altre partite con dati sufficienti.':
-    comboPool.length<=3&&i===1?'Le stesse partite della proposta compatta sono le uniche con mercati combinabili nei dati di oggi.':
+    comboPool.length<=3&&i===1?'Stesse partite della proposta compatta: sono le uniche con mercati combinabili nei dati di oggi.':
     i===0?'Bozza compatta: fino a 3 partite con almeno due mercati disponibili per gara.':
     'Bozza estesa: fino a 5 partite con almeno due mercati disponibili per gara.',
    note:'Quota non calcolata: verifica la combinazione e il prezzo direttamente su Sisal. I dati giocatore sono descrittivi; la formazione va confermata. Le percentuali dei singoli mercati non sono la probabilità della combo.'};
