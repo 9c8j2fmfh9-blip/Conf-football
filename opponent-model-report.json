@@ -1,0 +1,152 @@
+{
+  "status": "exploratory",
+  "deployed": false,
+  "validated": false,
+  "productionBettingApproved": false,
+  "source": {
+    "generatedAt": "2026-10-20T03:10:46Z",
+    "fixtures": 7887,
+    "competitions": 75
+  },
+  "partition": {
+    "tuneStart": "2026-07-04",
+    "testStart": "2026-08-18",
+    "tuning": 506,
+    "finalPeriod": 2617
+  },
+  "chosenParameters": null,
+  "finalCandidateCoverage": 0,
+  "candidates": [
+    {
+      "parameters": null,
+      "tuningBrier": 0.24244357707509867
+    },
+    {
+      "parameters": {
+        "learningRate": 0.015,
+        "penalty": 0.01
+      },
+      "tuningBrier": 0.2427411067193676
+    },
+    {
+      "parameters": {
+        "learningRate": 0.015,
+        "penalty": 0.05
+      },
+      "tuningBrier": 0.24272618577075106
+    },
+    {
+      "parameters": {
+        "learningRate": 0.04,
+        "penalty": 0.01
+      },
+      "tuningBrier": 0.2436785573122529
+    },
+    {
+      "parameters": {
+        "learningRate": 0.04,
+        "penalty": 0.05
+      },
+      "tuningBrier": 0.2436836956521739
+    },
+    {
+      "parameters": {
+        "learningRate": 0.08,
+        "penalty": 0.01
+      },
+      "tuningBrier": 0.24735069169960472
+    },
+    {
+      "parameters": {
+        "learningRate": 0.08,
+        "penalty": 0.05
+      },
+      "tuningBrier": 0.24722697628458498
+    }
+  ],
+  "markets": {
+    "btts": {
+      "raw": {
+        "n": 2617,
+        "brier": 0.24432991975544316,
+        "logLoss": 0.6817153213027008,
+        "meanForecast": 0.5433397019487901,
+        "observedRate": 0.5620940007642339
+      },
+      "candidate": {
+        "n": 2617,
+        "brier": 0.24432991975544316,
+        "logLoss": 0.6817153213027008,
+        "meanForecast": 0.5433397019487901,
+        "observedRate": 0.5620940007642339
+      },
+      "improvementInterval": {
+        "dateBlocks": 63,
+        "iterations": 2000,
+        "lower": 0,
+        "upper": 0,
+        "method": "Bootstrap appaiato per data, intervallo descrittivo 95%; dipendenze fra date e campionati possono rimanere."
+      },
+      "screenedRaw": {
+        "n": 380,
+        "brier": 0.23414552631578953,
+        "logLoss": 0.660998462969488,
+        "meanForecast": 0.6280263157894735,
+        "observedRate": 0.6210526315789474
+      },
+      "screenedCandidate": {
+        "n": 380,
+        "brier": 0.23414552631578953,
+        "logLoss": 0.660998462969488,
+        "meanForecast": 0.6280263157894735,
+        "observedRate": 0.6210526315789474
+      }
+    },
+    "over25": {
+      "raw": {
+        "n": 2617,
+        "brier": 0.2457760794803189,
+        "logLoss": 0.6846036969929558,
+        "meanForecast": 0.5085135651509344,
+        "observedRate": 0.553687428353076
+      },
+      "candidate": {
+        "n": 2617,
+        "brier": 0.2457760794803189,
+        "logLoss": 0.6846036969929558,
+        "meanForecast": 0.5085135651509344,
+        "observedRate": 0.553687428353076
+      },
+      "improvementInterval": {
+        "dateBlocks": 63,
+        "iterations": 2000,
+        "lower": 0,
+        "upper": 0,
+        "method": "Bootstrap appaiato per data, intervallo descrittivo 95%; dipendenze fra date e campionati possono rimanere."
+      },
+      "screenedRaw": {
+        "n": 143,
+        "brier": 0.24382657342657355,
+        "logLoss": 0.681045349345518,
+        "meanForecast": 0.6379020979020981,
+        "observedRate": 0.5874125874125874
+      },
+      "screenedCandidate": {
+        "n": 143,
+        "brier": 0.24382657342657355,
+        "logLoss": 0.681045349345518,
+        "meanForecast": 0.6379020979020981,
+        "observedRate": 0.5874125874125874
+      }
+    }
+  },
+  "improvesBothFinalMarkets": false,
+  "stableImprovementBoth": false,
+  "method": "Rating Poisson di attacco e difesa aggiornati rispetto agli avversari; medie casa/trasferta per campionato da risultati precedenti. Minimo 30 partite di lega e 6 per squadra, altrimenti modello attuale. Aggiornamenti solo dopo l’intera data. Scelta di sei candidati o nessuna modifica sul periodo intermedio; confronto finale separato.",
+  "limitations": [
+    "Archivio già esaminato: questo confronto resta esplorativo, non una prova prospettica indipendente.",
+    "Stime non calibrate né validate economicamente; nessuna modifica al modello in produzione.",
+    "Contesto insufficiente nelle coppe e nelle nuove squadre: in quel caso resta la stima del modello attuale."
+  ],
+  "datasetSha256": "50580a3ff0e3589a3326ffd2e83218db0adb2090f2694cd9dbb44a610c97f086"
+}

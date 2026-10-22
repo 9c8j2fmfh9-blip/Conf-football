@@ -1,5 +1,5 @@
 // Immutable prospective evidence. Never reconstruct an observation after kickoff.
-export function prepareCapture(data,quotes,{capturedAt,modelRevision=null,runId=null}={}){
+export function prepareCapture(data,quotes,{capturedAt,modelRevision=null,deploymentRevision=null,runId=null}={}){
  const now=Date.parse(capturedAt);if(!Number.isFinite(now))throw Error('Invalid capture timestamp');
  const byId=new Map((quotes?.fixtures||[]).map(f=>[String(f.fixtureId),f]));
  const seen=new Set();
@@ -11,7 +11,7 @@ export function prepareCapture(data,quotes,{capturedAt,modelRevision=null,runId=
   direttaId:f.direttaId||null,calendarHome:f.calendarHome||f.home,calendarAway:f.calendarAway||f.away,source:f.source||data.provider,dataUpdatedAt:f.dataUpdatedAt||null,dataStale:!!f.dataStale,
   experimentalEstimate:f.experimentalEstimate||null,markets:f.markets||{},selection:f.selection||null,
   prices:byId.get(String(f.fixtureId))||null}));
- return {schemaVersion:1,capturedAt,modelRevision,runId,
+ return {schemaVersion:1,capturedAt,modelRevision,deploymentRevision,runId,
   sourceStatus:{provider:data.provider||null,coverage:data.calendarCoverage||null,providerIssue:data.providerIssue||null,analyzedCount:data.analyzedCount??null,returned:fixtures.length},
   oddsStatus:quotes?{retrieved:true,available:fixtures.some(f=>f.prices?.odds?.sisal?.available===true),source:quotes.source||null,sourceUpdatedAt:quotes.sourceUpdatedAt||null,status:quotes.oddsStatus||null}:{available:false,reason:'Quote non recuperate: nessuna valutazione economica possibile.'},
   fixtures,note:'Previsioni registrate prima del calcio d’inizio. Non sono puntate né risultati ricostruiti.'};

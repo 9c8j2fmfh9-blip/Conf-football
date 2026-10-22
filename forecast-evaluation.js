@@ -27,14 +27,20 @@ export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toIS
   const h=score.home,a=score.away;
   const truth={one:+(h>a),draw:+(h===a),two:+(h<a),over25:+(h+a>=3),btts:+(h>0&&a>0),over35:+(h+a>=4),bttsOver25:+(h>0&&a>0&&h+a>=3)};
   const probabilities=f.experimentalEstimate?.available?f.experimentalEstimate.estimates:{};
-  const markets=Object.fromEntries(Object.entries(truth).filter(([k])=>typeof probabilities?.[k]==='number'&&Number.isFinite(probabilities[k])&&probabilities[k]>=0&&probabilities[k]<=100).map(([k,y])=>[k,{p:probabilities[k]/100,y,brier:(probabilities[k]/100-y)**2}]));
+  const markets=Object.fromEntries(Object.entries(truth).filter(([k])=>typeof probabilities?.[k]==='number'&&Number.isFinite(probabilities[k])&&probabilities[k]>=0&&probabilities[k]<=100).map(([k,y])=>{
+   const historical=f.markets?.[k],value=historical?.score;
+   const baseline=typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=100&&!historical.partial&&historical.venueSamples?.home>=6&&historical.venueSamples?.away>=6?value/100:null;
+   return[k,{p:probabilities[k]/100,y,brier:(probabilities[k]/100-y)**2,baselineP:baseline,baselineBrier:baseline===null?null:(baseline-y)**2}];
+  }));
   rows.push({key,fixtureId:f.fixtureId,modelRevision:f.modelRevision,capturedAt:f.capturedAt,kickoffAt:f.kickoffAt,score,markets});
  }
  const revisions=[...new Set(rows.map(r=>r.modelRevision))];
  const byRevision=revisions.map(modelRevision=>({modelRevision,markets:Object.fromEntries(['one','draw','two','over25','btts','over35','bttsOver25'].map(k=>{
   const values=rows.filter(r=>r.modelRevision===modelRevision&&r.markets[k]).map(r=>r.markets[k]);
   const mean=fn=>values.length?values.reduce((s,r)=>s+fn(r),0)/values.length:null;
-  return[k,{n:values.length,brier:mean(r=>r.brier),meanForecast:mean(r=>r.p),observedRate:mean(r=>r.y)}];
+  const paired=values.filter(v=>v.baselineP!==null&&Number.isFinite(v.baselineP));
+  const pairedMean=fn=>paired.length?paired.reduce((s,r)=>s+fn(r),0)/paired.length:null;
+  return[k,{n:values.length,brier:mean(r=>r.brier),meanForecast:mean(r=>r.p),observedRate:mean(r=>r.y),baselineN:paired.length,pairedModelBrier:pairedMean(r=>r.brier),baselineBrier:pairedMean(r=>r.baselineBrier),brierImprovement:pairedMean(r=>r.baselineBrier-r.brier)}];
  }))}));
  return {schemaVersion:1,evaluatedAt,lastCapturedAt:captures.map(c=>c.capturedAt).filter(t=>Number.isFinite(Date.parse(t))&&Date.parse(t)<=now).sort().at(-1)||null,validated:false,productionBettingApproved:false,recorded:earliest.size,estimated:[...earliest.values()].filter(f=>f.experimentalEstimate?.available).length,evaluatedForecasts:rows.filter(r=>Object.keys(r.markets).length).length,settled:rows.length,pending,byRevision,rows,
   note:'Prima stima disponibile per partita e revisione; esiti nei tempi regolamentari. Nessuna stima di rendimento senza quote verificate.'};

@@ -41,3 +41,13 @@ test('calendar names resolve spelling differences without fuzzy matching or chan
  assert.equal(evaluateCaptures([capture],[{...r,id:'other'}],options).settled,0);
  assert.equal(JSON.stringify(capture),before);
 });
+test('prospective comparison uses only historical baselines already present before kickoff, on the same cohort',()=>{
+ const forecast={...f,markets:{btts:{score:50,venueSamples:{home:6,away:6}}}};
+ const capture={...c,fixtures:[forecast]};
+ const m=evaluateCaptures([capture],[r],options).byRevision[0].markets.btts;
+ assert.equal(m.baselineN,1);assert.equal(m.baselineBrier,.25);assert.ok(Math.abs(m.brierImprovement-.16)<1e-10);
+ const absent=evaluateCaptures([c],[r],options).byRevision[0].markets.btts;
+ assert.equal(absent.baselineN,0);assert.equal(absent.baselineBrier,null);assert.equal(absent.pairedModelBrier,null);
+ const partial={...capture,fixtures:[{...forecast,markets:{btts:{...forecast.markets.btts,partial:true}}}]};
+ assert.equal(evaluateCaptures([partial],[r],options).byRevision[0].markets.btts.baselineN,0);
+});

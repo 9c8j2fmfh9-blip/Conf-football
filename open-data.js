@@ -193,6 +193,11 @@ export function openDataConf(params,estimate,{now=Date.now(),data=null,allFixtur
 
 // Replay the default provider's exact history lookup and selection on completed
 // fixtures. Date-only results are never allowed into another forecast that day.
+export function openDataCompletedGames(data=dataset){
+ const unique=new Map();
+ for(const games of makeIndex(data).history.values())for(const game of games)unique.set(game.id,game);
+ return [...unique.values()].sort((a,b)=>a.resultDate.localeCompare(b.resultDate)||a.id.localeCompare(b.id));
+}
 export function openDataObservations(estimate, data=dataset) {
  const index=makeIndex(data);
  const unique=new Map();

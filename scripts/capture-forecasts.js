@@ -10,13 +10,20 @@ const fetchJson=async(path,timeout=90000)=>{
  }
  throw lastError;
 };
-const health=await fetchJson('/api/health',30000);
-const data=await fetchJson('/api/conf?hours=24&limit=200');
-let quotes=null;try{quotes=await fetchJson('/api/proposal-odds?hours=24&limit=200');}catch{/* Keep predictions, explicitly mark absent prices. */}
-const after=await fetchJson('/api/health',30000);
-if(health.gitCommit!==after.gitCommit)throw Error('Deployment changed during capture; retry next run');
-const capturedAt=new Date().toISOString();
-const capture=prepareCapture(data,quotes,{capturedAt,modelRevision:after.gitCommit||null,runId:process.env.GITHUB_RUN_ID||null});
+async function captureConsistentModel(){
+ for(let attempt=0;attempt<2;attempt++){
+  const health=await fetchJson('/api/health',30000);
+  const data=await fetchJson('/api/conf?hours=24&limit=200');
+  let quotes=null;try{quotes=await fetchJson('/api/proposal-odds?hours=24&limit=200');}catch{/* Preserve predictions if prices are unavailable. */}
+  const after=await fetchJson('/api/health',30000);
+  const beforeModel=health.modelRevision||health.gitCommit,afterModel=after.modelRevision||after.gitCommit;
+  if(!beforeModel)throw Error('Model revision unavailable');
+  if(beforeModel!==afterModel){if(attempt===0){console.log('Model changed during capture; retrying once.');continue;}throw Error('Model changed twice during capture');}
+  return prepareCapture(data,quotes,{capturedAt:new Date().toISOString(),modelRevision:afterModel,deploymentRevision:after.gitCommit||null,runId:process.env.GITHUB_RUN_ID||null});
+ }
+}
+const capture=await captureConsistentModel();
+const capturedAt=capture.capturedAt;
 if(!capture.fixtures.length)throw Error('No future fixtures captured; do not write an empty successful archive');
 const folder=resolve(process.argv[2]||'forecast-captures');mkdirSync(folder,{recursive:true});
 const filename=capturedAt.replaceAll(':','-')+'-'+(process.env.GITHUB_RUN_ID||'local')+'.json';

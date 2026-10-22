@@ -24,5 +24,7 @@ jobs:
         run: node scripts/validate-coverage.js
       - name: Compare chronological calibration candidates
         run: node scripts/calibrate-goals.js
+      - name: Test opponent-adjusted ratings without changing production predictions
+        run: node scripts/audit-opponents.js
       - name: Boot and smoke-test web app
         run: node scripts/smoke-app.js

@@ -40,3 +40,9 @@ Endpoint principali:
 L'operatività dell'app e l'affidabilità statistica sono due verifiche diverse. Le stime Poisson e le frequenze storiche non sono probabilità di vincita certificate. `validated` e `productionBettingApproved` restano `false`; le bozze non moltiplicano percentuali per dichiarare una probabilità della multipla. Il confronto retrospettivo non dimostra un rendimento futuro. Mancano ancora un campione prospettico ampio e una verifica economica con quote effettivamente disponibili al momento della previsione.
 
 Il calendario può essere più ampio degli storici. Alcune categorie, xG e mercati corner non hanno dati utilizzabili. I preferiti sono locali al browser; la sincronizzazione opzionale dello storico richiede la configurazione Supabase già supportata. Nessuna puntata viene eseguita dall'app.
+
+## Ricerca sugli avversari e integrità del confronto
+
+`node scripts/audit-opponents.js` confronta sei candidati Poisson con rating di attacco/difesa e forza degli avversari con il modello attuale, mantenendo separati i periodi di scelta e confronto. `opponent-model-report.json` conserva il risultato riproducibile e l’impronta del dataset: nessun candidato ha superato la scelta sul periodo intermedio, quindi il modello live resta invariato. Il confronto si ripete nella CI.
+
+La raccolta usa un identificativo derivato dai sorgenti del calcolo, indipendente dai soli aggiornamenti di interfaccia. Il commit del deploy resta archiviato separatamente. Gli esiti prospettici confrontano modello e frequenza storica registrata prima della partita sulle stesse osservazioni; senza baseline disponibile il confronto rimane nullo, non ricostruito dopo il risultato.

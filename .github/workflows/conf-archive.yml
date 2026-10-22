@@ -34,6 +34,7 @@ jobs:
           node-version: '24'
       - name: Capture future predictions and available prices
         id: capture
+        timeout-minutes: 6
         continue-on-error: true
         run: node app/scripts/capture-forecasts.js archive/forecast-captures
       - name: Compare archived forecasts with confirmed final results

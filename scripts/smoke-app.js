@@ -25,6 +25,7 @@ try{
  const data=await health.json();
  assert.equal(health.status,200);
  assert.equal(data.ok,true);
+ assert.match(data.modelRevision,/^[a-f0-9]{64}$/);
  const html=await fetch(root+'/',{signal:AbortSignal.timeout(4000)});
  assert.equal(html.status,200);
  const body=await html.text();
