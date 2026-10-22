@@ -39,6 +39,14 @@ test('fetches and caches an individual-stat match payload',async()=>{
  assert.equal(calls,1);assert.equal(a.matchId,'abcdefgh');assert.equal(b.players.length,2);
 });
 
+test('accepts full player-stat payloads above one megabyte within the bounded limit',async()=>{
+ const large=JSON.stringify(payload)+' '.repeat(1_000_010);
+ assert.ok(large.length>1_000_000&&large.length<2_000_000);
+ const store=createDirettaPlayerStatsStore({fetcher:async()=>({ok:true,text:async()=>large}),persist:()=>{}});
+ const value=await store.get('abcdefgh');
+ assert.equal(value.players.length,2);
+ assert.equal(value.players[0].stats.shots_total.raw,3);
+});
 test('builds player averages grouped by team while leaving unavailable measures absent',()=>{
  const game=(id,home,away)=>({id,date:'2026-10-01T12:00:00Z',home,away});
  const matches={};
