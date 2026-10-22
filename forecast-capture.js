@@ -8,7 +8,7 @@ export function prepareCapture(data,quotes,{capturedAt,modelRevision=null,runId=
   if(!id||seen.has(id)||Date.parse(f.date)<=now+5*60000||!Number.isFinite(Date.parse(f.date)))return false;
   seen.add(id);return true;
  }).map(f=>({fixtureId:f.fixtureId,kickoffAt:f.date,home:f.home,away:f.away,league:f.league,country:f.country,
-  direttaId:f.direttaId||null,source:f.source||data.provider,dataUpdatedAt:f.dataUpdatedAt||null,dataStale:!!f.dataStale,
+  direttaId:f.direttaId||null,calendarHome:f.calendarHome||f.home,calendarAway:f.calendarAway||f.away,source:f.source||data.provider,dataUpdatedAt:f.dataUpdatedAt||null,dataStale:!!f.dataStale,
   experimentalEstimate:f.experimentalEstimate||null,markets:f.markets||{},selection:f.selection||null,
   prices:byId.get(String(f.fixtureId))||null}));
  return {schemaVersion:1,capturedAt,modelRevision,runId,

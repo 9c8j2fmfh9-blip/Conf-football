@@ -1,37 +1,42 @@
-# CONF Football v0.2 — starter kit
+# CONF Football
 
-Questo pacchetto contiene il prototipo web, più un piccolo server che può interrogare API-Football mantenendo la chiave API lato server.
+Applicazione mobile e desktop per consultare le partite future, le stime dei mercati gol, lo storico disponibile e le quote verificate. Sito: https://conf-football.onrender.com/
 
-## Cosa è pronto
-- Interfaccia responsive per testare filtri CONF e mercati (i dati nell'interfaccia sono ancora dimostrativi).
-- Server Express con proxy per calendario, campionati, statistiche di una partita e quote.
-- Cache in memoria di 10 minuti per limitare le richieste API.
-- Chiave API tenuta in `.env`, mai nel JavaScript del browser.
+## Funzioni operative
 
-## Avvio locale
-1. Installa Node.js LTS dal sito ufficiale.
-2. Apri un terminale nella cartella `conf_football_v02`.
-3. Esegui `npm install`.
-4. Copia `.env.example` in un file chiamato `.env`.
-5. Inserisci la tua chiave nel valore `API_FOOTBALL_KEY` dentro `.env`.
-6. Esegui `npm start` e apri `http://localhost:3000`.
-7. Per verificare il server, apri `http://localhost:3000/api/status`.
+- Calendario Diretta con finestre 3h, 12h, 24h e ricerca per squadra, competizione o data.
+- Una scheda per partita, ordinamento per percentuale oppure data e ora, filtro di selezione al 60% e preferiti locali.
+- Analisi di GG, Over 2.5, risultato e mercati aggiuntivi quando esistono dati sufficienti; i mercati mancanti restano dichiarati non disponibili.
+- Quote Sisal dal foglio ufficiale e quote bookmaker di riferimento da ESPN. Ogni quota è abbinata al mercato, alle squadre e all'orario; le fonti hanno un limite di validità.
+- Bozze sperimentali con obiettivi quota 10 e 100, massimo 16 partite e un solo bookmaker per bozza. Nessuna quota viene inventata per raggiungere l'obiettivo. Quando non ci sono combinazioni supportate, l'app lo dichiara.
+- Alternative gol + corner totali separate, senza inventare quote MyCombo o probabilità congiunte.
+- Aggiornamento della pagina ogni minuto mentre è visibile e alla riapertura da smartphone.
 
-## Endpoint disponibili
-- `GET /api/health`
-- `GET /api/status`
-- `GET /api/leagues`
-- `GET /api/fixtures?date=2026-10-19`
-- `GET /api/fixtures?league=39&season=2026`
-- `GET /api/fixture-statistics?fixture=ID_PARTITA`
-- `GET /api/odds?fixture=ID_PARTITA`
+## Avvio e controlli
 
-Gli ID e le stagioni sono esempi: prima di usare una richiesta, verifica quelli disponibili nel provider e le date/competizioni corrette.
+Richiede Node.js 24. Eseguire `npm ci`, poi `npm start`. Il provider predefinito non richiede chiavi. Configurare `CONF_PROVIDER=openfoot` e `OPENFOOT_API_KEY` soltanto se si usa il provider opzionale. Le chiavi restano nelle variabili del servizio, mai nel repository.
 
-## Regole sicurezza
-- Non inviare la chiave API in chat, screenshot, repository o file HTML.
-- Non pubblicare `.env`. Il file è escluso da `.gitignore`.
-- Per una versione online, usare un backend/serverless con segreti configurati nelle impostazioni del servizio. GitHub Pages da solo non può eseguire `server.js` e non è adatto a custodire chiavi API.
+`npm test` esegue le regressioni. `node scripts/smoke-app.js` avvia il server e verifica la pagina, il selettore e gli audit storici. GitHub Actions esegue anche i confronti cronologici dei modelli e della calibrazione.
 
-## Nota importante sul CONF
-Il numero CONF non è ancora calibrato e non rappresenta una probabilità reale. Prima di pubblicare pronostici automatici bisogna collegare i dati, costruire le stime per GG / Over 2.5 / Over 1.5 HT / corner e valutarle su partite storiche non usate per allenare il modello. I dati demo dell'interfaccia non vanno usati per scommettere.
+## Verifica prospettica automatica
+
+Il workflow `.github/workflows/conf-archive.yml` è pianificato ogni ora al minuto 17; GitHub può ritardarne l'esecuzione. Il ramo `conf-forecast-archive` conserva le previsioni immutabili e il report aggiornato. La raccolta non dipende dall'apertura della chat o dell'app.
+
+Le previsioni devono precedere il calcio d'inizio di almeno cinque minuti. Il confronto usa la prima stima disponibile per partita e versione, identificativi esatti del calendario, squadre e orario coerenti e soli risultati nei tempi regolamentari confermati. Le partite senza esito o identificativo verificabile rimangono in attesa. I risultati già acquisiti sono conservati anche dopo l'uscita dalla finestra di sette giorni del feed.
+
+La raccolta e la valutazione sono distinte: un problema nella nuova raccolta non impedisce di aggiornare gli esiti già archiviati, ma il workflow segnala comunque l'errore. L'app mostra data dell'ultima verifica, registrazioni, esiti confermati, attese e ritardi.
+
+Endpoint principali:
+
+- `/api/health`: versione e commit pubblicato.
+- `/api/conf`: calendario e analisi per `hours`, `date` e `q`.
+- `/api/proposal-odds`: quote per le singole proposte.
+- `/api/daily-multiples`: bozze sperimentali e alternative.
+- `/api/forecast-validation`: riepilogo del confronto su nuove partite.
+- `/api/conf-validation`, `/api/conf-calibration`, `/api/conf-backtest`: audit retrospettivi e confronti di calibrazione.
+
+## Limiti verificabili
+
+L'operatività dell'app e l'affidabilità statistica sono due verifiche diverse. Le stime Poisson e le frequenze storiche non sono probabilità di vincita certificate. `validated` e `productionBettingApproved` restano `false`; le bozze non moltiplicano percentuali per dichiarare una probabilità della multipla. Il confronto retrospettivo non dimostra un rendimento futuro. Mancano ancora un campione prospettico ampio e una verifica economica con quote effettivamente disponibili al momento della previsione.
+
+Il calendario può essere più ampio degli storici. Alcune categorie, xG e mercati corner non hanno dati utilizzabili. I preferiti sono locali al browser; la sincronizzazione opzionale dello storico richiede la configurazione Supabase già supportata. Nessuna puntata viene eseguita dall'app.

@@ -7,7 +7,7 @@ let cached=null,inflight=null,nextAttempt=0;
 // A verified, timestamped bootstrap survives deployments; runtime updates
 // supersede each individual sheet only when their publication is newer.
 function newerSheet(a,b){const x=Date.parse(a?.sourceUpdatedAt),y=Date.parse(b?.sourceUpdatedAt);return Number.isFinite(y)&&(!Number.isFinite(x)||y>x)?b:a||b||null;}
-for(const path of [new URL('./sisal-odds-snapshot.json',import.meta.url),cachePath])try{
+for(const path of [new URL('./sisal-odds-snapshot.json',import.meta.url),...(process.env.NODE_ENV==='test'?[]:[cachePath])])try{
  const value=JSON.parse(readFileSync(path,'utf8'));
  const base=newerSheet(cached,value),combined=newerSheet(cached?.combined,value.combined);
  cached=base?{...base,combined}:combined?{entries:[],combined}:null;

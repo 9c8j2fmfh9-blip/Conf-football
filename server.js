@@ -1,4 +1,5 @@
 import {buildCalibrationAudit} from './calibration-audit.js';
+import {createForecastStatusStore} from './forecast-status.js';
 import {buildValidationAudit} from './validation-audit.js';
 import {goalEstimateFromStats} from './experimental-goals.js';
 import {espnProbe,getEspnQuotes} from './espn-odds.js';
@@ -552,6 +553,12 @@ app.get('/api/conf-backtest', (_req, res) => {
 });
 
 let validationReport=null;
+let forecastStatusStore;
+app.get('/api/forecast-validation',async(_req,res)=>{
+ forecastStatusStore??=createForecastStatusStore();
+ const report=await forecastStatusStore.get();
+ res.set('Cache-Control','no-store').status(report.available?200:503).json(report);
+});
 app.get('/api/conf-validation', (_req,res)=>{
  try {
   // Recompute at most every six hours, matching the archive refresh cadence.
@@ -909,14 +916,13 @@ app.get('/api/daily-multiples',async(req,res)=>{
  try{
   const date=/^\d{4}-\d{2}-\d{2}$/.test(String(req.query.date||''))?String(req.query.date):'';
   const data=await calendarConf({date,hours:24},experimentalGoalEstimate);
-  const sheet=data.selectedCount?await getSisalOdds():null;
-  const original=buildDailyMultiples(data.fixtures,sheet);
-  const quotes=await getEspnQuotes(data.fixtures);
+  const [sheet,quotes]=await Promise.all([data.selectedCount?getSisalOdds():null,getEspnQuotes(data.fixtures)]);
+  const original=buildDailyMultiples(data.fixtures,sheet,{experimentalDrafts:true});
   const reference=buildComparisonTickets(data.fixtures,quotes);
-  const tickets=chooseReferenceTickets(original.tickets,reference.tickets);
+  const tickets=chooseReferenceTickets(original.tickets,reference.tickets).map(t=>({...t,experimental:true,validated:false,jointProbability:null}));
   const usesReference=tickets.some(t=>t.indicative);
   res.set('Cache-Control','no-store').json({...original,tickets,referenceQuotes:{source:quotes.source,matchedEvents:quotes.matchedEvents,pricedEvents:quotes.listedEvents,eligibleCount:reference.eligibleCount,error:quotes.error},
-   comparison:usesReference,source:usesReference?reference.source:'Sisal · foglio ufficiale',maxLegs:16,
+   eligibleCount:Math.max(original.eligibleCount,reference.eligibleCount),comparison:usesReference,source:usesReference?reference.source:'Sisal · foglio ufficiale',maxLegs:16,
    method:(usesReference?reference.method:original.method)+' Fonte alternativa ESPN: '+reference.eligibleCount+' proposte qualificate con quota sul mercato esatto.',
    oddsStatus:sisalOddsStatus(),date:date||null,windowHours:24,generatedAt:new Date().toISOString(),selectedCount:data.selectedCount,competitionsCovered:data.competitionsCovered});
  }catch{res.status(503).json({error:'Multiple momentaneamente non disponibili',tickets:[]});}

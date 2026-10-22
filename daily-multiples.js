@@ -21,7 +21,7 @@ function bestAvailableTicket(fixtures,sheet,{now,club}){
  function visit(i,total,legs,clubs){
   if(++visits>200000){limited=true;return;}
   if(legs.length>=2&&total<=100&&(!best||total>best.total))best={total,legs};
-  if(i===groups.length||Math.min(100,total*upper[i])<=(best?.total||1))return;
+  if(i===groups.length||legs.length>=16||Math.min(100,total*upper[i])<=(best?.total||1))return;
   const g=groups[i];
   if(!clubs.has(g.home)&&!clubs.has(g.away))for(const leg of g.options){
    if(total*leg.odds<=100)visit(i+1,total*leg.odds,[...legs,leg],new Set([...clubs,g.home,g.away]));
@@ -35,13 +35,13 @@ function bestAvailableTicket(fixtures,sheet,{now,club}){
 // Highest confidence tiers first. Bounded subset search avoids forcing every
 // intervening low-priced leg into a ticket. Percentages are experimental scores,
 // never presented as a calibrated joint probability.
-export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=MINIMUM_ODDS}={}){
+export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=MINIMUM_ODDS,experimentalDrafts=false}={}){
  // Safety gate: historical frequencies and experimental estimates are NOT
  // calibrated probabilities. Do not issue automatic stake-ready multiples
  // until an out-of-sample calibration artifact is available and validated.
  // Keep existing analysis cards visible; refuse to fabricate reliability.
  const reason = 'Multipla automatica sospesa: le percentuali CONF sono sperimentali e non validate con backtest fuori campione. I precedenti restano consultabili, ma non costituiscono una probabilità affidabile né una giocata pronta.';
- return {
+ if(!experimentalDrafts)return {
   bookmaker:'Sisal',
   sourceUpdatedAt:sheet?.sourceUpdatedAt||null,
   eligibleCount:0,
@@ -79,7 +79,7 @@ export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=M
    const additions=[];
    for(const s of states){
     const total=s.total*leg.odds;
-    if(total>high || s.clubs.has(home) || s.clubs.has(away))continue;
+    if(total>high || s.legs.length>=16 || s.clubs.has(home) || s.clubs.has(away))continue;
     const next={legs:[...s.legs,leg],total,cost:s.cost-Math.log(leg.score/100),pricePenalty:s.pricePenalty+Math.max(0,Math.log(minimumOdds/leg.odds)),clubs:new Set([...s.clubs,home,away])};
     additions.push(next);
    }
@@ -108,6 +108,6 @@ export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=M
   return chosen?{target,available:true,targetReached:true,fallback:false,totalOdds:Number(chosen.total.toFixed(2)),legs:chosen.legs,bookmaker:'Sisal'}:
    {target,available:false,totalOdds:null,legs:[],reason:!candidates.length&&fixtures.some(f=>f.selection?.qualified)?'Nessuna quota Sisal verificabile per le proposte attuali: multipla non calcolabile.':'Non ci sono combinazioni vicine a quota '+target+' con le proposte qualificate e le quote verificate disponibili.'};
  });
- return {bookmaker:'Sisal',sourceUpdatedAt:sheet?.sourceUpdatedAt||null,eligibleCount:candidates.length,preferredMinimumOdds:minimumOdds,tolerancePercent:10,tickets,alternatives:buildAlternativeMultiples(fixtures,{now}),
+ return {bookmaker:'Sisal',validationStatus:'experimental_draft',validated:false,productionBettingApproved:false,sourceUpdatedAt:sheet?.sourceUpdatedAt||null,eligibleCount:candidates.length,preferredMinimumOdds:minimumOdds,tolerancePercent:10,tickets:tickets.map(t=>({...t,experimental:true,validated:false,jointProbability:null})),alternatives:buildAlternativeMultiples(fixtures,{now}),
   method:'Combinazioni tra le percentuali più alte, prima le fasce migliori e poi meno peso alle quote basse; una giocata per partita e nessuna squadra ripetuta. Sotto quota '+minimumOdds.toFixed(2)+' si cerca un mercato alternativo qualificato con quota ufficiale più alta, inclusi Over 3.5 e GG + Over 2.5. Se manca, la proposta originale resta consultabile e utilizzabile. Obiettivo quota ±10%. Se quota 100 non è raggiungibile, si mostra la migliore quota trovata entro 100 considerando tutti i mercati alternativi qualificati, senza abbassare i criteri. Quote dei fogli ufficiali, non live. Le percentuali delle singole sono stime sperimentali: non indicano la probabilità di vincere la multipla.'};
 }

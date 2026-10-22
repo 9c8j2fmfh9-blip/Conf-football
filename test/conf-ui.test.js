@@ -136,3 +136,24 @@ assert.ok(dualDailyHtml.includes('Stima 72%'));assert.ok(dualDailyHtml.includes(
 assert.ok(dualDailyHtml.includes('Totale 9+ corner FT'));assert.ok(dualDailyHtml.includes('10,25'));
 assert.ok(dualDailyHtml.includes('Quota MyCombo da verificare su Sisal'));assert.ok(!dualDailyHtml.includes('NaN'));
 console.log('PASS: two additional total-corner combo cards keep the original multiples, show separate percentages and never fabricate MyCombo prices.');
+
+context.report={available:true,recorded:171,settled:1,pending:170,evaluatedAt:'2026-10-22T08:00:00Z',estimated:100,evaluatedForecasts:1,method:'Confronto prospettico',byRevision:[{modelRevision:'abc',markets:{btts:{n:1,meanForecast:.7,observedRate:1,brier:.09}}}],pendingReasons:{'Identificativo calendario assente':17}};
+vm.runInContext('renderForecastStatus(report)',context);
+assert.ok(el('#forecast-status').textContent.includes('171 registrazioni'));
+assert.ok(el('#forecast-results').innerHTML.includes('70,0%'));assert.ok(el('#forecast-results').innerHTML.includes('0.0900'));
+assert.ok(el('#forecast-results').innerHTML.includes('Identificativo calendario assente: 17'));
+assert.ok(!el('#forecast-results').innerHTML.includes('NaN'));
+vm.runInContext("renderForecastStatus({available:false,warning:'Fonte temporaneamente non disponibile'})",context);
+assert.ok(el('#forecast-status').textContent.includes('Fonte temporaneamente'));
+context.orderCases=[{...context.both,fixtureId:'high',home:'High',experimentalEstimate:{...context.both.experimentalEstimate,estimates:{over25:80}}},{...context.both,fixtureId:'low',home:'Low',experimentalEstimate:{...context.both.experimentalEstimate,estimates:{over25:54}},cornerMarkets:{markets:[{...context.cornerOnly.cornerMarkets.markets[0],score:100,hits:10}]}}];
+vm.runInContext('confOnlyQualified=false;renderConf(orderCases)',context);
+assert.ok(el('#conf-results').innerHTML.indexOf('High')<el('#conf-results').innerHTML.indexOf('Low'));
+console.log('PASS: prospective report shows real counts, separate model metrics and missing identifiers; goal ordering is not displaced by a high historical corner frequency.');
+context.expiring=[{...fixture('past',80),date:'2026-10-22T10:00:00Z'},{...fixture('future',70),date:'2026-10-22T15:00:00Z'}];
+context.expiringTicket={tickets:[{target:10,available:true,totalOdds:10,legs:[{home:'Past',away:'Other',date:'2026-10-22T10:00:00Z',label:'GG',score:70,odds:2},{home:'Future',away:'Other',date:'2026-10-22T15:00:00Z',label:'GG',score:70,odds:5}]}]};
+vm.runInContext("renderConf(expiring);renderDailyMultiples(expiringTicket);discardStarted(Date.parse('2026-10-22T12:00:00Z'))",context);
+assert.ok(!el('#conf-results').innerHTML.includes('Casa past'));
+assert.ok(el('#conf-results').innerHTML.includes('Casa future'));
+assert.ok(el('#daily-multiples-results').innerHTML.includes('Una partita è iniziata'));
+assert.ok(!el('#daily-multiples-results').innerHTML.includes('10,00'));
+console.log('PASS: kicked-off events and tickets containing them disappear before a new server response arrives.');

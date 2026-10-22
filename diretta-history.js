@@ -67,19 +67,19 @@ export function createHistoryStore({initial={},fetcher=fetch,persist=()=>{},conc
   return pending.get(id);
  }};
 }
-let initial={};for(const name of ['diretta-history-snapshot.json.gz','diretta-history-cache.json'])try{const raw=readFileSync(new URL('./'+name,import.meta.url));Object.assign(initial,JSON.parse(name.endsWith('.gz')?gunzipSync(raw).toString('utf8'):raw.toString('utf8')));}catch{}
+let initial={};for(const name of ['diretta-history-snapshot.json.gz',...(process.env.NODE_ENV==='test'?[]:['diretta-history-cache.json'])])try{const raw=readFileSync(new URL('./'+name,import.meta.url));Object.assign(initial,JSON.parse(name.endsWith('.gz')?gunzipSync(raw).toString('utf8'):raw.toString('utf8')));}catch{}
 const store=createHistoryStore({initial,persist:value=>{
  if(process.env.NODE_ENV==='test')return;
  try{const tmp=new URL('./diretta-history-cache.tmp',import.meta.url);writeFileSync(tmp,JSON.stringify(value));renameSync(tmp,new URL('./diretta-history-cache.json',import.meta.url));}catch{}
 }});
 export async function enrichHistory(data,estimate,{now=Date.now(),historyStore=store,waitMs=18000}={}){
  const started=Date.now();
- const missing=data.fixtures.filter(f=>f.direttaId&&!f.experimentalEstimate?.available);
+ const missing=data.fixtures.filter(f=>f.direttaId&&(!f.experimentalEstimate?.available||f.dataStale));
  const jobs=missing.map(f=>historyStore.get(f.direttaId,{now}));
  // Keep the calendar responsive; queued work continues, shared across requests.
  let timer;await Promise.race([Promise.allSettled(jobs),new Promise(r=>{timer=setTimeout(r,waitMs);})]);clearTimeout(timer);
  const effectiveNow=now+Date.now()-started;
- const fixtures=data.fixtures.filter(f=>Date.parse(f.date)>effectiveNow).map(f=>f.direttaId&&!f.experimentalEstimate?.available?analyzeHistory(f,historyStore.peek(f.direttaId),estimate,{now}):f);
+ const fixtures=data.fixtures.filter(f=>Date.parse(f.date)>effectiveNow).map(f=>f.direttaId&&(!f.experimentalEstimate?.available||f.dataStale)?analyzeHistory(f,historyStore.peek(f.direttaId),estimate,{now}):f);
  fixtures.sort((a,b)=>(b.rankScore??-1)-(a.rankScore??-1)||Date.parse(a.date)-Date.parse(b.date));
  return {...data,fixtures,calendarCount:fixtures.length,preview:{...data.preview,returned:fixtures.length,totalAvailable:fixtures.length},provider:'Diretta.it · analisi Open Matchday e storico Diretta',analyzedCount:fixtures.filter(f=>f.experimentalEstimate?.available).length,selectedCount:fixtures.filter(f=>f.selection?.qualified).length,
   historyCoverage:{source:'Diretta.it',checked:missing.filter(f=>historyStore.peek(f.direttaId)).length,pending:missing.filter(f=>!historyStore.peek(f.direttaId)).length},

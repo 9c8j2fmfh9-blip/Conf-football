@@ -41,12 +41,14 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <p id="time-help" class="time">Prossime 24 ore da adesso, anche oltre mezzanotte.</p>
  <div id="conf-message" class="message" role="status">Caricamento delle partite e analisi CONF…</div>
  <section id="daily-multiples" aria-label="Multiple automatiche CONF">
-  <h2>Multiple CONF · validazione sospesa</h2>
-  <p id="daily-multiples-note" class="time">Non disponibili per puntate: modello statistico non validato</p>
+  <h2>Bozze quota 10 e 100 · sperimentali</h2>
+  <p id="daily-multiples-note" class="time">Quote disponibili e stime sperimentali; affidabilità ancora in verifica</p>
   <div id="daily-multiples-results" class="matches" role="status">Caricamento multiple…</div>
   <details><summary class="time">Come vengono composte</summary><p id="daily-multiples-method" class="time"></p></details>
   <details id="calibration-details"><summary class="time">Correzione delle percentuali · verifica</summary><div id="calibration-results" class="time">Apri per vedere il confronto dei modelli.</div></details>
   <details id="validation-details"><summary class="time">Verifica delle percentuali</summary><div id="validation-results" class="time">Apri per vedere i risultati del controllo.</div></details>
+  <details id="forecast-details"><summary class="time">Verifica automatica su nuove partite</summary><div id="forecast-results" class="time">Caricamento dello stato…</div></details>
+  <p id="forecast-status" class="time" role="status">Controllo della raccolta automatica…</p>
  </section>
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Solo selezionate · stima e storico ≥60%</label>
  <div class="field" style="max-width:320px;margin:12px 0"><label for="match-sort">Ordina per</label><select id="match-sort"><option value="percentage">Percentuale · dalla più alta</option><option value="datetime">Data e ora · prima le più vicine</option></select></div>
@@ -82,6 +84,8 @@ let games = [];
 let confItems = [];
 let confOnlyQualified = false;
 let confLoadSequence = 0;
+let confRequestPending = false;
+let currentMultiples = null;
 const HISTORY_KEY = 'confFootballBetHistoryV1';
 const FAVORITES_KEY = 'confFootballFavoritesV1';
 function readFavorites(){ try { const v = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } }
@@ -408,16 +412,17 @@ function extraGoalMarketsHtml(f){
  }).join('')+'</details>';
 }
 function renderDailyMultiples(data){
+ currentMultiples=data;
  const root=$('#daily-multiples-results');
  if(!data?.tickets?.length){root.innerHTML='<div class="empty">Multiple non disponibili: riprova con Aggiorna.</div>';return;}
  $('#daily-multiples-method').textContent=data.method||'';
  const stamp=data.sourceUpdatedAt?new Date(data.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'';
- $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · quote di riferimento · '+(data.referenceQuotes?.matchedEvents??0)+' partite abbinate nella fonte alternativa · quota 100 indicativa, anche superiore';
+ $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · bozze sperimentali · '+(data.eligibleCount??0)+' proposte con quote disponibili · quota 100 indicativa, anche superiore';
  root.innerHTML=data.tickets.map(ticket=>{
   const title='<div class="multiple-head"><span>'+(ticket.fallback?'Alternativa alla quota '+safe(ticket.target):'Obiettivo quota '+safe(ticket.target))+'</span><strong>'+(ticket.available?safe(ticket.totalOdds.toFixed(2).replace('.',',')):'—')+'</strong></div>';
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';
   const legs=ticket.legs.map(leg=>'<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div><div class="multiple-values"><span>'+safe(leg.label)+' · stima '+safe(leg.score)+'%</span><b>'+safe(leg.odds.toFixed(2).replace('.',','))+'</b></div>'+(leg.sourceUrl?'<div class="time">'+safe(leg.bookmaker||ticket.bookmaker)+' · rilevata '+safe(new Date(leg.sourceUpdatedAt).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+' · <a href="'+safe(leg.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Fonte</a></div>':'')+'</div>').join('');
-  return '<article class="multiple-card">'+title+(ticket.fallback?'<p class="time">'+safe(ticket.reason)+'</p>':'')+'<div class="time">'+safe(ticket.legs.length)+' partite · '+safe(ticket.bookmaker||data.bookmaker||'Bookmaker indicato')+' · quota totale indicativa</div><div class="time">Ritorno potenziale con 10 €: '+safe((ticket.totalOdds*10).toFixed(2).replace('.',','))+' €, inclusa la puntata.</div><details><summary>Vedi le partite</summary>'+legs+'</details><p class="time">Quote di riferimento: verifica disponibilità e totale sul bookmaker prima di giocare. Una multipla ad alta quota può perdere anche con percentuali alte nelle singole.</p></article>';
+  return '<article class="multiple-card">'+title+(ticket.fallback?'<p class="time">'+safe(ticket.reason)+'</p>':'')+'<div class="time">'+safe(ticket.legs.length)+' partite · '+safe(ticket.bookmaker||data.bookmaker||'Bookmaker indicato')+' · quota totale indicativa</div><details open><summary>Vedi le partite</summary>'+legs+'</details><p class="time">Bozza sperimentale: le percentuali delle singole non sono la probabilità di vincita della multipla. Verifica quote e disponibilità sul bookmaker.</p></article>';
  }).join('')+renderAlternativeMultiples(data.alternatives||[]);
 }
 
@@ -440,9 +445,23 @@ async function loadDailyMultiples(selectedDate,requestId,attempt=0){
   if(!response.ok||(data.selectedCount>0&&!data.eligibleCount))retryOdds(()=>loadDailyMultiples(selectedDate,requestId,attempt+1),requestId,attempt);
  }catch{if(requestId===confLoadSequence){renderDailyMultiples(null);retryOdds(()=>loadDailyMultiples(selectedDate,requestId,attempt+1),requestId,attempt);}}
 }
+function cardDisclosureState(root){
+ const states=new Map();
+ for(const card of root.querySelectorAll?.('[data-fixture-id]')||[]){
+  states.set(card.dataset.fixtureId,new Set([...card.querySelectorAll('details[open]')].map(d=>d.querySelector('summary')?.textContent)));
+ }
+ return states;
+}
+function restoreCardDisclosures(root,states){
+ for(const card of root.querySelectorAll?.('[data-fixture-id]')||[]){
+  const opened=states.get(card.dataset.fixtureId);if(!opened)continue;
+  for(const details of card.querySelectorAll('details'))if(opened.has(details.querySelector('summary')?.textContent))details.open=true;
+ }
+}
 function renderConf(items){
   confItems = items;
   const root = $('#conf-results');
+  const opened=cardDisclosureState(root);
   const visibleMarkets = f => Object.entries(f.markets || {}).filter(([key]) => ['one','draw','two','over25','btts','over35','bttsOver25'].includes(key)).map(([,m]) => m);
   const qualifies = m => m && m.score !== null && Number(m.score) >= 60 && Number(m.sample) >= 6 && !m.partial;
   const eligible = f => (f.selection || selectFixture(f)).qualified;
@@ -461,10 +480,13 @@ function renderConf(items){
   };
   const percentage = f => {
     const selection = f.selection || selectFixture(f);
-    if(Number.isFinite(selection.primary?.score))return selection.primary.score;
+    const goal=selection.goalPrimary||(selection.candidates||[]).find(p=>p.kind!=='corner');
+    if(Number.isFinite(goal?.score))return goal.score;
+    if(selection.primary?.kind!=='corner'&&Number.isFinite(selection.primary?.score))return selection.primary.score;
     // Order every analyzed fixture by a meaningful displayed score, even
     // when the threshold is not reached; do not bury unqualified matches.
-    if(f.dataStale || !f.experimentalEstimate?.available)return -1;
+    if(f.dataStale)return -1;
+    if(!f.experimentalEstimate?.available)return selection.cornerPrimary?.score??selection.primary?.score??-1;
     const predicted=f.experimentalEstimate.estimates || {};
     const values=['btts','over25','over35','one','draw','two']
       .filter(key=>!f.markets?.[key]?.partial)
@@ -551,7 +573,7 @@ function renderConf(items){
         '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
         :'<p class="time">Dati corner verificati insufficienti.</p>')+
       '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Il dettaglio per tempo dipende dalla disponibilità della fonte.</div>'+ '</details>';
-    return '<article class="match"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+coreMarketsHtml+cornerRecommendationHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote verificate usate per cercare alternative alle quote basse. '+safe(f.dataUpdatedAt ? 'Archivio aggiornato: '+new Date(f.dataUpdatedAt).toLocaleString('it-IT',{timeZone:'Europe/Rome'}) : '')+'</p>'+(f.historyPeriod ? '<p class="time">Storico utilizzato: risultati dal '+safe(f.historyPeriod.from.split('-').reverse().join('/'))+', precedenti alla partita. '+safe(f.source||'')+'</p>' : '')+extraGoalMarketsHtml(f)+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary><div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
+    return '<article class="match" data-fixture-id="'+safe(f.fixtureId)+'"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+coreMarketsHtml+cornerRecommendationHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote verificate usate per cercare alternative alle quote basse. '+safe(f.dataUpdatedAt ? 'Archivio aggiornato: '+new Date(f.dataUpdatedAt).toLocaleString('it-IT',{timeZone:'Europe/Rome'}) : '')+'</p>'+(f.historyPeriod ? '<p class="time">Storico utilizzato: risultati dal '+safe(f.historyPeriod.from.split('-').reverse().join('/'))+', precedenti alla partita. '+safe(f.source||'')+'</p>' : '')+extraGoalMarketsHtml(f)+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary><div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 60 ? 'frequenza storica ≥60 · non predittiva' : 'sotto soglia 60'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
@@ -559,6 +581,7 @@ function renderConf(items){
       return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
     }).join('')+'</div></details>'+experimentalHtml+'</details></article>';
   }).join('');
+  restoreCardDisclosures(root,opened);
 }
 function syncTimeFilters(){
   const date=$('#date').value;
@@ -571,7 +594,9 @@ function selectWindow(hours){
   syncTimeFilters();
   return loadConf();
 }
-async function loadConf(){
+async function loadConf({background=false}={}){
+  if(background&&confRequestPending)return;
+  confRequestPending=true;
   const requestId = ++confLoadSequence;
   const button = $('#reload') || $('#search-button');
   if(button) button.disabled = true;
@@ -581,13 +606,13 @@ async function loadConf(){
   const scope = selectedDate ? 'giorno '+selectedDate.split('-').reverse().join('/') : 'prossime '+hours+' ore';
   void loadDailyMultiples(selectedDate,requestId);
   $('#conf-message').textContent = (query ? 'Cerco “'+query+'” · ' : 'Carico le partite · ')+scope+'…';
-  $('#conf-results').innerHTML = '';
+  if(!background)$('#conf-results').innerHTML = '';
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'all'});
     if (selectedDate) params.set('date',selectedDate);
     if (query || selectedDate) { confOnlyQualified=false; $('#conf-filter').checked=false; }
     if (query) params.set('q',query);
-    const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store'});
+    const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store',signal:AbortSignal.timeout(45000)});
     const data = await response.json();
     if (requestId !== confLoadSequence) return;
     if(!response.ok) throw new Error(data.error || 'Errore HTTP '+response.status);
@@ -601,7 +626,7 @@ async function loadConf(){
     message.textContent = (data.providerIssue?.message ? data.providerIssue.message+' ' : '')+(query ? 'Ricerca “'+query+'” · ' : '')+scope+': '+(data.calendarCount!==undefined?data.calendarCount+' partite in calendario · '+(data.analyzedCount??0)+' con analisi · '+qualified+' selezionate.':(data.analyzedCount ?? 0)+' partite esaminate · '+qualified+' selezionate · '+(data.fixtures || []).length+' consultabili.');
     const details=document.createElement('details');
     const summary=document.createElement('summary'); summary.textContent='Metodo e copertura dati';
-    const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Copertura incompleta: alcuni calendari o storici non sono disponibili.' : '');
+    const note=document.createElement('p'); note.textContent=(data.method || '')+(data.preview?.partial ? ' Copertura parziale del provider: la selezione riguarda le partite ricevute.' : '')+((data.warnings || []).length ? ' Copertura incompleta: alcuni calendari o storici non sono disponibili.' : '')+(data.historyCoverage?.pending ? ' Recupero degli storici in corso per '+data.historyCoverage.pending+' partite; aggiornamento automatico ogni minuto.' : '');
     details.append(summary,note); message.append(details);
     void loadProposalOdds(params,requestId);
 
@@ -610,6 +635,7 @@ async function loadConf(){
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
   }finally{
     if (requestId !== confLoadSequence) return;
+    confRequestPending=false;
     if(button) button.disabled = false;
     const searchButton = $('#search-button'); if(searchButton) searchButton.disabled = false;
   }
@@ -697,7 +723,7 @@ async function loadCalibration(){
   const data=await response.json();if(!response.ok)throw Error(data.error||'Errore');
   root.innerHTML='<p>Confronto finale su '+safe(data.partition.finalPeriod)+' partite, dopo addestramento e scelta separati.</p>'+
    ['btts','over25'].map(key=>{const m=data.jointRate.finalPeriod[key];const interval=m.improvementInterval;return '<p><strong>'+(key==='btts'?'GG':'Over 2.5')+'</strong> · errore Brier: '+safe(m.raw.brier.toFixed(5))+' → '+safe(m.candidate.brier.toFixed(5))+'. '+(interval.lower>0?'Miglioramento nel confronto per data.':'Il confronto per data non conferma ancora un miglioramento stabile.')+'</p>';}).join('')+
-   '<p>Valori più bassi indicano meno errore. Correzione sperimentale non applicata alle partite: serve conferma su nuove previsioni. Le multiple restano sospese.</p>';
+   '<p>Valori più bassi indicano meno errore. Correzione sperimentale non applicata alle partite: serve conferma su nuove previsioni. Le bozze delle multiple non sono validate.</p>';
  }catch(e){root.textContent='Confronto non disponibile: '+e.message;}
 }
 
@@ -713,6 +739,42 @@ async function loadValidation(){
    ['btts','over25'].map(key=>{const m=data.markets[key].screened;return '<p><strong>'+(key==='btts'?'GG':'Over 2.5')+'</strong> · selezioni nel periodo finale: '+safe(m.n)+' · stima media '+safe(percent(m.meanForecast))+' · esito verificato '+safe(percent(m.observedRate))+'</p>';}).join('')+
    '<p>'+safe(data.limitations.join(' '))+'</p>';
  }catch(e){root.textContent='Verifica non disponibile: '+e.message;}
+}
+
+function renderForecastStatus(data){
+ const status=$('#forecast-status'),root=$('#forecast-results');
+ if(!data?.available){status.textContent=data?.warning||'Stato della verifica non disponibile.';root.textContent=status.textContent;return;}
+ const stamp=new Date(data.evaluatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'});
+ status.textContent='Raccolta automatica · '+data.recorded+' registrazioni · '+data.settled+' esiti confermati · '+data.pending+' in attesa · '+stamp+(data.stale||data.captureStale?' · aggiornamento in ritardo':'');
+ const percent=v=>typeof v==='number'&&Number.isFinite(v)?(v*100).toFixed(1).replace('.',',')+'%':'—';
+ root.innerHTML='<p>'+safe(data.method)+'</p>'+(data.estimated!==null&&data.estimated!==undefined?'<p>'+safe(data.estimated)+' registrazioni con stima disponibile; '+safe(data.evaluatedForecasts??0)+' confrontate con il risultato finale.</p>':'')+
+  (data.byRevision||[]).map(group=>'<div class="multiple-leg"><b>Versione '+safe((group.modelRevision||'non identificata').slice(0,8))+'</b>'+['btts','over25'].map(k=>{const m=group.markets?.[k];return m?.n?'<p>'+(k==='btts'?'GG':'Over 2.5')+' · '+safe(m.n)+' partite · stima media '+safe(percent(m.meanForecast))+' · frequenza degli esiti '+safe(percent(m.observedRate))+' · errore Brier '+safe(m.brier.toFixed(4))+'</p>':'';}).join('')+'</div>').join('')+
+  (!data.settled?'<p>Nessun risultato finale confermato nel campione. Le percentuali restano sperimentali.</p>':'')+
+  Object.entries(data.pendingReasons||{}).map(([reason,n])=>'<p>'+safe(reason)+': '+safe(n)+'</p>').join('')+
+  (data.sourceIssues||[]).map(issue=>'<p>'+safe(issue.date)+' · '+safe(issue.issue)+'</p>').join('')+
+  (data.warning?'<p>'+safe(data.warning)+'</p>':'');
+}
+async function loadForecastStatus(){
+ try{const r=await fetch('/api/forecast-validation',{cache:'no-store',signal:AbortSignal.timeout(12000)});const data=await r.json();renderForecastStatus(data);}
+ catch{renderForecastStatus({available:false,warning:'Stato della verifica temporaneamente non disponibile. Il calendario resta consultabile.'});}
+}
+
+function discardStarted(now=Date.now()){
+ const future=confItems.filter(f=>Number.isFinite(Date.parse(f.date))&&Date.parse(f.date)>now);
+ if(future.length!==confItems.length){
+  renderConf(future);
+  $('#total').textContent=future.length;
+  $('#upcoming').textContent=future.filter(f=>(f.selection||selectFixture(f)).qualified).length;
+  $('#live').textContent=future.filter(f=>f.experimentalEstimate?.available).length;
+ }
+ if(!currentMultiples)return;
+ let changed=false;
+ const expire=t=>{
+  if(!(t.legs||[]).some(l=>!Number.isFinite(Date.parse(l.date))||Date.parse(l.date)<=now))return t;
+  changed=true;return {...t,available:false,targetReached:false,totalOdds:null,legs:[],reason:'Una partita è iniziata: la bozza viene aggiornata automaticamente.'};
+ };
+ const data={...currentMultiples,tickets:(currentMultiples.tickets||[]).map(expire),alternatives:(currentMultiples.alternatives||[]).map(expire)};
+ if(changed)renderDailyMultiples(data);
 }
 
 async function loadBacktest(){
@@ -743,6 +805,7 @@ document.addEventListener('toggle',async e=>{
   if(!section.matches?.('details')||!section.open)return;
   if(section.id==='calibration-details'){await loadCalibration();return;}
   if(section.id==='validation-details'){await loadValidation();return;}
+  if(section.id==='forecast-details'){await loadForecastStatus();return;}
   const root=section.querySelector('[data-half-result]');
   if(!root||root.dataset.checked==='yes')return;
   root.dataset.checked='yes';
@@ -791,10 +854,12 @@ syncTimeFilters();
 
 renderFavorites();
 loadConf();
+void loadForecastStatus();
 // Refresh dates, started events and odds while the app is in use, including
 // when returning to the page after midnight or from a suspended mobile tab.
-setInterval(()=>{if(!document.hidden)loadConf();},10*60*1000);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadConf();});
+setInterval(()=>{if(!document.hidden){loadConf({background:true});void loadForecastStatus();}},60*1000);
+setInterval(()=>{if(!document.hidden)discardStarted();},15000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadConf();void loadForecastStatus();}});
 </script>
 </body>
 </html>

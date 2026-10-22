@@ -24,3 +24,22 @@ test('even with unavailable or stale odds no automatic ticket is emitted',()=>{
   assert.equal(r.tickets.every(t=>!t.available&&t.legs.length===0),true);
  }
 });
+test('explicit experimental drafts calculate real single-book totals without claiming calibrated probability',()=>{
+ const f=[make('a',90,2),make('b',85,5),make('c',80,10)];
+ const r=buildDailyMultiples(f,sheet(f),{now,experimentalDrafts:true});
+ assert.equal(r.validationStatus,'experimental_draft');assert.equal(r.validated,false);assert.equal(r.productionBettingApproved,false);
+ for(const ticket of r.tickets){
+  assert.equal(ticket.available,true);assert.equal(ticket.experimental,true);assert.equal(ticket.jointProbability,null);
+  assert.equal(ticket.totalOdds,Number(ticket.legs.reduce((p,leg)=>p*leg.odds,1).toFixed(2)));
+  assert.ok(ticket.legs.length>=2&&ticket.legs.length<=16);
+ }
+ assert.equal(r.tickets[0].totalOdds,10);assert.equal(r.tickets[1].totalOdds,100);
+});
+test('experimental drafts never fill missing prices or include kicked-off, duplicate or stale events',()=>{
+ const valid=[make('a',90,2),make('b',85,5)];
+ const bad=[{...make('live',99,9),status:'LIVE'},{...make('past',99,9),date:'2026-10-19T12:00:00Z'},{...make('stale',99,9),dataStale:true},make('missing',99,NaN),valid[0]];
+ const r=buildDailyMultiples([...valid,...bad],sheet([...valid,...bad.slice(0,-1)]),{now,experimentalDrafts:true});
+ assert.equal(r.tickets[0].available,true);
+ for(const t of r.tickets)for(const leg of t.legs)assert.ok(['a','b'].includes(leg.fixtureId));
+ const absent=buildDailyMultiples(valid,null,{now,experimentalDrafts:true});assert.ok(absent.tickets.every(t=>!t.available&&t.totalOdds===null));
+});

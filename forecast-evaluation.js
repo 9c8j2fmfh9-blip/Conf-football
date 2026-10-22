@@ -14,7 +14,7 @@ export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toIS
   for(const f of capture.fixtures||[]){
    if(!f.fixtureId||!Number.isFinite(Date.parse(f.kickoffAt))||Date.parse(f.kickoffAt)<=at+300000)continue;
    const key=JSON.stringify([f.fixtureId,capture.modelRevision]);
-   if(!earliest.has(key))earliest.set(key,{...f,capturedAt:capture.capturedAt,modelRevision:capture.modelRevision});
+   if(!earliest.has(key)||(!earliest.get(key).experimentalEstimate?.available&&f.experimentalEstimate?.available))earliest.set(key,{...f,capturedAt:capture.capturedAt,modelRevision:capture.modelRevision});
   }
  }
  const rows=[],pending=[];
@@ -22,7 +22,7 @@ export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toIS
   const id=f.direttaId||(String(f.fixtureId).startsWith('diretta_')?String(f.fixtureId).slice(8):null);
   const r=resultMap.get(id),score=r?.score;
   const valid=r?.status==='FT'&&Number.isInteger(score?.home)&&Number.isInteger(score?.away)&&score.home>=0&&score.away>=0&&
-   r.home===f.home&&r.away===f.away&&Date.parse(r.date)===Date.parse(f.kickoffAt)&&Date.parse(r.date)<now;
+   r.home===(f.calendarHome||f.home)&&r.away===(f.calendarAway||f.away)&&Date.parse(r.date)===Date.parse(f.kickoffAt)&&Date.parse(r.date)<now;
   if(!valid){pending.push({key,fixtureId:f.fixtureId,reason:id?'Risultato finale non confermato':'Identificativo calendario assente'});continue;}
   const h=score.home,a=score.away;
   const truth={one:+(h>a),draw:+(h===a),two:+(h<a),over25:+(h+a>=3),btts:+(h>0&&a>0),over35:+(h+a>=4),bttsOver25:+(h>0&&a>0&&h+a>=3)};
@@ -36,6 +36,6 @@ export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toIS
   const mean=fn=>values.length?values.reduce((s,r)=>s+fn(r),0)/values.length:null;
   return[k,{n:values.length,brier:mean(r=>r.brier),meanForecast:mean(r=>r.p),observedRate:mean(r=>r.y)}];
  }))}));
- return {schemaVersion:1,evaluatedAt,validated:false,productionBettingApproved:false,recorded:earliest.size,settled:rows.length,pending,byRevision,rows,
-  note:'Prima previsione per partita e revisione; esiti nei tempi regolamentari. Nessuna stima di rendimento senza quote verificate.'};
+ return {schemaVersion:1,evaluatedAt,lastCapturedAt:captures.map(c=>c.capturedAt).filter(t=>Number.isFinite(Date.parse(t))&&Date.parse(t)<=now).sort().at(-1)||null,validated:false,productionBettingApproved:false,recorded:earliest.size,estimated:[...earliest.values()].filter(f=>f.experimentalEstimate?.available).length,evaluatedForecasts:rows.filter(r=>Object.keys(r.markets).length).length,settled:rows.length,pending,byRevision,rows,
+  note:'Prima stima disponibile per partita e revisione; esiti nei tempi regolamentari. Nessuna stima di rendimento senza quote verificate.'};
 }

@@ -3,7 +3,7 @@ const formatter=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Rome',year:'nu
 export const italianDay=ts=>formatter.format(new Date(ts));
 const days=new Map();
 const runtime=new URL('./diretta-calendar-cache.json',import.meta.url);
-for(const path of [new URL('./diretta-calendar-snapshot.json',import.meta.url),runtime])try{
+for(const path of [new URL('./diretta-calendar-snapshot.json',import.meta.url),...(process.env.NODE_ENV==='test'?[]:[runtime])])try{
  for(const [day,value] of Object.entries(JSON.parse(readFileSync(path,'utf8')).days||{})){
   if(!days.has(day)||Date.parse(value.fetchedAt)>Date.parse(days.get(day).fetchedAt))days.set(day,value);
  }

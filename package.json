@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test"
+    "test": "node --import ./scripts/test-environment.js --test"
   },
   "dependencies": {
     "dotenv": "^16.4.7",

@@ -28,3 +28,16 @@ test('calendar admits numeric regulation-time results only, including zero-zero'
  assert.equal(parseDirettaFeed(base.replace('AC÷3','AC÷11'))[0].score,null);
  assert.equal(parseDirettaFeed(base.replace('AG÷0','AG÷'))[0].score,null);
 });
+test('uses the first available pre-match estimate when earlier captures had no estimate',()=>{
+ const empty={...c,capturedAt:'2026-10-22T08:00:00Z',fixtures:[{...f,experimentalEstimate:{available:false}}]};
+ const report=evaluateCaptures([empty,c],[r],options);
+ assert.equal(report.estimated,1);assert.equal(report.evaluatedForecasts,1);assert.equal(report.rows[0].capturedAt,c.capturedAt);
+ assert.equal(report.byRevision[0].markets.btts.meanForecast,.7);
+});
+test('calendar names resolve spelling differences without fuzzy matching or changing archived forecasts',()=>{
+ const forecast={...f,fixtureId:'open_home_away',direttaId:r.id,home:'Home FC',calendarHome:'Home',calendarAway:'Away'};
+ const capture={...c,fixtures:[forecast]};const before=JSON.stringify(capture);
+ assert.equal(evaluateCaptures([capture],[r],options).settled,1);
+ assert.equal(evaluateCaptures([capture],[{...r,id:'other'}],options).settled,0);
+ assert.equal(JSON.stringify(capture),before);
+});

@@ -16,7 +16,7 @@ export function mergeCalendar(base,events,{now=Date.now(),params={},coverage={}}
   if(seen.has(e.id))return false;seen.add(e.id);return true;
  }).map(e=>{
   const known=matches.get(key(e));
-  if(known?.length===1)return{...known[0],date:e.date,calendarSource:'Diretta.it',direttaId:e.id,calendarLeague:e.league,calendarCountry:e.country};
+  if(known?.length===1)return{...known[0],date:e.date,calendarSource:'Diretta.it',direttaId:e.id,calendarHome:e.home,calendarAway:e.away,calendarLeague:e.league,calendarCountry:e.country};
   return{fixtureId:'diretta_'+e.id,date:e.date,status:'NS',home:e.home,away:e.away,league:e.league,country:e.country,calendarSource:'Diretta.it',direttaId:e.id,
    markets:{},experimentalEstimate:{available:false,reason:'Storico delle due squadre non disponibile nella fonte statistica collegata.'},selection:{qualified:false,primary:null,candidates:[],reason:'Partita in calendario · dati storici insufficienti per una proposta CONF.'},rankScore:-1,cornerMarkets:{markets:[],note:'Dati corner non disponibili.'},providerExpectedGoals:{available:false,reason:'xG non disponibili.'}};
  });

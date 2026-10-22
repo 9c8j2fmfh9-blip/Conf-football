@@ -33,6 +33,8 @@ jobs:
         with:
           node-version: '24'
       - name: Capture future predictions and available prices
+        id: capture
+        continue-on-error: true
         run: node app/scripts/capture-forecasts.js archive/forecast-captures
       - name: Compare archived forecasts with confirmed final results
         run: node app/scripts/evaluate-forecasts.js archive
@@ -44,3 +46,6 @@ jobs:
           git add forecast-captures forecast-evaluation
           git commit -m 'Archive prospective CONF forecasts'
           git push origin HEAD:conf-forecast-archive
+      - name: Report a failed forecast capture after preserving result checks
+        if: steps.capture.outcome == 'failure'
+        run: exit 1
