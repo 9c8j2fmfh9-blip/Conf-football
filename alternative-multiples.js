@@ -4,8 +4,10 @@ import {selectFixture} from './conf-selection.js';
 const club=name=>String(name||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
 
 const goalKeys=new Set(['one','draw','two','over25','btts','over35','bttsOver25']);
+const marketCount=leg=>Number(Boolean(leg.goal))+Number(Boolean(leg.corner))+(leg.playerMarkets||[]).length;
+
 // These are unpriced drafts. Never infer MyCombo prices or joint probabilities
-// by multiplying the two marginal percentages or the individual market odds.
+// by multiplying marginal percentages or individual market odds.
 export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
  const options=[],seen=new Set();
  for(const f of fixtures){
@@ -17,32 +19,44 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
   if(seen.has(identity))continue;
   const selection=selectFixture(f);
   const goal=selection.candidates.find(p=>goalKeys.has(p.key));
-  const corner=selection.candidates.find(p=>p.kind==='corner'&&p.side==='total'&&p.half==='full');
+  // Total FT corners are supplied as Diretta historical stat markets. Older
+  // corner providers use kind=corner; support both while excluding team/half lines.
+  const corner=selection.candidates.find(p=>p.kind==='corner'&&p.side==='total'&&(p.half||'full')==='full')
+   ||selection.candidates.find(p=>p.kind==='diretta_stat'&&p.metric==='corners'&&p.side==='total');
   const playerMarkets=playerMarketResearch(f.direttaPlayerStats);
   if(!goal&&!corner&&!playerMarkets.length)continue;
   seen.add(identity);
+  const evidenceScores=[goal?.evidence,corner?.evidence].filter(Number.isFinite);
   options.push({fixtureId:f.fixtureId,home:f.home,away:f.away,date:f.date,league:f.league,
    goal:goal?{key:goal.key,label:goal.label,score:goal.score,scoreKind:'model',historicalScore:goal.historicalScore,samples:goal.samples}:null,
    corner:corner?{key:corner.key,label:corner.label,score:corner.score,scoreKind:'historical',hits:corner.hits,sample:corner.sample,samples:corner.samples,side:'total',half:'full',line:corner.line}:null,
    playerMarkets,
-   evidence:Math.min(goal?.evidence??100,corner?.evidence??100)});
+   marketCount:0,
+   evidence:evidenceScores.length?Math.min(...evidenceScores):0});
+  options[options.length-1].marketCount=marketCount(options[options.length-1]);
  }
- options.sort((a,b)=>b.evidence-a.evidence || Math.min(b.goal?.score??0,b.corner?.score??0)-Math.min(a.goal?.score??0,a.corner?.score??0) || Date.parse(a.date)-Date.parse(b.date) || String(a.fixtureId).localeCompare(String(b.fixtureId)));
- const pool=[],clubs=new Set(),ids=new Set();
+ options.sort((a,b)=>b.marketCount-a.marketCount||b.evidence-a.evidence||
+  Math.min(b.goal?.score??0,b.corner?.score??0)-Math.min(a.goal?.score??0,a.corner?.score??0)||
+  Date.parse(a.date)-Date.parse(b.date)||String(a.fixtureId).localeCompare(String(b.fixtureId)));
+ const comboPool=[],partialPool=[],clubs=new Set(),ids=new Set();
  for(const option of options){
   const h=club(option.home),a=club(option.away),id=String(option.fixtureId);
   if(clubs.has(h)||clubs.has(a)||ids.has(id))continue;
-  clubs.add(h);clubs.add(a);ids.add(id);pool.push(option);
+  clubs.add(h);clubs.add(a);ids.add(id);
+  const {evidence,marketCount:_,...leg}=option;
+  if(option.marketCount>=2)comboPool.push(leg);else partialPool.push(leg);
  }
  return [10,100].map((target,i)=>{
   const maxMatches=i===0?3:5;
-  const legs=pool.slice(0,maxMatches).map(({evidence,...leg})=>leg);
+  const legs=comboPool.slice(0,maxMatches);
+  const partial=partialPool.slice(0,maxMatches);
   return {target,title:'Quota '+target+' alternativa',available:legs.length>0,isMultiple:legs.length>=2,
-   totalOdds:null,oddsVerified:false,targetReached:false,maxMatches,eligibleCount:pool.length,legs,
-   reason:!legs.length?'Nessun mercato MyCombo supportato dai dati disponibili per le partite di oggi.':
-    legs.length===1?'Una sola partita con dati disponibili: non basta per una multipla.':
-    i===1&&pool.length<=3?'Stesse partite della proposta compatta: non ci sono altre selezioni supportate da aggiungere.':
-    i===0?'Bozza compatta: fino a 3 partite con i mercati disponibili; i mercati mancanti sono esplicitati.':'Bozza estesa: fino a 5 partite con i mercati disponibili; non è una multipla quotata.',
-   note:'Obiettivo '+target+' non verificato. Quota MyCombo da verificare su Sisal. Le statistiche dei giocatori sono spunti opzionali, senza quota o probabilità; la formazione è da confermare. Le percentuali si riferiscono ai singoli mercati, non alla combo o alla multipla.'};
+   totalOdds:null,oddsVerified:false,targetReached:false,maxMatches,eligibleCount:comboPool.length,legs,partial,
+   reason:!legs.length?'Nessuna partita ha almeno due mercati sostenuti dai dati disponibili oggi.':
+    legs.length===1?'Una partita supporta una MyCombo; per arrivare a una multipla servono altre partite con dati sufficienti.':
+    comboPool.length<=3&&i===1?'Le stesse partite della proposta compatta sono le uniche con mercati combinabili nei dati di oggi.':
+    i===0?'Bozza compatta: fino a 3 partite con almeno due mercati disponibili per gara.':
+    'Bozza estesa: fino a 5 partite con almeno due mercati disponibili per gara.',
+   note:'Quota non calcolata: verifica la combinazione e il prezzo direttamente su Sisal. I dati giocatore sono descrittivi; la formazione va confermata. Le percentuali dei singoli mercati non sono la probabilità della combo.'};
  });
 }
