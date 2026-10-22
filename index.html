@@ -45,6 +45,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
   <p id="daily-multiples-note" class="time">Non disponibili per puntate: modello statistico non validato</p>
   <div id="daily-multiples-results" class="matches" role="status">Caricamento multiple…</div>
   <details><summary class="time">Come vengono composte</summary><p id="daily-multiples-method" class="time"></p></details>
+  <details id="validation-details"><summary class="time">Verifica delle percentuali</summary><div id="validation-results" class="time">Apri per vedere i risultati del controllo.</div></details>
  </section>
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Solo selezionate · stima e storico ≥60%</label>
  <div class="field" style="max-width:320px;margin:12px 0"><label for="match-sort">Ordina per</label><select id="match-sort"><option value="percentage">Percentuale · dalla più alta</option><option value="datetime">Data e ora · prima le più vicine</option></select></div>
@@ -688,6 +689,20 @@ async function searchGames(){
   }
 }
 
+async function loadValidation(){
+ const root=$('#validation-results');
+ root.textContent='Caricamento della verifica…';
+ try{
+  const response=await fetch('/api/conf-validation',{signal:AbortSignal.timeout(15000)});
+  const data=await response.json();if(!response.ok)throw Error(data.error||'Errore');
+  const percent=v=>v===null?'—':Math.round(100*v)+'%';
+  root.innerHTML='<p>'+safe(data.evaluatedFixtures)+' partite analizzate · '+safe(data.testedCompetitions)+' competizioni. Nel periodo finale: '+safe(data.laterPeriodFixtures)+' partite.</p>'+
+   '<p>Controllo retrospettivo: le percentuali restano sperimentali. Questi risultati non dimostrano un rendimento sulle scommesse.</p>'+
+   ['btts','over25'].map(key=>{const m=data.markets[key].screened;return '<p><strong>'+(key==='btts'?'GG':'Over 2.5')+'</strong> · selezioni nel periodo finale: '+safe(m.n)+' · stima media '+safe(percent(m.meanForecast))+' · esito verificato '+safe(percent(m.observedRate))+'</p>';}).join('')+
+   '<p>'+safe(data.limitations.join(' '))+'</p>';
+ }catch(e){root.textContent='Verifica non disponibile: '+e.message;}
+}
+
 async function loadBacktest(){
  const root=$('#backtest-results');
  try{
@@ -714,6 +729,7 @@ $('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault
 document.addEventListener('toggle',async e=>{
   const section=e.target;
   if(!section.matches?.('details')||!section.open)return;
+  if(section.id==='validation-details'){await loadValidation();return;}
   const root=section.querySelector('[data-half-result]');
   if(!root||root.dataset.checked==='yes')return;
   root.dataset.checked='yes';

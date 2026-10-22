@@ -190,3 +190,27 @@ export function openDataConf(params,estimate,{now=Date.now(),data=null,allFixtur
   method:'Calendari e risultati 2026/27 da Open Matchday: '+index.leagues.length+' competizioni. Aggiornamento archivio '+source.generatedAt+'. Campioni recenti di almeno 6 gare per squadra; modello sperimentale non calibrato, quote non considerate. Copertura limitata alle competizioni elencate nella fonte.',
   sourceUrl:source.source,note:'Fonte gratuita con aggiornamento periodico, non un servizio live. xG e dati per tempo non vengono inventati.'};
 }
+
+// Replay the default provider's exact history lookup and selection on completed
+// fixtures. Date-only results are never allowed into another forecast that day.
+export function openDataObservations(estimate, data=dataset) {
+ const index=makeIndex(data);
+ const unique=new Map();
+ for(const games of index.history.values())for(const game of games)unique.set(game.id,game);
+ const observations=[];
+ for(const game of [...unique.values()].sort((a,b)=>a.resultDate.localeCompare(b.resultDate)||a.id.localeCompare(b.id))){
+  const now=Date.parse(game.resultDate+'T00:00:00Z');
+  const h=sampleFor(index,game.homeTeam,now,game.resultDate);
+  const a=sampleFor(index,game.awayTeam,now,game.resultDate);
+  const experimentalEstimate=estimate(h,a,game.homeTeam.id,game.awayTeam.id);
+  if(!experimentalEstimate.available)continue;
+  const fixture={experimentalEstimate,markets:marketsFor(h,a,game.homeTeam.id,game.awayTeam.id)};
+  const selection=selectFixture(fixture);
+  const hg=game.score.home,ag=game.score.away;
+  observations.push({id:game.id,date:game.resultDate,league:game.sourceLeague,
+   probabilities:experimentalEstimate.estimates,
+   selected:selection.goalPrimary?.key||null,
+   truth:{one:+(hg>ag),draw:+(hg===ag),two:+(hg<ag),over25:+(hg+ag>=3),btts:+(hg>0&&ag>0),over35:+(hg+ag>=4),bttsOver25:+(hg>0&&ag>0&&hg+ag>=3)}});
+ }
+ return {observations,sourceFixtures:unique.size,competitions:index.leagues.length,generatedAt:data.generatedAt};
+}

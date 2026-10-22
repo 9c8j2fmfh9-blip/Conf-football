@@ -55,6 +55,13 @@ try{
    assert.ok(metric.observedRate>=0&&metric.observedRate<=100);
   }
  }
+ const validationResponse=await fetch(root+'/api/conf-validation',{signal:AbortSignal.timeout(10000)});
+ assert.equal(validationResponse.status,200);
+ const validation=await validationResponse.json();
+ assert.equal(validation.validated,false);
+ assert.ok(validation.evaluatedFixtures>3500);
+ assert.ok(validation.testedCompetitions>50);
+ assert.ok(validation.markets.btts.screened.n>0);
  console.log('PASS: server boots, serves homepage and selector, and evaluates '+evaluated+' historical fixtures across seven markets.');
 }finally{
  child.kill('SIGTERM');

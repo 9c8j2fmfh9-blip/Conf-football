@@ -1,8 +1,9 @@
+import {goalEstimateFromStats} from '../experimental-goals.js';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
 import {openDataConf,datasetKickoff,parseCsv,refreshOpenData} from '../open-data.js';import {selectFixture} from '../conf-selection.js';
 process.env.NODE_ENV='test';
 const app={use(){},get(){},post(){},listen(){}};const express=()=>app;express.static=()=>{};express.json=()=>{};
-const context=vm.createContext({express,openDataConf,selectFixture,readFileSync:()=>JSON.stringify({leagues:{},results:{},rows:{}}),URL,process:{env:{}},console:{log(){}},Date,Intl,Map,Set,AbortSignal});
+const context=vm.createContext({express,goalEstimateFromStats,openDataConf,selectFixture,readFileSync:()=>JSON.stringify({leagues:{},results:{},rows:{}}),URL,process:{env:{}},console:{log(){}},Date,Intl,Map,Set,AbortSignal});
 const source=fs.readFileSync('server.js','utf8').replace(/^import .*;\n/gm,'').replaceAll('import.meta.url',"'file:///tmp/server.js'");vm.runInContext(source,context);
 const estimate=vm.runInContext('experimentalGoalEstimate',context);
 const now=Date.parse('2026-10-20T21:00:00Z');

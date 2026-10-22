@@ -41,3 +41,36 @@ Upcoming events without a complete analysis also request Diretta's public `df_hh
 The latest ten accepted games per team enter the existing market and experimental-goal calculations. The unchanged qualification rule still requires six games for **each** team and both statistical thresholds; empty or smaller histories cannot produce a qualified proposal. This feed adds goal results, not observed xG or corner statistics. Existing complete Open Matchday analyses remain unchanged.
 
 Requests share one queue (three simultaneous downloads), a 12-second timeout, a six-hour cache and a one-minute failure cooldown. Requests wait at most 18 seconds for missing histories; remaining queued downloads continue in the background. New requests use the completed cache. A bundled verified snapshot seeds today's histories, and a runtime cache is written atomically when possible. Records older than 72 hours cannot be used. Feed failures retain the visible event without invented statistics. This is an undocumented website feed and coverage may vary.
+
+
+## Default-provider retrospective audit
+
+`/api/conf-validation` and `node scripts/validate-coverage.js` replay the default
+Open Matchday provider, rather than substituting EFL-only inputs. The replay shares
+its canonical team identities, cross-competition histories, last-ten sample lookup,
+seven-market goal calculation and goal-primary screening rule with the app. Only
+strictly earlier dates enter a forecast; unknown same-day ordering is excluded.
+The shared calculation preserves the production rounding and Poisson score grid.
+
+A smoothed historical-rate benchmark is updated after each entire date. It uses
+at least 30 earlier eligible observations, preferring that competition's history
+when available and otherwise falling back to the pooled earlier eligible sample.
+It is a diagnostic comparator, not bookmaker pricing. Development and later-period
+summaries, probability bands and per-competition metrics expose calibration and
+screening performance separately. No parameters are selected using the later period.
+The split is by 70% of unique observation dates, not 70% of match counts.
+
+The bundled 20 October snapshot contains 7,887 unique completed fixtures; 4,058
+have six earlier results for both teams and 4,024 can also be compared with the
+prior-only benchmark, across 64 competitions. The later period begins 22 August
+and contains 2,574 fixtures. Primary GG screening yields 375 selections, mean
+forecast 62.77%, observed 61.87%; Over 2.5 yields 143, mean forecast 63.79%,
+observed 58.74%. These are retrospective descriptive results, not evidence of
+profitability or guarantees for the next selections.
+
+This period overlaps outcomes already examined during development and is not an
+independent untouched holdout. Historical source availability and freshness cannot
+be reconstructed, so the replay evaluates model statistics, not live operational
+coverage. No archived pre-match odds or corner validation are included. Betting
+validation and automatic multiples remain suspended. The expandable verification
+panel exposes the updated report without changing the match-card layout.

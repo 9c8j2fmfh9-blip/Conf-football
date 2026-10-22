@@ -1,3 +1,4 @@
+import {goalEstimateFromStats} from '../experimental-goals.js';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
 import {parseDirettaFeed,createCalendarStore,italianDay} from '../diretta-calendar.js';
 import {calendarConf,mergeCalendar} from '../conf-calendar.js';
@@ -8,7 +9,7 @@ const snapshot=JSON.parse(fs.readFileSync('diretta-calendar-snapshot.json','utf8
 const raw=fs.readFileSync('test/fixtures/diretta-japan.txt','utf8');
 const now=Date.parse('2026-10-20T22:53:00Z');
 const app={use(){},get(){},post(){},listen(){}};const express=()=>app;express.static=()=>{};express.json=()=>{};
-const context=vm.createContext({express,openDataConf,selectFixture,readFileSync:()=>JSON.stringify({leagues:{},results:{},rows:{}}),URL,process:{env:{}},console:{log(){}},Date,Intl,Map,Set,AbortSignal});
+const context=vm.createContext({express,goalEstimateFromStats,openDataConf,selectFixture,readFileSync:()=>JSON.stringify({leagues:{},results:{},rows:{}}),URL,process:{env:{}},console:{log(){}},Date,Intl,Map,Set,AbortSignal});
 vm.runInContext(fs.readFileSync('server.js','utf8').replace(/^import .*;\n/gm,'').replaceAll('import.meta.url',"'file:///tmp/server.js'"),context);
 const estimate=vm.runInContext('experimentalGoalEstimate',context);
 const getDay=async day=>snapshot.days[day]||{events:[],issue:'missing'};
