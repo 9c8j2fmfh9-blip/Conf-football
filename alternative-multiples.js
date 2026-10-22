@@ -19,15 +19,15 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
   const goal=selection.candidates.find(p=>goalKeys.has(p.key));
   const corner=selection.candidates.find(p=>p.kind==='corner'&&p.side==='total'&&p.half==='full');
   const playerMarkets=playerMarketResearch(f.direttaPlayerStats);
-  if(!goal||!corner)continue;
+  if(!goal&&!corner&&!playerMarkets.length)continue;
   seen.add(identity);
   options.push({fixtureId:f.fixtureId,home:f.home,away:f.away,date:f.date,league:f.league,
-   goal:{key:goal.key,label:goal.label,score:goal.score,scoreKind:'model',historicalScore:goal.historicalScore,samples:goal.samples},
-   corner:{key:corner.key,label:corner.label,score:corner.score,scoreKind:'historical',hits:corner.hits,sample:corner.sample,samples:corner.samples,side:'total',half:'full',line:corner.line},
+   goal:goal?{key:goal.key,label:goal.label,score:goal.score,scoreKind:'model',historicalScore:goal.historicalScore,samples:goal.samples}:null,
+   corner:corner?{key:corner.key,label:corner.label,score:corner.score,scoreKind:'historical',hits:corner.hits,sample:corner.sample,samples:corner.samples,side:'total',half:'full',line:corner.line}:null,
    playerMarkets,
-   evidence:Math.min(goal.evidence,corner.evidence)});
+   evidence:Math.min(goal?.evidence??100,corner?.evidence??100)});
  }
- options.sort((a,b)=>b.evidence-a.evidence || Math.min(b.goal.score,b.corner.score)-Math.min(a.goal.score,a.corner.score) || Date.parse(a.date)-Date.parse(b.date) || String(a.fixtureId).localeCompare(String(b.fixtureId)));
+ options.sort((a,b)=>b.evidence-a.evidence || Math.min(b.goal?.score??0,b.corner?.score??0)-Math.min(a.goal?.score??0,a.corner?.score??0) || Date.parse(a.date)-Date.parse(b.date) || String(a.fixtureId).localeCompare(String(b.fixtureId)));
  const pool=[],clubs=new Set(),ids=new Set();
  for(const option of options){
   const h=club(option.home),a=club(option.away),id=String(option.fixtureId);
@@ -39,10 +39,10 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
   const legs=pool.slice(0,maxMatches).map(({evidence,...leg})=>leg);
   return {target,title:'Quota '+target+' alternativa',available:legs.length>0,isMultiple:legs.length>=2,
    totalOdds:null,oddsVerified:false,targetReached:false,maxMatches,eligibleCount:pool.length,legs,
-   reason:!legs.length?'Nessuna partita ha insieme una proposta gol / risultato e corner totali qualificati.':
-    legs.length===1?'Una sola combo qualificata disponibile: non basta per una multipla.':
-    i===1&&pool.length<=3?'Stesse combo della proposta compatta: non ci sono altre partite qualificate da aggiungere.':
-    i===0?'Proposta compatta: fino a 3 partite con le combinazioni meglio supportate dai dati.':'Proposta estesa: fino a 5 partite, senza abbassare i criteri di selezione.',
+   reason:!legs.length?'Nessun mercato MyCombo supportato dai dati disponibili per le partite di oggi.':
+    legs.length===1?'Una sola partita con dati disponibili: non basta per una multipla.':
+    i===1&&pool.length<=3?'Stesse partite della proposta compatta: non ci sono altre selezioni supportate da aggiungere.':
+    i===0?'Bozza compatta: fino a 3 partite con i mercati disponibili; i mercati mancanti sono esplicitati.':'Bozza estesa: fino a 5 partite con i mercati disponibili; non è una multipla quotata.',
    note:'Obiettivo '+target+' non verificato. Quota MyCombo da verificare su Sisal. Le statistiche dei giocatori sono spunti opzionali, senza quota o probabilità; la formazione è da confermare. Le percentuali si riferiscono ai singoli mercati, non alla combo o alla multipla.'};
  });
 }
