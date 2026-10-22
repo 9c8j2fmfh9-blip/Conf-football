@@ -39,7 +39,7 @@ function playerStatEntries(value){
 }
 function statValue(value){
  if(value&&typeof value==='object'){
-  const raw=get(value,'raw','value','total','displayValue');
+  const raw=get(value,'raw','rawValue','value','total','displayValue');
   const numericRaw=numeric(raw);
   return {value:String(get(value,'value','displayValue','formatted')??raw??''),raw:numericRaw,rank:numeric(get(value,'rank','position'))};
  }
@@ -72,12 +72,45 @@ function normalizePlayer(candidate,teamNames){
  * Parses the match-player statistics payload while retaining every statistic
  * key and group that the provider returns. Missing fields remain missing.
  */
-export function parseDirettaPlayerStats(input,{matchId=null}={}){
+export function parseDirettaPlayerStats(input,{matchId=null,values=null}={}){
  let root=input;
  if(typeof input==='string'){
   try{root=JSON.parse(input);}catch{throw Error('Statistiche giocatori Diretta non sono JSON valido');}
  }
  if(!root||typeof root!=='object')throw Error('Statistiche giocatori Diretta non riconosciute');
+ let valueRoot=values;
+ if(typeof valueRoot==='string'){
+  try{valueRoot=JSON.parse(valueRoot);}catch{throw Error('Statistiche giocatori Diretta non sono JSON valido');}
+ }
+ const metaHolder=root.data?.findEventPMSById;
+ const valueHolder=valueRoot?.data?.findEventPMSById;
+ if(metaHolder?.players&&Array.isArray(metaHolder.players)&&metaHolder.stats?.types){
+  const typeMap=new Map(metaHolder.stats.types.map(x=>[String(x.id),x]));
+  const teams=(metaHolder.teams||[]).map(team=>({id:String(team.id||''),name:String(team.name||''),side:String(team.side||'').toLowerCase()}));
+  const teamMap=new Map(teams.map(team=>[team.id,team]));
+  const entries=new Map();
+  for(const entry of valueHolder?.stats?.entries||[]){const id=String(entry.playerId||'');if(!id)continue;const rows=entries.get(id)||[];rows.push(entry);entries.set(id,rows);}
+  const ratings=new Map((valueHolder?.ratings||[]).map(row=>[String(row.participantId||''),row]));
+  const players=metaHolder.players.map(row=>{
+   const participant=row.participant||{},id=String(participant.id||'');
+   const stats={};
+   for(const entry of entries.get(id)||[]){
+    const def=typeMap.get(String(entry.typeId))||{};
+    stats[String(entry.typeId)]={label:String(def.label||entry.typeId),...statValue(entry)};
+   }
+   const team=teamMap.get(String(row.teamId||''))||{};
+   const rating=ratings.get(id)||{};
+   return {id,name:String(participant.name||''),shortName:String(participant.shortDisplayName||participant.name||''),
+    teamId:String(row.teamId||''),teamName:team.name||'',side:team.side||null,
+    position:String(row.position?.name||''),starter:Boolean(row.inBaseLineup),
+    rating:numeric(rating.value),topRated:Boolean(rating.isBestRating),stats};
+  }).filter(player=>player.id&&player.name&&Object.keys(player.stats).length>0);
+  if(!players.length)throw Error('Statistiche giocatori assenti o non coperte per questa partita');
+  const groups=(metaHolder.stats.typeGroups||[]).map(x=>({key:String(x.id||''),label:String(x.label||x.id||''),groups:[]}));
+  const statTypes=[...typeMap.values()].map(x=>({key:String(x.id),label:String(x.label||x.id),format:String(x.displayValueFormat||''),groups:[]}));
+  return {matchId:String(matchId||root.data?.findEventPMSById?.event?.id||''),teams,groups,statTypes,players,
+   fetchedAt:new Date().toISOString(),complete:true,source:'Diretta'};
+ }
  const teams=[],teamNames={ids:new Map(),names:new Map()};
  walk(root,node=>{
   if(Array.isArray(node.teams))for(const team of node.teams){
@@ -104,10 +137,14 @@ export function createDirettaPlayerStatsStore({initial={},fetcher=fetch,persist=
  const run=()=>{while(active<concurrency&&queue.length){const job=queue.shift();active++;
   (async()=>{try{
    const headers={'x-fsign':'SW9D1eZo','Referer':'https://www.diretta.it/'};
-   const response=await fetcher('https://2.ds.lsapp.eu/pq_graphql?_hash=epmsd&eventId='+encodeURIComponent(job.id)+'&providerId=7',{headers,signal:AbortSignal.timeout(12000)});
-   if(!response.ok)throw Error('Statistiche giocatori HTTP '+response.status);
-   const text=await response.text();if(text.length>2000000)throw Error('Statistiche giocatori oltre il limite');
-   const value=parseDirettaPlayerStats(text,{matchId:job.id});
+   const [metaResponse,valuesResponse]=await Promise.all([
+    fetcher('https://2.ds.lsapp.eu/pq_graphql?_hash=epmsse&eventId='+encodeURIComponent(job.id)+'&projectId=2',{headers,signal:AbortSignal.timeout(12000)}),
+    fetcher('https://2.ds.lsapp.eu/pq_graphql?_hash=epmsd&eventId='+encodeURIComponent(job.id)+'&providerId=7',{headers,signal:AbortSignal.timeout(12000)})
+   ]);
+   if(!metaResponse.ok||!valuesResponse.ok)throw Error('Statistiche giocatori HTTP '+(!metaResponse.ok?metaResponse.status:valuesResponse.status));
+   const [metaText,valuesText]=await Promise.all([metaResponse.text(),valuesResponse.text()]);
+   if(metaText.length>2000000||valuesText.length>2000000)throw Error('Statistiche giocatori oltre il limite');
+   const value=parseDirettaPlayerStats(metaText,{matchId:job.id,values:valuesText});
    value.fetchedAt=new Date(job.now).toISOString();cache.set(job.id,value);persist(Object.fromEntries(cache));return value;
   }catch{retry.set(job.id,job.now+10*60000);return null;}
   })().then(job.resolve).finally(()=>{active--;pending.delete(job.id);run();});
