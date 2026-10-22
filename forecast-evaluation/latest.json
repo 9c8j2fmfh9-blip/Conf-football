@@ -1,9 +1,12 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-22T06:43:52.266Z",
+  "evaluatedAt": "2026-10-22T07:03:59.158Z",
+  "lastCapturedAt": "2026-10-22T06:43:52.151Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 171,
+  "estimated": 113,
+  "evaluatedForecasts": 0,
   "settled": 0,
   "pending": [
     {
@@ -864,6 +867,6 @@
   ],
   "byRevision": [],
   "rows": [],
-  "note": "Prima previsione per partita e revisione; esiti nei tempi regolamentari. Nessuna stima di rendimento senza quote verificate.",
+  "note": "Prima stima disponibile per partita e revisione; esiti nei tempi regolamentari. Nessuna stima di rendimento senza quote verificate.",
   "sourceIssues": []
 }
