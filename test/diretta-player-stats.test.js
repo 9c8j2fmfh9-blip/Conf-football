@@ -50,7 +50,7 @@ test('builds player averages grouped by team while leaving unavailable measures 
  const store=createDirettaPlayerStatsStore({initial:matches});
  const report=buildDirettaPlayerReport('Home','Away',
   [game('match001','Home','Other'),game('match002','Home','Other')],
-  [game('match001','Home','Other'),game('match002','Home','Other')],store,
+  [game('match001','Other','Away'),game('match002','Other','Away')],store,
   {now:Date.parse('2026-10-22T00:00:00Z'),schedule:false});
  const player=report.players.home.find(x=>x.id==='player001');
  assert.equal(player.appearances,2);
@@ -58,5 +58,8 @@ test('builds player averages grouped by team while leaving unavailable measures 
  assert.equal(player.stats.shots.shots_total.total,6);
  assert.equal(player.stats.defense.fouls_committed.average,1);
  assert.equal(report.players.home.some(x=>x.id==='player002'),false);
+ const awayPlayer=report.players.away.find(x=>x.id==='player002');
+ assert.equal(awayPlayer.appearances,2);
+ assert.equal(awayPlayer.stats.defense.fouls_committed.average,2);
  assert.equal(report.coverage.home,2);
 });
