@@ -423,7 +423,7 @@ function renderMyComboSection(alternatives){
  const tickets=Array.isArray(alternatives)&&alternatives.length?alternatives:[10,100].map(target=>({target,title:'Quota '+target+' alternativa',legs:[],reason:'Nessuna proposta MyCombo disponibile per le partite di oggi con i dati attuali.',note:'Nessuna quota inventata.'}));
  const combined=tickets.map(ticket=>{
   const all=ticket.legs||[];
-  const count=leg=>Number(Boolean(leg.goal))+Number(Boolean(leg.corner))+Number((leg.playerMarkets||[]).length>0);
+  const count=leg=>Number(Boolean(leg.goal))+Number(Boolean(leg.corner))+(leg.playerMarkets||[]).length;
   const legs=all.filter(leg=>count(leg)>=2);
   const partial=all.filter(leg=>count(leg)===1);
   return {...ticket,legs,partial,reason:legs.length?ticket.reason:'Nessuna combinazione con almeno due mercati sostenuti dai dati disponibili oggi.'};
