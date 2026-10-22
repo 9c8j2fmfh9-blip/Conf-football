@@ -417,7 +417,7 @@ function renderDailyMultiples(data){
  if(!data?.tickets?.length){root.innerHTML='<div class="empty">Multiple non disponibili: riprova con Aggiorna.</div>';return;}
  $('#daily-multiples-method').textContent=data.method||'';
  const stamp=data.sourceUpdatedAt?new Date(data.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'';
- $('#daily-multiples-note').textContent=(data.date?'Giorno '+data.date.split('-').reverse().join('/'):'Prossime 24 ore')+' · bozze sperimentali · '+(data.eligibleCount??0)+' proposte con quote disponibili · quota 100 indicativa, anche superiore';
+ $('#daily-multiples-note').textContent=(data.date?'Solo oggi · '+data.date.split('-').reverse().join('/'):'Solo oggi, ora italiana')+' · entro le 21:30, ora italiana · bozze sperimentali · '+(data.eligibleCount??0)+' proposte con quote disponibili · quota 100 indicativa, anche superiore';
  root.innerHTML=data.tickets.map(ticket=>{
   const title='<div class="multiple-head"><span>'+(ticket.fallback?'Alternativa alla quota '+safe(ticket.target):'Obiettivo quota '+safe(ticket.target))+'</span><strong>'+(ticket.available?safe(ticket.totalOdds.toFixed(2).replace('.',',')):'—')+'</strong></div>';
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';
@@ -435,10 +435,9 @@ function renderAlternativeMultiples(tickets){
 }
 async function loadDailyMultiples(selectedDate,requestId,attempt=0){
  $('#daily-multiples-results').innerHTML='<div class="time">Caricamento multiple…</div>';
- $('#daily-multiples-note').textContent=(selectedDate?'Giorno '+selectedDate.split('-').reverse().join('/'):'Prossime 24 ore')+' · tutte le proposte CONF, indipendentemente dalla ricerca';
+ $('#daily-multiples-note').textContent='Solo partite di oggi · calcio d’inizio entro le 21:30, ora italiana';
  try{
-  const params=new URLSearchParams();if(selectedDate)params.set('date',selectedDate);
-  const response=await fetch('/api/daily-multiples?'+params.toString(),{cache:'no-store',signal:AbortSignal.timeout(45000)});
+  const response=await fetch('/api/daily-multiples',{cache:'no-store',signal:AbortSignal.timeout(45000)});
   const data=await response.json();
   if(requestId!==confLoadSequence)return;
   renderDailyMultiples(response.ok?data:null);

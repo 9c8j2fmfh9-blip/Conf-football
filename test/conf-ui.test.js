@@ -93,7 +93,7 @@ assert.ok(el('#daily-multiples-results').innerHTML.includes('75%'));
 assert.ok(el('#daily-multiples-results').innerHTML.includes('Quote insufficienti'));
 let dailyRequest='';context.fetch=async url=>{dailyRequest=url;return {ok:true,json:async()=>daily}};
 await vm.runInContext("loadDailyMultiples('2026-10-21',confLoadSequence)",context);
-assert.equal(dailyRequest,'/api/daily-multiples?date=2026-10-21');
+assert.equal(dailyRequest,'/api/daily-multiples');
 assert.ok(!dailyRequest.includes('q='));
 context.fetch=async()=>{throw Error('timeout')};
 await vm.runInContext("loadDailyMultiples('',confLoadSequence)",context);

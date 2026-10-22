@@ -13,6 +13,8 @@ import { openDataConf } from './open-data.js';
 import {calendarConf} from './conf-calendar.js';
 import {getSisalOdds,matchProposalOdds,sisalOddsStatus} from './sisal-odds.js';
 import {buildDailyMultiples} from './daily-multiples.js';
+import {italianDay} from './diretta-calendar.js';
+import {currentDayTicketFixtures,DAILY_TICKET_CUTOFF} from './daily-ticket-scope.js';
 import {pricedSelection} from './priced-selection.js';
 import { readFileSync } from 'node:fs';
 
@@ -920,21 +922,23 @@ app.get('/api/proposal-odds', async (req,res)=>{
  } catch {res.status(503).json({error:'Quote momentaneamente non disponibili',fixtures:[]});}
 });
 
-// All qualified proposals in the day/window, independent of text search and
-// the card limit. Recomputed on access so kicked-off events cannot survive.
+// Tickets always use today's Italian calendar date, independently of search,
+// the selected browsing date and rolling 24-hour calendar windows.
 app.get('/api/daily-multiples',async(req,res)=>{
  try{
-  const date=/^\d{4}-\d{2}-\d{2}$/.test(String(req.query.date||''))?String(req.query.date):'';
+  const date=italianDay(Date.now());
   const data=await calendarConf({date,hours:24},experimentalGoalEstimate);
   const [sheet,quotes]=await Promise.all([data.selectedCount?getSisalOdds():null,getEspnQuotes(data.fixtures)]);
-  const original=buildDailyMultiples(data.fixtures,sheet,{experimentalDrafts:true});
-  const reference=buildComparisonTickets(data.fixtures,quotes);
+  const now=Date.now();
+  const fixtures=currentDayTicketFixtures(data.fixtures,now);
+  const original=buildDailyMultiples(fixtures,sheet,{experimentalDrafts:true,now});
+  const reference=buildComparisonTickets(fixtures,quotes,{now});
   const tickets=chooseReferenceTickets(original.tickets,reference.tickets).map(t=>({...t,experimental:true,validated:false,jointProbability:null}));
   const usesReference=tickets.some(t=>t.indicative);
   res.set('Cache-Control','no-store').json({...original,tickets,referenceQuotes:{source:quotes.source,matchedEvents:quotes.matchedEvents,pricedEvents:quotes.listedEvents,eligibleCount:reference.eligibleCount,error:quotes.error},
    eligibleCount:Math.max(original.eligibleCount,reference.eligibleCount),comparison:usesReference,source:usesReference?reference.source:'Sisal · foglio ufficiale',maxLegs:16,
    method:(usesReference?reference.method:original.method)+' Fonte alternativa ESPN: '+reference.eligibleCount+' proposte qualificate con quota sul mercato esatto.',
-   oddsStatus:sisalOddsStatus(),date:date||null,windowHours:24,generatedAt:new Date().toISOString(),selectedCount:data.selectedCount,competitionsCovered:data.competitionsCovered});
+   oddsStatus:sisalOddsStatus(),date:italianDay(now),scope:'current_day',cutoffTime:DAILY_TICKET_CUTOFF,timeZone:'Europe/Rome',generatedAt:new Date(now).toISOString(),selectedCount:fixtures.filter(f=>f.selection?.qualified).length,competitionsCovered:data.competitionsCovered});
  }catch{res.status(503).json({error:'Multiple momentaneamente non disponibili',tickets:[]});}
 });
 

@@ -8,7 +8,7 @@ Applicazione mobile e desktop per consultare le partite future, le stime dei mer
 - Una scheda per partita, ordinamento per percentuale oppure data e ora, filtro di selezione al 60% e preferiti locali.
 - Analisi di GG, Over 2.5, risultato e mercati aggiuntivi quando esistono dati sufficienti; i mercati mancanti restano dichiarati non disponibili.
 - Quote Sisal dal foglio ufficiale e quote bookmaker di riferimento da ESPN. Ogni quota è abbinata al mercato, alle squadre e all'orario; le fonti hanno un limite di validità.
-- Bozze sperimentali con obiettivi quota 10 e 100, massimo 16 partite e un solo bookmaker per bozza. Nessuna quota viene inventata per raggiungere l'obiettivo. Quando non ci sono combinazioni supportate, l'app lo dichiara.
+- Bozze sperimentali con obiettivi quota 10 e 100, solo partite future della giornata corrente con calcio d’inizio entro le 21:30 comprese in Europe/Rome, massimo 16 partite e un solo bookmaker per bozza. Nessuna quota viene inventata per raggiungere l'obiettivo. Quando non ci sono combinazioni supportate, l'app lo dichiara.
 - Alternative gol + corner totali separate, senza inventare quote MyCombo o probabilità congiunte.
 - Aggiornamento della pagina ogni minuto mentre è visibile e alla riapertura da smartphone.
 
