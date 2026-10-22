@@ -43,7 +43,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
  <section id="daily-multiples" aria-label="Multiple automatiche CONF">
   <h2>Bozze quota 10 e 100 · sperimentali</h2>
   <p id="daily-multiples-note" class="time">Quote disponibili e stime sperimentali; affidabilità ancora in verifica</p>
-  <div id="daily-multiples-results" class="matches" role="status">Caricamento multiple…</div>
+  <div id="daily-multiples-results" class="matches" role="status"><article class="multiple-card"><div class="multiple-head"><span>Quota 10</span><strong>—</strong></div><p class="time">Verifica quote e selezioni in corso.</p></article><article class="multiple-card"><div class="multiple-head"><span>Quota 100</span><strong>—</strong></div><p class="time">Verifica quote e selezioni in corso.</p></article><article class="multiple-card" data-alternative-target="10"><div class="multiple-head"><span>Quota 10 alternativa MyCombo</span><strong>—</strong></div><p class="time">Analisi gol, corner e giocatori: i dati disponibili verranno mostrati qui. Se non compaiono, controllare il caricamento.</p></article><article class="multiple-card" data-alternative-target="100"><div class="multiple-head"><span>Quota 100 alternativa MyCombo</span><strong>—</strong></div><p class="time">Analisi gol, corner e giocatori: i dati disponibili verranno mostrati qui. Se non compaiono, controllare il caricamento.</p></article></div>
   <details><summary class="time">Come vengono composte</summary><p id="daily-multiples-method" class="time"></p></details>
   <details id="calibration-details"><summary class="time">Correzione delle percentuali · verifica</summary><div id="calibration-results" class="time">Apri per vedere il confronto dei modelli.</div></details>
   <details id="validation-details"><summary class="time">Verifica delle percentuali</summary><div id="validation-results" class="time">Apri per vedere i risultati del controllo.</div></details>
@@ -436,7 +436,7 @@ function renderAlternativeMultiples(tickets){
  }).join('');
 }
 async function loadDailyMultiples(selectedDate,requestId,attempt=0){
- if(attempt===0)$('#daily-multiples-results').innerHTML='<div class="time">Caricamento multiple…</div>';
+ // Keep the four initial cards visible while data loads or a retry runs.
  $('#daily-multiples-note').textContent='Solo partite di oggi · calcio d’inizio entro le 21:30, ora italiana';
  try{
   const response=await fetch('/api/daily-multiples',{cache:'no-store',signal:AbortSignal.timeout(45000)});
