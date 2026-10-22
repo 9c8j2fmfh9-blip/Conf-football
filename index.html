@@ -425,8 +425,13 @@ function renderDailyMultiples(data){
 
 function renderAlternativeMultiples(tickets){
  return tickets.map(ticket=>{
-  const title='<div class="multiple-head"><span>'+safe(ticket.title||('Quota '+ticket.target+' alternativa'))+'</span><strong>Da verificare</strong></div>';
-  const legs=(ticket.legs||[]).map(leg=>'<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div><div class="multiple-values"><span>'+safe(leg.goal.label)+'</span><b>Stima '+safe(leg.goal.score)+'%</b></div><div class="multiple-values"><span>+ '+safe(leg.corner.label)+'</span><b>Storico '+safe(leg.corner.score)+'%</b></div>'+(leg.playerMarkets||[]).map(p=>'<div class="multiple-values"><span>Opzionale: '+safe(p.label)+'</span><b>Media '+safe(p.average)+' · '+safe(p.sample)+' gare</b></div>').join('')+'</div>').join('');
+  const title='<div class="multiple-head"><span>'+safe(ticket.title||('Quota '+ticket.target+' alternativa'))+'</span><strong>Quota non verificata</strong></div>';
+  const legs=(ticket.legs||[]).map(leg=>{
+   const goals=leg.goal?'<div class="multiple-values"><span>'+safe(leg.goal.label)+'</span><b>Stima '+safe(leg.goal.score)+'%</b></div>':'<div class="time">Mercato gol: dati non sufficienti</div>';
+   const corners=leg.corner?'<div class="multiple-values"><span>+ '+safe(leg.corner.label)+'</span><b>Storico '+safe(leg.corner.score)+'%</b></div>':'<div class="time">Corner totali: dati non sufficienti, non inclusi</div>';
+   const players=(leg.playerMarkets||[]).map(p=>'<div class="multiple-values"><span>Opzionale: '+safe(p.label)+'</span><b>Media '+safe(p.average)+' · '+safe(p.sample)+' gare</b></div>').join('');
+   return '<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div>'+goals+corners+players+'</div>';
+  }).join('');
   return '<article class="multiple-card" data-alternative-target="'+safe(ticket.target)+'">'+title+'<p class="time">'+safe(ticket.reason)+'</p>'+legs+'<p class="time">'+safe(ticket.note)+'</p></article>';
  }).join('');
 }
