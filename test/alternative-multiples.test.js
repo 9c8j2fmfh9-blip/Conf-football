@@ -27,6 +27,20 @@ test('two unpriced drafts use only total corners plus the best eligible goal/res
   }
  }
 });
+test('uses Diretta total-corner markets as a MyCombo leg',()=>{
+ const f=fixture('diretta-corners');
+ f.cornerMarkets.markets=[];
+ f.direttaStatMarkets={markets:[{
+  key:'diretta_total_corners_7',label:'Totale Over 7.5 corner',metric:'corners',side:'total',line:8,
+  score:80,hits:16,sample:20,venueSamples:{home:10,away:10},teamRates:[.8,.8]
+ }]};
+ const ticket=buildAlternativeMultiples([f],{now})[0];
+ assert.equal(ticket.legs.length,1);
+ assert.equal(ticket.legs[0].goal.key,'over25');
+ assert.equal(ticket.legs[0].corner.key,'diretta_total_corners_7');
+ assert.equal(ticket.legs[0].corner.side,'total');
+ assert.equal(ticket.legs[0].corner.score,80);
+});
 test('each supported result and goal market can form a combo with total corners',()=>{
  for(const key of ['one','draw','two','btts','over25','over35','bttsOver25']){
   const t=buildAlternativeMultiples([fixture(key,75,key)],{now})[0];assert.equal(t.legs[0].goal.key,key);
