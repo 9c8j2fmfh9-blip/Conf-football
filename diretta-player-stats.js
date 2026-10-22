@@ -130,9 +130,10 @@ export const direttaPlayerStatsStore=createDirettaPlayerStatsStore({initial,pers
 
 const groupDefaults=[['top_stats','Statistiche top'],['shots','Tiri'],['attack','Attacco'],['passes','Passaggi'],['defense','Difesa'],['goalkeeping','Portiere'],['general','Generali']];
 export function buildDirettaPlayerReport(homeTeam,awayTeam,homeGames,awayGames,statsStore,{now=Date.now(),schedule=true,maxMatches=10}={}){
- const definitions=new Map(),bySide={home:new Map(),away:new Map()},coverage={home:0,away:0};
+ const definitions=new Map(),bySide={home:new Map(),away:new Map()},coverage={home:0,away:0},requested={home:0,away:0};
  const process=(games,side,teamName)=>{
   const selected=games.filter(g=>g?.id&&Date.parse(g.date)<now).sort((a,b)=>Date.parse(b.date)-Date.parse(a.date)).slice(0,maxMatches);
+  requested[side]=selected.length;
   for(const game of selected){
    let match=statsStore.peek(game.id);if(schedule&&!match)void statsStore.get(game.id,{now});
    if(!match?.complete)continue;coverage[side]++;
@@ -170,6 +171,6 @@ export function buildDirettaPlayerReport(homeTeam,awayTeam,homeGames,awayGames,s
   highlights:[...player.highlights],stats:Object.fromEntries(Object.entries(player.groups).map(([group,values])=>[group,Object.fromEntries(Object.entries(values).map(([key,value])=>[key,{label:value.label,total:Number(value.total.toFixed(2)),average:Number((value.total/value.count).toFixed(2)),count:value.count,format:value.format}]))]))
  })).sort((a,b)=>b.appearances-a.appearances||String(a.name).localeCompare(String(b.name)));
  return {source:'Diretta · statistiche dei giocatori nelle ultime partite concluse',teams,players,groups:[...groups.values()],
-  coverage,maxMatches,available:coverage.home>0||coverage.away>0,
+  coverage,pending:{home:Math.max(0,requested.home-coverage.home),away:Math.max(0,requested.away-coverage.away)},maxMatches,available:coverage.home>0||coverage.away>0,
   note:'Dati osservati nelle partite precedenti; la presenza nella prossima formazione non è confermata. Le statistiche mancanti non sono considerate zero.'};
 }
