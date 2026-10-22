@@ -2,7 +2,14 @@ import {mkdirSync,writeFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {prepareCapture} from '../forecast-capture.js';
 const root='https://conf-football.onrender.com';
-const fetchJson=async(path,timeout=90000)=>{const response=await fetch(root+path,{signal:AbortSignal.timeout(timeout)});if(!response.ok)throw Error('HTTP '+response.status);return response.json();};
+const fetchJson=async(path,timeout=90000)=>{
+ let lastError;
+ for(let attempt=0;attempt<3;attempt++){
+  try{const response=await fetch(root+path,{signal:AbortSignal.timeout(timeout)});if(!response.ok)throw Error('HTTP '+response.status);return await response.json();}
+  catch(error){lastError=error;if(attempt<2)await new Promise(resolve=>setTimeout(resolve,5000*(attempt+1)));}
+ }
+ throw lastError;
+};
 const health=await fetchJson('/api/health',30000);
 const data=await fetchJson('/api/conf?hours=24&limit=200');
 let quotes=null;try{quotes=await fetchJson('/api/proposal-odds?hours=24&limit=200');}catch{/* Keep predictions, explicitly mark absent prices. */}
