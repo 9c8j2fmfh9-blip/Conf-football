@@ -143,13 +143,14 @@ export function buildDirettaPlayerReport(homeTeam,awayTeam,homeGames,awayGames,s
     if(player.side!==actualSide)continue;
     const key=String(player.id||cleanName(player.name));if(!key)continue;
     let row=bySide[side].get(key);
-    if(!row){row={id:player.id,name:player.name,shortName:player.shortName,position:player.position,appearances:0,starts:0,ratingSum:0,ratingCount:0,topRatedCount:0,lastSeen:game.date,groups:{},highlights:new Set()};bySide[side].set(key,row);}
+    if(!row){row={id:player.id,name:player.name,shortName:player.shortName,position:player.position,appearances:0,starts:0,ratingSum:0,ratingCount:0,topRatedCount:0,lastSeen:game.date,groups:{},observations:{},highlights:new Set()};bySide[side].set(key,row);}
     row.appearances++;if(player.starter)row.starts++;if(player.topRated)row.topRatedCount++;
     if(Number.isFinite(player.rating)){row.ratingSum+=player.rating;row.ratingCount++;}
     for(const highlight of player.highlights||[])row.highlights.add(highlight);
     for(const [statKey,value] of Object.entries(player.stats||{})){
      if(!Number.isFinite(value.raw))continue;
      const meta=definitions.get(statKey)||{key:statKey,label:statKey,format:'',groups:[]};
+     row.observations[statKey]??=[];row.observations[statKey].push(value.raw);
      const groups=meta.groups?.length?meta.groups:['general'];
      for(const group of groups){
       row.groups[group]??={};
@@ -170,7 +171,28 @@ export function buildDirettaPlayerReport(homeTeam,awayTeam,homeGames,awayGames,s
   averageRating:player.ratingCount?Number((player.ratingSum/player.ratingCount).toFixed(2)):null,topRatedCount:player.topRatedCount,lastSeen:player.lastSeen,
   highlights:[...player.highlights],stats:Object.fromEntries(Object.entries(player.groups).map(([group,values])=>[group,Object.fromEntries(Object.entries(values).map(([key,value])=>[key,{label:value.label,total:Number(value.total.toFixed(2)),average:Number((value.total/value.count).toFixed(2)),count:value.count,format:value.format}]))]))
  })).sort((a,b)=>b.appearances-a.appearances||String(a.name).localeCompare(String(b.name)));
- return {source:'Diretta · statistiche dei giocatori nelle ultime partite concluse',teams,players,groups:[...groups.values()],
+ const shotDefinitions=[...definitions.values()].map(def=>{
+  const identity=(String(def.key)+' '+String(def.label)).toLowerCase();
+  if(/shots[_ ]?(on[_ ]?target|on[_ ]?goal)|shots[_ ]?target|tiri? in porta|tiri? nello specchio/.test(identity))return{key:def.key,label:'tiri in porta',statLabel:def.label};
+  if(/shots[_ ]?total|total[_ ]?shots|tiri? totali/.test(identity))return{key:def.key,label:'tiri totali',statLabel:def.label};
+  return null;
+ }).filter(Boolean);
+ const playerMarkets=[];
+ for(const side of ['home','away'])for(const player of bySide[side].values())for(const metric of shotDefinitions){
+  const values=player.observations[metric.key]||[];
+  if(values.length<6)continue;
+  const lines=metric.label==='tiri in porta'?[1,2]:[1,2,3];
+  const options=lines.map(line=>{const hits=values.filter(value=>value>=line).length;return{line,hits,sample:values.length,score:Math.round(100*hits/values.length)};})
+   .filter(m=>m.score>=60).sort((a,b)=>b.line-a.line);
+  const selected=options[0];if(!selected)continue;
+  playerMarkets.push({kind:'player_shot',key:'player_shots_'+side+'_'+player.id+'_'+metric.key+'_'+selected.line,
+   playerId:player.id,player:player.name,position:player.position,side,metric:metric.label,statLabel:metric.statLabel,
+   line:selected.line,selection:'Over '+(selected.line-.5).toFixed(1)+' '+metric.label, label:player.name+' · Over '+(selected.line-.5).toFixed(1)+' '+metric.label,
+   hits:selected.hits,sample:selected.sample,score:selected.score,qualified:true,scoreKind:'historical',
+   source:'Diretta · statistiche individuali archiviate'});
+ }
+ playerMarkets.sort((a,b)=>b.score-a.score||b.sample-a.sample||b.line-a.line||a.player.localeCompare(b.player));
+ return {source:'Diretta · statistiche dei giocatori nelle ultime partite concluse',teams,players,groups:[...groups.values()],markets:playerMarkets.slice(0,20),
   coverage,pending:{home:Math.max(0,requested.home-coverage.home),away:Math.max(0,requested.away-coverage.away)},maxMatches,available:coverage.home>0||coverage.away>0,
   note:'Dati osservati nelle partite precedenti; la presenza nella prossima formazione non è confermata. Le statistiche mancanti non sono considerate zero.'};
 }
