@@ -65,7 +65,7 @@ function normalizePlayer(candidate,teamNames){
  const stats=Object.fromEntries(playerStatEntries(candidate.stats).map(([key,value])=>[key,statValue(value)]));
  return {id:candidate.id,name:candidate.name,shortName:String(get(node,'short_name','shortName','displayName')??candidate.name),
   teamId,teamName,side,position:String(get(node,'position','role','line')??''),starter:Boolean(get(node,'starter','isStarter','starting')),
-  rating:numeric(get(node,'rating','fs_rating','playerRating')),highlights:asArray(get(node,'highlights','badges')).map(String),stats};
+  rating:numeric(get(node,'rating','fs_rating','playerRating')),highlights:asArray(get(node,'highlights','badges')).map(String),topRated:Boolean(get(node,'top_rated','topRated')),stats};
 }
 
 /**
@@ -143,8 +143,8 @@ export function buildDirettaPlayerReport(homeTeam,awayTeam,homeGames,awayGames,s
     if(player.side!==actualSide)continue;
     const key=String(player.id||cleanName(player.name));if(!key)continue;
     let row=bySide[side].get(key);
-    if(!row){row={id:player.id,name:player.name,shortName:player.shortName,position:player.position,appearances:0,starts:0,ratingSum:0,ratingCount:0,lastSeen:game.date,groups:{},highlights:new Set()};bySide[side].set(key,row);}
-    row.appearances++;if(player.starter)row.starts++;
+    if(!row){row={id:player.id,name:player.name,shortName:player.shortName,position:player.position,appearances:0,starts:0,ratingSum:0,ratingCount:0,topRatedCount:0,lastSeen:game.date,groups:{},highlights:new Set()};bySide[side].set(key,row);}
+    row.appearances++;if(player.starter)row.starts++;if(player.topRated)row.topRatedCount++;
     if(Number.isFinite(player.rating)){row.ratingSum+=player.rating;row.ratingCount++;}
     for(const highlight of player.highlights||[])row.highlights.add(highlight);
     for(const [statKey,value] of Object.entries(player.stats||{})){
@@ -167,7 +167,7 @@ export function buildDirettaPlayerReport(homeTeam,awayTeam,homeGames,awayGames,s
  const teams={home:homeTeam,away:awayTeam},players={};
  for(const side of ['home','away'])players[side]=[...bySide[side].values()].map(player=>({
   id:player.id,name:player.name,shortName:player.shortName,position:player.position,appearances:player.appearances,starts:player.starts,
-  averageRating:player.ratingCount?Number((player.ratingSum/player.ratingCount).toFixed(2)):null,lastSeen:player.lastSeen,
+  averageRating:player.ratingCount?Number((player.ratingSum/player.ratingCount).toFixed(2)):null,topRatedCount:player.topRatedCount,lastSeen:player.lastSeen,
   highlights:[...player.highlights],stats:Object.fromEntries(Object.entries(player.groups).map(([group,values])=>[group,Object.fromEntries(Object.entries(values).map(([key,value])=>[key,{label:value.label,total:Number(value.total.toFixed(2)),average:Number((value.total/value.count).toFixed(2)),count:value.count,format:value.format}]))]))
  })).sort((a,b)=>b.appearances-a.appearances||String(a.name).localeCompare(String(b.name)));
  return {source:'Diretta · statistiche dei giocatori nelle ultime partite concluse',teams,players,groups:[...groups.values()],
