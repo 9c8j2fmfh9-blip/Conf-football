@@ -106,7 +106,7 @@ export function createDirettaPlayerStatsStore({initial={},fetcher=fetch,persist=
    const headers={'x-fsign':'SW9D1eZo','Referer':'https://www.diretta.it/'};
    const response=await fetcher('https://2.ds.lsapp.eu/pq_graphql?_hash=epmsd&eventId='+encodeURIComponent(job.id)+'&providerId=7',{headers,signal:AbortSignal.timeout(12000)});
    if(!response.ok)throw Error('Statistiche giocatori HTTP '+response.status);
-   const text=await response.text();if(text.length>1000000)throw Error('Statistiche giocatori oltre il limite');
+   const text=await response.text();if(text.length>2000000)throw Error('Statistiche giocatori oltre il limite');
    const value=parseDirettaPlayerStats(text,{matchId:job.id});
    value.fetchedAt=new Date(job.now).toISOString();cache.set(job.id,value);persist(Object.fromEntries(cache));return value;
   }catch{retry.set(job.id,job.now+10*60000);return null;}
