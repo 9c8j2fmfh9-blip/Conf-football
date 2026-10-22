@@ -576,7 +576,7 @@ app.get('/api/status', (_req, res) => {
 
 app.get('/api/odds-source-status',async(_req,res)=>{try{res.set('Cache-Control','no-store').json(await (_req.query.source==='espn'?espnProbe():comparisonProbe()));}catch{res.status(503).json({available:false,error:'Fonte quote non disponibile'});}});
 
-app.get('/api/health', (_req, res) => res.json({ ok: true, app: 'CONF Football', version: '0.4.0', provider: process.env.CONF_PROVIDER === 'openfoot' ? 'OpenFootAPI' : 'Open Matchday' }));
+app.get('/api/health', (_req, res) => res.json({ ok: true, gitCommit:process.env.RENDER_GIT_COMMIT||null, app: 'CONF Football', version: '0.4.0', provider: process.env.CONF_PROVIDER === 'openfoot' ? 'OpenFootAPI' : 'Open Matchday' }));
 
 app.get('/api/key-check', async (_req, res) => {
   const url = new URL(base + '/matches');

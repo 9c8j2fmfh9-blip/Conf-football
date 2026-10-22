@@ -1,0 +1,41 @@
+name: CONF prospective forecast archive
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/conf-archive.yml
+      - scripts/capture-forecasts.js
+      - forecast-capture.js
+permissions:
+  contents: write
+concurrency:
+  group: conf-prospective-archive
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: app
+      - uses: actions/checkout@v4
+        with:
+          ref: conf-forecast-archive
+          path: archive
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Capture future predictions and available prices
+        run: node app/scripts/capture-forecasts.js archive/forecast-captures
+      - name: Preserve immutable records on archive branch
+        working-directory: archive
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add forecast-captures
+          git commit -m 'Archive prospective CONF forecasts'
+          git push origin HEAD:conf-forecast-archive

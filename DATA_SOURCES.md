@@ -104,3 +104,22 @@ remaining dependencies limit the interval interpretation. The GG interval includ
 zero. Previously inspected data cannot become a new independent prospective test.
 The candidate is not deployed, and no profitability or betting-validation claim is
 made. The app exposes these comparisons inside an expandable verification panel.
+
+
+## Prospective evidence collection
+
+The `CONF prospective forecast archive` GitHub workflow runs hourly at minute 17
+(UTC; scheduled runs can be delayed) and can also be run manually. It records the
+public app's future forecasts and available official-sheet prices on the separate
+`conf-forecast-archive` branch. That branch does not trigger the main-branch Render
+deployment. Each timestamped file is created once; existing records are not edited.
+The capture excludes kickoffs less than five minutes after collection completes,
+keeps missing/stale-data flags, and records the deployed Render commit when
+available. A change in deployed revision during collection aborts the run. Missing
+odds stay explicitly unavailable. Source coverage remains limited to the API response.
+
+These are new forecast observations, not resolved outcomes or a completed prospective
+validation. Final scores still need to be matched by exact fixture identity and
+verified before any performance or return claim. No wager is placed and no message
+is sent to another person by this workflow. The archive uses the repository's own
+GitHub Actions token; no provider key is stored in a forecast record.
