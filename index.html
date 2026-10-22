@@ -45,6 +45,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
   <p id="daily-multiples-note" class="time">Non disponibili per puntate: modello statistico non validato</p>
   <div id="daily-multiples-results" class="matches" role="status">Caricamento multiple…</div>
   <details><summary class="time">Come vengono composte</summary><p id="daily-multiples-method" class="time"></p></details>
+  <details id="calibration-details"><summary class="time">Correzione delle percentuali · verifica</summary><div id="calibration-results" class="time">Apri per vedere il confronto dei modelli.</div></details>
   <details id="validation-details"><summary class="time">Verifica delle percentuali</summary><div id="validation-results" class="time">Apri per vedere i risultati del controllo.</div></details>
  </section>
  <label style="display:flex;gap:9px;align-items:center;margin:12px 0;color:var(--text);cursor:pointer"><input id="conf-filter" type="checkbox" style="width:18px;height:18px;accent-color:var(--green)"> Solo selezionate · stima e storico ≥60%</label>
@@ -689,6 +690,17 @@ async function searchGames(){
   }
 }
 
+async function loadCalibration(){
+ const root=$('#calibration-results');root.textContent='Calcolo del confronto…';
+ try{
+  const response=await fetch('/api/conf-calibration',{signal:AbortSignal.timeout(20000)});
+  const data=await response.json();if(!response.ok)throw Error(data.error||'Errore');
+  root.innerHTML='<p>Confronto finale su '+safe(data.partition.finalPeriod)+' partite, dopo addestramento e scelta separati.</p>'+
+   ['btts','over25'].map(key=>{const m=data.jointRate.finalPeriod[key];const interval=m.improvementInterval;return '<p><strong>'+(key==='btts'?'GG':'Over 2.5')+'</strong> · errore Brier: '+safe(m.raw.brier.toFixed(5))+' → '+safe(m.candidate.brier.toFixed(5))+'. '+(interval.lower>0?'Miglioramento nel confronto per data.':'Il confronto per data non conferma ancora un miglioramento stabile.')+'</p>';}).join('')+
+   '<p>Valori più bassi indicano meno errore. Correzione sperimentale non applicata alle partite: serve conferma su nuove previsioni. Le multiple restano sospese.</p>';
+ }catch(e){root.textContent='Confronto non disponibile: '+e.message;}
+}
+
 async function loadValidation(){
  const root=$('#validation-results');
  root.textContent='Caricamento della verifica…';
@@ -729,6 +741,7 @@ $('#search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault
 document.addEventListener('toggle',async e=>{
   const section=e.target;
   if(!section.matches?.('details')||!section.open)return;
+  if(section.id==='calibration-details'){await loadCalibration();return;}
   if(section.id==='validation-details'){await loadValidation();return;}
   const root=section.querySelector('[data-half-result]');
   if(!root||root.dataset.checked==='yes')return;

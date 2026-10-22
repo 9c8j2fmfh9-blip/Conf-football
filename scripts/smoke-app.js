@@ -62,6 +62,13 @@ try{
  assert.ok(validation.evaluatedFixtures>3500);
  assert.ok(validation.testedCompetitions>50);
  assert.ok(validation.markets.btts.screened.n>0);
+ const calibrationResponse=await fetch(root+'/api/conf-calibration',{signal:AbortSignal.timeout(20000)});
+ assert.equal(calibrationResponse.status,200);
+ const calibration=await calibrationResponse.json();
+ assert.equal(calibration.deployed,false);
+ assert.equal(calibration.validated,false);
+ assert.ok(calibration.partition.finalPeriod>2500);
+ assert.ok(calibration.jointRate.finalPeriod.over25.improvementInterval.dateBlocks>30);
  console.log('PASS: server boots, serves homepage and selector, and evaluates '+evaluated+' historical fixtures across seven markets.');
 }finally{
  child.kill('SIGTERM');

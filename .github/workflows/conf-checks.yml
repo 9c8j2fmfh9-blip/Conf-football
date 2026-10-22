@@ -22,5 +22,7 @@ jobs:
         run: node scripts/logistic-candidate.js
       - name: Replay default provider across covered competitions
         run: node scripts/validate-coverage.js
+      - name: Compare chronological calibration candidates
+        run: node scripts/calibrate-goals.js
       - name: Boot and smoke-test web app
         run: node scripts/smoke-app.js

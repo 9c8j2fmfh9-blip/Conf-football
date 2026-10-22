@@ -74,3 +74,33 @@ be reconstructed, so the replay evaluates model statistics, not live operational
 coverage. No archived pre-match odds or corner validation are included. Betting
 validation and automatic multiples remain suspended. The expandable verification
 panel exposes the updated report without changing the match-card layout.
+
+
+## Chronological calibration candidates
+
+`node scripts/calibrate-goals.js` and `/api/conf-calibration` compare two methods
+without changing production estimates. All eligible default-provider observations
+are partitioned by unique dates: first 50% for fitting, next 20% for model choice,
+remaining dates for final comparison. In the bundled snapshot these are 935,
+506 and 2,617 fixtures; tuning starts 4 July and the final period starts 18 August.
+This differs from the benchmark audit's split because no 30-observation benchmark
+warm-up is needed here. None of the final outcomes enter fitting or model choice.
+
+Binary logistic recalibration tries four penalties and explicitly permits keeping
+the original model. The tuning period selects that unchanged option for both GG
+and Over 2.5. A second candidate fits home/away goal-rate factors on training goals,
+then tunes their strength on mean GG/Over 2.5 Brier loss. The chosen strength is
+0.5, using fitted factors 1.142882 (home) and 0.903698 (away). It adjusts a joint
+Poisson score distribution, although this diagnostic currently evaluates only the
+two goal markets, using the production model's rounded goal-rate output and
+rounding candidate percentages to whole points like the app.
+
+On 2,617 later fixtures GG Brier changes from 0.244330 to 0.244140 and Over 2.5
+from 0.245776 to 0.245174. Paired date-block bootstrap (2,000 deterministic
+resamples over 63 dates) gives 95% intervals for Brier improvement of
+[-0.000033, 0.000435] for GG and [0.000194, 0.001086] for Over 2.5.
+These are small retrospective changes; repeated clubs across dates and other
+remaining dependencies limit the interval interpretation. The GG interval includes
+zero. Previously inspected data cannot become a new independent prospective test.
+The candidate is not deployed, and no profitability or betting-validation claim is
+made. The app exposes these comparisons inside an expandable verification panel.

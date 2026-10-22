@@ -1,3 +1,4 @@
+import {buildCalibrationAudit} from './calibration-audit.js';
 import {buildValidationAudit} from './validation-audit.js';
 import {goalEstimateFromStats} from './experimental-goals.js';
 import {espnProbe,getEspnQuotes} from './espn-odds.js';
@@ -557,6 +558,15 @@ app.get('/api/conf-validation', (_req,res)=>{
   if(!validationReport||Date.now()-validationReport.at>6*3600000)
    validationReport={at:Date.now(),value:buildValidationAudit()};
   res.json(validationReport.value);
+ }catch(e){res.status(500).json({error:e.message});}
+});
+
+let calibrationReport=null;
+app.get('/api/conf-calibration', (_req,res)=>{
+ try {
+  if(!calibrationReport||Date.now()-calibrationReport.at>6*3600000)
+   calibrationReport={at:Date.now(),value:buildCalibrationAudit()};
+  res.json(calibrationReport.value);
  }catch(e){res.status(500).json({error:e.message});}
 });
 

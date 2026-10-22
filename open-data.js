@@ -208,7 +208,7 @@ export function openDataObservations(estimate, data=dataset) {
   const selection=selectFixture(fixture);
   const hg=game.score.home,ag=game.score.away;
   observations.push({id:game.id,date:game.resultDate,league:game.sourceLeague,
-   probabilities:experimentalEstimate.estimates,
+   probabilities:experimentalEstimate.estimates,expectedGoals:experimentalEstimate.expectedGoals,actualGoals:{home:game.score.home,away:game.score.away},
    selected:selection.goalPrimary?.key||null,
    truth:{one:+(hg>ag),draw:+(hg===ag),two:+(hg<ag),over25:+(hg+ag>=3),btts:+(hg>0&&ag>0),over35:+(hg+ag>=4),bttsOver25:+(hg>0&&ag>0&&hg+ag>=3)}});
  }
