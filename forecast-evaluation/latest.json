@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-22T07:18:35.094Z",
-  "lastCapturedAt": "2026-10-22T07:18:34.944Z",
+  "evaluatedAt": "2026-10-22T08:31:08.679Z",
+  "lastCapturedAt": "2026-10-22T08:31:08.252Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 513,
-  "estimated": 339,
+  "recorded": 521,
+  "estimated": 346,
   "evaluatedForecasts": 0,
   "settled": 0,
   "pending": [
@@ -2572,6 +2572,46 @@
     {
       "key": "[\"diretta_O8F6feGO\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
       "fixtureId": "diretta_O8F6feGO",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Qy09BX2e\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_Qy09BX2e",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_2mUrwQsn\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_2mUrwQsn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_QNGdSAJt\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_QNGdSAJt",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dfP3O3qL\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_dfP3O3qL",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_bX2A8o5L\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_bX2A8o5L",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_CGj3Qnbt\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_CGj3Qnbt",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_QTkAmSMk\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_QTkAmSMk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YggIo6i2\",\"1b05f629208c7e0c4ad1d09c1d62fa4d825decd5a0bb2d40b729ba23b3090130\"]",
+      "fixtureId": "diretta_YggIo6i2",
       "reason": "Risultato finale non confermato"
     }
   ],
