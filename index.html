@@ -411,7 +411,7 @@ function extraGoalMarketsHtml(f){
 function renderDailyMultiples(data){
  currentMultiples=data;
  const root=$('#daily-multiples-results');
- if(!data?.tickets?.length){root.innerHTML='<div class="empty">Multiple non disponibili: riprova con Aggiorna.</div>';return;}
+ if(!data?.tickets?.length){root.innerHTML=[10,100].map(target=>'<article class="multiple-card"><div class="multiple-head"><span>Quota '+target+'</span><strong>—</strong></div><p class="time">Quote non disponibili in questo momento.</p></article>').join('')+[10,100].map(target=>'<article class="multiple-card" data-alternative-target="'+target+'"><div class="multiple-head"><span>Quota '+target+' alternativa MyCombo</span><strong>—</strong></div><p class="time">Analisi MyCombo temporaneamente non disponibile: riprova con Aggiorna.</p></article>').join('');return;}
  $('#daily-multiples-method').textContent=data.method||'';
  const stamp=data.sourceUpdatedAt?new Date(data.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'';
  $('#daily-multiples-note').textContent=(data.date?'Solo oggi · '+data.date.split('-').reverse().join('/'):'Solo oggi, ora italiana')+' · entro le 21:30, ora italiana · bozze sperimentali · '+(data.eligibleCount??0)+' proposte con quote disponibili · quota 100 indicativa, anche superiore';
