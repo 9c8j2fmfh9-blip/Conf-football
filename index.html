@@ -420,7 +420,7 @@ function renderDailyMultiples(data){
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';
   const legs=ticket.legs.map(leg=>'<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div><div class="multiple-values"><span>'+safe(leg.label)+' · stima '+safe(leg.score)+'%</span><b>'+safe(leg.odds.toFixed(2).replace('.',','))+'</b></div>'+(leg.sourceUrl?'<div class="time">'+safe(leg.bookmaker||ticket.bookmaker)+' · rilevata '+safe(new Date(leg.sourceUpdatedAt).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+' · <a href="'+safe(leg.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Fonte</a></div>':'')+'</div>').join('');
   return '<article class="multiple-card">'+title+(ticket.fallback?'<p class="time">'+safe(ticket.reason)+'</p>':'')+'<div class="time">'+safe(ticket.legs.length)+' partite · '+safe(ticket.bookmaker||data.bookmaker||'Bookmaker indicato')+' · quota totale indicativa</div><details open><summary>Vedi le partite</summary>'+legs+'</details><p class="time">Bozza sperimentale: le percentuali delle singole non sono la probabilità di vincita della multipla. Verifica quote e disponibilità sul bookmaker.</p></article>';
- }).join('')+renderAlternativeMultiples(data.alternatives||[]);
+ }).join('')+renderAlternativeMultiples(data.alternatives?.length?data.alternatives:[10,100].map(target=>({target,title:'Quota '+target+' alternativa MyCombo',legs:[],reason:'Nessuna combinazione con dati sufficienti per le partite ancora disponibili oggi.',note:'Nessuna quota o selezione inventata.'})));
 }
 
 function renderAlternativeMultiples(tickets){
@@ -436,15 +436,15 @@ function renderAlternativeMultiples(tickets){
  }).join('');
 }
 async function loadDailyMultiples(selectedDate,requestId,attempt=0){
- $('#daily-multiples-results').innerHTML='<div class="time">Caricamento multiple…</div>';
+ if(attempt===0)$('#daily-multiples-results').innerHTML='<div class="time">Caricamento multiple…</div>';
  $('#daily-multiples-note').textContent='Solo partite di oggi · calcio d’inizio entro le 21:30, ora italiana';
  try{
   const response=await fetch('/api/daily-multiples',{cache:'no-store',signal:AbortSignal.timeout(45000)});
   const data=await response.json();
   if(requestId!==confLoadSequence)return;
   renderDailyMultiples(response.ok?data:null);
-  if(!response.ok||(data.selectedCount>0&&!data.eligibleCount))retryOdds(()=>loadDailyMultiples(selectedDate,requestId,attempt+1),requestId,attempt);
- }catch{if(requestId===confLoadSequence){renderDailyMultiples(null);retryOdds(()=>loadDailyMultiples(selectedDate,requestId,attempt+1),requestId,attempt);}}
+  if(!response.ok && attempt<2)retryOdds(()=>loadDailyMultiples(selectedDate,requestId,attempt+1),requestId,attempt);
+ }catch{if(requestId===confLoadSequence){renderDailyMultiples(null);if(attempt<2)retryOdds(()=>loadDailyMultiples(selectedDate,requestId,attempt+1),requestId,attempt);}}
 }
 function cardDisclosureState(root){
  const states=new Map();
