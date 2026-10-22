@@ -13,6 +13,6 @@ export function prepareCapture(data,quotes,{capturedAt,modelRevision=null,runId=
   prices:byId.get(String(f.fixtureId))||null}));
  return {schemaVersion:1,capturedAt,modelRevision,runId,
   sourceStatus:{provider:data.provider||null,coverage:data.calendarCoverage||null,providerIssue:data.providerIssue||null,analyzedCount:data.analyzedCount??null,returned:fixtures.length},
-  oddsStatus:quotes?{available:true,source:quotes.source||null,sourceUpdatedAt:quotes.sourceUpdatedAt||null,status:quotes.oddsStatus||null}:{available:false,reason:'Quote non recuperate: nessuna valutazione economica possibile.'},
+  oddsStatus:quotes?{retrieved:true,available:fixtures.some(f=>f.prices?.odds?.sisal?.available===true),source:quotes.source||null,sourceUpdatedAt:quotes.sourceUpdatedAt||null,status:quotes.oddsStatus||null}:{available:false,reason:'Quote non recuperate: nessuna valutazione economica possibile.'},
   fixtures,note:'Previsioni registrate prima del calcio d’inizio. Non sono puntate né risultati ricostruiti.'};
 }

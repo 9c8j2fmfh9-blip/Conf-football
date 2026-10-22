@@ -17,6 +17,8 @@ test('only exact fixture identifiers attach prices and input records are not cha
  const before=JSON.stringify(fixture);
  const result=prepareCapture({fixtures:[fixture]},{fixtures:[{fixtureId:'other',odds:2}]},{capturedAt:'2026-10-22T10:00:00Z'});
  assert.equal(result.fixtures[0].prices,null);
+ assert.equal(result.oddsStatus.available,false);
+ assert.equal(result.oddsStatus.retrieved,true);
  assert.equal(JSON.stringify(fixture),before);
  assert.throws(()=>prepareCapture({},null,{capturedAt:'invalid'}),/Invalid/);
 });
