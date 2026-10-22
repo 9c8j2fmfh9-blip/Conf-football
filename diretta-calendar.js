@@ -18,7 +18,8 @@ export function parseDirettaFeed(text){
   if(!league||!league.competitionId||!fields.AE||!fields.AF||!/^\w{8}$/.test(fields.AA)||!/^\d{10}$/.test(fields.AD))throw Error('Partita Diretta incompleta');
   if(seen.has(fields.AA))continue;seen.add(fields.AA);
   const timestamp=Number(fields.AD)*1000;
-  events.push({...league,id:fields.AA,date:new Date(timestamp).toISOString(),home:fields.AE,away:fields.AF,status:fields.AB==='1'&&fields.AC==='1'?'NS':fields.AB==='3'?'FT':'OTHER'});
+  const score=fields.AB==='3'&&fields.AC==='3'&&/^\d+$/.test(fields.AG||'')&&/^\d+$/.test(fields.AH||'')?{home:Number(fields.AG),away:Number(fields.AH)}:null;
+  events.push({...league,score,id:fields.AA,date:new Date(timestamp).toISOString(),home:fields.AE,away:fields.AF,status:fields.AB==='1'&&fields.AC==='1'?'NS':fields.AB==='3'?'FT':'OTHER'});
  }
  return events;
 }

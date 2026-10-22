@@ -9,6 +9,9 @@ on:
       - .github/workflows/conf-archive.yml
       - scripts/capture-forecasts.js
       - forecast-capture.js
+      - forecast-evaluation.js
+      - scripts/evaluate-forecasts.js
+      - diretta-calendar.js
 permissions:
   contents: write
 concurrency:
@@ -31,11 +34,13 @@ jobs:
           node-version: '24'
       - name: Capture future predictions and available prices
         run: node app/scripts/capture-forecasts.js archive/forecast-captures
+      - name: Compare archived forecasts with confirmed final results
+        run: node app/scripts/evaluate-forecasts.js archive
       - name: Preserve immutable records on archive branch
         working-directory: archive
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forecast-captures
+          git add forecast-captures forecast-evaluation
           git commit -m 'Archive prospective CONF forecasts'
           git push origin HEAD:conf-forecast-archive
