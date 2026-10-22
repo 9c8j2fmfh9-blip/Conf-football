@@ -14,8 +14,8 @@ test('parses only full-time team statistics and excludes period-specific rows',(
 });
 
 test('counts team yellow cards in regulation and ignores extra-time cards',()=>{
- const result=parseDirettaMatchEvents('AC÷1 Tempo¬~IA÷1¬IK÷Cartellino Giallo¬~IA÷2¬IK÷Cartellino Giallo¬~AC÷2 Tempo¬~IA÷2¬IK÷Cartellino Rosso¬~AC÷Tempi Supplementari¬~IA÷1¬IK÷Cartellino Giallo¬');
- assert.deepEqual(result.cards,{home:{yellow:1,red:0},away:{yellow:1,red:1}});assert.equal(result.cardsAvailable,true);
+ const result=parseDirettaMatchEvents('AC÷1 Tempo¬~IA÷1¬IK÷Cartellino Giallo¬~IA÷2¬IK÷Cartellino Giallo¬~AC÷2 Tempo¬~IA÷2¬IK÷Cartellino Giallo¬IK÷Cartellino Rosso¬~AC÷Tempi Supplementari¬~IA÷1¬IK÷Cartellino Giallo¬');
+ assert.deepEqual(result.cards,{home:{yellow:1,red:0},away:{yellow:2,red:1}});assert.equal(result.cardsAvailable,true);
  assert.throws(()=>parseDirettaMatchEvents('blocked'),/non riconosciuti/);
 });
 
@@ -39,9 +39,10 @@ test('creates descriptive shot and corner markets only with two team samples',()
  const store=createDirettaStatsStore({initial});
  const report=buildDirettaStatMarkets('Home','Away',homeGames,awayGames,store,{now,schedule:false});
  const total=report.markets.find(x=>x.key==='diretta_total_shots_19');
- assert.equal(total.sample,12);assert.equal(total.score,100);assert.equal(total.venueSamples.home,6);assert.equal(total.venueSamples.away,6);assert.equal(total.qualified,true);
+ assert.equal(total.sample,12);assert.equal(total.score,100);assert.equal(total.venueSamples.home,6);assert.equal(total.venueSamples.away,6);assert.equal(total.sampleSufficient,true);assert.equal(total.qualified,true);
  const home=report.markets.find(x=>x.key==='diretta_home_sot_2');
  assert.equal(home.score,100);assert.equal(home.hits,12);
+ const low=report.markets.find(x=>x.key==='diretta_total_corners_10');assert.equal(low.sampleSufficient,true);assert.equal(low.qualified,false);
  const empty=buildDirettaStatMarkets('Home','Away',homeGames,awayGames,createDirettaStatsStore(),{now,schedule:false});
  assert.equal(empty.markets.find(x=>x.key==='diretta_total_shots_19').score,null);
 });

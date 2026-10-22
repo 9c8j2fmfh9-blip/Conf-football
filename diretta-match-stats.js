@@ -29,11 +29,13 @@ export function parseDirettaMatchEvents(text){
  const regulation=text.split('~').filter(Boolean).slice(0,text.split('~').findIndex(x=>/AC÷.*(?:Supplementari|Rigori)/i.test(x))<0?undefined:text.split('~').findIndex(x=>/AC÷.*(?:Supplementari|Rigori)/i.test(x)));
  const cards={home:{yellow:0,red:0},away:{yellow:0,red:0}};
  for(const block of regulation){
-  const row=fields(block),kind=normalizeTeam(row.IK||'');
-  if(!kind.includes('cartellino')&&!kind.includes('card'))continue;
+  const row=fields(block),kinds=block.split('¬').filter(x=>x.startsWith('IK÷')).map(x=>normalizeTeam(x.slice(3)));
   const side=row.IA==='1'?'home':row.IA==='2'?'away':null;if(!side)continue;
-  if(kind.includes('giallo')||kind.includes('yellow'))cards[side].yellow++;
-  if(kind.includes('rosso')||kind.includes('red'))cards[side].red++;
+  for(const kind of kinds){
+   if(!kind.includes('cartellino')&&!kind.includes('card'))continue;
+   if(kind.includes('giallo')||kind.includes('yellow'))cards[side].yellow++;
+   if(kind.includes('rosso')||kind.includes('red'))cards[side].red++;
+  }
  }
  return{cards,cardsAvailable:true};
 }
@@ -105,8 +107,10 @@ export function buildDirettaStatMarkets(homeTeam,awayTeam,homeGames,awayGames,st
   const homeHits=validHome.filter(x=>x>=line).length,awayHits=validAway.filter(x=>x>=line).length;
   const hits=homeHits+awayHits,sample=values.length,homeSample=validHome.length,awaySample=validAway.length;
   const rates=homeSample&&awaySample?[homeHits/homeSample,awayHits/awaySample]:[];
-  markets.push({key:'diretta_'+key,label,metric,side,line,score:sample?Math.round(100*hits/sample):null,hits,sample,venueSamples:{home:homeSample,away:awaySample},teamRates:rates,
-   qualified:homeSample>=6&&awaySample>=6&&sample>=12,scoreKind:'historical',source:'Diretta · statistiche FT archiviate',available:homeSample>0&&awaySample>0});
+  const sampleSufficient=homeSample>=6&&awaySample>=6&&sample>=12;
+  const score=sample?Math.round(100*hits/sample):null;
+  markets.push({key:'diretta_'+key,label,metric,side,line,score,hits,sample,venueSamples:{home:homeSample,away:awaySample},teamRates:rates,
+   sampleSufficient,qualified:sampleSufficient&&score>=60&&rates.length===2&&rates.every(rate=>rate>=.5),scoreKind:'historical',source:'Diretta · statistiche FT archiviate',available:homeSample>0&&awaySample>0});
  }
  return{source:'Diretta · statistiche finali delle ultime partite',homeSample:home.length,awaySample:away.length,markets,
   pending:Math.max(0,Math.min(10,homeGames.length)-home.length)+Math.max(0,Math.min(10,awayGames.length)-away.length),
