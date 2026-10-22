@@ -504,9 +504,11 @@ function renderConf(items){
     const bestMarket = allMarkets.filter(m => m.score !== null).sort((a,b) => b.score-a.score)[0];
     const date = f.date ? new Date(f.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}) : '';
     const estimate=f.experimentalEstimate || {};
+    const playerReport=f.direttaPlayerStats||{};
     const selection=f.selection || selectFixture(f);
     const best=selection.primary?.kind!=='corner'?selection.primary:(selection.candidates||[]).find(p=>p.kind!=='corner');
-    const bestCorner=(selection.candidates||[]).find(p=>p.kind==='corner')||null;
+    const bestCorner=(selection.candidates||[]).find(p=>p.kind==='corner'&&p.side==='total'&&p.half==='full')||null;
+    const playerShotIdeas=(playerReport.markets||[]).filter(m=>m.kind==='player_shot'&&m.qualified&&m.sample>=6&&m.score>=60).slice(0,3);
     // When no market passes the screening threshold, keep a useful (clearly
     // unqualified) estimate on the card instead of a misleading blank panel.
     const fallbackEstimate=!best && estimate.available && !f.dataStale
@@ -516,8 +518,12 @@ function renderConf(items){
           .sort((a,b)=>b.score-a.score)[0]
       : null;
 
-    const cornerRecommendationHtml=bestCorner
-      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🚩 Indicazione statistica · corner</div><div class="recommend-market"><span>'+safe(bestCorner.label)+'</span><span class="pick-percent">'+safe(bestCorner.score)+'%</span></div><div class="recommend-note">'+safe(bestCorner.hits)+' su '+safe(bestCorner.sample)+' gare · frequenza storica, non probabilità prevista</div></div>'
+    const myComboIdeas=[...(bestCorner?[{label:bestCorner.label,score:bestCorner.score,hits:bestCorner.hits,sample:bestCorner.sample,type:'corner'}]:[]),
+      ...playerShotIdeas.map(m=>({label:m.label,score:m.score,hits:m.hits,sample:m.sample,type:'player'}))];
+    const myComboIdeasHtml=myComboIdeas.length
+      ? '<div class="recommend" style="margin-top:8px"><div class="recommend-title">🎯 Spunti per MyCombo Sisal · storico</div>'+myComboIdeas.map(item=>
+        '<div class="multiple-leg"><div class="multiple-values"><b>'+safe(item.label)+'</b><b>'+safe(item.score)+'%</b></div><div class="recommend-note">'+safe(item.hits)+' su '+safe(item.sample)+' gare · frequenza storica descrittiva</div></div>').join('')+
+        '<div class="recommend-note">Quote e disponibilità da controllare nella MyCombo Sisal. Questi spunti non entrano automaticamente nelle multiple CONF.</div></div>'
       : '';
     const recommendationHtml=best
       ? '<div class="recommend"><div class="recommend-title">'+(best.kind==='diretta_stat'?'Indicazione esplorativa · statistica Diretta':best.kind==='corner'?'Indicazione statistica · corner':'Indicazione statistica · gol / risultato')+'</div><div class="recommend-market"><span>'+safe(best.label)+'</span><span class="pick-percent">'+safe(best.score)+'%</span></div><div class="recommend-note">'+(best.kind==='diretta_stat'||best.kind==='corner'?safe(best.hits)+' su '+safe(best.sample)+' gare · frequenza storica, non probabilità prevista':'Stima del modello · storico '+safe(best.historicalScore)+'% · campione '+safe(best.samples.home)+' / '+safe(best.samples.away))+'</div><div class="proposal-odds" data-proposal-odds="'+safe(f.fixtureId)+'">'+proposalOddsHtml(f.proposalOdds,best.key)+'</div></div>'
@@ -562,7 +568,6 @@ function renderConf(items){
     const statMarkets=f.direttaStatMarkets||{};
     const statRows=(statMarkets.markets||[]).filter(m=>Number.isFinite(m.score));
     const direttaStatsHtml='<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">📊 Tiri e statistiche Diretta · '+statRows.length+' mercati disponibili</summary><p class="time">'+safe(statMarkets.note||'Le statistiche vengono recuperate progressivamente per le partite con copertura Diretta.')+' Campioni validi: casa '+safe(statMarkets.homeSample||0)+' · trasferta '+safe(statMarkets.awaySample||0)+' · richieste in corso '+safe(statMarkets.pending||0)+'.</p>'+(statRows.length?'<div style="display:grid;gap:8px">'+statRows.map(m=>'<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+safe(m.hits)+' su '+safe(m.sample)+' gare · non è una probabilità calibrata · quota Sisal: non verificata</div></span><div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>':'<p class="time">Statistiche Diretta non ancora disponibili; il recupero avviene in background e si aggiorna automaticamente.</p>')+'</details>';
-    const playerReport=f.direttaPlayerStats||{};
     const playerGroups=Array.isArray(playerReport.groups)?playerReport.groups:[];
     const playerGroupName=key=>playerGroups.find(x=>x.key===key)?.label||({top_stats:'Statistiche top',shots:'Tiri',attack:'Attacco',passes:'Passaggi',defense:'Difesa',goalkeeping:'Portiere',general:'Generali'}[key]||key);
     const playerTeamHtml=side=>{
@@ -596,7 +601,7 @@ function renderConf(items){
         '<div class="conf-ring" style="--pct:'+safe(m.score)+'"><span>'+safe(m.score)+'%</span></div></div>').join('')+'</div>'
         :'<p class="time">Dati corner verificati insufficienti.</p>')+
       '<p class="time">'+safe(corners.note||'')+'</p>'+ '<div style="margin-top:12px;font-weight:700">Corner 1° tempo · squadre casa e trasferta</div>'+ '<div class="time" data-half-result="'+safe(f.fixtureId)+'">Il dettaglio per tempo dipende dalla disponibilità della fonte.</div>'+ '</details>';
-    return '<article class="match" data-fixture-id="'+safe(f.fixtureId)+'"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+coreMarketsHtml+cornerRecommendationHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote verificate usate per cercare alternative alle quote basse. '+safe(f.dataUpdatedAt ? 'Archivio aggiornato: '+new Date(f.dataUpdatedAt).toLocaleString('it-IT',{timeZone:'Europe/Rome'}) : '')+'</p>'+(f.historyPeriod ? '<p class="time">Storico utilizzato: risultati dal '+safe(f.historyPeriod.from.split('-').reverse().join('/'))+', precedenti alla partita. '+safe(f.source||'')+'</p>' : '')+extraGoalMarketsHtml(f)+direttaStatsHtml+playerStatsHtml+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary><div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
+    return '<article class="match" data-fixture-id="'+safe(f.fixtureId)+'"><div class="league">'+safe(f.league)+' · '+safe(f.country)+'</div><div style="display:flex;justify-content:flex-end;margin-bottom:6px">'+favoriteButton(f.fixtureId)+'</div><div class="teams">'+safe(f.home)+'<div class="vs">CONTRO</div>'+safe(f.away)+'</div><div class="time">Calcio d’inizio: '+safe(date)+'</div>'+recommendationHtml+coreMarketsHtml+myComboIdeasHtml+'<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Analisi e motivazione</summary><p class="time">'+safe(selection.reason)+' Stime sperimentali non calibrate; quote verificate usate per cercare alternative alle quote basse. '+safe(f.dataUpdatedAt ? 'Archivio aggiornato: '+new Date(f.dataUpdatedAt).toLocaleString('it-IT',{timeZone:'Europe/Rome'}) : '')+'</p>'+(f.historyPeriod ? '<p class="time">Storico utilizzato: risultati dal '+safe(f.historyPeriod.from.split('-').reverse().join('/'))+', precedenti alla partita. '+safe(f.source||'')+'</p>' : '')+extraGoalMarketsHtml(f)+direttaStatsHtml+playerStatsHtml+predictedGoalsHtml+'<details><summary>Combo gol squadre</summary>'+comboHtml+comboDetails+'</details><details><summary>Corner</summary><div data-half-recommend="'+safe(f.fixtureId)+'"></div>'+cornerHtml+'</details><details><summary>Gol e risultato · frequenze storiche</summary><div style="display:grid;gap:8px;margin-top:12px">'+markets.map(m => {
       const enough = m.score !== null && m.sample >= 6;
       const label = m.score === null ? 'Dati insufficienti' : (m.sample < 6 ? 'Campione troppo piccolo' : (m.score >= 60 ? 'frequenza storica ≥60 · non predittiva' : 'sotto soglia 60'));
       const score = m.score === null ? '—' : safe(m.score)+'%';
