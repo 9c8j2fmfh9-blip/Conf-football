@@ -25,9 +25,10 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
    goal:goal?{key:goal.key,label:goal.label,score:goal.score,scoreKind:'model',historicalScore:goal.historicalScore,samples:goal.samples}:null,
    corner:corner?{key:corner.key,label:corner.label,score:corner.score,scoreKind:'historical',hits:corner.hits,sample:corner.sample,samples:corner.samples,side:'total',half:'full',line:corner.line}:null,
    playerMarkets,
+   marketCount:Number(Boolean(goal))+Number(Boolean(corner))+Number(playerMarkets.length>0),
    evidence:Math.min(goal?.evidence??100,corner?.evidence??100)});
  }
- options.sort((a,b)=>b.evidence-a.evidence || Math.min(b.goal?.score??0,b.corner?.score??0)-Math.min(a.goal?.score??0,a.corner?.score??0) || Date.parse(a.date)-Date.parse(b.date) || String(a.fixtureId).localeCompare(String(b.fixtureId)));
+ options.sort((a,b)=>b.marketCount-a.marketCount||b.evidence-a.evidence || Math.min(b.goal?.score??0,b.corner?.score??0)-Math.min(a.goal?.score??0,a.corner?.score??0) || Date.parse(a.date)-Date.parse(b.date) || String(a.fixtureId).localeCompare(String(b.fixtureId)));
  const pool=[],clubs=new Set(),ids=new Set();
  for(const option of options){
   const h=club(option.home),a=club(option.away),id=String(option.fixtureId);
@@ -38,11 +39,11 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
   const maxMatches=i===0?3:5;
   const legs=pool.slice(0,maxMatches).map(({evidence,...leg})=>leg);
   return {target,title:'Quota '+target+' alternativa',available:legs.length>0,isMultiple:legs.length>=2,
-   totalOdds:null,oddsVerified:false,targetReached:false,maxMatches,eligibleCount:pool.length,legs,
-   reason:!legs.length?'Nessun mercato MyCombo supportato dai dati disponibili per le partite di oggi.':
+   totalOdds:null,oddsVerified:false,targetReached:false,maxMatches,eligibleCount:combined.length,legs,partial,
+   reason:!legs.length?'Nessuna partita presenta almeno due mercati sostenuti da dati sufficienti. Le analisi singole restano separate.':
     legs.length===1?'Una sola partita con dati disponibili: non basta per una multipla.':
-    i===1&&pool.length<=3?'Stesse partite della proposta compatta: non ci sono altre selezioni supportate da aggiungere.':
+    i===1&&combined.length<=3?'Stesse partite della proposta compatta: non ci sono altre selezioni supportate da aggiungere.':
     i===0?'Bozza compatta: fino a 3 partite con i mercati disponibili; i mercati mancanti sono esplicitati.':'Bozza estesa: fino a 5 partite con i mercati disponibili; non è una multipla quotata.',
-   note:'Obiettivo '+target+' non verificato. Quota MyCombo da verificare su Sisal. Le statistiche dei giocatori sono spunti opzionali, senza quota o probabilità; la formazione è da confermare. Le percentuali si riferiscono ai singoli mercati, non alla combo o alla multipla.'};
+   note:'Una MyCombo richiede almeno due mercati nella stessa partita. Le selezioni singole non vengono presentate come combo. Obiettivo '+target+' non verificato. Quota MyCombo da verificare su Sisal. Le statistiche dei giocatori sono spunti opzionali, senza quota o probabilità; la formazione è da confermare. Le percentuali si riferiscono ai singoli mercati, non alla combo o alla multipla.'};
  });
 }
