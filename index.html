@@ -610,7 +610,7 @@ async function loadConf({background=false}={}){
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'all'});
     if (selectedDate) params.set('date',selectedDate);
-    if (query || selectedDate) { confOnlyQualified=false; $('#conf-filter').checked=false; }
+    if (!background && (query || selectedDate)) { confOnlyQualified=false; $('#conf-filter').checked=false; }
     if (query) params.set('q',query);
     const response = await fetch('/api/conf?'+params.toString(),{cache:'no-store',signal:AbortSignal.timeout(45000)});
     const data = await response.json();
@@ -859,7 +859,7 @@ void loadForecastStatus();
 // when returning to the page after midnight or from a suspended mobile tab.
 setInterval(()=>{if(!document.hidden){loadConf({background:true});void loadForecastStatus();}},60*1000);
 setInterval(()=>{if(!document.hidden)discardStarted();},15000);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden){loadConf();void loadForecastStatus();}});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){discardStarted();loadConf({background:true});void loadForecastStatus();}});
 </script>
 </body>
 </html>
