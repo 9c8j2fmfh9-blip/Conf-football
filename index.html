@@ -696,7 +696,10 @@ async function loadConf({background=false}={}){
   }catch(error){
     if (requestId !== confLoadSequence) return;
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
-    if(!confItems.length)$('#conf-results').innerHTML='<div class="empty">Non riesco a caricare le partite. Premi Aggiorna per riprovare.</div>';
+    if(confItems.length){
+      renderConf(confItems.filter(f=>Date.parse(f.date)>Date.now()));
+      $('#conf-message').textContent += ' · Ultimo elenco disponibile, potrebbe non essere aggiornato.';
+    }else $('#conf-results').innerHTML='<div class="empty">Non riesco a caricare le partite. Premi Aggiorna per riprovare.</div>';
   }finally{
     if (requestId !== confLoadSequence) return;
     confRequestPending=false;
