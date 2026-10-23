@@ -96,6 +96,7 @@ import { SISAL_SITE_URL, ticketForSisalClipboard } from "/sisal-ticket-export.js
 const $ = (s) => document.querySelector(s);
 let games = [];
 let confItems = [];
+let confDisplayLimit = 30;
 let confOnlyQualified = false;
 let confLoadSequence = 0;
 let confRequestPending = false;
@@ -532,7 +533,9 @@ function renderConf(items){
       ? byTime || byPercentage
       : byPercentage || byTime;
   });
-  root.innerHTML = ordered.map(f => {
+  // Build only a small batch of cards for iPhone; all fixtures stay in confItems.
+  const visibleBatch = ordered.slice(0,confDisplayLimit);
+  root.innerHTML = visibleBatch.map(f => {
     const allMarkets = visibleMarkets(f);
     const markets = allMarkets;
     const recommendation = allMarkets.filter(m => m.score !== null && m.score >= 60 && m.sample >= 6 && !m.partial).sort(byEvidence)[0];
@@ -638,7 +641,9 @@ function renderConf(items){
       const pct = m.score === null ? 0 : Math.max(0,Math.min(100,Number(m.score)||0));
       return '<div class="conf-row"><span class="conf-row-label">'+safe(m.label)+'<div class="time">'+(m.sample ? (Array.isArray(m.teamRates) ? 'Media di '+safe(m.sample)+' risultati delle due squadre · ' : safe(m.hits)+' su '+safe(m.sample)+' gare · ') : '')+label+'</div></span><div class="conf-ring" style="--pct:'+pct+'" role="img" aria-label="Indicatore storico '+score+'"><span>'+score+'</span></div></div>';
     }).join('')+'</div></details>'+experimentalHtml+'</details></article>';
-  }).join('');
+  }).join('') + (ordered.length > confDisplayLimit
+    ? '<div style="margin:16px 0;text-align:center"><button type="button" class="button" data-show-more-conf>Mostra altre '+Math.min(30,ordered.length-confDisplayLimit)+' partite · '+Math.min(confDisplayLimit,ordered.length)+' di '+ordered.length+'</button></div>'
+    : '');
   restoreCardDisclosures(root,opened);
 }
 function syncTimeFilters(){
@@ -664,7 +669,7 @@ async function loadConf({background=false}={}){
   const scope = selectedDate ? 'giorno '+selectedDate.split('-').reverse().join('/') : 'prossime '+hours+' ore';
   void loadDailyMultiples(selectedDate,requestId);
   $('#conf-message').textContent = (query ? 'Cerco “'+query+'” · ' : 'Carico le partite · ')+scope+'…';
-  if(!background)$('#conf-results').innerHTML = '';
+  if(!background){confDisplayLimit=30;$('#conf-results').innerHTML = '<div class="empty">Caricamento calendario e analisi in corso…</div>';}
   try{
     const params = new URLSearchParams({hours:String(hours),limit:'all'});
     if (selectedDate) params.set('date',selectedDate);
@@ -691,6 +696,7 @@ async function loadConf({background=false}={}){
   }catch(error){
     if (requestId !== confLoadSequence) return;
     $('#conf-message').textContent = 'Analisi non disponibile: '+error.message;
+    if(!confItems.length)$('#conf-results').innerHTML='<div class="empty">Non riesco a caricare le partite. Premi Aggiorna per riprovare.</div>';
   }finally{
     if (requestId !== confLoadSequence) return;
     confRequestPending=false;
@@ -919,6 +925,7 @@ document.addEventListener('click',async e=>{
  }
 });
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
+document.addEventListener('click',e=>{if(e.target.closest('[data-show-more-conf]')){confDisplayLimit+=30;renderConf(confItems);}});
 const analyzeButton = $('#analyze'); if(analyzeButton) analyzeButton.addEventListener('click',loadConf);
 $('#match-sort').addEventListener('change', () => renderConf(confItems));
 $('#conf-filter').addEventListener('change', e => { confOnlyQualified = e.target.checked; renderConf(confItems); });
