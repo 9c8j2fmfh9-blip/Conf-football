@@ -1,14 +1,16 @@
 import {playerMarketResearch} from './mycombo-player-research.js';
 import {selectFixture} from './conf-selection.js';
+import {MULTIPLE_MINIMUM_SCORE} from './multiple-policy.js';
 
 const club=name=>String(name||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
 
 const goalKeys=new Set(['one','draw','two','over25','btts','over35','bttsOver25']);
-const marketCount=leg=>Number(Boolean(leg.goal))+Number(Boolean(leg.corner))+(leg.playerMarkets||[]).length;
+// Player averages have no event probability: never count them toward a >=70% combo.
+const marketCount=leg=>Number(Boolean(leg.goal))+Number(Boolean(leg.corner));
 
 // These are unpriced drafts. Never infer MyCombo prices or joint probabilities
 // by multiplying marginal percentages or individual market odds.
-export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
+export function buildAlternativeMultiples(fixtures,{now=Date.now(),minimumScore=MULTIPLE_MINIMUM_SCORE}={}) {
  const options=[],seen=new Set();
  for(const f of fixtures){
   const kickoff=Date.parse(f.date);
@@ -17,14 +19,14 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
   if(!home||!away||home===away)continue;
   const identity=[home,away,kickoff].join('|');
   if(seen.has(identity))continue;
-  const selection=selectFixture(f);
+  const selection=selectFixture(f,minimumScore);
   const goal=selection.candidates.find(p=>goalKeys.has(p.key));
   // Total FT corners are supplied as Diretta historical stat markets. Older
   // corner providers use kind=corner; support both while excluding team/half lines.
   const corner=selection.candidates.find(p=>p.kind==='corner'&&p.side==='total'&&(p.half||'full')==='full')
    ||selection.candidates.find(p=>p.kind==='diretta_stat'&&p.metric==='corners'&&p.key.startsWith('diretta_total_corners_'));
   const playerMarkets=playerMarketResearch(f.direttaPlayerStats);
-  if(!goal&&!corner&&!playerMarkets.length)continue;
+  if(!goal&&!corner)continue;
   seen.add(identity);
   const evidenceScores=[goal?.evidence,corner?.evidence].filter(Number.isFinite);
   options.push({fixtureId:f.fixtureId,home:f.home,away:f.away,date:f.date,league:f.league,
@@ -57,6 +59,6 @@ export function buildAlternativeMultiples(fixtures,{now=Date.now()}={}) {
     comboPool.length<=3&&i===1?'Stesse partite della proposta compatta: sono le uniche con mercati combinabili nei dati di oggi.':
     i===0?'Bozza compatta: fino a 3 partite con almeno due mercati disponibili per gara.':
     'Bozza estesa: fino a 5 partite con almeno due mercati disponibili per gara.',
-   note:'Quota non calcolata: verifica la combinazione e il prezzo direttamente su Sisal. I dati giocatore sono descrittivi; la formazione va confermata. Le percentuali dei singoli mercati non sono la probabilità della combo.'};
+   note:'Ogni mercato gol o corner incluso supera la soglia '+minimumScore+'% di stima CONF (gol) o frequenza storica (corner). I dati giocatore sono solo approfondimenti facoltativi: non hanno una probabilità verificata e non rendono la combo qualificata. Quota non calcolata: verifica la combinazione su Sisal. Le percentuali dei singoli mercati non sono la probabilità congiunta della combo.'};
  });
 }
