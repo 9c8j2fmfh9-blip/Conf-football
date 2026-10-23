@@ -6,12 +6,12 @@ const elements=new Map();const el=s=>{if(!elements.has(s))elements.set(s,{innerH
 const hourButtons=['3','12','24'].map(value=>({attributes:{'data-hours':value},getAttribute(k){return this.attributes[k]},setAttribute(k,v){this.attributes[k]=v}}));
 const oddsRoots=[];
 const document={querySelector:el,querySelectorAll:selector=>selector==='[data-hours]'?hourButtons:oddsRoots,createElement:()=>({append(){}})};
-let script=fs.readFileSync('index.html','utf8').split('<script type="module">')[1].split('</script>')[0].replace('import { selectFixture } from "/conf-selection.js";','');
+let script=fs.readFileSync('index.html','utf8').split('<script type="module">')[1].split('</script>')[0].replace('import { selectFixture } from "/conf-selection.js";','').replace('import { SISAL_SITE_URL, ticketForSisalClipboard } from "/sisal-ticket-export.js";','');
 script=script.slice(0,script.indexOf("\n$('#date').value ="));
 const fixture=(id,score)=>({fixtureId:id,home:'Casa '+id,away:'Ospite',date:'2026-10-21T18:45:00Z',league:'Champions League',country:'Europa',experimentalEstimate:{available:true,samples:{home:10,away:10},estimates:{over25:score},expectedGoals:{home:2,away:1.5}},markets:{over25:{label:'Over 2.5 FT',score:70,hits:14,sample:20,venueSamples:{home:10,away:10},teamRates:[.7,.7]}},cornerMarkets:{markets:[]}});
 const fixtures=[fixture('selected',72),fixture('below',55)];
 const retries=[];
-let request='';const context=vm.createContext({document,selectFixture,console,Date,URLSearchParams,AbortSignal,setTimeout:(fn,ms)=>{retries.push({fn,ms});return retries.length},localStorage:{getItem(){return null},setItem(){}},fetch:async url=>{if(!url.includes('/api/daily-multiples'))request=url;return{ok:true,json:async()=>({fixtures,analyzedCount:82,selectedCount:1,method:'Metodo di prova',preview:{partial:false}})}}});
+let request='';const context=vm.createContext({document,selectFixture,SISAL_SITE_URL:'https://www.sisal.it',ticketForSisalClipboard:()=>'',console,Date,URLSearchParams,AbortSignal,setTimeout:(fn,ms)=>{retries.push({fn,ms});return retries.length},localStorage:{getItem(){return null},setItem(){}},fetch:async url=>{if(!url.includes('/api/daily-multiples'))request=url;return{ok:true,json:async()=>({fixtures,analyzedCount:82,selectedCount:1,method:'Metodo di prova',preview:{partial:false}})}}});
 vm.runInContext(script,context);context.fixtures=fixtures;
 vm.runInContext('confOnlyQualified=true;renderConf(fixtures)',context);
 assert.equal((el('#conf-results').innerHTML.match(/<article/g)||[]).length,1);
