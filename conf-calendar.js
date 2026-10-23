@@ -34,7 +34,17 @@ export async function calendarConf(params,estimate,{now=Date.now(),getDay=getDir
  const date=/^\d{4}-\d{2}-\d{2}$/.test(String(params.date||''))?String(params.date):'';
  const targetDays=date?[date]:[...new Set([italianDay(now),italianDay(now+hours*3600000),...(hours>24?[italianDay(now+24*3600000)]:[])])];
  const requested=[...new Set(targetDays.flatMap(day=>[-1,0,1].map(delta=>new Date(Date.parse(day+'T12:00:00Z')+delta*86400000).toISOString().slice(0,10))))];
- const results=await Promise.all(requested.map(day=>getDay(day,{now})));
+ // A missing future day's upstream feed must not hold the whole mobile page for 30 seconds.
+ const boundedDay=async day=>{
+  let timer;
+  try{return await Promise.race([
+   Promise.resolve().then(()=>getDay(day,{now})),
+   new Promise(resolve=>{timer=setTimeout(()=>resolve({date:day,events:[],issue:'Calendario '+day+' ancora in aggiornamento'}),6500);})
+  ]);}
+  catch(error){return{date:day,events:[],issue:String(error?.message||error)};}
+  finally{clearTimeout(timer);}
+ };
+ const results=await Promise.all(requested.map(boundedDay));
  if(results.every(r=>!r.fetchedAt))return{...(baseData||openDataConf(params,estimate,{now,allFixtures:true})),calendarCount:base.fixtures.length,providerIssue:{code:'CALENDAR_UNAVAILABLE',message:'Calendario Diretta non disponibile: elenco limitato alla copertura statistica.'},calendarCoverage:{partial:true,issue:results.map(r=>r.issue).filter(Boolean).join('; ')}};
  const issue=results.filter(r=>!r.fetchedAt||r.issue||now-Date.parse(r.fetchedAt)>30*60000);
  const merged=mergeCalendar(base,results.flatMap(r=>r.events||[]),{now,params,coverage:{days:targetDays,feedDays:requested,source:'https://www.diretta.it/',fetchedAt:results.map(r=>r.fetchedAt).filter(Boolean).sort()[0],partial:issue.length>0,issue:issue.length?'Aggiornamento di parte del calendario non riuscito; controlla l’orario della fonte.':null}});
