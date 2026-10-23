@@ -6,6 +6,8 @@ const report={schemaVersion:1,evaluatedAt:'2026-10-22T11:45:00Z',recorded:3,sett
 test('status distinguishes pending from confirmed results and does not expose raw records',()=>{
  const s=summarizeForecastReport(report,{now});assert.equal(s.recorded,3);assert.equal(s.pending,2);assert.equal(s.settled,1);assert.equal(s.stale,false);assert.equal(s.rows,undefined);assert.equal(s.validated,false);
  assert.equal(s.pendingReasons['Identificativo calendario assente'],1);
+ const stats=summarizeForecastReport({...report,statPending:[{reason:'Statistiche finali ancora assenti'}]},{now});
+ assert.equal(stats.pending,2);assert.equal(stats.statPending,1);
  assert.equal(summarizeForecastReport(report,{now:now+3*3600000}).stale,true);
  assert.throws(()=>summarizeForecastReport({...report,settled:4},{now}));
  assert.throws(()=>summarizeForecastReport({...report,pending:[]},{now}));
