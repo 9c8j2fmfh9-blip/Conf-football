@@ -1,4 +1,5 @@
 import {buildAlternativeMultiples} from './alternative-multiples.js';
+import {MULTIPLE_MINIMUM_SCORE,eligibleMultipleMarkets} from './multiple-policy.js';
 import {pricedSelection,MINIMUM_ODDS} from './priced-selection.js';
 import {matchProposalOdds} from './sisal-odds.js';
 
@@ -9,7 +10,7 @@ function bestAvailableTicket(fixtures,sheet,{now,club}){
  for(const f of fixtures){
   if(!f.selection?.qualified||f.dataStale||f.status!=='NS'||!Number.isFinite(Date.parse(f.date))||Date.parse(f.date)<=now||seen.has(String(f.fixtureId)))continue;
   seen.add(String(f.fixtureId));
-  const options=(f.selection.candidates||[f.selection.primary]).filter(p=>p&&Number.isFinite(p.score)&&p.score>=60&&p.score<=100).map(p=>{
+  const options=eligibleMultipleMarkets(f).map(p=>{
    const price=matchProposalOdds({...f,selection:{primary:p}},sheet,{now}).sisal;
    return price.available?{fixtureId:f.fixtureId,home:f.home,away:f.away,date:f.date,league:f.league,market:p.key,label:p.label,score:p.score,odds:price.value,sourceUpdatedAt:price.sourceUpdatedAt}:null;
   }).filter(Boolean).sort((a,b)=>b.odds-a.odds||b.score-a.score);
@@ -60,9 +61,12 @@ export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=M
  const candidates=[];
  for(const f of fixtures){
   if(!f.selection?.qualified || f.dataStale || f.status!=='NS' || Date.parse(f.date)<=now || !Number.isFinite(Date.parse(f.date)) || seen.has(String(f.fixtureId)))continue;
-  const chosen=pricedSelection(f,sheet,{now,minimumOdds,preserveCorner:false});
+  const eligible=eligibleMultipleMarkets(f);
+  if(!eligible.length)continue;
+  const screened={...f,selection:{...f.selection,qualified:true,primary:eligible[0],candidates:eligible}};
+  const chosen=pricedSelection(screened,sheet,{now,minimumOdds,preserveCorner:false});
   const p=chosen.primary;
-  if(!p || !Number.isFinite(p.score) || p.score<60 || p.score>100)continue;
+  if(!p || p.score<MULTIPLE_MINIMUM_SCORE)continue;
   const price=chosen.odds.sisal;
   if(!price.available)continue;
   seen.add(String(f.fixtureId));
@@ -106,8 +110,8 @@ export function buildDailyMultiples(fixtures,sheet,{now=Date.now(),minimumOdds=M
    if(fallback)return{target,available:true,targetReached:fallback.total>=low,fallback:fallback.total<low,searchComplete:fallback.searchComplete,totalOdds:Number(fallback.total.toFixed(2)),legs:fallback.legs,bookmaker:'Sisal',reason:fallback.total<low?'Obiettivo quota 100 non raggiunto: '+(fallback.searchComplete?'massima quota disponibile':'migliore quota trovata')+' con proposte qualificate e quote verificate.':'Obiettivo raggiunto con mercati alternativi qualificati.'};
   }
   return chosen?{target,available:true,targetReached:true,fallback:false,totalOdds:Number(chosen.total.toFixed(2)),legs:chosen.legs,bookmaker:'Sisal'}:
-   {target,available:false,totalOdds:null,legs:[],reason:!candidates.length&&fixtures.some(f=>f.selection?.qualified)?'Nessuna quota Sisal verificabile per le proposte attuali: multipla non calcolabile.':'Non ci sono combinazioni vicine a quota '+target+' con le proposte qualificate e le quote verificate disponibili.'};
+   {target,available:false,totalOdds:null,legs:[],reason:!candidates.length&&fixtures.some(f=>f.selection?.qualified)?'Nessuna quota Sisal verificabile con stime CONF di almeno '+MULTIPLE_MINIMUM_SCORE+'%: multipla non calcolabile.':'Non ci sono combinazioni vicine a quota '+target+' con ogni singola stima almeno '+MULTIPLE_MINIMUM_SCORE+'% e quote verificate disponibili.'};
  });
- return {bookmaker:'Sisal',validationStatus:'experimental_draft',validated:false,productionBettingApproved:false,sourceUpdatedAt:sheet?.sourceUpdatedAt||null,eligibleCount:candidates.length,preferredMinimumOdds:minimumOdds,tolerancePercent:10,tickets:tickets.map(t=>({...t,experimental:true,validated:false,jointProbability:null})),alternatives:buildAlternativeMultiples(fixtures,{now}),
-  method:'Combinazioni tra le percentuali più alte, prima le fasce migliori e poi meno peso alle quote basse; una giocata per partita e nessuna squadra ripetuta. Sotto quota '+minimumOdds.toFixed(2)+' si cerca un mercato alternativo qualificato con quota ufficiale più alta, inclusi Over 3.5 e GG + Over 2.5. Se manca, la proposta originale resta consultabile e utilizzabile. Obiettivo quota ±10%. Se quota 100 non è raggiungibile, si mostra la migliore quota trovata entro 100 considerando tutti i mercati alternativi qualificati, senza abbassare i criteri. Quote dei fogli ufficiali, non live. Le percentuali delle singole sono stime sperimentali: non indicano la probabilità di vincere la multipla.'};
+ return {bookmaker:'Sisal',validationStatus:'experimental_draft',validated:false,productionBettingApproved:false,sourceUpdatedAt:sheet?.sourceUpdatedAt||null,eligibleCount:candidates.length,preferredMinimumOdds:minimumOdds,tolerancePercent:10,tickets:tickets.map(t=>({...t,experimental:true,validated:false,jointProbability:null})),alternatives:buildAlternativeMultiples(fixtures,{now,minimumScore:MULTIPLE_MINIMUM_SCORE}),minimumSelectionScore:MULTIPLE_MINIMUM_SCORE,
+  method:'Ogni selezione richiede stima CONF e frequenza storica almeno '+MULTIPLE_MINIMUM_SCORE+'% quando disponibili. Combinazioni tra le percentuali più alte, prima le fasce migliori e poi meno peso alle quote basse; una giocata per partita e nessuna squadra ripetuta. Sotto quota '+minimumOdds.toFixed(2)+' si cerca un mercato alternativo qualificato con quota ufficiale più alta, inclusi Over 3.5 e GG + Over 2.5. Se manca, la proposta originale resta consultabile e utilizzabile. Obiettivo quota ±10%. Se quota 100 non è raggiungibile, si mostra la migliore quota trovata entro 100 considerando tutti i mercati alternativi qualificati, senza abbassare i criteri. Quote dei fogli ufficiali, non live. Le percentuali delle singole sono stime sperimentali: non indicano la probabilità di vincere la multipla.'};
 }
