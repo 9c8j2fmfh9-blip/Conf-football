@@ -1,4 +1,5 @@
 import {comparisonClub} from './comparison-odds.js';
+import {MULTIPLE_MINIMUM_SCORE,eligibleMultipleMarkets} from './multiple-policy.js';
 // Each ticket belongs to one bookmaker. Scores are selection heuristics;
 // they are never multiplied into an advertised chance of winning.
 export function buildComparisonTickets(fixtures,quotes,{now=Date.now(),maxLegs=16}={}){
@@ -9,7 +10,7 @@ export function buildComparisonTickets(fixtures,quotes,{now=Date.now(),maxLegs=1
   const q=records.get(String(f.fixtureId));if(!q||Date.parse(q.date)!==Date.parse(f.date)||comparisonClub(q.home)!==comparisonClub(f.home)||comparisonClub(q.away)!==comparisonClub(f.away))continue;
   if(!Number.isFinite(Date.parse(q.observedAt))||now-Date.parse(q.observedAt)>5*60000||Date.parse(q.observedAt)>now+300000)continue;
   for(const book of Object.values(q.books)){
-   const options=(f.selection.candidates||[f.selection.primary]).filter(p=>p&&p.kind!=='corner'&&Number.isFinite(p.score)&&p.score>=60&&p.score<=100&&book.odds[p.key]?.value>1&&!book.odds[p.key]?.ambiguous);
+   const options=eligibleMultipleMarkets(f).filter(p=>book.odds[p.key]?.value>1&&!book.odds[p.key]?.ambiguous);
    options.sort((a,b)=>(b.evidence??0)-(a.evidence??0)||b.score-a.score);
    if(!options.length)continue;
    const p=options[0],price=book.odds[p.key];
@@ -36,7 +37,7 @@ export function buildComparisonTickets(fixtures,quotes,{now=Date.now(),maxLegs=1
   return {...ticket,reason:ticket.targetReached?'Obiettivo indicativo raggiunto con giocate qualificate e quote dello stesso bookmaker.':'Obiettivo non raggiunto: queste sono le giocate disponibili senza aggiungere mercati non qualificati.',source,indicative:true};
  });
  return {tickets,bookmaker:tickets.find(t=>t.available)?.bookmaker||null,eligibleCount:Math.max(0,...[...books.values()].map(b=>b.legs.length)),source,sourceUpdatedAt:quotes.fixtures.map(q=>q.observedAt).filter(Boolean).sort()[0]||null,comparison:true,maxLegs,
-  method:'Schedine con un unico bookmaker per ciascuna proposta, quote rilevate dalla fonte indicata e totale indicativo. Soglia CONF e campioni invariati; massimo '+maxLegs+' partite, nessuna squadra ripetuta. Quota 100 è un obiettivo indicativo, senza tetto a 100: la selezione si ferma quando lo raggiunge. Nessuna probabilità di vincita della multipla viene stimata.'};
+  method:'Schedine con un unico bookmaker per ciascuna proposta, quote rilevate dalla fonte indicata e totale indicativo. Soglia minima '+MULTIPLE_MINIMUM_SCORE+'% per ogni singola selezione (stima e storico disponibili); massimo '+maxLegs+' partite, nessuna squadra ripetuta. Quota 100 è un obiettivo indicativo, senza tetto a 100: la selezione si ferma quando lo raggiunge. Nessuna probabilità di vincita della multipla viene stimata.'};
 }
 
 export function chooseReferenceTickets(original,reference){
