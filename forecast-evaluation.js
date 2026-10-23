@@ -1,5 +1,30 @@
 // Score the first recorded forecast per fixture and model revision, once only.
 // Results must carry an exact calendar identifier and a regulation-time score.
+// Join OpenFoot calendar fixtures to Diretta results only when the kickoff and
+// BOTH club names identify exactly one event. Never guess from a score or market.
+const normalizeTeam = value => String(value||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+ .replace(/\b(?:fc|afc|ac|cf|sc|fk)\b/g,' ').replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
+const youthTag = value => /\b(?:u\d{2}|women|woman|femminile|reserves|reserve|ii|b team)\b/.test(value);
+function sameTeam(a,b){
+ if(!a||!b)return false;
+ if(a===b)return true;
+ if(youthTag(a)||youthTag(b))return false;
+ const short=a.length<b.length?a:b,long=a.length<b.length?b:a;
+ return short.length>=7&&long.startsWith(short+' ');
+}
+function resolveOpenFixture(f,results,now){
+ if(!String(f.fixtureId||'').startsWith('open_')||f.direttaId)return null;
+ const home=normalizeTeam(f.calendarHome||f.home),away=normalizeTeam(f.calendarAway||f.away);
+ const start=Date.parse(f.kickoffAt);
+ const options=results.filter(r=>{
+  const t=Date.parse(r?.date);
+  if(!r?.id||!Number.isFinite(t)||Math.abs(t-start)>300000||t>=now)return false;
+  const rh=normalizeTeam(r.home),ra=normalizeTeam(r.away);
+  // At most one abbreviated team name; do not make two fuzzy guesses.
+  return sameTeam(home,rh)&&sameTeam(away,ra)&&(home===rh||away===ra);
+ });
+ return options.length===1?options[0]:null;
+}
 export function evaluateCaptures(captures, results, {evaluatedAt=new Date().toISOString()}={}) {
  const hasEstimate=f=>f.experimentalEstimate?.available&&!f.dataStale;
  const hasStatMarkets=f=>(f.direttaStatMarkets||[]).some(m=>m.score!==null&&m.sample>=12);
@@ -24,12 +49,12 @@ const GOAL_MARKETS=['one','draw','two','doubleChance1X','doubleChanceX2','double
    else if(hasStatMarkets(f)&&!hasStatMarkets(earliest.get(key)))earliest.set(key,{...earliest.get(key),direttaStatMarkets:f.direttaStatMarkets});
   }
  }
- const rows=[],pending=[];
+ const rows=[],pending=[],statPending=[];
  for(const [key,f] of earliest){
   const id=f.direttaId||(String(f.fixtureId).startsWith('diretta_')?String(f.fixtureId).slice(8):null);
-  const r=resultMap.get(id),score=r?.score;
+  const r=id?resultMap.get(id):resolveOpenFixture(f,[...resultMap.values()].filter(Boolean),now),score=r?.score;
   const valid=r?.status==='FT'&&Number.isInteger(score?.home)&&Number.isInteger(score?.away)&&score.home>=0&&score.away>=0&&
-   r.home===(f.calendarHome||f.home)&&r.away===(f.calendarAway||f.away)&&Date.parse(r.date)===Date.parse(f.kickoffAt)&&Date.parse(r.date)<now;
+   (id?(r.home===(f.calendarHome||f.home)&&r.away===(f.calendarAway||f.away)&&Date.parse(r.date)===Date.parse(f.kickoffAt)):Math.abs(Date.parse(r.date)-Date.parse(f.kickoffAt))<=300000)&&Date.parse(r.date)<now;
   if(!valid){pending.push({key,fixtureId:f.fixtureId,reason:id?'Risultato finale non confermato':'Identificativo calendario assente'});continue;}
   const h=score.home,a=score.away;
   const truth={one:+(h>a),draw:+(h===a),two:+(h<a),doubleChance1X:+(h>=a),doubleChanceX2:+(h<=a),doubleChance12:+(h!==a),
@@ -52,8 +77,8 @@ const GOAL_MARKETS=['one','draw','two','doubleChance1X','doubleChanceX2','double
   }
   Object.assign(markets,statMetrics);
   const missingStatMarkets=(f.direttaStatMarkets||[]).filter(m=>m.score!==null&&m.sample>=12&&!statMetrics[m.key]);
-  if(missingStatMarkets.length)pending.push({key,fixtureId:f.fixtureId,reason:r.statistics?.complete?'Risultato confermato; dato finale Diretta assente per uno o più mercati':'Risultato confermato; statistiche Diretta finali in attesa'});
-  rows.push({key,fixtureId:f.fixtureId,modelRevision:f.modelRevision,capturedAt:f.capturedAt,kickoffAt:f.kickoffAt,score,markets});
+  if(missingStatMarkets.length)statPending.push({key,fixtureId:f.fixtureId,reason:r.statistics?.complete?'Risultato confermato; dato finale Diretta assente per uno o più mercati':'Risultato confermato; statistiche Diretta finali in attesa'});
+  rows.push({key,fixtureId:f.fixtureId,resultId:r.id,matchMethod:id?'calendar-id':'unique-team-kickoff',home:f.home,away:f.away,modelRevision:f.modelRevision,capturedAt:f.capturedAt,kickoffAt:f.kickoffAt,score,markets});
  }
  const revisions=[...new Set(rows.map(r=>r.modelRevision))];
  const byRevision=revisions.map(modelRevision=>({modelRevision,markets:Object.fromEntries([...GOAL_MARKETS,...new Set(rows.flatMap(r=>Object.keys(r.markets).filter(k=>k.startsWith('diretta_'))))].map(k=>{
@@ -63,6 +88,6 @@ const GOAL_MARKETS=['one','draw','two','doubleChance1X','doubleChanceX2','double
   const pairedMean=fn=>paired.length?paired.reduce((s,r)=>s+fn(r),0)/paired.length:null;
   return[k,{n:values.length,brier:mean(r=>r.brier),meanForecast:mean(r=>r.p),observedRate:mean(r=>r.y),baselineN:paired.length,pairedModelBrier:pairedMean(r=>r.brier),baselineBrier:pairedMean(r=>r.baselineBrier),brierImprovement:pairedMean(r=>r.baselineBrier-r.brier)}];
  }))}));
- return {schemaVersion:1,evaluatedAt,lastCapturedAt:captures.map(c=>c.capturedAt).filter(t=>Number.isFinite(Date.parse(t))&&Date.parse(t)<=now).sort().at(-1)||null,validated:false,productionBettingApproved:false,recorded:earliest.size,estimated:[...earliest.values()].filter(hasEstimate).length,evaluatedForecasts:rows.filter(r=>Object.keys(r.markets).length).length,settled:rows.length,pending,byRevision,rows,
+ return {schemaVersion:1,evaluatedAt,lastCapturedAt:captures.map(c=>c.capturedAt).filter(t=>Number.isFinite(Date.parse(t))&&Date.parse(t)<=now).sort().at(-1)||null,validated:false,productionBettingApproved:false,recorded:earliest.size,estimated:[...earliest.values()].filter(hasEstimate).length,evaluatedForecasts:rows.filter(r=>Object.keys(r.markets).length).length,settled:rows.length,pending,statPending,byRevision,rows,
   note:'Prima stima disponibile per partita e revisione; esiti nei tempi regolamentari. Nessuna stima di rendimento senza quote verificate.'};
 }
