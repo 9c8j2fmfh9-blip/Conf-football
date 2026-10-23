@@ -47,12 +47,12 @@ export function createCalendarStore({initial={},fetcher=fetch,persist=()=>{}}={}
   })().finally(()=>inflight.delete(day));
   inflight.set(day,job);return job;
  }
- return {async get(day,{now=Date.now()}={}){
+ return {async get(day,{now=Date.now(),waitForFresh=false}={}){
   const previous=cache.get(day);
   const age=now-Date.parse(previous?.fetchedAt);
   if(previous&&age>=-5*60000&&age<5*60000)return previous;
   const updating=refresh(day,now);
-  if(previous&&age>=-5*60000&&age<24*3600000)return{...previous,refreshing:inflight.has(day),issue:errors.get(day)||null};
+  if(!waitForFresh&&previous&&age>=-5*60000&&age<24*3600000)return{...previous,refreshing:inflight.has(day),issue:errors.get(day)||null};
   return updating;
  }};
 }
