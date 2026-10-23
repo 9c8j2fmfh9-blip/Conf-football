@@ -12,19 +12,19 @@ let previous=[];try{previous=JSON.parse(readFileSync(resolve(root,'forecast-eval
 const results=new Map(previous.map(r=>[r.id,r])),issues=[];
 for(const date of dates){
  if(Math.abs(Date.parse(date+'T12:00:00Z')-now)>7*86400000)continue;
- const day=await getDirettaDay(date,{now});
+ const day=await getDirettaDay(date,{now,waitForFresh:true});
  if(day.issue)issues.push({date,issue:day.issue});
  for(const r of day.events||[])if(r.status==='FT'&&r.score)results.set(r.id,r);
 }
 // Fetch final match stats only for fixtures whose pre-match capture actually
 // recorded a qualified Diretta market. Keep this bounded for the scheduled job.
 const needsStats=new Set(captures.flatMap(c=>(c.fixtures||[]).filter(f=>(f.direttaStatMarkets||[]).some(m=>m.score!==null&&m.sample>=12)).map(f=>String(f.direttaId||String(f.fixtureId||'').replace(/^diretta_/,'')))));
-const statTargets=[...results.values()].filter(r=>needsStats.has(String(r.id))&&r.status==='FT'&&r.score&&!r.statistics).slice(0,60);
-let cursor=0;const workers=Array.from({length:2},async()=>{while(cursor<statTargets.length){const result=statTargets[cursor++];try{
+const statTargets=[...results.values()].filter(r=>needsStats.has(String(r.id))&&r.status==='FT'&&r.score&&!r.statistics).slice(0,12);
+let cursor=0;const workers=Array.from({length:3},async()=>{while(cursor<statTargets.length){const result=statTargets[cursor++];try{
  const headers={'x-fsign':'SW9D1eZo','Referer':'https://www.diretta.it/'};
  const [statsResponse,eventsResponse]=await Promise.all([
-  fetch('https://400.flashscore.ninja/400/x/feed/df_st_1_'+result.id,{headers,signal:AbortSignal.timeout(12000)}),
-  fetch('https://400.flashscore.ninja/400/x/feed/df_sui_1_'+result.id,{headers,signal:AbortSignal.timeout(12000)})
+  fetch('https://400.flashscore.ninja/400/x/feed/df_st_1_'+result.id,{headers,signal:AbortSignal.timeout(9000)}),
+  fetch('https://400.flashscore.ninja/400/x/feed/df_sui_1_'+result.id,{headers,signal:AbortSignal.timeout(9000)})
  ]);
  if(!statsResponse.ok)throw Error('statistiche HTTP '+statsResponse.status);
  const [statsText,eventsText]=await Promise.all([statsResponse.text(),eventsResponse.ok?eventsResponse.text():Promise.resolve('')]);
