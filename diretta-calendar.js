@@ -52,7 +52,8 @@ export function createCalendarStore({initial={},fetcher=fetch,persist=()=>{}}={}
   const age=now-Date.parse(previous?.fetchedAt);
   if(previous&&age>=-5*60000&&age<5*60000)return previous;
   const updating=refresh(day,now);
-  if(!waitForFresh&&previous&&age>=-5*60000&&age<24*3600000)return{...previous,refreshing:inflight.has(day),issue:errors.get(day)||null};
+  // Serve the existing dated calendar immediately while refreshing upstream. Never hide its age.
+  if(!waitForFresh&&previous&&age>=-5*60000&&age<7*86400000)return{...previous,refreshing:inflight.has(day),issue:errors.get(day)||null};
   return updating;
  }};
 }
