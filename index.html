@@ -22,7 +22,11 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 @media(max-width:850px){.filters{grid-template-columns:1fr 1fr}.filters .field:nth-child(3){grid-column:1/-1}.filters button{width:100%}}
 .field-label{font-size:12px;color:var(--muted);margin-bottom:5px}.hour-shortcuts{display:flex;gap:5px}.hour-button{flex:1;padding:11px 10px;border:1px solid var(--line);border-radius:10px;background:#0b1424;color:var(--text);font:inherit;cursor:pointer}.hour-button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#082015;font-weight:800}
 .proposal-odds{margin-top:9px;padding-top:8px;border-top:1px solid var(--line)}.odds-chips{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:3px}.odds-chip{font-size:13px;background:#20334a;border-radius:7px;padding:4px 8px}.odds-chip strong{color:var(--green)}
-.multiple-card{padding:13px;border:1px solid var(--line);border-radius:12px;background:#0b1424;min-width:0}.multiple-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.multiple-head strong{font-size:23px;color:var(--green)}.multiple-card summary{cursor:pointer;margin-top:8px}.multiple-leg{border-top:1px solid var(--line);padding:8px 0;font-size:13px}.multiple-leg:first-child{margin-top:8px}.multiple-values{display:flex;justify-content:space-between;gap:8px;color:var(--muted)}#daily-multiples{margin:16px 0}#daily-multiples h2{margin-bottom:2px}#daily-multiples-note{margin:4px 0 9px}
+.multiple-card{padding:13px;border:1px solid var(--line);border-radius:12px;background:#0b1424;min-width:0}
+.ticket-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+.ticket-actions .button,.ticket-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 12px;border-radius:9px;font:inherit;font-size:14px;font-weight:750;cursor:pointer;text-decoration:none}
+.ticket-actions a{border:1px solid var(--line);color:var(--text);background:#17263b}
+.ticket-actions .button:focus-visible,.ticket-actions a:focus-visible{outline:2px solid var(--green);outline-offset:3px}.multiple-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.multiple-head strong{font-size:23px;color:var(--green)}.multiple-card summary{cursor:pointer;margin-top:8px}.multiple-leg{border-top:1px solid var(--line);padding:8px 0;font-size:13px}.multiple-leg:first-child{margin-top:8px}.multiple-values{display:flex;justify-content:space-between;gap:8px;color:var(--muted)}#daily-multiples{margin:16px 0}#daily-multiples h2{margin-bottom:2px}#daily-multiples-note{margin:4px 0 9px}
 </style>
 </head>
 <body>
@@ -88,6 +92,7 @@ header,main{max-width:1100px;margin:auto;padding-left:18px;padding-right:18px}he
 </main>
 <script type="module">
 import { selectFixture } from "/conf-selection.js";
+import { SISAL_SITE_URL, ticketForSisalClipboard } from "/sisal-ticket-export.js";
 const $ = (s) => document.querySelector(s);
 let games = [];
 let confItems = [];
@@ -438,11 +443,11 @@ function renderDailyMultiples(data){
  $('#daily-multiples-method').textContent=data.method||'';
  const stamp=data.sourceUpdatedAt?new Date(data.sourceUpdatedAt).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}):'';
  $('#daily-multiples-note').textContent=(data.date?'Solo oggi · '+data.date.split('-').reverse().join('/'):'Solo oggi, ora italiana')+' · entro le 21:30, ora italiana · bozze sperimentali · '+(data.eligibleCount??0)+' proposte con quote disponibili · quota 100 indicativa, anche superiore';
- root.innerHTML=data.tickets.map(ticket=>{
+ root.innerHTML=data.tickets.map((ticket,ticketIndex)=>{
   const title='<div class="multiple-head"><span>'+(ticket.fallback?'Alternativa alla quota '+safe(ticket.target):'Obiettivo quota '+safe(ticket.target))+'</span><strong>'+(ticket.available?safe(ticket.totalOdds.toFixed(2).replace('.',',')):'—')+'</strong></div>';
   if(!ticket.available)return '<article class="multiple-card">'+title+'<p class="time">'+safe(ticket.reason)+'</p></article>';
   const legs=ticket.legs.map(leg=>'<div class="multiple-leg"><b>'+safe(leg.home)+' – '+safe(leg.away)+'</b><div class="time">'+safe(new Date(leg.date).toLocaleString('it-IT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+'</div><div class="multiple-values"><span>'+safe(leg.label)+' · stima '+safe(leg.score)+'%</span><b>'+safe(leg.odds.toFixed(2).replace('.',','))+'</b></div>'+(leg.sourceUrl?'<div class="time">'+safe(leg.bookmaker||ticket.bookmaker)+' · rilevata '+safe(new Date(leg.sourceUpdatedAt).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'}))+' · <a href="'+safe(leg.sourceUrl)+'" target="_blank" rel="noopener noreferrer">Fonte</a></div>':'')+'</div>').join('');
-  return '<article class="multiple-card">'+title+(ticket.fallback?'<p class="time">'+safe(ticket.reason)+'</p>':'')+'<div class="time">'+safe(ticket.legs.length)+' partite · '+safe(ticket.bookmaker||data.bookmaker||'Bookmaker indicato')+' · quota totale indicativa</div><details open><summary>Vedi le partite</summary>'+legs+'</details><p class="time">Bozza sperimentale: le percentuali delle singole non sono la probabilità di vincita della multipla. Verifica quote e disponibilità sul bookmaker.</p></article>';
+  return '<article class="multiple-card">'+title+(ticket.fallback?'<p class="time">'+safe(ticket.reason)+'</p>':'')+'<div class="time">'+safe(ticket.legs.length)+' partite · '+safe(ticket.bookmaker||data.bookmaker||'Bookmaker indicato')+' · quota totale indicativa</div><details open><summary>Vedi le partite</summary>'+legs+'</details><div class="ticket-actions"><button class="button" type="button" data-copy-ticket="'+safe(ticketIndex)+'">📋 Copia tutte le selezioni</button><a href="'+safe(SISAL_SITE_URL)+'" target="_blank" rel="noopener noreferrer">Apri Sisal ↗</a></div><p class="time">Il link apre Sisal ma NON carica automaticamente le selezioni. Usa la copia come lista di riferimento; non è una schedina giocabile né una quota garantita.</p><p class="time">Bozza sperimentale: le percentuali delle singole non sono la probabilità di vincita della multipla. Verifica quote e disponibilità sul bookmaker.</p></article>';
  }).join('')+renderAlternativeMultiples(data.alternatives?.length?data.alternatives:[10,100].map(target=>({target,title:'Quota '+target+' alternativa MyCombo',legs:[],reason:'Nessuna combinazione con dati sufficienti per le partite ancora disponibili oggi.',note:'Nessuna quota o selezione inventata.'})));
 }
 
@@ -897,6 +902,22 @@ document.addEventListener('toggle',async e=>{
   }catch(error){root.textContent='Corner per tempo non disponibili: '+error.message;}
 },true);
 
+document.addEventListener('click',async e=>{
+ const button=e.target.closest('[data-copy-ticket]');
+ if(!button)return;
+ const index=Number(button.getAttribute('data-copy-ticket'));
+ const ticket=Number.isInteger(index)&&index>=0?currentMultiples?.tickets?.[index]:null;
+ const value=ticketForSisalClipboard(ticket);
+ if(!value){button.textContent='Selezioni non disponibili';return;}
+ try{
+  if(!navigator.clipboard?.writeText)throw Error('Clipboard non disponibile');
+  await navigator.clipboard.writeText(value);
+  button.textContent='✓ Selezioni copiate';
+ }catch{
+  window.prompt('Seleziona e copia questa lista per Sisal:',value);
+  button.textContent='Lista mostrata';
+ }
+});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav-id]');if(b) toggleFavorite(b.getAttribute('data-fav-id'));});
 const analyzeButton = $('#analyze'); if(analyzeButton) analyzeButton.addEventListener('click',loadConf);
 $('#match-sort').addEventListener('change', () => renderConf(confItems));
