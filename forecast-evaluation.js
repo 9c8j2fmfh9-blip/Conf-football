@@ -3,7 +3,7 @@
 // Join OpenFoot calendar fixtures to Diretta results only when the kickoff and
 // BOTH club names identify exactly one event. Never guess from a score or market.
 const normalizeTeam = value => String(value||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
- .replace(/\b(?:fc|afc|ac|cf|sc|fk)\b/g,' ').replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
+ .replace(/\b(?:fc|afc|ac|cf|sc|fk|rsc)\b/g,' ').replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
 const youthTag = value => /\b(?:u\d{2}|women|woman|femminile|reserves|reserve|ii|b team)\b/.test(value);
 function sameTeam(a,b){
  if(!a||!b)return false;
