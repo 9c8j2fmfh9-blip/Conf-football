@@ -80,7 +80,7 @@ const store=createHistoryStore({initial,persist:value=>{
  if(process.env.NODE_ENV==='test')return;
  try{const tmp=new URL('./diretta-history-cache.tmp',import.meta.url);writeFileSync(tmp,JSON.stringify(value));renameSync(tmp,new URL('./diretta-history-cache.json',import.meta.url));}catch{}
 }});
-export async function enrichHistory(data,estimate,{now=Date.now(),historyStore=store,statsStore=direttaStatsStore,waitMs=18000}={}){
+export async function enrichHistory(data,estimate,{now=Date.now(),historyStore=store,statsStore=direttaStatsStore,waitMs=7000}={}){
  const started=Date.now();
  const missing=data.fixtures.filter(f=>f.direttaId&&(!f.experimentalEstimate?.available||f.dataStale));
  // The first 24 upcoming fixtures are the working set for additional Diretta
