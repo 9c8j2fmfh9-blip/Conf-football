@@ -72,7 +72,7 @@ test('keeps confirmed score evaluation while marking missing final Diretta stats
  const forecast={...f,direttaStatMarkets:[{key:'diretta_total_shots_19',metric:'shots',side:'total',line:20,score:60,sample:12}]};
  const report=evaluateCaptures([{...c,fixtures:[forecast]}],[r],options);
  assert.equal(report.settled,1);assert.equal(report.rows[0].markets.diretta_total_shots_19,undefined);
- assert.equal(report.pending[0].reason,'Risultato confermato; statistiche Diretta finali in attesa');
+ assert.equal(report.pending.length,0);assert.equal(report.statPending[0].reason,'Risultato confermato; statistiche Diretta finali in attesa');
 });
 test('marks card markets pending when the final Diretta feed contains no card events',()=>{
  const markets=[{key:'diretta_total_yellow_2',metric:'yellowCards',side:'total',line:3,score:67,sample:12}];
@@ -80,5 +80,25 @@ test('marks card markets pending when the final Diretta feed contains no card ev
  const result={...r,statistics:{complete:true,cardsAvailable:false,home:{shots:10},away:{shots:12}}};
  const report=evaluateCaptures([{...c,fixtures:[forecast]}],[result],options);
  assert.equal(report.rows[0].markets.diretta_total_yellow_2,undefined);
- assert.equal(report.pending[0].reason,'Risultato confermato; dato finale Diretta assente per uno o più mercati');
+ assert.equal(report.pending.length,0);assert.equal(report.statPending[0].reason,'Risultato confermato; dato finale Diretta assente per uno o più mercati');
+});
+
+test('OpenFoot fixtures resolve exactly one confirmed Diretta result by names and kickoff',()=>{
+ const forecast={...f,fixtureId:'open_UEFA_1_europa-league_2026-10-22_jagiellonia_anderlecht',home:'Jagiellonia',away:'Anderlecht'};
+ const result={...r,home:'Jagiellonia Białystok',away:'RSC Anderlecht',id:'different1'};
+ const report=evaluateCaptures([{...c,fixtures:[forecast]}],[result],options);
+ assert.equal(report.settled,1);
+ assert.equal(report.rows[0].matchMethod,'unique-team-kickoff');
+ assert.equal(report.rows[0].resultId,'different1');
+ assert.equal(report.rows[0].markets.over25.y,1);
+ assert.equal(report.pending.length,0);
+});
+test('OpenFoot matching refuses ambiguous, unrelated and youth fixtures and does not override an explicit Diretta id',()=>{
+ const forecast={...f,fixtureId:'open_jagiellonia_anderlecht',home:'Jagiellonia',away:'Anderlecht'};
+ const result={...r,home:'Jagiellonia Białystok',away:'Anderlecht',id:'abcdef12'};
+ const capture={...c,fixtures:[forecast]};
+ assert.equal(evaluateCaptures([capture],[result,{...result,id:'12345678'}],options).settled,0);
+ assert.equal(evaluateCaptures([capture],[{...result,date:'2026-10-22T10:06:00Z'}],options).settled,0);
+ assert.equal(evaluateCaptures([capture],[{...result,home:'Jagiellonia U19'}],options).settled,0);
+ assert.equal(evaluateCaptures([{...c,fixtures:[{...forecast,direttaId:'wrongid1'}]}],[result],options).settled,0);
 });
