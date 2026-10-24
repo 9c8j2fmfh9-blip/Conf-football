@@ -9899,6 +9899,111 @@
       "home": "TKS Viet Nam D",
       "away": "Ha Noi D",
       "status": "FT"
+    },
+    {
+      "league": "1st National - Femminile",
+      "country": "Belgio",
+      "competitionId": "Y7YJeFPu",
+      "sourcePath": "/calcio/belgio/1st-national-donne/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "0Kk1gSuI",
+      "date": "2026-10-23T18:30:00.000Z",
+      "home": "Femina Woluwe D",
+      "away": "Leuven II D",
+      "status": "FT"
+    },
+    {
+      "league": "Serie B",
+      "country": "Brasile",
+      "competitionId": "vRtLP6rs",
+      "sourcePath": "/calcio/brasile/serie-b/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "EHvmJW2m",
+      "date": "2026-10-23T22:30:00.000Z",
+      "home": "Operario",
+      "away": "Athletic Club",
+      "status": "FT"
+    },
+    {
+      "league": "Paraense U20",
+      "country": "Brasile",
+      "competitionId": "KKFT9LZA",
+      "sourcePath": "/calcio/brasile/paraense-u20/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "I55OuRA5",
+      "date": "2026-10-23T13:00:00.000Z",
+      "home": "Tesla U20",
+      "away": "Venus U20",
+      "status": "FT"
+    },
+    {
+      "league": "Paraense U20",
+      "country": "Brasile",
+      "competitionId": "KKFT9LZA",
+      "sourcePath": "/calcio/brasile/paraense-u20/",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "id": "ph7Gsmtg",
+      "date": "2026-10-23T18:30:00.000Z",
+      "home": "Independente U20",
+      "away": "Tuna Luso U20",
+      "status": "FT"
+    },
+    {
+      "league": "Piauiense Donne",
+      "country": "Brasile",
+      "competitionId": "lUjPRtKi",
+      "sourcePath": "/calcio/brasile/piauiense-donne/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "lhb2G8Fr",
+      "date": "2026-10-23T19:00:00.000Z",
+      "home": "Parnahyba D",
+      "away": "Comercial PI D",
+      "status": "FT"
+    },
+    {
+      "league": "Copa de Primera - Clausura",
+      "country": "Paraguay",
+      "competitionId": "S66R0t75",
+      "sourcePath": "/calcio/paraguay/copa-de-primera/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "zBs34Yuh",
+      "date": "2026-10-23T22:30:00.000Z",
+      "home": "Libertad",
+      "away": "Sp. Luqueno",
+      "status": "FT"
+    },
+    {
+      "league": "Division Intermedia",
+      "country": "Paraguay",
+      "competitionId": "GWd9tTGF",
+      "sourcePath": "/calcio/paraguay/division-intermedia/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "8vMgHLx3",
+      "date": "2026-10-23T22:00:00.000Z",
+      "home": "Independiente F.B.C.",
+      "away": "Paraguari AC",
+      "status": "FT"
     }
   ]
 }
