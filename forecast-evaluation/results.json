@@ -10004,6 +10004,36 @@
       "home": "Independiente F.B.C.",
       "away": "Paraguari AC",
       "status": "FT"
+    },
+    {
+      "league": "Paraense U20",
+      "country": "Brasile",
+      "competitionId": "KKFT9LZA",
+      "sourcePath": "/calcio/brasile/paraense-u20/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "G2nCjrPN",
+      "date": "2026-10-23T18:30:00.000Z",
+      "home": "Aguia De Maraba U20",
+      "away": "EC Tailandia U20",
+      "status": "FT"
+    },
+    {
+      "league": "Paraense U20",
+      "country": "Brasile",
+      "competitionId": "KKFT9LZA",
+      "sourcePath": "/calcio/brasile/paraense-u20/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "hpk9q9Bt",
+      "date": "2026-10-23T18:30:00.000Z",
+      "home": "Sao Francisco U20",
+      "away": "CRT-23 Benevides U20",
+      "status": "FT"
     }
   ]
 }
