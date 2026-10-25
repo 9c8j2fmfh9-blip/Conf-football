@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-25T09:54:34.830Z",
-  "lastCapturedAt": "2026-10-25T09:54:34.422Z",
+  "evaluatedAt": "2026-10-25T14:27:37.645Z",
+  "lastCapturedAt": "2026-10-25T14:27:37.476Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 623,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 499,
+  "settled": 500,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -257,11 +257,6 @@
     {
       "key": "[\"open_ITA_1_serie-a_2026-10-25_internazionale_fiorentina\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ITA_1_serie-a_2026-10-25_internazionale_fiorentina",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_SCO_1_premiership_2026-10-25_hibernian_celtic\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_SCO_1_premiership_2026-10-25_hibernian_celtic",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -25775,6 +25770,22 @@
       "score": {
         "home": 2,
         "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_SCO_1_premiership_2026-10-25_hibernian_celtic\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_SCO_1_premiership_2026-10-25_hibernian_celtic",
+      "resultId": "8UrtHxD7",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Hibernian",
+      "away": "Celtic",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T12:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
       },
       "markets": {}
     }

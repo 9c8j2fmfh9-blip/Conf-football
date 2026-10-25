@@ -12689,6 +12689,4221 @@
       "home": "Taipower",
       "away": "Tatung",
       "status": "FT"
+    },
+    {
+      "league": "Primera Divisió",
+      "country": "Andorra",
+      "competitionId": "E7DwJSo4",
+      "sourcePath": "/calcio/andorra/primera-divisio/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "SIc2V6ef",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Penya",
+      "away": "Esperanca",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Armenia",
+      "competitionId": "I5wWW4UM",
+      "sourcePath": "/calcio/armenia/premier-league/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "zyslhSC5",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Syunik",
+      "away": "BKMA",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Azerbaijan",
+      "competitionId": "Y5mO1DE2",
+      "sourcePath": "/calcio/azerbaijan/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "bFwUZgG9",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Imisli FK",
+      "away": "Shamakhi",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Bermuda",
+      "competitionId": "6F3eh8Tm",
+      "sourcePath": "/calcio/bermuda/premier-league/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "YqjoAemA",
+      "date": "2026-10-25T00:00:00.000Z",
+      "home": "North Village Rams",
+      "away": "Dandy Town Hornets",
+      "status": "FT"
+    },
+    {
+      "league": "Vysshaya Liga",
+      "country": "Bielorussia",
+      "competitionId": "ObKhcPDs",
+      "sourcePath": "/calcio/bielorussia/vysshaya-liga/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "rmVI8m7D",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Arsenal Dzerzhinsk",
+      "away": "Dnepr Mogilev",
+      "status": "FT"
+    },
+    {
+      "league": "Vysshaya Liga",
+      "country": "Bielorussia",
+      "competitionId": "ObKhcPDs",
+      "sourcePath": "/calcio/bielorussia/vysshaya-liga/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "OOcUAIWq",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Slavia Mozyr",
+      "away": "Zhodino",
+      "status": "FT"
+    },
+    {
+      "league": "Pershaya Liga",
+      "country": "Bielorussia",
+      "competitionId": "dn3EGkbF",
+      "sourcePath": "/calcio/bielorussia/pershaya-liga/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "tQepVCPb",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Niva Dolbizno",
+      "away": "Uni X Labs",
+      "status": "FT"
+    },
+    {
+      "league": "Pershaya Liga",
+      "country": "Bielorussia",
+      "competitionId": "dn3EGkbF",
+      "sourcePath": "/calcio/bielorussia/pershaya-liga/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "nNbhTjfB",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "SKA-1938",
+      "away": "BATE 2",
+      "status": "FT"
+    },
+    {
+      "league": "Pershaya Liga",
+      "country": "Bielorussia",
+      "competitionId": "dn3EGkbF",
+      "sourcePath": "/calcio/bielorussia/pershaya-liga/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "ImISCV9U",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Osipovichi",
+      "away": "Gomel 2",
+      "status": "FT"
+    },
+    {
+      "league": "Vysshaya Liga Femminile",
+      "country": "Bielorussia",
+      "competitionId": "j5LYv2rk",
+      "sourcePath": "/calcio/bielorussia/vysshaya-liga-femminile/",
+      "score": {
+        "home": 8,
+        "away": 2
+      },
+      "id": "K6y5XXN0",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Din. Minsk D",
+      "away": "FC Gomel D",
+      "status": "FT"
+    },
+    {
+      "league": "Prva Liga - FBiH",
+      "country": "Bosnia & Herzegovina",
+      "competitionId": "UeZAYvIr",
+      "sourcePath": "/calcio/bosnia-herzegovina/prva-liga-fbih/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "OQMrf4Ri",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "TOSK Tesanj",
+      "away": "Kakanj",
+      "status": "FT"
+    },
+    {
+      "league": "CPL",
+      "country": "Cambogia",
+      "competitionId": "dULnbCBD",
+      "sourcePath": "/calcio/cambogia/cpl/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "2cecAuT9",
+      "date": "2026-10-25T08:45:00.000Z",
+      "home": "Kirivong Sok Sen Chey",
+      "away": "Life FC",
+      "status": "FT"
+    },
+    {
+      "league": "CPL",
+      "country": "Cambogia",
+      "competitionId": "dULnbCBD",
+      "sourcePath": "/calcio/cambogia/cpl/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "EJmq1yjd",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Boeung Ket",
+      "away": "NagaWorld",
+      "status": "FT"
+    },
+    {
+      "league": "CPL",
+      "country": "Cambogia",
+      "competitionId": "dULnbCBD",
+      "sourcePath": "/calcio/cambogia/cpl/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "6gpy3cLq",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Dangkor",
+      "away": "Angkor Tiger",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "lAoubjmT",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Wuxi Wugou",
+      "away": "Shaanxi Union",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "ptXAhUAj",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Dingnan Ganlian",
+      "away": "Yanbian Longding",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "xlZeGX2c",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Guangdong GZ-Power",
+      "away": "Suzhou Dongwu",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Promozione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "KO4VTNfo",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Shenzhen",
+      "away": "Dalian Kewei",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "rqBiy62B",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Hubei Istar",
+      "away": "Shanghai Second",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "j9EaZqXN",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Guangdong Mingtu",
+      "away": "Changchun Xidu",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "EovFyzEi",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Nantong Haimen",
+      "away": "Wuhan Three Towns B",
+      "status": "FT"
+    },
+    {
+      "league": "Super League Femminile - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "ruTxaWrd",
+      "sourcePath": "/calcio/cina/super-league-femminile/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "I366IawB",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Guangdong Meizhou D",
+      "away": "Changchun Dazhong D",
+      "status": "FT"
+    },
+    {
+      "league": "Super League Femminile - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "ruTxaWrd",
+      "sourcePath": "/calcio/cina/super-league-femminile/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "QT9EGw8N",
+      "date": "2026-10-25T11:35:00.000Z",
+      "home": "Guangxi Pingguo D",
+      "away": "Shandong SL D",
+      "status": "FT"
+    },
+    {
+      "league": "Super League Femminile - Play-Offs Championship",
+      "country": "Cina",
+      "competitionId": "ruTxaWrd",
+      "sourcePath": "/calcio/cina/super-league-femminile/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "06rsgOh2",
+      "date": "2026-10-25T08:00:00.000Z",
+      "home": "Shanghai RCB D",
+      "away": "Liaoning D",
+      "status": "FT"
+    },
+    {
+      "league": "Super League Femminile - Play-Offs Championship",
+      "country": "Cina",
+      "competitionId": "ruTxaWrd",
+      "sourcePath": "/calcio/cina/super-league-femminile/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "Wr20bJUs",
+      "date": "2026-10-25T11:35:00.000Z",
+      "home": "Wuhan Jiangda D",
+      "away": "Zhejiang D",
+      "status": "FT"
+    },
+    {
+      "league": "A-Liga Women",
+      "country": "Danimarca",
+      "competitionId": "69z2Smeo",
+      "sourcePath": "/calcio/danimarca/a-liga-women/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "zTllRMl4",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Odense Q D",
+      "away": "ASA Aarhus D",
+      "status": "FT"
+    },
+    {
+      "league": "Meistriliiga",
+      "country": "Estonia",
+      "competitionId": "hvTioR1s",
+      "sourcePath": "/calcio/estonia/meistriliiga/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "rBENC3xJ",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "Kalju",
+      "away": "Flora",
+      "status": "FT"
+    },
+    {
+      "league": "Esiliiga",
+      "country": "Estonia",
+      "competitionId": "SGUUj41C",
+      "sourcePath": "/calcio/estonia/esiliiga/",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "id": "YmOaDfU7",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Elva",
+      "away": "Levadia U21",
+      "status": "FT"
+    },
+    {
+      "league": "Esiliiga B",
+      "country": "Estonia",
+      "competitionId": "fJkiv6wg",
+      "sourcePath": "/calcio/estonia/esiliiga-b/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "WICxE8Oi",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Narva U21",
+      "away": "Tulevik",
+      "status": "FT"
+    },
+    {
+      "league": "Meistriliiga Femminile",
+      "country": "Estonia",
+      "competitionId": "EyShWB5J",
+      "sourcePath": "/calcio/estonia/meistriliiga-femminile/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "xMtqb72l",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Flora D",
+      "away": "Viimsi JK D",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League (Crimea)",
+      "country": "Europa",
+      "competitionId": "Mu5rAlFr",
+      "sourcePath": "/calcio/europa/premier-league-crimea/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "6RRR7Ub5",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "GFK Yalta",
+      "away": "Feodosiya",
+      "status": "FT"
+    },
+    {
+      "league": "Campionati Europei U17 - Femminile - Qualificazione - Round 1 - Lega B",
+      "country": "Europa",
+      "competitionId": "rJJl6Vtt",
+      "sourcePath": "/calcio/europa/campionati-europei-u17-donne/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "rgSVxfyR",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Galles U17 D",
+      "away": "Lussemburgo U17 D",
+      "status": "FT"
+    },
+    {
+      "league": "Campionati Europei U17 - Femminile - Qualificazione - Round 1 - Lega B",
+      "country": "Europa",
+      "competitionId": "rJJl6Vtt",
+      "sourcePath": "/calcio/europa/campionati-europei-u17-donne/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "EyJ1XXbl",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Georgia U17 D",
+      "away": "Macedonia del Nord U17 D",
+      "status": "FT"
+    },
+    {
+      "league": "PFL",
+      "country": "Filippine",
+      "competitionId": "j35mcpjr",
+      "sourcePath": "/calcio/filippine/pfl/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "CjgBKAYF",
+      "date": "2026-10-25T09:45:00.000Z",
+      "home": "Azkals",
+      "away": "Davao Aguilas",
+      "status": "FT"
+    },
+    {
+      "league": "PFL",
+      "country": "Filippine",
+      "competitionId": "j35mcpjr",
+      "sourcePath": "/calcio/filippine/pfl/",
+      "score": {
+        "home": 2,
+        "away": 5
+      },
+      "id": "KGdJIl3S",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "Tuloy",
+      "away": "Mendiola FC 1991",
+      "status": "FT"
+    },
+    {
+      "league": "Veikkausliiga - Spareggio",
+      "country": "Finlandia",
+      "competitionId": "lpTTNvTq",
+      "sourcePath": "/calcio/finlandia/veikkausliiga/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "OKLZAjcf",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Jaro",
+      "away": "PK-35",
+      "status": "FT"
+    },
+    {
+      "league": "Seconde Ligue Femminile",
+      "country": "Francia",
+      "competitionId": "lASkHgCj",
+      "sourcePath": "/calcio/francia/seconde-ligue-femminile/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "jF38mAA5",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Auxerre D",
+      "away": "Le Mans D",
+      "status": "FT"
+    },
+    {
+      "league": "2. Bundesliga",
+      "country": "Germania",
+      "competitionId": "tKH71vSe",
+      "sourcePath": "/calcio/germania/2-bundesliga/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "roQXnWmK",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "Kiel",
+      "away": "Dresda",
+      "status": "FT"
+    },
+    {
+      "league": "2. Bundesliga",
+      "country": "Germania",
+      "competitionId": "tKH71vSe",
+      "sourcePath": "/calcio/germania/2-bundesliga/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "f7IJwSA6",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "Osnabruck",
+      "away": "Furth",
+      "status": "FT"
+    },
+    {
+      "league": "Oberliga Hamburg",
+      "country": "Germania",
+      "competitionId": "4Gnjr60b",
+      "sourcePath": "/calcio/germania/oberliga-hamburg/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "YP3Rab6T",
+      "date": "2026-10-25T09:45:00.000Z",
+      "home": "HEBC Hamburg",
+      "away": "Sasel",
+      "status": "FT"
+    },
+    {
+      "league": "Oberliga Bremen",
+      "country": "Germania",
+      "competitionId": "dby2LYSl",
+      "sourcePath": "/calcio/germania/oberliga-bremen/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "bRusxzq2",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Schwachhausen",
+      "away": "Leher",
+      "status": "FT"
+    },
+    {
+      "league": "DFB Youth League - Preliminari",
+      "country": "Germania",
+      "competitionId": "htYaQO9L",
+      "sourcePath": "/calcio/germania/dfb-youth-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "OErXEZr9",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "B. Monchengladbach U19",
+      "away": "Viktoria Koln U19",
+      "status": "FT"
+    },
+    {
+      "league": "DFB Youth League - Preliminari",
+      "country": "Germania",
+      "competitionId": "htYaQO9L",
+      "sourcePath": "/calcio/germania/dfb-youth-league/",
+      "score": {
+        "home": 7,
+        "away": 0
+      },
+      "id": "vidWfpHd",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Heidenheim U19",
+      "away": "Ulm U19",
+      "status": "FT"
+    },
+    {
+      "league": "DFB Youth League - Preliminari",
+      "country": "Germania",
+      "competitionId": "htYaQO9L",
+      "sourcePath": "/calcio/germania/dfb-youth-league/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "Cx2N4z3B",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Mainz U19",
+      "away": "Kaiserslautern U19",
+      "status": "FT"
+    },
+    {
+      "league": "DFB Youth League - Preliminari",
+      "country": "Germania",
+      "competitionId": "htYaQO9L",
+      "sourcePath": "/calcio/germania/dfb-youth-league/",
+      "score": {
+        "home": 5,
+        "away": 3
+      },
+      "id": "U3eq0KrK",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Union Berlin U19",
+      "away": "Cottbus U19",
+      "status": "FT"
+    },
+    {
+      "league": "DFB Youth League - Preliminari",
+      "country": "Germania",
+      "competitionId": "htYaQO9L",
+      "sourcePath": "/calcio/germania/dfb-youth-league/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "pQxe1VWa",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Dusseldorf U19",
+      "away": "VfL Osnabruck U19",
+      "status": "FT"
+    },
+    {
+      "league": "DFB Youth League - Preliminari",
+      "country": "Germania",
+      "competitionId": "htYaQO9L",
+      "sourcePath": "/calcio/germania/dfb-youth-league/",
+      "score": {
+        "home": 6,
+        "away": 1
+      },
+      "id": "WrUBFE0c",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Furth U19",
+      "away": "Aue U19",
+      "status": "FT"
+    },
+    {
+      "league": "Bundesliga - Femminile",
+      "country": "Germania",
+      "competitionId": "x6Lam4Z8",
+      "sourcePath": "/calcio/germania/bundesliga-donne/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "nBSQmlmS",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Hoffenheim D",
+      "away": "Mainz D",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "A7Q5Jj1T",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Shonan",
+      "away": "Tochigi City",
+      "status": "FT"
+    },
+    {
+      "league": "Gamma Ethniki - Group 6",
+      "country": "Grecia",
+      "competitionId": "IBscKtxl",
+      "sourcePath": "/calcio/grecia/gamma-ethniki-group-6/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "2BYXfeNs",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Aris Filiaton",
+      "away": "Levante",
+      "status": "FT"
+    },
+    {
+      "league": "Division A Femminile",
+      "country": "Grecia",
+      "competitionId": "2i9trvQh",
+      "sourcePath": "/calcio/grecia/division-a-femminile/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "ENVbGtAb",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Odysseas Moschato D",
+      "away": "OFI Crete D",
+      "status": "FT"
+    },
+    {
+      "league": "ISL",
+      "country": "India",
+      "competitionId": "rmioSrer",
+      "sourcePath": "/calcio/india/isl/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "6Za3TadR",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Churchill Brothers",
+      "away": "Punjab",
+      "status": "FT"
+    },
+    {
+      "league": "Super League",
+      "country": "Indonesia",
+      "competitionId": "8SwKOBWT",
+      "sourcePath": "/calcio/indonesia/super-league/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "nD5uvjVO",
+      "date": "2026-10-25T08:30:00.000Z",
+      "home": "Arema",
+      "away": "Dewa United",
+      "status": "FT"
+    },
+    {
+      "league": "Super League",
+      "country": "Indonesia",
+      "competitionId": "8SwKOBWT",
+      "sourcePath": "/calcio/indonesia/super-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "0d7XuC0C",
+      "date": "2026-10-25T08:30:00.000Z",
+      "home": "Persita",
+      "away": "Bali United",
+      "status": "FT"
+    },
+    {
+      "league": "Super League",
+      "country": "Indonesia",
+      "competitionId": "8SwKOBWT",
+      "sourcePath": "/calcio/indonesia/super-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "xxokbgGt",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Garudayaksa",
+      "away": "Persib",
+      "status": "FT"
+    },
+    {
+      "league": "Championship",
+      "country": "Indonesia",
+      "competitionId": "d2aahzHp",
+      "sourcePath": "/calcio/indonesia/championship/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "6HhyCKBD",
+      "date": "2026-10-25T08:30:00.000Z",
+      "home": "Persela",
+      "away": "De Red",
+      "status": "FT"
+    },
+    {
+      "league": "Championship",
+      "country": "Indonesia",
+      "competitionId": "d2aahzHp",
+      "sourcePath": "/calcio/indonesia/championship/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "CEuNZN3K",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "PSMS Medan",
+      "away": "PSIS Semarang",
+      "status": "FT"
+    },
+    {
+      "league": "WSL",
+      "country": "Inghilterra",
+      "competitionId": "h83Rfggo",
+      "sourcePath": "/calcio/inghilterra/wsl/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "8UrqMWKE",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Crystal Palace D",
+      "away": "Chelsea D",
+      "status": "FT"
+    },
+    {
+      "league": "WSL 2",
+      "country": "Inghilterra",
+      "competitionId": "23rH3oco",
+      "sourcePath": "/calcio/inghilterra/wsl-2/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "6iFJiRs3",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Watford D",
+      "away": "Durham D",
+      "status": "FT"
+    },
+    {
+      "league": "FA Cup - Femminile",
+      "country": "Inghilterra",
+      "competitionId": "QmryvWCK",
+      "sourcePath": "/calcio/inghilterra/fa-cup-femminile/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "nJn0KcXq",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Exeter D",
+      "away": "Hashtag D",
+      "status": "FT"
+    },
+    {
+      "league": "Serie A",
+      "country": "Italia",
+      "competitionId": "COuk57Ci",
+      "sourcePath": "/calcio/italia/serie-a/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "GEvlm3PP",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Inter",
+      "away": "Fiorentina",
+      "status": "FT"
+    },
+    {
+      "league": "Serie C - Girone A",
+      "country": "Italia",
+      "competitionId": "jqT0Bapm",
+      "sourcePath": "/calcio/italia/serie-c-girone-a/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "niUcYhMi",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Renate",
+      "away": "AlbinoLeffe",
+      "status": "FT"
+    },
+    {
+      "league": "Serie C - Girone A",
+      "country": "Italia",
+      "competitionId": "jqT0Bapm",
+      "sourcePath": "/calcio/italia/serie-c-girone-a/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "fHX5WWj4",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Trento",
+      "away": "Juventus U23",
+      "status": "FT"
+    },
+    {
+      "league": "Serie C - Girone C",
+      "country": "Italia",
+      "competitionId": "MsYTtKp0",
+      "sourcePath": "/calcio/italia/serie-c-girone-c/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "IFYGDoBD",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Monopoli",
+      "away": "Audace Cerignola",
+      "status": "FT"
+    },
+    {
+      "league": "Primavera 1",
+      "country": "Italia",
+      "competitionId": "tWO9gjI2",
+      "sourcePath": "/calcio/italia/primavera-1/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "x49u68Np",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Cagliari U20",
+      "away": "Como U20",
+      "status": "FT"
+    },
+    {
+      "league": "Serie A Femminile",
+      "country": "Italia",
+      "competitionId": "dMXaGPOf",
+      "sourcePath": "/calcio/italia/serie-a-femminile/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "2atjijlA",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Lazio D",
+      "away": "Como D",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Kazakistan",
+      "competitionId": "zNSwBuue",
+      "sourcePath": "/calcio/kazakistan/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "fmvWe5Y7",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Altai",
+      "away": "Yelimay Semey",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Kazakistan",
+      "competitionId": "zNSwBuue",
+      "sourcePath": "/calcio/kazakistan/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "bHY2A4m1",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Atyrau",
+      "away": "Ertis Pavlodar",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Kenya",
+      "competitionId": "Y7QCbf53",
+      "sourcePath": "/calcio/kenya/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "nFlouNmf",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "3K FC",
+      "away": "Muranga",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Kenya",
+      "competitionId": "Y7QCbf53",
+      "sourcePath": "/calcio/kenya/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "WUhMO13D",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Nairobi United",
+      "away": "APS Bomet",
+      "status": "FT"
+    },
+    {
+      "league": "Superliga",
+      "country": "Kosovo",
+      "competitionId": "EDEvdFa7",
+      "sourcePath": "/calcio/kosovo/superliga/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "jew2CwpT",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Feronikeli",
+      "away": "Dukagjini",
+      "status": "FT"
+    },
+    {
+      "league": "Superliga",
+      "country": "Kosovo",
+      "competitionId": "EDEvdFa7",
+      "sourcePath": "/calcio/kosovo/superliga/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "MwUX6H7j",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Prishtina",
+      "away": "Drita",
+      "status": "FT"
+    },
+    {
+      "league": "Liga e Pare",
+      "country": "Kosovo",
+      "competitionId": "hI5Dcne4",
+      "sourcePath": "/calcio/kosovo/liga-e-pare/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "KfB1Vos1",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Dinamo Ferizaj",
+      "away": "Vjosa",
+      "status": "FT"
+    },
+    {
+      "league": "Liga e Pare",
+      "country": "Kosovo",
+      "competitionId": "hI5Dcne4",
+      "sourcePath": "/calcio/kosovo/liga-e-pare/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "troMkGSF",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "KF Lepenci Kacanik",
+      "away": "Liria",
+      "status": "FT"
+    },
+    {
+      "league": "Liga e Pare",
+      "country": "Kosovo",
+      "competitionId": "hI5Dcne4",
+      "sourcePath": "/calcio/kosovo/liga-e-pare/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "f7dKVfyp",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Kika",
+      "away": "Ferizaj",
+      "status": "FT"
+    },
+    {
+      "league": "Liga e Pare",
+      "country": "Kosovo",
+      "competitionId": "hI5Dcne4",
+      "sourcePath": "/calcio/kosovo/liga-e-pare/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "2XaSTY5d",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Rilindja",
+      "away": "2 Korriku",
+      "status": "FT"
+    },
+    {
+      "league": "Liga e Pare",
+      "country": "Kosovo",
+      "competitionId": "hI5Dcne4",
+      "sourcePath": "/calcio/kosovo/liga-e-pare/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "nsDgX7Cl",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Suhareka",
+      "away": "Besa Peja",
+      "status": "FT"
+    },
+    {
+      "league": "Liga e Pare",
+      "country": "Kosovo",
+      "competitionId": "hI5Dcne4",
+      "sourcePath": "/calcio/kosovo/liga-e-pare/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "fRnEixb3",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Trepca Mitrovice",
+      "away": "Trepca 89",
+      "status": "FT"
+    },
+    {
+      "league": "Lao League",
+      "country": "Laos",
+      "competitionId": "MssKGkWd",
+      "sourcePath": "/calcio/laos/lao-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "htPaUPZq",
+      "date": "2026-10-25T08:30:00.000Z",
+      "home": "Champasak Avenir",
+      "away": "Luang Prabang United",
+      "status": "FT"
+    },
+    {
+      "league": "Lao League",
+      "country": "Laos",
+      "competitionId": "MssKGkWd",
+      "sourcePath": "/calcio/laos/lao-league/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "xGJUZoCM",
+      "date": "2026-10-25T08:30:00.000Z",
+      "home": "GB FC",
+      "away": "Namtha United",
+      "status": "FT"
+    },
+    {
+      "league": "Lao League",
+      "country": "Laos",
+      "competitionId": "MssKGkWd",
+      "sourcePath": "/calcio/laos/lao-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "UkGMy8sA",
+      "date": "2026-10-25T08:30:00.000Z",
+      "home": "Savannakhet",
+      "away": "Chanthabouly",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Lesotho",
+      "competitionId": "GzI4eOKf",
+      "sourcePath": "/calcio/lesotho/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "nkk92RyP",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Villa",
+      "away": "Lijabatho",
+      "status": "FT"
+    },
+    {
+      "league": "Virsliga",
+      "country": "Lettonia",
+      "competitionId": "rmWo9J97",
+      "sourcePath": "/calcio/lettonia/virsliga/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "AL5BeYr9",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Ogre United",
+      "away": "Auda",
+      "status": "FT"
+    },
+    {
+      "league": "Virsliga",
+      "country": "Lettonia",
+      "competitionId": "rmWo9J97",
+      "sourcePath": "/calcio/lettonia/virsliga/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "GKXrwQSs",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Jelgava",
+      "away": "BFC Daugavpils",
+      "status": "FT"
+    },
+    {
+      "league": "1. Liga",
+      "country": "Lettonia",
+      "competitionId": "8fVnaoGk",
+      "sourcePath": "/calcio/lettonia/1-liga/",
+      "score": {
+        "home": 5,
+        "away": 0
+      },
+      "id": "0WmSdOSh",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Alberts JDFS",
+      "away": "Rezekne",
+      "status": "FT"
+    },
+    {
+      "league": "1. Liga Femminile",
+      "country": "Lettonia",
+      "competitionId": "nNinrmlC",
+      "sourcePath": "/calcio/lettonia/1-liga-femminile/",
+      "score": {
+        "home": 1,
+        "away": 5
+      },
+      "id": "vVnOOJc4",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Metta D",
+      "away": "Riga FC D",
+      "status": "FT"
+    },
+    {
+      "league": "TOPLYGA",
+      "country": "Lituania",
+      "competitionId": "lAYxY2n8",
+      "sourcePath": "/calcio/lituania/toplyga/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "bgtBqdHG",
+      "date": "2026-10-25T12:15:00.000Z",
+      "home": "Banga",
+      "away": "FA Siauliai",
+      "status": "FT"
+    },
+    {
+      "league": "I Lyga",
+      "country": "Lituania",
+      "competitionId": "pp78XcbA",
+      "sourcePath": "/calcio/lituania/i-lyga/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "AitoaiEl",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Babrungas",
+      "away": "Hegelmann Litauen 2",
+      "status": "FT"
+    },
+    {
+      "league": "1. MFL",
+      "country": "Macedonia del Nord",
+      "competitionId": "86Ja30cq",
+      "sourcePath": "/calcio/macedonia-del-nord/1-mfl/",
+      "score": {
+        "home": 3,
+        "away": 4
+      },
+      "id": "Ob4WQ6k4",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Arsimi",
+      "away": "Bregalnica",
+      "status": "FT"
+    },
+    {
+      "league": "FIFA Women's Champions Cup",
+      "country": "Mondo",
+      "competitionId": "AklzuUB6",
+      "sourcePath": "/calcio/mondo/fifa-women-s-champions-cup/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "xvWplR5b",
+      "date": "2026-10-25T07:00:00.000Z",
+      "home": "Naegohyang D",
+      "away": "Auckland United D",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Mongolia",
+      "competitionId": "E7tzij0J",
+      "sourcePath": "/calcio/mongolia/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "lfRtCZRI",
+      "date": "2026-10-25T08:00:00.000Z",
+      "home": "Deren",
+      "away": "Hunters",
+      "status": "FT"
+    },
+    {
+      "league": "Druga Liga",
+      "country": "Montenegro",
+      "competitionId": "043sUkrq",
+      "sourcePath": "/calcio/montenegro/druga-liga/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "O43pBzq2",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Kom Podgorica",
+      "away": "Lovcen",
+      "status": "FT"
+    },
+    {
+      "league": "National League",
+      "country": "Myanmar",
+      "competitionId": "CW8cUyfB",
+      "sourcePath": "/calcio/myanmar/national-league/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "A3GmKTm2",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Chinland",
+      "away": "Myawady",
+      "status": "FT"
+    },
+    {
+      "league": "National League",
+      "country": "Myanmar",
+      "competitionId": "CW8cUyfB",
+      "sourcePath": "/calcio/myanmar/national-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "67R9RBeS",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Dagon",
+      "away": "Thitsar Arman",
+      "status": "FT"
+    },
+    {
+      "league": "OBOS-ligaen",
+      "country": "Norvegia",
+      "competitionId": "UNGEKMx6",
+      "sourcePath": "/calcio/norvegia/obos-ligaen/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "nDvEP0Ka",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Strømmen",
+      "away": "Strömsgodset",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2 - Gruppo 1",
+      "country": "Norvegia",
+      "competitionId": "8EFIJthC",
+      "sourcePath": "/calcio/norvegia/division-2-avd-1/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "bqxgfskI",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Traeff",
+      "away": "Arendal",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2 - Gruppo 2",
+      "country": "Norvegia",
+      "competitionId": "MahqU27I",
+      "sourcePath": "/calcio/norvegia/division-2-avd-2/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "6VhICmG6",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Rana FK",
+      "away": "Tromsdalen",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2 - Gruppo 2",
+      "country": "Norvegia",
+      "competitionId": "MahqU27I",
+      "sourcePath": "/calcio/norvegia/division-2-avd-2/",
+      "score": {
+        "home": 5,
+        "away": 0
+      },
+      "id": "QBXrbl1D",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "Kjelsås",
+      "away": "Trygg/Lade",
+      "status": "FT"
+    },
+    {
+      "league": "Division 3 - Group 5",
+      "country": "Norvegia",
+      "competitionId": "b93rzQyL",
+      "sourcePath": "/calcio/norvegia/division-3-group-5/",
+      "score": {
+        "home": 2,
+        "away": 8
+      },
+      "id": "K09VQX9r",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Fauske Sprint",
+      "away": "Bossekop",
+      "status": "FT"
+    },
+    {
+      "league": "Eredivisie",
+      "country": "Olanda",
+      "competitionId": "Or1bBrWD",
+      "sourcePath": "/calcio/olanda/eredivisie/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "8n6hibv8",
+      "date": "2026-10-25T11:15:00.000Z",
+      "home": "Sittard",
+      "away": "Excelsior",
+      "status": "FT"
+    },
+    {
+      "league": "Eredivisie - Women",
+      "country": "Olanda",
+      "competitionId": "ADZjR3us",
+      "sourcePath": "/calcio/olanda/eredivisie-women/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "jiXmQbkU",
+      "date": "2026-10-25T11:15:00.000Z",
+      "home": "Heerenveen D",
+      "away": "Alkmaar D",
+      "status": "FT"
+    },
+    {
+      "league": "Ekstraklasa",
+      "country": "Polonia",
+      "competitionId": "lrMHUHDc",
+      "sourcePath": "/calcio/polonia/ekstraklasa/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "pft7l2rK",
+      "date": "2026-10-25T11:15:00.000Z",
+      "home": "Slask",
+      "away": "Wieczysta Krakow",
+      "status": "FT"
+    },
+    {
+      "league": "Division 1",
+      "country": "Polonia",
+      "competitionId": "Qo6off6p",
+      "sourcePath": "/calcio/polonia/division-1/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "0UpTmHKb",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Odra Opole",
+      "away": "Pogon Siedlce",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Polonia",
+      "competitionId": "MBBlVncK",
+      "sourcePath": "/calcio/polonia/division-2/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "jP8v0bll",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Avia Swidnik",
+      "away": "Pruszkow",
+      "status": "FT"
+    },
+    {
+      "league": "III Liga - Group I",
+      "country": "Polonia",
+      "competitionId": "OWZW2KN5",
+      "sourcePath": "/calcio/polonia/iii-liga-group-i/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "6ohBWSxI",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Widzew Lodz II",
+      "away": "LKS Lomza",
+      "status": "FT"
+    },
+    {
+      "league": "III Liga - Group III",
+      "country": "Polonia",
+      "competitionId": "tSIIVqT1",
+      "sourcePath": "/calcio/polonia/iii-liga-group-iii/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "G4gPw4OH",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Zaglebie II",
+      "away": "Stilon Gorzow",
+      "status": "FT"
+    },
+    {
+      "league": "III Liga - Group IV",
+      "country": "Polonia",
+      "competitionId": "nkL9fT52",
+      "sourcePath": "/calcio/polonia/iii-liga-group-iv/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "UPIXltYi",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "Lubaczow",
+      "away": "Biala Podlaska",
+      "status": "FT"
+    },
+    {
+      "league": "Central Youth League",
+      "country": "Polonia",
+      "competitionId": "zwhFOSkc",
+      "sourcePath": "/calcio/polonia/central-youth-league/",
+      "score": {
+        "home": 4,
+        "away": 4
+      },
+      "id": "h2WMwJgc",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Jagiellonia U19",
+      "away": "Arkonia Szczecin U19",
+      "status": "FT"
+    },
+    {
+      "league": "Central Youth League",
+      "country": "Polonia",
+      "competitionId": "zwhFOSkc",
+      "sourcePath": "/calcio/polonia/central-youth-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "YF4iuBD4",
+      "date": "2026-10-25T12:15:00.000Z",
+      "home": "Escola Warszawa U19",
+      "away": "Legia U19",
+      "status": "FT"
+    },
+    {
+      "league": "Polish Cup Femminile",
+      "country": "Polonia",
+      "competitionId": "zwmDLSl8",
+      "sourcePath": "/calcio/polonia/polish-cup-femminile/",
+      "score": {
+        "home": 0,
+        "away": 13
+      },
+      "id": "CCOtQh9j",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Plock D",
+      "away": "Slask D",
+      "status": "FT"
+    },
+    {
+      "league": "Polish Cup Femminile",
+      "country": "Polonia",
+      "competitionId": "zwmDLSl8",
+      "sourcePath": "/calcio/polonia/polish-cup-femminile/",
+      "score": {
+        "home": 0,
+        "away": 11
+      },
+      "id": "QJ80KTLU",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Myslenice D",
+      "away": "Czarni Sosnowiec D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Portugal 2",
+      "country": "Portogallo",
+      "competitionId": "hSUajdSS",
+      "sourcePath": "/calcio/portogallo/liga-portugal-2/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "CEqQL1Wp",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "AFS",
+      "away": "Tondela",
+      "status": "FT"
+    },
+    {
+      "league": "Liga 3",
+      "country": "Portogallo",
+      "competitionId": "ALfcD7BL",
+      "sourcePath": "/calcio/portogallo/liga-3/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "fNKGeN8T",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "AD Marco 09",
+      "away": "Fafe",
+      "status": "FT"
+    },
+    {
+      "league": "Campeonato de Portugal - Group B",
+      "country": "Portogallo",
+      "competitionId": "0z15YHho",
+      "sourcePath": "/calcio/portogallo/campeonato-de-portugal-group-b/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "CxOnCYBM",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Estrela Calheta",
+      "away": "Uniao Lamas",
+      "status": "FT"
+    },
+    {
+      "league": "Campeonato de Portugal - Group B",
+      "country": "Portogallo",
+      "competitionId": "0z15YHho",
+      "sourcePath": "/calcio/portogallo/campeonato-de-portugal-group-b/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "MVaCSgd3",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Guarda FC",
+      "away": "Machico",
+      "status": "FT"
+    },
+    {
+      "league": "Campeonato de Portugal - Group D",
+      "country": "Portogallo",
+      "competitionId": "0OlKsUBi",
+      "sourcePath": "/calcio/portogallo/campeonato-de-portugal-group-d/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "lEkBdXXI",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Lagoa",
+      "away": "Lajense",
+      "status": "FT"
+    },
+    {
+      "league": "Campeonato Nacional U19",
+      "country": "Portogallo",
+      "competitionId": "CdJVQ90r",
+      "sourcePath": "/calcio/portogallo/campeonato-nacional-u19/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "AJAzqBR0",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Sporting U19",
+      "away": "Santa Clara U19",
+      "status": "FT"
+    },
+    {
+      "league": "1. Liga",
+      "country": "Repubblica Ceca",
+      "competitionId": "hleea1wH",
+      "sourcePath": "/calcio/repubblica-ceca/1-liga/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "I1TCVtUF",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Hradec Kralove",
+      "away": "Jablonec",
+      "status": "FT"
+    },
+    {
+      "league": "ChNL",
+      "country": "Repubblica Ceca",
+      "competitionId": "AuYr0sOA",
+      "sourcePath": "/calcio/repubblica-ceca/chnl/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "GGsTujJl",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Slavia Praga B",
+      "away": "Prostejov",
+      "status": "FT"
+    },
+    {
+      "league": "3. CFL - Group A",
+      "country": "Repubblica Ceca",
+      "competitionId": "xfLfCZcn",
+      "sourcePath": "/calcio/repubblica-ceca/3-cfl-group-a/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "hzYg2pw0",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Sparta Praga B",
+      "away": "Pisek",
+      "status": "FT"
+    },
+    {
+      "league": "3. CFL - Group B",
+      "country": "Repubblica Ceca",
+      "competitionId": "WGKbBgDh",
+      "sourcePath": "/calcio/repubblica-ceca/3-cfl-group-b/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "MeNrvaam",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Hradec Kralove B",
+      "away": "Banik Most-Sous",
+      "status": "FT"
+    },
+    {
+      "league": "3. CFL - Group B",
+      "country": "Repubblica Ceca",
+      "competitionId": "WGKbBgDh",
+      "sourcePath": "/calcio/repubblica-ceca/3-cfl-group-b/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "8YjWH8ro",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Jablonec B",
+      "away": "Teplice B",
+      "status": "FT"
+    },
+    {
+      "league": "3. MSFL",
+      "country": "Repubblica Ceca",
+      "competitionId": "ppJOsZ7q",
+      "sourcePath": "/calcio/repubblica-ceca/3-msfl/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "YskV3vsK",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Karvina B",
+      "away": "SK Hranice",
+      "status": "FT"
+    },
+    {
+      "league": "3. MSFL",
+      "country": "Repubblica Ceca",
+      "competitionId": "ppJOsZ7q",
+      "sourcePath": "/calcio/repubblica-ceca/3-msfl/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "4Qu1bI4s",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Slovacko B",
+      "away": "Unicov",
+      "status": "FT"
+    },
+    {
+      "league": "3. MSFL",
+      "country": "Repubblica Ceca",
+      "competitionId": "ppJOsZ7q",
+      "sourcePath": "/calcio/repubblica-ceca/3-msfl/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "EwOtBelm",
+      "date": "2026-10-25T09:30:00.000Z",
+      "home": "Zlin B",
+      "away": "Vsetin",
+      "status": "FT"
+    },
+    {
+      "league": "4. liga - Group B",
+      "country": "Repubblica Ceca",
+      "competitionId": "OYSN90J0",
+      "sourcePath": "/calcio/repubblica-ceca/4-liga-group-b/",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "id": "Ykuz6soK",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Meteor Prague",
+      "away": "Hostoun",
+      "status": "FT"
+    },
+    {
+      "league": "4. liga - Group D",
+      "country": "Repubblica Ceca",
+      "competitionId": "CdS3LvlD",
+      "sourcePath": "/calcio/repubblica-ceca/4-liga-group-d/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "rqZ4BDEt",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Velke Mezirici",
+      "away": "FS Trebic",
+      "status": "FT"
+    },
+    {
+      "league": "4. liga - Group E",
+      "country": "Repubblica Ceca",
+      "competitionId": "nw32pOQD",
+      "sourcePath": "/calcio/repubblica-ceca/4-liga-group-e/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "vqQVshmD",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Brumov",
+      "away": "Bzenec-Vracov",
+      "status": "FT"
+    },
+    {
+      "league": "Kralovehradecky KP",
+      "country": "Repubblica Ceca",
+      "competitionId": "biP8WfXu",
+      "sourcePath": "/calcio/repubblica-ceca/kralovehradecky-kp/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "fwTCqlVF",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Chlumec nad Cidlinou B",
+      "away": "Novy Bydzov",
+      "status": "FT"
+    },
+    {
+      "league": "Plzensky KP",
+      "country": "Repubblica Ceca",
+      "competitionId": "WGXLCDHB",
+      "sourcePath": "/calcio/repubblica-ceca/plzensky-kp/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "OAY8lc6L",
+      "date": "2026-10-25T09:30:00.000Z",
+      "home": "Holysov",
+      "away": "Klatovy",
+      "status": "FT"
+    },
+    {
+      "league": "Prazsky prebor",
+      "country": "Repubblica Ceca",
+      "competitionId": "W6A70FXh",
+      "sourcePath": "/calcio/repubblica-ceca/prazsky-prebor/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "8CiQVfpI",
+      "date": "2026-10-25T09:15:00.000Z",
+      "home": "Aritma Prague B",
+      "away": "Stresovice",
+      "status": "FT"
+    },
+    {
+      "league": "1. Liga Femminile",
+      "country": "Repubblica Ceca",
+      "competitionId": "2TFFZoG3",
+      "sourcePath": "/calcio/repubblica-ceca/1-liga-femminile/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "lpp7q2dl",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Plzen D",
+      "away": "Prague Raptors D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga 2",
+      "country": "Romania",
+      "competitionId": "bgStjEJ1",
+      "sourcePath": "/calcio/romania/liga-2/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "b7TaA7Ch",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Afumati",
+      "away": "Steaua Bucuresti",
+      "status": "FT"
+    },
+    {
+      "league": "Liga 2",
+      "country": "Romania",
+      "competitionId": "bgStjEJ1",
+      "sourcePath": "/calcio/romania/liga-2/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "CWr41em1",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Chindia Targoviste",
+      "away": "CSM Satu Mare",
+      "status": "FT"
+    },
+    {
+      "league": "Liga 2",
+      "country": "Romania",
+      "competitionId": "bgStjEJ1",
+      "sourcePath": "/calcio/romania/liga-2/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "jsQiCTst",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Selimbar",
+      "away": "FC ASA Tg. Mures",
+      "status": "FT"
+    },
+    {
+      "league": "Superliga Women",
+      "country": "Romania",
+      "competitionId": "fqPJZY3c",
+      "sourcePath": "/calcio/romania/superliga-women/",
+      "score": {
+        "home": 0,
+        "away": 12
+      },
+      "id": "4ALK1MI6",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Vasas Odorhei D",
+      "away": "Farul Constanta D",
+      "status": "FT"
+    },
+    {
+      "league": "Superliga Women",
+      "country": "Romania",
+      "competitionId": "fqPJZY3c",
+      "sourcePath": "/calcio/romania/superliga-women/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "xEGEN3uQ",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Gloria Bistrita D",
+      "away": "Politehnica Timisoara D",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Russia",
+      "competitionId": "YacqHHdS",
+      "sourcePath": "/calcio/russia/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "p64NH5r9",
+      "date": "2026-10-25T10:45:00.000Z",
+      "home": "FK Rostov",
+      "away": "Lok. Mosca",
+      "status": "FT"
+    },
+    {
+      "league": "FNL",
+      "country": "Russia",
+      "competitionId": "jizXHcsM",
+      "sourcePath": "/calcio/russia/fnl/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "dtd8U0Mc",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Chelyabinsk",
+      "away": "Ural",
+      "status": "FT"
+    },
+    {
+      "league": "FNL",
+      "country": "Russia",
+      "competitionId": "jizXHcsM",
+      "sourcePath": "/calcio/russia/fnl/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "rXvBatNN",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Ulyanovsk",
+      "away": "Veles Moscow",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division A Silver - Spareggio",
+      "country": "Russia",
+      "competitionId": "8vgMiqKN",
+      "sourcePath": "/calcio/russia/fnl-2-division-a-silver/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "GWTtsYMU",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Omsk",
+      "away": "Dynamo Stavropol",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 1",
+      "country": "Russia",
+      "competitionId": "jmQikwTd",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-1/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "Y7bnJeMs",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Dynamo Makhachkala 2",
+      "away": "Nazran",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 2",
+      "country": "Russia",
+      "competitionId": "UwPelcr3",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-2/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "48xFTJQQ",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Yenisey 2",
+      "away": "Dynamo Vologda",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 2",
+      "country": "Russia",
+      "competitionId": "UwPelcr3",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-2/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "rRuONTx8",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Kosmos",
+      "away": "Vladimir",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 2",
+      "country": "Russia",
+      "competitionId": "UwPelcr3",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-2/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "ADsGPk8e",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Cherepovets",
+      "away": "Luki-Energiya",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 2",
+      "country": "Russia",
+      "competitionId": "UwPelcr3",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-2/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "IcHzpKgA",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Tver",
+      "away": "Iskra Smolensk",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 3",
+      "country": "Russia",
+      "competitionId": "C2E0mHc9",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-3/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "zRHaiSht",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "FK Strogino Moscow",
+      "away": "R. Volgograd 2",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 3",
+      "country": "Russia",
+      "competitionId": "C2E0mHc9",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-3/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "ddzVq2iU",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Arsenal Tula 2",
+      "away": "Kvant",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 4 - Gruppo Retrocessione",
+      "country": "Russia",
+      "competitionId": "AmX3nyDF",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-4/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "lOYf7Az2",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Orenburg 2",
+      "away": "Nosta",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 4 - Play-Offs Championship",
+      "country": "Russia",
+      "competitionId": "AmX3nyDF",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-4/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "YTXIm4ME",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "KDV Tomsk",
+      "away": "Akron Togliatti 2",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 4 - Play-Offs Championship",
+      "country": "Russia",
+      "competitionId": "AmX3nyDF",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-4/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "8jtXP0U7",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Pobeda Nizhniy Novgorod",
+      "away": "Dynamo Barnaul",
+      "status": "FT"
+    },
+    {
+      "league": "Premiership",
+      "country": "Scozia",
+      "competitionId": "tGwiyvJ1",
+      "sourcePath": "/calcio/scozia/premiership/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "8UrtHxD7",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Hibernian",
+      "away": "Celtic",
+      "status": "FT"
+    },
+    {
+      "league": "U19 League",
+      "country": "Serbia",
+      "competitionId": "2aixPNUF",
+      "sourcePath": "/calcio/serbia/u19-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "Q9szxnLH",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "Cukaricki U19",
+      "away": "IMT U19",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Singapore",
+      "competitionId": "CpsbdueR",
+      "sourcePath": "/calcio/singapore/premier-league/",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "id": "27MLgVfA",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Lion City",
+      "away": "Tanjong Pagar",
+      "status": "FT"
+    },
+    {
+      "league": "2. liga",
+      "country": "Slovacchia",
+      "competitionId": "6ZvdGuYf",
+      "sourcePath": "/calcio/slovacchia/2-liga/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "8AvvxyyG",
+      "date": "2026-10-25T09:30:00.000Z",
+      "home": "Malzenice",
+      "away": "Z. Moravce-Vrable",
+      "status": "FT"
+    },
+    {
+      "league": "2. liga",
+      "country": "Slovacchia",
+      "competitionId": "6ZvdGuYf",
+      "sourcePath": "/calcio/slovacchia/2-liga/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "AJlpGgEd",
+      "date": "2026-10-25T09:30:00.000Z",
+      "home": "Zilina B",
+      "away": "Zvolen",
+      "status": "FT"
+    },
+    {
+      "league": "2. liga",
+      "country": "Slovacchia",
+      "competitionId": "6ZvdGuYf",
+      "sourcePath": "/calcio/slovacchia/2-liga/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "zctWwc63",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "S. Bratislava B",
+      "away": "Inter Bratislava",
+      "status": "FT"
+    },
+    {
+      "league": "3. Liga - Central",
+      "country": "Slovacchia",
+      "competitionId": "AuTrQbHd",
+      "sourcePath": "/calcio/slovacchia/3-liga-central/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "jZFazEUN",
+      "date": "2026-10-25T09:30:00.000Z",
+      "home": "B. Bystrica B",
+      "away": "D. Kubin",
+      "status": "FT"
+    },
+    {
+      "league": "3. Liga - East",
+      "country": "Slovacchia",
+      "competitionId": "htzUUDyD",
+      "sourcePath": "/calcio/slovacchia/3-liga-east/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "KSWj2POH",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Slavia TU Kosice",
+      "away": "Vranov",
+      "status": "FT"
+    },
+    {
+      "league": "3. Liga - West",
+      "country": "Slovacchia",
+      "competitionId": "WWYXTXjJ",
+      "sourcePath": "/calcio/slovacchia/3-liga-west/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "x89YKdZr",
+      "date": "2026-10-25T09:30:00.000Z",
+      "home": "Trencin B",
+      "away": "MSK Senec",
+      "status": "FT"
+    },
+    {
+      "league": "4. liga - Central",
+      "country": "Slovacchia",
+      "competitionId": "C86zJtpN",
+      "sourcePath": "/calcio/slovacchia/4-liga-central/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "G8TctgP6",
+      "date": "2026-10-25T09:30:00.000Z",
+      "home": "Besenova",
+      "away": "Jednota Banova",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Slovenia",
+      "country": "Slovenia",
+      "competitionId": "ATMQHsLh",
+      "sourcePath": "/calcio/slovenia/coppa/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "6aZhj0XH",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Videm",
+      "away": "Grosuplje",
+      "status": "FT"
+    },
+    {
+      "league": "1. SZNL Femminile",
+      "country": "Slovenia",
+      "competitionId": "YTSh6vmB",
+      "sourcePath": "/calcio/slovenia/1-sznl-femminile/",
+      "score": {
+        "home": 11,
+        "away": 1
+      },
+      "id": "fF43CLaD",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Cerklje D",
+      "away": "Zalec Trbovlje D",
+      "status": "FT"
+    },
+    {
+      "league": "1. SZNL Femminile",
+      "country": "Slovenia",
+      "competitionId": "YTSh6vmB",
+      "sourcePath": "/calcio/slovenia/1-sznl-femminile/",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "id": "n9ikzPiK",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Mura D",
+      "away": "ZNK Ljubljana D",
+      "status": "FT"
+    },
+    {
+      "league": "Primera RFEF - Group 2",
+      "country": "Spagna",
+      "competitionId": "8Qy7Nsg0",
+      "sourcePath": "/calcio/spagna/primera-rfef-group-2/",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "id": "MyVp1VUp",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Alcorcon",
+      "away": "UD Ibiza",
+      "status": "FT"
+    },
+    {
+      "league": "Primera RFEF - Group 2",
+      "country": "Spagna",
+      "competitionId": "8Qy7Nsg0",
+      "sourcePath": "/calcio/spagna/primera-rfef-group-2/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "6wzvNCi4",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Atl. Madrid B",
+      "away": "Jaen",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 3",
+      "country": "Spagna",
+      "competitionId": "dbCBmN3A",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-3/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "4GrrnchA",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Real Murcia B",
+      "away": "Lorca Deportiva",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 3",
+      "country": "Spagna",
+      "competitionId": "dbCBmN3A",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-3/",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "id": "CtnjpyNM",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "UCAM Murcia",
+      "away": "Cieza",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 3",
+      "country": "Spagna",
+      "competitionId": "dbCBmN3A",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-3/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "nwcfytvh",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Baleares",
+      "away": "Alcoyano",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 3",
+      "country": "Spagna",
+      "competitionId": "dbCBmN3A",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-3/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "8CXLvFpp",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Castellon B",
+      "away": "La Nucia",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 3",
+      "country": "Spagna",
+      "competitionId": "dbCBmN3A",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-3/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "djuzlJNc",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Poblense",
+      "away": "Pena Deportiva",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 3",
+      "country": "Spagna",
+      "competitionId": "dbCBmN3A",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-3/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "SGbAXcwH",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Mallorca B",
+      "away": "Ilicitano",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 4",
+      "country": "Spagna",
+      "competitionId": "v7ZNnsJG",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-4/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "lUehVP1l",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Siviglia B",
+      "away": "Tenerife B",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 4",
+      "country": "Spagna",
+      "competitionId": "v7ZNnsJG",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-4/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "Cn3DInIr",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Atletico Central",
+      "away": "Tamaraceite",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 4",
+      "country": "Spagna",
+      "competitionId": "v7ZNnsJG",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-4/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "t4CsO8fL",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Puente Genil",
+      "away": "Badajoz",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 4",
+      "country": "Spagna",
+      "competitionId": "v7ZNnsJG",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-4/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "dfa0T3W0",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Sanluqueno",
+      "away": "Las Palmas B",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 5",
+      "country": "Spagna",
+      "competitionId": "E5VZ3DwB",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-5/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "S8Mf2vEt",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Getafe B",
+      "away": "Puertollano C.F.",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 5",
+      "country": "Spagna",
+      "competitionId": "E5VZ3DwB",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-5/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "ra9Tb57l",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Albacete B",
+      "away": "Atl. Madrid C",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda RFEF - Group 5",
+      "country": "Spagna",
+      "competitionId": "E5VZ3DwB",
+      "sourcePath": "/calcio/spagna/segunda-rfef-group-5/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "jPCycqx1",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Real Madrid C",
+      "away": "Conquense",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 1",
+      "country": "Spagna",
+      "competitionId": "Cnf2k8It",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-1/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "td0cliTI",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Estradense",
+      "away": "Viveiro",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 1",
+      "country": "Spagna",
+      "competitionId": "Cnf2k8It",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-1/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "8r2kjDb6",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Racing Club Villalbes",
+      "away": "Alondras",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 1",
+      "country": "Spagna",
+      "competitionId": "Cnf2k8It",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-1/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "fafI4id2",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Atletico Arteixo",
+      "away": "Barco",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 2",
+      "country": "Spagna",
+      "competitionId": "2ymFn62a",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-2/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "OjjLiISJ",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "CD Colunga",
+      "away": "Lealtad",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 2",
+      "country": "Spagna",
+      "competitionId": "2ymFn62a",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-2/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "v30Yomdb",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Condal",
+      "away": "Union Club Ceares",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 2",
+      "country": "Spagna",
+      "competitionId": "2ymFn62a",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-2/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "SnuapzLg",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "EI San Martin",
+      "away": "Praviano",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 3",
+      "country": "Spagna",
+      "competitionId": "ppARoQH5",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-3/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "nZpYVQKc",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Cayon",
+      "away": "Laredo",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 3",
+      "country": "Spagna",
+      "competitionId": "ppARoQH5",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-3/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "GfCiWZEt",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Escobedo",
+      "away": "Tropezon",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 4",
+      "country": "Spagna",
+      "competitionId": "W44inpXB",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-4/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "MZR0ZKnD",
+      "date": "2026-10-25T10:15:00.000Z",
+      "home": "Santurtzi",
+      "away": "Amurrio Club",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 4",
+      "country": "Spagna",
+      "competitionId": "W44inpXB",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-4/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "tdQpw3ml",
+      "date": "2026-10-25T11:15:00.000Z",
+      "home": "Real Sociedad C",
+      "away": "Alaves C",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 5",
+      "country": "Spagna",
+      "competitionId": "Ae3eo4nI",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-5/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "xhqxSFh4",
+      "date": "2026-10-25T10:45:00.000Z",
+      "home": "Grama",
+      "away": "Atletic Lleida",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 5",
+      "country": "Spagna",
+      "competitionId": "Ae3eo4nI",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-5/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "pInpQgNG",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "CE Europa B",
+      "away": "CF Vilanova",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 5",
+      "country": "Spagna",
+      "competitionId": "Ae3eo4nI",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-5/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "noyOIBFj",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Martinenc",
+      "away": "San Cristobal CP",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 5",
+      "country": "Spagna",
+      "competitionId": "Ae3eo4nI",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-5/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "EiT9tF7c",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Montanesa",
+      "away": "Vilassar de Mar",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 5",
+      "country": "Spagna",
+      "competitionId": "Ae3eo4nI",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-5/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "Sb7CBf8N",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Pobla Mafumet",
+      "away": "Mollerussa",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 6",
+      "country": "Spagna",
+      "competitionId": "hKh0pO1O",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-6/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "8Y6QxWsh",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "SC Torrevieja",
+      "away": "Ontinyent 1931",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 6",
+      "country": "Spagna",
+      "competitionId": "hKh0pO1O",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-6/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "tn5YzAC4",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Torrellano",
+      "away": "Saguntino",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 6",
+      "country": "Spagna",
+      "competitionId": "hKh0pO1O",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-6/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "S23tZmsH",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Torrent",
+      "away": "Acero",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 7",
+      "country": "Spagna",
+      "competitionId": "6Nd4qrHU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-7/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "08ZJqbkt",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "CP Parla",
+      "away": "Union Adarve",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 7",
+      "country": "Spagna",
+      "competitionId": "6Nd4qrHU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-7/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "QT9Gu7fM",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Galapagar",
+      "away": "RC Alcobendas",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 7",
+      "country": "Spagna",
+      "competitionId": "6Nd4qrHU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-7/",
+      "score": {
+        "home": 1,
+        "away": 6
+      },
+      "id": "lQ10mGtP",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Siello",
+      "away": "CD Mostoles",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 7",
+      "country": "Spagna",
+      "competitionId": "6Nd4qrHU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-7/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "hr6FLo3j",
+      "date": "2026-10-25T10:45:00.000Z",
+      "home": "Rayo Vallecano B",
+      "away": "Colonia M.",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 7",
+      "country": "Spagna",
+      "competitionId": "6Nd4qrHU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-7/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "h2d9sTP9",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Leganes B",
+      "away": "Trival Valderas",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 7",
+      "country": "Spagna",
+      "competitionId": "6Nd4qrHU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-7/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "8YxSsxKh",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Pozuelo de Alarcon",
+      "away": "AD Torrejon",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 8",
+      "country": "Spagna",
+      "competitionId": "n1dI4Rnt",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-8/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "GCXiotgR",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Burgos CF B",
+      "away": "Salamanca B",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 8",
+      "country": "Spagna",
+      "competitionId": "n1dI4Rnt",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-8/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "vVvDY29L",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Unionistas B",
+      "away": "Guijuelo",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 9",
+      "country": "Spagna",
+      "competitionId": "QieM3o2n",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-9/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "A5HXyQDa",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Almeria B",
+      "away": "Atletico de Marbella",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 9",
+      "country": "Spagna",
+      "competitionId": "QieM3o2n",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-9/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "jqJmYsDO",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Arenas Armilla",
+      "away": "UD San Pedro",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 9",
+      "country": "Spagna",
+      "competitionId": "QieM3o2n",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-9/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "IVKuz4rC",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Huetor Vega",
+      "away": "Torre del Mar",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 9",
+      "country": "Spagna",
+      "competitionId": "QieM3o2n",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-9/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "6HGpR8as",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Mancha",
+      "away": "CD Alhaurino",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 9",
+      "country": "Spagna",
+      "competitionId": "QieM3o2n",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-9/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "2uEPwnqm",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Churriana de la Vega",
+      "away": "Granada B",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 10",
+      "country": "Spagna",
+      "competitionId": "MNpm45Hh",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-10/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "CCQqaCf5",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Betis C",
+      "away": "Tomares UD",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 10",
+      "country": "Spagna",
+      "competitionId": "MNpm45Hh",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-10/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "WYOT2fet",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Cordoba B",
+      "away": "Cadice B",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 10",
+      "country": "Spagna",
+      "competitionId": "MNpm45Hh",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-10/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "QZWaeUgU",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Portuense",
+      "away": "Pozoblanco",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 10",
+      "country": "Spagna",
+      "competitionId": "MNpm45Hh",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-10/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "jcAvrmh2",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Siviglia C",
+      "away": "Conil",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 12",
+      "country": "Spagna",
+      "competitionId": "fyqe2qn5",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-12/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "0bdvLQ2d",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Lanzarote",
+      "away": "CD Marino",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 13",
+      "country": "Spagna",
+      "competitionId": "M1gg031B",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-13/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "prh8WiEG",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Minerva",
+      "away": "Cotillas CD",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 13",
+      "country": "Spagna",
+      "competitionId": "M1gg031B",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-13/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "bRg0YDq4",
+      "date": "2026-10-25T10:45:00.000Z",
+      "home": "Molinense",
+      "away": "Bala Azul",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 14",
+      "country": "Spagna",
+      "competitionId": "4QrbaNGH",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-14/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "OdRZKceK",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Castuera",
+      "away": "Llerenense",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 14",
+      "country": "Spagna",
+      "competitionId": "4QrbaNGH",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-14/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "fuI5FyJs",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "UP Plasencia",
+      "away": "Moralo",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 14",
+      "country": "Spagna",
+      "competitionId": "4QrbaNGH",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-14/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "8nd8pHJ7",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Villanovense",
+      "away": "Jerez CF",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 14",
+      "country": "Spagna",
+      "competitionId": "4QrbaNGH",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-14/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "6wn26btR",
+      "date": "2026-10-25T11:15:00.000Z",
+      "home": "CD Zafra",
+      "away": "Azuaga",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 14",
+      "country": "Spagna",
+      "competitionId": "4QrbaNGH",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-14/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "Iavlcf3D",
+      "date": "2026-10-25T11:15:00.000Z",
+      "home": "Puebla",
+      "away": "Villafranca",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 15",
+      "country": "Spagna",
+      "competitionId": "rHs2bsWN",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-15/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "Eobm8Mso",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Subiza",
+      "away": "Cortes",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 16",
+      "country": "Spagna",
+      "competitionId": "josSb1oU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-16/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "pjGFd3WA",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Casalarreina",
+      "away": "Anguiano",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 16",
+      "country": "Spagna",
+      "competitionId": "josSb1oU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-16/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "CxI7bP1b",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Comillas",
+      "away": "Calasancio",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 16",
+      "country": "Spagna",
+      "competitionId": "josSb1oU",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-16/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "zcvzkCU1",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Varea",
+      "away": "Alfaro",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 17",
+      "country": "Spagna",
+      "competitionId": "hfTgfLgo",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-17/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "hIGfmvcn",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "CD Sietamo",
+      "away": "Andorra CF",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 18",
+      "country": "Spagna",
+      "competitionId": "0pIr3Dco",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-18/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "dYTROb7N",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Illescas",
+      "away": "Huracan de Balazote",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 18",
+      "country": "Spagna",
+      "competitionId": "0pIr3Dco",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-18/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "6oC7yxiT",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Socuellamos",
+      "away": "Quintanar del Rey",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 18",
+      "country": "Spagna",
+      "competitionId": "0pIr3Dco",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-18/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "8UO3U2wn",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "San Clemente",
+      "away": "Marchamalo",
+      "status": "FT"
+    },
+    {
+      "league": "Liga F - Femminile",
+      "country": "Spagna",
+      "competitionId": "OG5aZV0d",
+      "sourcePath": "/calcio/spagna/liga-f-femminile/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "tred1zKa",
+      "date": "2026-10-25T11:45:00.000Z",
+      "home": "A Coruna D",
+      "away": "Alaves D",
+      "status": "FT"
+    },
+    {
+      "league": "Diski Challenge",
+      "country": "Sudafrica",
+      "competitionId": "Cv72CrW9",
+      "sourcePath": "/calcio/sudafrica/diski-challenge/",
+      "score": {
+        "home": 4,
+        "away": 5
+      },
+      "id": "rZZNVN4b",
+      "date": "2026-10-25T08:00:00.000Z",
+      "home": "Marumo Gallants U23",
+      "away": "Stellenbosch U23",
+      "status": "FT"
+    },
+    {
+      "league": "Diski Challenge",
+      "country": "Sudafrica",
+      "competitionId": "Cv72CrW9",
+      "sourcePath": "/calcio/sudafrica/diski-challenge/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "EagbF2KH",
+      "date": "2026-10-25T08:00:00.000Z",
+      "home": "Milford FC U23",
+      "away": "Polokwane U23",
+      "status": "FT"
+    },
+    {
+      "league": "Diski Challenge",
+      "country": "Sudafrica",
+      "competitionId": "Cv72CrW9",
+      "sourcePath": "/calcio/sudafrica/diski-challenge/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "ALyGXqzn",
+      "date": "2026-10-25T08:00:00.000Z",
+      "home": "Sekhukhune U23",
+      "away": "Richards Bay U23",
+      "status": "FT"
+    },
+    {
+      "league": "Super League Women",
+      "country": "Sudafrica",
+      "competitionId": "ATWwe8FU",
+      "sourcePath": "/calcio/sudafrica/super-league-women/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "fZGT4gBb",
+      "date": "2026-10-25T09:00:00.000Z",
+      "home": "Stellenbosch D",
+      "away": "Richmond United D",
+      "status": "FT"
+    },
+    {
+      "league": "Superettan",
+      "country": "Svezia",
+      "competitionId": "bBIP6pm3",
+      "sourcePath": "/calcio/svezia/superettan/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "fuFzoKsK",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Norrby",
+      "away": "Norrkoping",
+      "status": "FT"
+    },
+    {
+      "league": "Division 1, Södra",
+      "country": "Svezia",
+      "competitionId": "02P7Upli",
+      "sourcePath": "/calcio/svezia/division-1-sodra/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "C6xHM7i3",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Trelleborg",
+      "away": "Atvidaberg",
+      "status": "FT"
+    },
+    {
+      "league": "Allsvenskan - Femminile",
+      "country": "Svezia",
+      "competitionId": "Oz3Kisdp",
+      "sourcePath": "/calcio/svezia/allsvenskan-donne/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "IDQvR6tJ",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "AIK D",
+      "away": "Rosengard D",
+      "status": "FT"
+    },
+    {
+      "league": "Allsvenskan - Femminile",
+      "country": "Svezia",
+      "competitionId": "Oz3Kisdp",
+      "sourcePath": "/calcio/svezia/allsvenskan-donne/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "4UlMwpQO",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Vittsjo D",
+      "away": "Pitea D",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Taiwan",
+      "competitionId": "OU7Tf60L",
+      "sourcePath": "/calcio/taiwan/premier-league/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "h2xfsoz8",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Taichung Rock",
+      "away": "Taichung",
+      "status": "FT"
+    },
+    {
+      "league": "Thai League 1",
+      "country": "Thailandia",
+      "competitionId": "hOlyBdW0",
+      "sourcePath": "/calcio/thailandia/thai-league-1/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "UqHgyOPE",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Prachuap",
+      "away": "Bangkok Utd",
+      "status": "FT"
+    },
+    {
+      "league": "Thai League 1",
+      "country": "Thailandia",
+      "competitionId": "hOlyBdW0",
+      "sourcePath": "/calcio/thailandia/thai-league-1/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "xAK1Z1fR",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Rasisalai Utd",
+      "away": "Ayutthaya Utd",
+      "status": "FT"
+    },
+    {
+      "league": "Thai League 1",
+      "country": "Thailandia",
+      "competitionId": "hOlyBdW0",
+      "sourcePath": "/calcio/thailandia/thai-league-1/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "Yu6XTuIl",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Lamphun Warrior",
+      "away": "Pattani",
+      "status": "FT"
+    },
+    {
+      "league": "Thai League 1",
+      "country": "Thailandia",
+      "competitionId": "hOlyBdW0",
+      "sourcePath": "/calcio/thailandia/thai-league-1/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "67JvSJn1",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Uthai Thani",
+      "away": "Sukhothai",
+      "status": "FT"
+    },
+    {
+      "league": "Thai League 2",
+      "country": "Thailandia",
+      "competitionId": "zirne0n9",
+      "sourcePath": "/calcio/thailandia/thai-league-2/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "dGOpiSxr",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Chanthaburi",
+      "away": "Chiangmai Utd",
+      "status": "FT"
+    },
+    {
+      "league": "Thai League 2",
+      "country": "Thailandia",
+      "competitionId": "zirne0n9",
+      "sourcePath": "/calcio/thailandia/thai-league-2/",
+      "score": {
+        "home": 6,
+        "away": 3
+      },
+      "id": "jHdD9zg9",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Kanchanaburi",
+      "away": "Chainat",
+      "status": "FT"
+    },
+    {
+      "league": "Thai League 2",
+      "country": "Thailandia",
+      "competitionId": "zirne0n9",
+      "sourcePath": "/calcio/thailandia/thai-league-2/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "UTMhk67f",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Nakhon Ratchasima FC",
+      "away": "Pattaya United",
+      "status": "FT"
+    },
+    {
+      "league": "Thai League 2",
+      "country": "Thailandia",
+      "competitionId": "zirne0n9",
+      "sourcePath": "/calcio/thailandia/thai-league-2/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "zRP0mpx7",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Khonkaen Utd.",
+      "away": "Muang Loei",
+      "status": "FT"
+    },
+    {
+      "league": "1. Lig",
+      "country": "Turchia",
+      "competitionId": "Spw6Az1D",
+      "sourcePath": "/calcio/turchia/1-lig/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "Cth6J6zG",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Batman Petrolspor",
+      "away": "Erokspor",
+      "status": "FT"
+    },
+    {
+      "league": "1. Lig",
+      "country": "Turchia",
+      "competitionId": "Spw6Az1D",
+      "sourcePath": "/calcio/turchia/1-lig/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "tdzHLy0n",
+      "date": "2026-10-25T10:30:00.000Z",
+      "home": "Pendikspor",
+      "away": "Kayserispor",
+      "status": "FT"
+    },
+    {
+      "league": "2. Lig Red Group",
+      "country": "Turchia",
+      "competitionId": "dUL46cTo",
+      "sourcePath": "/calcio/turchia/2-lig-red-group/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "C8KKveLs",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "12 Bingol",
+      "away": "Kirklarelispor",
+      "status": "FT"
+    },
+    {
+      "league": "3. Lig Group 1",
+      "country": "Turchia",
+      "competitionId": "YT8o2dVC",
+      "sourcePath": "/calcio/turchia/3-lig-group-1/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "h2GP4OeC",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Fatsa Bld.",
+      "away": "Inkilapspor",
+      "status": "FT"
+    },
+    {
+      "league": "3. Lig Group 1",
+      "country": "Turchia",
+      "competitionId": "YT8o2dVC",
+      "sourcePath": "/calcio/turchia/3-lig-group-1/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "St0A86dm",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Bulvarspor",
+      "away": "Galata",
+      "status": "FT"
+    },
+    {
+      "league": "3. Lig Group 2",
+      "country": "Turchia",
+      "competitionId": "CK7k1GpJ",
+      "sourcePath": "/calcio/turchia/3-lig-group-2/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "U92DMlI6",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Alanya 1221",
+      "away": "Kepez Belediyespor",
+      "status": "FT"
+    },
+    {
+      "league": "3. Lig Group 2",
+      "country": "Turchia",
+      "competitionId": "CK7k1GpJ",
+      "sourcePath": "/calcio/turchia/3-lig-group-2/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "nTsoylXa",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Usak Belediyespor",
+      "away": "Gaziemirspor",
+      "status": "FT"
+    },
+    {
+      "league": "3. Lig Group 3",
+      "country": "Turchia",
+      "competitionId": "ChwgcrNJ",
+      "sourcePath": "/calcio/turchia/3-lig-group-3/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "0xuMIw7l",
+      "date": "2026-10-25T11:30:00.000Z",
+      "home": "Kirikkale FK",
+      "away": "Osmaniyespor",
+      "status": "FT"
+    },
+    {
+      "league": "U19 League",
+      "country": "Turchia",
+      "competitionId": "UogUQq03",
+      "sourcePath": "/calcio/turchia/u19-league/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "A7GCVEeo",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Konyaspor U19",
+      "away": "Genclerbirligi U19",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Ucraina",
+      "competitionId": "Myjs3vp6",
+      "sourcePath": "/calcio/ucraina/premier-league/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "OUIFIDM0",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Bukovyna",
+      "away": "Kryvbas",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Ucraina",
+      "competitionId": "Myjs3vp6",
+      "sourcePath": "/calcio/ucraina/premier-league/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "EyRTRHaE",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Ch. Odesa",
+      "away": "Karpaty Lviv",
+      "status": "FT"
+    },
+    {
+      "league": "Persha Liga",
+      "country": "Ucraina",
+      "competitionId": "ShUKWHDG",
+      "sourcePath": "/calcio/ucraina/persha-liga/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "hIMrysTQ",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "UCSA",
+      "away": "Lokomotyv Kyiv",
+      "status": "FT"
+    },
+    {
+      "league": "Persha Liga",
+      "country": "Ucraina",
+      "competitionId": "ShUKWHDG",
+      "sourcePath": "/calcio/ucraina/persha-liga/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "pYStHLye",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Inhulets",
+      "away": "Kolos Kovalivka 2",
+      "status": "FT"
+    },
+    {
+      "league": "Druha Liga",
+      "country": "Ucraina",
+      "competitionId": "vmlD9csB",
+      "sourcePath": "/calcio/ucraina/druha-liga/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "pC3AYwln",
+      "date": "2026-10-25T09:45:00.000Z",
+      "home": "Rebel Kyiv",
+      "away": "SC Poltava 2",
+      "status": "FT"
+    },
+    {
+      "league": "Druha Liga",
+      "country": "Ucraina",
+      "competitionId": "vmlD9csB",
+      "sourcePath": "/calcio/ucraina/druha-liga/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "KMovwV3b",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "FC Vilkhivtsi",
+      "away": "Nyva Vinnytsya",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League 2",
+      "country": "Ucraina",
+      "competitionId": "Gzf0srBS",
+      "sourcePath": "/calcio/ucraina/premier-league-2/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "QkwWf0Ms",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Livyi Bereg U21",
+      "away": "LNZ Cherkasy U21",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League 2",
+      "country": "Ucraina",
+      "competitionId": "Gzf0srBS",
+      "sourcePath": "/calcio/ucraina/premier-league-2/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "4z9KmqFE",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Shakhtar U21",
+      "away": "Zorya U21",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League 2",
+      "country": "Ucraina",
+      "competitionId": "Gzf0srBS",
+      "sourcePath": "/calcio/ucraina/premier-league-2/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "C0CSoNqR",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Epitsentr U21",
+      "away": "FC Kharkiv U21",
+      "status": "FT"
+    },
+    {
+      "league": "Championship Femminile",
+      "country": "Ucraina",
+      "competitionId": "WGdJC0Oj",
+      "sourcePath": "/calcio/ucraina/championship-femminile/",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "id": "bVoPk4dJ",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Kolos Kovalivka D",
+      "away": "Ladomir D",
+      "status": "FT"
+    },
+    {
+      "league": "NB I.",
+      "country": "Ungheria",
+      "competitionId": "6aYykcXn",
+      "sourcePath": "/calcio/ungheria/nb-i/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "6qRkbPsg",
+      "date": "2026-10-25T12:15:00.000Z",
+      "home": "Vasas",
+      "away": "Paks",
+      "status": "FT"
+    },
+    {
+      "league": "NB III - Northeast",
+      "country": "Ungheria",
+      "competitionId": "jiOTqp7b",
+      "sourcePath": "/calcio/ungheria/nb-iii-northeast/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "pUfPjxLO",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Kisvarda II",
+      "away": "Debrecen II",
+      "status": "FT"
+    },
+    {
+      "league": "NB III - Northwest",
+      "country": "Ungheria",
+      "competitionId": "h6caqOyB",
+      "sourcePath": "/calcio/ungheria/nb-iii-northwest/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "QHimF354",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Győr II",
+      "away": "Haladas VSE",
+      "status": "FT"
+    },
+    {
+      "league": "NB III - Northwest",
+      "country": "Ungheria",
+      "competitionId": "h6caqOyB",
+      "sourcePath": "/calcio/ungheria/nb-iii-northwest/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "6VBa9YYr",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Puskas Academy II",
+      "away": "VSC Veszprem",
+      "status": "FT"
+    },
+    {
+      "league": "NB III - Northwest",
+      "country": "Ungheria",
+      "competitionId": "h6caqOyB",
+      "sourcePath": "/calcio/ungheria/nb-iii-northwest/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "pnl3BL4T",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Balatonalmadi SE",
+      "away": "Komaromi VSE",
+      "status": "FT"
+    },
+    {
+      "league": "NB III - Southeast",
+      "country": "Ungheria",
+      "competitionId": "Aczmp4M4",
+      "sourcePath": "/calcio/ungheria/nb-iii-southeast/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "W2v0VKSk",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Elore",
+      "away": "Szegedi",
+      "status": "FT"
+    },
+    {
+      "league": "NB III - Southeast",
+      "country": "Ungheria",
+      "competitionId": "Aczmp4M4",
+      "sourcePath": "/calcio/ungheria/nb-iii-southeast/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "EqaSGLDd",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "ESMTK Budapest",
+      "away": "Ujpest II",
+      "status": "FT"
+    },
+    {
+      "league": "NB I Femminile",
+      "country": "Ungheria",
+      "competitionId": "Mivy3Des",
+      "sourcePath": "/calcio/ungheria/nb-i-femminile/",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "id": "4Kz5dMiq",
+      "date": "2026-10-25T12:00:00.000Z",
+      "home": "Videoton D",
+      "away": "Szent Mihaly D",
+      "status": "FT"
+    },
+    {
+      "league": "NB I Femminile",
+      "country": "Ungheria",
+      "competitionId": "Mivy3Des",
+      "sourcePath": "/calcio/ungheria/nb-i-femminile/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "GEYa0VhH",
+      "date": "2026-10-25T12:30:00.000Z",
+      "home": "Astra Hungary D",
+      "away": "Ujpest D",
+      "status": "FT"
+    },
+    {
+      "league": "Super League",
+      "country": "Uzbekistan",
+      "competitionId": "zBkyuyRI",
+      "sourcePath": "/calcio/uzbekistan/super-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "zonoic86",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "OKMK",
+      "away": "Kokand 1912",
+      "status": "FT"
+    },
+    {
+      "league": "Pro Liga",
+      "country": "Uzbekistan",
+      "competitionId": "25ICmKzF",
+      "sourcePath": "/calcio/uzbekistan/pro-liga/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "hxZMNmYo",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Jayxun",
+      "away": "Respublika FA",
+      "status": "FT"
+    },
+    {
+      "league": "Pro Liga",
+      "country": "Uzbekistan",
+      "competitionId": "25ICmKzF",
+      "sourcePath": "/calcio/uzbekistan/pro-liga/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "QkXULR2b",
+      "date": "2026-10-25T10:00:00.000Z",
+      "home": "Pakhtakor II",
+      "away": "BuxDu",
+      "status": "FT"
+    },
+    {
+      "league": "V.League 1",
+      "country": "Vietnam",
+      "competitionId": "CGXGiMTB",
+      "sourcePath": "/calcio/vietnam/v-league-1/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "K6oz9mSI",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Da Nang",
+      "away": "Hanoi FC",
+      "status": "FT"
+    },
+    {
+      "league": "V.League 1",
+      "country": "Vietnam",
+      "competitionId": "CGXGiMTB",
+      "sourcePath": "/calcio/vietnam/v-league-1/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "C0YLWjKP",
+      "date": "2026-10-25T11:00:00.000Z",
+      "home": "Phu Dong Ninh Binh",
+      "away": "Ho Chi Minh",
+      "status": "FT"
     }
   ]
 }
