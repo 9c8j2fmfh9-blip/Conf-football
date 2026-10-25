@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-24T23:22:02.087Z",
-  "lastCapturedAt": "2026-10-24T23:22:01.910Z",
+  "evaluatedAt": "2026-10-25T04:53:50.060Z",
+  "lastCapturedAt": "2026-10-25T04:53:49.626Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 616,
+  "recorded": 623,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 486,
+  "settled": 498,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -195,28 +195,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_USA_1_mls_2026-10-24_orlando_city_new_york_city_football_club\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-24_orlando_city_new_york_city_football_club",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-24_philadelphia_union_new_england_revolution\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-24_philadelphia_union_new_england_revolution",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_1_serie-a_2026-10-25_santos_bahia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-25_santos_bahia",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ARG_2_primera-nacional_2026-10-25_ciudad_de_bolivar_colon_santa_fe\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_ciudad_de_bolivar_colon_santa_fe",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_MEX_1_liga-mx_2026-10-25_monterrey_guadalajara\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_1_liga-mx_2026-10-25_monterrey_guadalajara",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -225,33 +205,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_MEX_2_liga-expansion_2026-10-25_dorados_de_sinaloa_piratas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_2_liga-expansion_2026-10-25_dorados_de_sinaloa_piratas",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_MEX_2_liga-expansion_2026-10-25_mineros_de_zacatecas_leones_negros\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_2_liga-expansion_2026-10-25_mineros_de_zacatecas_leones_negros",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-25_rosario_central_huracan\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-25_rosario_central_huracan",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-25_fc_dallas_san_jose_earthquakes\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-25_fc_dallas_san_jose_earthquakes",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-25_houston_dynamo_fc_minnesota_united_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-25_houston_dynamo_fc_minnesota_united_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-25_sporting_kansas_city_austin_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-25_sporting_kansas_city_austin_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -262,21 +217,6 @@
     {
       "key": "[\"open_USA_1_mls_2026-10-25_real_salt_lake_st_louis_city_sc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_USA_1_mls_2026-10-25_real_salt_lake_st_louis_city_sc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-10-25_wellington_phoenix_fc_central_coast_mariners\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-10-25_wellington_phoenix_fc_central_coast_mariners",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-25_portland_timbers_charlotte_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-25_portland_timbers_charlotte_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-25_san_diego_fc_seattle_sounders_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-25_san_diego_fc_seattle_sounders_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -657,6 +597,41 @@
     {
       "key": "[\"open_MEX_1_liga-mx_2026-10-25_atlas_puebla\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-10-25_atlas_puebla",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-26_barracas_central_estudiantes_de_rio_cuarto\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-26_barracas_central_estudiantes_de_rio_cuarto",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-26_central_cordoba_santiago_del_estero_velez_sarsfield\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-26_central_cordoba_santiago_del_estero_velez_sarsfield",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-10-26_america_pachuca\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-10-26_america_pachuca",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-10-26_queretaro_cruz_azul\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-10-26_queretaro_cruz_azul",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-26_lafc_la_galaxy\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-26_lafc_la_galaxy",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-26_los_angeles_football_club_la_galaxy\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-26_los_angeles_football_club_la_galaxy",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-10-26_tijuana_santos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-10-26_tijuana_santos",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -1304,6 +1279,221 @@
           "pairedModelBrier": 0.27101339285714277,
           "baselineBrier": 0.28834285714285685,
           "brierImprovement": 0.01732946428571428
+        }
+      }
+    },
+    {
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "markets": {
+        "one": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "draw": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "two": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "doubleChance1X": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "doubleChanceX2": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "doubleChance12": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "over15": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "under15": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "over25": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "under25": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "btts": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "noBtts": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "over35": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "under35": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "homeScore": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "homeNoScore": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "awayScore": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "awayNoScore": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "homeOver15": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "awayOver15": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
+        },
+        "bttsOver25": {
+          "n": 0,
+          "brier": null,
+          "meanForecast": null,
+          "observedRate": null,
+          "baselineN": 0,
+          "pairedModelBrier": null,
+          "baselineBrier": null,
+          "brierImprovement": null
         }
       }
     }
@@ -25382,6 +25572,198 @@
       "score": {
         "home": 1,
         "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-24_orlando_city_new_york_city_football_club\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-24_orlando_city_new_york_city_football_club",
+      "resultId": "UPi0Rkj3",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Orlando City",
+      "away": "New York City Football Club",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-24T23:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-24_philadelphia_union_new_england_revolution\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-24_philadelphia_union_new_england_revolution",
+      "resultId": "Qio9PTKF",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Philadelphia Union",
+      "away": "New England Revolution",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-24T23:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-25_santos_bahia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-25_santos_bahia",
+      "resultId": "KpqbfGen",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Santos",
+      "away": "Bahia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T00:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-10-25_monterrey_guadalajara\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-10-25_monterrey_guadalajara",
+      "resultId": "bgKwS5vB",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Monterrey",
+      "away": "Guadalajara",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T00:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-10-25_dorados_de_sinaloa_piratas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-10-25_dorados_de_sinaloa_piratas",
+      "resultId": "v5eSjGRh",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Dorados de Sinaloa",
+      "away": "Piratas",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T00:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-25_rosario_central_huracan\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-25_rosario_central_huracan",
+      "resultId": "K0al9Mxh",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Rosario Central",
+      "away": "Huracán",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T00:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-25_fc_dallas_san_jose_earthquakes\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-25_fc_dallas_san_jose_earthquakes",
+      "resultId": "YHlHN7kS",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Dallas",
+      "away": "San Jose Earthquakes",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T00:30:00Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-25_houston_dynamo_fc_minnesota_united_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-25_houston_dynamo_fc_minnesota_united_fc",
+      "resultId": "IkQmIoDk",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Houston Dynamo FC",
+      "away": "Minnesota United FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T00:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-25_sporting_kansas_city_austin_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-25_sporting_kansas_city_austin_fc",
+      "resultId": "jHweGPs2",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Sporting Kansas City",
+      "away": "Austin FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T00:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-10-25_wellington_phoenix_fc_central_coast_mariners\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-10-25_wellington_phoenix_fc_central_coast_mariners",
+      "resultId": "WYhkbYY7",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Wellington Phoenix FC",
+      "away": "Central Coast Mariners",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T02:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-25_portland_timbers_charlotte_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-25_portland_timbers_charlotte_fc",
+      "resultId": "vwKkx74L",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Portland Timbers",
+      "away": "Charlotte FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T02:30:00Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-25_san_diego_fc_seattle_sounders_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-25_san_diego_fc_seattle_sounders_fc",
+      "resultId": "bN0MWpSr",
+      "matchMethod": "unique-team-kickoff",
+      "home": "San Diego FC",
+      "away": "Seattle Sounders FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T02:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
       },
       "markets": {}
     }
