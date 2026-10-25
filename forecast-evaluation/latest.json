@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-25T14:27:37.645Z",
-  "lastCapturedAt": "2026-10-25T14:27:37.476Z",
+  "evaluatedAt": "2026-10-25T18:27:39.420Z",
+  "lastCapturedAt": "2026-10-25T18:27:39.278Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 623,
+  "recorded": 625,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 500,
+  "settled": 513,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -290,11 +290,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_TUR_1_super-lig_2026-10-25_konyaspor_genclerbirligi\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-10-25_konyaspor_genclerbirligi",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ESP_2_segunda-division_2026-10-25_cd_sabadell_tenerife\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ESP_2_segunda-division_2026-10-25_cd_sabadell_tenerife",
       "reason": "Identificativo calendario assente"
@@ -305,38 +300,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_NED_1_eredivisie_2026-10-25_psv_feyenoord\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-10-25_psv_feyenoord",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_1_premier-league_2026-10-25_crystal_palace_newcastle\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-10-25_crystal_palace_newcastle",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_1_premier-league_2026-10-25_hull_brentford\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-10-25_hull_brentford",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_1_premier-league_2026-10-25_liverpool_brighton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-10-25_liverpool_brighton",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ENG_1_premier-league_2026-10-25_manchester_united_bournemouth\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_1_premier-league_2026-10-25_manchester_united_bournemouth",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-10-25_atalanta_frosinone\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-10-25_atalanta_frosinone",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-10-25_genoa_venezia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-10-25_genoa_venezia",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -355,11 +320,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ITA_2_serie-b_2026-10-25_palermo_carrarese\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_2_serie-b_2026-10-25_palermo_carrarese",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_GER_1_bundesliga_2026-10-25_tsg_hoffenheim_bayer_04_leverkusen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_GER_1_bundesliga_2026-10-25_tsg_hoffenheim_bayer_04_leverkusen",
       "reason": "Identificativo calendario assente"
@@ -375,11 +335,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ESP_2_segunda-division_2026-10-25_albacete_eldense\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ESP_2_segunda-division_2026-10-25_albacete_eldense",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ESP_2_segunda-division_2026-10-25_cadiz_ceuta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ESP_2_segunda-division_2026-10-25_cadiz_ceuta",
       "reason": "Identificativo calendario assente"
@@ -387,21 +342,6 @@
     {
       "key": "[\"open_GER_3_3-liga_2026-10-25_preu_en_munster_fortuna_koln\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_GER_3_3-liga_2026-10-25_preu_en_munster_fortuna_koln",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_POR_1_primeira-liga_2026-10-25_estoril_praia_moreirense_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_POR_1_primeira-liga_2026-10-25_estoril_praia_moreirense_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_1_eredivisie_2026-10-25_sparta_rotterdam_ajax\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-10-25_sparta_rotterdam_ajax",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_TUR_1_super-lig_2026-10-25_goztepe_corum\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-10-25_goztepe_corum",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -432,11 +372,6 @@
     {
       "key": "[\"open_ITA_2_serie-b_2026-10-25_hellas_verona_pisa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ITA_2_serie-b_2026-10-25_hellas_verona_pisa",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_1_premier-league_2026-10-25_sunderland_leeds\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-10-25_sunderland_leeds",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -622,6 +557,16 @@
     {
       "key": "[\"open_MEX_1_liga-mx_2026-10-26_tijuana_santos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-10-26_tijuana_santos",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-10-26_besiktas_istanbul_basaksehir\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-10-26_besiktas_istanbul_basaksehir",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-10-26_caykur_rizespor_trabzonspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-10-26_caykur_rizespor_trabzonspor",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -25786,6 +25731,214 @@
       "score": {
         "home": 1,
         "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-10-25_konyaspor_genclerbirligi\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-10-25_konyaspor_genclerbirligi",
+      "resultId": "dSK5dk1d",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Konyaspor",
+      "away": "Gençlerbirligi",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T13:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-10-25_psv_feyenoord\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-10-25_psv_feyenoord",
+      "resultId": "vkadkKOQ",
+      "matchMethod": "unique-team-kickoff",
+      "home": "PSV",
+      "away": "Feyenoord",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T13:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-10-25_crystal_palace_newcastle\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-10-25_crystal_palace_newcastle",
+      "resultId": "fXmefEGl",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Crystal Palace",
+      "away": "Newcastle",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T14:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-10-25_hull_brentford\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-10-25_hull_brentford",
+      "resultId": "tln3hho1",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Hull",
+      "away": "Brentford",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T14:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-10-25_liverpool_brighton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-10-25_liverpool_brighton",
+      "resultId": "t8xcEZ7K",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Liverpool",
+      "away": "Brighton",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T14:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-10-25_atalanta_frosinone\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-10-25_atalanta_frosinone",
+      "resultId": "GMSvV33s",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Atalanta",
+      "away": "Frosinone",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T14:00:00Z",
+      "score": {
+        "home": 4,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-10-25_genoa_venezia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-10-25_genoa_venezia",
+      "resultId": "4QX2PaXI",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Genoa",
+      "away": "Venezia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T14:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-10-25_palermo_carrarese\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-10-25_palermo_carrarese",
+      "resultId": "xMh4V9Mr",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Palermo",
+      "away": "Carrarese",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T14:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-10-25_albacete_eldense\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-10-25_albacete_eldense",
+      "resultId": "n3I3J6Q0",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Albacete",
+      "away": "Eldense",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T15:15:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_POR_1_primeira-liga_2026-10-25_estoril_praia_moreirense_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_POR_1_primeira-liga_2026-10-25_estoril_praia_moreirense_fc",
+      "resultId": "G2tWkEaN",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Estoril Praia",
+      "away": "Moreirense FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T15:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-10-25_sparta_rotterdam_ajax\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-10-25_sparta_rotterdam_ajax",
+      "resultId": "zLpSqbnl",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Sparta Rotterdam",
+      "away": "Ajax",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T15:45:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-10-25_goztepe_corum\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-10-25_goztepe_corum",
+      "resultId": "l2HcbBWq",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Göztepe",
+      "away": "Çorum",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T16:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-10-25_sunderland_leeds\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-10-25_sunderland_leeds",
+      "resultId": "ImWz7i0f",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Sunderland",
+      "away": "Leeds",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T16:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
       },
       "markets": {}
     }
