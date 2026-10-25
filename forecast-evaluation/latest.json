@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-25T04:53:50.060Z",
-  "lastCapturedAt": "2026-10-25T04:53:49.626Z",
+  "evaluatedAt": "2026-10-25T09:54:34.830Z",
+  "lastCapturedAt": "2026-10-25T09:54:34.422Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 623,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 498,
+  "settled": 499,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -222,11 +222,6 @@
     {
       "key": "[\"open_MEX_1_liga-mx_2026-10-25_pumas_unam_tigres_uanl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-10-25_pumas_unam_tigres_uanl",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-10-25_sydney_fc_adelaide_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-10-25_sydney_fc_adelaide_united",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -25764,6 +25759,22 @@
       "score": {
         "home": 2,
         "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-10-25_sydney_fc_adelaide_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-10-25_sydney_fc_adelaide_united",
+      "resultId": "rNazMyRE",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Sydney FC",
+      "away": "Adelaide United",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T04:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
       },
       "markets": {}
     }
