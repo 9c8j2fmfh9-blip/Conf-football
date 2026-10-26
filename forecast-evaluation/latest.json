@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-25T18:27:39.420Z",
-  "lastCapturedAt": "2026-10-25T18:27:39.278Z",
+  "evaluatedAt": "2026-10-26T00:28:25.005Z",
+  "lastCapturedAt": "2026-10-26T00:28:24.868Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 625,
+  "recorded": 639,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 513,
+  "settled": 527,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -380,23 +380,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ITA_1_serie-a_2026-10-25_lecce_juventus\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-10-25_lecce_juventus",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ESP_1_la-liga_2026-10-25_real_sociedad_levante_ud\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ESP_1_la-liga_2026-10-25_real_sociedad_levante_ud",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BEL_1_pro-league_2026-10-25_kaa_gent_anderlecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BEL_1_pro-league_2026-10-25_kaa_gent_anderlecht",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_GRE_1_super-league_2026-10-25_aris_atromitos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_GRE_1_super-league_2026-10-25_aris_atromitos",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -405,28 +390,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-25_aldosivi_belgrano_cordoba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-25_aldosivi_belgrano_cordoba",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_POR_1_primeira-liga_2026-10-25_cd_nacional_sc_braga\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_POR_1_primeira-liga_2026-10-25_cd_nacional_sc_braga",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_POR_1_primeira-liga_2026-10-25_rio_ave_fc_fc_famalicao\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_POR_1_primeira-liga_2026-10-25_rio_ave_fc_fc_famalicao",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_GRE_1_super-league_2026-10-25_ofi_crete_paok\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_GRE_1_super-league_2026-10-25_ofi_crete_paok",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_MEX_2_liga-expansion_2026-10-25_tlaxcala_fc_correcaminos_uat\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_2_liga-expansion_2026-10-25_tlaxcala_fc_correcaminos_uat",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -437,11 +402,6 @@
     {
       "key": "[\"open_GER_3_3-liga_2026-10-25_sv_waldhof_mannheim_tsg_1899_hoffenheim_ii\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_GER_3_3-liga_2026-10-25_sv_waldhof_mannheim_tsg_1899_hoffenheim_ii",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_almirante_brown_deportivo_moron\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_almirante_brown_deportivo_moron",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -460,21 +420,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_patronato_agropecuario\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_patronato_agropecuario",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_temperley_chacarita_juniors\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_temperley_chacarita_juniors",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-10-25_udinese_milan\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-10-25_udinese_milan",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_FRA_1_ligue-1_2026-10-25_paris_saint_germain_olympique_lyonnais\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_1_ligue-1_2026-10-25_paris_saint_germain_olympique_lyonnais",
       "reason": "Identificativo calendario assente"
@@ -485,18 +430,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_central_norte_acassuso\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_central_norte_acassuso",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ARG_2_primera-nacional_2026-10-25_deportivo_maipu_guemes\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_deportivo_maipu_guemes",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_midland_gimnasia_y_tiro_salta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_midland_gimnasia_y_tiro_salta",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -512,11 +447,6 @@
     {
       "key": "[\"open_ARG_2_primera-nacional_2026-10-25_racing_cordoba_all_boys\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_racing_cordoba_all_boys",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-25_river_plate_racing_club\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-25_river_plate_racing_club",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -567,6 +497,76 @@
     {
       "key": "[\"open_TUR_1_super-lig_2026-10-26_caykur_rizespor_trabzonspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_TUR_1_super-lig_2026-10-26_caykur_rizespor_trabzonspor",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-10-26_galatasaray_fenerbahce\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-10-26_galatasaray_fenerbahce",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-26_defensores_de_belgrano_san_miguel\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-26_defensores_de_belgrano_san_miguel",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_POR_1_primeira-liga_2026-10-26_santa_clara_sl_benfica\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_POR_1_primeira-liga_2026-10-26_santa_clara_sl_benfica",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-10-26_fc_andorra_burgos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-10-26_fc_andorra_burgos",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_2_ligue-2_2026-10-26_us_boulogne_co_stade_de_reims\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_2_ligue-2_2026-10-26_us_boulogne_co_stade_de_reims",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_1_la-liga_2026-10-26_sevilla_fc_ca_osasuna\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_1_la-liga_2026-10-26_sevilla_fc_ca_osasuna",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_4_league-two_2026-10-26_walsall_salford_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_4_league-two_2026-10-26_walsall_salford_city",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-26_union_santa_fe_estudiantes_de_la_plata\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-26_union_santa_fe_estudiantes_de_la_plata",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-26_nueva_chicago_san_martin_san_juan\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-26_nueva_chicago_san_martin_san_juan",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-26_coritiba_gremio\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-26_coritiba_gremio",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-10-26_america_mineiro_cuiaba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-10-26_america_mineiro_cuiaba",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-26_flamengo_atletico_mg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-26_flamengo_atletico_mg",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-10-26_juventude_nautico\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-10-26_juventude_nautico",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-27_instituto_cordoba_deportivo_riestra\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-27_instituto_cordoba_deportivo_riestra",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -25938,6 +25938,230 @@
       "kickoffAt": "2026-10-25T16:30:00Z",
       "score": {
         "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-10-25_lecce_juventus\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-10-25_lecce_juventus",
+      "resultId": "KATRuLHa",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Lecce",
+      "away": "Juventus",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T17:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ESP_1_la-liga_2026-10-25_real_sociedad_levante_ud\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_1_la-liga_2026-10-25_real_sociedad_levante_ud",
+      "resultId": "GSwA4xY7",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Real Sociedad",
+      "away": "Levante UD",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T17:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-10-25_aris_atromitos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-10-25_aris_atromitos",
+      "resultId": "0S9y2Aj3",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Aris",
+      "away": "Atromitos",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T17:30:00Z",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-25_aldosivi_belgrano_cordoba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-25_aldosivi_belgrano_cordoba",
+      "resultId": "SONxmWLk",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Aldosivi",
+      "away": "Belgrano (Córdoba)",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T17:45:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_POR_1_primeira-liga_2026-10-25_rio_ave_fc_fc_famalicao\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_POR_1_primeira-liga_2026-10-25_rio_ave_fc_fc_famalicao",
+      "resultId": "C6Xf6Zq4",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Rio Ave FC",
+      "away": "FC Famalicão",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T18:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-10-25_ofi_crete_paok\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-10-25_ofi_crete_paok",
+      "resultId": "AL1Nh6Dk",
+      "matchMethod": "unique-team-kickoff",
+      "home": "OFI Crete",
+      "away": "PAOK",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T18:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-10-25_tlaxcala_fc_correcaminos_uat\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-10-25_tlaxcala_fc_correcaminos_uat",
+      "resultId": "S80joCeU",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Tlaxcala FC",
+      "away": "Correcaminos UAT",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T18:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_almirante_brown_deportivo_moron\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_almirante_brown_deportivo_moron",
+      "resultId": "ARJDb0LE",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Almirante Brown",
+      "away": "Deportivo Morón",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T18:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_patronato_agropecuario\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_patronato_agropecuario",
+      "resultId": "I5biJCef",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Patronato",
+      "away": "Agropecuario",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T19:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_temperley_chacarita_juniors\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_temperley_chacarita_juniors",
+      "resultId": "vghgwYnQ",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Temperley",
+      "away": "Chacarita Juniors",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T19:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-10-25_udinese_milan\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-10-25_udinese_milan",
+      "resultId": "U35idt2t",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Udinese",
+      "away": "Milan",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T19:45:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_central_norte_acassuso\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_central_norte_acassuso",
+      "resultId": "Aeo9mzDD",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Central Norte",
+      "away": "Acassuso",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T20:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-25_midland_gimnasia_y_tiro_salta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-25_midland_gimnasia_y_tiro_salta",
+      "resultId": "zq0OFwk2",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Midland",
+      "away": "Gimnasia y Tiro (Salta)",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T20:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-25_river_plate_racing_club\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-25_river_plate_racing_club",
+      "resultId": "0xMpoAj2",
+      "matchMethod": "unique-team-kickoff",
+      "home": "River Plate",
+      "away": "Racing Club",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T22:15:00Z",
+      "score": {
+        "home": 1,
         "away": 0
       },
       "markets": {}
