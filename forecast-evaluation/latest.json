@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-26T00:28:25.005Z",
+  "evaluatedAt": "2026-10-27T06:24:00.893Z",
   "lastCapturedAt": "2026-10-26T00:28:24.868Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 639,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 527,
+  "settled": 537,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -450,28 +450,13 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_MEX_1_liga-mx_2026-10-25_atlas_puebla\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_1_liga-mx_2026-10-25_atlas_puebla",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ARG_1_liga-profesional_2026-10-26_barracas_central_estudiantes_de_rio_cuarto\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_1_liga-profesional_2026-10-26_barracas_central_estudiantes_de_rio_cuarto",
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-26_central_cordoba_santiago_del_estero_velez_sarsfield\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-26_central_cordoba_santiago_del_estero_velez_sarsfield",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_MEX_1_liga-mx_2026-10-26_america_pachuca\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-10-26_america_pachuca",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_MEX_1_liga-mx_2026-10-26_queretaro_cruz_azul\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_1_liga-mx_2026-10-26_queretaro_cruz_azul",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -500,11 +485,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_TUR_1_super-lig_2026-10-26_galatasaray_fenerbahce\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-10-26_galatasaray_fenerbahce",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ARG_2_primera-nacional_2026-10-26_defensores_de_belgrano_san_miguel\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_2_primera-nacional_2026-10-26_defensores_de_belgrano_san_miguel",
       "reason": "Identificativo calendario assente"
@@ -512,11 +492,6 @@
     {
       "key": "[\"open_POR_1_primeira-liga_2026-10-26_santa_clara_sl_benfica\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_POR_1_primeira-liga_2026-10-26_santa_clara_sl_benfica",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ESP_2_segunda-division_2026-10-26_fc_andorra_burgos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ESP_2_segunda-division_2026-10-26_fc_andorra_burgos",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -530,38 +505,13 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ENG_4_league-two_2026-10-26_walsall_salford_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_4_league-two_2026-10-26_walsall_salford_city",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-26_union_santa_fe_estudiantes_de_la_plata\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-26_union_santa_fe_estudiantes_de_la_plata",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ARG_2_primera-nacional_2026-10-26_nueva_chicago_san_martin_san_juan\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_2_primera-nacional_2026-10-26_nueva_chicago_san_martin_san_juan",
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_BRA_1_serie-a_2026-10-26_coritiba_gremio\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-26_coritiba_gremio",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BRA_2_serie-b_2026-10-26_america_mineiro_cuiaba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BRA_2_serie-b_2026-10-26_america_mineiro_cuiaba",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_1_serie-a_2026-10-26_flamengo_atletico_mg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-26_flamengo_atletico_mg",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_2_serie-b_2026-10-26_juventude_nautico\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_2_serie-b_2026-10-26_juventude_nautico",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -26162,6 +26112,166 @@
       "kickoffAt": "2026-10-25T22:15:00Z",
       "score": {
         "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-10-25_atlas_puebla\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-10-25_atlas_puebla",
+      "resultId": "2k9HKNWp",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Atlas",
+      "away": "Puebla",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-24T23:22:01.910Z",
+      "kickoffAt": "2026-10-25T23:00:00Z",
+      "score": {
+        "home": 4,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-26_central_cordoba_santiago_del_estero_velez_sarsfield\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-26_central_cordoba_santiago_del_estero_velez_sarsfield",
+      "resultId": "SjnmtO85",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Central Córdoba (Santiago del Estero)",
+      "away": "Vélez Sarsfield",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-25T04:53:49.626Z",
+      "kickoffAt": "2026-10-26T00:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-10-26_queretaro_cruz_azul\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-10-26_queretaro_cruz_azul",
+      "resultId": "0taBt5g4",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Querétaro",
+      "away": "Cruz Azul",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-25T04:53:49.626Z",
+      "kickoffAt": "2026-10-26T01:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-10-26_galatasaray_fenerbahce\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-10-26_galatasaray_fenerbahce",
+      "resultId": "lM7iKhg3",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Galatasaray",
+      "away": "Fenerbahçe",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-26T00:28:24.868Z",
+      "kickoffAt": "2026-10-26T18:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-10-26_fc_andorra_burgos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-10-26_fc_andorra_burgos",
+      "resultId": "MVVg6OY7",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Andorra",
+      "away": "Burgos",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-26T00:28:24.868Z",
+      "kickoffAt": "2026-10-26T19:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_4_league-two_2026-10-26_walsall_salford_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_4_league-two_2026-10-26_walsall_salford_city",
+      "resultId": "GfGu9ruq",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Walsall",
+      "away": "Salford City",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-26T00:28:24.868Z",
+      "kickoffAt": "2026-10-26T20:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-26_union_santa_fe_estudiantes_de_la_plata\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-26_union_santa_fe_estudiantes_de_la_plata",
+      "resultId": "UFr4xt8U",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Unión (Santa Fe)",
+      "away": "Estudiantes de La Plata",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-26T00:28:24.868Z",
+      "kickoffAt": "2026-10-26T22:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-26_coritiba_gremio\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-26_coritiba_gremio",
+      "resultId": "UJYsf713",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Coritiba",
+      "away": "Grêmio",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-26T00:28:24.868Z",
+      "kickoffAt": "2026-10-26T22:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-26_flamengo_atletico_mg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-26_flamengo_atletico_mg",
+      "resultId": "UFKuxZuI",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Flamengo",
+      "away": "Atlético-MG",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-26T00:28:24.868Z",
+      "kickoffAt": "2026-10-26T23:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-10-26_juventude_nautico\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-10-26_juventude_nautico",
+      "resultId": "CELzUmH5",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Juventude",
+      "away": "Náutico",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-26T00:28:24.868Z",
+      "kickoffAt": "2026-10-26T23:30:00Z",
+      "score": {
+        "home": 4,
         "away": 0
       },
       "markets": {}
