@@ -33809,6 +33809,336 @@
       "home": "Paysandu FC",
       "away": "Colon",
       "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "rukhOsJN",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Daejeon (Kor)",
+      "away": "Kobe (Jpn)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "6Vs9tPYi",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Johor DT (Mys)",
+      "away": "Port MTI FC (Tha)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 5,
+        "away": 2
+      },
+      "id": "vPkNILto",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Kyoto (Jpn)",
+      "away": "Newcastle Jets (Aus)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "vqtHv334",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Shanghai Port (Chn)",
+      "away": "Cong An Ha Noi (Vie)",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Azerbaijan",
+      "country": "Azerbaijan",
+      "competitionId": "dMcBRRy2",
+      "sourcePath": "/calcio/azerbaijan/coppa/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "zsteNF5l",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Marafon",
+      "away": "Zaqatala",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Azerbaijan",
+      "country": "Azerbaijan",
+      "competitionId": "dMcBRRy2",
+      "sourcePath": "/calcio/azerbaijan/coppa/",
+      "score": {
+        "home": 0,
+        "away": 6
+      },
+      "id": "KdQl73Fj",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Shimal",
+      "away": "Araz",
+      "status": "FT"
+    },
+    {
+      "league": "Super League",
+      "country": "Indonesia",
+      "competitionId": "8SwKOBWT",
+      "sourcePath": "/calcio/indonesia/super-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "dQmLjTEU",
+      "date": "2026-10-27T08:30:00.000Z",
+      "home": "PSS Sleman",
+      "away": "Borneo",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa Italia Primavera",
+      "country": "Italia",
+      "competitionId": "j1pBfg5a",
+      "sourcePath": "/calcio/italia/coppa-italia-primavera/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "INjUjiwg",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Lazio U20",
+      "away": "Südtirol U19",
+      "status": "FT"
+    },
+    {
+      "league": "Moldovia Coppa",
+      "country": "Moldavia",
+      "competitionId": "t2BgeFT0",
+      "sourcePath": "/calcio/moldavia/moldovia-coppa/",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "id": "UJFYwBKN",
+      "date": "2026-10-27T11:00:00.000Z",
+      "home": "Dacia Buiucani",
+      "away": "Univer Comrat",
+      "status": "FT"
+    },
+    {
+      "league": "Moldovia Coppa",
+      "country": "Moldavia",
+      "competitionId": "t2BgeFT0",
+      "sourcePath": "/calcio/moldavia/moldovia-coppa/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "pCJoTg65",
+      "date": "2026-10-27T11:00:00.000Z",
+      "home": "Politehnica UTM",
+      "away": "FC Chisinau",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Next Gen U23",
+      "country": "Portogallo",
+      "competitionId": "z9Lscb4e",
+      "sourcePath": "/calcio/portogallo/liga-next-gen-u23/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "lvqOFobd",
+      "date": "2026-10-27T11:00:00.000Z",
+      "home": "Estoril U23",
+      "away": "Santa Clara U23",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Next Gen U23",
+      "country": "Portogallo",
+      "competitionId": "z9Lscb4e",
+      "sourcePath": "/calcio/portogallo/liga-next-gen-u23/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "GQpGH7Tq",
+      "date": "2026-10-27T11:00:00.000Z",
+      "home": "Farense U23",
+      "away": "Academico Viseu U23",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Next Gen U23",
+      "country": "Portogallo",
+      "competitionId": "z9Lscb4e",
+      "sourcePath": "/calcio/portogallo/liga-next-gen-u23/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "8QOBLGUH",
+      "date": "2026-10-27T11:00:00.000Z",
+      "home": "Portimonense U23",
+      "away": "Maritimo U23",
+      "status": "FT"
+    },
+    {
+      "league": "Vysshaya Liga",
+      "country": "Tagikistan",
+      "competitionId": "Gt7K9kvK",
+      "sourcePath": "/calcio/tagikistan/vysshaya-liga/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "n3b1FqlQ",
+      "date": "2026-10-27T10:30:00.000Z",
+      "home": "Sardor Tursunzoda",
+      "away": "Istaravshan",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Turchia - Qualificazione",
+      "country": "Turchia",
+      "competitionId": "WbT430Fg",
+      "sourcePath": "/calcio/turchia/coppa/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "f1wJ7kD5",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Agri 1970",
+      "away": "Istanbulspor",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Turchia - Qualificazione",
+      "country": "Turchia",
+      "competitionId": "WbT430Fg",
+      "sourcePath": "/calcio/turchia/coppa/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "W0NjMlSb",
+      "date": "2026-10-27T10:30:00.000Z",
+      "home": "Etimesgut",
+      "away": "Gaziantep",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Turchia - Qualificazione",
+      "country": "Turchia",
+      "competitionId": "WbT430Fg",
+      "sourcePath": "/calcio/turchia/coppa/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "tK06tDE6",
+      "date": "2026-10-27T10:30:00.000Z",
+      "home": "Inegol Kafkas",
+      "away": "K. İstiklalspor",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Turchia - Qualificazione",
+      "country": "Turchia",
+      "competitionId": "WbT430Fg",
+      "sourcePath": "/calcio/turchia/coppa/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "YRIDviqJ",
+      "date": "2026-10-27T10:30:00.000Z",
+      "home": "Pazarspor",
+      "away": "Aliaga",
+      "status": "FT"
+    },
+    {
+      "league": "V.League 2",
+      "country": "Vietnam",
+      "competitionId": "659pm2N7",
+      "sourcePath": "/calcio/vietnam/v-league-2/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "fN0OtTgm",
+      "date": "2026-10-27T08:30:00.000Z",
+      "home": "Lam Dong",
+      "away": "PVF-CAND",
+      "status": "FT"
+    },
+    {
+      "league": "V.League 2",
+      "country": "Vietnam",
+      "competitionId": "659pm2N7",
+      "sourcePath": "/calcio/vietnam/v-league-2/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "l42vwogC",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Khanh Hoa",
+      "away": "Aurora Saigon United",
+      "status": "FT"
+    },
+    {
+      "league": "V.League 2",
+      "country": "Vietnam",
+      "competitionId": "659pm2N7",
+      "sourcePath": "/calcio/vietnam/v-league-2/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "tvaWv7Oa",
+      "date": "2026-10-27T10:00:00.000Z",
+      "home": "Van Hien",
+      "away": "Xuan Thien Phu Tho",
+      "status": "FT"
+    },
+    {
+      "league": "V.League 2",
+      "country": "Vietnam",
+      "competitionId": "659pm2N7",
+      "sourcePath": "/calcio/vietnam/v-league-2/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "KjPBKxwo",
+      "date": "2026-10-27T11:00:00.000Z",
+      "home": "Binh Duong",
+      "away": "Thep Can Tho",
+      "status": "FT"
     }
   ]
 }
