@@ -33576,7 +33576,7 @@
       "competitionId": "htKvweNB",
       "sourcePath": "/calcio/aruba/division-di-honor/",
       "score": {
-        "home": 1,
+        "home": 2,
         "away": 3
       },
       "id": "prtcuueJ",
@@ -38128,6 +38128,21 @@
       "date": "2026-10-27T22:30:00.000Z",
       "home": "Penarol",
       "away": "Montevideo City",
+      "status": "FT"
+    },
+    {
+      "league": "Paraense U20",
+      "country": "Brasile",
+      "competitionId": "KKFT9LZA",
+      "sourcePath": "/calcio/brasile/paraense-u20/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "Ms8qTmRa",
+      "date": "2026-10-27T18:30:00.000Z",
+      "home": "Tapajos U20",
+      "away": "CA Vila Rica U20",
       "status": "FT"
     }
   ]
