@@ -38069,6 +38069,66 @@
       "home": "Puerto Cabello",
       "away": "Caracas",
       "status": "FT"
+    },
+    {
+      "league": "Liga Profesional - Clausura",
+      "country": "Argentina",
+      "competitionId": "naYhNOaA",
+      "sourcePath": "/calcio/argentina/liga-profesional/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "AZ3wiuNN",
+      "date": "2026-10-27T22:00:00.000Z",
+      "home": "Argentinos Jrs",
+      "away": "Ind. Rivadavia",
+      "status": "FT"
+    },
+    {
+      "league": "Paraibano 2 - Play Off",
+      "country": "Brasile",
+      "competitionId": "OxhYHMwi",
+      "sourcePath": "/calcio/brasile/paraibano-2/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "QHeydfMh",
+      "date": "2026-10-27T22:00:00.000Z",
+      "home": "Santa Rita",
+      "away": "Cruzeiro-PB",
+      "status": "FT"
+    },
+    {
+      "league": "Copa Paraguay",
+      "country": "Paraguay",
+      "competitionId": "tvOJRWN2",
+      "sourcePath": "/calcio/paraguay/copa-paraguay/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "rym2R0L7",
+      "date": "2026-10-27T22:30:00.000Z",
+      "home": "Libertad",
+      "away": "Independiente F.B.C.",
+      "status": "FT"
+    },
+    {
+      "league": "Copa Uruguay - Play Off",
+      "country": "Uruguay",
+      "competitionId": "ITp5xBAd",
+      "sourcePath": "/calcio/uruguay/copa-uruguay/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "4tvG6KcK",
+      "date": "2026-10-27T22:30:00.000Z",
+      "home": "Penarol",
+      "away": "Montevideo City",
+      "status": "FT"
     }
   ]
 }
