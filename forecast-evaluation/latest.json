@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-29T13:16:10.836Z",
-  "lastCapturedAt": "2026-10-29T13:16:10.652Z",
+  "evaluatedAt": "2026-10-29T19:02:04.951Z",
+  "lastCapturedAt": "2026-10-29T19:02:04.732Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 714,
+  "recorded": 728,
   "estimated": 346,
   "evaluatedForecasts": 326,
   "settled": 570,
@@ -727,6 +727,76 @@
     {
       "key": "[\"open_AUS_1_a-league_2026-10-30_brisbane_roar_auckland_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_AUS_1_a-league_2026-10-30_brisbane_roar_auckland_fc",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-10-30_konyaspor_galatasaray\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-10-30_konyaspor_galatasaray",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_GER_2_2-bundesliga_2026-10-30_dsc_arminia_bielefeld_eintracht_braunschweig\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GER_2_2-bundesliga_2026-10-30_dsc_arminia_bielefeld_eintracht_braunschweig",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_GER_2_2-bundesliga_2026-10-30_energie_cottbus_vfl_bochum\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GER_2_2-bundesliga_2026-10-30_energie_cottbus_vfl_bochum",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_1_ligue-1_2026-10-30_havre_athletic_club_paris_saint_germain\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_1_ligue-1_2026-10-30_havre_athletic_club_paris_saint_germain",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_GER_3_3-liga_2026-10-30_fortuna_dusseldorf_sv_meppen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GER_3_3-liga_2026-10-30_fortuna_dusseldorf_sv_meppen",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_2_ligue-2_2026-10-30_fc_metz_pau_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_2_ligue-2_2026-10-30_fc_metz_pau_fc",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_2_ligue-2_2026-10-30_fc_nantes_clermont_foot_63\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_2_ligue-2_2026-10-30_fc_nantes_clermont_foot_63",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_2_ligue-2_2026-10-30_grenoble_foot_38_dijon_fco\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_2_ligue-2_2026-10-30_grenoble_foot_38_dijon_fco",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_2_ligue-2_2026-10-30_rodez_aveyron_football_usl_dunkerque\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_2_ligue-2_2026-10-30_rodez_aveyron_football_usl_dunkerque",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_2_ligue-2_2026-10-30_stade_lavallois_mfc_us_boulogne_co\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_2_ligue-2_2026-10-30_stade_lavallois_mfc_us_boulogne_co",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-10-30_fc_volendam_de_graafschap\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-10-30_fc_volendam_de_graafschap",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-10-30_helmond_sport_fc_eindhoven\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-10-30_helmond_sport_fc_eindhoven",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-10-30_rkc_waalwijk_almere_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-10-30_rkc_waalwijk_almere_city",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-10-30_roda_jc_kerkrade_jong_az\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-10-30_roda_jc_kerkrade_jong_az",
       "reason": "Identificativo calendario assente"
     }
   ],
