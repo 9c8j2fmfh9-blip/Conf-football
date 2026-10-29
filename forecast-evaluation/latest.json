@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-28T23:18:39.714Z",
-  "lastCapturedAt": "2026-10-28T23:18:39.528Z",
+  "evaluatedAt": "2026-10-29T05:57:38.971Z",
+  "lastCapturedAt": "2026-10-29T05:57:38.778Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 711,
+  "recorded": 713,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 555,
+  "settled": 570,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -625,28 +625,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_BRA_1_serie-a_2026-10-28_fluminense_internacional\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-28_fluminense_internacional",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BRA_1_serie-a_2026-10-28_red_bull_bragantino_chapecoense\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BRA_1_serie-a_2026-10-28_red_bull_bragantino_chapecoense",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_1_serie-a_2026-10-28_santos_palmeiras\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-28_santos_palmeiras",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-28_charlotte_fc_cf_montreal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-28_charlotte_fc_cf_montreal",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-28_inter_miami_cf_fc_cincinnati\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-28_inter_miami_cf_fc_cincinnati",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -662,61 +642,6 @@
     {
       "key": "[\"open_USA_1_mls_2026-10-28_toronto_fc_d_c_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_USA_1_mls_2026-10-28_toronto_fc_d_c_united",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_1_serie-a_2026-10-29_bahia_sao_paulo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-29_bahia_sao_paulo",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_1_serie-a_2026-10-29_remo_botafogo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-29_remo_botafogo",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_austin_fc_real_salt_lake\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_austin_fc_real_salt_lake",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_chicago_fire_fc_orlando_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_chicago_fire_fc_orlando_city",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_fc_dallas_columbus_crew\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_fc_dallas_columbus_crew",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_minnesota_united_fc_sporting_kansas_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_minnesota_united_fc_sporting_kansas_city",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_nashville_sc_philadelphia_union\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_nashville_sc_philadelphia_union",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_st_louis_city_sc_portland_timbers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_st_louis_city_sc_portland_timbers",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_san_jose_earthquakes_colorado_rapids\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_san_jose_earthquakes_colorado_rapids",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_seattle_sounders_fc_houston_dynamo_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_seattle_sounders_fc_houston_dynamo_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-29_vancouver_whitecaps_fc_san_diego_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-29_vancouver_whitecaps_fc_san_diego_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -787,6 +712,16 @@
     {
       "key": "[\"open_BRA_1_serie-a_2026-10-29_vasco_da_gama_flamengo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BRA_1_serie-a_2026-10-29_vasco_da_gama_flamengo",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-30_gremio_athletico_pr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-30_gremio_athletico_pr",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-10-30_alebrijes_de_oaxaca_mineros_de_zacatecas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-10-30_alebrijes_de_oaxaca_mineros_de_zacatecas",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -26831,6 +26766,246 @@
       "score": {
         "home": 0,
         "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-28_fluminense_internacional\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-28_fluminense_internacional",
+      "resultId": "UsHUp3Ok",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Fluminense",
+      "away": "Internacional",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-27T23:51:23.949Z",
+      "kickoffAt": "2026-10-28T22:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-28_santos_palmeiras\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-28_santos_palmeiras",
+      "resultId": "21vH6po9",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Santos",
+      "away": "Palmeiras",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-27T23:51:23.949Z",
+      "kickoffAt": "2026-10-28T22:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-28_charlotte_fc_cf_montreal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-28_charlotte_fc_cf_montreal",
+      "resultId": "KKLHG8eR",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Charlotte FC",
+      "away": "CF Montréal",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-27T23:51:23.949Z",
+      "kickoffAt": "2026-10-28T23:30:00Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-28_inter_miami_cf_fc_cincinnati\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-28_inter_miami_cf_fc_cincinnati",
+      "resultId": "htpPj6JE",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Inter Miami CF",
+      "away": "FC Cincinnati",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-27T23:51:23.949Z",
+      "kickoffAt": "2026-10-28T23:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-29_bahia_sao_paulo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-29_bahia_sao_paulo",
+      "resultId": "nDr51AQQ",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Bahia",
+      "away": "São Paulo",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T00:30:00Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-29_remo_botafogo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-29_remo_botafogo",
+      "resultId": "WpKydlll",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Remo",
+      "away": "Botafogo",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T00:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_austin_fc_real_salt_lake\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_austin_fc_real_salt_lake",
+      "resultId": "vcG6UF2C",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Austin FC",
+      "away": "Real Salt Lake",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T00:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_chicago_fire_fc_orlando_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_chicago_fire_fc_orlando_city",
+      "resultId": "nNJESgXO",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Chicago Fire FC",
+      "away": "Orlando City",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T00:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_fc_dallas_columbus_crew\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_fc_dallas_columbus_crew",
+      "resultId": "jypPncIt",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Dallas",
+      "away": "Columbus Crew",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T00:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_minnesota_united_fc_sporting_kansas_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_minnesota_united_fc_sporting_kansas_city",
+      "resultId": "b1mXpymg",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Minnesota United FC",
+      "away": "Sporting Kansas City",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T00:30:00Z",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_nashville_sc_philadelphia_union\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_nashville_sc_philadelphia_union",
+      "resultId": "vBeuqFH5",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Nashville SC",
+      "away": "Philadelphia Union",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T00:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_st_louis_city_sc_portland_timbers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_st_louis_city_sc_portland_timbers",
+      "resultId": "COgmsgnI",
+      "matchMethod": "unique-team-kickoff",
+      "home": "St. Louis CITY SC",
+      "away": "Portland Timbers",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T00:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_san_jose_earthquakes_colorado_rapids\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_san_jose_earthquakes_colorado_rapids",
+      "resultId": "8jmduXGU",
+      "matchMethod": "unique-team-kickoff",
+      "home": "San Jose Earthquakes",
+      "away": "Colorado Rapids",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T02:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_seattle_sounders_fc_houston_dynamo_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_seattle_sounders_fc_houston_dynamo_fc",
+      "resultId": "bFS5az2n",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Seattle Sounders FC",
+      "away": "Houston Dynamo FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T02:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-29_vancouver_whitecaps_fc_san_diego_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-29_vancouver_whitecaps_fc_san_diego_fc",
+      "resultId": "CI0d9Qm1",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Vancouver Whitecaps FC",
+      "away": "San Diego FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T05:54:08.767Z",
+      "kickoffAt": "2026-10-29T02:30:00Z",
+      "score": {
+        "home": 4,
+        "away": 1
       },
       "markets": {}
     }
