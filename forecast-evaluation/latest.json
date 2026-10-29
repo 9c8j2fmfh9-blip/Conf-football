@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-29T19:02:04.951Z",
-  "lastCapturedAt": "2026-10-29T19:02:04.732Z",
+  "evaluatedAt": "2026-10-29T23:22:28.099Z",
+  "lastCapturedAt": "2026-10-29T23:22:27.621Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 728,
+  "recorded": 741,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 570,
+  "settled": 577,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -650,28 +650,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ITA_1_serie-a_2026-10-29_frosinone_lecce\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-10-29_frosinone_lecce",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_kozakken_boys_fc_utrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_kozakken_boys_fc_utrecht",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_acv_afc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_acv_afc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_de_treffers_heracles_almelo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_de_treffers_heracles_almelo",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_gvvv_noordwijk\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_gvvv_noordwijk",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -687,21 +667,6 @@
     {
       "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_rkav_volendam_rohda_raalte\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_rkav_volendam_rohda_raalte",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-10-29_fiorentina_atalanta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-10-29_fiorentina_atalanta",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_CUP_efl-cup_2026-10-29_everton_newcastle_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_CUP_efl-cup_2026-10-29_everton_newcastle_united",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_fc_groningen_fc_emmen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_fc_groningen_fc_emmen",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -797,6 +762,71 @@
     {
       "key": "[\"open_NED_2_eerste-divisie_2026-10-30_roda_jc_kerkrade_jong_az\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_2_eerste-divisie_2026-10-30_roda_jc_kerkrade_jong_az",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_GER_1_bundesliga_2026-10-30_sv_07_elversberg_1_fsv_mainz_05\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GER_1_bundesliga_2026-10-30_sv_07_elversberg_1_fsv_mainz_05",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_SCO_2_championship_2026-10-30_stenhousemuir_livingston\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_SCO_2_championship_2026-10-30_stenhousemuir_livingston",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_4_league-two_2026-10-30_newport_county_chesterfield\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_4_league-two_2026-10-30_newport_county_chesterfield",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_5_national-league_2026-10-30_afc_fylde_afc_hornchurch\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_5_national-league_2026-10-30_afc_fylde_afc_hornchurch",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BEL_1_pro-league_2026-10-30_zulte_waregem_club_brugge\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BEL_1_pro-league_2026-10-30_zulte_waregem_club_brugge",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_1_la-liga_2026-10-30_villarreal_cf_rcd_espanyol_de_barcelona\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_1_la-liga_2026-10-30_villarreal_cf_rcd_espanyol_de_barcelona",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-10-30_sheffield_united_wrexham\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-10-30_sheffield_united_wrexham",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_1_ligue-1_2026-10-30_lille_lens\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_1_ligue-1_2026-10-30_lille_lens",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_POR_1_primeira-liga_2026-10-30_casa_pia_ac_sporting_lisbon\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_POR_1_primeira-liga_2026-10-30_casa_pia_ac_sporting_lisbon",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-30_estudiantes_de_rio_cuarto_gimnasia_la_plata\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-30_estudiantes_de_rio_cuarto_gimnasia_la_plata",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-30_huracan_tigre\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-30_huracan_tigre",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-10-30_criciuma_ponte_preta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-10-30_criciuma_ponte_preta",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-30_corinthians_mirassol\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-30_corinthians_mirassol",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -27081,6 +27111,118 @@
       "score": {
         "home": 4,
         "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-10-29_frosinone_lecce\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-10-29_frosinone_lecce",
+      "resultId": "As77hb15",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Frosinone",
+      "away": "Lecce",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T23:18:39.528Z",
+      "kickoffAt": "2026-10-29T17:30:00Z",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_kozakken_boys_fc_utrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_kozakken_boys_fc_utrecht",
+      "resultId": "EoCm7V6E",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Kozakken Boys",
+      "away": "FC Utrecht",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T23:18:39.528Z",
+      "kickoffAt": "2026-10-29T17:45:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_de_treffers_heracles_almelo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_de_treffers_heracles_almelo",
+      "resultId": "K6eqVGx0",
+      "matchMethod": "unique-team-kickoff",
+      "home": "De Treffers",
+      "away": "Heracles Almelo",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T23:18:39.528Z",
+      "kickoffAt": "2026-10-29T19:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_gvvv_noordwijk\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_gvvv_noordwijk",
+      "resultId": "AHHGhWiL",
+      "matchMethod": "unique-team-kickoff",
+      "home": "GVVV",
+      "away": "Noordwijk",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T23:18:39.528Z",
+      "kickoffAt": "2026-10-29T19:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-10-29_fiorentina_atalanta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-10-29_fiorentina_atalanta",
+      "resultId": "xU8afKWh",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Fiorentina",
+      "away": "Atalanta",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T23:18:39.528Z",
+      "kickoffAt": "2026-10-29T19:45:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_CUP_efl-cup_2026-10-29_everton_newcastle_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_CUP_efl-cup_2026-10-29_everton_newcastle_united",
+      "resultId": "4Sl1j8Bs",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Everton",
+      "away": "Newcastle United",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T23:18:39.528Z",
+      "kickoffAt": "2026-10-29T19:45:00Z",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_CUP_knvb-beker_2026-10-29_fc_groningen_fc_emmen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_CUP_knvb-beker_2026-10-29_fc_groningen_fc_emmen",
+      "resultId": "hKgiTf7C",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Groningen",
+      "away": "FC Emmen",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T23:18:39.528Z",
+      "kickoffAt": "2026-10-29T20:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
       },
       "markets": {}
     }
