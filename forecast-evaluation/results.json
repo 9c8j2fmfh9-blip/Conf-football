@@ -38376,8 +38376,8 @@
       "competitionId": "GGLmkiK8",
       "sourcePath": "/calcio/arabia-saudita/division-2/",
       "score": {
-        "home": 0,
-        "away": 1
+        "home": 1,
+        "away": 0
       },
       "id": "OQ8sJiUH",
       "date": "2026-10-28T12:30:00.000Z",
@@ -45643,6 +45643,306 @@
       "date": "2026-10-28T23:30:00.000Z",
       "home": "Metropolitanos",
       "away": "Portuguesa",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League U18",
+      "country": "Inghilterra",
+      "competitionId": "4jNxMxhk",
+      "sourcePath": "/calcio/inghilterra/premier-league-u18/",
+      "score": {
+        "home": 1,
+        "away": 5
+      },
+      "id": "jTpS7xXN",
+      "date": "2026-10-28T11:00:00.000Z",
+      "home": "Sunderland U18",
+      "away": "Wolves U18",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League 2",
+      "country": "Asia",
+      "competitionId": "lIAheFSM",
+      "sourcePath": "/calcio/asia/afc-champions-league-2/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "Iw91cje5",
+      "date": "2026-10-29T07:45:00.000Z",
+      "home": "Adelaide United (Aus)",
+      "away": "Lion City (Sgp)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League 2",
+      "country": "Asia",
+      "competitionId": "lIAheFSM",
+      "sourcePath": "/calcio/asia/afc-champions-league-2/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "6ukytqRN",
+      "date": "2026-10-29T10:00:00.000Z",
+      "home": "Gangwon (Kor)",
+      "away": "Kuching City FC (Mys)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League 2",
+      "country": "Asia",
+      "competitionId": "lIAheFSM",
+      "sourcePath": "/calcio/asia/afc-champions-league-2/",
+      "score": {
+        "home": 1,
+        "away": 5
+      },
+      "id": "IsyNRh6D",
+      "date": "2026-10-29T10:00:00.000Z",
+      "home": "Tampines (Sgp)",
+      "away": "Svay Rieng (Cam)",
+      "status": "FT"
+    },
+    {
+      "league": "Australian Championship",
+      "country": "Australia",
+      "competitionId": "CS1v5T7M",
+      "sourcePath": "/calcio/australia/australian-championship/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "xrQt6efE",
+      "date": "2026-10-29T08:30:00.000Z",
+      "home": "Canberra Croatia",
+      "away": "South Melbourne",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Azerbaijan",
+      "country": "Azerbaijan",
+      "competitionId": "dMcBRRy2",
+      "sourcePath": "/calcio/azerbaijan/coppa/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "G0yBEoNG",
+      "date": "2026-10-29T10:00:00.000Z",
+      "home": "Zangazur (Am)",
+      "away": "Karvan",
+      "status": "FT"
+    },
+    {
+      "league": "League One Women - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8rifnE0c",
+      "sourcePath": "/calcio/cina/league-one-women/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "4hIIYG0d",
+      "date": "2026-10-29T06:00:00.000Z",
+      "home": "Shandong SL B D",
+      "away": "Tianjin Shengde D",
+      "status": "FT"
+    },
+    {
+      "league": "League One Women - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8rifnE0c",
+      "sourcePath": "/calcio/cina/league-one-women/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "r33CfbNF",
+      "date": "2026-10-29T06:00:00.000Z",
+      "home": "Zhanjiang Yuezhan D",
+      "away": "Dalian Football School D",
+      "status": "FT"
+    },
+    {
+      "league": "League One Women - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8rifnE0c",
+      "sourcePath": "/calcio/cina/league-one-women/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "dn54dKh3",
+      "date": "2026-10-29T06:00:00.000Z",
+      "home": "Zhejiang B D",
+      "away": "Shanxi Xihua D",
+      "status": "FT"
+    },
+    {
+      "league": "UEFA Regions' Cup - Qualificazione",
+      "country": "Europa",
+      "competitionId": "CppeZQJq",
+      "sourcePath": "/calcio/europa/uefa-regions-cup/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "MqJ8Fw45",
+      "date": "2026-10-29T11:00:00.000Z",
+      "home": "NI Eastern Region (Am)",
+      "away": "Valle d'Aosta",
+      "status": "FT"
+    },
+    {
+      "league": "Championship",
+      "country": "Indonesia",
+      "competitionId": "d2aahzHp",
+      "sourcePath": "/calcio/indonesia/championship/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "rcWhU1Rs",
+      "date": "2026-10-29T08:30:00.000Z",
+      "home": "RANS Nusantara",
+      "away": "Tornado Pekanbaru",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Kenya",
+      "competitionId": "Y7QCbf53",
+      "sourcePath": "/calcio/kenya/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "6L8j8LHt",
+      "date": "2026-10-29T11:00:00.000Z",
+      "home": "Shabana",
+      "away": "Migori",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Mongolia",
+      "competitionId": "E7tzij0J",
+      "sourcePath": "/calcio/mongolia/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 7
+      },
+      "id": "YV2vaNA5",
+      "date": "2026-10-29T05:00:00.000Z",
+      "home": "Hunters",
+      "away": "Central Stallions",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Mongolia",
+      "competitionId": "E7tzij0J",
+      "sourcePath": "/calcio/mongolia/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "td6nc1uI",
+      "date": "2026-10-29T08:00:00.000Z",
+      "home": "FC Ulaanbaatar",
+      "away": "Deren",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division B - Group 4 - Gruppo Retrocessione",
+      "country": "Russia",
+      "competitionId": "AmX3nyDF",
+      "sourcePath": "/calcio/russia/fnl-2-division-b-group-4/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "hhTRL9ke",
+      "date": "2026-10-29T09:00:00.000Z",
+      "home": "Nosta",
+      "away": "Izhevsk",
+      "status": "FT"
+    },
+    {
+      "league": "Ligi Kuu Bara",
+      "country": "Tanzania",
+      "competitionId": "GUjrKsoI",
+      "sourcePath": "/calcio/tanzania/ligi-kuu-bara/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "KKlMI5dn",
+      "date": "2026-10-29T11:00:00.000Z",
+      "home": "Pamba",
+      "away": "Singida Black Stars",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Turchia - Qualificazione",
+      "country": "Turchia",
+      "competitionId": "WbT430Fg",
+      "sourcePath": "/calcio/turchia/coppa/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "GWoPtM8k",
+      "date": "2026-10-29T10:30:00.000Z",
+      "home": "Bitlis 1916",
+      "away": "Kayserispor",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League 2",
+      "country": "Ucraina",
+      "competitionId": "Gzf0srBS",
+      "sourcePath": "/calcio/ucraina/premier-league-2/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "jBDSj9RN",
+      "date": "2026-10-29T10:00:00.000Z",
+      "home": "Shakhtar U21",
+      "away": "Obolon U21",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Ucraina",
+      "country": "Ucraina",
+      "competitionId": "EDRBCKEI",
+      "sourcePath": "/calcio/ucraina/coppa-di-ucraina/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "St0vSk1C",
+      "date": "2026-10-29T10:00:00.000Z",
+      "home": "FC Chernihiv",
+      "away": "Epitsentr",
+      "status": "FT"
+    },
+    {
+      "league": "Pro Liga",
+      "country": "Uzbekistan",
+      "competitionId": "25ICmKzF",
+      "sourcePath": "/calcio/uzbekistan/pro-liga/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "GzQoZ2th",
+      "date": "2026-10-29T10:00:00.000Z",
+      "home": "Kattaqurgon",
+      "away": "Olimpik-Mobiuz",
       "status": "FT"
     }
   ]

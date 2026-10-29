@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-29T05:57:38.971Z",
-  "lastCapturedAt": "2026-10-29T05:57:38.778Z",
+  "evaluatedAt": "2026-10-29T13:16:10.836Z",
+  "lastCapturedAt": "2026-10-29T13:16:10.652Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 713,
+  "recorded": 714,
   "estimated": 346,
   "evaluatedForecasts": 326,
   "settled": 570,
@@ -722,6 +722,11 @@
     {
       "key": "[\"open_MEX_2_liga-expansion_2026-10-30_alebrijes_de_oaxaca_mineros_de_zacatecas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_2_liga-expansion_2026-10-30_alebrijes_de_oaxaca_mineros_de_zacatecas",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-10-30_brisbane_roar_auckland_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-10-30_brisbane_roar_auckland_fc",
       "reason": "Identificativo calendario assente"
     }
   ],
