@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-29T23:22:28.099Z",
+  "evaluatedAt": "2026-10-30T05:58:52.359Z",
   "lastCapturedAt": "2026-10-29T23:22:27.621Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 741,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 577,
+  "settled": 579,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -670,18 +670,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_BRA_1_serie-a_2026-10-29_atletico_mg_cruzeiro\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-29_atletico_mg_cruzeiro",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BRA_1_serie-a_2026-10-29_vasco_da_gama_flamengo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BRA_1_serie-a_2026-10-29_vasco_da_gama_flamengo",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_1_serie-a_2026-10-30_gremio_athletico_pr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-30_gremio_athletico_pr",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -27223,6 +27213,38 @@
       "score": {
         "home": 0,
         "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-29_atletico_mg_cruzeiro\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-29_atletico_mg_cruzeiro",
+      "resultId": "lbC4ct8e",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Atlético-MG",
+      "away": "Cruzeiro",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-28T23:18:39.528Z",
+      "kickoffAt": "2026-10-29T22:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-30_gremio_athletico_pr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-30_gremio_athletico_pr",
+      "resultId": "MBACeKx8",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Grêmio",
+      "away": "Athletico-PR",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-29T05:57:38.778Z",
+      "kickoffAt": "2026-10-30T00:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
       },
       "markets": {}
     }
