@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-30T05:58:52.359Z",
+  "evaluatedAt": "2026-10-30T13:07:50.314Z",
   "lastCapturedAt": "2026-10-29T23:22:27.621Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 741,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 579,
+  "settled": 580,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -677,11 +677,6 @@
     {
       "key": "[\"open_MEX_2_liga-expansion_2026-10-30_alebrijes_de_oaxaca_mineros_de_zacatecas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_2_liga-expansion_2026-10-30_alebrijes_de_oaxaca_mineros_de_zacatecas",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-10-30_brisbane_roar_auckland_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-10-30_brisbane_roar_auckland_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -27245,6 +27240,22 @@
       "score": {
         "home": 2,
         "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-10-30_brisbane_roar_auckland_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-10-30_brisbane_roar_auckland_fc",
+      "resultId": "GzbrKFeR",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Brisbane Roar",
+      "away": "Auckland FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-29T13:16:10.652Z",
+      "kickoffAt": "2026-10-30T09:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
       },
       "markets": {}
     }
