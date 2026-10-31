@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-30T23:01:15.341Z",
-  "lastCapturedAt": "2026-10-30T23:01:14.260Z",
+  "evaluatedAt": "2026-10-31T02:29:40.491Z",
+  "lastCapturedAt": "2026-10-31T02:29:40.348Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 905,
+  "recorded": 912,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 589,
+  "settled": 594,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -752,31 +752,6 @@
     {
       "key": "[\"open_ARG_1_liga-profesional_2026-10-30_estudiantes_de_rio_cuarto_gimnasia_la_plata\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_1_liga-profesional_2026-10-30_estudiantes_de_rio_cuarto_gimnasia_la_plata",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-30_huracan_tigre\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-30_huracan_tigre",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_2_serie-b_2026-10-30_criciuma_ponte_preta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_2_serie-b_2026-10-30_criciuma_ponte_preta",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_1_serie-a_2026-10-30_corinthians_mirassol\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-30_corinthians_mirassol",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-31_racing_club_aldosivi\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-31_racing_club_aldosivi",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-31_sarmiento_junin_rosario_central\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-31_sarmiento_junin_rosario_central",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1587,6 +1562,41 @@
     {
       "key": "[\"open_MEX_1_liga-mx_2026-10-31_pachuca_tigres_uanl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-10-31_pachuca_tigres_uanl",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-11-01_estudiantes_de_la_plata_instituto_cordoba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-11-01_estudiantes_de_la_plata_instituto_cordoba",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-01_monterrey_tijuana\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-01_monterrey_tijuana",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-11-01_cancun_fc_club_jaiba_brava\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-11-01_cancun_fc_club_jaiba_brava",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-11-01_durango_club_atletico_morelia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-11-01_durango_club_atletico_morelia",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-11-01_piratas_tapatio\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-11-01_piratas_tapatio",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-01_guadalajara_atlante\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-01_guadalajara_atlante",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-11-01_colorado_rapids_chicago_fire_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-11-01_colorado_rapids_chicago_fire_fc",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -28174,6 +28184,86 @@
       "kickoffAt": "2026-10-30T20:15:00Z",
       "score": {
         "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-30_huracan_tigre\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-30_huracan_tigre",
+      "resultId": "jkFQCG0s",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Huracán",
+      "away": "Tigre",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-29T23:22:27.621Z",
+      "kickoffAt": "2026-10-30T22:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-10-30_criciuma_ponte_preta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-10-30_criciuma_ponte_preta",
+      "resultId": "Qy8gZrgo",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Criciúma",
+      "away": "Ponte Preta",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-29T23:22:27.621Z",
+      "kickoffAt": "2026-10-30T22:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-30_corinthians_mirassol\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-30_corinthians_mirassol",
+      "resultId": "OGSP4OFL",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Corinthians",
+      "away": "Mirassol",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-29T23:22:27.621Z",
+      "kickoffAt": "2026-10-30T23:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-31_racing_club_aldosivi\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-31_racing_club_aldosivi",
+      "resultId": "UHe2Cnk1",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Racing Club",
+      "away": "Aldosivi",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T00:15:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-31_sarmiento_junin_rosario_central\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-31_sarmiento_junin_rosario_central",
+      "resultId": "fJTfIxwK",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Sarmiento (Junín)",
+      "away": "Rosario Central",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T00:15:00Z",
+      "score": {
+        "home": 1,
         "away": 2
       },
       "markets": {}
