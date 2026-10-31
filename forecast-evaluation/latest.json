@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-31T20:02:57.876Z",
-  "lastCapturedAt": "2026-10-31T20:02:57.710Z",
+  "evaluatedAt": "2026-10-31T23:27:55.566Z",
+  "lastCapturedAt": "2026-10-31T23:27:55.392Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 974,
+  "recorded": 983,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 637,
+  "settled": 648,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1165,11 +1165,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ARG_2_primera-nacional_2026-10-31_godoy_cruz_antonio_tomba_almirante_brown\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_2_primera-nacional_2026-10-31_godoy_cruz_antonio_tomba_almirante_brown",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ARG_2_primera-nacional_2026-10-31_guemes_temperley\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_2_primera-nacional_2026-10-31_guemes_temperley",
       "reason": "Identificativo calendario assente"
@@ -1190,28 +1185,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ARG_2_primera-nacional_2026-10-31_san_miguel_deportivo_madryn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_2_primera-nacional_2026-10-31_san_miguel_deportivo_madryn",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_2_primera-nacional_2026-10-31_tristan_suarez_deportivo_maipu\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_2_primera-nacional_2026-10-31_tristan_suarez_deportivo_maipu",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_USA_1_mls_2026-10-31_columbus_crew_d_c_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_USA_1_mls_2026-10-31_columbus_crew_d_c_united",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-31_fc_cincinnati_philadelphia_union\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-31_fc_cincinnati_philadelphia_union",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-31_new_york_city_football_club_cf_montreal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-31_new_york_city_football_club_cf_montreal",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1225,23 +1200,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_BRA_1_serie-a_2026-10-31_coritiba_vitoria\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-10-31_coritiba_vitoria",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BRA_2_serie-b_2026-10-31_botafogo_sp_sport\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BRA_2_serie-b_2026-10-31_botafogo_sp_sport",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-31_sporting_kansas_city_fc_dallas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-31_sporting_kansas_city_fc_dallas",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-31_st_louis_city_sc_san_diego_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-31_st_louis_city_sc_san_diego_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1280,11 +1240,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ENG_1_premier-league_2026-10-31_aston_villa_fulham\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-10-31_aston_villa_fulham",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ESP_1_la-liga_2026-10-31_fc_barcelona_deportivo_alaves\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ESP_1_la-liga_2026-10-31_fc_barcelona_deportivo_alaves",
       "reason": "Identificativo calendario assente"
@@ -1310,11 +1265,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_POR_1_primeira-liga_2026-10-31_fc_porto_estoril_praia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_POR_1_primeira-liga_2026-10-31_fc_porto_estoril_praia",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BRA_2_serie-b_2026-10-31_vila_nova_juventude\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BRA_2_serie-b_2026-10-31_vila_nova_juventude",
       "reason": "Identificativo calendario assente"
@@ -1322,11 +1272,6 @@
     {
       "key": "[\"open_USA_1_mls_2026-10-31_la_galaxy_austin_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_USA_1_mls_2026-10-31_la_galaxy_austin_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-10-31_san_jose_earthquakes_real_salt_lake\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-10-31_san_jose_earthquakes_real_salt_lake",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1692,6 +1637,51 @@
     {
       "key": "[\"open_ESP_2_segunda-division_2026-11-01_tenerife_fc_andorra\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ESP_2_segunda-division_2026-11-01_tenerife_fc_andorra",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_POR_1_primeira-liga_2026-11-01_sc_braga_fc_famalicao\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_POR_1_primeira-liga_2026-11-01_sc_braga_fc_famalicao",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-11-01_cuiaba_sao_bernardo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-11-01_cuiaba_sao_bernardo",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-11-01_novorizontino_operario_pr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-11-01_novorizontino_operario_pr",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-11-01_belgrano_cordoba_barracas_central\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-11-01_belgrano_cordoba_barracas_central",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-11-01_newell_s_old_boys_union_santa_fe\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-11-01_newell_s_old_boys_union_santa_fe",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-11-01_atlanta_united_toronto_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-11-01_atlanta_united_toronto_fc",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-11-01_nashville_sc_red_bull_new_york\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-11-01_nashville_sc_red_bull_new_york",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-11-01_vancouver_whitecaps_fc_seattle_sounders_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-11-01_vancouver_whitecaps_fc_seattle_sounders_fc",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-01_santos_necaxa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-01_santos_necaxa",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -29036,6 +29026,38 @@
       "markets": {}
     },
     {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-31_godoy_cruz_antonio_tomba_almirante_brown\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-31_godoy_cruz_antonio_tomba_almirante_brown",
+      "resultId": "OWlB3n3B",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Godoy Cruz Antonio Tomba",
+      "away": "Almirante Brown",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T18:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-31_san_miguel_deportivo_madryn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-31_san_miguel_deportivo_madryn",
+      "resultId": "fstgmRIU",
+      "matchMethod": "unique-team-kickoff",
+      "home": "San Miguel",
+      "away": "Deportivo Madryn",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T18:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
       "key": "[\"open_ARG_2_primera-nacional_2026-10-31_san_telmo_central_norte\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_2_primera-nacional_2026-10-31_san_telmo_central_norte",
       "resultId": "bFnpkmlI",
@@ -29048,6 +29070,150 @@
       "score": {
         "home": 1,
         "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_2_primera-nacional_2026-10-31_tristan_suarez_deportivo_maipu\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_2_primera-nacional_2026-10-31_tristan_suarez_deportivo_maipu",
+      "resultId": "E9ocWJjt",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Tristán Suárez",
+      "away": "Deportivo Maipú",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T18:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-31_fc_cincinnati_philadelphia_union\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-31_fc_cincinnati_philadelphia_union",
+      "resultId": "KUGEcEWb",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Cincinnati",
+      "away": "Philadelphia Union",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T18:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-31_new_york_city_football_club_cf_montreal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-31_new_york_city_football_club_cf_montreal",
+      "resultId": "Kr4474ID",
+      "matchMethod": "unique-team-kickoff",
+      "home": "New York City Football Club",
+      "away": "CF Montréal",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T18:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-10-31_coritiba_vitoria\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-10-31_coritiba_vitoria",
+      "resultId": "vmuc3WeE",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Coritiba",
+      "away": "Vitória",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T19:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-31_sporting_kansas_city_fc_dallas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-31_sporting_kansas_city_fc_dallas",
+      "resultId": "GKOodMCi",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Sporting Kansas City",
+      "away": "FC Dallas",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T19:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-31_st_louis_city_sc_san_diego_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-31_st_louis_city_sc_san_diego_fc",
+      "resultId": "MHRgf0s4",
+      "matchMethod": "unique-team-kickoff",
+      "home": "St. Louis CITY SC",
+      "away": "San Diego FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T19:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-10-31_aston_villa_fulham\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-10-31_aston_villa_fulham",
+      "resultId": "bRXj39aJ",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Aston Villa",
+      "away": "Fulham",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T20:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_POR_1_primeira-liga_2026-10-31_fc_porto_estoril_praia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_POR_1_primeira-liga_2026-10-31_fc_porto_estoril_praia",
+      "resultId": "vBGNTTsS",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Porto",
+      "away": "Estoril Praia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T20:30:00Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-10-31_san_jose_earthquakes_real_salt_lake\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-10-31_san_jose_earthquakes_real_salt_lake",
+      "resultId": "As0sod4j",
+      "matchMethod": "unique-team-kickoff",
+      "home": "San Jose Earthquakes",
+      "away": "Real Salt Lake",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T21:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
       },
       "markets": {}
     }
