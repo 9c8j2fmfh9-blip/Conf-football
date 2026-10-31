@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-31T02:29:40.491Z",
-  "lastCapturedAt": "2026-10-31T02:29:40.348Z",
+  "evaluatedAt": "2026-10-31T09:46:44.969Z",
+  "lastCapturedAt": "2026-10-31T09:46:44.290Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 912,
+  "recorded": 919,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 594,
+  "settled": 598,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -760,16 +760,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_MEX_1_liga-mx_2026-10-31_fc_juarez_queretaro\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_1_liga-mx_2026-10-31_fc_juarez_queretaro",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_MEX_2_liga-expansion_2026-10-31_correcaminos_uat_venados_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_2_liga-expansion_2026-10-31_correcaminos_uat_venados_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_MEX_1_liga-mx_2026-10-31_puebla_pumas_unam\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-10-31_puebla_pumas_unam",
       "reason": "Identificativo calendario assente"
@@ -777,11 +767,6 @@
     {
       "key": "[\"open_MEX_2_liga-expansion_2026-10-31_club_atletico_la_paz_dorados_de_sinaloa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_2_liga-expansion_2026-10-31_club_atletico_la_paz_dorados_de_sinaloa",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-10-31_newcastle_jets_wellington_phoenix_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-10-31_newcastle_jets_wellington_phoenix_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -807,11 +792,6 @@
     {
       "key": "[\"open_JPN_1_j1-league_2026-10-31_vissel_kobe_nagoya_grampus\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_JPN_1_j1-league_2026-10-31_vissel_kobe_nagoya_grampus",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-10-31_melbourne_city_fc_sydney_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-10-31_melbourne_city_fc_sydney_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1597,6 +1577,41 @@
     {
       "key": "[\"open_USA_1_mls_2026-11-01_colorado_rapids_chicago_fire_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_USA_1_mls_2026-11-01_colorado_rapids_chicago_fire_fc",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-01_america_toluca\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-01_america_toluca",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-01_yokohama_f_marinos_kawasaki_frontale\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-01_yokohama_f_marinos_kawasaki_frontale",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-01_melbourne_victory_central_coast_mariners\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-01_melbourne_victory_central_coast_mariners",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-01_jef_united_ichihara_chiba_avispa_fukuoka\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-01_jef_united_ichihara_chiba_avispa_fukuoka",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-01_v_varen_nagasaki_tokyo_verdy_1969\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-01_v_varen_nagasaki_tokyo_verdy_1969",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-01_machida_zelvia_gamba_osaka\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-01_machida_zelvia_gamba_osaka",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-01_perth_glory_adelaide_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-01_perth_glory_adelaide_united",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -28265,6 +28280,70 @@
       "score": {
         "home": 1,
         "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-10-31_fc_juarez_queretaro\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-10-31_fc_juarez_queretaro",
+      "resultId": "C2icX0Gj",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Juárez",
+      "away": "Querétaro",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T01:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-10-31_correcaminos_uat_venados_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-10-31_correcaminos_uat_venados_fc",
+      "resultId": "Gnl73gBb",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Correcaminos UAT",
+      "away": "Venados FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T01:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-10-31_newcastle_jets_wellington_phoenix_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-10-31_newcastle_jets_wellington_phoenix_fc",
+      "resultId": "nJlEEgJl",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Newcastle Jets",
+      "away": "Wellington Phoenix FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T04:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-10-31_melbourne_city_fc_sydney_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-10-31_melbourne_city_fc_sydney_fc",
+      "resultId": "fqhMCXm1",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Melbourne City FC",
+      "away": "Sydney FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T06:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
       },
       "markets": {}
     }

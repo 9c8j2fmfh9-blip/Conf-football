@@ -55154,6 +55154,1506 @@
       "home": "Forward Madison",
       "away": "Spokane Velocity",
       "status": "FT"
+    },
+    {
+      "league": "Vysshaya Liga",
+      "country": "Tagikistan",
+      "competitionId": "Gt7K9kvK",
+      "sourcePath": "/calcio/tagikistan/vysshaya-liga/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "xA8Ji1DG",
+      "date": "2026-10-30T10:00:00.000Z",
+      "home": "Vakhsh",
+      "away": "Khujand",
+      "status": "FT"
+    },
+    {
+      "league": "ABFA Premier League",
+      "country": "Antigua & Barbuda",
+      "competitionId": "jNIGMExd",
+      "sourcePath": "/calcio/antigua-barbuda/abfa-premier-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "Wv0wcSA7",
+      "date": "2026-10-30T23:00:00.000Z",
+      "home": "Green City",
+      "away": "Freemansville",
+      "status": "FT"
+    },
+    {
+      "league": "Division di Honor",
+      "country": "Aruba",
+      "competitionId": "htKvweNB",
+      "sourcePath": "/calcio/aruba/division-di-honor/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "W8TBOv7s",
+      "date": "2026-10-31T00:30:00.000Z",
+      "home": "Estrella",
+      "away": "La Fama",
+      "status": "FT"
+    },
+    {
+      "league": "A-League",
+      "country": "Australia",
+      "competitionId": "OjWW1naM",
+      "sourcePath": "/calcio/australia/a-league/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "nJlEEgJl",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "Newcastle Jets",
+      "away": "Wellington Phoenix",
+      "status": "FT"
+    },
+    {
+      "league": "A-League",
+      "country": "Australia",
+      "competitionId": "OjWW1naM",
+      "sourcePath": "/calcio/australia/a-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "fqhMCXm1",
+      "date": "2026-10-31T06:00:00.000Z",
+      "home": "Melbourne City",
+      "away": "Sydney FC",
+      "status": "FT"
+    },
+    {
+      "league": "Australian Championship",
+      "country": "Australia",
+      "competitionId": "CS1v5T7M",
+      "sourcePath": "/calcio/australia/australian-championship/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "pUWo2ngt",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "South Hobart",
+      "away": "Preston Lions",
+      "status": "FT"
+    },
+    {
+      "league": "Australian Championship",
+      "country": "Australia",
+      "competitionId": "CS1v5T7M",
+      "sourcePath": "/calcio/australia/australian-championship/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "l4ISdiH0",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "Sutherland",
+      "away": "Sydney Utd",
+      "status": "FT"
+    },
+    {
+      "league": "Australian Championship",
+      "country": "Australia",
+      "competitionId": "CS1v5T7M",
+      "sourcePath": "/calcio/australia/australian-championship/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "f1LzeVoD",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "Wollongong Wolves",
+      "away": "Queensland Lions",
+      "status": "FT"
+    },
+    {
+      "league": "A-League Femminile",
+      "country": "Australia",
+      "competitionId": "tbR6H4dE",
+      "sourcePath": "/calcio/australia/a-league-femminile/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "KQimT1eA",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "Brisbane Roar D",
+      "away": "Sydney D",
+      "status": "FT"
+    },
+    {
+      "league": "A-League Femminile",
+      "country": "Australia",
+      "competitionId": "tbR6H4dE",
+      "sourcePath": "/calcio/australia/a-league-femminile/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "SjeeRuQM",
+      "date": "2026-10-31T06:00:00.000Z",
+      "home": "Central Coast Mariners D",
+      "away": "Adelaide D",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Bermuda",
+      "competitionId": "6F3eh8Tm",
+      "sourcePath": "/calcio/bermuda/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "I9wRMYWF",
+      "date": "2026-10-30T23:00:00.000Z",
+      "home": "North Village Rams",
+      "away": "Somerset",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "G0ayd3Hr",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Changchun Yatai",
+      "away": "Nantong Zhiyun",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "UN5ihLG7",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Dingnan Ganlian",
+      "away": "Shenzhen Juniors",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "MHhwGO8E",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Foshan Nanshi",
+      "away": "Ningbo Professional",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "OQ2qfsne",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Guangxi Hengchen",
+      "away": "Wuxi Wugou",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "UsdoE2wR",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Meizhou Hakka",
+      "away": "Shaanxi Union",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "pEx4EBX9",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Nanjing City",
+      "away": "Dalian K'un City",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "0QnH8t1l",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Shijiazhuang Gongfu",
+      "away": "Guangdong GZ-Power",
+      "status": "FT"
+    },
+    {
+      "league": "League One",
+      "country": "Cina",
+      "competitionId": "86AXRTst",
+      "sourcePath": "/calcio/cina/league-one/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "YwoP6KV0",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Suzhou Dongwu",
+      "away": "Yanbian Longding",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "2kqwWVsT",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Chengdu Rongcheng B",
+      "away": "Beijing Technology",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "v7AVEX7U",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Dalian Yingbo B",
+      "away": "Guangdong Mingtu",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "CrL2niS9",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Guangzhou Dandelion",
+      "away": "Changchun Xidu",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "COU8Q95j",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Lanzhou Longyuan",
+      "away": "Hubei Istar",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "UyoVXiDG",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Wenzhou Professional",
+      "away": "Shanghai Second",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "MBsNZDr4",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Wuhan Three Towns B",
+      "away": "Qingdao Red Lions",
+      "status": "FT"
+    },
+    {
+      "league": "League Two - Gruppo Retrocessione",
+      "country": "Cina",
+      "competitionId": "8ndxlCCh",
+      "sourcePath": "/calcio/cina/league-two/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "K8OApVdM",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "Xiamen Feilu",
+      "away": "Nantong Haimen",
+      "status": "FT"
+    },
+    {
+      "league": "Primera A - Clausura",
+      "country": "Colombia",
+      "competitionId": "t0fpnjs5",
+      "sourcePath": "/calcio/colombia/primera-a/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "UDC2Now9",
+      "date": "2026-10-31T01:05:00.000Z",
+      "home": "Bucaramanga",
+      "away": "Pasto",
+      "status": "FT"
+    },
+    {
+      "league": "Primera División - Apertura",
+      "country": "Costarica",
+      "competitionId": "tpC1pUBH",
+      "sourcePath": "/calcio/costarica/primera-division/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "4MJrKuI6",
+      "date": "2026-10-31T02:00:00.000Z",
+      "home": "Zeledon",
+      "away": "Puntarenas FC",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Division - Apertura",
+      "country": "El Salvador",
+      "competitionId": "xxxpBZl2",
+      "sourcePath": "/calcio/el-salvador/primera-division/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "GtD8QGXR",
+      "date": "2026-10-31T01:00:00.000Z",
+      "home": "Inter Santa Tecla",
+      "away": "Platense Municipal",
+      "status": "FT"
+    },
+    {
+      "league": "J1 League",
+      "country": "Giappone",
+      "competitionId": "pAq4eRQ9",
+      "sourcePath": "/calcio/giappone/j1-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "fJr0r4xq",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Kyoto",
+      "away": "Shimizu",
+      "status": "FT"
+    },
+    {
+      "league": "J1 League",
+      "country": "Giappone",
+      "competitionId": "pAq4eRQ9",
+      "sourcePath": "/calcio/giappone/j1-league/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "tG2jJE9U",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Mito",
+      "away": "Hiroshima",
+      "status": "FT"
+    },
+    {
+      "league": "J1 League",
+      "country": "Giappone",
+      "competitionId": "pAq4eRQ9",
+      "sourcePath": "/calcio/giappone/j1-league/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "tfRpwUH0",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Okayama",
+      "away": "Tokyo",
+      "status": "FT"
+    },
+    {
+      "league": "J1 League",
+      "country": "Giappone",
+      "competitionId": "pAq4eRQ9",
+      "sourcePath": "/calcio/giappone/j1-league/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "nZ0zNdA5",
+      "date": "2026-10-31T06:00:00.000Z",
+      "home": "Kashima",
+      "away": "C-Osaka",
+      "status": "FT"
+    },
+    {
+      "league": "J1 League",
+      "country": "Giappone",
+      "competitionId": "pAq4eRQ9",
+      "sourcePath": "/calcio/giappone/j1-league/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "4WOanYfE",
+      "date": "2026-10-31T06:00:00.000Z",
+      "home": "Kobe",
+      "away": "Nagoya",
+      "status": "FT"
+    },
+    {
+      "league": "J1 League",
+      "country": "Giappone",
+      "competitionId": "pAq4eRQ9",
+      "sourcePath": "/calcio/giappone/j1-league/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "S2uujevh",
+      "date": "2026-10-31T07:00:00.000Z",
+      "home": "Kashiwa",
+      "away": "Urawa",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "IX9GQ78d",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "Sapporo",
+      "away": "Shonan",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "xEYcQbED",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Albirex Niigata",
+      "away": "Toyama",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "MNRsUtFl",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Blaublitz",
+      "away": "Fujieda MYFC",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "U7Lql26K",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Iwata",
+      "away": "Sagan Tosu",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "KK8VvbT6",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Tegevajaro Miyazaki",
+      "away": "Oita",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "UmVkSKq1",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Tochigi City",
+      "away": "Iwaki",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "vs7FrtUs",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Tokushima",
+      "away": "Yokohama FC",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "pv22lB03",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Vanraure",
+      "away": "Yamagata",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "jy5AnkVF",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Vegalta Sendai",
+      "away": "Omiya Ardija",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "n7ANtKbf",
+      "date": "2026-10-31T05:05:00.000Z",
+      "home": "Imabari",
+      "away": "Kofu",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "jBJW00N9",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Fukushima Utd",
+      "away": "Yamaga",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "KS83Fax3",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Gifu",
+      "away": "Osaka",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "YkFJBHyS",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Kamatamare",
+      "away": "Nara Club",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "SYLHidpd",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Kanazawa",
+      "away": "Kusatsu",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "UL0k6eak",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Kochi United",
+      "away": "Sagamihara",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "OOHvavhM",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Tochigi",
+      "away": "Ehime",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "ShCBDw7F",
+      "date": "2026-10-31T06:05:00.000Z",
+      "home": "Renofa Yamaguchi",
+      "away": "Kitakyushu",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "K8I9gIFq",
+      "date": "2026-10-31T07:00:00.000Z",
+      "home": "Nagano",
+      "away": "Reilac Shiga",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 5,
+        "away": 2
+      },
+      "id": "4hdqSxM8",
+      "date": "2026-10-31T07:00:00.000Z",
+      "home": "Ryukyu",
+      "away": "Tottori",
+      "status": "FT"
+    },
+    {
+      "league": "WE League Women",
+      "country": "Giappone",
+      "competitionId": "8EN0QBMS",
+      "sourcePath": "/calcio/giappone/we-league-women/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "WtaI8fld",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "JEF United D",
+      "away": "Nojima Stella D",
+      "status": "FT"
+    },
+    {
+      "league": "WE League Women",
+      "country": "Giappone",
+      "competitionId": "8EN0QBMS",
+      "sourcePath": "/calcio/giappone/we-league-women/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "dKj4Wct3",
+      "date": "2026-10-31T06:00:00.000Z",
+      "home": "Beleza D",
+      "away": "Omiya Ardija D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Nacional - Apertura",
+      "country": "Honduras",
+      "competitionId": "YeUwzehC",
+      "sourcePath": "/calcio/honduras/liga-nacional/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "EovDtH0l",
+      "date": "2026-10-31T01:00:00.000Z",
+      "home": "Estrella Roja",
+      "away": "Atletico Independiente",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Hong Kong",
+      "competitionId": "2yYthCYB",
+      "sourcePath": "/calcio/hong-kong/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "4QBmJFET",
+      "date": "2026-10-31T07:00:00.000Z",
+      "home": "Eastern District",
+      "away": "Shatin",
+      "status": "FT"
+    },
+    {
+      "league": "Trophee Gerard Janvion",
+      "country": "Martinica",
+      "competitionId": "r5c4tOOE",
+      "sourcePath": "/calcio/martinica/trophee-gerard-janvion/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "K86VsF7c",
+      "date": "2026-10-31T00:00:00.000Z",
+      "home": "Golden Star",
+      "away": "Assaut",
+      "status": "FT"
+    },
+    {
+      "league": "Trophee Gerard Janvion",
+      "country": "Martinica",
+      "competitionId": "r5c4tOOE",
+      "sourcePath": "/calcio/martinica/trophee-gerard-janvion/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "dWSDPXiT",
+      "date": "2026-10-31T00:00:00.000Z",
+      "home": "Morne des Esses",
+      "away": "Samaritaine",
+      "status": "FT"
+    },
+    {
+      "league": "Trophee Gerard Janvion",
+      "country": "Martinica",
+      "competitionId": "r5c4tOOE",
+      "sourcePath": "/calcio/martinica/trophee-gerard-janvion/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "xnhJhWLF",
+      "date": "2026-10-31T00:00:00.000Z",
+      "home": "Trenelle",
+      "away": "RC Lorrain",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX - Apertura",
+      "country": "Messico",
+      "competitionId": "bm2Vlsfl",
+      "sourcePath": "/calcio/messico/liga-mx/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "GW5RxNhT",
+      "date": "2026-10-31T01:00:00.000Z",
+      "home": "Atl. San Luis",
+      "away": "Atlas",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX - Apertura",
+      "country": "Messico",
+      "competitionId": "bm2Vlsfl",
+      "sourcePath": "/calcio/messico/liga-mx/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "C2icX0Gj",
+      "date": "2026-10-31T01:00:00.000Z",
+      "home": "Juarez",
+      "away": "Queretaro",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX - Apertura",
+      "country": "Messico",
+      "competitionId": "bm2Vlsfl",
+      "sourcePath": "/calcio/messico/liga-mx/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "4Agre48c",
+      "date": "2026-10-31T03:00:00.000Z",
+      "home": "Puebla",
+      "away": "U.N.A.M.",
+      "status": "FT"
+    },
+    {
+      "league": "Liga de Expansion MX - Apertura",
+      "country": "Messico",
+      "competitionId": "SlhZpIaP",
+      "sourcePath": "/calcio/messico/liga-de-expansion-mx/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "Gnl73gBb",
+      "date": "2026-10-31T01:00:00.000Z",
+      "home": "Correcaminos",
+      "away": "Venados",
+      "status": "FT"
+    },
+    {
+      "league": "Liga de Expansion MX - Apertura",
+      "country": "Messico",
+      "competitionId": "SlhZpIaP",
+      "sourcePath": "/calcio/messico/liga-de-expansion-mx/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "OCiF1XuB",
+      "date": "2026-10-31T03:00:00.000Z",
+      "home": "Atletico La Paz",
+      "away": "Dorados",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Premier",
+      "country": "Messico",
+      "competitionId": "pYZnaTcd",
+      "sourcePath": "/calcio/messico/primera-premier/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "Yc5Ljm8r",
+      "date": "2026-10-31T01:30:00.000Z",
+      "home": "Tigres de Alica",
+      "away": "Tapachula",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Premier",
+      "country": "Messico",
+      "competitionId": "pYZnaTcd",
+      "sourcePath": "/calcio/messico/primera-premier/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "ve8TlRxe",
+      "date": "2026-10-31T02:00:00.000Z",
+      "home": "La Piedad",
+      "away": "Inter Playa Del Carmen",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie A",
+      "country": "Messico",
+      "competitionId": "UiQWK8Vr",
+      "sourcePath": "/calcio/messico/liga-premier-serie-a/",
+      "score": {
+        "home": 5,
+        "away": 0
+      },
+      "id": "xbAg8n1n",
+      "date": "2026-10-31T02:00:00.000Z",
+      "home": "Guerreros del Pacifico",
+      "away": "Heroes de Zaci",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX Femminile - Apertura",
+      "country": "Messico",
+      "competitionId": "S8Dr0wAf",
+      "sourcePath": "/calcio/messico/liga-mx-femminile/",
+      "score": {
+        "home": 0,
+        "away": 7
+      },
+      "id": "WUtdzIIr",
+      "date": "2026-10-31T01:06:00.000Z",
+      "home": "Atlas D",
+      "away": "Tigres D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX Femminile - Apertura",
+      "country": "Messico",
+      "competitionId": "S8Dr0wAf",
+      "sourcePath": "/calcio/messico/liga-mx-femminile/",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "id": "xSq4Yeme",
+      "date": "2026-10-31T03:00:00.000Z",
+      "home": "Monterrey D",
+      "away": "U.N.A.M. D",
+      "status": "FT"
+    },
+    {
+      "league": "National League - Play-Offs Championship",
+      "country": "Nuova Zelanda",
+      "competitionId": "U9JVmDk4",
+      "sourcePath": "/calcio/nuova-zelanda/national-league/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "tnR4UXME",
+      "date": "2026-10-31T00:30:00.000Z",
+      "home": "Wellington 2",
+      "away": "Auckland FC 2",
+      "status": "FT"
+    },
+    {
+      "league": "National League - Play-Offs Championship",
+      "country": "Nuova Zelanda",
+      "competitionId": "U9JVmDk4",
+      "sourcePath": "/calcio/nuova-zelanda/national-league/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "lvPJ6UU7",
+      "date": "2026-10-31T01:00:00.000Z",
+      "home": "Miramar",
+      "away": "Wellington Olympic",
+      "status": "FT"
+    },
+    {
+      "league": "National League - Play-Offs Championship",
+      "country": "Nuova Zelanda",
+      "competitionId": "U9JVmDk4",
+      "sourcePath": "/calcio/nuova-zelanda/national-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "lCUCSBiR",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "Auckland United",
+      "away": "Eastern Suburbs",
+      "status": "FT"
+    },
+    {
+      "league": "National League Femminile",
+      "country": "Nuova Zelanda",
+      "competitionId": "UiC83C9c",
+      "sourcePath": "/calcio/nuova-zelanda/national-league-femminile/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "08av9fVH",
+      "date": "2026-10-31T01:00:00.000Z",
+      "home": "Canterbury United D",
+      "away": "Wellington United D",
+      "status": "FT"
+    },
+    {
+      "league": "LPF - Apertura",
+      "country": "Panama",
+      "competitionId": "jHCVwi4L",
+      "sourcePath": "/calcio/panama/lpf/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "KxSmcrBd",
+      "date": "2026-10-31T01:30:00.000Z",
+      "home": "Arabe Unido",
+      "away": "Tauro",
+      "status": "FT"
+    },
+    {
+      "league": "FNL 2 - Division A Gold - Autunno",
+      "country": "Russia",
+      "competitionId": "UmfIhP4H",
+      "sourcePath": "/calcio/russia/fnl-2-division-a-gold/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "OlFMkCLP",
+      "date": "2026-10-31T04:00:00.000Z",
+      "home": "Dynamo Vladivostok",
+      "away": "Alania Vladikavkaz",
+      "status": "FT"
+    },
+    {
+      "league": "Super League Women",
+      "country": "Sudafrica",
+      "competitionId": "ATWwe8FU",
+      "sourcePath": "/calcio/sudafrica/super-league-women/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "hWkbRjHa",
+      "date": "2026-10-31T06:30:00.000Z",
+      "home": "First Touch D",
+      "away": "Ramatlaohle D",
+      "status": "FT"
+    },
+    {
+      "league": "K League 1 - Gruppo Retrocessione",
+      "country": "Sud Corea",
+      "competitionId": "0IDCJLlH",
+      "sourcePath": "/calcio/sud-corea/k-league-1/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "IPiu1ts3",
+      "date": "2026-10-31T07:30:00.000Z",
+      "home": "Gwangju",
+      "away": "Gimcheon Sangmu",
+      "status": "FT"
+    },
+    {
+      "league": "K League 1 - Play-Offs Championship",
+      "country": "Sud Corea",
+      "competitionId": "0IDCJLlH",
+      "sourcePath": "/calcio/sud-corea/k-league-1/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "Ey7EQa5j",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Jeonbuk",
+      "away": "Daejeon",
+      "status": "FT"
+    },
+    {
+      "league": "K League 2",
+      "country": "Sud Corea",
+      "competitionId": "URqnleDq",
+      "sourcePath": "/calcio/sud-corea/k-league-2/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "QVPMyNig",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Gyeongnam",
+      "away": "Hwaseong",
+      "status": "FT"
+    },
+    {
+      "league": "K League 2",
+      "country": "Sud Corea",
+      "competitionId": "URqnleDq",
+      "sourcePath": "/calcio/sud-corea/k-league-2/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "YeTUZ0M5",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Yongin",
+      "away": "Seoul E-Land",
+      "status": "FT"
+    },
+    {
+      "league": "K League 2",
+      "country": "Sud Corea",
+      "competitionId": "URqnleDq",
+      "sourcePath": "/calcio/sud-corea/k-league-2/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "SfMwYviI",
+      "date": "2026-10-31T07:30:00.000Z",
+      "home": "Asan",
+      "away": "Gimpo FC",
+      "status": "FT"
+    },
+    {
+      "league": "K League 2",
+      "country": "Sud Corea",
+      "competitionId": "URqnleDq",
+      "sourcePath": "/calcio/sud-corea/k-league-2/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "08KoWILU",
+      "date": "2026-10-31T07:30:00.000Z",
+      "home": "Daegu",
+      "away": "Suwon Bluewings",
+      "status": "FT"
+    },
+    {
+      "league": "K3 League",
+      "country": "Sud Corea",
+      "competitionId": "Q19CngBE",
+      "sourcePath": "/calcio/sud-corea/k3-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "OUdtSaGt",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Chuncheon",
+      "away": "Busan Kyotong",
+      "status": "FT"
+    },
+    {
+      "league": "K3 League",
+      "country": "Sud Corea",
+      "competitionId": "Q19CngBE",
+      "sourcePath": "/calcio/sud-corea/k3-league/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "8IMW7dVO",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Dangjin Citizen",
+      "away": "Siheung Citizen",
+      "status": "FT"
+    },
+    {
+      "league": "K3 League",
+      "country": "Sud Corea",
+      "competitionId": "Q19CngBE",
+      "sourcePath": "/calcio/sud-corea/k3-league/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "Wf0lQwog",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Gangneung",
+      "away": "Yangpyeong",
+      "status": "FT"
+    },
+    {
+      "league": "K3 League",
+      "country": "Sud Corea",
+      "competitionId": "Q19CngBE",
+      "sourcePath": "/calcio/sud-corea/k3-league/",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "id": "2LJO9I0C",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Yeoju Citizen",
+      "away": "Gyeongju KHNP",
+      "status": "FT"
+    },
+    {
+      "league": "K4 League",
+      "country": "Sud Corea",
+      "competitionId": "vyT5uJOH",
+      "sourcePath": "/calcio/sud-corea/k4-league/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "MsWaDbK0",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Geumsan Insam",
+      "away": "Sejong SA",
+      "status": "FT"
+    },
+    {
+      "league": "K4 League",
+      "country": "Sud Corea",
+      "competitionId": "vyT5uJOH",
+      "sourcePath": "/calcio/sud-corea/k4-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "OUAXRcZg",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Gijang United",
+      "away": "Geoje",
+      "status": "FT"
+    },
+    {
+      "league": "K4 League",
+      "country": "Sud Corea",
+      "competitionId": "vyT5uJOH",
+      "sourcePath": "/calcio/sud-corea/k4-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "feU7BxkD",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Jincheon",
+      "away": "Jinju Citizen",
+      "status": "FT"
+    },
+    {
+      "league": "K4 League",
+      "country": "Sud Corea",
+      "competitionId": "vyT5uJOH",
+      "sourcePath": "/calcio/sud-corea/k4-league/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "M1MgZusK",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Pyeongchang United",
+      "away": "Pyeongtaek Citizen",
+      "status": "FT"
+    },
+    {
+      "league": "WK League Femminile",
+      "country": "Sud Corea",
+      "competitionId": "65KLBG9A",
+      "sourcePath": "/calcio/sud-corea/wk-league-femminile/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "fqtLNPnQ",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Gangjin Swans D",
+      "away": "Sejong Sportstoto D",
+      "status": "FT"
+    },
+    {
+      "league": "WK League Femminile",
+      "country": "Sud Corea",
+      "competitionId": "65KLBG9A",
+      "sourcePath": "/calcio/sud-corea/wk-league-femminile/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "A9ojI3Am",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Mungyeong Sangmu D",
+      "away": "Incheon Hyundai Steel D",
+      "status": "FT"
+    },
+    {
+      "league": "WK League Femminile",
+      "country": "Sud Corea",
+      "competitionId": "65KLBG9A",
+      "sourcePath": "/calcio/sud-corea/wk-league-femminile/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "jmm6EL9C",
+      "date": "2026-10-31T05:00:00.000Z",
+      "home": "Suwon FC D",
+      "away": "Gyeongju D",
+      "status": "FT"
+    },
+    {
+      "league": "Mulan Football League Femminile",
+      "country": "Taiwan",
+      "competitionId": "IVqqVF0h",
+      "sourcePath": "/calcio/taiwan/mulan-football-league-femminile/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "CEPIFtyS",
+      "date": "2026-10-31T07:00:00.000Z",
+      "home": "Hang Yuan D",
+      "away": "Kaohsiung D",
+      "status": "FT"
+    },
+    {
+      "league": "Mulan Football League Femminile",
+      "country": "Taiwan",
+      "competitionId": "IVqqVF0h",
+      "sourcePath": "/calcio/taiwan/mulan-football-league-femminile/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "rcGlAKbk",
+      "date": "2026-10-31T07:30:00.000Z",
+      "home": "AC Taipei D",
+      "away": "Taipei Bravo D",
+      "status": "FT"
+    },
+    {
+      "league": "Mulan Football League Femminile",
+      "country": "Taiwan",
+      "competitionId": "IVqqVF0h",
+      "sourcePath": "/calcio/taiwan/mulan-football-league-femminile/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "GAEd8bT1",
+      "date": "2026-10-31T07:30:00.000Z",
+      "home": "Hualien D",
+      "away": "Taichung Sakura D",
+      "status": "FT"
+    },
+    {
+      "league": "USL Championship - Play Off",
+      "country": "USA",
+      "competitionId": "OjCHtstG",
+      "sourcePath": "/calcio/usa/usl-championship/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "U56tSJff",
+      "date": "2026-10-31T01:00:00.000Z",
+      "home": "El Paso",
+      "away": "San Antonio",
+      "status": "FT"
+    },
+    {
+      "league": "MLS Next Pro - Play Off",
+      "country": "USA",
+      "competitionId": "W4f7hWh9",
+      "sourcePath": "/calcio/usa/mls-next-pro/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "t4G8wRRs",
+      "date": "2026-10-31T02:00:00.000Z",
+      "home": "Ventura County",
+      "away": "Los Angeles FC 2",
+      "status": "FT"
     }
   ]
 }
