@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-01T14:20:54.291Z",
+  "evaluatedAt": "2026-11-01T19:45:41.538Z",
   "lastCapturedAt": "2026-10-31T23:27:55.392Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 983,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 658,
+  "settled": 676,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1360,48 +1360,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_SCO_1_premiership_2026-11-01_falkirk_celtic\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_SCO_1_premiership_2026-11-01_falkirk_celtic",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_TUR_1_super-lig_2026-11-01_istanbul_basaksehir_samsunspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_TUR_1_super-lig_2026-11-01_istanbul_basaksehir_samsunspor",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_TUR_1_super-lig_2026-11-01_trabzonspor_gaziantep\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-01_trabzonspor_gaziantep",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ESP_2_segunda-division_2026-11-01_eldense_granada\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ESP_2_segunda-division_2026-11-01_eldense_granada",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_1_eredivisie_2026-11-01_excelsior_rotterdam_fc_twente\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-11-01_excelsior_rotterdam_fc_twente",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_1_eredivisie_2026-11-01_telstar_fc_utrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-11-01_telstar_fc_utrecht",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_2_eerste-divisie_2026-11-01_fc_emmen_fc_den_bosch\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_2_eerste-divisie_2026-11-01_fc_emmen_fc_den_bosch",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-01_frosinone_torino\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-01_frosinone_torino",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-01_lazio_cagliari\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-01_lazio_cagliari",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1412,16 +1372,6 @@
     {
       "key": "[\"open_ENG_3_league-one_2026-11-01_sheffield_wednesday_blackpool\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_3_league-one_2026-11-01_sheffield_wednesday_blackpool",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_2_serie-b_2026-11-01_arezzo_ascoli\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_2_serie-b_2026-11-01_arezzo_ascoli",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_2_serie-b_2026-11-01_empoli_juve_stabia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_2_serie-b_2026-11-01_empoli_juve_stabia",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1437,11 +1387,6 @@
     {
       "key": "[\"open_BEL_1_pro-league_2026-11-01_sint_truidense_oh_leuven\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BEL_1_pro-league_2026-11-01_sint_truidense_oh_leuven",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_GRE_1_super-league_2026-11-01_levadiakos_aris\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_GRE_1_super-league_2026-11-01_levadiakos_aris",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1465,21 +1410,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_NED_1_eredivisie_2026-11-01_fc_groningen_sparta_rotterdam\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-11-01_fc_groningen_sparta_rotterdam",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_TUR_1_super-lig_2026-11-01_kasimpasa_besiktas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-01_kasimpasa_besiktas",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_GRE_1_super-league_2026-11-01_panetolikos_ofi_crete\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_GRE_1_super-league_2026-11-01_panetolikos_ofi_crete",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_FRA_1_ligue-1_2026-11-01_paris_fc_as_monaco\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_1_ligue-1_2026-11-01_paris_fc_as_monaco",
       "reason": "Identificativo calendario assente"
@@ -1490,18 +1420,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ENG_1_premier-league_2026-11-01_liverpool_arsenal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-11-01_liverpool_arsenal",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_GER_1_bundesliga_2026-11-01_eintracht_frankfurt_hamburger_sv\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_GER_1_bundesliga_2026-11-01_eintracht_frankfurt_hamburger_sv",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-01_lecce_genoa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-01_lecce_genoa",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1515,18 +1435,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ESP_1_la-liga_2026-11-01_elche_cf_valencia_cf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ESP_1_la-liga_2026-11-01_elche_cf_valencia_cf",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BEL_1_pro-league_2026-11-01_lommel_sk_kaa_gent\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BEL_1_pro-league_2026-11-01_lommel_sk_kaa_gent",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ESP_2_segunda-division_2026-11-01_burgos_castellon\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ESP_2_segunda-division_2026-11-01_burgos_castellon",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -29324,6 +29234,294 @@
       "score": {
         "home": 1,
         "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_SCO_1_premiership_2026-11-01_falkirk_celtic\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_SCO_1_premiership_2026-11-01_falkirk_celtic",
+      "resultId": "MVBn4dYP",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Falkirk",
+      "away": "Celtic",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T13:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-01_trabzonspor_gaziantep\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-01_trabzonspor_gaziantep",
+      "resultId": "vZfwBlGk",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Trabzonspor",
+      "away": "Gaziantep",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T13:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-01_eldense_granada\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-01_eldense_granada",
+      "resultId": "WUC5rEaT",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Eldense",
+      "away": "Granada",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T13:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-11-01_excelsior_rotterdam_fc_twente\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-11-01_excelsior_rotterdam_fc_twente",
+      "resultId": "j50YaAxn",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Excelsior Rotterdam",
+      "away": "FC Twente",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T13:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 9
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-11-01_telstar_fc_utrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-11-01_telstar_fc_utrecht",
+      "resultId": "OIbtbl7b",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Telstar",
+      "away": "FC Utrecht",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T13:30:00Z",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-11-01_fc_emmen_fc_den_bosch\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-01_fc_emmen_fc_den_bosch",
+      "resultId": "WMpEaYkm",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Emmen",
+      "away": "FC Den Bosch",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T13:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-01_frosinone_torino\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-01_frosinone_torino",
+      "resultId": "8YC7cpq2",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Frosinone",
+      "away": "Torino",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T14:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-01_lazio_cagliari\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-01_lazio_cagliari",
+      "resultId": "r581JR5L",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Lazio",
+      "away": "Cagliari",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T14:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-01_arezzo_ascoli\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-01_arezzo_ascoli",
+      "resultId": "v7Sw9GA4",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Arezzo",
+      "away": "Ascoli",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T14:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-01_empoli_juve_stabia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-01_empoli_juve_stabia",
+      "resultId": "0dspmZmo",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Empoli",
+      "away": "Juve Stabia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T14:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-11-01_levadiakos_aris\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-11-01_levadiakos_aris",
+      "resultId": "0hu35qce",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Levadiakos",
+      "away": "Aris",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T15:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-11-01_fc_groningen_sparta_rotterdam\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-11-01_fc_groningen_sparta_rotterdam",
+      "resultId": "AZdldSyB",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Groningen",
+      "away": "Sparta Rotterdam",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T15:45:00Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-01_kasimpasa_besiktas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-01_kasimpasa_besiktas",
+      "resultId": "nabo9Sp2",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Kasimpasa",
+      "away": "Besiktas",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T20:02:57.710Z",
+      "kickoffAt": "2026-11-01T16:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-11-01_panetolikos_ofi_crete\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-11-01_panetolikos_ofi_crete",
+      "resultId": "0CVdRQJE",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Panetolikos",
+      "away": "OFI Crete",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T20:02:57.710Z",
+      "kickoffAt": "2026-11-01T16:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-11-01_liverpool_arsenal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-11-01_liverpool_arsenal",
+      "resultId": "xxDTaeAO",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Liverpool",
+      "away": "Arsenal",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T20:02:57.710Z",
+      "kickoffAt": "2026-11-01T16:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-01_lecce_genoa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-01_lecce_genoa",
+      "resultId": "vyfXD5Tr",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Lecce",
+      "away": "Genoa",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T20:02:57.710Z",
+      "kickoffAt": "2026-11-01T17:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ESP_1_la-liga_2026-11-01_elche_cf_valencia_cf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_1_la-liga_2026-11-01_elche_cf_valencia_cf",
+      "resultId": "Y7Kb8ujt",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Elche CF",
+      "away": "Valencia CF",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T20:02:57.710Z",
+      "kickoffAt": "2026-11-01T17:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-01_burgos_castellon\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-01_burgos_castellon",
+      "resultId": "h0LeQEwo",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Burgos",
+      "away": "Castellón",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T20:02:57.710Z",
+      "kickoffAt": "2026-11-01T17:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
       },
       "markets": {}
     }
