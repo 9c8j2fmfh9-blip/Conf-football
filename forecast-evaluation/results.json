@@ -80429,6 +80429,1551 @@
       "home": "Ciervos",
       "away": "Santiago",
       "status": "FT"
+    },
+    {
+      "league": "Ligue 2",
+      "country": "Algeria",
+      "competitionId": "MJijSTCe",
+      "sourcePath": "/calcio/algeria/ligue-2/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "tptXY8uK",
+      "date": "2026-10-31T14:00:00.000Z",
+      "home": "Annaba",
+      "away": "Djijel",
+      "status": "FT"
+    },
+    {
+      "league": "Ligue 2",
+      "country": "Algeria",
+      "competitionId": "MJijSTCe",
+      "sourcePath": "/calcio/algeria/ligue-2/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "xGR2Tn3s",
+      "date": "2026-10-31T14:00:00.000Z",
+      "home": "US Chaouia",
+      "away": "Skikda",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Profesional - Clausura",
+      "country": "Argentina",
+      "competitionId": "naYhNOaA",
+      "sourcePath": "/calcio/argentina/liga-profesional/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "rLNELjSE",
+      "date": "2026-10-31T22:15:00.000Z",
+      "home": "Velez Sarsfield",
+      "away": "San Lorenzo",
+      "status": "FT"
+    },
+    {
+      "league": "Torneo Federal - Play Off Promozione",
+      "country": "Argentina",
+      "competitionId": "l06JrDh6",
+      "sourcePath": "/calcio/argentina/torneo-federal/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "MXUMaLH5",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Olimpo",
+      "away": "Gimnasia E.R.",
+      "status": "FT"
+    },
+    {
+      "league": "Torneo Federal - Play Off Promozione",
+      "country": "Argentina",
+      "competitionId": "l06JrDh6",
+      "sourcePath": "/calcio/argentina/torneo-federal/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "dCE733It",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Sol de America",
+      "away": "Juventud Antoniana",
+      "status": "FT"
+    },
+    {
+      "league": "Division di Honor",
+      "country": "Aruba",
+      "competitionId": "htKvweNB",
+      "sourcePath": "/calcio/aruba/division-di-honor/",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "id": "4MRJMIyf",
+      "date": "2026-10-31T22:30:00.000Z",
+      "home": "Dakota",
+      "away": "River Plate",
+      "status": "FT"
+    },
+    {
+      "league": "1st National - Femminile",
+      "country": "Belgio",
+      "competitionId": "Y7YJeFPu",
+      "sourcePath": "/calcio/belgio/1st-national-donne/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "QHmmMHFL",
+      "date": "2026-10-31T17:30:00.000Z",
+      "home": "Waregem 2 D",
+      "away": "RSC Anderlecht II D",
+      "status": "FT"
+    },
+    {
+      "league": "Woman´s Cup",
+      "country": "Belgio",
+      "competitionId": "IXyr4UxA",
+      "sourcePath": "/calcio/belgio/woman-s-cup/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "v1cnCHSq",
+      "date": "2026-10-31T14:00:00.000Z",
+      "home": "Schoonbeek-Beverst D",
+      "away": "Sp. Hasselt D",
+      "status": "FT"
+    },
+    {
+      "league": "Woman´s Cup",
+      "country": "Belgio",
+      "competitionId": "IXyr4UxA",
+      "sourcePath": "/calcio/belgio/woman-s-cup/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "rVBGHw5M",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Genk D",
+      "away": "Club Brugge D",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Botswana",
+      "competitionId": "j9S62l8j",
+      "sourcePath": "/calcio/botswana/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "U7irTiuf",
+      "date": "2026-10-31T17:00:00.000Z",
+      "home": "Tafic FC",
+      "away": "Police XI",
+      "status": "FT"
+    },
+    {
+      "league": "Serie B",
+      "country": "Brasile",
+      "competitionId": "vRtLP6rs",
+      "sourcePath": "/calcio/brasile/serie-b/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "fBnwseCi",
+      "date": "2026-10-31T22:30:00.000Z",
+      "home": "Nautico",
+      "away": "Avai",
+      "status": "FT"
+    },
+    {
+      "league": "Goiano 3",
+      "country": "Brasile",
+      "competitionId": "0SnCCms9",
+      "sourcePath": "/calcio/brasile/goiano-3/",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "id": "GjY0ht1e",
+      "date": "2026-10-31T19:00:00.000Z",
+      "home": "Rioverdense",
+      "away": "Atletico Itumbiara",
+      "status": "FT"
+    },
+    {
+      "league": "Pernambucano - Prima fase",
+      "country": "Brasile",
+      "competitionId": "2P3AHVr9",
+      "sourcePath": "/calcio/brasile/pernambucano/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "bc2xtWZh",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Cha Grande",
+      "away": "Central SC",
+      "status": "FT"
+    },
+    {
+      "league": "Pernambucano - Prima fase",
+      "country": "Brasile",
+      "competitionId": "2P3AHVr9",
+      "sourcePath": "/calcio/brasile/pernambucano/",
+      "score": {
+        "home": 7,
+        "away": 1
+      },
+      "id": "0WR3vJbl",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Petrolina",
+      "away": "Ferroviario do Cabo",
+      "status": "FT"
+    },
+    {
+      "league": "Potiguar 2",
+      "country": "Brasile",
+      "competitionId": "0Ai5sK3c",
+      "sourcePath": "/calcio/brasile/potiguar-2/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "6uLFdWRk",
+      "date": "2026-10-31T18:30:00.000Z",
+      "home": "Palmeira da Una",
+      "away": "Mossoro",
+      "status": "FT"
+    },
+    {
+      "league": "Sergipano 2",
+      "country": "Brasile",
+      "competitionId": "pptQ07dF",
+      "sourcePath": "/calcio/brasile/sergipano-2/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "vVS2W60c",
+      "date": "2026-10-31T12:00:00.000Z",
+      "home": "Socorrense",
+      "away": "Flamengo SE",
+      "status": "FT"
+    },
+    {
+      "league": "Sergipano 2",
+      "country": "Brasile",
+      "competitionId": "pptQ07dF",
+      "sourcePath": "/calcio/brasile/sergipano-2/",
+      "score": {
+        "home": 8,
+        "away": 0
+      },
+      "id": "K8UISOaM",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Carmopolis",
+      "away": "America EC",
+      "status": "FT"
+    },
+    {
+      "league": "Tocantinense 2 - Play Off",
+      "country": "Brasile",
+      "competitionId": "lps1B9Xl",
+      "sourcePath": "/calcio/brasile/tocantinense-2/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "nc39glAF",
+      "date": "2026-10-31T18:45:00.000Z",
+      "home": "Interporto",
+      "away": "Batalhao",
+      "status": "FT"
+    },
+    {
+      "league": "Copa FMF (Mato Grosso) - Play Off",
+      "country": "Brasile",
+      "competitionId": "fP0vDqLu",
+      "sourcePath": "/calcio/brasile/copa-fmf-mato-grosso/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "SYq0nrKF",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Sorriso EC",
+      "away": "Chapada",
+      "status": "FT"
+    },
+    {
+      "league": "Brasileiro U17 - Play Off",
+      "country": "Brasile",
+      "competitionId": "dEviSpu9",
+      "sourcePath": "/calcio/brasile/brasileiro-u17/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "0WJv3w9c",
+      "date": "2026-10-31T14:00:00.000Z",
+      "home": "Corinthians U17",
+      "away": "Cruzeiro U17",
+      "status": "FT"
+    },
+    {
+      "league": "Paraense U20",
+      "country": "Brasile",
+      "competitionId": "KKFT9LZA",
+      "sourcePath": "/calcio/brasile/paraense-u20/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "MD6HMLmd",
+      "date": "2026-10-31T18:30:00.000Z",
+      "home": "Castanhal U20",
+      "away": "Meninos de Ouro U20",
+      "status": "FT"
+    },
+    {
+      "league": "Alagoano Donne",
+      "country": "Brasile",
+      "competitionId": "2s6TD6HK",
+      "sourcePath": "/calcio/brasile/alagoano-donne/",
+      "score": {
+        "home": 16,
+        "away": 0
+      },
+      "id": "8Q0UXFTI",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "CRB D",
+      "away": "Desportiva A. D",
+      "status": "FT"
+    },
+    {
+      "league": "Alagoano Donne",
+      "country": "Brasile",
+      "competitionId": "2s6TD6HK",
+      "sourcePath": "/calcio/brasile/alagoano-donne/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "Y3hGeJLP",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Jacioba D",
+      "away": "Ind. Atalaia D",
+      "status": "FT"
+    },
+    {
+      "league": "Carioca Donne - Seconda fase",
+      "country": "Brasile",
+      "competitionId": "M3tdcUC9",
+      "sourcePath": "/calcio/brasile/carioca-donne/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "U506NrUi",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Flamengo D",
+      "away": "Heips D",
+      "status": "FT"
+    },
+    {
+      "league": "Catarinense Donne",
+      "country": "Brasile",
+      "competitionId": "Ucq5in5q",
+      "sourcePath": "/calcio/brasile/catarinense-donne/",
+      "score": {
+        "home": 5,
+        "away": 0
+      },
+      "id": "l2PBXQro",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "AJAP D",
+      "away": "Paysandu-SC D",
+      "status": "FT"
+    },
+    {
+      "league": "Catarinense Donne",
+      "country": "Brasile",
+      "competitionId": "Ucq5in5q",
+      "sourcePath": "/calcio/brasile/catarinense-donne/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "faCceUzh",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Avai Kindermann D",
+      "away": "Meninas de Jaragua D",
+      "status": "FT"
+    },
+    {
+      "league": "Catarinense Donne",
+      "country": "Brasile",
+      "competitionId": "Ucq5in5q",
+      "sourcePath": "/calcio/brasile/catarinense-donne/",
+      "score": {
+        "home": 14,
+        "away": 0
+      },
+      "id": "2PF5g854",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Criciuma D",
+      "away": "Marcilio Dias D",
+      "status": "FT"
+    },
+    {
+      "league": "Cearense Donne",
+      "country": "Brasile",
+      "competitionId": "Myl8DTR2",
+      "sourcePath": "/calcio/brasile/cearense-donne/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "SEqgdnjn",
+      "date": "2026-10-31T18:30:00.000Z",
+      "home": "Hiroos Cariri D",
+      "away": "Sao Goncalo CE D",
+      "status": "FT"
+    },
+    {
+      "league": "Cearense Donne",
+      "country": "Brasile",
+      "competitionId": "Myl8DTR2",
+      "sourcePath": "/calcio/brasile/cearense-donne/",
+      "score": {
+        "home": 9,
+        "away": 0
+      },
+      "id": "ba9qxq5U",
+      "date": "2026-10-31T19:00:00.000Z",
+      "home": "Maracana D",
+      "away": "The Blessed D",
+      "status": "FT"
+    },
+    {
+      "league": "Goiano Donne - Seconda fase",
+      "country": "Brasile",
+      "competitionId": "t0qDgPlk",
+      "sourcePath": "/calcio/brasile/goiano-donne/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "QwgYk4nQ",
+      "date": "2026-10-31T18:30:00.000Z",
+      "home": "Vila Nova D",
+      "away": "Alianca GO D",
+      "status": "FT"
+    },
+    {
+      "league": "Potiguar Donne",
+      "country": "Brasile",
+      "competitionId": "dxoEubY9",
+      "sourcePath": "/calcio/brasile/potiguar-donne/",
+      "score": {
+        "home": 0,
+        "away": 12
+      },
+      "id": "xxPGNSff",
+      "date": "2026-10-31T18:00:00.000Z",
+      "home": "Globo D",
+      "away": "Gramore D",
+      "status": "FT"
+    },
+    {
+      "league": "Elite Two",
+      "country": "Camerun",
+      "competitionId": "tde9j9n4",
+      "sourcePath": "/calcio/camerun/elite-two/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "MZNXTuS7",
+      "date": "2026-10-31T15:00:00.000Z",
+      "home": "AS Fap",
+      "away": "Elecsport",
+      "status": "FT"
+    },
+    {
+      "league": "Division One League",
+      "country": "Ghana",
+      "competitionId": "2wS2Wfks",
+      "sourcePath": "/calcio/ghana/division-one-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "M9M0XKD5",
+      "date": "2026-10-31T15:00:00.000Z",
+      "home": "New Edubiase",
+      "away": "Soccer Intellectuals",
+      "status": "FT"
+    },
+    {
+      "league": "Division One League",
+      "country": "Ghana",
+      "competitionId": "2wS2Wfks",
+      "sourcePath": "/calcio/ghana/division-one-league/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "pxZUyQJl",
+      "date": "2026-10-31T15:00:00.000Z",
+      "home": "Sankara Nationals",
+      "away": "Berekum City",
+      "status": "FT"
+    },
+    {
+      "league": "Division One League",
+      "country": "Ghana",
+      "competitionId": "2wS2Wfks",
+      "sourcePath": "/calcio/ghana/division-one-league/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "h2xwz4l1",
+      "date": "2026-10-31T15:00:00.000Z",
+      "home": "Tamale City",
+      "away": "Kalibi SC",
+      "status": "FT"
+    },
+    {
+      "league": "Premiere Division",
+      "country": "Mali",
+      "competitionId": "UwM8frz1",
+      "sourcePath": "/calcio/mali/premiere-division/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "SraTChg5",
+      "date": "2026-10-31T16:00:00.000Z",
+      "home": "AS Kayes",
+      "away": "Bougouba",
+      "status": "FT"
+    },
+    {
+      "league": "Liga de Expansion MX - Apertura",
+      "country": "Messico",
+      "competitionId": "SlhZpIaP",
+      "sourcePath": "/calcio/messico/liga-de-expansion-mx/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "2PHfs3fd",
+      "date": "2026-10-31T21:45:00.000Z",
+      "home": "Cruz Azul Hidalgo",
+      "away": "Tlaxcala",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Premier",
+      "country": "Messico",
+      "competitionId": "pYZnaTcd",
+      "sourcePath": "/calcio/messico/primera-premier/",
+      "score": {
+        "home": 1,
+        "away": 5
+      },
+      "id": "C86ym577",
+      "date": "2026-10-31T21:30:00.000Z",
+      "home": "Zacatepec",
+      "away": "Racing de Veracruz",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Premier",
+      "country": "Messico",
+      "competitionId": "pYZnaTcd",
+      "sourcePath": "/calcio/messico/primera-premier/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "2FEkd9pL",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Tritones Vallarta",
+      "away": "Pioneros",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie A",
+      "country": "Messico",
+      "competitionId": "UiQWK8Vr",
+      "sourcePath": "/calcio/messico/liga-premier-serie-a/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "plsm1jBG",
+      "date": "2026-10-31T21:30:00.000Z",
+      "home": "Delfines Coatzacoalcos",
+      "away": "La Tribu de Cd. Juarez",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie A",
+      "country": "Messico",
+      "competitionId": "UiQWK8Vr",
+      "sourcePath": "/calcio/messico/liga-premier-serie-a/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "zy1mcMho",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Artesanos Metepec",
+      "away": "Saltillo",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie A",
+      "country": "Messico",
+      "competitionId": "UiQWK8Vr",
+      "sourcePath": "/calcio/messico/liga-premier-serie-a/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "Q1FH2rVN",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Real Refineros",
+      "away": "Guerreros de Autlan",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie B",
+      "country": "Messico",
+      "competitionId": "CGFyKSpk",
+      "sourcePath": "/calcio/messico/liga-premier-serie-b/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "f7z3h0H0",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Gorilas",
+      "away": "Celaya 2",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie B",
+      "country": "Messico",
+      "competitionId": "CGFyKSpk",
+      "sourcePath": "/calcio/messico/liga-premier-serie-b/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "MgxefMnl",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Internacional Laguna",
+      "away": "Cruz Azul Lagunas",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX U21 - Apertura",
+      "country": "Messico",
+      "competitionId": "GdGmZTV6",
+      "sourcePath": "/calcio/messico/liga-mx-u21/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "2uWXq8dd",
+      "date": "2026-10-31T15:00:00.000Z",
+      "home": "Club America U21",
+      "away": "Toluca U21",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX Femminile - Apertura",
+      "country": "Messico",
+      "competitionId": "S8Dr0wAf",
+      "sourcePath": "/calcio/messico/liga-mx-femminile/",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "id": "xnzbfwAE",
+      "date": "2026-10-31T21:40:00.000Z",
+      "home": "Queretaro D",
+      "away": "Pachuca D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Primera - Apertura",
+      "country": "Nicaragua",
+      "competitionId": "6R9dHd1C",
+      "sourcePath": "/calcio/nicaragua/liga-primera/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "23tg9Th2",
+      "date": "2026-10-31T21:00:00.000Z",
+      "home": "Jalapa",
+      "away": "Diriangen",
+      "status": "FT"
+    },
+    {
+      "league": "Super Ligue",
+      "country": "Niger",
+      "competitionId": "ATL2voyk",
+      "sourcePath": "/calcio/niger/super-ligue/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "xpLa3uaM",
+      "date": "2026-10-31T15:15:00.000Z",
+      "home": "Tagour Provincial Club",
+      "away": "AS UAM",
+      "status": "FT"
+    },
+    {
+      "league": "Super Ligue",
+      "country": "Niger",
+      "competitionId": "ATL2voyk",
+      "sourcePath": "/calcio/niger/super-ligue/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "UJHi51U9",
+      "date": "2026-10-31T15:15:00.000Z",
+      "home": "Wombeye",
+      "away": "ASGNN",
+      "status": "FT"
+    },
+    {
+      "league": "Sultan Cup",
+      "country": "Oman",
+      "competitionId": "MoYV5dic",
+      "sourcePath": "/calcio/oman/sultan-cup/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "GGT30YRb",
+      "date": "2026-10-31T15:50:00.000Z",
+      "home": "Saham",
+      "away": "Muscat",
+      "status": "FT"
+    },
+    {
+      "league": "Copa de Primera - Clausura",
+      "country": "Paraguay",
+      "competitionId": "S66R0t75",
+      "sourcePath": "/calcio/paraguay/copa-de-primera/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "6LMbDTOM",
+      "date": "2026-10-31T22:30:00.000Z",
+      "home": "San Lorenzo",
+      "away": "Libertad",
+      "status": "FT"
+    },
+    {
+      "league": "Copa de Primera - Clausura",
+      "country": "Paraguay",
+      "competitionId": "S66R0t75",
+      "sourcePath": "/calcio/paraguay/copa-de-primera/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "Y7OjFkfA",
+      "date": "2026-10-31T22:30:00.000Z",
+      "home": "Sp. Luqueno",
+      "away": "Nacional Asuncion",
+      "status": "FT"
+    },
+    {
+      "league": "Liga 2 - Gruppo Promozione",
+      "country": "Peru",
+      "competitionId": "4vsfFjhg",
+      "sourcePath": "/calcio/peru/liga-2/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "hGm8VnvJ",
+      "date": "2026-10-31T20:15:00.000Z",
+      "home": "Ayacucho",
+      "away": "Pirata",
+      "status": "FT"
+    },
+    {
+      "league": "Czech Cup Femminile",
+      "country": "Repubblica Ceca",
+      "competitionId": "YRnUGLMP",
+      "sourcePath": "/calcio/repubblica-ceca/czech-cup-femminile/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "dlIYtH2F",
+      "date": "2026-10-31T12:30:00.000Z",
+      "home": "Pribram D",
+      "away": "Caslav D",
+      "status": "FT"
+    },
+    {
+      "league": "LDF - Apertura",
+      "country": "Repubblica Dominicana",
+      "competitionId": "WOHJMDoA",
+      "sourcePath": "/calcio/repubblica-dominicana/ldf/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "rVFcqBiI",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Moca",
+      "away": "Atlantico",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Seychelles",
+      "competitionId": "OxNsp9rk",
+      "sourcePath": "/calcio/seicelle/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "tQgacymJ",
+      "date": "2026-10-31T10:45:00.000Z",
+      "home": "Anse Reunion",
+      "away": "Lightstars",
+      "status": "FT"
+    },
+    {
+      "league": "1. SZNL Femminile",
+      "country": "Slovenia",
+      "competitionId": "YTSh6vmB",
+      "sourcePath": "/calcio/slovenia/1-sznl-femminile/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "d2qyRKE6",
+      "date": "2026-10-31T16:30:00.000Z",
+      "home": "ZNK Ljubljana D",
+      "away": "Krim D",
+      "status": "FT"
+    },
+    {
+      "league": "SML",
+      "country": "Suriname",
+      "competitionId": "Wdt71zsU",
+      "sourcePath": "/calcio/suriname/sml/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "rTtatBie",
+      "date": "2026-10-31T19:30:00.000Z",
+      "home": "Voorwaarts",
+      "away": "Flora",
+      "status": "FT"
+    },
+    {
+      "league": "SML",
+      "country": "Suriname",
+      "competitionId": "Wdt71zsU",
+      "sourcePath": "/calcio/suriname/sml/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "jgp7vkM7",
+      "date": "2026-10-31T20:30:00.000Z",
+      "home": "Notch",
+      "away": "Robinhood",
+      "status": "FT"
+    },
+    {
+      "league": "U19 League",
+      "country": "Turchia",
+      "competitionId": "UogUQq03",
+      "sourcePath": "/calcio/turchia/u19-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "n95QmZYQ",
+      "date": "2026-10-31T09:00:00.000Z",
+      "home": "Erzurumspor U19",
+      "away": "Corum U19",
+      "status": "FT"
+    },
+    {
+      "league": "Segunda Division",
+      "country": "Uruguay",
+      "competitionId": "dz4MxG6F",
+      "sourcePath": "/calcio/uruguay/segunda-division/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "MkSpc5HD",
+      "date": "2026-10-31T22:00:00.000Z",
+      "home": "Rentistas",
+      "away": "La Luz",
+      "status": "FT"
+    },
+    {
+      "league": "Liga FUTVE - Clausura - Quadrangolare",
+      "country": "Venezuela",
+      "competitionId": "bVfjs0E5",
+      "sourcePath": "/calcio/venezuela/liga-futve/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "KGS5Xx0l",
+      "date": "2026-10-31T21:30:00.000Z",
+      "home": "Puerto Cabello",
+      "away": "Dep. Tachira",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Profesional - Clausura",
+      "country": "Argentina",
+      "competitionId": "naYhNOaA",
+      "sourcePath": "/calcio/argentina/liga-profesional/",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "id": "fasKa95e",
+      "date": "2026-11-01T00:30:00.000Z",
+      "home": "Estudiantes",
+      "away": "Instituto",
+      "status": "FT"
+    },
+    {
+      "league": "Division di Honor",
+      "country": "Aruba",
+      "competitionId": "htKvweNB",
+      "sourcePath": "/calcio/aruba/division-di-honor/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "xluRKd66",
+      "date": "2026-11-01T00:30:00.000Z",
+      "home": "Britannia",
+      "away": "Sporting",
+      "status": "FT"
+    },
+    {
+      "league": "A-League",
+      "country": "Australia",
+      "competitionId": "OjWW1naM",
+      "sourcePath": "/calcio/australia/a-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "zNPDINyK",
+      "date": "2026-11-01T04:00:00.000Z",
+      "home": "Melbourne Victory",
+      "away": "Central Coast Mariners",
+      "status": "FT"
+    },
+    {
+      "league": "Australian Championship",
+      "country": "Australia",
+      "competitionId": "CS1v5T7M",
+      "sourcePath": "/calcio/australia/australian-championship/",
+      "score": {
+        "home": 5,
+        "away": 2
+      },
+      "id": "hfzf0QNh",
+      "date": "2026-11-01T04:00:00.000Z",
+      "home": "Wests APIA",
+      "away": "Avondale FC",
+      "status": "FT"
+    },
+    {
+      "league": "A-League Femminile",
+      "country": "Australia",
+      "competitionId": "tbR6H4dE",
+      "sourcePath": "/calcio/australia/a-league-femminile/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "OMtRLJmp",
+      "date": "2026-11-01T04:00:00.000Z",
+      "home": "Canberra D",
+      "away": "WS Wanderers D",
+      "status": "FT"
+    },
+    {
+      "league": "Copa Simon Bolivar - Play Off",
+      "country": "Bolivia",
+      "competitionId": "2kMCv8iR",
+      "sourcePath": "/calcio/bolivia/copa-simon-bolivar/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "67m0iLQ1",
+      "date": "2026-11-01T00:00:00.000Z",
+      "home": "Independiente CBBA",
+      "away": "Mineros Potosi",
+      "status": "FT"
+    },
+    {
+      "league": "Primera A - Clausura",
+      "country": "Colombia",
+      "competitionId": "t0fpnjs5",
+      "sourcePath": "/calcio/colombia/primera-a/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "QVzP4PJq",
+      "date": "2026-10-31T23:00:00.000Z",
+      "home": "Llaneros",
+      "away": "Junior",
+      "status": "FT"
+    },
+    {
+      "league": "Primera División - Apertura",
+      "country": "Costarica",
+      "competitionId": "tpC1pUBH",
+      "sourcePath": "/calcio/costarica/primera-division/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "CnNjIJnJ",
+      "date": "2026-11-01T02:00:00.000Z",
+      "home": "Sporting FC",
+      "away": "Herediano",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Division - Apertura",
+      "country": "El Salvador",
+      "competitionId": "xxxpBZl2",
+      "sourcePath": "/calcio/el-salvador/primera-division/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "Kx2nJYP1",
+      "date": "2026-11-01T01:00:00.000Z",
+      "home": "Metapan",
+      "away": "Municipal Limeno",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Francia",
+      "country": "Francia",
+      "competitionId": "AaHxMIcd",
+      "sourcePath": "/calcio/francia/coppa-di-francia/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "fBMkbbtn",
+      "date": "2026-10-31T23:00:00.000Z",
+      "home": "Franciscain",
+      "away": "Aiglon Lamentin",
+      "status": "FT"
+    },
+    {
+      "league": "J1 League",
+      "country": "Giappone",
+      "competitionId": "pAq4eRQ9",
+      "sourcePath": "/calcio/giappone/j1-league/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "jTQYvVVj",
+      "date": "2026-11-01T04:00:00.000Z",
+      "home": "Yokohama M.",
+      "away": "Kawasaki",
+      "status": "FT"
+    },
+    {
+      "league": "WE League Women",
+      "country": "Giappone",
+      "competitionId": "8EN0QBMS",
+      "sourcePath": "/calcio/giappone/we-league-women/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "UXlCUyBF",
+      "date": "2026-11-01T04:00:00.000Z",
+      "home": "Albirex Niigata D",
+      "away": "Urawa D",
+      "status": "FT"
+    },
+    {
+      "league": "WE League Women",
+      "country": "Giappone",
+      "competitionId": "8EN0QBMS",
+      "sourcePath": "/calcio/giappone/we-league-women/",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "id": "xbhKSFuS",
+      "date": "2026-11-01T04:00:00.000Z",
+      "home": "C-Osaka D",
+      "away": "Saitama D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Nacional - Apertura",
+      "country": "Honduras",
+      "competitionId": "YeUwzehC",
+      "sourcePath": "/calcio/honduras/liga-nacional/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "UyoTxZaD",
+      "date": "2026-10-31T23:15:00.000Z",
+      "home": "Real Espana",
+      "away": "Juticalpa",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Nacional - Apertura",
+      "country": "Honduras",
+      "competitionId": "YeUwzehC",
+      "sourcePath": "/calcio/honduras/liga-nacional/",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "id": "MVXE0xhK",
+      "date": "2026-11-01T01:30:00.000Z",
+      "home": "Choloma",
+      "away": "Olimpia",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX - Apertura",
+      "country": "Messico",
+      "competitionId": "bm2Vlsfl",
+      "sourcePath": "/calcio/messico/liga-mx/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "CzcjgrwA",
+      "date": "2026-10-31T23:00:00.000Z",
+      "home": "Pachuca",
+      "away": "Tigres",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX - Apertura",
+      "country": "Messico",
+      "competitionId": "bm2Vlsfl",
+      "sourcePath": "/calcio/messico/liga-mx/",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "id": "GWoUo0Vq",
+      "date": "2026-11-01T01:05:00.000Z",
+      "home": "Monterrey",
+      "away": "Tijuana",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX - Apertura",
+      "country": "Messico",
+      "competitionId": "bm2Vlsfl",
+      "sourcePath": "/calcio/messico/liga-mx/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "plebiM7M",
+      "date": "2026-11-01T01:07:00.000Z",
+      "home": "Guadalajara",
+      "away": "Atlante",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX - Apertura",
+      "country": "Messico",
+      "competitionId": "bm2Vlsfl",
+      "sourcePath": "/calcio/messico/liga-mx/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "MTlxpv0d",
+      "date": "2026-11-01T03:10:00.000Z",
+      "home": "Club America",
+      "away": "Toluca",
+      "status": "FT"
+    },
+    {
+      "league": "Liga de Expansion MX - Apertura",
+      "country": "Messico",
+      "competitionId": "SlhZpIaP",
+      "sourcePath": "/calcio/messico/liga-de-expansion-mx/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "0G7l3pHF",
+      "date": "2026-11-01T01:00:00.000Z",
+      "home": "Alacranes",
+      "away": "Atl. Morelia",
+      "status": "FT"
+    },
+    {
+      "league": "Liga de Expansion MX - Apertura",
+      "country": "Messico",
+      "competitionId": "SlhZpIaP",
+      "sourcePath": "/calcio/messico/liga-de-expansion-mx/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "8tBd1OoS",
+      "date": "2026-11-01T01:00:00.000Z",
+      "home": "Cancun",
+      "away": "Jaiba Brava",
+      "status": "FT"
+    },
+    {
+      "league": "Liga de Expansion MX - Apertura",
+      "country": "Messico",
+      "competitionId": "SlhZpIaP",
+      "sourcePath": "/calcio/messico/liga-de-expansion-mx/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "S29t56n3",
+      "date": "2026-11-01T01:00:00.000Z",
+      "home": "Piratas",
+      "away": "Tapatio",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Premier",
+      "country": "Messico",
+      "competitionId": "pYZnaTcd",
+      "sourcePath": "/calcio/messico/primera-premier/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "rBm13Qil",
+      "date": "2026-11-01T01:00:00.000Z",
+      "home": "Lobos ULMX",
+      "away": "Chapulineros",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Premier",
+      "country": "Messico",
+      "competitionId": "pYZnaTcd",
+      "sourcePath": "/calcio/messico/primera-premier/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "nu2V8nUQ",
+      "date": "2026-11-01T02:00:00.000Z",
+      "home": "Irapuato",
+      "away": "Deportiva Venados",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Premier",
+      "country": "Messico",
+      "competitionId": "pYZnaTcd",
+      "sourcePath": "/calcio/messico/primera-premier/",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "id": "Gx1814M0",
+      "date": "2026-11-01T03:00:00.000Z",
+      "home": "Los Cabos",
+      "away": "Celaya",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie A",
+      "country": "Messico",
+      "competitionId": "UiQWK8Vr",
+      "sourcePath": "/calcio/messico/liga-premier-serie-a/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "4AuX4YBi",
+      "date": "2026-11-01T00:00:00.000Z",
+      "home": "Dragones de Oaxaca",
+      "away": "Mineros de Fresnillo",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie B",
+      "country": "Messico",
+      "competitionId": "CGFyKSpk",
+      "sourcePath": "/calcio/messico/liga-premier-serie-b/",
+      "score": {
+        "home": 11,
+        "away": 0
+      },
+      "id": "2XwBjvnD",
+      "date": "2026-11-01T00:00:00.000Z",
+      "home": "Ayense",
+      "away": "Atletico Hidalgo",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX Femminile - Apertura",
+      "country": "Messico",
+      "competitionId": "S8Dr0wAf",
+      "sourcePath": "/calcio/messico/liga-mx-femminile/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "AurCWZH7",
+      "date": "2026-10-31T23:45:00.000Z",
+      "home": "Tijuana D",
+      "away": "Cruz Azul D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga MX Femminile - Apertura",
+      "country": "Messico",
+      "competitionId": "S8Dr0wAf",
+      "sourcePath": "/calcio/messico/liga-mx-femminile/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "pCw6hHvR",
+      "date": "2026-11-01T03:10:00.000Z",
+      "home": "Necaxa D",
+      "away": "Santos Laguna D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Primera - Apertura",
+      "country": "Nicaragua",
+      "competitionId": "6R9dHd1C",
+      "sourcePath": "/calcio/nicaragua/liga-primera/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "fcTvXWp9",
+      "date": "2026-11-01T01:00:00.000Z",
+      "home": "Esteli",
+      "away": "Sport Sebaco",
+      "status": "FT"
+    },
+    {
+      "league": "National League - Play-Offs Championship",
+      "country": "Nuova Zelanda",
+      "competitionId": "U9JVmDk4",
+      "sourcePath": "/calcio/nuova-zelanda/national-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "prGrNkFl",
+      "date": "2026-11-01T01:00:00.000Z",
+      "home": "Cashmere Technical",
+      "away": "Auckland City",
+      "status": "FT"
+    },
+    {
+      "league": "National League - Play-Offs Championship",
+      "country": "Nuova Zelanda",
+      "competitionId": "U9JVmDk4",
+      "sourcePath": "/calcio/nuova-zelanda/national-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "h8JjLTq1",
+      "date": "2026-11-01T02:00:00.000Z",
+      "home": "Birkenhead",
+      "away": "Ferrymead Bays",
+      "status": "FT"
+    },
+    {
+      "league": "National League Femminile",
+      "country": "Nuova Zelanda",
+      "competitionId": "UiC83C9c",
+      "sourcePath": "/calcio/nuova-zelanda/national-league-femminile/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "67RBjnFj",
+      "date": "2026-10-31T23:00:00.000Z",
+      "home": "Eastern Suburbs D",
+      "away": "Southern United D",
+      "status": "FT"
+    },
+    {
+      "league": "National League Femminile",
+      "country": "Nuova Zelanda",
+      "competitionId": "UiC83C9c",
+      "sourcePath": "/calcio/nuova-zelanda/national-league-femminile/",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "id": "WSR4CTyA",
+      "date": "2026-11-01T03:00:00.000Z",
+      "home": "Wellington Phoenix 2 D",
+      "away": "Auckland United D",
+      "status": "FT"
+    },
+    {
+      "league": "National League Femminile",
+      "country": "Nuova Zelanda",
+      "competitionId": "UiC83C9c",
+      "sourcePath": "/calcio/nuova-zelanda/national-league-femminile/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "b1EcEk7c",
+      "date": "2026-11-01T03:00:00.000Z",
+      "home": "West Coast Rangers D",
+      "away": "Fencibles D",
+      "status": "FT"
+    },
+    {
+      "league": "LPF - Apertura",
+      "country": "Panama",
+      "competitionId": "jHCVwi4L",
+      "sourcePath": "/calcio/panama/lpf/",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "id": "6DGkH32S",
+      "date": "2026-10-31T23:15:00.000Z",
+      "home": "Plaza Amador",
+      "away": "Alianza",
+      "status": "FT"
+    },
+    {
+      "league": "LPF - Apertura",
+      "country": "Panama",
+      "competitionId": "jHCVwi4L",
+      "sourcePath": "/calcio/panama/lpf/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "CWEZKo33",
+      "date": "2026-11-01T01:30:00.000Z",
+      "home": "Veraguas",
+      "away": "Herrera",
+      "status": "FT"
+    },
+    {
+      "league": "SML",
+      "country": "Suriname",
+      "competitionId": "Wdt71zsU",
+      "sourcePath": "/calcio/suriname/sml/",
+      "score": {
+        "home": 5,
+        "away": 0
+      },
+      "id": "Iaxg2hEE",
+      "date": "2026-10-31T23:00:00.000Z",
+      "home": "Inter Moengotapoe",
+      "away": "PVV",
+      "status": "FT"
+    },
+    {
+      "league": "MLS",
+      "country": "USA",
+      "competitionId": "CQv5qrFt",
+      "sourcePath": "/calcio/usa/mls/",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "id": "rXF2hvCG",
+      "date": "2026-11-01T01:30:00.000Z",
+      "home": "Colorado Rapids",
+      "away": "Chicago Fire",
+      "status": "FT"
+    },
+    {
+      "league": "USL Super League Femminile",
+      "country": "USA",
+      "competitionId": "WnHhmdP7",
+      "sourcePath": "/calcio/usa/usl-super-league-femminile/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "69I5hCKh",
+      "date": "2026-10-31T23:00:00.000Z",
+      "home": "Carolina Ascent D",
+      "away": "Lexington D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga FUTVE - Clausura - Quadrangolare",
+      "country": "Venezuela",
+      "competitionId": "bVfjs0E5",
+      "sourcePath": "/calcio/venezuela/liga-futve/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "6XQDVGU0",
+      "date": "2026-10-31T23:30:00.000Z",
+      "home": "Caracas",
+      "away": "Monagas",
+      "status": "FT"
     }
   ]
 }

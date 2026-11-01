@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-10-31T23:27:55.566Z",
+  "evaluatedAt": "2026-11-01T06:20:21.712Z",
   "lastCapturedAt": "2026-10-31T23:27:55.392Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 983,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 648,
+  "settled": 656,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1275,21 +1275,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_MEX_2_liga-expansion_2026-10-31_cruz_azul_hidalgo_tlaxcala_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_2_liga-expansion_2026-10-31_cruz_azul_hidalgo_tlaxcala_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_1_liga-profesional_2026-10-31_velez_sarsfield_san_lorenzo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-10-31_velez_sarsfield_san_lorenzo",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_2_serie-b_2026-10-31_nautico_avai\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_2_serie-b_2026-10-31_nautico_avai",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_MEX_1_liga-mx_2026-10-31_pachuca_tigres_uanl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-10-31_pachuca_tigres_uanl",
       "reason": "Identificativo calendario assente"
@@ -1297,11 +1282,6 @@
     {
       "key": "[\"open_ARG_1_liga-profesional_2026-11-01_estudiantes_de_la_plata_instituto_cordoba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_1_liga-profesional_2026-11-01_estudiantes_de_la_plata_instituto_cordoba",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_MEX_1_liga-mx_2026-11-01_monterrey_tijuana\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_1_liga-mx_2026-11-01_monterrey_tijuana",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1315,21 +1295,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_MEX_2_liga-expansion_2026-11-01_piratas_tapatio\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_2_liga-expansion_2026-11-01_piratas_tapatio",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_MEX_1_liga-mx_2026-11-01_guadalajara_atlante\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_1_liga-mx_2026-11-01_guadalajara_atlante",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-11-01_colorado_rapids_chicago_fire_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-11-01_colorado_rapids_chicago_fire_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_MEX_1_liga-mx_2026-11-01_america_toluca\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-11-01_america_toluca",
       "reason": "Identificativo calendario assente"
@@ -1337,11 +1302,6 @@
     {
       "key": "[\"open_JPN_1_j1-league_2026-11-01_yokohama_f_marinos_kawasaki_frontale\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_JPN_1_j1-league_2026-11-01_yokohama_f_marinos_kawasaki_frontale",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-11-01_melbourne_victory_central_coast_mariners\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-11-01_melbourne_victory_central_coast_mariners",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -29213,6 +29173,134 @@
       "kickoffAt": "2026-10-31T21:00:00Z",
       "score": {
         "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-10-31_cruz_azul_hidalgo_tlaxcala_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-10-31_cruz_azul_hidalgo_tlaxcala_fc",
+      "resultId": "2PHfs3fd",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Cruz Azul Hidalgo",
+      "away": "Tlaxcala FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T21:45:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-10-31_velez_sarsfield_san_lorenzo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-10-31_velez_sarsfield_san_lorenzo",
+      "resultId": "rLNELjSE",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Vélez Sarsfield",
+      "away": "San Lorenzo",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T22:15:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-10-31_nautico_avai\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-10-31_nautico_avai",
+      "resultId": "fBnwseCi",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Náutico",
+      "away": "Avaí",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-30T23:01:14.260Z",
+      "kickoffAt": "2026-10-31T22:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-01_monterrey_tijuana\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-01_monterrey_tijuana",
+      "resultId": "GWoUo0Vq",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Monterrey",
+      "away": "Tijuana",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T02:29:40.348Z",
+      "kickoffAt": "2026-11-01T01:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_2_liga-expansion_2026-11-01_piratas_tapatio\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_2_liga-expansion_2026-11-01_piratas_tapatio",
+      "resultId": "S29t56n3",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Piratas",
+      "away": "Tapatío",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T02:29:40.348Z",
+      "kickoffAt": "2026-11-01T01:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-01_guadalajara_atlante\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-01_guadalajara_atlante",
+      "resultId": "plebiM7M",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Guadalajara",
+      "away": "Atlante",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T02:29:40.348Z",
+      "kickoffAt": "2026-11-01T01:07:00Z",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-11-01_colorado_rapids_chicago_fire_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-11-01_colorado_rapids_chicago_fire_fc",
+      "resultId": "rXF2hvCG",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Colorado Rapids",
+      "away": "Chicago Fire FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T02:29:40.348Z",
+      "kickoffAt": "2026-11-01T01:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-01_melbourne_victory_central_coast_mariners\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-01_melbourne_victory_central_coast_mariners",
+      "resultId": "zNPDINyK",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Melbourne Victory",
+      "away": "Central Coast Mariners",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T09:46:44.290Z",
+      "kickoffAt": "2026-11-01T04:00:00Z",
+      "score": {
+        "home": 1,
         "away": 1
       },
       "markets": {}
