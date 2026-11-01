@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-01T06:20:21.712Z",
+  "evaluatedAt": "2026-11-01T14:20:54.291Z",
   "lastCapturedAt": "2026-10-31T23:27:55.392Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 983,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 656,
+  "settled": 658,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1325,18 +1325,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_TUR_1_super-lig_2026-11-01_amedspor_eyupspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-01_amedspor_eyupspor",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_NED_1_eredivisie_2026-11-01_pec_zwolle_ado_den_haag\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_1_eredivisie_2026-11-01_pec_zwolle_ado_den_haag",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-01_como_venezia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-01_como_venezia",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -29302,6 +29292,38 @@
       "score": {
         "home": 1,
         "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-01_amedspor_eyupspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-01_amedspor_eyupspor",
+      "resultId": "W03vV97L",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Amedspor",
+      "away": "Eyüpspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T10:30:00Z",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-01_como_venezia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-01_como_venezia",
+      "resultId": "zLEaa6Ek",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Como",
+      "away": "Venezia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-10-31T15:46:30.977Z",
+      "kickoffAt": "2026-11-01T11:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
       },
       "markets": {}
     }
