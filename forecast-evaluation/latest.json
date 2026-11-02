@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-01T23:41:24.148Z",
-  "lastCapturedAt": "2026-11-01T23:41:23.948Z",
+  "evaluatedAt": "2026-11-02T06:21:28.614Z",
+  "lastCapturedAt": "2026-11-02T06:21:28.352Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 1011,
+  "recorded": 1013,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 685,
+  "settled": 687,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1500,11 +1500,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_USA_1_mls_2026-11-02_new_england_revolution_inter_miami_cf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-11-02_new_england_revolution_inter_miami_cf",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_MEX_1_liga-mx_2026-11-02_cruz_azul_leon\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-11-02_cruz_azul_leon",
       "reason": "Identificativo calendario assente"
@@ -1517,11 +1512,6 @@
     {
       "key": "[\"open_USA_1_mls_2026-11-02_los_angeles_football_club_minnesota_united_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_USA_1_mls_2026-11-02_los_angeles_football_club_minnesota_united_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_USA_1_mls_2026-11-02_portland_timbers_houston_dynamo_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_USA_1_mls_2026-11-02_portland_timbers_houston_dynamo_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1637,6 +1627,16 @@
     {
       "key": "[\"open_BRA_2_serie-b_2026-11-02_goias_crb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BRA_2_serie-b_2026-11-02_goias_crb",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-11-03_atletico_tucuman_argentinos_juniors\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-11-03_atletico_tucuman_argentinos_juniors",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-11-03_independiente_rivadavia_banfield\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-11-03_independiente_rivadavia_banfield",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -29761,6 +29761,38 @@
       "score": {
         "home": 2,
         "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-11-02_new_england_revolution_inter_miami_cf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-11-02_new_england_revolution_inter_miami_cf",
+      "resultId": "8lIT6wR9",
+      "matchMethod": "unique-team-kickoff",
+      "home": "New England Revolution",
+      "away": "Inter Miami CF",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T00:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_USA_1_mls_2026-11-02_portland_timbers_houston_dynamo_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_USA_1_mls_2026-11-02_portland_timbers_houston_dynamo_fc",
+      "resultId": "Emp1lVAr",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Portland Timbers",
+      "away": "Houston Dynamo FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T02:45:00Z",
+      "score": {
+        "home": 3,
+        "away": 1
       },
       "markets": {}
     }
