@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-02T17:11:44.738Z",
+  "evaluatedAt": "2026-11-02T23:55:11.654Z",
   "lastCapturedAt": "2026-11-02T17:11:44.558Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1013,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 687,
+  "settled": 696,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1525,21 +1525,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_TUR_1_super-lig_2026-11-02_genclerbirligi_alanyaspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-02_genclerbirligi_alanyaspor",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-02_sassuolo_fiorentina\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-02_sassuolo_fiorentina",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_GRE_1_super-league_2026-11-02_kalamata_iraklis\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_GRE_1_super-league_2026-11-02_kalamata_iraklis",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ESP_2_segunda-division_2026-11-02_real_valladolid_leganes\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ESP_2_segunda-division_2026-11-02_real_valladolid_leganes",
       "reason": "Identificativo calendario assente"
@@ -1547,16 +1532,6 @@
     {
       "key": "[\"open_NED_2_eerste-divisie_2026-11-02_heracles_almelo_top_oss\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_2_eerste-divisie_2026-11-02_heracles_almelo_top_oss",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_2_eerste-divisie_2026-11-02_jong_ajax_vitesse\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_2_eerste-divisie_2026-11-02_jong_ajax_vitesse",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_2_eerste-divisie_2026-11-02_jong_fc_utrecht_fc_dordrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_2_eerste-divisie_2026-11-02_jong_fc_utrecht_fc_dordrecht",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1570,18 +1545,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ITA_1_serie-a_2026-11-02_atalanta_parma\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-02_atalanta_parma",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_FRA_2_ligue-2_2026-11-02_red_star_fc_as_nancy_lorraine\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_2_ligue-2_2026-11-02_red_star_fc_as_nancy_lorraine",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_1_premier-league_2026-11-02_newcastle_everton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-11-02_newcastle_everton",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1605,18 +1570,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_BRA_2_serie-b_2026-11-02_athletic_ceara\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_2_serie-b_2026-11-02_athletic_ceara",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ARG_1_liga-profesional_2026-11-02_defensa_y_justicia_independiente\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_1_liga-profesional_2026-11-02_defensa_y_justicia_independiente",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ARG_1_liga-profesional_2026-11-02_platense_central_cordoba_santiago_del_estero\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-11-02_platense_central_cordoba_santiago_del_estero",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -29793,6 +29748,150 @@
       "score": {
         "home": 3,
         "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-02_genclerbirligi_alanyaspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-02_genclerbirligi_alanyaspor",
+      "resultId": "2qfAPmVr",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Gençlerbirligi",
+      "away": "Alanyaspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T17:00:00Z",
+      "score": {
+        "home": 5,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-02_sassuolo_fiorentina\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-02_sassuolo_fiorentina",
+      "resultId": "YHemANS7",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Sassuolo",
+      "away": "Fiorentina",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T17:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-11-02_kalamata_iraklis\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-11-02_kalamata_iraklis",
+      "resultId": "I5ePCR4L",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Kalamata",
+      "away": "Iraklis",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T17:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-11-02_jong_ajax_vitesse\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-02_jong_ajax_vitesse",
+      "resultId": "drLAeseT",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Jong Ajax",
+      "away": "Vitesse",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T19:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-11-02_jong_fc_utrecht_fc_dordrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-02_jong_fc_utrecht_fc_dordrecht",
+      "resultId": "SQBtjLIj",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Jong FC Utrecht",
+      "away": "FC Dordrecht",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T19:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-02_atalanta_parma\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-02_atalanta_parma",
+      "resultId": "buLL6lMF",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Atalanta",
+      "away": "Parma",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T19:45:00Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-11-02_newcastle_everton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-11-02_newcastle_everton",
+      "resultId": "YceoIxQh",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Newcastle",
+      "away": "Everton",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T20:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-11-02_athletic_ceara\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-11-02_athletic_ceara",
+      "resultId": "tl20p91n",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Athletic",
+      "away": "Ceará",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T21:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ARG_1_liga-profesional_2026-11-02_platense_central_cordoba_santiago_del_estero\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-11-02_platense_central_cordoba_santiago_del_estero",
+      "resultId": "vmHNJUdR",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Platense",
+      "away": "Central Córdoba (Santiago del Estero)",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T22:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
       },
       "markets": {}
     }
