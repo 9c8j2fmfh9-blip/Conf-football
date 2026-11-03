@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-03T15:17:29.107Z",
-  "lastCapturedAt": "2026-11-02T17:11:44.558Z",
+  "evaluatedAt": "2026-11-03T21:08:27.468Z",
+  "lastCapturedAt": "2026-11-03T21:08:27.208Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 1013,
+  "recorded": 1028,
   "estimated": 346,
   "evaluatedForecasts": 326,
   "settled": 698,
@@ -1582,6 +1582,81 @@
     {
       "key": "[\"open_ARG_1_liga-profesional_2026-11-03_independiente_rivadavia_banfield\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_1_liga-profesional_2026-11-03_independiente_rivadavia_banfield",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-11-03_chapecoense_mirassol\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-11-03_chapecoense_mirassol",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-11-04_internacional_coritiba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-11-04_internacional_coritiba",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_aek_athens_real_madrid\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_aek_athens_real_madrid",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_fenerbahce_liverpool\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_fenerbahce_liverpool",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-04_cardiff_city_west_ham_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-04_cardiff_city_west_ham_united",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-04_wrexham_middlesbrough\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-04_wrexham_middlesbrough",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_3_league-one_2026-11-04_oxford_united_reading\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_3_league-one_2026-11-04_oxford_united_reading",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_borussia_dortmund_real_betis\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_borussia_dortmund_real_betis",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_rb_leipzig_manchester_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_rb_leipzig_manchester_city",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_lens_como\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_lens_como",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_psv_club_brugge\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_psv_club_brugge",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_porto_napoli\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_porto_napoli",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_slavia_prague_arsenal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_slavia_prague_arsenal",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_viking_sabah\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_viking_sabah",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-04_bristol_city_wolverhampton_wanderers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-04_bristol_city_wolverhampton_wanderers",
       "reason": "Identificativo calendario assente"
     }
   ],
