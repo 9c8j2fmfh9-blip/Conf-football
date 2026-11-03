@@ -74887,7 +74887,7 @@
       "sourcePath": "/calcio/romania/liga-3-seria-4/",
       "score": {
         "home": 1,
-        "away": 0
+        "away": 1
       },
       "id": "vqjtDpTO",
       "date": "2026-10-31T13:00:00.000Z",
@@ -81846,7 +81846,7 @@
       "competitionId": "UiC83C9c",
       "sourcePath": "/calcio/nuova-zelanda/national-league-femminile/",
       "score": {
-        "home": 2,
+        "home": 4,
         "away": 0
       },
       "id": "67RBjnFj",
@@ -83426,7 +83426,7 @@
       },
       "id": "UyNx8evQ",
       "date": "2026-11-01T12:15:00.000Z",
-      "home": "Al Mabarrah",
+      "home": "Al Ghazieh",
       "away": "Al Riyadi Abbasiyah",
       "status": "FT"
     },
@@ -105103,6 +105103,1026 @@
       "date": "2026-11-02T23:00:00.000Z",
       "home": "Albion",
       "away": "Maldonado",
+      "status": "FT"
+    },
+    {
+      "league": "Division 1",
+      "country": "Arabia Saudita",
+      "competitionId": "8fhFSggG",
+      "sourcePath": "/calcio/arabia-saudita/division-1/",
+      "score": {
+        "home": 4,
+        "away": 3
+      },
+      "id": "bTObfs2d",
+      "date": "2026-11-03T12:35:00.000Z",
+      "home": "Damac",
+      "away": "Al Okhdood",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Arabia Saudita",
+      "competitionId": "GGLmkiK8",
+      "sourcePath": "/calcio/arabia-saudita/division-2/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "AwyugbBl",
+      "date": "2026-11-03T11:55:00.000Z",
+      "home": "Al Jubail",
+      "away": "Al Sharq",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Arabia Saudita",
+      "competitionId": "GGLmkiK8",
+      "sourcePath": "/calcio/arabia-saudita/division-2/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "riZnixt1",
+      "date": "2026-11-03T11:55:00.000Z",
+      "home": "Mudhar Club",
+      "away": "Baish",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Arabia Saudita",
+      "competitionId": "GGLmkiK8",
+      "sourcePath": "/calcio/arabia-saudita/division-2/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "U7XfkGAD",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Al Najoom",
+      "away": "Al Shoalah",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Arabia Saudita",
+      "competitionId": "GGLmkiK8",
+      "sourcePath": "/calcio/arabia-saudita/division-2/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "hpBC7cQs",
+      "date": "2026-11-03T12:15:00.000Z",
+      "home": "Al Washm",
+      "away": "Al Hada",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Arabia Saudita",
+      "competitionId": "GGLmkiK8",
+      "sourcePath": "/calcio/arabia-saudita/division-2/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "hIWR3FP6",
+      "date": "2026-11-03T12:25:00.000Z",
+      "home": "Al Loa",
+      "away": "Qilwah",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Arabia Saudita",
+      "competitionId": "GGLmkiK8",
+      "sourcePath": "/calcio/arabia-saudita/division-2/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "0AEK5yef",
+      "date": "2026-11-03T12:25:00.000Z",
+      "home": "Najran",
+      "away": "Jubbah",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Arabia Saudita",
+      "competitionId": "GGLmkiK8",
+      "sourcePath": "/calcio/arabia-saudita/division-2/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "QVUZ1gfJ",
+      "date": "2026-11-03T12:30:00.000Z",
+      "home": "Al Qous",
+      "away": "Al Arabi",
+      "status": "FT"
+    },
+    {
+      "league": "Division 2",
+      "country": "Arabia Saudita",
+      "competitionId": "GGLmkiK8",
+      "sourcePath": "/calcio/arabia-saudita/division-2/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "hxNLPdnQ",
+      "date": "2026-11-03T12:45:00.000Z",
+      "home": "Al Entesar",
+      "away": "Al Rawdah",
+      "status": "FT"
+    },
+    {
+      "league": "First League",
+      "country": "Armenia",
+      "competitionId": "88zrouK3",
+      "sourcePath": "/calcio/armenia/first-league/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "UkjtOov3",
+      "date": "2026-11-03T11:00:00.000Z",
+      "home": "Olympia Yerevan",
+      "away": "BKMA 2",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "id": "O8TditmA",
+      "date": "2026-11-03T07:45:00.000Z",
+      "home": "Newcastle Jets (Aus)",
+      "away": "Shanghai Port (Chn)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "ELGrrxAd",
+      "date": "2026-11-03T10:00:00.000Z",
+      "home": "Jeonbuk (Kor)",
+      "away": "Johor DT (Mys)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "dMR4kKHM",
+      "date": "2026-11-03T10:00:00.000Z",
+      "home": "Kashiwa (Jpn)",
+      "away": "Daejeon (Kor)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "6eDzpbup",
+      "date": "2026-11-03T10:00:00.000Z",
+      "home": "Kobe (Jpn)",
+      "away": "Ratchaburi (Tha)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "6F3U5u23",
+      "date": "2026-11-03T12:15:00.000Z",
+      "home": "Cong An Ha Noi (Vie)",
+      "away": "Kyoto (Jpn)",
+      "status": "FT"
+    },
+    {
+      "league": "AFC Champions League - Prima fase",
+      "country": "Asia",
+      "competitionId": "ddxzWOqT",
+      "sourcePath": "/calcio/asia/afc-champions-league/",
+      "score": {
+        "home": 7,
+        "away": 4
+      },
+      "id": "Eu7x4JWF",
+      "date": "2026-11-03T12:15:00.000Z",
+      "home": "Port MTI FC (Tha)",
+      "away": "Beijing Guoan (Chn)",
+      "status": "FT"
+    },
+    {
+      "league": "Primus League",
+      "country": "Burundi",
+      "competitionId": "I3Qi07iq",
+      "sourcePath": "/calcio/burundi/primus-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "jFeDD83d",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "Muzinga",
+      "away": "Aigle Noir",
+      "status": "FT"
+    },
+    {
+      "league": "League One Women - Play-Offs Championship",
+      "country": "Cina",
+      "competitionId": "8rifnE0c",
+      "sourcePath": "/calcio/cina/league-one-women/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "dEH2pasI",
+      "date": "2026-11-03T07:00:00.000Z",
+      "home": "Chongqing Yongchuan D",
+      "away": "Henan Songshan Longmen D",
+      "status": "FT"
+    },
+    {
+      "league": "League One Women - Play-Offs Championship",
+      "country": "Cina",
+      "competitionId": "8rifnE0c",
+      "sourcePath": "/calcio/cina/league-one-women/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "GzGnlsrg",
+      "date": "2026-11-03T07:00:00.000Z",
+      "home": "Fujian Quanzhou Nanan D",
+      "away": "Shanghai RCB B D",
+      "status": "FT"
+    },
+    {
+      "league": "League One Women - Play-Offs Championship",
+      "country": "Cina",
+      "competitionId": "8rifnE0c",
+      "sourcePath": "/calcio/cina/league-one-women/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "4vLArwCU",
+      "date": "2026-11-03T07:00:00.000Z",
+      "home": "Hebei Xueruyi D",
+      "away": "Qingdao West Coast D",
+      "status": "FT"
+    },
+    {
+      "league": "League One Women - Play-Offs Championship",
+      "country": "Cina",
+      "competitionId": "8rifnE0c",
+      "sourcePath": "/calcio/cina/league-one-women/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "O0JfnLC5",
+      "date": "2026-11-03T07:00:00.000Z",
+      "home": "Shanghai Shenhua D",
+      "away": "Wuhan Sports University D",
+      "status": "FT"
+    },
+    {
+      "league": "Coppa di Croazia",
+      "country": "Croazia",
+      "competitionId": "fDL2c8tU",
+      "sourcePath": "/calcio/croazia/coppa/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "EyR2wUrA",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "Mladost Zdralovi",
+      "away": "Slaven Belupo",
+      "status": "FT"
+    },
+    {
+      "league": "UEFA Youth League - Play Off Vincenti",
+      "country": "Europa",
+      "competitionId": "4CtAmyWe",
+      "sourcePath": "/calcio/europa/uefa-youth-league/",
+      "score": {
+        "home": 4,
+        "away": 3
+      },
+      "id": "2Tad7tJ7",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "Salzburg U19",
+      "away": "Genk U19",
+      "status": "FT"
+    },
+    {
+      "league": "UEFA Youth League - Prima fase",
+      "country": "Europa",
+      "competitionId": "4CtAmyWe",
+      "sourcePath": "/calcio/europa/uefa-youth-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "hlHQBonI",
+      "date": "2026-11-03T10:00:00.000Z",
+      "home": "Bodo/Glimt U19",
+      "away": "Lilla U19",
+      "status": "FT"
+    },
+    {
+      "league": "UEFA Youth League - Prima fase",
+      "country": "Europa",
+      "competitionId": "4CtAmyWe",
+      "sourcePath": "/calcio/europa/uefa-youth-league/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "pMWoT1Zr",
+      "date": "2026-11-03T11:00:00.000Z",
+      "home": "Galatasaray U19",
+      "away": "Stuttgart U19",
+      "status": "FT"
+    },
+    {
+      "league": "UEFA Youth League - Prima fase",
+      "country": "Europa",
+      "competitionId": "4CtAmyWe",
+      "sourcePath": "/calcio/europa/uefa-youth-league/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "hnzfRu4e",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Shakhtar U19",
+      "away": "Sporting U19",
+      "status": "FT"
+    },
+    {
+      "league": "UEFA Youth League - Prima fase",
+      "country": "Europa",
+      "competitionId": "4CtAmyWe",
+      "sourcePath": "/calcio/europa/uefa-youth-league/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "Q1FY9PGU",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Villarreal U19",
+      "away": "PSG U19",
+      "status": "FT"
+    },
+    {
+      "league": "UEFA Youth League - Prima fase",
+      "country": "Europa",
+      "competitionId": "4CtAmyWe",
+      "sourcePath": "/calcio/europa/uefa-youth-league/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "tfJoa82C",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "Feyenoord U19",
+      "away": "Inter U19",
+      "status": "FT"
+    },
+    {
+      "league": "UEFA Youth League - Prima fase",
+      "country": "Europa",
+      "competitionId": "4CtAmyWe",
+      "sourcePath": "/calcio/europa/uefa-youth-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "Cd0BFTng",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "Manchester Utd U19",
+      "away": "Roma U19",
+      "status": "FT"
+    },
+    {
+      "league": "Campionati Europei U17 - Femminile - Qualificazione - Round 1 - Lega A",
+      "country": "Europa",
+      "competitionId": "rJJl6Vtt",
+      "sourcePath": "/calcio/europa/campionati-europei-u17-donne/",
+      "score": {
+        "home": 5,
+        "away": 0
+      },
+      "id": "M50w9rbt",
+      "date": "2026-11-03T11:00:00.000Z",
+      "home": "Polonia U17 D",
+      "away": "Bulgaria U17 D",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "2HZXi5Oh",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Fujieda MYFC",
+      "away": "Iwata",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "QydGZN8O",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Kofu",
+      "away": "Albirex Niigata",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "reyllNNH",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Oita",
+      "away": "Vanraure",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "t25MplHP",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Omiya Ardija",
+      "away": "Iwaki",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "hOc8ypvC",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Shonan",
+      "away": "Sagan Tosu",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "lhvdn1hU",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Tegevajaro Miyazaki",
+      "away": "Tochigi City",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "SpCwwxbJ",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Yamagata",
+      "away": "Tokushima",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "pbf0w69a",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Yokohama FC",
+      "away": "Blaublitz",
+      "status": "FT"
+    },
+    {
+      "league": "J2 League",
+      "country": "Giappone",
+      "competitionId": "vXr8fotG",
+      "sourcePath": "/calcio/giappone/j2-league/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "zVXujqg5",
+      "date": "2026-11-03T05:50:00.000Z",
+      "home": "Imabari",
+      "away": "Sapporo",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "IJE3KoKa",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Kamatamare",
+      "away": "Yamaga",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "MeHO78zf",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Kanazawa",
+      "away": "Nagano",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "Y9LJG3JO",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Kitakyushu",
+      "away": "Reilac Shiga",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "2ZIv4QZI",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Nara Club",
+      "away": "Kusatsu",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "p6GeM7km",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Renofa Yamaguchi",
+      "away": "Kagoshima Utd",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "UuBQRTRP",
+      "date": "2026-11-03T05:00:00.000Z",
+      "home": "Tottori",
+      "away": "Sagamihara",
+      "status": "FT"
+    },
+    {
+      "league": "J3 League",
+      "country": "Giappone",
+      "competitionId": "MeGfjee5",
+      "sourcePath": "/calcio/giappone/j3-league/",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "id": "lMeTz74t",
+      "date": "2026-11-03T07:00:00.000Z",
+      "home": "Ryukyu",
+      "away": "Gifu",
+      "status": "FT"
+    },
+    {
+      "league": "I-League 3",
+      "country": "India",
+      "competitionId": "Aw2jAKsf",
+      "sourcePath": "/calcio/india/i-league-3/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "8OgQ4aOq",
+      "date": "2026-11-03T10:30:00.000Z",
+      "home": "Kickstart",
+      "away": "CD Salgaocar",
+      "status": "FT"
+    },
+    {
+      "league": "I.League Cup",
+      "country": "Indonesia",
+      "competitionId": "A161rl2s",
+      "sourcePath": "/calcio/indonesia/i-league-cup/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "nFGyaP03",
+      "date": "2026-11-03T09:00:00.000Z",
+      "home": "De Red",
+      "away": "PSM Makassar",
+      "status": "FT"
+    },
+    {
+      "league": "I.League Cup",
+      "country": "Indonesia",
+      "competitionId": "A161rl2s",
+      "sourcePath": "/calcio/indonesia/i-league-cup/",
+      "score": {
+        "home": 0,
+        "away": 4
+      },
+      "id": "YipPxZq1",
+      "date": "2026-11-03T09:00:00.000Z",
+      "home": "RANS Nusantara",
+      "away": "Arema",
+      "status": "FT"
+    },
+    {
+      "league": "I.League Cup",
+      "country": "Indonesia",
+      "competitionId": "A161rl2s",
+      "sourcePath": "/calcio/indonesia/i-league-cup/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "QmdaCuzR",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Dewa United",
+      "away": "Persita",
+      "status": "FT"
+    },
+    {
+      "league": "I.League Cup",
+      "country": "Indonesia",
+      "competitionId": "A161rl2s",
+      "sourcePath": "/calcio/indonesia/i-league-cup/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "pfWAOrPj",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Persela",
+      "away": "Persijap Jepara",
+      "status": "FT"
+    },
+    {
+      "league": "I.League Cup",
+      "country": "Indonesia",
+      "competitionId": "A161rl2s",
+      "sourcePath": "/calcio/indonesia/i-league-cup/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "8AAB1OL8",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "PSMS Medan",
+      "away": "Persija Jakarta",
+      "status": "FT"
+    },
+    {
+      "league": "I.League Cup",
+      "country": "Indonesia",
+      "competitionId": "A161rl2s",
+      "sourcePath": "/calcio/indonesia/i-league-cup/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "4bcaHRHN",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Tornado Pekanbaru",
+      "away": "Persebaya",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League U18",
+      "country": "Inghilterra",
+      "competitionId": "4jNxMxhk",
+      "sourcePath": "/calcio/inghilterra/premier-league-u18/",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "id": "6mJGMEGt",
+      "date": "2026-11-03T11:00:00.000Z",
+      "home": "Southampton U18",
+      "away": "Bournemouth U18",
+      "status": "FT"
+    },
+    {
+      "league": "Liga e Pare",
+      "country": "Kosovo",
+      "competitionId": "hI5Dcne4",
+      "sourcePath": "/calcio/kosovo/liga-e-pare/",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "id": "fFls51MN",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Tefik Canga",
+      "away": "Ferizaj",
+      "status": "FT"
+    },
+    {
+      "league": "1. WFL Femminile",
+      "country": "Macedonia del Nord",
+      "competitionId": "dvr8H1qL",
+      "sourcePath": "/calcio/macedonia-del-nord/1-wfl-femminile/",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "id": "0YYd3QdE",
+      "date": "2026-11-03T11:00:00.000Z",
+      "home": "Ljuboten D",
+      "away": "ZFK Skopje 2014 D",
+      "status": "FT"
+    },
+    {
+      "league": "Prva Crnogorska Liga",
+      "country": "Montenegro",
+      "competitionId": "W00wmLO0",
+      "sourcePath": "/calcio/montenegro/prva-crnogorska-liga/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "2PgSOVyS",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Otrant",
+      "away": "Arsenal Tivat",
+      "status": "FT"
+    },
+    {
+      "league": "Divisie 1 U21 - Autunno",
+      "country": "Olanda",
+      "competitionId": "hUqUyPjg",
+      "sourcePath": "/calcio/olanda/divisie-1-u21/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "vk5uwz4D",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "G.A. Eagles U21",
+      "away": "Willem II U21",
+      "status": "FT"
+    },
+    {
+      "league": "Ekstraliga Femminile",
+      "country": "Polonia",
+      "competitionId": "MBZjM7WK",
+      "sourcePath": "/calcio/polonia/ekstraliga-femminile/",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "id": "SvV1k7uB",
+      "date": "2026-11-03T12:00:00.000Z",
+      "home": "Leczna D",
+      "away": "Czarni Sosnowiec D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Next Gen U23",
+      "country": "Portogallo",
+      "competitionId": "z9Lscb4e",
+      "sourcePath": "/calcio/portogallo/liga-next-gen-u23/",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "id": "EsIcl64L",
+      "date": "2026-11-03T11:00:00.000Z",
+      "home": "Estrela U23",
+      "away": "Santa Clara U23",
+      "status": "FT"
+    },
+    {
+      "league": "Ligi Kuu Bara",
+      "country": "Tanzania",
+      "competitionId": "GUjrKsoI",
+      "sourcePath": "/calcio/tanzania/ligi-kuu-bara/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "beXPPvAT",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "Mbeya City",
+      "away": "Singida Black Stars",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League 2",
+      "country": "Ucraina",
+      "competitionId": "Gzf0srBS",
+      "sourcePath": "/calcio/ucraina/premier-league-2/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "OGD4dDcn",
+      "date": "2026-11-03T09:00:00.000Z",
+      "home": "Zorya U21",
+      "away": "Epitsentr U21",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League 2",
+      "country": "Ucraina",
+      "competitionId": "Gzf0srBS",
+      "sourcePath": "/calcio/ucraina/premier-league-2/",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "id": "bycgkdjJ",
+      "date": "2026-11-03T10:00:00.000Z",
+      "home": "Karpaty Lviv U21",
+      "away": "Kudrivka U21",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League 2",
+      "country": "Ucraina",
+      "competitionId": "Gzf0srBS",
+      "sourcePath": "/calcio/ucraina/premier-league-2/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "Mg4bomko",
+      "date": "2026-11-03T10:00:00.000Z",
+      "home": "Kryvbas U21",
+      "away": "Din. Kiev U21",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Uganda",
+      "competitionId": "EFmsCyda",
+      "sourcePath": "/calcio/uganda/premier-league/",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "2unf1SAF",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "BUL",
+      "away": "Villa",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Uganda",
+      "competitionId": "EFmsCyda",
+      "sourcePath": "/calcio/uganda/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "6yyYgp3k",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "NEC FC",
+      "away": "UPDF",
+      "status": "FT"
+    },
+    {
+      "league": "Premier League",
+      "country": "Uganda",
+      "competitionId": "EFmsCyda",
+      "sourcePath": "/calcio/uganda/premier-league/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "A5k2a6uS",
+      "date": "2026-11-03T13:00:00.000Z",
+      "home": "Police",
+      "away": "Kitara",
+      "status": "FT"
+    },
+    {
+      "league": "Pro Liga",
+      "country": "Uzbekistan",
+      "competitionId": "25ICmKzF",
+      "sourcePath": "/calcio/uzbekistan/pro-liga/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "0S7dP09j",
+      "date": "2026-11-03T09:30:00.000Z",
+      "home": "Olimpik-Mobiuz",
+      "away": "Pakhtakor II",
       "status": "FT"
     }
   ]
