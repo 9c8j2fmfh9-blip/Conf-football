@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-02T23:55:11.654Z",
+  "evaluatedAt": "2026-11-03T06:57:08.214Z",
   "lastCapturedAt": "2026-11-02T17:11:44.558Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1013,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 696,
+  "settled": 698,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1570,18 +1570,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ARG_1_liga-profesional_2026-11-02_defensa_y_justicia_independiente\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ARG_1_liga-profesional_2026-11-02_defensa_y_justicia_independiente",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BRA_1_serie-a_2026-11-02_red_bull_bragantino_santos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BRA_1_serie-a_2026-11-02_red_bull_bragantino_santos",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_2_serie-b_2026-11-02_goias_crb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_2_serie-b_2026-11-02_goias_crb",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -29880,6 +29870,22 @@
       "markets": {}
     },
     {
+      "key": "[\"open_ARG_1_liga-profesional_2026-11-02_defensa_y_justicia_independiente\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ARG_1_liga-profesional_2026-11-02_defensa_y_justicia_independiente",
+      "resultId": "OA7u7iDL",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Defensa y Justicia",
+      "away": "Independiente",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T22:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
       "key": "[\"open_ARG_1_liga-profesional_2026-11-02_platense_central_cordoba_santiago_del_estero\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ARG_1_liga-profesional_2026-11-02_platense_central_cordoba_santiago_del_estero",
       "resultId": "vmHNJUdR",
@@ -29892,6 +29898,22 @@
       "score": {
         "home": 2,
         "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_2_serie-b_2026-11-02_goias_crb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_2_serie-b_2026-11-02_goias_crb",
+      "resultId": "Ui7Ov5VN",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Goiás",
+      "away": "CRB",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-01T23:41:23.948Z",
+      "kickoffAt": "2026-11-02T23:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
       },
       "markets": {}
     }
