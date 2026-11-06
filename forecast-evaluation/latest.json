@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-03T21:08:27.468Z",
+  "evaluatedAt": "2026-11-06T02:33:08.683Z",
   "lastCapturedAt": "2026-11-03T21:08:27.208Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1028,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 698,
+  "settled": 706,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1585,33 +1585,13 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_BRA_1_serie-a_2026-11-03_chapecoense_mirassol\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-11-03_chapecoense_mirassol",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_BRA_1_serie-a_2026-11-04_internacional_coritiba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BRA_1_serie-a_2026-11-04_internacional_coritiba",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_UEFA_1_champions-league_2026-11-04_aek_athens_real_madrid\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_UEFA_1_champions-league_2026-11-04_aek_athens_real_madrid",
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_UEFA_1_champions-league_2026-11-04_fenerbahce_liverpool\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_fenerbahce_liverpool",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ENG_2_championship_2026-11-04_cardiff_city_west_ham_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_2_championship_2026-11-04_cardiff_city_west_ham_united",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_2_championship_2026-11-04_wrexham_middlesbrough\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_2_championship_2026-11-04_wrexham_middlesbrough",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1630,28 +1610,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_UEFA_1_champions-league_2026-11-04_lens_como\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_lens_como",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_UEFA_1_champions-league_2026-11-04_psv_club_brugge\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_psv_club_brugge",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_UEFA_1_champions-league_2026-11-04_porto_napoli\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_porto_napoli",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_UEFA_1_champions-league_2026-11-04_slavia_prague_arsenal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_UEFA_1_champions-league_2026-11-04_slavia_prague_arsenal",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_UEFA_1_champions-league_2026-11-04_viking_sabah\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_viking_sabah",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -29988,6 +29948,134 @@
       "kickoffAt": "2026-11-02T23:30:00Z",
       "score": {
         "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-11-03_chapecoense_mirassol\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-11-03_chapecoense_mirassol",
+      "resultId": "hhAf8IwB",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Chapecoense",
+      "away": "Mirassol",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-03T21:08:27.208Z",
+      "kickoffAt": "2026-11-03T22:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BRA_1_serie-a_2026-11-04_internacional_coritiba\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BRA_1_serie-a_2026-11-04_internacional_coritiba",
+      "resultId": "nekZ4qXI",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Internacional",
+      "away": "Coritiba",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-03T21:08:27.208Z",
+      "kickoffAt": "2026-11-04T00:30:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_fenerbahce_liverpool\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_fenerbahce_liverpool",
+      "resultId": "E3VsH66d",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Fenerbahçe",
+      "away": "Liverpool",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-03T21:08:27.208Z",
+      "kickoffAt": "2026-11-04T17:45:00Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-04_wrexham_middlesbrough\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-04_wrexham_middlesbrough",
+      "resultId": "4EXrkztC",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Wrexham",
+      "away": "Middlesbrough",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-03T21:08:27.208Z",
+      "kickoffAt": "2026-11-04T19:45:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_lens_como\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_lens_como",
+      "resultId": "QVtE7T8m",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Lens",
+      "away": "Como",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-03T21:08:27.208Z",
+      "kickoffAt": "2026-11-04T20:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 9
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_psv_club_brugge\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_psv_club_brugge",
+      "resultId": "ptuqtEuP",
+      "matchMethod": "unique-team-kickoff",
+      "home": "PSV",
+      "away": "Club Brugge",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-03T21:08:27.208Z",
+      "kickoffAt": "2026-11-04T20:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_porto_napoli\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_porto_napoli",
+      "resultId": "6Zinb7I7",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Porto",
+      "away": "Napoli",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-03T21:08:27.208Z",
+      "kickoffAt": "2026-11-04T20:00:00Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-04_viking_sabah\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-04_viking_sabah",
+      "resultId": "4GCn9tph",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Viking",
+      "away": "Sabah",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-03T21:08:27.208Z",
+      "kickoffAt": "2026-11-04T20:00:00Z",
+      "score": {
+        "home": 4,
         "away": 1
       },
       "markets": {}
