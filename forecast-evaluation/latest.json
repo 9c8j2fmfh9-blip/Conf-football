@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-08T15:21:10.546Z",
-  "lastCapturedAt": "2026-11-03T21:08:27.208Z",
+  "evaluatedAt": "2026-11-10T17:56:48.765Z",
+  "lastCapturedAt": "2026-11-10T17:56:48.560Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 1028,
+  "recorded": 1252,
   "estimated": 346,
   "evaluatedForecasts": 326,
   "settled": 706,
@@ -1618,6 +1618,1126 @@
       "key": "[\"open_ENG_2_championship_2026-11-04_bristol_city_wolverhampton_wanderers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_2_championship_2026-11-04_bristol_city_wolverhampton_wanderers",
       "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"diretta_8ho7cox8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8ho7cox8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_j5U17qqo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_j5U17qqo",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KMwWC5LN\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KMwWC5LN",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xrrq2l75\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xrrq2l75",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0rtDEVcC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0rtDEVcC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_65A7tonT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_65A7tonT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6POZyjxf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6POZyjxf",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6Tje6hm2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6Tje6hm2",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_8CNljtc4\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8CNljtc4",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_b7F67ELb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_b7F67ELb",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_bZVjqs33\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_bZVjqs33",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_EwdP7NFs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EwdP7NFs",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_GMSKMDXr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_GMSKMDXr",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_jeocVaMU\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jeocVaMU",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Mg01HIe3\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Mg01HIe3",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OQEKVTXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OQEKVTXA",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_td0P80Rj\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_td0P80Rj",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UNHCxxoe\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UNHCxxoe",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_vNb7Dnmd\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vNb7Dnmd",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_WAQhAvA5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WAQhAvA5",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_x8iXd6W9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_x8iXd6W9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Ao1xUVnK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Ao1xUVnK",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Au47jkim\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Au47jkim",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_bgI9lxuq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_bgI9lxuq",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_EaZ2IVYq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EaZ2IVYq",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SjypYGf2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SjypYGf2",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SzD8m63F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SzD8m63F",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0pXRYCU8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0pXRYCU8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4CKp1GOq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4CKp1GOq",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_88gIATet\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_88gIATet",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_AkV9YsPs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AkV9YsPs",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_ddQqjOrC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_ddQqjOrC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_EJPdvDe3\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EJPdvDe3",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_GIOTg6qm\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_GIOTg6qm",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hdJ8jQAO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hdJ8jQAO",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hM4br26k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hM4br26k",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_ITDkiFoT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_ITDkiFoT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_jBRexCEa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jBRexCEa",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Kf9rfpmB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Kf9rfpmB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KGhN5E0M\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KGhN5E0M",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KWW1tbXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KWW1tbXA",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_MD8u5PPH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_MD8u5PPH",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_MqT4xiQF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_MqT4xiQF",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nDihG09D\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nDihG09D",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nDXAG93d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nDXAG93d",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OzbWkp1k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OzbWkp1k",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Q3Q68bW9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Q3Q68bW9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_rai5oezG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_rai5oezG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SCzDnH9j\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SCzDnH9j",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_StxYCV7k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_StxYCV7k",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tz7P87Qh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tz7P87Qh",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_v7vvv41K\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_v7vvv41K",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_vH7ScSmn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vH7ScSmn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_WAj2IipS\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WAj2IipS",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xx1tDV4U\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xx1tDV4U",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Y3Kjw7Hq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Y3Kjw7Hq",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YTTE6x1M\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YTTE6x1M",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_zuiH5zFs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_zuiH5zFs",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6wvY8TBD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6wvY8TBD",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KC4mY9Lr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KC4mY9Lr",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_QaxICBCl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_QaxICBCl",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_vsk1ZT9F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vsk1ZT9F",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0rfRQ4zJ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0rfRQ4zJ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Uk49V2FO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Uk49V2FO",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_jBekuqcR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jBekuqcR",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lp6qGMX9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_lp6qGMX9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KlE7j8Rr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KlE7j8Rr",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KKn8O9As\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KKn8O9As",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_h8FZfWgK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_h8FZfWgK",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OKotIrHq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OKotIrHq",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4E7X1VmL\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4E7X1VmL",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_p2vJk60t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_p2vJk60t",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OISydU3L\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OISydU3L",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_n1iBfmte\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_n1iBfmte",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fVnWZQ3d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fVnWZQ3d",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_ni6Cy0N6\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_ni6Cy0N6",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_bL4cw0Al\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_bL4cw0Al",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dhdxoiCc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dhdxoiCc",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_z1BkFVEd\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_z1BkFVEd",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_va6DZH9D\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_va6DZH9D",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YFIKS9dT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YFIKS9dT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_2TQ9ZKH8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2TQ9ZKH8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_WY25yvu1\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WY25yvu1",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tll0ddKa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tll0ddKa",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_vuKJUPm4\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vuKJUPm4",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0jnxeWTh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0jnxeWTh",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_0l3kD21E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0l3kD21E",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_AJpkZoOH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AJpkZoOH",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_CtgapxWQ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_CtgapxWQ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_d48aahNP\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_d48aahNP",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dzqcXPhU\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dzqcXPhU",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_EDYUhYFa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EDYUhYFa",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fNOIwRgA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fNOIwRgA",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hzfVgWpm\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hzfVgWpm",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_naO6iTwn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_naO6iTwn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_O0D5wB06\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_O0D5wB06",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_O6Af9g0t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_O6Af9g0t",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Ojo2dDv8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Ojo2dDv8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_rNBksg1s\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_rNBksg1s",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_rVsP5mrB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_rVsP5mrB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SIujGWen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SIujGWen",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tfwYOBoD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tfwYOBoD",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UuqZxUOh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UuqZxUOh",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_W6twRmA4\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_W6twRmA4",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_WQGDykVI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WQGDykVI",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_x6nsy8g5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_x6nsy8g5",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YHaqgAb5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YHaqgAb5",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YmQJnFwK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YmQJnFwK",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YVumzwjT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YVumzwjT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4Kt99Vrn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4Kt99Vrn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_n74HSsW6\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_n74HSsW6",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_2kP6K7rB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2kP6K7rB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_2mDsHipp\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2mDsHipp",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_2RjLeKWh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2RjLeKWh",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dQL1GS9j\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dQL1GS9j",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_E1OMsVmI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_E1OMsVmI",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fBnUwN7E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fBnUwN7E",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_G46JodQk\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_G46JodQk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KCMEk78b\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KCMEk78b",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tbJpDPzo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tbJpDPzo",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tEFWrCqC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tEFWrCqC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xnIYoXDs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xnIYoXDs",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Q5BJodm2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Q5BJodm2",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_t80DUVRG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_t80DUVRG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dShnt6Gl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dShnt6Gl",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_vTfinb1E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vTfinb1E",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_2cDeiLve\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2cDeiLve",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_2X5WUfQp\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2X5WUfQp",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4bag3L1l\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4bag3L1l",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4IapqVtA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4IapqVtA",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_4Kfbb4on\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4Kfbb4on",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_635HKn9O\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_635HKn9O",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_65bacL1K\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_65bacL1K",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_8fG3ka97\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8fG3ka97",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_AFSEIoDN\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AFSEIoDN",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_AZwOBHP1\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AZwOBHP1",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dAHGSL26\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dAHGSL26",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_EemAM8vC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EemAM8vC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fw7Z24cl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fw7Z24cl",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_IPXxPKGc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_IPXxPKGc",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_j395EoN5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_j395EoN5",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_MDSLeIUg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_MDSLeIUg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_MFuRvjft\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_MFuRvjft",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_n5qOymZq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_n5qOymZq",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OvJYfSqn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OvJYfSqn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_QXV8MyZR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_QXV8MyZR",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_S0dgwL1S\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_S0dgwL1S",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_U9WUe4R7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_U9WUe4R7",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UNFOQaXI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UNFOQaXI",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xI6eaXTh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xI6eaXTh",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_YsVpkjFO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YsVpkjFO",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6mVMffom\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6mVMffom",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_dK827XUh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dK827XUh",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hb8IM5nQ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hb8IM5nQ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KQ96MQ94\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KQ96MQ94",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nRWxiCpC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nRWxiCpC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nseduanC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nseduanC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xUhZSUdk\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xUhZSUdk",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tAoeX2jm\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tAoeX2jm",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_8G1MJ0TG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8G1MJ0TG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_ERDvsjEO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_ERDvsjEO",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KCv557uT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KCv557uT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lE3Un0H7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_lE3Un0H7",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nPZHcUe3\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nPZHcUe3",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pUdiKN2d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_pUdiKN2d",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pzgdRs7b\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_pzgdRs7b",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_S4frGJF7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_S4frGJF7",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_SzNQy5OM\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SzNQy5OM",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Ui3m1gat\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Ui3m1gat",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Uo4jNmKj\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Uo4jNmKj",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_W6E70Fop\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_W6E70Fop",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hMXvxaLG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hMXvxaLG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_QPJNkNwg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_QPJNkNwg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6PCBK2Mb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6PCBK2Mb",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_faEXlGHG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_faEXlGHG",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_l4fYm34F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_l4fYm34F",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lzk3VtLa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_lzk3VtLa",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_OSJxdZu9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OSJxdZu9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_t2n5PLyB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_t2n5PLyB",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tb73YjZR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tb73YjZR",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UgjLqJzf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UgjLqJzf",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_zLHSMMG5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_zLHSMMG5",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_zZXwZI3d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_zZXwZI3d",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_nizWLlnT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nizWLlnT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_6NmjGf6t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6NmjGf6t",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_buOgWTle\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_buOgWTle",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_r12tGnG8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_r12tGnG8",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UDlrBXXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UDlrBXXA",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_WlF0zH2N\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WlF0zH2N",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fkwQe8QF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fkwQe8QF",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_bgrVS9uh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_bgrVS9uh",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_IipuOwo9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_IipuOwo9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_jXw0KZgE\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jXw0KZgE",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hC359au9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hC359au9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hMQRwtoA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hMQRwtoA",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_IqQxc14k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_IqQxc14k",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_jmFcuXVg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jmFcuXVg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Qs1PqGhn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Qs1PqGhn",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_UJLJ0BgA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UJLJ0BgA",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_x4HPmpXI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_x4HPmpXI",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xjUv9FlJ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xjUv9FlJ",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xWchs9BM\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xWchs9BM",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_xYlRZvR9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xYlRZvR9",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_CWaSqze2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_CWaSqze2",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_KK2tfrY7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KK2tfrY7",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_trXv9waD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_trXv9waD",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_67J6hg0c\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_67J6hg0c",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_8KwL5VCl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8KwL5VCl",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_8W1fyorT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8W1fyorT",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_AJd7Tc5T\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AJd7Tc5T",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_fNdc2qnC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fNdc2qnC",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_hEtzy1rH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hEtzy1rH",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_lz1pMxPE\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_lz1pMxPE",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pIjYv72m\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_pIjYv72m",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_rw6cG7hg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_rw6cG7hg",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_S8UVzuZq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_S8UVzuZq",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_tbiOnkum\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tbiOnkum",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_v3I5cLCt\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_v3I5cLCt",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_vmrvlY94\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vmrvlY94",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_z35AB0Jr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_z35AB0Jr",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_84B1RnKH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_84B1RnKH",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_Emya4qCF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Emya4qCF",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_65nlLTmf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_65nlLTmf",
+      "reason": "Risultato finale non confermato"
+    },
+    {
+      "key": "[\"diretta_pQt0xdit\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_pQt0xdit",
+      "reason": "Risultato finale non confermato"
     }
   ],
   "statPending": [],
