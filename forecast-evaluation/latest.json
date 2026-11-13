@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-10T17:56:48.765Z",
+  "evaluatedAt": "2026-11-13T09:41:16.194Z",
   "lastCapturedAt": "2026-11-10T17:56:48.560Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1252,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 706,
+  "settled": 912,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1620,88 +1620,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"diretta_8ho7cox8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_8ho7cox8",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_j5U17qqo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_j5U17qqo",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_KMwWC5LN\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_KMwWC5LN",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_xrrq2l75\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_xrrq2l75",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_0rtDEVcC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_0rtDEVcC",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_65A7tonT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_65A7tonT",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_6POZyjxf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_6POZyjxf",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_6Tje6hm2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_6Tje6hm2",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_8CNljtc4\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_8CNljtc4",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_b7F67ELb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_b7F67ELb",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_bZVjqs33\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_bZVjqs33",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_EwdP7NFs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_EwdP7NFs",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_GMSKMDXr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_GMSKMDXr",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_jeocVaMU\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_jeocVaMU",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_Mg01HIe3\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_Mg01HIe3",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_OQEKVTXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_OQEKVTXA",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_td0P80Rj\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_td0P80Rj",
       "reason": "Risultato finale non confermato"
     },
     {
@@ -1710,33 +1630,8 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_vNb7Dnmd\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_vNb7Dnmd",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_WAQhAvA5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_WAQhAvA5",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_x8iXd6W9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_x8iXd6W9",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Ao1xUVnK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Ao1xUVnK",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Au47jkim\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Au47jkim",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_bgI9lxuq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_bgI9lxuq",
       "reason": "Risultato finale non confermato"
     },
     {
@@ -1745,203 +1640,8 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_SjypYGf2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_SjypYGf2",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_SzD8m63F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_SzD8m63F",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_0pXRYCU8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_0pXRYCU8",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_4CKp1GOq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_4CKp1GOq",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_88gIATet\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_88gIATet",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_AkV9YsPs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_AkV9YsPs",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_ddQqjOrC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_ddQqjOrC",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_EJPdvDe3\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_EJPdvDe3",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_GIOTg6qm\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_GIOTg6qm",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_hdJ8jQAO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_hdJ8jQAO",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_hM4br26k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_hM4br26k",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_ITDkiFoT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_ITDkiFoT",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_jBRexCEa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_jBRexCEa",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Kf9rfpmB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Kf9rfpmB",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_KGhN5E0M\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_KGhN5E0M",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_KWW1tbXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_KWW1tbXA",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_MD8u5PPH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_MD8u5PPH",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_MqT4xiQF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_MqT4xiQF",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_nDihG09D\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_nDihG09D",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_nDXAG93d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_nDXAG93d",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_OzbWkp1k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_OzbWkp1k",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Q3Q68bW9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Q3Q68bW9",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_rai5oezG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_rai5oezG",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_SCzDnH9j\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_SCzDnH9j",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_StxYCV7k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_StxYCV7k",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_tz7P87Qh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_tz7P87Qh",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_v7vvv41K\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_v7vvv41K",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_vH7ScSmn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_vH7ScSmn",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_WAj2IipS\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_WAj2IipS",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_xx1tDV4U\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_xx1tDV4U",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Y3Kjw7Hq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Y3Kjw7Hq",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_YTTE6x1M\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_YTTE6x1M",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_zuiH5zFs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_zuiH5zFs",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_6wvY8TBD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_6wvY8TBD",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_KC4mY9Lr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_KC4mY9Lr",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_QaxICBCl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_QaxICBCl",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_vsk1ZT9F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_vsk1ZT9F",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_0rfRQ4zJ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_0rfRQ4zJ",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Uk49V2FO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Uk49V2FO",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_jBekuqcR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_jBekuqcR",
       "reason": "Risultato finale non confermato"
     },
     {
@@ -1950,93 +1650,8 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_KlE7j8Rr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_KlE7j8Rr",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_KKn8O9As\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_KKn8O9As",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_h8FZfWgK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_h8FZfWgK",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_OKotIrHq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_OKotIrHq",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_4E7X1VmL\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_4E7X1VmL",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_p2vJk60t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_p2vJk60t",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_OISydU3L\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_OISydU3L",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_n1iBfmte\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_n1iBfmte",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_fVnWZQ3d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_fVnWZQ3d",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_ni6Cy0N6\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_ni6Cy0N6",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_bL4cw0Al\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_bL4cw0Al",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_dhdxoiCc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_dhdxoiCc",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_z1BkFVEd\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_z1BkFVEd",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_va6DZH9D\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_va6DZH9D",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_YFIKS9dT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_YFIKS9dT",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_2TQ9ZKH8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_2TQ9ZKH8",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_WY25yvu1\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_WY25yvu1",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_tll0ddKa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_tll0ddKa",
       "reason": "Risultato finale non confermato"
     },
     {
@@ -2045,198 +1660,8 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_0jnxeWTh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_0jnxeWTh",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_0l3kD21E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_0l3kD21E",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_AJpkZoOH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_AJpkZoOH",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_CtgapxWQ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_CtgapxWQ",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_d48aahNP\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_d48aahNP",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_dzqcXPhU\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_dzqcXPhU",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_EDYUhYFa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_EDYUhYFa",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_fNOIwRgA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_fNOIwRgA",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_hzfVgWpm\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_hzfVgWpm",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_naO6iTwn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_naO6iTwn",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_O0D5wB06\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_O0D5wB06",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_O6Af9g0t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_O6Af9g0t",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Ojo2dDv8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Ojo2dDv8",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_rNBksg1s\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_rNBksg1s",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_rVsP5mrB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_rVsP5mrB",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_SIujGWen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_SIujGWen",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_tfwYOBoD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_tfwYOBoD",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_UuqZxUOh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_UuqZxUOh",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_W6twRmA4\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_W6twRmA4",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_WQGDykVI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_WQGDykVI",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_x6nsy8g5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_x6nsy8g5",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_YHaqgAb5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_YHaqgAb5",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_YmQJnFwK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_YmQJnFwK",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_YVumzwjT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_YVumzwjT",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_4Kt99Vrn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_4Kt99Vrn",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_n74HSsW6\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_n74HSsW6",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_2kP6K7rB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_2kP6K7rB",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_2mDsHipp\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_2mDsHipp",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_2RjLeKWh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_2RjLeKWh",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_dQL1GS9j\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_dQL1GS9j",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_E1OMsVmI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_E1OMsVmI",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_fBnUwN7E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_fBnUwN7E",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_G46JodQk\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_G46JodQk",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_KCMEk78b\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_KCMEk78b",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_tbJpDPzo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_tbJpDPzo",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_tEFWrCqC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_tEFWrCqC",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_xnIYoXDs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_xnIYoXDs",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Q5BJodm2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Q5BJodm2",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_t80DUVRG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_t80DUVRG",
       "reason": "Risultato finale non confermato"
     },
     {
@@ -2245,143 +1670,8 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_vTfinb1E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_vTfinb1E",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_2cDeiLve\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_2cDeiLve",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_2X5WUfQp\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_2X5WUfQp",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_4bag3L1l\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_4bag3L1l",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_4IapqVtA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_4IapqVtA",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_4Kfbb4on\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_4Kfbb4on",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_635HKn9O\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_635HKn9O",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_65bacL1K\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_65bacL1K",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_8fG3ka97\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_8fG3ka97",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_AFSEIoDN\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_AFSEIoDN",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_AZwOBHP1\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_AZwOBHP1",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_dAHGSL26\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_dAHGSL26",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_EemAM8vC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_EemAM8vC",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_fw7Z24cl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_fw7Z24cl",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_IPXxPKGc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_IPXxPKGc",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_j395EoN5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_j395EoN5",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_MDSLeIUg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_MDSLeIUg",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_MFuRvjft\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_MFuRvjft",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_n5qOymZq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_n5qOymZq",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_OvJYfSqn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_OvJYfSqn",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_QXV8MyZR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_QXV8MyZR",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_S0dgwL1S\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_S0dgwL1S",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_U9WUe4R7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_U9WUe4R7",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_UNFOQaXI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_UNFOQaXI",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_xI6eaXTh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_xI6eaXTh",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_YsVpkjFO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_YsVpkjFO",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_6mVMffom\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_6mVMffom",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_dK827XUh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_dK827XUh",
       "reason": "Risultato finale non confermato"
     },
     {
@@ -2390,33 +1680,8 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_KQ96MQ94\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_KQ96MQ94",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_nRWxiCpC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_nRWxiCpC",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_nseduanC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_nseduanC",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_xUhZSUdk\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_xUhZSUdk",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_tAoeX2jm\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_tAoeX2jm",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_8G1MJ0TG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_8G1MJ0TG",
       "reason": "Risultato finale non confermato"
     },
     {
@@ -2425,123 +1690,8 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_KCv557uT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_KCv557uT",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_lE3Un0H7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_lE3Un0H7",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_nPZHcUe3\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_nPZHcUe3",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_pUdiKN2d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_pUdiKN2d",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_pzgdRs7b\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_pzgdRs7b",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_S4frGJF7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_S4frGJF7",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_SzNQy5OM\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_SzNQy5OM",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Ui3m1gat\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Ui3m1gat",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Uo4jNmKj\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Uo4jNmKj",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_W6E70Fop\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_W6E70Fop",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_hMXvxaLG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_hMXvxaLG",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_QPJNkNwg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_QPJNkNwg",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_6PCBK2Mb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_6PCBK2Mb",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_faEXlGHG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_faEXlGHG",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_l4fYm34F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_l4fYm34F",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_lzk3VtLa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_lzk3VtLa",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_OSJxdZu9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_OSJxdZu9",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_t2n5PLyB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_t2n5PLyB",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_tb73YjZR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_tb73YjZR",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_UgjLqJzf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_UgjLqJzf",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_zLHSMMG5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_zLHSMMG5",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_zZXwZI3d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_zZXwZI3d",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_nizWLlnT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_nizWLlnT",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_6NmjGf6t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_6NmjGf6t",
       "reason": "Risultato finale non confermato"
     },
     {
@@ -2550,193 +1700,13 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_r12tGnG8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_r12tGnG8",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_UDlrBXXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_UDlrBXXA",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_WlF0zH2N\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_WlF0zH2N",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_fkwQe8QF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_fkwQe8QF",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_bgrVS9uh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_bgrVS9uh",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_IipuOwo9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_IipuOwo9",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_jXw0KZgE\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_jXw0KZgE",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_hC359au9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_hC359au9",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_hMQRwtoA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_hMQRwtoA",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_IqQxc14k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_IqQxc14k",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_jmFcuXVg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_jmFcuXVg",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Qs1PqGhn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Qs1PqGhn",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_UJLJ0BgA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_UJLJ0BgA",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_x4HPmpXI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_x4HPmpXI",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_xjUv9FlJ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_xjUv9FlJ",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_xWchs9BM\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_xWchs9BM",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_xYlRZvR9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_xYlRZvR9",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_CWaSqze2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_CWaSqze2",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_KK2tfrY7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_KK2tfrY7",
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"diretta_trXv9waD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_trXv9waD",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_67J6hg0c\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_67J6hg0c",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_8KwL5VCl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_8KwL5VCl",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_8W1fyorT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_8W1fyorT",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_AJd7Tc5T\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_AJd7Tc5T",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_fNdc2qnC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_fNdc2qnC",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_hEtzy1rH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_hEtzy1rH",
-      "reason": "Risultato finale non confermato"
-    },
-    {
       "key": "[\"diretta_lz1pMxPE\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "diretta_lz1pMxPE",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_pIjYv72m\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_pIjYv72m",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_rw6cG7hg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_rw6cG7hg",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_S8UVzuZq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_S8UVzuZq",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_tbiOnkum\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_tbiOnkum",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_v3I5cLCt\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_v3I5cLCt",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_vmrvlY94\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_vmrvlY94",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_z35AB0Jr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_z35AB0Jr",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_84B1RnKH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_84B1RnKH",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_Emya4qCF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_Emya4qCF",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_65nlLTmf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_65nlLTmf",
-      "reason": "Risultato finale non confermato"
-    },
-    {
-      "key": "[\"diretta_pQt0xdit\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "diretta_pQt0xdit",
       "reason": "Risultato finale non confermato"
     }
   ],
@@ -31196,6 +30166,3302 @@
       "kickoffAt": "2026-11-04T20:00:00Z",
       "score": {
         "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_8ho7cox8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8ho7cox8",
+      "resultId": "8ho7cox8",
+      "matchMethod": "calendar-id",
+      "home": "Bergisch Gladbach (Ger)",
+      "away": "Schlebusch (Ger)",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T18:30:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_j5U17qqo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_j5U17qqo",
+      "resultId": "j5U17qqo",
+      "matchMethod": "calendar-id",
+      "home": "Belenense U20",
+      "away": "Venus U20",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T18:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_KMwWC5LN\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KMwWC5LN",
+      "resultId": "KMwWC5LN",
+      "matchMethod": "calendar-id",
+      "home": "Estrela PA U20",
+      "away": "Sport Belem U20",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T18:30:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_xrrq2l75\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xrrq2l75",
+      "resultId": "xrrq2l75",
+      "matchMethod": "calendar-id",
+      "home": "ESMAC U20",
+      "away": "CA Vila Rica U20",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T18:30:00.000Z",
+      "score": {
+        "home": 6,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_0rtDEVcC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0rtDEVcC",
+      "resultId": "0rtDEVcC",
+      "matchMethod": "calendar-id",
+      "home": "Plymouth",
+      "away": "Swindon",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_65A7tonT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_65A7tonT",
+      "resultId": "65A7tonT",
+      "matchMethod": "calendar-id",
+      "home": "Leicester",
+      "away": "Walsall",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_6POZyjxf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6POZyjxf",
+      "resultId": "6POZyjxf",
+      "matchMethod": "calendar-id",
+      "home": "Crewe",
+      "away": "Wigan",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_6Tje6hm2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6Tje6hm2",
+      "resultId": "6Tje6hm2",
+      "matchMethod": "calendar-id",
+      "home": "Burton",
+      "away": "Notts County",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_8CNljtc4\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8CNljtc4",
+      "resultId": "8CNljtc4",
+      "matchMethod": "calendar-id",
+      "home": "Mansfield",
+      "away": "Chesterfield",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_b7F67ELb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_b7F67ELb",
+      "resultId": "b7F67ELb",
+      "matchMethod": "calendar-id",
+      "home": "Trival Valderas",
+      "away": "Leganes",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_bZVjqs33\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_bZVjqs33",
+      "resultId": "bZVjqs33",
+      "matchMethod": "calendar-id",
+      "home": "Northampton",
+      "away": "Gillingham FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_EwdP7NFs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EwdP7NFs",
+      "resultId": "EwdP7NFs",
+      "matchMethod": "calendar-id",
+      "home": "Mijas Las Lagunas",
+      "away": "Jaen",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_GMSKMDXr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_GMSKMDXr",
+      "resultId": "GMSKMDXr",
+      "matchMethod": "calendar-id",
+      "home": "Grimsby",
+      "away": "Nottingham U21",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_jeocVaMU\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jeocVaMU",
+      "resultId": "jeocVaMU",
+      "matchMethod": "calendar-id",
+      "home": "Huddersfield",
+      "away": "Liverpool U21",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_OQEKVTXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OQEKVTXA",
+      "resultId": "OQEKVTXA",
+      "matchMethod": "calendar-id",
+      "home": "Oxford Utd",
+      "away": "Cheltenham",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_td0P80Rj\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_td0P80Rj",
+      "resultId": "td0P80Rj",
+      "matchMethod": "calendar-id",
+      "home": "Barnet",
+      "away": "Leyton Orient",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_vNb7Dnmd\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vNb7Dnmd",
+      "resultId": "vNb7Dnmd",
+      "matchMethod": "calendar-id",
+      "home": "Amorebieta",
+      "away": "UD Logrones",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_WAQhAvA5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WAQhAvA5",
+      "resultId": "WAQhAvA5",
+      "matchMethod": "calendar-id",
+      "home": "Millwall U21",
+      "away": "Brighton U21",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Ao1xUVnK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Ao1xUVnK",
+      "resultId": "Ao1xUVnK",
+      "matchMethod": "calendar-id",
+      "home": "Boston River",
+      "away": "Montevideo City",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Au47jkim\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Au47jkim",
+      "resultId": "Au47jkim",
+      "matchMethod": "calendar-id",
+      "home": "Bradford City",
+      "away": "York",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:30:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_bgI9lxuq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_bgI9lxuq",
+      "resultId": "bgI9lxuq",
+      "matchMethod": "calendar-id",
+      "home": "Crawley",
+      "away": "Brentford U21",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_SjypYGf2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SjypYGf2",
+      "resultId": "SjypYGf2",
+      "matchMethod": "calendar-id",
+      "home": "Bromley",
+      "away": "Milton Keynes",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_SzD8m63F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SzD8m63F",
+      "resultId": "SzD8m63F",
+      "matchMethod": "calendar-id",
+      "home": "Huracan FC",
+      "away": "River Plate",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:30:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_0pXRYCU8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0pXRYCU8",
+      "resultId": "0pXRYCU8",
+      "matchMethod": "calendar-id",
+      "home": "Workington",
+      "away": "Alfreton",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_4CKp1GOq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4CKp1GOq",
+      "resultId": "4CKp1GOq",
+      "matchMethod": "calendar-id",
+      "home": "Worcester",
+      "away": "Racing Club Warwick",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_88gIATet\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_88gIATet",
+      "resultId": "88gIATet",
+      "matchMethod": "calendar-id",
+      "home": "Bury Town",
+      "away": "Bishop's Stortford",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_AkV9YsPs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AkV9YsPs",
+      "resultId": "AkV9YsPs",
+      "matchMethod": "calendar-id",
+      "home": "Uxbridge",
+      "away": "Hanwell Town",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_ddQqjOrC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_ddQqjOrC",
+      "resultId": "ddQqjOrC",
+      "matchMethod": "calendar-id",
+      "home": "Salisbury",
+      "away": "Braintree",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_EJPdvDe3\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EJPdvDe3",
+      "resultId": "EJPdvDe3",
+      "matchMethod": "calendar-id",
+      "home": "Evesham",
+      "away": "Yate Town",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_GIOTg6qm\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_GIOTg6qm",
+      "resultId": "GIOTg6qm",
+      "matchMethod": "calendar-id",
+      "home": "Hemel Hempstead",
+      "away": "Torquay",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_hdJ8jQAO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hdJ8jQAO",
+      "resultId": "hdJ8jQAO",
+      "matchMethod": "calendar-id",
+      "home": "Anstey Nomads",
+      "away": "Kettering",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_hM4br26k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hM4br26k",
+      "resultId": "hM4br26k",
+      "matchMethod": "calendar-id",
+      "home": "Darlington",
+      "away": "Oxford City",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_ITDkiFoT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_ITDkiFoT",
+      "resultId": "ITDkiFoT",
+      "matchMethod": "calendar-id",
+      "home": "Warrington Rylands",
+      "away": "Guiseley",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_jBRexCEa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jBRexCEa",
+      "resultId": "jBRexCEa",
+      "matchMethod": "calendar-id",
+      "home": "Chatham",
+      "away": "Leatherhead",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Kf9rfpmB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Kf9rfpmB",
+      "resultId": "Kf9rfpmB",
+      "matchMethod": "calendar-id",
+      "home": "Scarborough",
+      "away": "Marine",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_KGhN5E0M\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KGhN5E0M",
+      "resultId": "KGhN5E0M",
+      "matchMethod": "calendar-id",
+      "home": "Curzon Ashton",
+      "away": "Ilkeston",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_KWW1tbXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KWW1tbXA",
+      "resultId": "KWW1tbXA",
+      "matchMethod": "calendar-id",
+      "home": "Bury",
+      "away": "Cleethorpes",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_MD8u5PPH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_MD8u5PPH",
+      "resultId": "MD8u5PPH",
+      "matchMethod": "calendar-id",
+      "home": "Leiston",
+      "away": "Real Bedford",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_MqT4xiQF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_MqT4xiQF",
+      "resultId": "MqT4xiQF",
+      "matchMethod": "calendar-id",
+      "home": "Gloucester",
+      "away": "Malvern Town",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_nDihG09D\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nDihG09D",
+      "resultId": "nDihG09D",
+      "matchMethod": "calendar-id",
+      "home": "Chertsey",
+      "away": "Chichester",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_nDXAG93d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nDXAG93d",
+      "resultId": "nDXAG93d",
+      "matchMethod": "calendar-id",
+      "home": "Bath",
+      "away": "Taunton",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_OzbWkp1k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OzbWkp1k",
+      "resultId": "OzbWkp1k",
+      "matchMethod": "calendar-id",
+      "home": "Whitehawk",
+      "away": "Welling",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Q3Q68bW9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Q3Q68bW9",
+      "resultId": "Q3Q68bW9",
+      "matchMethod": "calendar-id",
+      "home": "Stourbridge",
+      "away": "Alvechurch",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_rai5oezG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_rai5oezG",
+      "resultId": "rai5oezG",
+      "matchMethod": "calendar-id",
+      "home": "Cray Wanderers",
+      "away": "Three Bridges",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_SCzDnH9j\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SCzDnH9j",
+      "resultId": "SCzDnH9j",
+      "matchMethod": "calendar-id",
+      "home": "Rushall",
+      "away": "Halesowen",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_StxYCV7k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_StxYCV7k",
+      "resultId": "StxYCV7k",
+      "matchMethod": "calendar-id",
+      "home": "Redcar Athletic",
+      "away": "Bamber Bridge",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_tz7P87Qh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tz7P87Qh",
+      "resultId": "tz7P87Qh",
+      "matchMethod": "calendar-id",
+      "home": "Leamington",
+      "away": "Bromsgrove",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_v7vvv41K\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_v7vvv41K",
+      "resultId": "v7vvv41K",
+      "matchMethod": "calendar-id",
+      "home": "Sholing",
+      "away": "Chippenham",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_vH7ScSmn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vH7ScSmn",
+      "resultId": "vH7ScSmn",
+      "matchMethod": "calendar-id",
+      "home": "Morecambe",
+      "away": "Hereford",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_WAj2IipS\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WAj2IipS",
+      "resultId": "WAj2IipS",
+      "matchMethod": "calendar-id",
+      "home": "Quorn",
+      "away": "Stockton",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_xx1tDV4U\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xx1tDV4U",
+      "resultId": "xx1tDV4U",
+      "matchMethod": "calendar-id",
+      "home": "Eastbourne Boro",
+      "away": "Dulwich Hamlet",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Y3Kjw7Hq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Y3Kjw7Hq",
+      "resultId": "Y3Kjw7Hq",
+      "matchMethod": "calendar-id",
+      "home": "Enfield Town",
+      "away": "Lewes",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_YTTE6x1M\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YTTE6x1M",
+      "resultId": "YTTE6x1M",
+      "matchMethod": "calendar-id",
+      "home": "Stratford",
+      "away": "Banbury",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T19:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_6wvY8TBD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6wvY8TBD",
+      "resultId": "6wvY8TBD",
+      "matchMethod": "calendar-id",
+      "home": "Roma D",
+      "away": "Servette D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T20:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_KC4mY9Lr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KC4mY9Lr",
+      "resultId": "KC4mY9Lr",
+      "matchMethod": "calendar-id",
+      "home": "PSG D",
+      "away": "Bayern D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T20:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_QaxICBCl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_QaxICBCl",
+      "resultId": "QaxICBCl",
+      "matchMethod": "calendar-id",
+      "home": "Inter D",
+      "away": "Manchester City D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T20:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_vsk1ZT9F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vsk1ZT9F",
+      "resultId": "vsk1ZT9F",
+      "matchMethod": "calendar-id",
+      "home": "Tavernes",
+      "away": "Valencia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T20:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 6
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_0rfRQ4zJ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0rfRQ4zJ",
+      "resultId": "0rfRQ4zJ",
+      "matchMethod": "calendar-id",
+      "home": "Envigado",
+      "away": "Boca Juniors",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T20:30:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Uk49V2FO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Uk49V2FO",
+      "resultId": "Uk49V2FO",
+      "matchMethod": "calendar-id",
+      "home": "Cacahuatique",
+      "away": "Luis Angel Firpo",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T21:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_jBekuqcR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jBekuqcR",
+      "resultId": "jBekuqcR",
+      "matchMethod": "calendar-id",
+      "home": "Guarani de Juazeiro",
+      "away": "Quixada",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T22:00:00.000Z",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_KlE7j8Rr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KlE7j8Rr",
+      "resultId": "KlE7j8Rr",
+      "matchMethod": "calendar-id",
+      "home": "Inter Bogotá",
+      "away": "America De Cali",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-10T23:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_h8FZfWgK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_h8FZfWgK",
+      "resultId": "h8FZfWgK",
+      "matchMethod": "calendar-id",
+      "home": "Cuiaba",
+      "away": "Chapada",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T00:30:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_OKotIrHq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OKotIrHq",
+      "resultId": "OKotIrHq",
+      "matchMethod": "calendar-id",
+      "home": "Sint Maarten",
+      "away": "Anguilla",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T00:30:00.000Z",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_4E7X1VmL\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4E7X1VmL",
+      "resultId": "4E7X1VmL",
+      "matchMethod": "calendar-id",
+      "home": "U.N.A.M. D",
+      "away": "Tigres D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T01:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_p2vJk60t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_p2vJk60t",
+      "resultId": "p2vJk60t",
+      "matchMethod": "calendar-id",
+      "home": "Metapan",
+      "away": "Platense Municipal",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T01:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_OISydU3L\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OISydU3L",
+      "resultId": "OISydU3L",
+      "matchMethod": "calendar-id",
+      "home": "Once Caldas",
+      "away": "Atl. Nacional",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T01:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_n1iBfmte\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_n1iBfmte",
+      "resultId": "n1iBfmte",
+      "matchMethod": "calendar-id",
+      "home": "Juarez D",
+      "away": "Guadalajara D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T03:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_fVnWZQ3d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fVnWZQ3d",
+      "resultId": "fVnWZQ3d",
+      "matchMethod": "calendar-id",
+      "home": "Guam U17",
+      "away": "Palestina U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T07:30:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_ni6Cy0N6\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_ni6Cy0N6",
+      "resultId": "ni6Cy0N6",
+      "matchMethod": "calendar-id",
+      "home": "Corea del Sud U19",
+      "away": "Tagikistan U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T07:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_bL4cw0Al\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_bL4cw0Al",
+      "resultId": "bL4cw0Al",
+      "matchMethod": "calendar-id",
+      "home": "Mongolia U17",
+      "away": "Yemen U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T08:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_dhdxoiCc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dhdxoiCc",
+      "resultId": "dhdxoiCc",
+      "matchMethod": "calendar-id",
+      "home": "Maldive U17",
+      "away": "Hong Kong U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T08:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 9
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_z1BkFVEd\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_z1BkFVEd",
+      "resultId": "z1BkFVEd",
+      "matchMethod": "calendar-id",
+      "home": "Lussemburgo U17",
+      "away": "Italia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T08:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 6
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_va6DZH9D\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_va6DZH9D",
+      "resultId": "va6DZH9D",
+      "matchMethod": "calendar-id",
+      "home": "Filippine U17",
+      "away": "Indonesia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T08:30:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_YFIKS9dT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YFIKS9dT",
+      "resultId": "YFIKS9dT",
+      "matchMethod": "calendar-id",
+      "home": "Cambogia U17",
+      "away": "Afghanistan U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T08:30:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_2TQ9ZKH8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2TQ9ZKH8",
+      "resultId": "2TQ9ZKH8",
+      "matchMethod": "calendar-id",
+      "home": "Ungheria U17",
+      "away": "Macedonia del Nord U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T09:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_WY25yvu1\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WY25yvu1",
+      "resultId": "WY25yvu1",
+      "matchMethod": "calendar-id",
+      "home": "Pakistan U17",
+      "away": "Iran U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T09:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_tll0ddKa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tll0ddKa",
+      "resultId": "tll0ddKa",
+      "matchMethod": "calendar-id",
+      "home": "India",
+      "away": "Maldive",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T09:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_0jnxeWTh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0jnxeWTh",
+      "resultId": "0jnxeWTh",
+      "matchMethod": "calendar-id",
+      "home": "Kawasaki",
+      "away": "Kashiwa",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_0l3kD21E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_0l3kD21E",
+      "resultId": "0l3kD21E",
+      "matchMethod": "calendar-id",
+      "home": "Bursa Yildirimspor",
+      "away": "Etimesgut",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_AJpkZoOH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AJpkZoOH",
+      "resultId": "AJpkZoOH",
+      "matchMethod": "calendar-id",
+      "home": "Tokat",
+      "away": "Buyukcekmece Gucu",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_CtgapxWQ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_CtgapxWQ",
+      "resultId": "CtgapxWQ",
+      "matchMethod": "calendar-id",
+      "home": "Lettonia U17",
+      "away": "Croazia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_d48aahNP\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_d48aahNP",
+      "resultId": "d48aahNP",
+      "matchMethod": "calendar-id",
+      "home": "Nigde Bld.",
+      "away": "Malatya",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_dzqcXPhU\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dzqcXPhU",
+      "resultId": "dzqcXPhU",
+      "matchMethod": "calendar-id",
+      "home": "Pazarspor",
+      "away": "Bulvarspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_EDYUhYFa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EDYUhYFa",
+      "resultId": "EDYUhYFa",
+      "matchMethod": "calendar-id",
+      "home": "Eskisehir Anadolu",
+      "away": "Eskisehirspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_fNOIwRgA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fNOIwRgA",
+      "resultId": "fNOIwRgA",
+      "matchMethod": "calendar-id",
+      "home": "Estonia U19",
+      "away": "Liechtenstein U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 6,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_hzfVgWpm\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hzfVgWpm",
+      "resultId": "hzfVgWpm",
+      "matchMethod": "calendar-id",
+      "home": "Kirsehir SK",
+      "away": "Mazidagi",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_naO6iTwn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_naO6iTwn",
+      "resultId": "naO6iTwn",
+      "matchMethod": "calendar-id",
+      "home": "Karabuk Idmanyurdu",
+      "away": "Orduspor 1967",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_O0D5wB06\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_O0D5wB06",
+      "resultId": "O0D5wB06",
+      "matchMethod": "calendar-id",
+      "home": "Karaman",
+      "away": "Erciyes 38",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_O6Af9g0t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_O6Af9g0t",
+      "resultId": "O6Af9g0t",
+      "matchMethod": "calendar-id",
+      "home": "Kepez Belediyespor",
+      "away": "Balikesirspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Ojo2dDv8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Ojo2dDv8",
+      "resultId": "Ojo2dDv8",
+      "matchMethod": "calendar-id",
+      "home": "Germania U17",
+      "away": "Azerbaigian U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 7,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_rNBksg1s\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_rNBksg1s",
+      "resultId": "rNBksg1s",
+      "matchMethod": "calendar-id",
+      "home": "Agri 1970",
+      "away": "Adanaspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_rVsP5mrB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_rVsP5mrB",
+      "resultId": "rVsP5mrB",
+      "matchMethod": "calendar-id",
+      "home": "Kobe",
+      "away": "Machida",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_SIujGWen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SIujGWen",
+      "resultId": "SIujGWen",
+      "matchMethod": "calendar-id",
+      "home": "Azerbaigian U19",
+      "away": "Montenegro U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 7
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_tfwYOBoD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tfwYOBoD",
+      "resultId": "tfwYOBoD",
+      "matchMethod": "calendar-id",
+      "home": "Yozgat",
+      "away": "Osmaniyespor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_UuqZxUOh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UuqZxUOh",
+      "resultId": "UuqZxUOh",
+      "matchMethod": "calendar-id",
+      "home": "Duzcespor",
+      "away": "Golcukspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_W6twRmA4\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_W6twRmA4",
+      "resultId": "W6twRmA4",
+      "matchMethod": "calendar-id",
+      "home": "Georgia U19",
+      "away": "Danimarca U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_WQGDykVI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WQGDykVI",
+      "resultId": "WQGDykVI",
+      "matchMethod": "calendar-id",
+      "home": "Adana Adaletgucu",
+      "away": "Karakopru",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_x6nsy8g5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_x6nsy8g5",
+      "resultId": "x6nsy8g5",
+      "matchMethod": "calendar-id",
+      "home": "Zonguldak",
+      "away": "Karadeniz Eregli",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_YHaqgAb5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YHaqgAb5",
+      "resultId": "YHaqgAb5",
+      "matchMethod": "calendar-id",
+      "home": "Yokohama M.",
+      "away": "Kashima",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_YmQJnFwK\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YmQJnFwK",
+      "resultId": "YmQJnFwK",
+      "matchMethod": "calendar-id",
+      "home": "Bitlis 1916",
+      "away": "Diyarbekirspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_YVumzwjT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YVumzwjT",
+      "resultId": "YVumzwjT",
+      "matchMethod": "calendar-id",
+      "home": "Olanda U17",
+      "away": "Norvegia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_4Kt99Vrn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4Kt99Vrn",
+      "resultId": "4Kt99Vrn",
+      "matchMethod": "calendar-id",
+      "home": "Urawa",
+      "away": "C-Osaka",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:30:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_n74HSsW6\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_n74HSsW6",
+      "resultId": "n74HSsW6",
+      "matchMethod": "calendar-id",
+      "home": "Merw",
+      "away": "Ahal",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T10:30:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_2kP6K7rB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2kP6K7rB",
+      "resultId": "2kP6K7rB",
+      "matchMethod": "calendar-id",
+      "home": "Sparta-KT",
+      "away": "Feodosiya",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_2mDsHipp\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2mDsHipp",
+      "resultId": "2mDsHipp",
+      "matchMethod": "calendar-id",
+      "home": "Francia U17",
+      "away": "Armenia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_2RjLeKWh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2RjLeKWh",
+      "resultId": "2RjLeKWh",
+      "matchMethod": "calendar-id",
+      "home": "Andorra U19",
+      "away": "Polonia U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_dQL1GS9j\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dQL1GS9j",
+      "resultId": "dQL1GS9j",
+      "matchMethod": "calendar-id",
+      "home": "Ucraina U19",
+      "away": "Israele U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_E1OMsVmI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_E1OMsVmI",
+      "resultId": "E1OMsVmI",
+      "matchMethod": "calendar-id",
+      "home": "Villarreal D",
+      "away": "Albacete D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_fBnUwN7E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fBnUwN7E",
+      "resultId": "fBnUwN7E",
+      "matchMethod": "calendar-id",
+      "home": "Croazia U19",
+      "away": "Ungheria U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_G46JodQk\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_G46JodQk",
+      "resultId": "G46JodQk",
+      "matchMethod": "calendar-id",
+      "home": "Irlanda U17",
+      "away": "Estonia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 5,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_KCMEk78b\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KCMEk78b",
+      "resultId": "KCMEk78b",
+      "matchMethod": "calendar-id",
+      "home": "Kucukcekmece",
+      "away": "Fatsa Bld.",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_tbJpDPzo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tbJpDPzo",
+      "resultId": "tbJpDPzo",
+      "matchMethod": "calendar-id",
+      "home": "GFK Yalta",
+      "away": "Ocean Kerch",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_xnIYoXDs\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xnIYoXDs",
+      "resultId": "xnIYoXDs",
+      "matchMethod": "calendar-id",
+      "home": "Slovenia U17 D",
+      "away": "Grecia U17 D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Q5BJodm2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Q5BJodm2",
+      "resultId": "Q5BJodm2",
+      "matchMethod": "calendar-id",
+      "home": "Belgio U19",
+      "away": "Kosovo U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:15:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_t80DUVRG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_t80DUVRG",
+      "resultId": "t80DUVRG",
+      "matchMethod": "calendar-id",
+      "home": "Macau U17",
+      "away": "Siria U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:20:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_vTfinb1E\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vTfinb1E",
+      "resultId": "vTfinb1E",
+      "matchMethod": "calendar-id",
+      "home": "Belgio U17",
+      "away": "Kosovo U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T11:30:00.000Z",
+      "score": {
+        "home": 8,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_2cDeiLve\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2cDeiLve",
+      "resultId": "2cDeiLve",
+      "matchMethod": "calendar-id",
+      "home": "Bigaspor",
+      "away": "Altay",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_2X5WUfQp\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_2X5WUfQp",
+      "resultId": "2X5WUfQp",
+      "matchMethod": "calendar-id",
+      "home": "FAR Rabat D",
+      "away": "Lekie D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_4bag3L1l\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4bag3L1l",
+      "resultId": "4bag3L1l",
+      "matchMethod": "calendar-id",
+      "home": "New Jack",
+      "away": "MK Etancheite",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_4IapqVtA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4IapqVtA",
+      "resultId": "4IapqVtA",
+      "matchMethod": "calendar-id",
+      "home": "Cina Taipei U17",
+      "away": "Thailandia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_4Kfbb4on\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_4Kfbb4on",
+      "resultId": "4Kfbb4on",
+      "matchMethod": "calendar-id",
+      "home": "Oborishte",
+      "away": "Septemvri Sofia 2",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_635HKn9O\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_635HKn9O",
+      "resultId": "635HKn9O",
+      "matchMethod": "calendar-id",
+      "home": "Inkilapspor",
+      "away": "Amasyaspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_65bacL1K\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_65bacL1K",
+      "resultId": "65bacL1K",
+      "matchMethod": "calendar-id",
+      "home": "Isole Marianne Settentrionali U17",
+      "away": "Kyrgyzstan U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 12
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_8fG3ka97\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8fG3ka97",
+      "resultId": "8fG3ka97",
+      "matchMethod": "calendar-id",
+      "home": "Ayvalikgucu",
+      "away": "Usak Belediyespor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_AFSEIoDN\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AFSEIoDN",
+      "resultId": "AFSEIoDN",
+      "matchMethod": "calendar-id",
+      "home": "TSK Simferopol",
+      "away": "Zarechnoye",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_AZwOBHP1\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AZwOBHP1",
+      "resultId": "AZwOBHP1",
+      "matchMethod": "calendar-id",
+      "home": "Turchia U17",
+      "away": "San Marino U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_EemAM8vC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_EemAM8vC",
+      "resultId": "EemAM8vC",
+      "matchMethod": "calendar-id",
+      "home": "Galata",
+      "away": "Silivrispor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_fw7Z24cl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fw7Z24cl",
+      "resultId": "fw7Z24cl",
+      "matchMethod": "calendar-id",
+      "home": "Tukums 2000",
+      "away": "Valmiera",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_IPXxPKGc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_IPXxPKGc",
+      "resultId": "IPXxPKGc",
+      "matchMethod": "calendar-id",
+      "home": "Sutjeska Foca",
+      "away": "Leotar",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_j395EoN5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_j395EoN5",
+      "resultId": "j395EoN5",
+      "matchMethod": "calendar-id",
+      "home": "Slovenia U19",
+      "away": "Inghilterra U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_MDSLeIUg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_MDSLeIUg",
+      "resultId": "MDSLeIUg",
+      "matchMethod": "calendar-id",
+      "home": "FKM Nove Zamky",
+      "away": "Michalovce",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_MFuRvjft\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_MFuRvjft",
+      "resultId": "MFuRvjft",
+      "matchMethod": "calendar-id",
+      "home": "Beykoz Anadolu",
+      "away": "Yesil Yalova FK",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_n5qOymZq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_n5qOymZq",
+      "resultId": "n5qOymZq",
+      "matchMethod": "calendar-id",
+      "home": "Sri Lanka U17",
+      "away": "Giordania U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 10
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_OvJYfSqn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OvJYfSqn",
+      "resultId": "OvJYfSqn",
+      "matchMethod": "calendar-id",
+      "home": "Austria U17",
+      "away": "Georgia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_QXV8MyZR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_QXV8MyZR",
+      "resultId": "QXV8MyZR",
+      "matchMethod": "calendar-id",
+      "home": "Bansko",
+      "away": "Levski II",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_S0dgwL1S\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_S0dgwL1S",
+      "resultId": "S0dgwL1S",
+      "matchMethod": "calendar-id",
+      "home": "Vietnam",
+      "away": "Cina Taipei",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_U9WUe4R7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_U9WUe4R7",
+      "resultId": "U9WUe4R7",
+      "matchMethod": "calendar-id",
+      "home": "Kenya U23",
+      "away": "Costa d'Avorio U23",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_UNFOQaXI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UNFOQaXI",
+      "resultId": "UNFOQaXI",
+      "matchMethod": "calendar-id",
+      "home": "Macedonia del Nord U19",
+      "away": "Irlanda del Nord U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_xI6eaXTh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xI6eaXTh",
+      "resultId": "xI6eaXTh",
+      "matchMethod": "calendar-id",
+      "home": "Blessing",
+      "away": "Saint-Luc",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_YsVpkjFO\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_YsVpkjFO",
+      "resultId": "YsVpkjFO",
+      "matchMethod": "calendar-id",
+      "home": "Soke 1970",
+      "away": "Alanya 1221",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:00:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_6mVMffom\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6mVMffom",
+      "resultId": "6mVMffom",
+      "matchMethod": "calendar-id",
+      "home": "Denizli IY Gureller",
+      "away": "Bucaspor 1928",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:30:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_dK827XUh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_dK827XUh",
+      "resultId": "dK827XUh",
+      "matchMethod": "calendar-id",
+      "home": "Karsiyaka",
+      "away": "Gemlikspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:30:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_KQ96MQ94\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KQ96MQ94",
+      "resultId": "KQ96MQ94",
+      "matchMethod": "calendar-id",
+      "home": "Westerlo D",
+      "away": "Schoonbeek-Beverst D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:30:00.000Z",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_nRWxiCpC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nRWxiCpC",
+      "resultId": "nRWxiCpC",
+      "matchMethod": "calendar-id",
+      "home": "Gaziemirspor",
+      "away": "Aksehirspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:30:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_nseduanC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nseduanC",
+      "resultId": "nseduanC",
+      "matchMethod": "calendar-id",
+      "home": "Albania U19",
+      "away": "Cipro U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:30:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_xUhZSUdk\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xUhZSUdk",
+      "resultId": "xUhZSUdk",
+      "matchMethod": "calendar-id",
+      "home": "Lettonia U19",
+      "away": "Moldavia U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T12:30:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_8G1MJ0TG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8G1MJ0TG",
+      "resultId": "8G1MJ0TG",
+      "matchMethod": "calendar-id",
+      "home": "Fluminense D",
+      "away": "Heips D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 7,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_KCv557uT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_KCv557uT",
+      "resultId": "KCv557uT",
+      "matchMethod": "calendar-id",
+      "home": "South Sudan U23",
+      "away": "Senegal U23",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_nPZHcUe3\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nPZHcUe3",
+      "resultId": "nPZHcUe3",
+      "matchMethod": "calendar-id",
+      "home": "Singapore U17",
+      "away": "India U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_pUdiKN2d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_pUdiKN2d",
+      "resultId": "pUdiKN2d",
+      "matchMethod": "calendar-id",
+      "home": "Zimbabwe U23",
+      "away": "Mali U23",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_pzgdRs7b\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_pzgdRs7b",
+      "resultId": "pzgdRs7b",
+      "matchMethod": "calendar-id",
+      "home": "Svezia U17",
+      "away": "Albania U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_S4frGJF7\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_S4frGJF7",
+      "resultId": "S4frGJF7",
+      "matchMethod": "calendar-id",
+      "home": "Repubblica Ceca U19",
+      "away": "Olanda U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_SzNQy5OM\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_SzNQy5OM",
+      "resultId": "SzNQy5OM",
+      "matchMethod": "calendar-id",
+      "home": "Turchia U19",
+      "away": "Slovacchia U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Ui3m1gat\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Ui3m1gat",
+      "resultId": "Ui3m1gat",
+      "matchMethod": "calendar-id",
+      "home": "Lubumbashi Sport",
+      "away": "Malole",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Uo4jNmKj\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Uo4jNmKj",
+      "resultId": "Uo4jNmKj",
+      "matchMethod": "calendar-id",
+      "home": "Libano U17",
+      "away": "Oman U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_W6E70Fop\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_W6E70Fop",
+      "resultId": "W6E70Fop",
+      "matchMethod": "calendar-id",
+      "home": "Iganga United",
+      "away": "Calvary",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_hMXvxaLG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hMXvxaLG",
+      "resultId": "hMXvxaLG",
+      "matchMethod": "calendar-id",
+      "home": "Slovacchia U17",
+      "away": "Malta U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:30:00.000Z",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_QPJNkNwg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_QPJNkNwg",
+      "resultId": "QPJNkNwg",
+      "matchMethod": "calendar-id",
+      "home": "Onhaye",
+      "away": "Habay La Neuve",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T13:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_6PCBK2Mb\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6PCBK2Mb",
+      "resultId": "6PCBK2Mb",
+      "matchMethod": "calendar-id",
+      "home": "Eswatini U23",
+      "away": "Algeria U23",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_faEXlGHG\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_faEXlGHG",
+      "resultId": "faEXlGHG",
+      "matchMethod": "calendar-id",
+      "home": "Newells Old Boys D",
+      "away": "Huracan D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_l4fYm34F\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_l4fYm34F",
+      "resultId": "l4fYm34F",
+      "matchMethod": "calendar-id",
+      "home": "Sulow",
+      "away": "Legnica II",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_lzk3VtLa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_lzk3VtLa",
+      "resultId": "lzk3VtLa",
+      "matchMethod": "calendar-id",
+      "home": "Inghilterra U18",
+      "away": "Olanda U18",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_OSJxdZu9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_OSJxdZu9",
+      "resultId": "OSJxdZu9",
+      "matchMethod": "calendar-id",
+      "home": "Svizzera U18",
+      "away": "Svezia U18",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_t2n5PLyB\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_t2n5PLyB",
+      "resultId": "t2n5PLyB",
+      "matchMethod": "calendar-id",
+      "home": "Finlandia U17",
+      "away": "Scozia U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_tb73YjZR\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tb73YjZR",
+      "resultId": "tb73YjZR",
+      "matchMethod": "calendar-id",
+      "home": "Bulgaria U19",
+      "away": "Gibilterra U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_UgjLqJzf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UgjLqJzf",
+      "resultId": "UgjLqJzf",
+      "matchMethod": "calendar-id",
+      "home": "Bangladesh",
+      "away": "Sri Lanka",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_zLHSMMG5\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_zLHSMMG5",
+      "resultId": "zLHSMMG5",
+      "matchMethod": "calendar-id",
+      "home": "Montenegro U17",
+      "away": "Inghilterra U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 6
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_zZXwZI3d\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_zZXwZI3d",
+      "resultId": "zZXwZI3d",
+      "matchMethod": "calendar-id",
+      "home": "Irlanda U19",
+      "away": "Grecia U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_nizWLlnT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_nizWLlnT",
+      "resultId": "nizWLlnT",
+      "matchMethod": "calendar-id",
+      "home": "Italia U19",
+      "away": "Romania U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T14:30:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_6NmjGf6t\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_6NmjGf6t",
+      "resultId": "6NmjGf6t",
+      "matchMethod": "calendar-id",
+      "home": "SD Ibiza",
+      "away": "Arenal",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_r12tGnG8\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_r12tGnG8",
+      "resultId": "r12tGnG8",
+      "matchMethod": "calendar-id",
+      "home": "Podbrezova",
+      "away": "Z. Moravce-Vrable",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_UDlrBXXA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UDlrBXXA",
+      "resultId": "UDlrBXXA",
+      "matchMethod": "calendar-id",
+      "home": "Spagna U19",
+      "away": "Islanda U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_WlF0zH2N\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_WlF0zH2N",
+      "resultId": "WlF0zH2N",
+      "matchMethod": "calendar-id",
+      "home": "Mamelodi D",
+      "away": "Kawempe Muslim D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_fkwQe8QF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fkwQe8QF",
+      "resultId": "fkwQe8QF",
+      "matchMethod": "calendar-id",
+      "home": "Bhutan U17",
+      "away": "Emirati arabi uniti U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:20:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_bgrVS9uh\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_bgrVS9uh",
+      "resultId": "bgrVS9uh",
+      "matchMethod": "calendar-id",
+      "home": "Bosnia-Erzegovina U19",
+      "away": "San Marino U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:30:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_IipuOwo9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_IipuOwo9",
+      "resultId": "IipuOwo9",
+      "matchMethod": "calendar-id",
+      "home": "Mons D",
+      "away": "KFC Damme D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:30:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_jXw0KZgE\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jXw0KZgE",
+      "resultId": "jXw0KZgE",
+      "matchMethod": "calendar-id",
+      "home": "Lituania U17",
+      "away": "Irlanda del Nord U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:30:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_hC359au9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hC359au9",
+      "resultId": "hC359au9",
+      "matchMethod": "calendar-id",
+      "home": "Kazakistan U19",
+      "away": "Scozia U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T15:45:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_hMQRwtoA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hMQRwtoA",
+      "resultId": "hMQRwtoA",
+      "matchMethod": "calendar-id",
+      "home": "Atletico Hidalgo",
+      "away": "Celaya 2",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 6
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_IqQxc14k\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_IqQxc14k",
+      "resultId": "IqQxc14k",
+      "matchMethod": "calendar-id",
+      "home": "Czarni Sosnowiec D",
+      "away": "Brann D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_jmFcuXVg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_jmFcuXVg",
+      "resultId": "jmFcuXVg",
+      "matchMethod": "calendar-id",
+      "home": "Silifke",
+      "away": "Yeni Mersin Idmanyurdu",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Qs1PqGhn\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Qs1PqGhn",
+      "resultId": "Qs1PqGhn",
+      "matchMethod": "calendar-id",
+      "home": "Fleury 91 D",
+      "away": "Tolosa D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 7,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_UJLJ0BgA\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_UJLJ0BgA",
+      "resultId": "UJLJ0BgA",
+      "matchMethod": "calendar-id",
+      "home": "Saint Priest",
+      "away": "GFA74",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_x4HPmpXI\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_x4HPmpXI",
+      "resultId": "x4HPmpXI",
+      "matchMethod": "calendar-id",
+      "home": "Frejus",
+      "away": "Troyes II",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_xjUv9FlJ\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xjUv9FlJ",
+      "resultId": "xjUv9FlJ",
+      "matchMethod": "calendar-id",
+      "home": "Serbia U19",
+      "away": "Faerøerne U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_xWchs9BM\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xWchs9BM",
+      "resultId": "xWchs9BM",
+      "matchMethod": "calendar-id",
+      "home": "Brunei U17",
+      "away": "Bahrain U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 6
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_xYlRZvR9\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_xYlRZvR9",
+      "resultId": "xYlRZvR9",
+      "matchMethod": "calendar-id",
+      "home": "Rwanda U23",
+      "away": "Camerun U23",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_CWaSqze2\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_CWaSqze2",
+      "resultId": "CWaSqze2",
+      "matchMethod": "calendar-id",
+      "home": "Galles U17",
+      "away": "Danimarca U17",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:30:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_trXv9waD\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_trXv9waD",
+      "resultId": "trXv9waD",
+      "matchMethod": "calendar-id",
+      "home": "Manacor",
+      "away": "Inter Ibiza",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T16:30:00.000Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_67J6hg0c\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_67J6hg0c",
+      "resultId": "67J6hg0c",
+      "matchMethod": "calendar-id",
+      "home": "Bourges 18",
+      "away": "Hyeres",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_8KwL5VCl\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8KwL5VCl",
+      "resultId": "8KwL5VCl",
+      "matchMethod": "calendar-id",
+      "home": "Colombe",
+      "away": "Victoria United",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_8W1fyorT\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_8W1fyorT",
+      "resultId": "8W1fyorT",
+      "matchMethod": "calendar-id",
+      "home": "Brondby D",
+      "away": "Rosenborg D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_AJd7Tc5T\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_AJd7Tc5T",
+      "resultId": "AJd7Tc5T",
+      "matchMethod": "calendar-id",
+      "home": "Botswana U23",
+      "away": "Guinea U23",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_fNdc2qnC\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_fNdc2qnC",
+      "resultId": "fNdc2qnC",
+      "matchMethod": "calendar-id",
+      "home": "Canet Roussillon",
+      "away": "Hauts Lyonnais",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_hEtzy1rH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_hEtzy1rH",
+      "resultId": "hEtzy1rH",
+      "matchMethod": "calendar-id",
+      "home": "Petrzalka D",
+      "away": "Trnava D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_pIjYv72m\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_pIjYv72m",
+      "resultId": "pIjYv72m",
+      "matchMethod": "calendar-id",
+      "home": "Artis Brno",
+      "away": "Jablonec",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_rw6cG7hg\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_rw6cG7hg",
+      "resultId": "rw6cG7hg",
+      "matchMethod": "calendar-id",
+      "home": "Austria U19",
+      "away": "Bielorussia U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_S8UVzuZq\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_S8UVzuZq",
+      "resultId": "S8UVzuZq",
+      "matchMethod": "calendar-id",
+      "home": "Francia U19",
+      "away": "Norvegia U19",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 6,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_tbiOnkum\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_tbiOnkum",
+      "resultId": "tbiOnkum",
+      "matchMethod": "calendar-id",
+      "home": "Wiedenbruck (Ger)",
+      "away": "Munster 2 (Ger)",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_v3I5cLCt\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_v3I5cLCt",
+      "resultId": "v3I5cLCt",
+      "matchMethod": "calendar-id",
+      "home": "Libia U23",
+      "away": "Ghana U23",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_vmrvlY94\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_vmrvlY94",
+      "resultId": "vmrvlY94",
+      "matchMethod": "calendar-id",
+      "home": "Toulon",
+      "away": "Limonest",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_z35AB0Jr\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_z35AB0Jr",
+      "resultId": "z35AB0Jr",
+      "matchMethod": "calendar-id",
+      "home": "Fenerbahce D",
+      "away": "Real Sociedad D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:00:00.000Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_84B1RnKH\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_84B1RnKH",
+      "resultId": "84B1RnKH",
+      "matchMethod": "calendar-id",
+      "home": "Sampion Celje",
+      "away": "Smartno",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:30:00.000Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_Emya4qCF\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_Emya4qCF",
+      "resultId": "Emya4qCF",
+      "matchMethod": "calendar-id",
+      "home": "Eintracht Frankfurt D",
+      "away": "PSV D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:30:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_65nlLTmf\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_65nlLTmf",
+      "resultId": "65nlLTmf",
+      "matchMethod": "calendar-id",
+      "home": "Castellonense",
+      "away": "La Nucia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:45:00.000Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"diretta_pQt0xdit\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "diretta_pQt0xdit",
+      "resultId": "pQt0xdit",
+      "matchMethod": "calendar-id",
+      "home": "Leuven D",
+      "away": "Koge D",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-10T17:56:48.560Z",
+      "kickoffAt": "2026-11-11T17:45:00.000Z",
+      "score": {
+        "home": 1,
         "away": 1
       },
       "markets": {}
