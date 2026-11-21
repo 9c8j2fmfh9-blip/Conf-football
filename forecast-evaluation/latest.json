@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-21T02:31:13.564Z",
+  "evaluatedAt": "2026-11-21T11:20:04.673Z",
   "lastCapturedAt": "2026-11-21T02:31:13.332Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1399,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 912,
+  "settled": 918,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -1710,28 +1710,13 @@
       "reason": "Risultato finale non confermato"
     },
     {
-      "key": "[\"open_MEX_1_liga-mx_2026-11-21_fc_juarez_atlas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_1_liga-mx_2026-11-21_fc_juarez_atlas",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_MEX_1_liga-mx_2026-11-21_tijuana_atlante\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-11-21_tijuana_atlante",
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_AUS_1_a-league_2026-11-21_auckland_fc_melbourne_victory\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-11-21_auckland_fc_melbourne_victory",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_JPN_1_j1-league_2026-11-21_kyoto_sanga_urawa_red_diamonds\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_JPN_1_j1-league_2026-11-21_kyoto_sanga_urawa_red_diamonds",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_JPN_1_j1-league_2026-11-21_machida_zelvia_v_varen_nagasaki\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_JPN_1_j1-league_2026-11-21_machida_zelvia_v_varen_nagasaki",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -1750,23 +1735,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_JPN_1_j1-league_2026-11-21_kawasaki_frontale_avispa_fukuoka\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_JPN_1_j1-league_2026-11-21_kawasaki_frontale_avispa_fukuoka",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-11-21_central_coast_mariners_perth_glory\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-11-21_central_coast_mariners_perth_glory",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_JPN_1_j1-league_2026-11-21_gamba_osaka_fagiano_okayama\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_JPN_1_j1-league_2026-11-21_gamba_osaka_fagiano_okayama",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-11-21_brisbane_roar_sydney_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-11-21_brisbane_roar_sydney_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -34198,6 +34168,102 @@
       "score": {
         "home": 1,
         "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-21_fc_juarez_atlas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-21_fc_juarez_atlas",
+      "resultId": "EsrOCTZa",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Juárez",
+      "away": "Atlas",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T03:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-21_auckland_fc_melbourne_victory\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-21_auckland_fc_melbourne_victory",
+      "resultId": "SdxC3lSp",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Auckland FC",
+      "away": "Melbourne Victory",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T04:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-21_machida_zelvia_v_varen_nagasaki\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-21_machida_zelvia_v_varen_nagasaki",
+      "resultId": "xxJrfGgo",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Machida Zelvia",
+      "away": "V-Varen Nagasaki",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T05:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-21_kawasaki_frontale_avispa_fukuoka\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-21_kawasaki_frontale_avispa_fukuoka",
+      "resultId": "pMbrbpCG",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Kawasaki Frontale",
+      "away": "Avispa Fukuoka",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T06:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-21_central_coast_mariners_perth_glory\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-21_central_coast_mariners_perth_glory",
+      "resultId": "f3UcRiKi",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Central Coast Mariners",
+      "away": "Perth Glory",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T06:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-21_brisbane_roar_sydney_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-21_brisbane_roar_sydney_fc",
+      "resultId": "SGS5PVl4",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Brisbane Roar",
+      "away": "Sydney FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T08:40:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
       },
       "markets": {}
     }
