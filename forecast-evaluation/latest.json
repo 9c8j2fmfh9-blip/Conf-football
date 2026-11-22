@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-22T00:25:14.216Z",
-  "lastCapturedAt": "2026-11-22T00:25:13.669Z",
+  "evaluatedAt": "2026-11-22T22:31:09.532Z",
+  "lastCapturedAt": "2026-11-22T22:31:09.233Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 1450,
+  "recorded": 1458,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 962,
+  "settled": 979,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -2190,33 +2190,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_AUS_1_a-league_2026-11-22_wellington_phoenix_fc_macarthur_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-11-22_wellington_phoenix_fc_macarthur_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_MEX_1_liga-mx_2026-11-22_tigres_uanl_america\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-11-22_tigres_uanl_america",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_TUR_1_super-lig_2026-11-22_erzurumspor_goztepe\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-22_erzurumspor_goztepe",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_1_eredivisie_2026-11-22_fc_twente_willem_ii\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-11-22_fc_twente_willem_ii",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-22_juventus_venezia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-22_juventus_venezia",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_2_championship_2026-11-22_burnley_blackburn_rovers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_2_championship_2026-11-22_burnley_blackburn_rovers",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2245,16 +2220,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_TUR_1_super-lig_2026-11-22_kasimpasa_alanyaspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-22_kasimpasa_alanyaspor",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_TUR_1_super-lig_2026-11-22_konyaspor_besiktas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-22_konyaspor_besiktas",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_NED_1_eredivisie_2026-11-22_ajax_ado_den_haag\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_1_eredivisie_2026-11-22_ajax_ado_den_haag",
       "reason": "Identificativo calendario assente"
@@ -2265,28 +2230,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ENG_1_premier-league_2026-11-22_hull_brighton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-11-22_hull_brighton",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-22_bologna_udinese\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-22_bologna_udinese",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-22_sassuolo_genoa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-22_sassuolo_genoa",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_FRA_1_ligue-1_2026-11-22_paris_fc_angers_sco\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_1_ligue-1_2026-11-22_paris_fc_angers_sco",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_GRE_1_super-league_2026-11-22_levadiakos_atromitos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_GRE_1_super-league_2026-11-22_levadiakos_atromitos",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2315,28 +2260,13 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_GRE_1_super-league_2026-11-22_panathinaikos_ofi_crete\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_GRE_1_super-league_2026-11-22_panathinaikos_ofi_crete",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_NED_1_eredivisie_2026-11-22_go_ahead_eagles_fortuna_sittard\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_1_eredivisie_2026-11-22_go_ahead_eagles_fortuna_sittard",
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_TUR_1_super-lig_2026-11-22_trabzonspor_eyupspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-22_trabzonspor_eyupspor",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_FRA_1_ligue-1_2026-11-22_fc_lorient_stade_rennais_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_1_ligue-1_2026-11-22_fc_lorient_stade_rennais_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_2_serie-b_2026-11-22_arezzo_padova\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_2_serie-b_2026-11-22_arezzo_padova",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2350,11 +2280,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ITA_1_serie-a_2026-11-22_milan_frosinone\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-22_milan_frosinone",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_GRE_1_super-league_2026-11-22_olympiacos_iraklis\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_GRE_1_super-league_2026-11-22_olympiacos_iraklis",
       "reason": "Identificativo calendario assente"
@@ -2362,11 +2287,6 @@
     {
       "key": "[\"open_BEL_1_pro-league_2026-11-22_anderlecht_oh_leuven\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BEL_1_pro-league_2026-11-22_anderlecht_oh_leuven",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_GRE_1_super-league_2026-11-22_paok_kifisia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_GRE_1_super-league_2026-11-22_paok_kifisia",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2387,11 +2307,6 @@
     {
       "key": "[\"open_FRA_1_ligue-1_2026-11-22_olympique_de_marseille_le_mans_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_1_ligue-1_2026-11-22_olympique_de_marseille_le_mans_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ESP_2_segunda-division_2026-11-22_burgos_albacete\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_burgos_albacete",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2447,6 +2362,46 @@
     {
       "key": "[\"open_MEX_1_liga-mx_2026-11-22_guadalajara_cruz_azul\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_MEX_1_liga-mx_2026-11-22_guadalajara_cruz_azul",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-23_queretaro_necaxa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-23_queretaro_necaxa",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-11-23_asteras_tripoli_aris\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-11-23_asteras_tripoli_aris",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-23_istanbul_basaksehir_corum\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-23_istanbul_basaksehir_corum",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-11-23_jong_ajax_jong_az\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_ajax_jong_az",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-11-23_jong_psv_jong_fc_utrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_psv_jong_fc_utrecht",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-23_monza_fiorentina\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-23_monza_fiorentina",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_2_ligue-2_2026-11-23_fc_sochaux_montbeliard_usl_dunkerque\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_2_ligue-2_2026-11-23_fc_sochaux_montbeliard_usl_dunkerque",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-11-23_brentford_everton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-11-23_brentford_everton",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -35003,6 +34958,278 @@
       "score": {
         "home": 1,
         "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-22_wellington_phoenix_fc_macarthur_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-22_wellington_phoenix_fc_macarthur_fc",
+      "resultId": "zsWDN9JG",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Wellington Phoenix FC",
+      "away": "Macarthur FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-22T02:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-22_erzurumspor_goztepe\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-22_erzurumspor_goztepe",
+      "resultId": "IJ8Twa7j",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Erzurumspor",
+      "away": "Göztepe",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T10:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-11-22_fc_twente_willem_ii\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-11-22_fc_twente_willem_ii",
+      "resultId": "zwSnE0cd",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Twente",
+      "away": "Willem II",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T11:15:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-22_juventus_venezia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-22_juventus_venezia",
+      "resultId": "2BrDVUfo",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Juventus",
+      "away": "Venezia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T11:30:00Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-22_burnley_blackburn_rovers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-22_burnley_blackburn_rovers",
+      "resultId": "z33K8hun",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Burnley",
+      "away": "Blackburn Rovers",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T12:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-22_kasimpasa_alanyaspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-22_kasimpasa_alanyaspor",
+      "resultId": "j7yAY3VA",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Kasimpasa",
+      "away": "Alanyaspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T13:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-22_konyaspor_besiktas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-22_konyaspor_besiktas",
+      "resultId": "S6Lsm3p4",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Konyaspor",
+      "away": "Besiktas",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T13:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-11-22_hull_brighton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-11-22_hull_brighton",
+      "resultId": "OluRZ1ie",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Hull",
+      "away": "Brighton",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T14:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-22_bologna_udinese\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-22_bologna_udinese",
+      "resultId": "O2lZxD2B",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Bologna",
+      "away": "Udinese",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T14:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-22_sassuolo_genoa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-22_sassuolo_genoa",
+      "resultId": "6aFyjKcc",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Sassuolo",
+      "away": "Genoa",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T14:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-11-22_levadiakos_atromitos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-11-22_levadiakos_atromitos",
+      "resultId": "QkwkYYWb",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Levadiakos",
+      "away": "Atromitos",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T14:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-11-22_panathinaikos_ofi_crete\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-11-22_panathinaikos_ofi_crete",
+      "resultId": "6Tv5UjWN",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Panathinaikos",
+      "away": "OFI Crete",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T15:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-22_trabzonspor_eyupspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-22_trabzonspor_eyupspor",
+      "resultId": "rsY1zQ0b",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Trabzonspor",
+      "away": "Eyüpspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T16:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-22_arezzo_padova\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-22_arezzo_padova",
+      "resultId": "Yoa4L5HO",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Arezzo",
+      "away": "Padova",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T16:15:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-22_milan_frosinone\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-22_milan_frosinone",
+      "resultId": "UaV3yLr4",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Milan",
+      "away": "Frosinone",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T17:00:00Z",
+      "score": {
+        "home": 5,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_GRE_1_super-league_2026-11-22_paok_kifisia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_GRE_1_super-league_2026-11-22_paok_kifisia",
+      "resultId": "WY4KWtDi",
+      "matchMethod": "unique-team-kickoff",
+      "home": "PAOK",
+      "away": "Kifisia",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T19:25:38.131Z",
+      "kickoffAt": "2026-11-22T17:30:00Z",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_burgos_albacete\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_burgos_albacete",
+      "resultId": "4INmDpMH",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Burgos",
+      "away": "Albacete",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-22T00:25:13.669Z",
+      "kickoffAt": "2026-11-22T20:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
       },
       "markets": {}
     }
