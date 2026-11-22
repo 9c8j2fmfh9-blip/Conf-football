@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-21T19:25:38.422Z",
-  "lastCapturedAt": "2026-11-21T19:25:38.131Z",
+  "evaluatedAt": "2026-11-22T00:25:14.216Z",
+  "lastCapturedAt": "2026-11-22T00:25:13.669Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 1436,
+  "recorded": 1450,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 954,
+  "settled": 962,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -2015,11 +2015,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ENG_1_premier-league_2026-11-21_newcastle_arsenal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-11-21_newcastle_arsenal",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_GER_1_bundesliga_2026-11-21_fc_schalke_04_stuttgart\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_GER_1_bundesliga_2026-11-21_fc_schalke_04_stuttgart",
       "reason": "Identificativo calendario assente"
@@ -2040,21 +2035,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_NED_1_eredivisie_2026-11-21_fc_utrecht_sc_cambuur\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-11-21_fc_utrecht_sc_cambuur",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_1_eredivisie_2026-11-21_feyenoord_excelsior_rotterdam\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-11-21_feyenoord_excelsior_rotterdam",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_2_serie-b_2026-11-21_empoli_pisa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_2_serie-b_2026-11-21_empoli_pisa",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_FRA_2_ligue-2_2026-11-21_stade_de_reims_as_saint_etienne\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_2_ligue-2_2026-11-21_stade_de_reims_as_saint_etienne",
       "reason": "Identificativo calendario assente"
@@ -2062,11 +2042,6 @@
     {
       "key": "[\"open_GER_2_2-bundesliga_2026-11-21_fc_st_pauli_vfl_bochum\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_GER_2_2-bundesliga_2026-11-21_fc_st_pauli_vfl_bochum",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-21_napoli_torino\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-21_napoli_torino",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2090,23 +2065,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_BEL_1_pro-league_2026-11-21_kv_mechelen_club_brugge\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_BEL_1_pro-league_2026-11-21_kv_mechelen_club_brugge",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_BEL_1_pro-league_2026-11-21_zulte_waregem_antwerp\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_BEL_1_pro-league_2026-11-21_zulte_waregem_antwerp",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_SCO_1_premiership_2026-11-21_motherwell_rangers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_SCO_1_premiership_2026-11-21_motherwell_rangers",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_1_eredivisie_2026-11-21_fc_groningen_sc_heerenveen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-11-21_fc_groningen_sc_heerenveen",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2417,6 +2377,76 @@
     {
       "key": "[\"open_GER_3_3-liga_2026-11-22_msv_duisburg_hansa_rostock\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_GER_3_3-liga_2026-11-22_msv_duisburg_hansa_rostock",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-22_atalanta_internazionale\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-22_atalanta_internazionale",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_FRA_1_ligue-1_2026-11-22_olympique_de_marseille_le_mans_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_FRA_1_ligue-1_2026-11-22_olympique_de_marseille_le_mans_fc",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_burgos_albacete\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_burgos_albacete",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_cd_sabadell_granada\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_cd_sabadell_granada",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_castellon_eldense\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_castellon_eldense",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_ceuta_almeria\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_ceuta_almeria",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_cordoba_real_oviedo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_cordoba_real_oviedo",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_fc_andorra_leganes\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_fc_andorra_leganes",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_girona_eibar\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_girona_eibar",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_rc_celta_fortuna_real_valladolid\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_rc_celta_fortuna_real_valladolid",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_real_sociedad_ii_cadiz\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_real_sociedad_ii_cadiz",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_sporting_gijon_las_palmas\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_sporting_gijon_las_palmas",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ESP_2_segunda-division_2026-11-22_tenerife_mallorca\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ESP_2_segunda-division_2026-11-22_tenerife_mallorca",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-22_guadalajara_cruz_azul\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-22_guadalajara_cruz_azul",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -34845,6 +34875,134 @@
       "score": {
         "home": 1,
         "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-11-21_newcastle_arsenal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-11-21_newcastle_arsenal",
+      "resultId": "U5YSgNrR",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Newcastle",
+      "away": "Arsenal",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T17:30:00Z",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-11-21_fc_utrecht_sc_cambuur\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-11-21_fc_utrecht_sc_cambuur",
+      "resultId": "0GJYy4k3",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Utrecht",
+      "away": "SC Cambuur",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T17:45:00Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-11-21_feyenoord_excelsior_rotterdam\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-11-21_feyenoord_excelsior_rotterdam",
+      "resultId": "YTHtzrKF",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Feyenoord",
+      "away": "Excelsior Rotterdam",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T17:45:00Z",
+      "score": {
+        "home": 2,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-21_empoli_pisa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-21_empoli_pisa",
+      "resultId": "GOX8qI3E",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Empoli",
+      "away": "Pisa",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T18:30:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-21_napoli_torino\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-21_napoli_torino",
+      "resultId": "AwXJXxrT",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Napoli",
+      "away": "Torino",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T19:45:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_BEL_1_pro-league_2026-11-21_kv_mechelen_club_brugge\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_BEL_1_pro-league_2026-11-21_kv_mechelen_club_brugge",
+      "resultId": "AwZUUP2m",
+      "matchMethod": "unique-team-kickoff",
+      "home": "KV Mechelen",
+      "away": "Club Brugge",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T19:45:00Z",
+      "score": {
+        "home": 1,
+        "away": 5
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_SCO_1_premiership_2026-11-21_motherwell_rangers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_SCO_1_premiership_2026-11-21_motherwell_rangers",
+      "resultId": "xtcKNsVF",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Motherwell",
+      "away": "Rangers",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T20:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-11-21_fc_groningen_sc_heerenveen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-11-21_fc_groningen_sc_heerenveen",
+      "resultId": "SCOvGMSq",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Groningen",
+      "away": "sc Heerenveen",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-21T02:31:13.332Z",
+      "kickoffAt": "2026-11-21T20:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 3
       },
       "markets": {}
     }
