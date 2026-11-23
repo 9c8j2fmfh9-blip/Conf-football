@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-22T22:31:09.532Z",
-  "lastCapturedAt": "2026-11-22T22:31:09.233Z",
+  "evaluatedAt": "2026-11-23T03:45:43.325Z",
+  "lastCapturedAt": "2026-11-23T03:45:42.526Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1458,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 979,
+  "settled": 980,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -2357,11 +2357,6 @@
     {
       "key": "[\"open_ESP_2_segunda-division_2026-11-22_tenerife_mallorca\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ESP_2_segunda-division_2026-11-22_tenerife_mallorca",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_MEX_1_liga-mx_2026-11-22_guadalajara_cruz_azul\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_MEX_1_liga-mx_2026-11-22_guadalajara_cruz_azul",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -35227,6 +35222,22 @@
       "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
       "capturedAt": "2026-11-22T00:25:13.669Z",
       "kickoffAt": "2026-11-22T20:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_MEX_1_liga-mx_2026-11-22_guadalajara_cruz_azul\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_MEX_1_liga-mx_2026-11-22_guadalajara_cruz_azul",
+      "resultId": "ABOBNplI",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Guadalajara",
+      "away": "Cruz Azul",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-22T00:25:13.669Z",
+      "kickoffAt": "2026-11-22T23:07:00Z",
       "score": {
         "home": 1,
         "away": 0

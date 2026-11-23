@@ -1,0 +1,4591 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-23T03:45:42.526Z",
+  "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+  "deploymentRevision": "a0ddfaecd27ffd19a20463fb2df93aaa4a1fb15a",
+  "runId": "45107764800",
+  "sourceStatus": {
+    "provider": "Open Matchday",
+    "coverage": {
+      "partial": true,
+      "issue": "Calendario 2026-11-22 ancora in aggiornamento; Calendario 2026-11-23 ancora in aggiornamento; Calendario 2026-11-24 ancora in aggiornamento; Calendario 2026-11-25 ancora in aggiornamento"
+    },
+    "providerIssue": {
+      "code": "CALENDAR_UNAVAILABLE",
+      "message": "Calendario Diretta non disponibile: elenco limitato alla copertura statistica."
+    },
+    "analyzedCount": 7,
+    "returned": 7
+  },
+  "oddsStatus": {
+    "retrieved": true,
+    "available": false,
+    "source": "Sisal · foglio ufficiale",
+    "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+    "status": {
+      "refreshing": false,
+      "base": {
+        "attemptedAt": "2026-11-23T03:45:13.078Z",
+        "updatedAt": "2026-11-23T03:45:29.966Z",
+        "available": true,
+        "sourceUpdatedAt": "2026-11-22T22:04:57.000Z"
+      },
+      "combined": {
+        "attemptedAt": "2026-11-23T03:45:13.078Z",
+        "updatedAt": "2026-11-23T03:45:37.266Z",
+        "available": true,
+        "sourceUpdatedAt": "2026-11-22T22:05:30.000Z"
+      },
+      "retryAfterMs": 570909
+    }
+  },
+  "fixtures": [
+    {
+      "fixtureId": "open_GRE_1_super-league_2026-11-23_asteras_tripoli_aris",
+      "kickoffAt": "2026-11-23T15:00:00Z",
+      "home": "Asteras Tripoli",
+      "away": "Aris",
+      "league": "Super League Greece",
+      "country": "Greece",
+      "direttaId": null,
+      "calendarHome": "Asteras Tripoli",
+      "calendarAway": "Aris",
+      "source": "Open Matchday · risultati stagione corrente",
+      "dataUpdatedAt": "2026-10-20T03:10:46Z",
+      "dataStale": true,
+      "experimentalEstimate": {
+        "available": true,
+        "validated": false,
+        "model": "Poisson sperimentale con medie gol corrette per piccolo campione",
+        "expectedGoals": {
+          "home": 1.35,
+          "away": 1.55
+        },
+        "teamGoalCombos": [
+          {
+            "homeOver": "0.5",
+            "awayOver": "0.5",
+            "score": 58,
+            "homeMin": 1,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "1.5",
+            "score": 34,
+            "homeMin": 1,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "0.5",
+            "score": 31,
+            "homeMin": 2,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "1.5",
+            "score": 18,
+            "homeMin": 2,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "2.5",
+            "score": 15,
+            "homeMin": 1,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "0.5",
+            "score": 12,
+            "homeMin": 3,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "2.5",
+            "score": 8,
+            "homeMin": 2,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "1.5",
+            "score": 7,
+            "homeMin": 3,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "2.5",
+            "score": 3,
+            "homeMin": 3,
+            "awayMin": 3
+          }
+        ],
+        "estimates": {
+          "one": 33,
+          "draw": 25,
+          "two": 42,
+          "doubleChance1X": 58,
+          "doubleChanceX2": 67,
+          "doubleChance12": 75,
+          "over15": 79,
+          "under15": 21,
+          "over25": 55,
+          "under25": 45,
+          "btts": 58,
+          "noBtts": 42,
+          "over35": 33,
+          "under35": 67,
+          "bttsOver25": 47,
+          "homeScore": 74,
+          "homeNoScore": 26,
+          "awayScore": 79,
+          "awayNoScore": 21,
+          "homeOver15": 39,
+          "awayOver15": 46
+        },
+        "samples": {
+          "home": 7,
+          "away": 7
+        },
+        "warning": "STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa."
+      },
+      "markets": {
+        "one": {
+          "label": "1 · vittoria casa",
+          "score": 21,
+          "hits": 3,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.14285714285714285,
+            0.2857142857142857
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "draw": {
+          "label": "X · pareggio",
+          "score": 21,
+          "hits": 3,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.2857142857142857,
+            0.14285714285714285
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "two": {
+          "label": "2 · vittoria trasferta",
+          "score": 57,
+          "hits": 8,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.5714285714285714,
+            0.5714285714285714
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance1X": {
+          "label": "1X · doppia chance",
+          "score": 43,
+          "hits": 6,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.42857142857142855,
+            0.42857142857142855
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChanceX2": {
+          "label": "X2 · doppia chance",
+          "score": 79,
+          "hits": 11,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.8571428571428571,
+            0.7142857142857143
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance12": {
+          "label": "12 · escluso pareggio",
+          "score": 79,
+          "hits": 11,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.7142857142857143,
+            0.8571428571428571
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over15": {
+          "label": "Over 1.5 FT",
+          "score": 86,
+          "hits": 12,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.8571428571428571,
+            0.8571428571428571
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under15": {
+          "label": "Under 1.5 FT",
+          "score": 14,
+          "hits": 2,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.14285714285714285,
+            0.14285714285714285
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over25": {
+          "label": "Over 2.5 FT",
+          "score": 64,
+          "hits": 9,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.5714285714285714,
+            0.7142857142857143
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under25": {
+          "label": "Under 2.5 FT",
+          "score": 36,
+          "hits": 5,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.42857142857142855,
+            0.2857142857142857
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "btts": {
+          "label": "GG",
+          "score": 64,
+          "hits": 9,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.7142857142857143,
+            0.5714285714285714
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "noBtts": {
+          "label": "NoGoal",
+          "score": 36,
+          "hits": 5,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.2857142857142857,
+            0.42857142857142855
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over35": {
+          "label": "Over 3.5 FT",
+          "score": 43,
+          "hits": 6,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.42857142857142855,
+            0.42857142857142855
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under35": {
+          "label": "Under 3.5 FT",
+          "score": 57,
+          "hits": 8,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.5714285714285714,
+            0.5714285714285714
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeScore": {
+          "label": "Segna casa · Sì",
+          "score": 79,
+          "hits": 11,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.7142857142857143,
+            0.8571428571428571
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeNoScore": {
+          "label": "Segna casa · No",
+          "score": 21,
+          "hits": 3,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.2857142857142857,
+            0.14285714285714285
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayScore": {
+          "label": "Segna ospite · Sì",
+          "score": 79,
+          "hits": 11,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            1,
+            0.5714285714285714
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayNoScore": {
+          "label": "Segna ospite · No",
+          "score": 21,
+          "hits": 3,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0,
+            0.42857142857142855
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeOver15": {
+          "label": "Casa Over 1.5 gol",
+          "score": 43,
+          "hits": 6,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.2857142857142857,
+            0.5714285714285714
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayOver15": {
+          "label": "Ospite Over 1.5 gol",
+          "score": 57,
+          "hits": 8,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.5714285714285714,
+            0.5714285714285714
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "bttsOver25": {
+          "label": "GG + Over 2.5 FT",
+          "score": 57,
+          "hits": 8,
+          "sample": 14,
+          "venueSamples": {
+            "home": 7,
+            "away": 7
+          },
+          "teamRates": [
+            0.5714285714285714,
+            0.5714285714285714
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        }
+      },
+      "direttaStatMarkets": null,
+      "selection": {
+        "qualified": false,
+        "primary": null,
+        "candidates": [],
+        "reason": "Dati non aggiornati nelle ultime 72 ore: selezione sospesa."
+      },
+      "prices": null
+    },
+    {
+      "fixtureId": "open_TUR_1_super-lig_2026-11-23_istanbul_basaksehir_corum",
+      "kickoffAt": "2026-11-23T17:00:00Z",
+      "home": "Istanbul Basaksehir",
+      "away": "Çorum",
+      "league": "Süper Lig",
+      "country": "Turkey",
+      "direttaId": null,
+      "calendarHome": "Istanbul Basaksehir",
+      "calendarAway": "Çorum",
+      "source": "Open Matchday · risultati stagione corrente",
+      "dataUpdatedAt": "2026-10-20T03:10:46Z",
+      "dataStale": true,
+      "experimentalEstimate": {
+        "available": true,
+        "validated": false,
+        "model": "Poisson sperimentale con medie gol corrette per piccolo campione",
+        "expectedGoals": {
+          "home": 1.45,
+          "away": 1.61
+        },
+        "teamGoalCombos": [
+          {
+            "homeOver": "0.5",
+            "awayOver": "0.5",
+            "score": 61,
+            "homeMin": 1,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "1.5",
+            "score": 37,
+            "homeMin": 1,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "0.5",
+            "score": 34,
+            "homeMin": 2,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "1.5",
+            "score": 20,
+            "homeMin": 2,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "2.5",
+            "score": 17,
+            "homeMin": 1,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "0.5",
+            "score": 14,
+            "homeMin": 3,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "2.5",
+            "score": 9,
+            "homeMin": 2,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "1.5",
+            "score": 9,
+            "homeMin": 3,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "2.5",
+            "score": 4,
+            "homeMin": 3,
+            "awayMin": 3
+          }
+        ],
+        "estimates": {
+          "one": 34,
+          "draw": 24,
+          "two": 42,
+          "doubleChance1X": 58,
+          "doubleChanceX2": 66,
+          "doubleChance12": 76,
+          "over15": 81,
+          "under15": 19,
+          "over25": 59,
+          "under25": 41,
+          "btts": 61,
+          "noBtts": 39,
+          "over35": 37,
+          "under35": 63,
+          "bttsOver25": 50,
+          "homeScore": 77,
+          "homeNoScore": 23,
+          "awayScore": 80,
+          "awayNoScore": 20,
+          "homeOver15": 43,
+          "awayOver15": 48
+        },
+        "samples": {
+          "home": 8,
+          "away": 8
+        },
+        "warning": "STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa."
+      },
+      "markets": {
+        "one": {
+          "label": "1 · vittoria casa",
+          "score": 38,
+          "hits": 6,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.375,
+            0.375
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "draw": {
+          "label": "X · pareggio",
+          "score": 19,
+          "hits": 3,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.25,
+            0.125
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "two": {
+          "label": "2 · vittoria trasferta",
+          "score": 44,
+          "hits": 7,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.375,
+            0.5
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance1X": {
+          "label": "1X · doppia chance",
+          "score": 56,
+          "hits": 9,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.625,
+            0.5
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChanceX2": {
+          "label": "X2 · doppia chance",
+          "score": 63,
+          "hits": 10,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.625,
+            0.625
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance12": {
+          "label": "12 · escluso pareggio",
+          "score": 81,
+          "hits": 13,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.75,
+            0.875
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over15": {
+          "label": "Over 1.5 FT",
+          "score": 88,
+          "hits": 14,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.875,
+            0.875
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under15": {
+          "label": "Under 1.5 FT",
+          "score": 13,
+          "hits": 2,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.125,
+            0.125
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over25": {
+          "label": "Over 2.5 FT",
+          "score": 75,
+          "hits": 12,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.625,
+            0.875
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under25": {
+          "label": "Under 2.5 FT",
+          "score": 25,
+          "hits": 4,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.375,
+            0.125
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "btts": {
+          "label": "GG",
+          "score": 56,
+          "hits": 9,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.5,
+            0.625
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "noBtts": {
+          "label": "NoGoal",
+          "score": 44,
+          "hits": 7,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.5,
+            0.375
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over35": {
+          "label": "Over 3.5 FT",
+          "score": 38,
+          "hits": 6,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.375,
+            0.375
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under35": {
+          "label": "Under 3.5 FT",
+          "score": 63,
+          "hits": 10,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.625,
+            0.625
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeScore": {
+          "label": "Segna casa · Sì",
+          "score": 75,
+          "hits": 12,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.75,
+            0.75
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeNoScore": {
+          "label": "Segna casa · No",
+          "score": 25,
+          "hits": 4,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.25,
+            0.25
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayScore": {
+          "label": "Segna ospite · Sì",
+          "score": 75,
+          "hits": 12,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.625,
+            0.875
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayNoScore": {
+          "label": "Segna ospite · No",
+          "score": 25,
+          "hits": 4,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.375,
+            0.125
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeOver15": {
+          "label": "Casa Over 1.5 gol",
+          "score": 44,
+          "hits": 7,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.5,
+            0.375
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayOver15": {
+          "label": "Ospite Over 1.5 gol",
+          "score": 56,
+          "hits": 9,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.375,
+            0.75
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "bttsOver25": {
+          "label": "GG + Over 2.5 FT",
+          "score": 50,
+          "hits": 8,
+          "sample": 16,
+          "venueSamples": {
+            "home": 8,
+            "away": 8
+          },
+          "teamRates": [
+            0.375,
+            0.625
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        }
+      },
+      "direttaStatMarkets": null,
+      "selection": {
+        "qualified": false,
+        "primary": null,
+        "candidates": [],
+        "reason": "Dati non aggiornati nelle ultime 72 ore: selezione sospesa."
+      },
+      "prices": null
+    },
+    {
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_ajax_jong_az",
+      "kickoffAt": "2026-11-23T19:00:00Z",
+      "home": "Jong Ajax",
+      "away": "Jong AZ",
+      "league": "Eerste Divisie",
+      "country": "Netherlands",
+      "direttaId": null,
+      "calendarHome": "Jong Ajax",
+      "calendarAway": "Jong AZ",
+      "source": "Open Matchday · risultati stagione corrente",
+      "dataUpdatedAt": "2026-10-20T03:10:46Z",
+      "dataStale": true,
+      "experimentalEstimate": {
+        "available": true,
+        "validated": false,
+        "model": "Poisson sperimentale con medie gol corrette per piccolo campione",
+        "expectedGoals": {
+          "home": 1.57,
+          "away": 2.05
+        },
+        "teamGoalCombos": [
+          {
+            "homeOver": "0.5",
+            "awayOver": "0.5",
+            "score": 69,
+            "homeMin": 1,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "1.5",
+            "score": 48,
+            "homeMin": 1,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "0.5",
+            "score": 40,
+            "homeMin": 2,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "1.5",
+            "score": 28,
+            "homeMin": 2,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "2.5",
+            "score": 27,
+            "homeMin": 1,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "0.5",
+            "score": 18,
+            "homeMin": 3,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "2.5",
+            "score": 16,
+            "homeMin": 2,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "1.5",
+            "score": 13,
+            "homeMin": 3,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "2.5",
+            "score": 7,
+            "homeMin": 3,
+            "awayMin": 3
+          }
+        ],
+        "estimates": {
+          "one": 30,
+          "draw": 21,
+          "two": 49,
+          "doubleChance1X": 51,
+          "doubleChanceX2": 70,
+          "doubleChance12": 79,
+          "over15": 88,
+          "under15": 12,
+          "over25": 70,
+          "under25": 30,
+          "btts": 69,
+          "noBtts": 31,
+          "over35": 49,
+          "under35": 51,
+          "bttsOver25": 60,
+          "homeScore": 79,
+          "homeNoScore": 21,
+          "awayScore": 87,
+          "awayNoScore": 13,
+          "homeOver15": 46,
+          "awayOver15": 61
+        },
+        "samples": {
+          "home": 10,
+          "away": 10
+        },
+        "warning": "STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa."
+      },
+      "markets": {
+        "one": {
+          "label": "1 · vittoria casa",
+          "score": 35,
+          "hits": 7,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.3,
+            0.4
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "draw": {
+          "label": "X · pareggio",
+          "score": 20,
+          "hits": 4,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.2,
+            0.2
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "two": {
+          "label": "2 · vittoria trasferta",
+          "score": 45,
+          "hits": 9,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.5,
+            0.4
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance1X": {
+          "label": "1X · doppia chance",
+          "score": 55,
+          "hits": 11,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.5,
+            0.6
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChanceX2": {
+          "label": "X2 · doppia chance",
+          "score": 65,
+          "hits": 13,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.7,
+            0.6
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance12": {
+          "label": "12 · escluso pareggio",
+          "score": 80,
+          "hits": 16,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.8,
+            0.8
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over15": {
+          "label": "Over 1.5 FT",
+          "score": 85,
+          "hits": 17,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.8,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under15": {
+          "label": "Under 1.5 FT",
+          "score": 15,
+          "hits": 3,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.2,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over25": {
+          "label": "Over 2.5 FT",
+          "score": 70,
+          "hits": 14,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.6,
+            0.8
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under25": {
+          "label": "Under 2.5 FT",
+          "score": 30,
+          "hits": 6,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.4,
+            0.2
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "btts": {
+          "label": "GG",
+          "score": 75,
+          "hits": 15,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.6,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "noBtts": {
+          "label": "NoGoal",
+          "score": 25,
+          "hits": 5,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.4,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over35": {
+          "label": "Over 3.5 FT",
+          "score": 50,
+          "hits": 10,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.4,
+            0.6
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under35": {
+          "label": "Under 3.5 FT",
+          "score": 50,
+          "hits": 10,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.6,
+            0.4
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeScore": {
+          "label": "Segna casa · Sì",
+          "score": 85,
+          "hits": 17,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.7,
+            1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeNoScore": {
+          "label": "Segna casa · No",
+          "score": 15,
+          "hits": 3,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.3,
+            0
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayScore": {
+          "label": "Segna ospite · Sì",
+          "score": 85,
+          "hits": 17,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.8,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayNoScore": {
+          "label": "Segna ospite · No",
+          "score": 15,
+          "hits": 3,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.2,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeOver15": {
+          "label": "Casa Over 1.5 gol",
+          "score": 50,
+          "hits": 10,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.4,
+            0.6
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayOver15": {
+          "label": "Ospite Over 1.5 gol",
+          "score": 60,
+          "hits": 12,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.6,
+            0.6
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "bttsOver25": {
+          "label": "GG + Over 2.5 FT",
+          "score": 65,
+          "hits": 13,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.5,
+            0.8
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        }
+      },
+      "direttaStatMarkets": null,
+      "selection": {
+        "qualified": false,
+        "primary": null,
+        "candidates": [],
+        "reason": "Dati non aggiornati nelle ultime 72 ore: selezione sospesa."
+      },
+      "prices": {
+        "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_ajax_jong_az",
+        "market": null,
+        "primary": null,
+        "odds": {
+          "sisal": {
+            "available": false,
+            "reason": "Quota non disponibile"
+          },
+          "bet365": {
+            "available": false,
+            "reason": "Collegamento automatico Bet365 non disponibile"
+          }
+        },
+        "alternatives": [
+          {
+            "key": "one",
+            "label": "1 · vittoria casa",
+            "score": 30,
+            "historicalScore": 35,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "draw",
+            "label": "X · pareggio",
+            "score": 21,
+            "historicalScore": 20,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "two",
+            "label": "2 · vittoria trasferta",
+            "score": 49,
+            "historicalScore": 45,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChance1X",
+            "label": "1X · doppia chance",
+            "score": 51,
+            "historicalScore": 55,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChanceX2",
+            "label": "X2 · doppia chance",
+            "score": 70,
+            "historicalScore": 65,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChance12",
+            "label": "12 · escluso pareggio",
+            "score": 79,
+            "historicalScore": 80,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over15",
+            "label": "Over 1.5 FT",
+            "score": 88,
+            "historicalScore": 85,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under15",
+            "label": "Under 1.5 FT",
+            "score": 12,
+            "historicalScore": 15,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over25",
+            "label": "Over 2.5 FT",
+            "score": 70,
+            "historicalScore": 70,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under25",
+            "label": "Under 2.5 FT",
+            "score": 30,
+            "historicalScore": 30,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "btts",
+            "label": "GG",
+            "score": 69,
+            "historicalScore": 75,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "noBtts",
+            "label": "NoGoal",
+            "score": 31,
+            "historicalScore": 25,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over35",
+            "label": "Over 3.5 FT",
+            "score": 49,
+            "historicalScore": 50,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under35",
+            "label": "Under 3.5 FT",
+            "score": 51,
+            "historicalScore": 50,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "bttsOver25",
+            "label": "GG + Over 2.5 FT",
+            "score": 60,
+            "historicalScore": 65,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeScore",
+            "label": "Segna casa · Sì",
+            "score": 79,
+            "historicalScore": 85,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeNoScore",
+            "label": "Segna casa · No",
+            "score": 21,
+            "historicalScore": 15,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayScore",
+            "label": "Segna ospite · Sì",
+            "score": 87,
+            "historicalScore": 85,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayNoScore",
+            "label": "Segna ospite · No",
+            "score": 13,
+            "historicalScore": 15,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeOver15",
+            "label": "Casa Over 1.5 gol",
+            "score": 46,
+            "historicalScore": 50,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayOver15",
+            "label": "Ospite Over 1.5 gol",
+            "score": 61,
+            "historicalScore": 60,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non trovata nel foglio ufficiale"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          }
+        ],
+        "minimumOdds": 1.6
+      }
+    },
+    {
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_psv_jong_fc_utrecht",
+      "kickoffAt": "2026-11-23T19:00:00Z",
+      "home": "Jong PSV",
+      "away": "Jong FC Utrecht",
+      "league": "Eerste Divisie",
+      "country": "Netherlands",
+      "direttaId": null,
+      "calendarHome": "Jong PSV",
+      "calendarAway": "Jong FC Utrecht",
+      "source": "Open Matchday · risultati stagione corrente",
+      "dataUpdatedAt": "2026-10-20T03:10:46Z",
+      "dataStale": true,
+      "experimentalEstimate": {
+        "available": true,
+        "validated": false,
+        "model": "Poisson sperimentale con medie gol corrette per piccolo campione",
+        "expectedGoals": {
+          "home": 1.54,
+          "away": 1.49
+        },
+        "teamGoalCombos": [
+          {
+            "homeOver": "0.5",
+            "awayOver": "0.5",
+            "score": 61,
+            "homeMin": 1,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "0.5",
+            "score": 35,
+            "homeMin": 2,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "1.5",
+            "score": 34,
+            "homeMin": 1,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "1.5",
+            "score": 20,
+            "homeMin": 2,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "0.5",
+            "score": 16,
+            "homeMin": 3,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "2.5",
+            "score": 15,
+            "homeMin": 1,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "2.5",
+            "score": 9,
+            "homeMin": 2,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "1.5",
+            "score": 9,
+            "homeMin": 3,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "2.5",
+            "score": 4,
+            "homeMin": 3,
+            "awayMin": 3
+          }
+        ],
+        "estimates": {
+          "one": 39,
+          "draw": 24,
+          "two": 37,
+          "doubleChance1X": 63,
+          "doubleChanceX2": 61,
+          "doubleChance12": 76,
+          "over15": 81,
+          "under15": 19,
+          "over25": 58,
+          "under25": 42,
+          "btts": 61,
+          "noBtts": 39,
+          "over35": 36,
+          "under35": 64,
+          "bttsOver25": 50,
+          "homeScore": 79,
+          "homeNoScore": 21,
+          "awayScore": 77,
+          "awayNoScore": 23,
+          "homeOver15": 46,
+          "awayOver15": 44
+        },
+        "samples": {
+          "home": 10,
+          "away": 10
+        },
+        "warning": "STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa."
+      },
+      "markets": {
+        "one": {
+          "label": "1 · vittoria casa",
+          "score": 45,
+          "hits": 9,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.2,
+            0.7
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "draw": {
+          "label": "X · pareggio",
+          "score": 25,
+          "hits": 5,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.4,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "two": {
+          "label": "2 · vittoria trasferta",
+          "score": 30,
+          "hits": 6,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.4,
+            0.2
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance1X": {
+          "label": "1X · doppia chance",
+          "score": 70,
+          "hits": 14,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.6,
+            0.8
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChanceX2": {
+          "label": "X2 · doppia chance",
+          "score": 55,
+          "hits": 11,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.8,
+            0.3
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance12": {
+          "label": "12 · escluso pareggio",
+          "score": 75,
+          "hits": 15,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.6,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over15": {
+          "label": "Over 1.5 FT",
+          "score": 85,
+          "hits": 17,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.8,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under15": {
+          "label": "Under 1.5 FT",
+          "score": 15,
+          "hits": 3,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.2,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over25": {
+          "label": "Over 2.5 FT",
+          "score": 70,
+          "hits": 14,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.5,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under25": {
+          "label": "Under 2.5 FT",
+          "score": 30,
+          "hits": 6,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.5,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "btts": {
+          "label": "GG",
+          "score": 85,
+          "hits": 17,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.8,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "noBtts": {
+          "label": "NoGoal",
+          "score": 15,
+          "hits": 3,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.2,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over35": {
+          "label": "Over 3.5 FT",
+          "score": 50,
+          "hits": 10,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.5,
+            0.5
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under35": {
+          "label": "Under 3.5 FT",
+          "score": 50,
+          "hits": 10,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.5,
+            0.5
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeScore": {
+          "label": "Segna casa · Sì",
+          "score": 90,
+          "hits": 18,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.9,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeNoScore": {
+          "label": "Segna casa · No",
+          "score": 10,
+          "hits": 2,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.1,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayScore": {
+          "label": "Segna ospite · Sì",
+          "score": 90,
+          "hits": 18,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.9,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayNoScore": {
+          "label": "Segna ospite · No",
+          "score": 10,
+          "hits": 2,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.1,
+            0.1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeOver15": {
+          "label": "Casa Over 1.5 gol",
+          "score": 50,
+          "hits": 10,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.2,
+            0.8
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayOver15": {
+          "label": "Ospite Over 1.5 gol",
+          "score": 30,
+          "hits": 6,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.4,
+            0.2
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "bttsOver25": {
+          "label": "GG + Over 2.5 FT",
+          "score": 70,
+          "hits": 14,
+          "sample": 20,
+          "venueSamples": {
+            "home": 10,
+            "away": 10
+          },
+          "teamRates": [
+            0.5,
+            0.9
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        }
+      },
+      "direttaStatMarkets": null,
+      "selection": {
+        "qualified": false,
+        "primary": null,
+        "candidates": [],
+        "reason": "Dati non aggiornati nelle ultime 72 ore: selezione sospesa."
+      },
+      "prices": null
+    },
+    {
+      "fixtureId": "open_ITA_1_serie-a_2026-11-23_monza_fiorentina",
+      "kickoffAt": "2026-11-23T19:45:00Z",
+      "home": "Monza",
+      "away": "Fiorentina",
+      "league": "Serie A",
+      "country": "Italy",
+      "direttaId": null,
+      "calendarHome": "Monza",
+      "calendarAway": "Fiorentina",
+      "source": "Open Matchday · risultati stagione corrente",
+      "dataUpdatedAt": "2026-10-20T03:10:46Z",
+      "dataStale": true,
+      "experimentalEstimate": {
+        "available": true,
+        "validated": false,
+        "model": "Poisson sperimentale con medie gol corrette per piccolo campione",
+        "expectedGoals": {
+          "home": 1.69,
+          "away": 1.52
+        },
+        "teamGoalCombos": [
+          {
+            "homeOver": "0.5",
+            "awayOver": "0.5",
+            "score": 64,
+            "homeMin": 1,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "0.5",
+            "score": 39,
+            "homeMin": 2,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "1.5",
+            "score": 37,
+            "homeMin": 1,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "1.5",
+            "score": 23,
+            "homeMin": 2,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "0.5",
+            "score": 19,
+            "homeMin": 3,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "2.5",
+            "score": 16,
+            "homeMin": 1,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "1.5",
+            "score": 11,
+            "homeMin": 3,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "2.5",
+            "score": 10,
+            "homeMin": 2,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "2.5",
+            "score": 5,
+            "homeMin": 3,
+            "awayMin": 3
+          }
+        ],
+        "estimates": {
+          "one": 42,
+          "draw": 23,
+          "two": 35,
+          "doubleChance1X": 65,
+          "doubleChanceX2": 58,
+          "doubleChance12": 77,
+          "over15": 83,
+          "under15": 17,
+          "over25": 62,
+          "under25": 38,
+          "btts": 64,
+          "noBtts": 36,
+          "over35": 40,
+          "under35": 60,
+          "bttsOver25": 53,
+          "homeScore": 81,
+          "homeNoScore": 19,
+          "awayScore": 78,
+          "awayNoScore": 22,
+          "homeOver15": 50,
+          "awayOver15": 45
+        },
+        "samples": {
+          "home": 9,
+          "away": 9
+        },
+        "warning": "STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa."
+      },
+      "markets": {
+        "one": {
+          "label": "1 · vittoria casa",
+          "score": 50,
+          "hits": 9,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "draw": {
+          "label": "X · pareggio",
+          "score": 11,
+          "hits": 2,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.1111111111111111,
+            0.1111111111111111
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "two": {
+          "label": "2 · vittoria trasferta",
+          "score": 39,
+          "hits": 7,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance1X": {
+          "label": "1X · doppia chance",
+          "score": 61,
+          "hits": 11,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChanceX2": {
+          "label": "X2 · doppia chance",
+          "score": 50,
+          "hits": 9,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance12": {
+          "label": "12 · escluso pareggio",
+          "score": 89,
+          "hits": 16,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.8888888888888888,
+            0.8888888888888888
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over15": {
+          "label": "Over 1.5 FT",
+          "score": 94,
+          "hits": 17,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.8888888888888888,
+            1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under15": {
+          "label": "Under 1.5 FT",
+          "score": 6,
+          "hits": 1,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.1111111111111111,
+            0
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over25": {
+          "label": "Over 2.5 FT",
+          "score": 83,
+          "hits": 15,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.7777777777777778,
+            0.8888888888888888
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under25": {
+          "label": "Under 2.5 FT",
+          "score": 17,
+          "hits": 3,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.2222222222222222,
+            0.1111111111111111
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "btts": {
+          "label": "GG",
+          "score": 67,
+          "hits": 12,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "noBtts": {
+          "label": "NoGoal",
+          "score": 33,
+          "hits": 6,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over35": {
+          "label": "Over 3.5 FT",
+          "score": 50,
+          "hits": 9,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under35": {
+          "label": "Under 3.5 FT",
+          "score": 50,
+          "hits": 9,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeScore": {
+          "label": "Segna casa · Sì",
+          "score": 94,
+          "hits": 17,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            1,
+            0.8888888888888888
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeNoScore": {
+          "label": "Segna casa · No",
+          "score": 6,
+          "hits": 1,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0,
+            0.1111111111111111
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayScore": {
+          "label": "Segna ospite · Sì",
+          "score": 72,
+          "hits": 13,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.6666666666666666,
+            0.7777777777777778
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayNoScore": {
+          "label": "Segna ospite · No",
+          "score": 28,
+          "hits": 5,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.3333333333333333,
+            0.2222222222222222
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeOver15": {
+          "label": "Casa Over 1.5 gol",
+          "score": 61,
+          "hits": 11,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayOver15": {
+          "label": "Ospite Over 1.5 gol",
+          "score": 39,
+          "hits": 7,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "bttsOver25": {
+          "label": "GG + Over 2.5 FT",
+          "score": 56,
+          "hits": 10,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        }
+      },
+      "direttaStatMarkets": null,
+      "selection": {
+        "qualified": false,
+        "primary": null,
+        "candidates": [],
+        "reason": "Dati non aggiornati nelle ultime 72 ore: selezione sospesa."
+      },
+      "prices": {
+        "fixtureId": "open_ITA_1_serie-a_2026-11-23_monza_fiorentina",
+        "market": null,
+        "primary": null,
+        "odds": {
+          "sisal": {
+            "available": false,
+            "reason": "Quota non disponibile"
+          },
+          "bet365": {
+            "available": false,
+            "reason": "Collegamento automatico Bet365 non disponibile"
+          }
+        },
+        "alternatives": [
+          {
+            "key": "one",
+            "label": "1 · vittoria casa",
+            "score": 42,
+            "historicalScore": 50,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 3.6,
+                "market": "one",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "draw",
+            "label": "X · pareggio",
+            "score": 23,
+            "historicalScore": 11,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 3.75,
+                "market": "draw",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "two",
+            "label": "2 · vittoria trasferta",
+            "score": 35,
+            "historicalScore": 39,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.95,
+                "market": "two",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChance1X",
+            "label": "1X · doppia chance",
+            "score": 65,
+            "historicalScore": 61,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.85,
+                "market": "doubleChance1X",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChanceX2",
+            "label": "X2 · doppia chance",
+            "score": 58,
+            "historicalScore": 50,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.27,
+                "market": "doubleChanceX2",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChance12",
+            "label": "12 · escluso pareggio",
+            "score": 77,
+            "historicalScore": 89,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.25,
+                "market": "doubleChance12",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over15",
+            "label": "Over 1.5 FT",
+            "score": 83,
+            "historicalScore": 94,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.14,
+                "market": "over15",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under15",
+            "label": "Under 1.5 FT",
+            "score": 17,
+            "historicalScore": 6,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 5,
+                "market": "under15",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over25",
+            "label": "Over 2.5 FT",
+            "score": 62,
+            "historicalScore": 83,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.5,
+                "market": "over25",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under25",
+            "label": "Under 2.5 FT",
+            "score": 38,
+            "historicalScore": 17,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 2.4,
+                "market": "under25",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "btts",
+            "label": "GG",
+            "score": 64,
+            "historicalScore": 67,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.47,
+                "market": "btts",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "noBtts",
+            "label": "NoGoal",
+            "score": 36,
+            "historicalScore": 33,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 2.5,
+                "market": "noBtts",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over35",
+            "label": "Over 3.5 FT",
+            "score": 40,
+            "historicalScore": 50,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 2.3,
+                "market": "over35",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under35",
+            "label": "Under 3.5 FT",
+            "score": 60,
+            "historicalScore": 50,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.52,
+                "market": "under35",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "bttsOver25",
+            "label": "GG + Over 2.5 FT",
+            "score": 53,
+            "historicalScore": 56,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.75,
+                "market": "bttsOver25",
+                "sourceUpdatedAt": "2026-11-22T22:05:30.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20combinate.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeScore",
+            "label": "Segna casa · Sì",
+            "score": 81,
+            "historicalScore": 94,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.24,
+                "market": "homeScore",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeNoScore",
+            "label": "Segna casa · No",
+            "score": 19,
+            "historicalScore": 6,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 3.5,
+                "market": "homeNoScore",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayScore",
+            "label": "Segna ospite · Sì",
+            "score": 78,
+            "historicalScore": 72,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.09,
+                "market": "awayScore",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayNoScore",
+            "label": "Segna ospite · No",
+            "score": 22,
+            "historicalScore": 28,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 5.75,
+                "market": "awayNoScore",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeOver15",
+            "label": "Casa Over 1.5 gol",
+            "score": 50,
+            "historicalScore": 61,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non disponibile"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayOver15",
+            "label": "Ospite Over 1.5 gol",
+            "score": 45,
+            "historicalScore": 39,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non disponibile"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          }
+        ],
+        "minimumOdds": 1.6
+      }
+    },
+    {
+      "fixtureId": "open_FRA_2_ligue-2_2026-11-23_fc_sochaux_montbeliard_usl_dunkerque",
+      "kickoffAt": "2026-11-23T19:45:00Z",
+      "home": "FC Sochaux-Montbéliard",
+      "away": "USL Dunkerque",
+      "league": "Ligue 2",
+      "country": "France",
+      "direttaId": null,
+      "calendarHome": "FC Sochaux-Montbéliard",
+      "calendarAway": "USL Dunkerque",
+      "source": "Open Matchday · risultati stagione corrente",
+      "dataUpdatedAt": "2026-10-20T03:10:46Z",
+      "dataStale": true,
+      "experimentalEstimate": {
+        "available": true,
+        "validated": false,
+        "model": "Poisson sperimentale con medie gol corrette per piccolo campione",
+        "expectedGoals": {
+          "home": 1.23,
+          "away": 1.25
+        },
+        "teamGoalCombos": [
+          {
+            "homeOver": "0.5",
+            "awayOver": "0.5",
+            "score": 50,
+            "homeMin": 1,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "1.5",
+            "score": 25,
+            "homeMin": 1,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "0.5",
+            "score": 25,
+            "homeMin": 2,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "1.5",
+            "score": 12,
+            "homeMin": 2,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "2.5",
+            "score": 9,
+            "homeMin": 1,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "0.5",
+            "score": 9,
+            "homeMin": 3,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "2.5",
+            "score": 5,
+            "homeMin": 2,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "1.5",
+            "score": 4,
+            "homeMin": 3,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "2.5",
+            "score": 2,
+            "homeMin": 3,
+            "awayMin": 3
+          }
+        ],
+        "estimates": {
+          "one": 36,
+          "draw": 27,
+          "two": 37,
+          "doubleChance1X": 63,
+          "doubleChanceX2": 64,
+          "doubleChance12": 73,
+          "over15": 71,
+          "under15": 29,
+          "over25": 45,
+          "under25": 55,
+          "btts": 50,
+          "noBtts": 50,
+          "over35": 24,
+          "under35": 76,
+          "bttsOver25": 37,
+          "homeScore": 71,
+          "homeNoScore": 29,
+          "awayScore": 71,
+          "awayNoScore": 29,
+          "homeOver15": 35,
+          "awayOver15": 35
+        },
+        "samples": {
+          "home": 9,
+          "away": 9
+        },
+        "warning": "STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa."
+      },
+      "markets": {
+        "one": {
+          "label": "1 · vittoria casa",
+          "score": 33,
+          "hits": 6,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.2222222222222222,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "draw": {
+          "label": "X · pareggio",
+          "score": 39,
+          "hits": 7,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.2222222222222222
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "two": {
+          "label": "2 · vittoria trasferta",
+          "score": 28,
+          "hits": 5,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.2222222222222222,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance1X": {
+          "label": "1X · doppia chance",
+          "score": 72,
+          "hits": 13,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.7777777777777778,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChanceX2": {
+          "label": "X2 · doppia chance",
+          "score": 67,
+          "hits": 12,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.7777777777777778,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance12": {
+          "label": "12 · escluso pareggio",
+          "score": 61,
+          "hits": 11,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.7777777777777778
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over15": {
+          "label": "Over 1.5 FT",
+          "score": 67,
+          "hits": 12,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.7777777777777778
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under15": {
+          "label": "Under 1.5 FT",
+          "score": 33,
+          "hits": 6,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.2222222222222222
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over25": {
+          "label": "Over 2.5 FT",
+          "score": 33,
+          "hits": 6,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.2222222222222222,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under25": {
+          "label": "Under 2.5 FT",
+          "score": 67,
+          "hits": 12,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.7777777777777778,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "btts": {
+          "label": "GG",
+          "score": 50,
+          "hits": 9,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "noBtts": {
+          "label": "NoGoal",
+          "score": 50,
+          "hits": 9,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over35": {
+          "label": "Over 3.5 FT",
+          "score": 22,
+          "hits": 4,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.1111111111111111,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under35": {
+          "label": "Under 3.5 FT",
+          "score": 78,
+          "hits": 14,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.8888888888888888,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeScore": {
+          "label": "Segna casa · Sì",
+          "score": 83,
+          "hits": 15,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.6666666666666666,
+            1
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeNoScore": {
+          "label": "Segna casa · No",
+          "score": 17,
+          "hits": 3,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.3333333333333333,
+            0
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayScore": {
+          "label": "Segna ospite · Sì",
+          "score": 56,
+          "hits": 10,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayNoScore": {
+          "label": "Segna ospite · No",
+          "score": 44,
+          "hits": 8,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeOver15": {
+          "label": "Casa Over 1.5 gol",
+          "score": 33,
+          "hits": 6,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.1111111111111111,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayOver15": {
+          "label": "Ospite Over 1.5 gol",
+          "score": 33,
+          "hits": 6,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.2222222222222222,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "bttsOver25": {
+          "label": "GG + Over 2.5 FT",
+          "score": 28,
+          "hits": 5,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.1111111111111111,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        }
+      },
+      "direttaStatMarkets": null,
+      "selection": {
+        "qualified": false,
+        "primary": null,
+        "candidates": [],
+        "reason": "Dati non aggiornati nelle ultime 72 ore: selezione sospesa."
+      },
+      "prices": null
+    },
+    {
+      "fixtureId": "open_ENG_1_premier-league_2026-11-23_brentford_everton",
+      "kickoffAt": "2026-11-23T20:00:00Z",
+      "home": "Brentford",
+      "away": "Everton",
+      "league": "Premier League",
+      "country": "England",
+      "direttaId": null,
+      "calendarHome": "Brentford",
+      "calendarAway": "Everton",
+      "source": "Open Matchday · risultati stagione corrente",
+      "dataUpdatedAt": "2026-10-20T03:10:46Z",
+      "dataStale": true,
+      "experimentalEstimate": {
+        "available": true,
+        "validated": false,
+        "model": "Poisson sperimentale con medie gol corrette per piccolo campione",
+        "expectedGoals": {
+          "home": 1.38,
+          "away": 1.28
+        },
+        "teamGoalCombos": [
+          {
+            "homeOver": "0.5",
+            "awayOver": "0.5",
+            "score": 54,
+            "homeMin": 1,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "0.5",
+            "score": 29,
+            "homeMin": 2,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "1.5",
+            "score": 27,
+            "homeMin": 1,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "1.5",
+            "score": 15,
+            "homeMin": 2,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "0.5",
+            "score": 12,
+            "homeMin": 3,
+            "awayMin": 1
+          },
+          {
+            "homeOver": "0.5",
+            "awayOver": "2.5",
+            "score": 10,
+            "homeMin": 1,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "1.5",
+            "awayOver": "2.5",
+            "score": 6,
+            "homeMin": 2,
+            "awayMin": 3
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "1.5",
+            "score": 6,
+            "homeMin": 3,
+            "awayMin": 2
+          },
+          {
+            "homeOver": "2.5",
+            "awayOver": "2.5",
+            "score": 2,
+            "homeMin": 3,
+            "awayMin": 3
+          }
+        ],
+        "estimates": {
+          "one": 39,
+          "draw": 26,
+          "two": 35,
+          "doubleChance1X": 65,
+          "doubleChanceX2": 61,
+          "doubleChance12": 74,
+          "over15": 74,
+          "under15": 26,
+          "over25": 50,
+          "under25": 50,
+          "btts": 54,
+          "noBtts": 46,
+          "over35": 28,
+          "under35": 72,
+          "bttsOver25": 42,
+          "homeScore": 75,
+          "homeNoScore": 25,
+          "awayScore": 72,
+          "awayNoScore": 28,
+          "homeOver15": 40,
+          "awayOver15": 37
+        },
+        "samples": {
+          "home": 9,
+          "away": 9
+        },
+        "warning": "STIMA NON VALIDATA. Non tiene conto della forza degli avversari, indisponibili o xG. Non usare come probabilità affidabile o consiglio di scommessa."
+      },
+      "markets": {
+        "one": {
+          "label": "1 · vittoria casa",
+          "score": 28,
+          "hits": 5,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.1111111111111111
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "draw": {
+          "label": "X · pareggio",
+          "score": 44,
+          "hits": 8,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.4444444444444444,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "two": {
+          "label": "2 · vittoria trasferta",
+          "score": 28,
+          "hits": 5,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.1111111111111111,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance1X": {
+          "label": "1X · doppia chance",
+          "score": 72,
+          "hits": 13,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.8888888888888888,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChanceX2": {
+          "label": "X2 · doppia chance",
+          "score": 72,
+          "hits": 13,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.8888888888888888
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "doubleChance12": {
+          "label": "12 · escluso pareggio",
+          "score": 56,
+          "hits": 10,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over15": {
+          "label": "Over 1.5 FT",
+          "score": 83,
+          "hits": 15,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            1,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under15": {
+          "label": "Under 1.5 FT",
+          "score": 17,
+          "hits": 3,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over25": {
+          "label": "Over 2.5 FT",
+          "score": 56,
+          "hits": 10,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.7777777777777778,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under25": {
+          "label": "Under 2.5 FT",
+          "score": 44,
+          "hits": 8,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.2222222222222222,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "btts": {
+          "label": "GG",
+          "score": 56,
+          "hits": 10,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.7777777777777778,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "noBtts": {
+          "label": "NoGoal",
+          "score": 44,
+          "hits": 8,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.2222222222222222,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "over35": {
+          "label": "Over 3.5 FT",
+          "score": 33,
+          "hits": 6,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "under35": {
+          "label": "Under 3.5 FT",
+          "score": 67,
+          "hits": 12,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeScore": {
+          "label": "Segna casa · Sì",
+          "score": 72,
+          "hits": 13,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            1,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeNoScore": {
+          "label": "Segna casa · No",
+          "score": 28,
+          "hits": 5,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0,
+            0.5555555555555556
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayScore": {
+          "label": "Segna ospite · Sì",
+          "score": 78,
+          "hits": 14,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.7777777777777778,
+            0.7777777777777778
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayNoScore": {
+          "label": "Segna ospite · No",
+          "score": 22,
+          "hits": 4,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.2222222222222222,
+            0.2222222222222222
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "homeOver15": {
+          "label": "Casa Over 1.5 gol",
+          "score": 50,
+          "hits": 9,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.6666666666666666,
+            0.3333333333333333
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "awayOver15": {
+          "label": "Ospite Over 1.5 gol",
+          "score": 39,
+          "hits": 7,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.3333333333333333,
+            0.4444444444444444
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        },
+        "bttsOver25": {
+          "label": "GG + Over 2.5 FT",
+          "score": 39,
+          "hits": 7,
+          "sample": 18,
+          "venueSamples": {
+            "home": 9,
+            "away": 9
+          },
+          "teamRates": [
+            0.5555555555555556,
+            0.2222222222222222
+          ],
+          "partial": false,
+          "method": "Media dei riscontri nelle ultime gare di ciascuna squadra · stagione corrente"
+        }
+      },
+      "direttaStatMarkets": null,
+      "selection": {
+        "qualified": false,
+        "primary": null,
+        "candidates": [],
+        "reason": "Dati non aggiornati nelle ultime 72 ore: selezione sospesa."
+      },
+      "prices": {
+        "fixtureId": "open_ENG_1_premier-league_2026-11-23_brentford_everton",
+        "market": null,
+        "primary": null,
+        "odds": {
+          "sisal": {
+            "available": false,
+            "reason": "Quota non disponibile"
+          },
+          "bet365": {
+            "available": false,
+            "reason": "Collegamento automatico Bet365 non disponibile"
+          }
+        },
+        "alternatives": [
+          {
+            "key": "one",
+            "label": "1 · vittoria casa",
+            "score": 39,
+            "historicalScore": 28,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 2.3,
+                "market": "one",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "draw",
+            "label": "X · pareggio",
+            "score": 26,
+            "historicalScore": 44,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 3.4,
+                "market": "draw",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "two",
+            "label": "2 · vittoria trasferta",
+            "score": 35,
+            "historicalScore": 28,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 3.1,
+                "market": "two",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChance1X",
+            "label": "1X · doppia chance",
+            "score": 65,
+            "historicalScore": 72,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.36,
+                "market": "doubleChance1X",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChanceX2",
+            "label": "X2 · doppia chance",
+            "score": 61,
+            "historicalScore": 72,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.6,
+                "market": "doubleChanceX2",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "doubleChance12",
+            "label": "12 · escluso pareggio",
+            "score": 74,
+            "historicalScore": 56,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.3,
+                "market": "doubleChance12",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over15",
+            "label": "Over 1.5 FT",
+            "score": 74,
+            "historicalScore": 83,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.22,
+                "market": "over15",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under15",
+            "label": "Under 1.5 FT",
+            "score": 26,
+            "historicalScore": 17,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 3.6,
+                "market": "under15",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over25",
+            "label": "Over 2.5 FT",
+            "score": 50,
+            "historicalScore": 56,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.75,
+                "market": "over25",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under25",
+            "label": "Under 2.5 FT",
+            "score": 50,
+            "historicalScore": 44,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.95,
+                "market": "under25",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "btts",
+            "label": "GG",
+            "score": 54,
+            "historicalScore": 56,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.57,
+                "market": "btts",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "noBtts",
+            "label": "NoGoal",
+            "score": 46,
+            "historicalScore": 44,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 2.25,
+                "market": "noBtts",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "over35",
+            "label": "Over 3.5 FT",
+            "score": 28,
+            "historicalScore": 33,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 2.9,
+                "market": "over35",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "under35",
+            "label": "Under 3.5 FT",
+            "score": 72,
+            "historicalScore": 67,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.36,
+                "market": "under35",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "bttsOver25",
+            "label": "GG + Over 2.5 FT",
+            "score": 42,
+            "historicalScore": 39,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.95,
+                "market": "bttsOver25",
+                "sourceUpdatedAt": "2026-11-22T22:05:30.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20combinate.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeScore",
+            "label": "Segna casa · Sì",
+            "score": 75,
+            "historicalScore": 72,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.18,
+                "market": "homeScore",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeNoScore",
+            "label": "Segna casa · No",
+            "score": 25,
+            "historicalScore": 28,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 4.15,
+                "market": "homeNoScore",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayScore",
+            "label": "Segna ospite · Sì",
+            "score": 72,
+            "historicalScore": 78,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 1.28,
+                "market": "awayScore",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayNoScore",
+            "label": "Segna ospite · No",
+            "score": 28,
+            "historicalScore": 22,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": true,
+                "value": 3.2,
+                "market": "awayNoScore",
+                "sourceUpdatedAt": "2026-11-22T22:04:57.000Z",
+                "fetchedAt": "2026-11-23T03:45:13.078Z",
+                "sourceUrl": "https://landing.sisal.it/volantini/Scommesse_Sport/Quote/calcio%20base%20per%20data.pdf",
+                "live": false
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "homeOver15",
+            "label": "Casa Over 1.5 gol",
+            "score": 40,
+            "historicalScore": 50,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non disponibile"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          },
+          {
+            "key": "awayOver15",
+            "label": "Ospite Over 1.5 gol",
+            "score": 37,
+            "historicalScore": 39,
+            "qualified": false,
+            "odds": {
+              "sisal": {
+                "available": false,
+                "reason": "Quota non disponibile"
+              },
+              "bet365": {
+                "available": false,
+                "reason": "Collegamento automatico Bet365 non disponibile"
+              }
+            }
+          }
+        ],
+        "minimumOdds": 1.6
+      }
+    }
+  ],
+  "note": "Previsioni registrate prima del calcio d’inizio. Non sono puntate né risultati ricostruiti."
+}
