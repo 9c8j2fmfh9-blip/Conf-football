@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-24T02:17:42.189Z",
-  "lastCapturedAt": "2026-11-23T03:45:42.526Z",
+  "evaluatedAt": "2026-11-24T23:05:00.522Z",
+  "lastCapturedAt": "2026-11-24T23:05:00.211Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 1458,
+  "recorded": 1485,
   "estimated": 346,
   "evaluatedForecasts": 326,
   "settled": 984,
@@ -2377,6 +2377,141 @@
     {
       "key": "[\"open_FRA_2_ligue-2_2026-11-23_fc_sochaux_montbeliard_usl_dunkerque\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_2_ligue-2_2026-11-23_fc_sochaux_montbeliard_usl_dunkerque",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-25_avispa_fukuoka_yokohama_f_marinos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-25_avispa_fukuoka_yokohama_f_marinos",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-25_fc_tokyo_sanfrecce_hiroshima\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-25_fc_tokyo_sanfrecce_hiroshima",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-25_fagiano_okayama_shimizu_s_pulse\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-25_fagiano_okayama_shimizu_s_pulse",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-25_jef_united_ichihara_chiba_nagoya_grampus\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-25_jef_united_ichihara_chiba_nagoya_grampus",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-25_mito_hollyhock_tokyo_verdy_1969\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-25_mito_hollyhock_tokyo_verdy_1969",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-25_v_varen_nagasaki_kawasaki_frontale\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-25_v_varen_nagasaki_kawasaki_frontale",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-25_urawa_red_diamonds_cerezo_osaka\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-25_urawa_red_diamonds_cerezo_osaka",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_sabah_barcelona\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_sabah_barcelona",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_slavia_prague_villarreal\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_slavia_prague_villarreal",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-25_cremonese_us_avellino\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-25_cremonese_us_avellino",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_5_national-league_2026-11-25_boreham_wood_aldershot_town\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_5_national-league_2026-11-25_boreham_wood_aldershot_town",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-25_mantova_arezzo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-25_mantova_arezzo",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-25_padova_sampdoria\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-25_padova_sampdoria",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-25_pisa_modena\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-25_pisa_modena",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-25_bolton_wanderers_west_bromwich_albion\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-25_bolton_wanderers_west_bromwich_albion",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-25_burnley_birmingham_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-25_burnley_birmingham_city",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-25_watford_blackburn_rovers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-25_watford_blackburn_rovers",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_5_national-league_2026-11-25_harrogate_town_kidderminster_harriers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_5_national-league_2026-11-25_harrogate_town_kidderminster_harriers",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_5_national-league_2026-11-25_hartlepool_united_solihull_moors\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_5_national-league_2026-11-25_hartlepool_united_solihull_moors",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_atletico_madrid_viking\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_atletico_madrid_viking",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_club_brugge_liverpool\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_club_brugge_liverpool",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_internazionale_stuttgart\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_internazionale_stuttgart",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_lille_bayern_munich\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_lille_bayern_munich",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_paris_saint_germain_roma\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_paris_saint_germain_roma",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_shakhtar_donetsk_fenerbahce\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_shakhtar_donetsk_fenerbahce",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_sporting_lisbon_manchester_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_sporting_lisbon_manchester_united",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-25_stoke_city_millwall\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-25_stoke_city_millwall",
       "reason": "Identificativo calendario assente"
     }
   ],
