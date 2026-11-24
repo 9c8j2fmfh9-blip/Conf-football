@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-23T03:45:43.325Z",
+  "evaluatedAt": "2026-11-24T02:17:42.189Z",
   "lastCapturedAt": "2026-11-23T03:45:42.526Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1458,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 980,
+  "settled": 984,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -2375,28 +2375,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_NED_2_eerste-divisie_2026-11-23_jong_ajax_jong_az\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_ajax_jong_az",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_2_eerste-divisie_2026-11-23_jong_psv_jong_fc_utrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_psv_jong_fc_utrecht",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_1_serie-a_2026-11-23_monza_fiorentina\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-23_monza_fiorentina",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_FRA_2_ligue-2_2026-11-23_fc_sochaux_montbeliard_usl_dunkerque\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_2_ligue-2_2026-11-23_fc_sochaux_montbeliard_usl_dunkerque",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_1_premier-league_2026-11-23_brentford_everton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_1_premier-league_2026-11-23_brentford_everton",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -35240,6 +35220,70 @@
       "kickoffAt": "2026-11-22T23:07:00Z",
       "score": {
         "home": 1,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-11-23_jong_ajax_jong_az\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_ajax_jong_az",
+      "resultId": "8b44XUOp",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Jong Ajax",
+      "away": "Jong AZ",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-22T22:31:09.233Z",
+      "kickoffAt": "2026-11-23T19:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-11-23_jong_psv_jong_fc_utrecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-23_jong_psv_jong_fc_utrecht",
+      "resultId": "0hijeYGi",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Jong PSV",
+      "away": "Jong FC Utrecht",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-22T22:31:09.233Z",
+      "kickoffAt": "2026-11-23T19:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-23_monza_fiorentina\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-23_monza_fiorentina",
+      "resultId": "xQYBZbDG",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Monza",
+      "away": "Fiorentina",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-22T22:31:09.233Z",
+      "kickoffAt": "2026-11-23T19:45:00Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_1_premier-league_2026-11-23_brentford_everton\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_1_premier-league_2026-11-23_brentford_everton",
+      "resultId": "CSnuq6U8",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Brentford",
+      "away": "Everton",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-22T22:31:09.233Z",
+      "kickoffAt": "2026-11-23T20:00:00Z",
+      "score": {
+        "home": 4,
         "away": 0
       },
       "markets": {}
