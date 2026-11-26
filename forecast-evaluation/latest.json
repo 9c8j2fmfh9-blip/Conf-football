@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-26T01:49:57.724Z",
-  "lastCapturedAt": "2026-11-26T01:49:57.468Z",
+  "evaluatedAt": "2026-11-26T11:01:35.061Z",
+  "lastCapturedAt": "2026-11-26T11:01:34.754Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 1522,
+  "recorded": 1523,
   "estimated": 346,
   "evaluatedForecasts": 326,
   "settled": 994,
@@ -2647,6 +2647,11 @@
     {
       "key": "[\"open_ENG_3_league-one_2026-11-26_doncaster_rovers_huddersfield_town\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_3_league-one_2026-11-26_doncaster_rovers_huddersfield_town",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-27_macarthur_fc_melbourne_city_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-27_macarthur_fc_melbourne_city_fc",
       "reason": "Identificativo calendario assente"
     }
   ],

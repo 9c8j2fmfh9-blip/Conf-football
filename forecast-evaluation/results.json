@@ -157656,7 +157656,7 @@
       "competitionId": "2RnvLNVB",
       "sourcePath": "/calcio/mozambico/mocambola/",
       "score": {
-        "home": 0,
+        "home": 1,
         "away": 1
       },
       "id": "Me1ZC87m",
@@ -158653,6 +158653,81 @@
       "date": "2026-11-25T12:00:00.000Z",
       "home": "Herentals",
       "away": "ZPC Kariba",
+      "status": "FT"
+    },
+    {
+      "league": "Sergipano 3",
+      "country": "Brasile",
+      "competitionId": "CrpN6kwA",
+      "sourcePath": "/calcio/brasile/sergipano-3/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "rVVI1RoC",
+      "date": "2026-11-25T18:00:00.000Z",
+      "home": "Botafogo ASF",
+      "away": "Sete de Junho",
+      "status": "FT"
+    },
+    {
+      "league": "Sergipano 3",
+      "country": "Brasile",
+      "competitionId": "CrpN6kwA",
+      "sourcePath": "/calcio/brasile/sergipano-3/",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "id": "SvP259nm",
+      "date": "2026-11-25T18:00:00.000Z",
+      "home": "Forca Jovem Aquidaba",
+      "away": "Propria",
+      "status": "FT"
+    },
+    {
+      "league": "Rondoniense Donne",
+      "country": "Brasile",
+      "competitionId": "6J4INxlT",
+      "sourcePath": "/calcio/brasile/rondoniense-donne/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "8GZb9kg5",
+      "date": "2026-11-25T20:00:00.000Z",
+      "home": "Genus D",
+      "away": "Rolim de Moura D",
+      "status": "FT"
+    },
+    {
+      "league": "LFA First Division",
+      "country": "Liberia",
+      "competitionId": "dfPeaR6k",
+      "sourcePath": "/calcio/liberia/lfa-first-division/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "pMARAwHk",
+      "date": "2026-11-25T16:00:00.000Z",
+      "home": "Downtown",
+      "away": "District 17",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Premier Serie A",
+      "country": "Messico",
+      "competitionId": "UiQWK8Vr",
+      "sourcePath": "/calcio/messico/liga-premier-serie-a/",
+      "score": {
+        "home": 0,
+        "away": 5
+      },
+      "id": "2wa40DLb",
+      "date": "2026-11-25T21:30:00.000Z",
+      "home": "Ciervos",
+      "away": "Vaqueros Reynosa",
       "status": "FT"
     }
   ]
