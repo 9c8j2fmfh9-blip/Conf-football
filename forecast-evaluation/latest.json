@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-25T05:29:24.721Z",
-  "lastCapturedAt": "2026-11-25T05:29:24.534Z",
+  "evaluatedAt": "2026-11-26T01:49:57.724Z",
+  "lastCapturedAt": "2026-11-26T01:49:57.468Z",
   "validated": false,
   "productionBettingApproved": false,
-  "recorded": 1485,
+  "recorded": 1522,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 984,
+  "settled": 994,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -2405,11 +2405,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_JPN_1_j1-league_2026-11-25_v_varen_nagasaki_kawasaki_frontale\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_JPN_1_j1-league_2026-11-25_v_varen_nagasaki_kawasaki_frontale",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_JPN_1_j1-league_2026-11-25_urawa_red_diamonds_cerezo_osaka\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_JPN_1_j1-league_2026-11-25_urawa_red_diamonds_cerezo_osaka",
       "reason": "Identificativo calendario assente"
@@ -2430,38 +2425,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ENG_5_national-league_2026-11-25_boreham_wood_aldershot_town\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_5_national-league_2026-11-25_boreham_wood_aldershot_town",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_2_serie-b_2026-11-25_mantova_arezzo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_2_serie-b_2026-11-25_mantova_arezzo",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_2_serie-b_2026-11-25_padova_sampdoria\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_2_serie-b_2026-11-25_padova_sampdoria",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ITA_2_serie-b_2026-11-25_pisa_modena\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_2_serie-b_2026-11-25_pisa_modena",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_ENG_2_championship_2026-11-25_bolton_wanderers_west_bromwich_albion\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_2_championship_2026-11-25_bolton_wanderers_west_bromwich_albion",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_2_championship_2026-11-25_burnley_birmingham_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_2_championship_2026-11-25_burnley_birmingham_city",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_2_championship_2026-11-25_watford_blackburn_rovers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_2_championship_2026-11-25_watford_blackburn_rovers",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2470,18 +2435,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ENG_5_national-league_2026-11-25_hartlepool_united_solihull_moors\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_5_national-league_2026-11-25_hartlepool_united_solihull_moors",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_UEFA_1_champions-league_2026-11-25_atletico_madrid_viking\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_UEFA_1_champions-league_2026-11-25_atletico_madrid_viking",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_UEFA_1_champions-league_2026-11-25_club_brugge_liverpool\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_club_brugge_liverpool",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2500,11 +2455,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_UEFA_1_champions-league_2026-11-25_shakhtar_donetsk_fenerbahce\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_shakhtar_donetsk_fenerbahce",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_UEFA_1_champions-league_2026-11-25_sporting_lisbon_manchester_united\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_UEFA_1_champions-league_2026-11-25_sporting_lisbon_manchester_united",
       "reason": "Identificativo calendario assente"
@@ -2512,6 +2462,191 @@
     {
       "key": "[\"open_ENG_2_championship_2026-11-25_stoke_city_millwall\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_2_championship_2026-11-25_stoke_city_millwall",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_kairat_almaty_mjallby\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_kairat_almaty_mjallby",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_besiktas_h_beer_sheva\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_besiktas_h_beer_sheva",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_celta_bournemouth\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_celta_bournemouth",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_gnk_dinamo_leverkusen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_gnk_dinamo_leverkusen",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_marseille_levski_sofia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_marseille_levski_sofia",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_olympiacos_milan\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_olympiacos_milan",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_salzburg_ararat_armenia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_salzburg_ararat_armenia",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_union_sg_lech_poznan\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_union_sg_lech_poznan",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_viktoria_plzen_benfica\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_viktoria_plzen_benfica",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_ajax_thun\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_ajax_thun",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_brann_aarhus\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_brann_aarhus",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_brighton_u_craiova\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_brighton_u_craiova",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_egnatia_l_red_imps\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_egnatia_l_red_imps",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_hearts_monaco\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_hearts_monaco",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_iberia_tbilisi_getafe\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_iberia_tbilisi_getafe",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_jablonec_lugano\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_jablonec_lugano",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_kauno_zalgiris_riga\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_kauno_zalgiris_riga",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_pafos_midtjylland\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_pafos_midtjylland",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_crystal_palace_real_sociedad\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_crystal_palace_real_sociedad",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_ferencvaros_celje\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_ferencvaros_celje",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_hoffenheim_sturm_graz\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_hoffenheim_sturm_graz",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_juventus_omonia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_juventus_omonia",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_lyon_lillestr_m\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_lyon_lillestr_m",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_n_e_c_rennes\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_n_e_c_rennes",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_ofi_crete_anderlecht\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_ofi_crete_anderlecht",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_sparta_praha_az_alkmaar\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_sparta_praha_az_alkmaar",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_sunderland_jagiellonia\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_sunderland_jagiellonia",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_europa-league_2026-11-26_torreense_celtic\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_europa-league_2026-11-26_torreense_celtic",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_borac_atalanta\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_borac_atalanta",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_braga_kups_kuopio\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_braga_kups_kuopio",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_cska_sofia_trabzonspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_cska_sofia_trabzonspor",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_freiburg_twente\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_freiburg_twente",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_gent_crvena_zvezda\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_gent_crvena_zvezda",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_hajduk_split_sint_truidense\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_hajduk_split_sint_truidense",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_inter_escaldes_copenhagen\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_inter_escaldes_copenhagen",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_UEFA_1_conference-league_2026-11-26_nordsj_lland_panathinaikos\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_conference-league_2026-11-26_nordsj_lland_panathinaikos",
+      "reason": "Identificativo calendario assente"
+    },
+    {
+      "key": "[\"open_ENG_3_league-one_2026-11-26_doncaster_rovers_huddersfield_town\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_3_league-one_2026-11-26_doncaster_rovers_huddersfield_town",
       "reason": "Identificativo calendario assente"
     }
   ],
@@ -35420,6 +35555,166 @@
       "score": {
         "home": 4,
         "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_JPN_1_j1-league_2026-11-25_v_varen_nagasaki_kawasaki_frontale\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_JPN_1_j1-league_2026-11-25_v_varen_nagasaki_kawasaki_frontale",
+      "resultId": "EDMSr875",
+      "matchMethod": "unique-team-kickoff",
+      "home": "V-Varen Nagasaki",
+      "away": "Kawasaki Frontale",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T10:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_5_national-league_2026-11-25_boreham_wood_aldershot_town\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_5_national-league_2026-11-25_boreham_wood_aldershot_town",
+      "resultId": "4dOhWCPN",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Boreham Wood",
+      "away": "Aldershot Town",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T19:00:00Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-25_mantova_arezzo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-25_mantova_arezzo",
+      "resultId": "IBSnsMwo",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Mantova",
+      "away": "Arezzo",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T19:00:00Z",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-25_padova_sampdoria\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-25_padova_sampdoria",
+      "resultId": "nTyHnrGN",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Padova",
+      "away": "Sampdoria",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T19:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_2_serie-b_2026-11-25_pisa_modena\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_2_serie-b_2026-11-25_pisa_modena",
+      "resultId": "bVspYr1U",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Pisa",
+      "away": "Modena",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T19:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-25_burnley_birmingham_city\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-25_burnley_birmingham_city",
+      "resultId": "KzVYMr0d",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Burnley",
+      "away": "Birmingham City",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T19:45:00Z",
+      "score": {
+        "home": 0,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-25_watford_blackburn_rovers\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-25_watford_blackburn_rovers",
+      "resultId": "hvQSrQMF",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Watford",
+      "away": "Blackburn Rovers",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T19:45:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_5_national-league_2026-11-25_hartlepool_united_solihull_moors\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_5_national-league_2026-11-25_hartlepool_united_solihull_moors",
+      "resultId": "6PdAlfuh",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Hartlepool United",
+      "away": "Solihull Moors",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T19:45:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_club_brugge_liverpool\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_club_brugge_liverpool",
+      "resultId": "6wSZISyp",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Club Brugge",
+      "away": "Liverpool",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T20:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 3
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_UEFA_1_champions-league_2026-11-25_shakhtar_donetsk_fenerbahce\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_UEFA_1_champions-league_2026-11-25_shakhtar_donetsk_fenerbahce",
+      "resultId": "rB9Y2j5S",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Shakhtar",
+      "away": "Fenerbahçe",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-24T23:05:00.211Z",
+      "kickoffAt": "2026-11-25T20:00:00Z",
+      "score": {
+        "home": 0,
+        "away": 1
       },
       "markets": {}
     }
