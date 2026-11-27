@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-27T12:41:59.698Z",
+  "evaluatedAt": "2026-11-27T22:05:15.763Z",
   "lastCapturedAt": "2026-11-27T02:58:05.636Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1544,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 1013,
+  "settled": 1019,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -2560,11 +2560,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_TUR_1_super-lig_2026-11-27_alanyaspor_konyaspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_TUR_1_super-lig_2026-11-27_alanyaspor_konyaspor",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_TUR_1_super-lig_2026-11-27_caykur_rizespor_kasimpasa\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_TUR_1_super-lig_2026-11-27_caykur_rizespor_kasimpasa",
       "reason": "Identificativo calendario assente"
@@ -2585,11 +2580,6 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_NED_1_eredivisie_2026-11-27_fc_groningen_willem_ii\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_1_eredivisie_2026-11-27_fc_groningen_willem_ii",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_NED_2_eerste-divisie_2026-11-27_fc_dordrecht_vitesse\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_2_eerste-divisie_2026-11-27_fc_dordrecht_vitesse",
       "reason": "Identificativo calendario assente"
@@ -2597,11 +2587,6 @@
     {
       "key": "[\"open_NED_2_eerste-divisie_2026-11-27_jong_az_top_oss\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_NED_2_eerste-divisie_2026-11-27_jong_az_top_oss",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_NED_2_eerste-divisie_2026-11-27_jong_ajax_heracles_almelo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_NED_2_eerste-divisie_2026-11-27_jong_ajax_heracles_almelo",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2630,18 +2615,8 @@
       "reason": "Identificativo calendario assente"
     },
     {
-      "key": "[\"open_ITA_1_serie-a_2026-11-27_venezia_bologna\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ITA_1_serie-a_2026-11-27_venezia_bologna",
-      "reason": "Identificativo calendario assente"
-    },
-    {
       "key": "[\"open_FRA_1_ligue-1_2026-11-27_stade_brestois_29_paris_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_FRA_1_ligue-1_2026-11-27_stade_brestois_29_paris_fc",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_5_national-league_2026-11-27_scunthorpe_united_wealdstone\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_5_national-league_2026-11-27_scunthorpe_united_wealdstone",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -2652,11 +2627,6 @@
     {
       "key": "[\"open_ENG_1_premier-league_2026-11-27_nott_m_forest_chelsea\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_1_premier-league_2026-11-27_nott_m_forest_chelsea",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_ENG_2_championship_2026-11-27_southampton_middlesbrough\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_ENG_2_championship_2026-11-27_southampton_middlesbrough",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -36031,6 +36001,102 @@
       "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
       "capturedAt": "2026-11-26T11:01:34.754Z",
       "kickoffAt": "2026-11-27T08:40:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_TUR_1_super-lig_2026-11-27_alanyaspor_konyaspor\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_TUR_1_super-lig_2026-11-27_alanyaspor_konyaspor",
+      "resultId": "AoHUcKbM",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Alanyaspor",
+      "away": "Konyaspor",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-27T02:58:05.636Z",
+      "kickoffAt": "2026-11-27T17:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_1_eredivisie_2026-11-27_fc_groningen_willem_ii\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_1_eredivisie_2026-11-27_fc_groningen_willem_ii",
+      "resultId": "Ozt1SjI6",
+      "matchMethod": "unique-team-kickoff",
+      "home": "FC Groningen",
+      "away": "Willem II",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-27T02:58:05.636Z",
+      "kickoffAt": "2026-11-27T19:00:00Z",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_NED_2_eerste-divisie_2026-11-27_jong_ajax_heracles_almelo\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_NED_2_eerste-divisie_2026-11-27_jong_ajax_heracles_almelo",
+      "resultId": "Grb6ijGG",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Jong Ajax",
+      "away": "Heracles Almelo",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-27T02:58:05.636Z",
+      "kickoffAt": "2026-11-27T19:00:00Z",
+      "score": {
+        "home": 4,
+        "away": 4
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ITA_1_serie-a_2026-11-27_venezia_bologna\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ITA_1_serie-a_2026-11-27_venezia_bologna",
+      "resultId": "SARc2lmK",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Venezia",
+      "away": "Bologna",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-27T02:58:05.636Z",
+      "kickoffAt": "2026-11-27T19:45:00Z",
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_5_national-league_2026-11-27_scunthorpe_united_wealdstone\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_5_national-league_2026-11-27_scunthorpe_united_wealdstone",
+      "resultId": "Ek0InY94",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Scunthorpe United",
+      "away": "Wealdstone",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-27T02:58:05.636Z",
+      "kickoffAt": "2026-11-27T19:45:00Z",
+      "score": {
+        "home": 4,
+        "away": 1
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_ENG_2_championship_2026-11-27_southampton_middlesbrough\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_ENG_2_championship_2026-11-27_southampton_middlesbrough",
+      "resultId": "GbneZCkJ",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Southampton",
+      "away": "Middlesbrough",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-27T02:58:05.636Z",
+      "kickoffAt": "2026-11-27T20:00:00Z",
       "score": {
         "home": 2,
         "away": 0
