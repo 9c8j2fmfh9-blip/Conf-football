@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-27T02:58:05.877Z",
+  "evaluatedAt": "2026-11-27T12:41:59.698Z",
   "lastCapturedAt": "2026-11-27T02:58:05.636Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1544,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 1012,
+  "settled": 1013,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -2557,11 +2557,6 @@
     {
       "key": "[\"open_ENG_3_league-one_2026-11-26_doncaster_rovers_huddersfield_town\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_ENG_3_league-one_2026-11-26_doncaster_rovers_huddersfield_town",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-11-27_macarthur_fc_melbourne_city_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-11-27_macarthur_fc_melbourne_city_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -36020,6 +36015,22 @@
       "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
       "capturedAt": "2026-11-26T01:49:57.468Z",
       "kickoffAt": "2026-11-26T20:00:00Z",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-27_macarthur_fc_melbourne_city_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-27_macarthur_fc_melbourne_city_fc",
+      "resultId": "tvZLLmlT",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Macarthur FC",
+      "away": "Melbourne City FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-26T11:01:34.754Z",
+      "kickoffAt": "2026-11-27T08:40:00Z",
       "score": {
         "home": 2,
         "away": 0
