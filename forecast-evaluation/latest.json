@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "evaluatedAt": "2026-11-28T03:59:24.009Z",
+  "evaluatedAt": "2026-11-28T13:12:09.338Z",
   "lastCapturedAt": "2026-11-28T03:59:23.731Z",
   "validated": false,
   "productionBettingApproved": false,
   "recorded": 1667,
   "estimated": 346,
   "evaluatedForecasts": 326,
-  "settled": 1019,
+  "settled": 1020,
   "pending": [
     {
       "key": "[\"diretta_OWiqsR8j\",\"8ddf77b4a37179ddea2d22edd469c9c04acba89d\"]",
@@ -2657,11 +2657,6 @@
     {
       "key": "[\"open_JPN_1_j1-league_2026-11-28_kashiwa_reysol_sanfrecce_hiroshima\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
       "fixtureId": "open_JPN_1_j1-league_2026-11-28_kashiwa_reysol_sanfrecce_hiroshima",
-      "reason": "Identificativo calendario assente"
-    },
-    {
-      "key": "[\"open_AUS_1_a-league_2026-11-28_central_coast_mariners_auckland_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
-      "fixtureId": "open_AUS_1_a-league_2026-11-28_central_coast_mariners_auckland_fc",
       "reason": "Identificativo calendario assente"
     },
     {
@@ -36715,6 +36710,22 @@
       "score": {
         "home": 2,
         "away": 0
+      },
+      "markets": {}
+    },
+    {
+      "key": "[\"open_AUS_1_a-league_2026-11-28_central_coast_mariners_auckland_fc\",\"88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806\"]",
+      "fixtureId": "open_AUS_1_a-league_2026-11-28_central_coast_mariners_auckland_fc",
+      "resultId": "xAKiGRBj",
+      "matchMethod": "unique-team-kickoff",
+      "home": "Central Coast Mariners",
+      "away": "Auckland FC",
+      "modelRevision": "88207e21f9764826bda894f1987fdd6d3ea4538a4de440263ddbf4ad3e84b806",
+      "capturedAt": "2026-11-28T03:59:23.731Z",
+      "kickoffAt": "2026-11-28T08:40:00Z",
+      "score": {
+        "home": 2,
+        "away": 3
       },
       "markets": {}
     }
