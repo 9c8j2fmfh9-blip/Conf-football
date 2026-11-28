@@ -130677,7 +130677,7 @@
       "id": "OAWtV39s",
       "date": "2026-11-21T16:15:00.000Z",
       "home": "Mighty Blackpool",
-      "away": "Western",
+      "away": "Western United",
       "status": "FT"
     },
     {
@@ -169498,6 +169498,186 @@
       "date": "2026-11-27T11:00:00.000Z",
       "home": "Xuan Thien Phu Tho",
       "away": "Lam Dong",
+      "status": "FT"
+    },
+    {
+      "league": "Primera Nacional - Play Off Promozione",
+      "country": "Argentina",
+      "competitionId": "QTNHA4p4",
+      "sourcePath": "/calcio/argentina/primera-nacional/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "0C719U6t",
+      "date": "2026-11-27T22:00:00.000Z",
+      "home": "Atletico Atlanta",
+      "away": "Ciudad Bolivar",
+      "status": "FT"
+    },
+    {
+      "league": "1st National - Femminile",
+      "country": "Belgio",
+      "competitionId": "Y7YJeFPu",
+      "sourcePath": "/calcio/belgio/1st-national-donne/",
+      "score": {
+        "home": 1,
+        "away": 0
+      },
+      "id": "0Yn9q6Uq",
+      "date": "2026-11-27T19:30:00.000Z",
+      "home": "Westerlo D",
+      "away": "Genk II D",
+      "status": "FT"
+    },
+    {
+      "league": "Paraense U20 - Play Off",
+      "country": "Brasile",
+      "competitionId": "KKFT9LZA",
+      "sourcePath": "/calcio/brasile/paraense-u20/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "MB3nFYFc",
+      "date": "2026-11-27T20:00:00.000Z",
+      "home": "Aguia De Maraba U20",
+      "away": "Mec Maraba U20",
+      "status": "FT"
+    },
+    {
+      "league": "Copinha Women",
+      "country": "Brasile",
+      "competitionId": "IuqN7nef",
+      "sourcePath": "/calcio/brasile/copinha-women/",
+      "score": {
+        "home": 2,
+        "away": 2
+      },
+      "id": "E5EBLfif",
+      "date": "2026-11-27T21:00:00.000Z",
+      "home": "Palmeiras U20 D",
+      "away": "Vasco U20 D",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Pro - Gruppo Retrocessione",
+      "country": "Ecuador",
+      "competitionId": "WWZFEdUR",
+      "sourcePath": "/calcio/ecuador/liga-pro/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "Wd99giKH",
+      "date": "2026-11-27T21:30:00.000Z",
+      "home": "Dep. Cuenca",
+      "away": "Manta",
+      "status": "FT"
+    },
+    {
+      "league": "National League",
+      "country": "Gibilterra",
+      "competitionId": "xfCrIQ62",
+      "sourcePath": "/calcio/gibilterra/national-league/",
+      "score": {
+        "home": 0,
+        "away": 6
+      },
+      "id": "SdSLUHw2",
+      "date": "2026-11-27T20:00:00.000Z",
+      "home": "Hound Dogs",
+      "away": "Lions Gibraltar",
+      "status": "FT"
+    },
+    {
+      "league": "Amichevoli Internazionali - Femminile",
+      "country": "Mondo",
+      "competitionId": "QTSAtekc",
+      "sourcePath": "/calcio/mondo/friendly-international-donne/",
+      "score": {
+        "home": 2,
+        "away": 0
+      },
+      "id": "KINLuogC",
+      "date": "2026-11-27T21:00:00.000Z",
+      "home": "Perù D",
+      "away": "Repubblica Dominicana D",
+      "status": "FT"
+    },
+    {
+      "league": "CONCACAF Championship Women",
+      "country": "Nord e Centro America",
+      "competitionId": "fm2L8WCg",
+      "sourcePath": "/calcio/nord-e-centro-america/concacaf-championship-women/",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "id": "fRbv0FYQ",
+      "date": "2026-11-27T22:00:00.000Z",
+      "home": "Giamaica D",
+      "away": "Costa Rica D",
+      "status": "FT"
+    },
+    {
+      "league": "Copa de Primera - Clausura",
+      "country": "Paraguay",
+      "competitionId": "S66R0t75",
+      "sourcePath": "/calcio/paraguay/copa-de-primera/",
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "id": "xtXtr0oB",
+      "date": "2026-11-27T20:30:00.000Z",
+      "home": "Nacional Asuncion",
+      "away": "Rubio Nu",
+      "status": "FT"
+    },
+    {
+      "league": "Liga Portugal",
+      "country": "Portogallo",
+      "competitionId": "UmMRoGzp",
+      "sourcePath": "/calcio/portogallo/liga-portugal/",
+      "score": {
+        "home": 1,
+        "away": 2
+      },
+      "id": "lObmkyA5",
+      "date": "2026-11-27T20:15:00.000Z",
+      "home": "Maritimo",
+      "away": "Nacional",
+      "status": "FT"
+    },
+    {
+      "league": "Primera RFEF - Group 2",
+      "country": "Spagna",
+      "competitionId": "8Qy7Nsg0",
+      "sourcePath": "/calcio/spagna/primera-rfef-group-2/",
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "id": "UyTGNb05",
+      "date": "2026-11-27T20:15:00.000Z",
+      "home": "Hercules",
+      "away": "Antequera",
+      "status": "FT"
+    },
+    {
+      "league": "Tercera RFEF - Group 12",
+      "country": "Spagna",
+      "competitionId": "fyqe2qn5",
+      "sourcePath": "/calcio/spagna/tercera-rfef-group-12/",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": "trikkozQ",
+      "date": "2026-11-27T21:00:00.000Z",
+      "home": "Real Union Tenerife",
+      "away": "Anaza",
       "status": "FT"
     }
   ]
